@@ -22,6 +22,8 @@ Save as you go, not at the end. Tell the user in one line what was saved where.
 
 **Then publish:** after saving, run `npm run publish` (background) so the live Studio matches the folder: https://studio-production-ccb0.up.railway.app (login: any username + `STUDIO_PASSWORD` from `.env`). Never print the password. The JSON feed for other tools is `/api/ideas` (Bearer `STUDIO_API_TOKEN`).
 
+**Then back up (standing rule, user 2026-10-03):** run `tools/backup.sh "<what changed>"` (background). It commits + pushes everything to the private repo https://github.com/Al-Baqshi/ugc (secrets refused), refreshes `context/memory/` from Claude's memory, and uploads new/changed videos to the `videos-YYYY-MM` Release. The repo is the record: a new computer or cloud session should be able to continue from it alone (see README → New machine).
+
 **Figma:** post designs live in "QSME — UGC Posts" (BItregalo Team, Starter plan = max 3 pages): https://www.figma.com/design/f8xxaFvwdi6ijGxYj9WEWP. Figma motion is enabled, so animated frames can be exported as MP4 with `export_video`. Each new venture gets its own Figma file (page limit).
 
 Idea cards are plain Markdown with YAML frontmatter, so other tools and video makers can read them directly.
