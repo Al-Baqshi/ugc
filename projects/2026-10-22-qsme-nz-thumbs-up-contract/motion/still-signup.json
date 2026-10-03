@@ -1,0 +1,14 @@
+{
+  "url": "https://www.qsme.co.nz/sign-up",
+  "cssWidth": 430,
+  "cssHeight": 932,
+  "dpr": 3,
+  "mobile": true,
+  "settle": 5,
+  "boxes": {
+    "h1": "[...document.querySelectorAll('h1,h2')].find(x => x.textContent.includes('Get started'))",
+    "hire": "[...document.querySelectorAll('button,a,div')].filter(x => x.textContent.trim().startsWith('I hire') && x.getBoundingClientRect().height < 400 && x.getBoundingClientRect().height > 100).pop()",
+    "provide": "[...document.querySelectorAll('button,a,div')].filter(x => x.textContent.trim().startsWith('I provide services') && x.getBoundingClientRect().height < 400 && x.getBoundingClientRect().height > 100).pop()",
+    "freeText": "(() => { const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT); let n; while ((n = w.nextNode())) { if (/free/i.test(n.textContent)) { const r = document.createRange(); r.selectNodeContents(n); return r; } } return null; })()"
+  }
+}

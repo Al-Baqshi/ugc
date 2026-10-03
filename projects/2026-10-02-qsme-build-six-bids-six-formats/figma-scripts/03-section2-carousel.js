@@ -122,6 +122,7 @@ function slide(i,headline,body,o={}){
  r.done();out[7].media=r.fr.id;}
 
 // 8 — review spec: headline 64px at y72, whiteboard callback 220×150 top-right, 'Compare bids' crop 936×600, body 34/44, CTA pill.
+// Headline 'Same lines. One table. Award.' (never 'Side by side': the live screen compares totals). CTA pill = owner rule 2026-10-03 wording 'Book a 30-minute demo at qsme.build'.
 // Fact-check 2026-10-02: the live comparison is a table of bid TOTALS (excl./incl. tax, 'Lowest'); a line × bidder grid is branch-only, so slide 8 never shows or says one.
 // 2026-10-03 review (Global): totals excl. tax only (the Global screen still says GST / 15%), and no agreement / e-sign line (NZ-law templates; truth sheet open question 4).
 {const s=slide(8,'Same lines.\nOne table.\nAward.',null,{headW:W-2*M-220-24});
@@ -129,7 +130,7 @@ function slide(i,headline,body,o={}){
  const gy=s.mediaY;const g=REPL(s.f,936,600,'REPLACE: real QSME \'Compare bids\' screen (owner screen-recording), demo project with fictional data: one row per bidder (Bidder A–F), totals excl. tax only, \'Lowest\' tag. Totals only, not a per-line grid. Global: no incl. column or calc. figures (the live Global screen still says GST and works them out at 15%).',{x:(W-936)/2,y:gy});g.done();
  const col=AL(s.f,'VERTICAL',{name:'Body + CTA',gap:32,w:936,x:M,y:gy+600+32});
  const b=T(col,'Bidders never see your rates or budget.\nAward creates the contract, with milestones and retention.',{s:'Medium',size:34,lh:44,c:'#EEF4EF',fill:true,name:'Body'});
- const cta=pill(col,'Book a 30-minute demo: qsme.build',{fill:'#3DC023',size:34,c:'#06130A',py:20,px:40,name:'CTA pill'});
+ const cta=pill(col,'Book a 30-minute demo at qsme.build',{fill:'#3DC023',size:34,c:'#06130A',py:20,px:40,name:'CTA pill'});
  out[8].body=b.id;out[8].cta=cta.id;out[8].callback=cb.fr.id;out[8].compareBids=g.fr.id;out[8].contentBottom=col.y+col.height;}
 
 const checks=Object.entries(out).map(([i,o])=>({slide:+i,headerBottom:Math.round(o.headerBottom),contentBottom:o.contentBottom?Math.round(o.contentBottom):undefined}));

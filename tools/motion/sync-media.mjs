@@ -1,351 +1,293 @@
 #!/usr/bin/env node
-// Upload Studio media to the Railway volume (MEDIA_DIR) through the Studio's media API.
-// Code deploys carry no media (.railwayignore); this sends only what changed.
+// Sync Studio media to the Railway storage bucket (private, S3-compatible).
+// The Studio serves it from there with presigned links; code deploys carry no media.
 //
-//   node tools/motion/sync-media.mjs             upload new/changed files
-//   node tools/motion/sync-media.mjs --dry-run   say what would change, send nothing
-//   node tools/motion/sync-media.mjs --prune     also delete Studio files that are gone locally
+//   node tools/motion/sync-media.mjs              upload new and changed files
+//   node tools/motion/sync-media.mjs --dry-run    list and compare only, send nothing
+//   node tools/motion/sync-media.mjs --prune      also delete bucket objects with no local file
+//   (--root <dir>: the content folder, default the repo root)
 //
-// What goes up: top-level files in projects/*/outputs/ named *.preview.mp4, *.png, *.jpg,
-// *.jpeg, *.webp, *.gif, *.mp3, *.m4a or *.wav. Full-quality masters (*.mp4 without
-// .preview) stay on this Mac. A file is sent when the Studio has no copy with the
-// same sha256.
+// What goes up: the top-level files of every projects/<project>/outputs/ folder that the
+// Studio shows (its MEDIA_TYPES, so the two never drift apart): masters *.mp4 *.mov *.webm,
+// previews *.preview.mp4, stills *.png *.jpg *.jpeg *.webp *.gif, audio *.mp3 *.m4a *.wav,
+// each as the object projects/<project>/outputs/<file> with its Content-Type.
+// Subfolders, other file types and names the Studio can't serve stay local.
 //
-// Reads STUDIO_API_TOKEN and STUDIO_URL (default https://studio-production-ccb0.up.railway.app)
-// from the environment, else from .env at the repo root. Never prints them.
-// Right after `railway up` the new deploy may not be live yet: a 404 (or 502/503/504,
-// or no connection) on the list route is retried for up to 6 minutes (--wait <seconds>).
-// Other flags: --root <dir> (content folder, default: the repo root).
+// A file is sent only when the bucket has no object of the same size and content:
+// the listing's ETag (the MD5 of a single-part upload) is compared first, then the
+// object's x-amz-meta-sha256 (written on every upload) with a HEAD. Files stream from
+// disk; nothing is held in memory.
+//
+// Credentials: BUCKET_* from the environment when all are set, else read at run time
+// from `railway variables --service studio --kv` (run in the repo root). They are
+// never printed and never written to disk.
 
 import fs from 'node:fs';
 import fsp from 'node:fs/promises';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import { execFile } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { createS3, bucketConfigFromEnv, MAX_PUT_BYTES } from '../../studio/lib/s3.mjs';
+import { mediaKey, parseMediaKey, PREFIX } from '../../studio/lib/storage.mjs';
+import { MEDIA_TYPES } from '../../studio/lib/content.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
-const DEFAULT_URL = 'https://studio-production-ccb0.up.railway.app';
-const NAME_RE = /^[A-Za-z0-9][A-Za-z0-9._-]*$/; // the server's upload-name rule
-const WANT_RE = /\.(preview\.mp4|png|jpe?g|webp|gif|mp3|m4a|wav)$/i;
-const TYPES = { mp4: 'video/mp4', png: 'image/png', jpg: 'image/jpeg', jpeg: 'image/jpeg', webp: 'image/webp', gif: 'image/gif', mp3: 'audio/mpeg', m4a: 'audio/mp4', wav: 'audio/wav' };
-const RETRY_STATUS = new Set([404, 502, 503, 504]);
+const REPO = path.resolve(here, '..', '..');
+const extOf = (name) => path.extname(name).slice(1).toLowerCase();
+/** Content-Type for a file the Studio serves, or null for any other file. */
+const typeOf = (name) => MEDIA_TYPES[extOf(name)]?.[1] || null;
 
-// ------------------------------------------------------------------ args, env
-
-function parseArgs(argv) {
-  const opts = { prune: false, dryRun: false, root: path.resolve(here, '..', '..'), waitMs: 6 * 60 * 1000 };
-  for (let i = 0; i < argv.length; i++) {
-    const a = argv[i];
-    if (a === '--prune') opts.prune = true;
-    else if (a === '--dry-run' || a === '-n') opts.dryRun = true;
-    else if (a === '--root') opts.root = path.resolve(argv[++i] || '.');
-    else if (a === '--wait') opts.waitMs = Math.max(0, Number(argv[++i]) || 0) * 1000;
-    else if (a === '-h' || a === '--help') {
-      console.log('usage: node tools/motion/sync-media.mjs [--dry-run] [--prune] [--wait <seconds>] [--root <dir>]');
-      process.exit(0);
-    } else fail(`unknown option ${a}`);
-  }
-  return opts;
-}
+const mb = (n) => `${(n / 1024 / 1024).toFixed(1)} MB`;
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 function fail(msg) {
   console.error(`sync-media: ${msg}`);
   process.exit(1);
 }
 
-/** KEY=value lines from .env (quotes stripped). Values are never printed. */
-function readDotEnv(file) {
-  const out = {};
-  let text;
-  try {
-    text = fs.readFileSync(file, 'utf8');
-  } catch {
-    return out;
+function parseArgs(argv) {
+  const opts = { prune: false, dryRun: false, root: REPO };
+  for (let i = 0; i < argv.length; i++) {
+    const a = argv[i];
+    if (a === '--prune') opts.prune = true;
+    else if (a === '--dry-run' || a === '-n') opts.dryRun = true;
+    else if (a === '--root') opts.root = path.resolve(argv[++i] || '.');
+    else if (a === '-h' || a === '--help') {
+      console.log('usage: node tools/motion/sync-media.mjs [--dry-run] [--prune] [--root <dir>]');
+      process.exit(0);
+    } else fail(`unknown option ${a}`);
   }
-  for (const line of text.split(/\r?\n/)) {
-    const m = /^\s*(?:export\s+)?([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*?)\s*$/.exec(line);
-    if (!m || line.trim().startsWith('#')) continue;
-    let v = m[2];
-    if ((v.startsWith('"') && v.endsWith('"')) || (v.startsWith("'") && v.endsWith("'"))) v = v.slice(1, -1);
-    else v = v.replace(/\s+#.*$/, '');
-    out[m[1]] = v;
+  return opts;
+}
+
+// ------------------------------------------------------------- credentials
+
+/** Run a command; resolves stdout. Never echoes it. */
+function run(cmd, args, cwd) {
+  return new Promise((resolve, reject) => {
+    execFile(cmd, args, { cwd, timeout: 60_000, maxBuffer: 4 * 1024 * 1024, env: process.env }, (err, stdout, stderr) => {
+      if (err) {
+        err.stderr = String(stderr || '');
+        return reject(err);
+      }
+      resolve(String(stdout));
+    });
+  });
+}
+
+/** KEY=value lines -> { BUCKET_*: value } (everything else is dropped unread). */
+function bucketVars(text) {
+  const out = {};
+  for (const line of String(text).split(/\r?\n/)) {
+    const i = line.indexOf('=');
+    if (i <= 0) continue;
+    const k = line.slice(0, i).trim();
+    if (/^BUCKET_[A-Z0-9_]+$/.test(k)) out[k] = line.slice(i + 1).trim();
   }
   return out;
 }
 
-function studioConfig(root) {
-  const env = readDotEnv(path.join(root, '.env'));
-  const token = process.env.STUDIO_API_TOKEN || env.STUDIO_API_TOKEN || '';
-  const rawUrl = process.env.STUDIO_URL || env.STUDIO_URL || DEFAULT_URL;
-  if (!token) fail('STUDIO_API_TOKEN is not set (add it to .env).');
-  let url;
+async function loadConfig() {
+  let cfg;
   try {
-    url = new URL(rawUrl);
-  } catch {
-    fail('STUDIO_URL is not a valid URL.');
+    cfg = bucketConfigFromEnv(process.env);
+  } catch (e) {
+    fail(`${e.message} in the environment (set all of them, or none to read them from Railway)`);
   }
-  const local = ['localhost', '127.0.0.1', '[::1]'].includes(url.hostname);
-  if (url.protocol !== 'https:' && !(local && url.protocol === 'http:')) fail('STUDIO_URL must be https (the token would travel in clear text).');
-  url.username = '';
-  url.password = '';
-  return { token, base: url.origin + url.pathname.replace(/\/+$/, '') };
+  if (cfg) return { cfg, source: 'the environment' };
+  let out;
+  try {
+    out = await run('railway', ['variables', '--service', 'studio', '--kv'], REPO);
+  } catch (e) {
+    if (e.code === 'ENOENT') fail('the railway CLI is not installed (or not on PATH), so the bucket credentials could not be read.');
+    // First line of stderr only, and never a line that looks like KEY=value.
+    const why = e.stderr.split('\n').map((l) => l.trim()).find((l) => l && !l.includes('=')) || `exit ${e.code ?? '?'}`;
+    fail(`could not read the bucket credentials with \`railway variables --service studio --kv\` (${why.slice(0, 200)}). Is this folder linked (railway link) and are you logged in?`);
+  }
+  try {
+    cfg = bucketConfigFromEnv(bucketVars(out));
+  } catch (e) {
+    fail(`${e.message} on the Railway studio service`);
+  }
+  if (!cfg) fail('the Railway studio service has no BUCKET_* variables. Add the bucket to the service first.');
+  return { cfg, source: 'Railway' };
 }
 
-// ------------------------------------------------------------------ local files
+// ------------------------------------------------------------- local files
 
-const mb = (n) => `${(n / 1024 / 1024).toFixed(1)} MB`;
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-
-function sha256File(abs) {
+function hashFile(abs) {
   return new Promise((resolve, reject) => {
-    const h = crypto.createHash('sha256');
+    const md5 = crypto.createHash('md5');
+    const sha = crypto.createHash('sha256');
     fs.createReadStream(abs)
-      .on('data', (c) => h.update(c))
+      .on('data', (c) => {
+        md5.update(c);
+        sha.update(c);
+      })
       .on('error', reject)
-      .on('end', () => resolve(h.digest('hex')));
+      .on('end', () => resolve({ md5: md5.digest('hex'), sha256: sha.digest('hex') }));
   });
 }
 
-/** [{ project, files: [{ name, abs, size }] }] for every project folder; odd names reported in `skipped`. */
-async function localMedia(root, skipped) {
-  const projectsDir = path.join(root, 'projects');
+/** { projects, files: [{ project, name, key, abs, size }] }; odd names go to `skipped`. */
+async function scan(root, skipped) {
+  const dir = path.join(root, 'projects');
   let entries;
   try {
-    entries = await fsp.readdir(projectsDir, { withFileTypes: true });
+    entries = await fsp.readdir(dir, { withFileTypes: true });
   } catch {
     fail(`no projects/ folder in ${root}`);
   }
-  const out = [];
+  let projects = 0;
+  const files = [];
   for (const e of entries.sort((a, b) => a.name.localeCompare(b.name))) {
     if (!e.isDirectory() || /^[._]/.test(e.name)) continue;
-    if (!NAME_RE.test(e.name) || e.name.includes('..')) {
-      skipped.push(`projects/${e.name}/ (folder name)`);
-      continue;
-    }
-    const outputs = path.join(projectsDir, e.name, 'outputs');
-    const files = [];
+    projects++;
+    const outputs = path.join(dir, e.name, 'outputs');
     let st = null;
     try {
       st = await fsp.lstat(outputs);
     } catch {}
-    if (st && st.isDirectory() && !st.isSymbolicLink()) {
-      for (const f of (await fsp.readdir(outputs, { withFileTypes: true })).sort((a, b) => a.name.localeCompare(b.name))) {
-        if (!f.isFile() || f.name.startsWith('.') || !WANT_RE.test(f.name)) continue; // symlinks, folders, masters, other types
-        if (!NAME_RE.test(f.name) || f.name.includes('..') || f.name.length > 200) {
-          skipped.push(`projects/${e.name}/outputs/${f.name} (file name)`);
-          continue;
-        }
-        const abs = path.join(outputs, f.name);
-        files.push({ name: f.name, abs, size: (await fsp.stat(abs)).size });
+    if (!st || !st.isDirectory() || st.isSymbolicLink()) continue; // never follow a symlinked outputs/
+    for (const f of (await fsp.readdir(outputs, { withFileTypes: true })).sort((a, b) => a.name.localeCompare(b.name))) {
+      if (!f.isFile() || f.name.startsWith('.') || !typeOf(f.name)) continue; // folders, symlinks, other types
+      const key = mediaKey(e.name, f.name);
+      if (!key) {
+        skipped.push(`projects/${e.name}/outputs/${f.name}`);
+        continue;
       }
+      const abs = path.join(outputs, f.name);
+      files.push({ project: e.name, name: f.name, key, abs, size: (await fsp.stat(abs)).size });
     }
-    out.push({ project: e.name, files });
   }
-  return out;
+  return { projects, files };
 }
 
-// ------------------------------------------------------------------ remote
-
-function describe(err) {
-  const code = err?.cause?.code || err?.code;
-  return code ? `${err.message} (${code})` : err?.message || String(err);
-}
-
-function createRemote({ base, token }, waitMs) {
-  const auth = { Authorization: `Bearer ${token}` };
-  let waitUntil = null; // the 6-minute window starts at the first "not live yet"
-  let waitedNoted = false;
-
-  /** Start (or continue) the shared wait window; false once it has run out. */
-  function mayWait() {
-    if (waitUntil === null) waitUntil = Date.now() + waitMs;
-    if (!waitedNoted && waitMs > 0) {
-      waitedNoted = true;
-      console.log(`sync-media: the Studio isn't answering for everything yet (new deploy rolling out?), retrying for up to ${Math.round(waitMs / 60000) || '<1'} min…`);
-    }
-    return Date.now() < waitUntil;
-  }
-  /** How long to sleep before the next try: 10s, or less if the window ends sooner. */
-  const pause = () => Math.max(500, Math.min(10_000, (waitUntil ?? Date.now()) - Date.now()));
-
-  const projectUrl = (project, name) => `${base}/api/media/${encodeURIComponent(project)}${name ? `/${encodeURIComponent(name)}` : ''}`;
-
-  /** { status: 'ok', files, maxBytes, storage } | { status: 'retry', why } | throws on a hard error. */
-  async function list(project) {
-    let r;
-    try {
-      r = await fetch(projectUrl(project), { headers: auth });
-    } catch (e) {
-      return { status: 'retry', why: describe(e) };
-    }
-    if (r.status === 401 || r.status === 403) throw new Error(`the Studio rejected STUDIO_API_TOKEN (HTTP ${r.status})`);
-    if (RETRY_STATUS.has(r.status)) {
-      await r.body?.cancel().catch(() => {});
-      return { status: 'retry', why: `HTTP ${r.status}` };
-    }
-    if (!r.ok) throw new Error(`listing ${project}: HTTP ${r.status}`);
-    const files = await r.json();
-    if (!Array.isArray(files)) throw new Error(`listing ${project}: unexpected answer`);
-    return {
-      status: 'ok',
-      files,
-      maxBytes: Number(r.headers.get('x-media-max-bytes')) || Infinity,
-      storage: r.headers.get('x-media-storage') || '',
-    };
-  }
-
-  /**
-   * Upload one file. A dropped connection, 404 (deploy not live yet) or 5xx is
-   * retried: 3 tries, then for as long as the shared wait window lasts (a deploy
-   * with a volume restarts the service, so uploads can fail for a little while).
-   */
-  async function put(project, file, sha256) {
-    const ext = path.extname(file.name).slice(1).toLowerCase();
-    for (let attempt = 1; ; attempt++) {
-      let r, body, err;
-      try {
-        r = await fetch(projectUrl(project, file.name), {
-          method: 'PUT',
-          headers: { ...auth, 'Content-Type': TYPES[ext] || 'application/octet-stream', 'Content-Length': String(file.size), 'X-Content-SHA256': sha256 },
-          body: fs.createReadStream(file.abs),
-          duplex: 'half',
-        });
-        body = await r.text();
-      } catch (e) {
-        err = new Error(describe(e));
-      }
-      if (r?.ok) {
-        const out = JSON.parse(body);
-        if (out.sha256 !== sha256) throw new Error('the Studio stored a different sha256');
-        return out;
-      }
-      if (r) {
-        let msg = `HTTP ${r.status}`;
-        try {
-          msg += `: ${JSON.parse(body).error}`;
-        } catch {}
-        err = new Error(msg);
-        if (!(r.status >= 500 || r.status === 404 || r.status === 408)) throw err; // other 4xx won't fix themselves
-      }
-      if (attempt >= 3 && !mayWait()) throw err;
-      await sleep(attempt < 3 ? 3000 * attempt : pause());
-    }
-  }
-
-  async function remove(project, name) {
-    const r = await fetch(projectUrl(project, name), { method: 'DELETE', headers: auth });
-    await r.body?.cancel().catch(() => {});
-    if (!r.ok && r.status !== 404) throw new Error(`HTTP ${r.status}`);
-  }
-
-  return { list, put, remove, mayWait, pause };
-}
-
-// ------------------------------------------------------------------ main
+// ------------------------------------------------------------------- main
 
 async function main() {
   const opts = parseArgs(process.argv.slice(2));
-  const cfg = studioConfig(opts.root);
-  const remote = createRemote(cfg, opts.waitMs);
   const skipped = [];
-  const projects = await localMedia(opts.root, skipped);
+  const { projects, files } = await scan(opts.root, skipped);
+  const { cfg, source } = await loadConfig();
+  let s3;
+  try {
+    s3 = createS3(cfg);
+  } catch (e) {
+    fail(e.message);
+  }
+  console.log(`sync-media: bucket ${cfg.bucket} (credentials from ${source})${opts.dryRun ? ', dry run: nothing is sent or deleted' : ''}`);
 
   const t0 = Date.now();
-  const stats = { projects: projects.length, uploaded: 0, upBytes: 0, unchanged: 0, deleted: 0, remoteOnly: 0, failed: 0, wouldUpload: 0, wouldDelete: 0 };
+  let listing;
+  try {
+    listing = await s3.listObjects(PREFIX);
+  } catch (e) {
+    fail(`could not list the bucket: ${e.message}`);
+  }
+  const remote = new Map(listing.map((o) => [o.key, o]));
+  const stats = { uploaded: 0, upBytes: 0, unchanged: 0, deleted: 0, remoteOnly: 0, failed: 0 };
   const failures = [];
 
-  async function syncProject({ project, files }, listing) {
-    if (listing.storage === 'none') throw new Error('the Studio has no MEDIA_DIR set, so it cannot store media (set MEDIA_DIR on Railway)');
-    const remoteByName = new Map(listing.files.map((f) => [f.name, f]));
-    const localNames = new Set(files.map((f) => f.name));
-    for (const file of files) {
-      const sha = await sha256File(file.abs);
-      const have = remoteByName.get(file.name);
-      if (have && have.sha256 === sha && have.size === file.size) {
-        stats.unchanged++;
-        continue;
+  for (const file of files) {
+    let h;
+    try {
+      h = await hashFile(file.abs);
+      const have = remote.get(file.key);
+      if (have && have.size === file.size) {
+        let same = have.etag.toLowerCase() === h.md5;
+        if (!same) {
+          const head = await s3.headObject(file.key);
+          same = !!head && head.size === file.size && head.meta.sha256 === h.sha256;
+        }
+        if (same) {
+          stats.unchanged++;
+          continue;
+        }
       }
-      if (file.size > listing.maxBytes) {
-        stats.failed++;
-        failures.push(`${project}/${file.name}: ${mb(file.size)} is over the Studio's ${mb(listing.maxBytes)} limit`);
-        continue;
-      }
-      if (opts.dryRun) {
-        stats.wouldUpload++;
-        stats.upBytes += file.size;
-        console.log(`  would upload  ${project}/${file.name} (${mb(file.size)})`);
-        continue;
-      }
+    } catch (e) {
+      stats.failed++;
+      failures.push(`${file.key}: ${e.message}`);
+      continue;
+    }
+    if (file.size > MAX_PUT_BYTES) {
+      stats.failed++;
+      failures.push(`${file.key}: ${mb(file.size)} is over the 5 GiB single-upload limit`);
+      continue;
+    }
+    if (opts.dryRun) {
+      stats.uploaded++;
+      stats.upBytes += file.size;
+      console.log(`  would upload  ${file.key} (${mb(file.size)})`);
+      continue;
+    }
+    for (let attempt = 1; ; attempt++) {
       try {
-        await remote.put(project, file, sha);
+        await s3.putObject(file.key, fs.createReadStream(file.abs), { contentLength: file.size, contentType: typeOf(file.name), sha256: h.sha256 });
         stats.uploaded++;
         stats.upBytes += file.size;
-        console.log(`  uploaded  ${project}/${file.name} (${mb(file.size)})`);
+        console.log(`  uploaded  ${file.key} (${mb(file.size)})`);
+        break;
       } catch (e) {
+        const retry = !e.status || e.status >= 500 || e.status === 408 || e.status === 429;
+        if (retry && attempt < 3) {
+          await sleep(2000 * attempt);
+          continue;
+        }
         stats.failed++;
-        failures.push(`${project}/${file.name}: ${describe(e)}`);
+        failures.push(`${file.key}: ${e.message}`);
+        break;
       }
     }
-    for (const f of listing.files) {
-      if (localNames.has(f.name)) continue;
-      if (!opts.prune) {
-        stats.remoteOnly++;
-        continue;
-      }
+  }
+
+  // Objects with no local file. Only keys the Studio would serve are considered;
+  // anything else in the bucket is never touched.
+  const localKeys = new Set(files.map((f) => f.key));
+  const gone = [];
+  for (const key of remote.keys()) {
+    if (localKeys.has(key)) continue;
+    const k = parseMediaKey(key);
+    if (!k) continue;
+    let local = false;
+    try {
+      local = (await fsp.lstat(path.join(opts.root, 'projects', k.folder, 'outputs', k.name))).isFile();
+    } catch {}
+    if (!local) gone.push(key);
+  }
+  if (opts.prune && gone.length && !files.length) {
+    stats.failed++;
+    failures.push(`--prune: no local media found under ${path.join(opts.root, 'projects')}, so nothing was deleted (that would empty the bucket)`);
+  } else if (opts.prune) {
+    for (const key of gone) {
       if (opts.dryRun) {
-        stats.wouldDelete++;
-        console.log(`  would delete  ${project}/${f.name}`);
+        stats.deleted++;
+        console.log(`  would delete  ${key}`);
         continue;
       }
       try {
-        await remote.remove(project, f.name);
+        await s3.deleteObject(key);
         stats.deleted++;
-        console.log(`  deleted   ${project}/${f.name}`);
+        console.log(`  deleted   ${key}`);
       } catch (e) {
         stats.failed++;
-        failures.push(`${project}/${f.name} (delete): ${describe(e)}`);
+        failures.push(`${key} (delete): ${e.message}`);
       }
     }
-  }
-
-  // Projects the live deploy doesn't know yet are retried until the new deploy is up.
-  let pending = projects;
-  let lastWhy = '';
-  while (pending.length) {
-    const retry = [];
-    for (const p of pending) {
-      const listing = await remote.list(p.project);
-      if (listing.status === 'retry') {
-        lastWhy = listing.why;
-        retry.push(p);
-        continue;
-      }
-      await syncProject(p, listing);
-    }
-    pending = retry;
-    if (pending.length) {
-      if (!remote.mayWait()) {
-        for (const p of pending) {
-          stats.failed++;
-          failures.push(`${p.project}: the Studio didn't list it in time (${lastWhy}). Is the deploy live and the project in it? Run sync-media again.`);
-        }
-        break;
-      }
-      await sleep(remote.pause());
-    }
-  }
+  } else stats.remoteOnly = gone.length;
+  s3.close();
 
   const secs = ((Date.now() - t0) / 1000).toFixed(0);
-  const parts = [`${stats.projects} projects`];
-  if (opts.dryRun) parts.push(`${stats.wouldUpload} to upload (${mb(stats.upBytes)})`, `${stats.wouldDelete} to delete`);
-  else parts.push(`${stats.uploaded} uploaded (${mb(stats.upBytes)})`, `${stats.deleted} deleted`);
-  parts.push(`${stats.unchanged} unchanged`);
-  if (stats.remoteOnly) parts.push(`${stats.remoteOnly} only on the Studio (kept; --prune deletes)`);
+  const parts = [`${projects} projects`, `${files.length} files`];
+  if (opts.dryRun) parts.push(`${stats.uploaded} to upload (${mb(stats.upBytes)})`, `${stats.unchanged} unchanged (skipped)`, `${stats.deleted} to delete`);
+  else parts.push(`${stats.uploaded} uploaded (${mb(stats.upBytes)})`, `${stats.unchanged} unchanged (skipped)`, `${stats.deleted} deleted`);
+  if (stats.remoteOnly) parts.push(`${stats.remoteOnly} only in the bucket (kept; --prune deletes)`);
   parts.push(`${stats.failed} failed`);
   console.log(`sync-media${opts.dryRun ? ' (dry run)' : ''}: ${parts.join(', ')} in ${secs}s`);
-  if (skipped.length) console.log(`sync-media: skipped ${skipped.length} with names the Studio won't take (use letters, digits, ".", "_", "-"): ${skipped.join(', ')}`);
+  if (skipped.length) console.log(`sync-media: skipped ${skipped.length} with names the Studio can't serve (leading "_", control characters): ${skipped.join(', ')}`);
   for (const f of failures) console.error(`  FAILED  ${f}`);
   process.exit(stats.failed ? 1 : 0);
 }
 
-main().catch((e) => fail(describe(e)));
+main().catch((e) => fail(e?.message || String(e)));

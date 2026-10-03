@@ -1,0 +1,26 @@
+{
+ "url": "https://qsme.build/security",
+ "mobile": true,
+ "width": 1560,
+ "height": 1236,
+ "scale": 4,
+ "fps": 30,
+ "settle": 3,
+ "steps": [
+  {
+   "eval": "document.querySelectorAll('[class*=cookie],[id*=cookie],[class*=consent]').forEach(e=>e.style.setProperty('display','none','important'))"
+  },
+  {
+   "eval": "scrollTo(0, 3016)"
+  },
+  {
+   "wait": 0.6
+  },
+  {
+   "eval": "(async()=>{const start=scrollY, target=525, T=800, t0=performance.now(); await new Promise(r=>{function f(){const p=Math.min(1,(performance.now()-t0)/T); const e=p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2; scrollTo(0,start+(target-start)*e); p<1?requestAnimationFrame(f):r()} f()}); return 1})()"
+  },
+  {
+   "wait": 0.6
+  }
+ ]
+}

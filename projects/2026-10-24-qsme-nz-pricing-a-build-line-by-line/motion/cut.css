@@ -1,0 +1,47 @@
+/* 9:16 chapter cut-downs (1080 × 1920). Text stays inside the Reels/TikTok safe box 65,300,1015,1250. */
+#root { background: radial-gradient(900px 1300px at 50% 46%, #0C1B30 0%, #050B1C 55%, #020617 100%); }
+.caption { left: 65px; right: 65px; top: auto; bottom: 680px; font-size: 46px; line-height: 1.16; z-index: 60; }
+.caption.box > span { display: inline-block; max-width: 950px; padding: 8px 20px 10px; border-radius: 12px; box-shadow: 0 10px 30px rgba(2,6,23,.45); }
+.caption .r { color: #B91C1C; }
+.eyb { position: absolute; left: 65px; top: 306px; font: 600 22px/1 "JetBrains Mono"; letter-spacing: .08em; color: #3DC023; text-transform: uppercase; white-space: nowrap; z-index: 55; }
+.kick { position: absolute; left: 65px; right: 65px; top: 344px; font: 800 58px/1.05 Manrope; letter-spacing: -0.03em; color: #F8FAFC; white-space: nowrap; z-index: 55; }
+.lbl9 { position: absolute; left: 65px; top: 428px; padding: 4px 12px; border-radius: 7px; font: 500 19px/1.2 "JetBrains Mono"; white-space: nowrap; z-index: 55; border: 2px dashed rgba(248,250,252,.55); color: rgba(248,250,252,.8); background: rgba(2,6,23,.55); }
+.lbl9.drm { border-style: solid; border-color: rgba(248,250,252,.35); }
+.ft9 { position: absolute; left: 65px; top: 1072px; padding: 4px 12px; border-radius: 7px; font: 500 20px/1.2 "JetBrains Mono"; white-space: nowrap; z-index: 55; color: rgba(248,250,252,.82); background: rgba(255,255,255,.06); border: 1.5px solid rgba(255,255,255,.14); }
+.ft9 b { color: inherit; font-weight: inherit; }   /* 'Paid plans' in the same neutral grey as the rest of the tag */
+.win916 { position: absolute; left: 30px; top: 466px; width: 1020px; height: 600px; border-radius: 18px; overflow: hidden; background: #F4F6F5; z-index: 20; box-shadow: 0 30px 80px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.1); }
+.win916 .wcam { --hw: 510; --hh: 300; }
+.hk { position: absolute; left: 65px; right: 65px; top: 318px; font: 800 92px/1.02 Manrope; letter-spacing: -0.04em; color: #F8FAFC; z-index: 58; text-shadow: 0 6px 30px rgba(2,6,23,.6); }
+.hk .a { color: #3DC023; }
+.hk.sm { font-size: 76px; }
+/* stacked split for portrait */
+.s9 { position: absolute; left: 52px; top: 466px; width: 976px; height: 600px; z-index: 22; }
+.s9 .lab { position: absolute; left: 14px; font: 700 22px/1 "JetBrains Mono"; letter-spacing: .03em; text-transform: uppercase; white-space: nowrap; }
+.s9 .lab i { display: inline-block; width: 11px; height: 11px; border-radius: 50%; margin-right: 10px; vertical-align: 1px; }
+.s9 .card9 { position: absolute; left: 0; width: 976px; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,.5); font-family: Inter, sans-serif; color: #0F172A; }
+.s9 .r9 { position: absolute; left: 0; right: 0; height: 52px; display: flex; align-items: center; border-bottom: 1px solid #EEF2F6; font: 500 23px/1 Inter; white-space: nowrap; }
+.s9 .r9 > div { padding: 0 14px; }
+.s9 .r9.h { height: 44px; background: #F8FAFC; font: 700 15px/1 "JetBrains Mono"; letter-spacing: .05em; text-transform: uppercase; color: #64748B; }
+.s9 .d { flex: 1; } .s9 .q { width: 120px; text-align: right; } .s9 .bq { width: 120px; text-align: right; } .s9 .rt { width: 150px; text-align: right; } .s9 .tt { width: 150px; text-align: right; font-weight: 700; }
+.s9 .rt.g { color: #15803D; font-weight: 700; }
+.s9 .box { display: inline-block; width: 104px; height: 34px; border-radius: 7px; border: 2px dashed #CBD5E1; vertical-align: middle; }
+.s9 .box.s { width: 80px; }
+.s9 .seg9 { display: inline-flex; padding: 4px; border-radius: 10px; background: #EEF2F6; gap: 2px; }
+.s9 .seg9 span { padding: 8px 14px; border-radius: 8px; font: 700 19px/1 Inter; color: #64748B; }
+.s9 .hl9 { position: absolute; border-radius: 10px; }
+.s9 .gh { position: absolute; left: 0; top: 0; height: 46px; display: flex; align-items: center; gap: 16px; padding: 0 14px; border-radius: 9px; background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,.4); font: 600 22px/1 Inter; color: #1E293B; white-space: nowrap; }
+/* end card */
+#end .bg { position: absolute; inset: -60px; background-size: cover; background-position: 64% 50%; transform-origin: 60% 50%; }
+#end .ov { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(2,6,23,.55) 0%, rgba(2,6,23,.82) 30%, rgba(2,6,23,.9) 62%, rgba(2,6,23,.55) 100%); }
+#end .logo { position: absolute; left: 65px; top: 470px; width: 239px; height: 137px; overflow: hidden; }
+#end .e1 { position: absolute; left: 65px; top: 640px; font: 800 128px/1 Manrope; letter-spacing: -0.045em; color: #F8FAFC; white-space: nowrap; }
+#end .e2 { position: absolute; left: 65px; top: 780px; font: 800 74px/1.05 Manrope; letter-spacing: -0.035em; color: #3DC023; white-space: nowrap; }
+#end .btnx { position: absolute; left: 65px; top: 930px; display: inline-flex; align-items: center; height: 104px; padding: 0 40px; border-radius: 14px; background: #16A34A; color: #fff; font: 800 52px/1 Manrope; letter-spacing: -0.01em; white-space: nowrap; box-shadow: 0 20px 50px rgba(22,163,74,.35); }
+#end .fn { position: absolute; left: 65px; top: 1192px; font: 500 22px/1.3 "JetBrains Mono"; color: rgba(248,250,252,.6); white-space: nowrap; }
+/* full-bleed backdrop: the finished house (illustrative b-roll), blurred and dimmed */
+#bd { z-index: 0; }
+#bd .bdi { position: absolute; inset: -90px; background-size: cover; background-position: 60% 50%; filter: blur(16px) brightness(.62) saturate(.9); transform-origin: 50% 70%; }
+#bd .bdo { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(2,6,23,.94) 0%, rgba(2,6,23,.86) 40%, rgba(2,6,23,.55) 72%, rgba(2,6,23,.35) 100%); }
+.s9 .r9.h { font-size: 13px; letter-spacing: .02em; }
+.s9 .r9 > div { overflow: hidden; }
+.tk9 { position: absolute; z-index: 40; padding: 7px 12px; border-radius: 8px; background: #0B1226; color: #BBF7D0; font: 700 22px/1 Manrope; white-space: nowrap; box-shadow: 0 8px 20px rgba(2,6,23,.35); }

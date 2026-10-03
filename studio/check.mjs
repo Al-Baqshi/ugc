@@ -1,29 +1,42 @@
 // UGC Studio checks. No test framework: spawns the real server and asserts over HTTP.
 //   npm run check
 //
-// 0. Units: markdown sanitizer against bypass payloads, login throttle, dark-mode tokens.
-// 1. Real content, a 16+ character password (+ API token): auth, pages, API, traversal, headers.
+// 0. Units: markdown sanitizer against bypass payloads, login throttle, dark-mode tokens,
+//    the SigV4 signer against AWS's published examples, streamed uploads that fail or
+//    are refused early (the file is released), bucket key rules, the Videos page
+//    helpers (two-voice scripts, per-platform captions), and .railwayignore (git
+//    check-ignore in a throwaway repo).
+// 1. Real content, a 16+ character password (+ API token): auth, pages, API, traversal,
+//    headers, gzip (never for requests another site could trigger: BREACH).
 // 2. No STUDIO_PASSWORD: fails closed (503), /healthz too.
 // 3. Startup rules: dev mode binds 127.0.0.1, never switches on in a Railway deploy;
 //    short passwords and tokens are refused.
 // 4. Login throttle over HTTP: X-Forwarded-For is ignored; on Railway X-Real-IP is used.
 // 5. A temporary fixture copy of the content with a project, media, malformed and
 //    hostile cards, a circular-YAML card, odd file names, a symlinked outputs/
-//    and decoy secrets: media, ranges, sanitising, isolation, traversal.
-// 6. Media volume (MEDIA_DIR, tiny MEDIA_MAX_BYTES): upload API auth (Bearer only
-//    for writes), bad names, size limit, aborted uploads, symlinks, gallery merge,
-//    preview fallback, restart persistence, dev mode.
+//    and decoy secrets: media, ranges, downloads, /videos, sanitising, isolation,
+//    traversal.
+// 6. Storage bucket, against a fake S3 on 127.0.0.1 (fake credentials, no network):
+//    /media redirects to presigned GETs (and they verify), downloads, traversal,
+//    the gallery and /videos from the bucket listing (cached), the read-only media
+//    API and its presigned links for Bearer clients, a bucket that is down, and
+//    tools/motion/sync-media.mjs end to end.
 
-import { spawn } from 'node:child_process';
+import { spawn, spawnSync } from 'node:child_process';
 import http from 'node:http';
 import net from 'node:net';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import zlib from 'node:zlib';
+import { Readable } from 'node:stream';
 import { fileURLToPath } from 'node:url';
 import { renderMarkdown, configureMarkdown } from './lib/markdown.mjs';
 import { createThrottle } from './lib/throttle.mjs';
+import { createS3, sigv4, sha256Hex, uriEncode, encodeKey, canonicalQuery, attachmentDisposition, bucketConfigFromEnv } from './lib/s3.mjs';
+import { mediaKey, parseMediaKey } from './lib/storage.mjs';
+import { shortHow, sayText, captionMarkdown, captionParts, plainFromMarkdown, voScript, scriptText } from './lib/videos.mjs';
 
 const STUDIO = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(STUDIO, '..');
@@ -38,6 +51,7 @@ const AUTH = { Authorization: BASIC };
 let passed = 0;
 let failed = 0;
 const children = new Set();
+const tmpDirs = new Set(); // removed at the end even if a phase throws
 
 function check(name, cond, detail = '') {
   if (cond) {
@@ -82,58 +96,33 @@ function request(port, rawPath, { headers = {}, method = 'GET', timeout = 60_000
 }
 
 /**
- * Raw request with a body. Never rejects: a refused upload may be answered (and
- * the connection closed) before the body is sent, so errors after a response are
- * ignored and errors before one resolve { status: 0 }.
- *   chunked: no Content-Length, body sent in 1000-byte chunks
- *   expectContinue: send "Expect: 100-continue" and the body only after "100 Continue"
- *   abortAfter: send this many bytes, then drop the connection
+ * Raw request with a body (Content-Length set). Never rejects: a refused request
+ * may be answered and closed before its body is read, so an error after the
+ * answer is ignored and an error before one resolves { status: 0 }.
  */
-function upload(port, rawPath, { method = 'PUT', headers = {}, body = Buffer.alloc(0), chunked = false, expectContinue = false, abortAfter = null } = {}) {
+function rawRequest(port, rawPath, { method, headers = {}, body = Buffer.alloc(0) }) {
   return new Promise((resolve) => {
-    const h = { ...headers };
-    if (!chunked) h['Content-Length'] = String(body.length);
-    if (expectContinue) h.Expect = '100-continue';
-    const req = http.request({ host: '127.0.0.1', port, path: rawPath, method, headers: h, agent: false });
-    let done = false;
-    const finish = (v) => {
-      if (done) return;
-      done = true;
-      setImmediate(() => req.destroy());
-      resolve(v);
-    };
+    const req = http.request({ host: '127.0.0.1', port, path: rawPath, method, headers: { ...headers, 'Content-Length': String(body.length) }, agent: false });
     req.on('response', (res) => {
       const chunks = [];
-      const out = () => finish({ status: res.statusCode, headers: res.headers, body: Buffer.concat(chunks).toString('utf8') });
+      const done = () => resolve({ status: res.statusCode, headers: res.headers, body: Buffer.concat(chunks).toString('utf8') });
       res.on('data', (c) => chunks.push(c));
-      res.on('end', out);
-      res.on('error', out);
+      res.on('end', done);
+      res.on('error', done);
     });
-    req.on('error', (e) => finish({ status: 0, error: e.message, body: '' }));
+    req.on('error', (e) => resolve({ status: 0, error: e.message, body: '' }));
     req.setTimeout(30_000, () => req.destroy(new Error(`timeout: ${rawPath}`)));
-    const sendBody = () => {
-      if (abortAfter !== null) {
-        req.write(body.subarray(0, abortAfter));
-        setTimeout(() => {
-          req.destroy();
-          finish({ status: 0, aborted: true, body: '' });
-        }, 200);
-      } else if (chunked) {
-        for (let i = 0; i < body.length; i += 1000) req.write(body.subarray(i, i + 1000));
-        req.end();
-      } else req.end(body);
-    };
-    if (expectContinue) {
-      req.on('continue', sendBody);
-      req.flushHeaders();
-    } else sendBody();
+    req.end(body);
   });
 }
 
 function childEnv(port, env, { host = '127.0.0.1' } = {}) {
   const e = { ...process.env, PORT: String(port) };
-  for (const k of ['HOST', 'STUDIO_PASSWORD', 'STUDIO_API_TOKEN', 'STUDIO_DEV', 'STUDIO_CONTENT_ROOT', 'MEDIA_DIR', 'MEDIA_MAX_BYTES']) delete e[k];
-  for (const k of Object.keys(e)) if (k.startsWith('RAILWAY_')) delete e[k];
+  // STUDIO_MEDIA_TOKEN, MEDIA_DIR and MEDIA_MAX_BYTES belong to the removed
+  // upload API. They stay in this list on purpose: a stale setting in the shell
+  // must never reach the server under test.
+  for (const k of ['HOST', 'STUDIO_PASSWORD', 'STUDIO_API_TOKEN', 'STUDIO_DEV', 'STUDIO_CONTENT_ROOT', 'STUDIO_MEDIA_TOKEN', 'MEDIA_DIR', 'MEDIA_MAX_BYTES']) delete e[k];
+  for (const k of Object.keys(e)) if (k.startsWith('RAILWAY_') || k.startsWith('BUCKET_')) delete e[k];
   if (host) e.HOST = host;
   return Object.assign(e, env);
 }
@@ -312,6 +301,269 @@ async function phaseUnits() {
   const light = new Set([...(/:root\s*\{([^}]*)\}/.exec(css)?.[1] || '').matchAll(/(--[\w-]+)\s*:/g)].map((x) => x[1]));
   const missing = [...a.matchAll(/^(--[\w-]+):/gm)].map((x) => x[1]).filter((k) => !light.has(k));
   check('styles: every dark token also has a light value', missing.length === 0, missing.join(', '));
+
+  unitsS3();
+  await unitsS3Streams();
+  unitsVideos();
+  railwayIgnoreCheck();
+}
+
+/** A slow upload body: `total` bytes in 64 KB chunks, a few ms apart. */
+function slowBody(total) {
+  let sent = 0;
+  const r = new Readable({
+    read() {
+      if (sent >= total) return this.push(null);
+      setTimeout(() => {
+        const n = Math.min(64 * 1024, total - sent);
+        sent += n;
+        this.push(Buffer.alloc(n));
+      }, 2);
+    },
+  });
+  r.sent = () => sent;
+  return r;
+}
+
+/**
+ * Streamed uploads release their file when the bucket answers early or the
+ * connection fails (a bare pipe() left the read stream, and its descriptor, open).
+ */
+async function unitsS3Streams() {
+  const total = 64 * 1024 * 1024;
+  const serve = (handler) =>
+    new Promise((resolve) => {
+      const srv = http.createServer(handler);
+      srv.listen(0, '127.0.0.1', () => resolve(srv));
+    });
+  const client = (srv) => createS3({ bucket: 'unit-bucket', endpoint: `http://localhost:${srv.address().port}`, accessKeyId: 'AKIDUNIT', secretAccessKey: 'SECRET-UNIT-STREAMS', timeoutMs: 10_000 });
+
+  // 1. The bucket refuses at once (403) and keeps reading what is sent.
+  const early = await serve((req, res) => {
+    res.writeHead(403, { 'content-type': 'application/xml' });
+    res.end('<?xml version="1.0"?><Error><Code>AccessDenied</Code><Message>no (unit)</Message></Error>');
+  });
+  let s3 = client(early);
+  let body = slowBody(total);
+  let err = null;
+  try {
+    await s3.putObject('projects/p/outputs/x.mp4', body, { contentLength: total, contentType: 'video/mp4' });
+  } catch (e) {
+    err = e;
+  }
+  await sleep(50);
+  check('s3: an early 403 is reported as the bucket said it (not a broken pipe)', err?.status === 403 && err.code === 'AccessDenied' && !String(err.message).includes('SECRET'), err?.message);
+  check('s3: ...and the upload stream is closed then, not read to the end', body.destroyed && body.sent() < total, `destroyed=${body.destroyed} sent=${body.sent()}/${total}`);
+  s3.close();
+  early.close();
+
+  // 2. The connection drops mid-upload.
+  const reset = await serve((req) => req.socket.destroy());
+  s3 = client(reset);
+  body = slowBody(total);
+  err = null;
+  try {
+    await s3.putObject('projects/p/outputs/x.mp4', body, { contentLength: total, contentType: 'video/mp4' });
+  } catch (e) {
+    err = e;
+  }
+  await sleep(50);
+  check('s3: a dropped connection fails the upload with an S3Error', err?.name === 'S3Error' && /PUT failed/.test(err.message), err?.message);
+  check('s3: ...and destroys the upload stream (no leaked file descriptor)', body.destroyed && body.sent() < total, `destroyed=${body.destroyed} sent=${body.sent()}/${total}`);
+  s3.close();
+  reset.close();
+
+  // 3. A real file that succeeds is closed afterwards; one that can't be read fails cleanly.
+  const ok = await serve((req, res) => {
+    let n = 0;
+    req.on('data', (c) => (n += c.length));
+    req.on('end', () => {
+      res.writeHead(n === 300_000 ? 200 : 400, { etag: '"x"' });
+      res.end();
+    });
+  });
+  s3 = client(ok);
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'ugc-studio-s3-'));
+  tmpDirs.add(tmp);
+  const file = path.join(tmp, 'clip.mp4');
+  fs.writeFileSync(file, crypto.randomBytes(300_000));
+  const rs = fs.createReadStream(file);
+  let put = null;
+  try {
+    put = await s3.putObject('projects/p/outputs/clip.mp4', rs, { contentType: 'video/mp4' });
+  } catch (e) {
+    err = e;
+  }
+  await sleep(20);
+  check('s3: a streamed file upload succeeds and the file is closed', put?.size === 300_000 && rs.destroyed && rs.closed !== false, `${put?.size} destroyed=${rs.destroyed}`);
+  err = null;
+  try {
+    await s3.putObject('projects/p/outputs/gone.mp4', fs.createReadStream(path.join(tmp, 'missing.mp4')), { contentLength: 10, contentType: 'video/mp4' });
+  } catch (e) {
+    err = e;
+  }
+  check('s3: an unreadable file fails with "reading the upload failed"', err?.name === 'S3Error' && /reading the upload failed: ENOENT/.test(err.message), err?.message);
+  s3.close();
+  ok.close();
+  fs.rmSync(tmp, { recursive: true, force: true });
+}
+
+// AWS's published SigV4 examples for S3 ("Signature Calculations for the
+// Authorization Header: Transferring Payload in a Single Chunk" and
+// "Authenticating Requests: Using Query Parameters"), same keys and date.
+const AWS_EXAMPLE = { bucket: 'examplebucket', endpoint: 'https://s3.amazonaws.com', region: 'us-east-1', accessKeyId: 'AKIAIOSFODNN7EXAMPLE', secretAccessKey: 'wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY' };
+
+function unitsS3() {
+  const ex = createS3(AWS_EXAMPLE);
+  const date = new Date('2013-05-24T00:00:00Z');
+  try {
+    const url = ex.presignGet('test.txt', { expires: 86400, date });
+    check(
+      'sigv4: AWS presigned GET example (examplebucket/test.txt) matches the published URL',
+      url ===
+        'https://examplebucket.s3.amazonaws.com/test.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIOSFODNN7EXAMPLE%2F20130524%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20130524T000000Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=aeeed9bbccd4d02ee5c0109b86d86835f995330da4c265957d157751f604d404',
+      url,
+    );
+    let sg = ex.sign('GET', 'test.txt', { headers: { range: 'bytes=0-9' }, date });
+    check('sigv4: AWS GET Object example (Range) canonical request hash', sha256Hex(sg.canonicalRequest) === '7344ae5b7ee6c3e7e6b0fe0640412a37625d1fbfff95c48bbb2dc43964946972', sg.canonicalRequest);
+    check('sigv4: AWS GET Object example signature', sg.signature === 'f0e8bdb87c964420e857bd35b5d6ed310bd44f0170aba48dd91039c6036bdb41', sg.signature);
+    sg = ex.sign('PUT', 'test$file.text', { headers: { date: 'Fri, 24 May 2013 00:00:00 GMT', 'x-amz-storage-class': 'REDUCED_REDUNDANCY' }, payloadHash: sha256Hex('Welcome to Amazon S3.'), date });
+    check('sigv4: AWS PUT Object example ("$" in the key) signature', sg.path === '/test%24file.text' && sg.signature === '98ad721746da40c64f1a55b78f14c238d841ea1380cd77a1b5971af0ece108bd', `${sg.path} ${sg.signature}`);
+    sg = ex.sign('GET', '', { query: [['max-keys', '2'], ['prefix', 'J']], date });
+    check('sigv4: AWS GET Bucket (list) example signature', sg.signature === '34b48302e7b5fa45bde8084f4b7868a86f0a534bc59db6670ed5711ef69dc6f7', sg.signature);
+  } finally {
+    ex.close();
+  }
+
+  check('s3: keys encode per segment (space, unicode, reserved), "/" kept', encodeKey("projects/a b/outputs/café +(1)*!'~.png") === 'projects/a%20b/outputs/caf%C3%A9%20%2B%281%29%2A%21%27~.png', encodeKey("projects/a b/outputs/café +(1)*!'~.png"));
+  check('s3: a query value encodes "/" and sorts by key', canonicalQuery([['prefix', 'projects/a b'], ['list-type', '2']]) === 'list-type=2&prefix=projects%2Fa%20b' && uriEncode('a/b') === 'a%2Fb');
+  check('s3: attachment disposition, plain name', attachmentDisposition('reel-9x16.mp4') === 'attachment; filename="reel-9x16.mp4"');
+  const disp = attachmentDisposition('café "x".mp4');
+  check('s3: attachment disposition, unicode and quotes get filename*', disp === `attachment; filename="caf_ _x_.mp4"; filename*=UTF-8''caf%C3%A9%20%22x%22.mp4`, disp);
+
+  const fake = createS3({ bucket: 'check-bucket', endpoint: 'https://t3.storageapi.test', region: 'auto', accessKeyId: 'AKIDUNITCHECK', secretAccessKey: 'SECRET-UNIT-CHECK-0123456789' });
+  try {
+    const t = new Date('2026-10-04T10:00:00Z');
+    let url = fake.presignGet('projects/p/outputs/café clip.mp4', { date: t });
+    const u = new URL(url);
+    check('s3: presigned URL is virtual-hosted on the bucket host', u.host === 'check-bucket.t3.storageapi.test' && u.pathname === '/projects/p/outputs/caf%C3%A9%20clip.mp4', url);
+    check('s3: presigned URL defaults to 1 hour, never carries the secret', u.searchParams.get('X-Amz-Expires') === '3600' && /^[0-9a-f]{64}$/.test(u.searchParams.get('X-Amz-Signature') || '') && !url.includes('SECRET-UNIT-CHECK'), url);
+    const q = [...u.searchParams].filter(([k]) => k !== 'X-Amz-Signature');
+    const again = sigv4({ method: 'GET', path: u.pathname, query: q, headers: { host: u.host }, payloadHash: 'UNSIGNED-PAYLOAD', amzDate: u.searchParams.get('X-Amz-Date'), region: 'auto', accessKeyId: 'AKIDUNITCHECK', secretAccessKey: 'SECRET-UNIT-CHECK-0123456789' });
+    check('s3: presigned signature re-derives from the URL alone', again.signature === u.searchParams.get('X-Amz-Signature'));
+    url = fake.presignGet('projects/p/outputs/x.mp4', { date: t, download: 'x.mp4' });
+    check('s3: download adds response-content-disposition=attachment', new URL(url).searchParams.get('response-content-disposition') === 'attachment; filename="x.mp4"', url);
+  } finally {
+    fake.close();
+  }
+  let threw = '';
+  try {
+    createS3({ bucket: 'b', endpoint: 'http://storage.example.com', accessKeyId: 'a', secretAccessKey: 'b' });
+  } catch (e) {
+    threw = e.message;
+  }
+  check('s3: plain http is refused except on loopback', /must be https/.test(threw), threw);
+  threw = '';
+  try {
+    createS3({ bucket: 'b', endpoint: 'http://127.0.0.1:9000', accessKeyId: 'a', secretAccessKey: 'b' });
+  } catch (e) {
+    threw = e.message;
+  }
+  check('s3: an IP-address endpoint is refused (no virtual host)', /must be a host name/.test(threw), threw);
+  check('s3: no BUCKET_* -> no bucket', bucketConfigFromEnv({}) === null);
+  threw = '';
+  try {
+    bucketConfigFromEnv({ BUCKET_NAME: 'b', BUCKET_SECRET_ACCESS_KEY: 'never-shown' });
+  } catch (e) {
+    threw = e.message;
+  }
+  check('s3: partial BUCKET_* names what is missing, never a value', /BUCKET_ENDPOINT, BUCKET_ACCESS_KEY_ID/.test(threw) && !threw.includes('never-shown'), threw);
+  check('s3: BUCKET_REGION defaults to auto', bucketConfigFromEnv({ BUCKET_NAME: 'b', BUCKET_ENDPOINT: 'https://e.test', BUCKET_ACCESS_KEY_ID: 'a', BUCKET_SECRET_ACCESS_KEY: 's' })?.region === 'auto');
+
+  check('keys: projects/<p>/outputs/<file>', mediaKey('2026-10-02-p', 'reel 9x16.mp4') === 'projects/2026-10-02-p/outputs/reel 9x16.mp4');
+  const bad = [['p', '../x.mp4'], ['p', 'a/b.mp4'], ['p', '.env.mp4'], ['p', '_x.mp4'], ['p', 'x.txt'], ['p', 'x\n.mp4'], ['p', 'a\\b.png'], ['p', '..'], ['p', ''], ['..', 'x.mp4'], ['a/b', 'x.mp4'], ['_template', 'x.mp4'], ['.git', 'x.mp4'], ['', 'x.mp4'], ['p\u0000', 'x.mp4']];
+  const leaked = bad.filter(([f, n]) => mediaKey(f, n) !== null);
+  check('keys: nothing that could leave projects/<p>/outputs/ gets a key', leaked.length === 0, JSON.stringify(leaked));
+  check('keys: the listing ignores anything but top-level outputs files', parseMediaKey('projects/p/outputs/x.png')?.name === 'x.png' && ![
+    'projects/p/outputs/sub/x.png', 'projects/p/x.png', 'other/p/outputs/x.png', 'projects/_template/outputs/x.png', 'projects/p/outputs/x.txt', 'projects/../outputs/x.png',
+  ].some((k) => parseMediaKey(k)));
+}
+
+function unitsVideos() {
+  check('videos: "how" is the first sentence', shortHow('Dry, tired Kiwi deadpan. Falls at the end. Out by 2.9.') === 'Dry, tired Kiwi deadpan.', shortHow('Dry, tired Kiwi deadpan. Falls at the end. Out by 2.9.'));
+  check('videos: "how" drops production timings', shortHow('Brisk (about 1.2 s) and warm, out by 4.4. Then more.') === 'Brisk and warm, out by 4.4.' && shortHow('Warm and certain. Out by 4.4, before the cut.') === 'Warm and certain.', shortHow('Brisk (about 1.2 s) and warm, out by 4.4. Then more.'));
+  check('videos: QSME is shown as QSME', sayText('Sign up at Q-S-me dot co dot en zed.') === 'Sign up at QSME dot co dot en zed.');
+  const md = '# T\n\n## Captions, hashtags and CTA\n\nIntro.\n\n### Instagram\n\n> **Big** news `here` [site](https://qsme.co.nz)\n>\n> #Tag #Two\n\n## Music\n\nNo music.\n';
+  const cap = captionMarkdown(md);
+  check('videos: caption section keeps its subsections, stops at the next ##', cap.includes('### Instagram') && cap.includes('#Tag #Two') && !cap.includes('Music'), cap);
+  const plain = plainFromMarkdown(cap);
+  check('videos: caption copy is plain text', plain === 'Intro.\n\nInstagram\n\nBig news here site (https://qsme.co.nz)\n\n#Tag #Two', JSON.stringify(plain));
+  const vo = voScript({ video: 'outputs/a-9x16.mp4', lines: [{ id: 'vo00', start_s: 1.5, max_s: 2, text_v2: 'Hi Q-S-me.' }, { id: 'x', text_v2: '' }, null, { start_s: 'abc', text: 'Fallback text' }] });
+  check('videos: voice script lines parsed (empty and broken lines skipped, defaults applied)', vo?.video === 'a-9x16.mp4' && vo.lines.length === 2 && vo.lines[0].end === 3.5 && vo.lines[0].say === 'Hi QSME.' && vo.lines[1].start === 0 && vo.lines[1].id === 'line-04', JSON.stringify(vo));
+  check('videos: one voice: no speakers, Copy all is the bare lines', vo.speakers.length === 0 && scriptText(vo) === 'Hi QSME.\nFallback text\n', JSON.stringify(scriptText(vo)));
+
+  // Two-voice scripts: the speaker tag at the start of the direction is not the "how".
+  const mel = voScript({ lines: [{ speaker: 'Mel', delivery: 'MEL. Bone-dry. Out by 2.1.', text_v2: 'Trick question.' }] });
+  check('videos: the speaker tag is stripped from "how", speaker kept', mel?.lines[0].how === 'Bone-dry.' && mel.lines[0].speaker === 'Mel' && mel.lines[0].delivery === 'MEL. Bone-dry. Out by 2.1.', JSON.stringify(mel));
+  const duo = voScript({
+    lines: [
+      { speaker: 'Him', delivery: "HIM. A genuine, slightly tired question. Light lean on 'cheapest'.", text_v2: "So which one's cheapest?" },
+      { speaker: 'Mel', delivery: 'MEL: Bone-dry, almost under her breath, a small beat before it. Out by 2.8.', text_v2: 'Trick question.' },
+      { speaker: 'Mel', delivery: 'Melodic and warm. Lands soft.', text_v2: 'Sign up at Q-S-me.' },
+      { speaker: 'Him', text_v2: 'Right.' },
+    ],
+  });
+  check('videos: two voices: each "how" is the real direction', duo?.lines.map((l) => l.how).join('|') === 'A genuine, slightly tired question.|Bone-dry, almost under her breath, a small beat before it.|Melodic and warm.|', JSON.stringify(duo?.lines.map((l) => l.how)));
+  check('videos: two voices: Copy all / .txt say who reads each line', JSON.stringify(duo.speakers) === '["Him","Mel"]' && scriptText(duo) === "Him: So which one's cheapest?\nMel: Trick question.\nMel: Sign up at QSME.\nHim: Right.\n", JSON.stringify(scriptText(duo)));
+
+  // Per-platform caption copies.
+  const capMd = captionMarkdown(
+    '# Post\n\n## Captions\n\n**Link (all platforms):** `https://x.test`\n\n### Instagram Reels (Tue 20 Oct, 19:30 NZDT) — 9:16\n\n> 3 quotes. **Same** bathroom.\n>\n> Sign up at qsme.co.nz.\n\n**Hashtags (2):** #Reno #NZ · **Cover:** `outputs/c.png`\n\n### TikTok\n\n> Short one. #reno #nz\n\n**Hashtags:** #reno #nz\n\n### LinkedIn: founder\'s profile (Thu 8 Oct)\n\n> Founder post.\n\n**First comment:** link\n\n- **Hashtags (max 3):** #QS #Tendering\n\n### YouTube Shorts\n\n- **Title:** T\n- **Description:** D\n\n## Music\n\nNone.\n',
+  );
+  const parts = captionParts(capMd);
+  check('captions: one part per platform subsection', parts.map((p) => p.label).join('|') === "Instagram Reels|TikTok|LinkedIn: founder's profile|YouTube Shorts", JSON.stringify(parts.map((p) => p.label)));
+  check('captions: a quoted post copies the post text and its hashtags, not the notes', parts[0].text === '3 quotes. Same bathroom.\n\nSign up at qsme.co.nz.\n\n#Reno #NZ' && parts[0].quoted, JSON.stringify(parts[0]));
+  check('captions: hashtags already in the post are not added twice', parts[1].text === 'Short one. #reno #nz', JSON.stringify(parts[1].text));
+  check('captions: a listed hashtags line counts, a first comment does not', parts[2].text === 'Founder post.\n\n#QS #Tendering', JSON.stringify(parts[2].text));
+  check('captions: a part without a quote copies the whole part', parts[3].text === '- Title: T\n- Description: D' && !parts[3].quoted, JSON.stringify(parts[3]));
+  check('captions: no subsections, no parts', captionParts('Just text. #Tag').length === 0 && captionParts('').length === 0);
+}
+
+/**
+ * .railwayignore keeps every media file out of `railway up`, and lets the code
+ * and markdown through. Checked with git check-ignore (same gitignore syntax) in
+ * a throwaway repo. Placeholders are made first and the ignore file is copied in
+ * last (and compared at the end), so no placeholder can overwrite it.
+ */
+function railwayIgnoreCheck() {
+  if (spawnSync('git', ['--version']).status !== 0) return check('.railwayignore check (git not installed, skipped)', true);
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ugc-railwayignore-'));
+  try {
+    spawnSync('git', ['init', '-q', dir]);
+    const kept = ['package.json', 'package-lock.json', 'railway.json', 'learnings.md', 'studio/server.mjs', 'studio/lib/s3.mjs', 'studio/public/videos.js', 'studio/public/favicon.svg', 'studio/synced.txt', 'ideas/qsme-nz/x.md', 'ventures/qsme-nz.md', 'projects/p/post.md', 'projects/p/vo-script.json', 'research/r.md', 'log/2026-10-04.md', '.claude/skills/ugc/SKILL.md'];
+    const media = [
+      'projects/p/outputs/a.mp4', 'projects/p/outputs/a.preview.mp4', 'projects/p/outputs/cover.png', 'projects/p/outputs/vo/line.m4a', 'projects/p/outputs/notes.txt',
+      'projects/p/CLIP.MP4', 'projects/p/raw.MoV', 'projects/p/x.webm', 'projects/p/x.m4v', 'projects/p/still.JPG', 'projects/p/still.jpeg', 'projects/p/x.webp', 'projects/p/x.gif', 'projects/p/x.mp3', 'projects/p/x.wav', 'projects/p/x.aac',
+      'ideas/qsme-nz/pic.png', 'studio/public/demo.mp4', 'research/shot.png', 'projects/p/motion/clips/f.jpg',
+    ];
+    const secret = ['.env', '.env.local', 'studio/.env', 'key.pem', 'projects/p/credentials.json', '.claude/settings.local.json', 'node_modules/x/index.js', 'videos.html', 'tools/motion/sync-media.mjs', 'assets/qsme/x.png'];
+    const all = [...kept, ...media, ...secret];
+    if (all.includes('.gitignore')) throw new Error('a placeholder would overwrite .gitignore');
+    for (const f of all) {
+      fs.mkdirSync(path.dirname(path.join(dir, f)), { recursive: true });
+      fs.writeFileSync(path.join(dir, f), 'x\n');
+    }
+    const rules = fs.readFileSync(path.join(ROOT, '.railwayignore'));
+    fs.writeFileSync(path.join(dir, '.gitignore'), rules);
+    const ignored = (f) => spawnSync('git', ['check-ignore', '-q', '--no-index', f], { cwd: dir }).status === 0;
+    const up = [...media, ...secret].filter((f) => !ignored(f));
+    check('.railwayignore: every media file (any case, any folder) and secret stays out of `railway up`', up.length === 0, up.join(', '));
+    const out = kept.filter(ignored);
+    check('.railwayignore: code, markdown, vo-script.json and synced.txt still go up', out.length === 0, out.join(', '));
+    check('.railwayignore: the throwaway repo kept its copy intact', fs.readFileSync(path.join(dir, '.gitignore')).equals(rules));
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
 }
 
 
@@ -425,7 +677,7 @@ async function phaseMain() {
     r = await request(port, '/ventures/qsme-nz', { headers: AUTH });
     check('/ventures/qsme-nz 200', r.status === 200 && noJunk(r.body), String(r.status));
 
-    const pages = ['/', '/ideas', '/ideas?view=list', '/ideas?view=list&sort=title&dir=desc', '/ideas?venture=qsme-nz&sort=created', '/ventures', '/projects', '/research', '/log', '/learnings', '/playbook'];
+    const pages = ['/', '/ideas', '/ideas?view=list', '/ideas?view=list&sort=title&dir=desc', '/ideas?venture=qsme-nz&sort=created', '/ventures', '/projects', '/videos', '/videos?venture=qsme-nz', '/videos?venture=%3Cscript%3E', '/research', '/log', '/learnings', '/playbook'];
     const research = await request(port, '/research', { headers: AUTH });
     for (const m of research.body.matchAll(/href="(\/research\/[^"#?]+)"/g)) pages.push(m[1]);
     const playbook = await request(port, '/playbook', { headers: AUTH });
@@ -471,17 +723,69 @@ async function phaseMain() {
     r = await request(port, '/search.json', { headers: { Authorization: `Bearer ${TOKEN}` } });
     check('Bearer token rejected on /search.json', r.status === 401, String(r.status));
 
-    // No MEDIA_DIR: listing is empty, writes are refused (nothing is ever written).
+    // No BUCKET_*: media comes from outputs/ only, the media API lists nothing, and nothing writes.
     const someProject = JSON.parse((await request(port, '/api/projects', { headers: AUTH })).body)[0]?.folder;
     if (someProject) {
       const bearer = { Authorization: `Bearer ${TOKEN}` };
       r = await request(port, `/api/media/${someProject}`, { headers: bearer });
-      check('MEDIA_DIR unset: GET /api/media/<project> -> []', r.status === 200 && JSON.parse(r.body).length === 0, `${r.status} ${r.body}`);
-      r = await upload(port, `/api/media/${someProject}/check.png`, { headers: bearer, body: PNG });
-      check('MEDIA_DIR unset: PUT -> 503', r.status === 503, `${r.status} ${r.body}`);
-      r = await upload(port, `/api/media/${someProject}/check.png`, { method: 'DELETE', headers: bearer });
-      check('MEDIA_DIR unset: DELETE -> 503', r.status === 503, `${r.status} ${r.body}`);
-    } else check('MEDIA_DIR unset checks (no project in the real content, skipped)', true);
+      check('no bucket: GET /api/media/<project> -> [] (X-Media-Storage: none)', r.status === 200 && JSON.parse(r.body).length === 0 && r.headers['x-media-storage'] === 'none', `${r.status} ${r.body}`);
+      for (const method of ['PUT', 'DELETE', 'POST']) {
+        r = await rawRequest(port, `/api/media/${someProject}/check.png`, { method, headers: bearer, body: method === 'DELETE' ? Buffer.alloc(0) : PNG });
+        check(`${method} /api/media/<project>/<file> -> 405 (the upload API is gone)`, r.status === 405, `${r.status} ${r.body}`);
+      }
+    } else check('media API checks (no project in the real content, skipped)', true);
+    r = await request(port, '/videos', { headers: AUTH });
+    check('/videos 200 with a card per project with videos', r.status === 200 && (r.body.match(/<section class="vcard/g) || []).length >= 1 && r.body.includes('<script src="/assets/videos.js?v='), String(r.status));
+    check('nav links Videos', /<a href="\/videos" aria-current="page">Videos<\/a>/.test(r.body));
+    r = await request(port, '/videos', { headers: { Authorization: `Bearer ${TOKEN}` } });
+    check('Bearer token rejected on /videos (HTML)', r.status === 401, String(r.status));
+    r = await request(port, '/assets/videos.js', { headers: AUTH });
+    check('/assets/videos.js served as JavaScript', r.status === 200 && /javascript/.test(r.headers['content-type'] || ''), `${r.status} ${r.headers['content-type']}`);
+
+    // Compression: big pages and JSON are gzipped, but never for a request
+    // another site could have triggered (BREACH: a compressed page that reflects
+    // a query value leaks private content through its size).
+    const GZ = { 'Accept-Encoding': 'gzip, deflate, br' };
+    const vids = await request(port, '/videos', { headers: AUTH });
+    const vcards = (b) => (b.match(/<section class="vcard/g) || []).length;
+    const gunzip = (raw) => {
+      try {
+        return zlib.gunzipSync(raw).toString('utf8');
+      } catch {
+        return null;
+      }
+    };
+    let gz = await request(port, '/videos', { headers: { ...AUTH, ...GZ, 'Sec-Fetch-Site': 'same-origin' } });
+    let unz = gunzip(gz.raw);
+    check(
+      'gzip: /videos is gzipped for a same-origin request and unzips to the page',
+      gz.status === 200 && gz.headers['content-encoding'] === 'gzip' && Number(gz.headers['content-length']) === gz.raw.length && gz.raw.length * 3 < vids.raw.length && unz !== null && vcards(unz) === vcards(vids.body) && vcards(unz) > 0 && Math.abs(unz.length - vids.body.length) < 200,
+      `${gz.status} ${gz.headers['content-encoding']} ${gz.raw.length} bytes vs ${vids.raw.length}`,
+    );
+    check('gzip: the answer varies by Accept-Encoding and Sec-Fetch-Site', /Accept-Encoding/.test(gz.headers.vary || '') && /Sec-Fetch-Site/.test(gz.headers.vary || '') && /Accept-Encoding/.test(vids.headers.vary || ''), `${gz.headers.vary} / ${vids.headers.vary}`);
+    gz = await request(port, '/videos', { headers: { ...AUTH, ...GZ, 'Sec-Fetch-Site': 'none' } });
+    check('gzip: a typed or bookmarked navigation (Sec-Fetch-Site: none) is gzipped', gz.headers['content-encoding'] === 'gzip', gz.headers['content-encoding']);
+    for (const [label, extra] of [['cross-site', { 'Sec-Fetch-Site': 'cross-site' }], ['same-site', { 'Sec-Fetch-Site': 'same-site' }], ['no Sec-Fetch-Site', {}]]) {
+      for (const p of ['/videos', '/videos?venture=qsme-nz', '/api/projects']) {
+        gz = await request(port, p, { headers: { ...AUTH, ...GZ, ...extra } });
+        check(`gzip: never for ${label} (password) requests: ${p} (BREACH)`, gz.status === 200 && !gz.headers['content-encoding'] && gz.body.length > 8192, `${gz.status} ${gz.headers['content-encoding']}`);
+      }
+    }
+    gz = await request(port, '/videos', { headers: { ...AUTH, 'Accept-Encoding': 'br, gzip;q=0', 'Sec-Fetch-Site': 'same-origin' } });
+    check('gzip: not when the client says gzip;q=0', !gz.headers['content-encoding'], gz.headers['content-encoding']);
+    gz = await request(port, '/api/ideas', { headers: { Authorization: `Bearer ${TOKEN}`, ...GZ } });
+    unz = gunzip(gz.raw);
+    let gzIdeas = null;
+    try {
+      gzIdeas = JSON.parse(unz);
+    } catch {}
+    check('gzip: a Bearer API client gets JSON gzipped', gz.status === 200 && gz.headers['content-encoding'] === 'gzip' && Array.isArray(gzIdeas) && gzIdeas.length >= 10, `${gz.status} ${gz.headers['content-encoding']}`);
+    gz = await request(port, '/videos', { method: 'HEAD', headers: { ...AUTH, ...GZ, 'Sec-Fetch-Site': 'same-origin' } });
+    check('gzip: HEAD gives the gzipped length, no body', gz.status === 200 && gz.headers['content-encoding'] === 'gzip' && Number(gz.headers['content-length']) > 0 && Number(gz.headers['content-length']) * 3 < vids.raw.length && gz.raw.length === 0, `${gz.headers['content-length']}`);
+    gz = await request(port, '/robots.txt', { headers: { ...GZ, 'Sec-Fetch-Site': 'same-origin' } });
+    check('gzip: small and plain-text answers are sent as they are', !gz.headers['content-encoding'] && gz.body.includes('Disallow'), gz.headers['content-encoding']);
+    gz = await request(port, '/videos', { headers: { Authorization: WRONG, ...GZ, 'Sec-Fetch-Site': 'same-origin' } });
+    check('gzip: a 401 is never compressed', gz.status === 401 && !gz.headers['content-encoding'], `${gz.status} ${gz.headers['content-encoding']}`);
 
     await traversalChecks(port, 'main');
 
@@ -613,6 +917,17 @@ const PNG = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR
 const FIXTURE_PROJECT = '2026-10-01-qsme-nz-check-fixture';
 const SYM_PROJECT = '2026-10-02-qsme-nz-sym';
 const BAD_VENTURE_PROJECT = '2026-10-02-qsme-nz-bad-venture';
+const TWO_PROJECT = '2026-10-03-qsme-build-fixture-two';
+const HOSTILE_LINE = `<img src=x onerror=alert(1)> "quoted" & it's`;
+const FIXTURE_VO = {
+  video: 'outputs/fixture-9x16.mp4',
+  character: 'Mel: everyday Kiwi woman, dry.',
+  lines: [
+    { id: 'vo00-hook', start_s: 0, max_s: 2.9, on_screen: 'Hook: 212 comments.', text_v2: 'Asked Q-S-me for a builder.', delivery: 'Dry, tired Kiwi deadpan. Falls at the end. Out by 2.9.' },
+    { id: 'vo01-xss', start_s: 3.2, max_s: 1.5, text_v2: HOSTILE_LINE, delivery: 'Brisk (about 1.2 s) and warm.' },
+    { id: 'vo02-empty', start_s: 5, max_s: 1, text_v2: '' },
+  ],
+};
 
 function buildFixture() {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ugc-studio-check-'));
@@ -635,8 +950,17 @@ function buildFixture() {
   // A project with every tab type and some media.
   w(
     `projects/${FIXTURE_PROJECT}/post.md`,
-    '---\ntitle: Fixture post\nventure: qsme-nz\nidea: qsme-nz-facebook-group\nstatus: in production\nfigma: https://www.figma.com/file/abc/fixture\n---\n# Post\n\nCaption goes here.\n',
+    '---\ntitle: Fixture post\nventure: qsme-nz\nidea: qsme-nz-facebook-group\nstatus: in production\npublish_date: 2026-10-05\nfigma: https://www.figma.com/file/abc/fixture\n---\n# Post\n\nCaption goes here.\n\n## Captions, hashtags and CTA\n\n**Instagram**\n> Sign up at qsme.co.nz. <b>bold</b> #FixtureTag\n\n## Music\n\nNo music in this one.\n',
   );
+  w(`projects/${FIXTURE_PROJECT}/vo-script.json`, JSON.stringify(FIXTURE_VO));
+  w(`projects/${FIXTURE_PROJECT}/outputs/fixture-9x16.mp4`, crypto.randomBytes(1200));
+  w(`projects/${FIXTURE_PROJECT}/outputs/fixture-9x16.preview.mp4`, crypto.randomBytes(300));
+  w(`projects/${FIXTURE_PROJECT}/outputs/fixture-4x5.mp4`, crypto.randomBytes(800));
+  w(`projects/${FIXTURE_PROJECT}/outputs/fixture-9x16-frames.png`, PNG);
+  // A second venture's project: one landscape video, no voice script, broken JSON.
+  w(`projects/${TWO_PROJECT}/post.md`, '---\ntitle: Fixture two\nventure: qsme-build\n---\n# Two\n');
+  w(`projects/${TWO_PROJECT}/vo-script.json`, '{ not json');
+  w(`projects/${TWO_PROJECT}/outputs/two-16x9.mp4`, crypto.randomBytes(500));
   w(`projects/${FIXTURE_PROJECT}/brief.md`, '# Brief\n\n- Venture: qsme-nz\n');
   w(`projects/${FIXTURE_PROJECT}/script.md`, '# Script\n\n| Time | Beat |\n|---|---|\n| 0:00 | hook |\n');
   w(`projects/${FIXTURE_PROJECT}/zz-notes.md`, '# Notes\n\nSee ![frame](outputs/frame.png).\n');
@@ -807,7 +1131,53 @@ async function phaseFixture() {
       projects = JSON.parse(r.body);
     } catch {}
     const fp = projects.find((p) => p.folder === FIXTURE_PROJECT);
-    check('/api/projects includes fixture with media', !!fp && fp.media.length === 3 && fp.status === 'in production', JSON.stringify(fp?.media?.map((m) => m.path)));
+    check(
+      '/api/projects includes fixture with media (a master and its preview are one item)',
+      !!fp && fp.media.map((m) => m.path).join(',') === 'cuts/clip.mp4,fixture-4x5.mp4,fixture-9x16-frames.png,fixture-9x16.mp4,frame.png,vo.mp3' && fp.status === 'in production',
+      JSON.stringify(fp?.media?.map((m) => m.path)),
+    );
+    const fm = fp?.media.find((m) => m.path === 'fixture-9x16.mp4');
+    check('/api/projects: play = preview, download = master', fm?.play === `/media/${FIXTURE_PROJECT}/fixture-9x16.preview.mp4` && fm?.download === `/media/${FIXTURE_PROJECT}/fixture-9x16.mp4?download=1`, JSON.stringify(fm));
+
+    // Downloads from disk: attachment, same bytes; inline otherwise.
+    r = await get(`/media/${FIXTURE_PROJECT}/fixture-9x16.mp4?download=1`);
+    check('?download=1 (local) -> 200 attachment with the file name', r.status === 200 && r.headers['content-disposition'] === 'attachment; filename="fixture-9x16.mp4"' && r.raw.length === 1200, `${r.status} ${r.headers['content-disposition']}`);
+    r = await get(`/media/${FIXTURE_PROJECT}/fixture-9x16.mp4`);
+    check('without ?download the file is inline', r.status === 200 && r.headers['content-disposition'] === 'inline', r.headers['content-disposition']);
+    r = await get(`/projects/${FIXTURE_PROJECT}`);
+    check('gallery plays the preview and downloads the master', r.body.includes(`<video controls playsinline preload="metadata" src="/media/${FIXTURE_PROJECT}/fixture-9x16.preview.mp4">`) && r.body.includes(`href="/media/${FIXTURE_PROJECT}/fixture-9x16.mp4?download=1"`) && !r.body.includes('fixture-9x16.preview.mp4?download'));
+
+    // The Videos page.
+    r = await get('/videos');
+    const vbody = r.body;
+    const cardOf = (b, folder) => b.split('<section class="vcard').find((c) => c.includes(`id="video-${folder}"`)) || '';
+    const card = cardOf(vbody, FIXTURE_PROJECT);
+    check('/videos 200, nothing live, no junk', r.status === 200 && noJunk(vbody) && !liveDanger(vbody), liveDanger(vbody) || String(r.status));
+    check('/videos: one card per project with videos', (vbody.match(/<section class="vcard/g) || []).length === 2 && !vbody.includes(`video-${SYM_PROJECT}`) && !vbody.includes(`video-${BAD_VENTURE_PROJECT}`));
+    check('/videos: sorted by publish date', vbody.indexOf(`video-${TWO_PROJECT}`) < vbody.indexOf(`video-${FIXTURE_PROJECT}`));
+    check('/videos: the player plays the preview of the script\'s video', /<video id="vp-\d+" controls playsinline preload="metadata" src="\/media\/2026-10-01-qsme-nz-check-fixture\/fixture-9x16\.preview\.mp4#t=0\.1" data-lines="vl-\d+">/.test(card), card.slice(0, 600));
+    check('/videos: every version listed with play + full-quality download', card.includes(`data-src="/media/${FIXTURE_PROJECT}/fixture-4x5.mp4"`) && card.includes(`href="/media/${FIXTURE_PROJECT}/fixture-4x5.mp4?download=1"`) && card.includes(`href="/media/${FIXTURE_PROJECT}/fixture-9x16.mp4?download=1"`) && card.includes('script timing'));
+    check('/videos: contact sheets are not listed as images', !card.includes('fixture-9x16-frames.png') && card.includes('frame.png'));
+    check('/videos: one "say this" row and Copy button per line', (card.match(/<li class="vline"/g) || []).length === 2 && card.includes('aria-label="Copy line 1"') && card.includes('aria-label="Copy line 2"') && !card.includes('Copy line 3'));
+    check('/videos: QSME shown as QSME', card.includes('<p class="say">Asked QSME for a builder.</p>') && !card.includes('Q-S-me'));
+    check('/videos: "how" = first sentence, timings stripped', card.includes('<p class="how">Dry, tired Kiwi deadpan.</p>') && card.includes('<p class="how">Brisk and warm.</p>'));
+    check('/videos: details carry on-screen text, direction, file name and max length', card.includes('Hook: 212 comments.') && card.includes('Falls at the end. Out by 2.9.') && card.includes('<code>vo00-hook.m4a</code> · must fit in 2.9s'));
+    check('/videos: each time seeks its own player', /data-seek="vp-(\d+)" data-start="3.2"/.test(card) && card.includes(`id="vp-${/data-seek="vp-(\d+)"/.exec(card)?.[1]}"`));
+    check('/videos: a hostile line is escaped, in text and in data-copy', !card.includes('<img src=x') && card.includes('data-copy="&lt;img src=x onerror=alert(1)&gt; &quot;quoted&quot; &amp; it&#39;s"'));
+    check('/videos: Copy all and .txt', card.includes('aria-label="Copy all lines"') && card.includes(`href="/videos/${FIXTURE_PROJECT}/voice-script.txt"`));
+    check('/videos: caption block with Copy (plain text, from post.md)', card.includes('Post caption &amp; hashtags') && card.includes('data-copy="Instagram\nSign up at qsme.co.nz. &lt;b&gt;bold&lt;/b&gt; #FixtureTag"') && !card.includes('No music in this one'), card.slice(card.indexOf('vcaption')));
+    const two = cardOf(vbody, TWO_PROJECT);
+    check('/videos: a project without a (valid) voice script still gets a card', two.includes('No voice script yet') && two.includes('vcard--land') && two.includes('two-16x9.mp4'));
+    r = await get('/videos?venture=qsme-build');
+    check('/videos?venture= filters (NZ / Global)', (r.body.match(/<section class="vcard/g) || []).length === 1 && r.body.includes(`video-${TWO_PROJECT}`) && r.body.includes('href="/videos?venture=qsme-build" aria-current="true"'), String(r.status));
+    r = await request(port, '/videos');
+    check('/videos needs auth', r.status === 401, String(r.status));
+    r = await get(`/videos/${FIXTURE_PROJECT}/voice-script.txt`);
+    check('voice-script.txt: plain text, one line each, as an attachment', r.status === 200 && /^text\/plain/.test(r.headers['content-type']) && /^attachment; filename="2026-10-01-qsme-nz-check-fixture-voice-script.txt"$/.test(r.headers['content-disposition']) && r.body === `Asked QSME for a builder.\n${HOSTILE_LINE}\n`, JSON.stringify(r.body));
+    r = await get(`/videos/${TWO_PROJECT}/voice-script.txt`);
+    check('voice-script.txt without a script -> 404', r.status === 404, String(r.status));
+    r = await get('/videos/nope/voice-script.txt');
+    check('voice-script.txt for an unknown project -> 404', r.status === 404, String(r.status));
 
     await traversalChecks(port, 'fixture', [
       `/media/${FIXTURE_PROJECT}/..%2f..%2f..%2f.env`,
@@ -816,6 +1186,10 @@ async function phaseFixture() {
       `/media/${FIXTURE_PROJECT}/outputs/../post.md`,
       '/media/..%2f.claude/settings.local.json',
       `/projects/${FIXTURE_PROJECT}/..%2f..%2f.env`,
+      `/videos/..%2f..%2f.env/voice-script.txt`,
+      `/videos/${FIXTURE_PROJECT}/..%2fpost.md`,
+      `/media/${FIXTURE_PROJECT}/vo-script.json`,
+      `/media/${FIXTURE_PROJECT}/fixture-9x16.mp4%2f..%2f..%2fpost.md`,
     ]);
   } finally {
     stop(s);
@@ -826,11 +1200,126 @@ async function phaseFixture() {
 
 // ----------------------------------------------------------------- phase 6
 
-/** Run tools/motion/sync-media.mjs. Resolves { code, out }. STUDIO_* come only from `env`. */
+const BUCKET = 'check-bucket';
+const AKID = `AKIDCHECK${crypto.randomBytes(6).toString('hex').toUpperCase()}`;
+const SECRET = `check-secret-${crypto.randomBytes(16).toString('hex')}`;
+const md5Hex = (b) => crypto.createHash('md5').update(b).digest('hex');
+const sha256 = (b) => crypto.createHash('sha256').update(b).digest('hex');
+
+/**
+ * A fake S3 bucket on 127.0.0.1. Every request must carry a valid SigV4
+ * signature for AKID/SECRET (header-signed, or presigned in the query string),
+ * recomputed here from the request as received, and the virtual host
+ * <bucket>.localhost:<port> (endpoint http://localhost:<port>). Speaks just enough ListObjectsV2 (pageSize keys per
+ * page, so continuation tokens get used), PUT, HEAD, GET and DELETE.
+ *   etagMode 'md5' (S3's single-part ETag) or 'opaque' (forces sha256 metadata checks)
+ */
+async function startFakeS3({ pageSize = 2 } = {}) {
+  const objects = new Map(); // key -> { body, type, meta, mtime }
+  const log = [];
+  const state = { etagMode: 'md5', port: 0 };
+  const etagOf = (o) => (state.etagMode === 'md5' ? md5Hex(o.body) : `${md5Hex(Buffer.concat([o.body, Buffer.from('x')]))}-1`);
+  const xml = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  const server = http.createServer((req, res) => {
+    const chunks = [];
+    req.on('data', (c) => chunks.push(c));
+    req.on('end', () => {
+      const body = Buffer.concat(chunks);
+      const qi = req.url.indexOf('?');
+      const rawPath = qi === -1 ? req.url : req.url.slice(0, qi);
+      const rawQuery = qi === -1 ? '' : req.url.slice(qi + 1);
+      const pairs = rawQuery ? rawQuery.split('&').map((kv) => { const i = kv.indexOf('='); return i === -1 ? [decodeURIComponent(kv), ''] : [decodeURIComponent(kv.slice(0, i)), decodeURIComponent(kv.slice(i + 1))]; }) : [];
+      const q = Object.fromEntries(pairs);
+      let key = '';
+      try {
+        key = decodeURIComponent(rawPath.slice(1));
+      } catch {}
+      const entry = { method: req.method, key, query: q, headers: req.headers, size: body.length, sigOk: false, presigned: !!q['X-Amz-Signature'] };
+      log.push(entry);
+      const error = (status, code) => {
+        res.writeHead(status, { 'content-type': 'application/xml' });
+        res.end(req.method === 'HEAD' ? undefined : `<?xml version="1.0" encoding="UTF-8"?><Error><Code>${code}</Code><Message>${code} (fake)</Message></Error>`);
+      };
+      if (req.headers.host !== `${BUCKET}.localhost:${state.port}`) return error(400, 'InvalidHost');
+      if (entry.presigned) {
+        const amzDate = q['X-Amz-Date'] || '';
+        const expect = sigv4({ method: req.method, path: rawPath, query: pairs.filter(([k]) => k !== 'X-Amz-Signature'), headers: { host: req.headers.host }, payloadHash: 'UNSIGNED-PAYLOAD', amzDate, region: 'auto', accessKeyId: AKID, secretAccessKey: SECRET });
+        const t = Date.parse(amzDate.replace(/^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})Z$/, '$1-$2-$3T$4:$5:$6Z'));
+        const fresh = t <= Date.now() + 60_000 && Date.now() <= t + Number(q['X-Amz-Expires']) * 1000;
+        if (q['X-Amz-Credential'] !== `${AKID}/${amzDate.slice(0, 8)}/auto/s3/aws4_request` || q['X-Amz-SignedHeaders'] !== 'host' || expect.signature !== q['X-Amz-Signature']) return error(403, 'SignatureDoesNotMatch');
+        if (!fresh) return error(403, 'AccessDenied');
+      } else {
+        const m = /^AWS4-HMAC-SHA256 Credential=([^/]+)\/(\d{8})\/([^/]+)\/s3\/aws4_request, SignedHeaders=([a-z0-9;-]+), Signature=([0-9a-f]{64})$/.exec(String(req.headers.authorization || ''));
+        if (!m || m[1] !== AKID || m[3] !== 'auto') return error(403, 'InvalidAccessKeyId');
+        const signed = m[4].split(';');
+        if (!['host', 'x-amz-date', 'x-amz-content-sha256'].every((h) => signed.includes(h))) return error(403, 'AccessDenied');
+        const payloadHash = String(req.headers['x-amz-content-sha256'] || '');
+        if (payloadHash !== 'UNSIGNED-PAYLOAD' && payloadHash !== sha256(body)) return error(400, 'XAmzContentSHA256Mismatch');
+        const headers = Object.fromEntries(signed.map((h) => [h, req.headers[h] ?? '']));
+        const expect = sigv4({ method: req.method, path: rawPath, query: pairs, headers, payloadHash, amzDate: String(req.headers['x-amz-date']), region: 'auto', accessKeyId: AKID, secretAccessKey: SECRET });
+        if (expect.signature !== m[5]) return error(403, 'SignatureDoesNotMatch');
+      }
+      entry.sigOk = true;
+      if (req.method === 'GET' && rawPath === '/' && q['list-type'] === '2') {
+        const prefix = q.prefix || '';
+        const keys = [...objects.keys()].filter((k) => k.startsWith(prefix)).sort();
+        const from = Number(q['continuation-token'] || 0);
+        const page = keys.slice(from, from + pageSize);
+        const more = from + pageSize < keys.length;
+        const items = page.map((k) => { const o = objects.get(k); return `<Contents><Key>${xml(k)}</Key><LastModified>${o.mtime.toISOString()}</LastModified><ETag>&quot;${etagOf(o)}&quot;</ETag><Size>${o.body.length}</Size><StorageClass>STANDARD</StorageClass></Contents>`; });
+        res.writeHead(200, { 'content-type': 'application/xml' });
+        return res.end(`<?xml version="1.0" encoding="UTF-8"?><ListBucketResult><Name>${BUCKET}</Name><Prefix>${xml(prefix)}</Prefix><KeyCount>${page.length}</KeyCount><MaxKeys>1000</MaxKeys><IsTruncated>${more}</IsTruncated>${items.join('')}${more ? `<NextContinuationToken>${from + pageSize}</NextContinuationToken>` : ''}</ListBucketResult>`);
+      }
+      if (!key) return error(400, 'InvalidRequest');
+      if (req.method === 'PUT') {
+        if (req.headers['transfer-encoding'] || req.headers['content-length'] === undefined || Number(req.headers['content-length']) !== body.length) return error(411, 'MissingContentLength');
+        const meta = {};
+        for (const [k, v] of Object.entries(req.headers)) if (k.startsWith('x-amz-meta-')) meta[k.slice(11)] = v;
+        const o = { body, type: req.headers['content-type'] || '', meta, mtime: new Date() };
+        objects.set(key, o);
+        res.writeHead(200, { etag: `"${etagOf(o)}"` });
+        return res.end();
+      }
+      const o = objects.get(key);
+      if (req.method === 'DELETE') {
+        objects.delete(key);
+        res.writeHead(204);
+        return res.end();
+      }
+      if (!o) return error(404, 'NoSuchKey');
+      const headers = { 'content-type': o.type, 'content-length': o.body.length, etag: `"${etagOf(o)}"`, 'last-modified': o.mtime.toUTCString() };
+      for (const [k, v] of Object.entries(o.meta)) headers[`x-amz-meta-${k}`] = v;
+      if (q['response-content-disposition']) headers['content-disposition'] = q['response-content-disposition'];
+      res.writeHead(200, headers);
+      res.end(req.method === 'HEAD' ? undefined : o.body);
+    });
+  });
+  await new Promise((r) => server.listen(0, '127.0.0.1', r));
+  state.port = server.address().port;
+  const put = (k, body, type = 'application/octet-stream', meta = {}) => objects.set(k, { body: Buffer.from(body), type, meta, mtime: new Date() });
+  return {
+    port: state.port,
+    endpoint: `http://localhost:${state.port}`, // virtual host: check-bucket.localhost:<port>
+    host: `${BUCKET}.localhost:${state.port}`,
+    objects,
+    log,
+    put,
+    setEtagMode: (m) => (state.etagMode = m),
+    close: () => new Promise((r) => server.close(r)),
+  };
+}
+
+/** GET a presigned (bucket) URL through the fake: dial 127.0.0.1, keep the virtual Host. */
+function getPresigned(fake, url) {
+  const u = new URL(url);
+  return request(fake.port, u.pathname + u.search, { headers: { Host: u.host } });
+}
+
+/** Run tools/motion/sync-media.mjs. Resolves { code, out }. STUDIO_* and BUCKET_* come only from `env`. */
 function runSync(args, env) {
   return new Promise((resolve) => {
     const e = { ...process.env };
-    for (const k of Object.keys(e)) if (k.startsWith('STUDIO_')) delete e[k];
+    for (const k of Object.keys(e)) if (k.startsWith('STUDIO_') || k.startsWith('BUCKET_')) delete e[k];
     const child = spawn(process.execPath, [SYNC, ...args], { env: { ...e, ...env }, stdio: ['ignore', 'pipe', 'pipe'] });
     children.add(child);
     let out = '';
@@ -845,318 +1334,330 @@ function runSync(args, env) {
   });
 }
 
-const MEDIA_PROJECT = '2026-10-03-qsme-nz-volume';
-const LOCAL_PROJECT = '2026-10-03-qsme-nz-local';
-const SYMDIR_PROJECT = '2026-10-03-qsme-nz-symdir';
-const MAX_BYTES = 4096;
+const BUCKET_PROJECT = '2026-10-04-qsme-nz-bucket';
+const LOCAL_PROJECT = '2026-10-04-qsme-build-local';
 
-/** Every file under `dir` (relative paths), symlinks included, sorted. */
-function walkFiles(dir, prefix = '') {
-  let out = [];
-  for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
-    const rel = prefix ? `${prefix}/${e.name}` : e.name;
-    if (e.isDirectory()) out = out.concat(walkFiles(path.join(dir, e.name), rel));
-    else out.push(rel);
-  }
-  return out.sort();
-}
-
-async function phaseMediaVolume() {
-  console.log('\n6. Media volume (MEDIA_DIR): upload API, gallery, previews');
-  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'ugc-studio-media-'));
+async function phaseBucket() {
+  console.log('\n6. Storage bucket (fake S3 on 127.0.0.1): presigned /media, gallery and /videos from the listing, sync-media');
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'ugc-studio-bucket-'));
+  tmpDirs.add(tmp);
   const dir = path.join(tmp, 'content');
-  const outside = path.join(tmp, 'outside');
-  const mediaDir = path.join(tmp, 'volume', 'data', 'media'); // does not exist yet: the server makes it
   const w = (rel, data) => {
     fs.mkdirSync(path.dirname(path.join(dir, rel)), { recursive: true });
     fs.writeFileSync(path.join(dir, rel), data);
   };
   w('learnings.md', '# Learnings\n');
-  w(`projects/${MEDIA_PROJECT}/post.md`, '---\ntitle: Volume project\nventure: qsme-nz\n---\n# Post\n');
-  w(`projects/${LOCAL_PROJECT}/post.md`, '---\ntitle: Local project\nventure: qsme-nz\n---\n# Post\n');
+  w(
+    `projects/${BUCKET_PROJECT}/post.md`,
+    '---\ntitle: Bucket project\nventure: qsme-nz\npublish_date: 2026-10-09\n---\n# Post\n\n## Caption\n\nFrom the bucket. #Bucket\n\n### Instagram Reels (Fri 9 Oct, 19:30 NZDT)\n\n> Reel post. "Quoted" & <b>bold</b>\n\n**Hashtags (2):** #Reel #Bucket · **Cover:** `outputs/cover.png`\n\n### YouTube Shorts\n\n- **Title:** Bucket short\n',
+  );
+  w(
+    `projects/${BUCKET_PROJECT}/vo-script.json`,
+    JSON.stringify({
+      video: 'outputs/reel-9x16.mp4',
+      lines: [
+        { id: 'vo00', speaker: 'Mel', start_s: 0, max_s: 2, text_v2: 'Straight from the bucket.', delivery: 'MEL. Bone-dry. Out by 1.9.' },
+        { id: 'vo01', speaker: 'Him', start_s: 2, max_s: 1, text_v2: 'Right.', delivery: 'HIM. Flat.' },
+      ],
+    }),
+  );
+  w(`projects/${LOCAL_PROJECT}/post.md`, '---\ntitle: Local project\nventure: qsme-build\n---\n# Post\n');
   w(`projects/${LOCAL_PROJECT}/outputs/local.png`, PNG);
-  w(`projects/${LOCAL_PROJECT}/outputs/reel.mp4`, crypto.randomBytes(300)); // master
-  w(`projects/${LOCAL_PROJECT}/outputs/reel.preview.mp4`, crypto.randomBytes(100));
-  w(`projects/${SYMDIR_PROJECT}/post.md`, '# Post\n');
+  w(`projects/${LOCAL_PROJECT}/outputs/reel-16x9.mp4`, crypto.randomBytes(300));
   w('projects/_template/post.md', '# Template\n');
-  fs.mkdirSync(outside, { recursive: true });
-  fs.writeFileSync(path.join(outside, 'secret.png'), 'FAKE_API_KEY=never\n');
-  const contentBefore = walkFiles(dir);
+  w('projects/secret.txt', 'FAKE_API_KEY=never\n');
 
-  const env = { STUDIO_PASSWORD: PASSWORD, STUDIO_API_TOKEN: TOKEN, STUDIO_CONTENT_ROOT: dir, MEDIA_DIR: mediaDir, MEDIA_MAX_BYTES: String(MAX_BYTES) };
+  const fake = await startFakeS3();
+  const reel = crypto.randomBytes(2400);
+  const reelPreview = crypto.randomBytes(600);
+  const cafe = 'café & co.png';
+  fake.put(`projects/${BUCKET_PROJECT}/outputs/reel-9x16.mp4`, reel, 'video/mp4');
+  fake.put(`projects/${BUCKET_PROJECT}/outputs/reel-9x16.preview.mp4`, reelPreview, 'video/mp4');
+  fake.put(`projects/${BUCKET_PROJECT}/outputs/cover.png`, PNG, 'image/png');
+  fake.put(`projects/${BUCKET_PROJECT}/outputs/${cafe}`, PNG, 'image/png');
+  // Decoys the studio must never list or link.
+  fake.put(`projects/${BUCKET_PROJECT}/outputs/sub/deep.png`, PNG, 'image/png');
+  fake.put(`projects/${BUCKET_PROJECT}/outputs/notes.txt`, 'FAKE_API_KEY=never', 'text/plain');
+  fake.put(`projects/${BUCKET_PROJECT}/secret.png`, PNG, 'image/png');
+  fake.put('projects/_template/outputs/t.png', PNG, 'image/png');
+  fake.put('other/x.png', PNG, 'image/png');
+  fake.put(`projects/${LOCAL_PROJECT}/outputs/remote-only.png`, PNG, 'image/png');
+
+  const bucketEnv = { BUCKET_NAME: BUCKET, BUCKET_ENDPOINT: fake.endpoint, BUCKET_REGION: 'auto', BUCKET_ACCESS_KEY_ID: AKID, BUCKET_SECRET_ACCESS_KEY: SECRET };
+  const env = { STUDIO_PASSWORD: PASSWORD, STUDIO_API_TOKEN: TOKEN, STUDIO_CONTENT_ROOT: dir, ...bucketEnv };
   const BEARER = { Authorization: `Bearer ${TOKEN}` };
-  const sha = (b) => crypto.createHash('sha256').update(b).digest('hex');
-  const tmpLeft = () => (fs.existsSync(path.join(mediaDir, '.tmp')) ? fs.readdirSync(path.join(mediaDir, '.tmp')) : []);
-  const stored = (name, project = MEDIA_PROJECT) => fs.existsSync(path.join(mediaDir, project, name));
+  const lists = () => fake.log.filter((e) => e.method === 'GET' && e.query['list-type'] === '2' && !e.query['continuation-token']).length;
   let s;
   try {
-    s = await startServer('media', env);
+    s = await startServer('bucket', env);
     const { port } = s;
-    const api = (name, project = MEDIA_PROJECT) => `/api/media/${project}/${name}`;
-    const list = async (project = MEDIA_PROJECT, headers = BEARER) => {
-      const r = await request(port, `/api/media/${project}`, { headers });
-      try {
-        return { status: r.status, files: JSON.parse(r.body), headers: r.headers };
-      } catch {
-        return { status: r.status, files: null, headers: r.headers };
-      }
-    };
+    const get = (p, headers = {}) => request(port, p, { headers: { ...AUTH, ...headers } });
+    check('startup log names the bucket, never a credential', s.log().includes(`media: bucket ${BUCKET}`) && !s.log().includes(SECRET) && !s.log().includes(AKID), s.log());
 
-    check('MEDIA_DIR is created on startup (mkdir -p)', fs.existsSync(mediaDir) && fs.statSync(mediaDir).isDirectory());
-    check('startup log names the media folder', s.log().includes(`media: ${mediaDir}`), s.log());
+    // /media -> 302 to a presigned GET on the bucket host.
+    let r = await get(`/media/${BUCKET_PROJECT}/reel-9x16.mp4`);
+    const loc = r.headers.location || '';
+    let u = loc ? new URL(loc) : null;
+    check('/media (bucket) -> 302 to the bucket host', r.status === 302 && u?.host === fake.host && u?.pathname === `/projects/${BUCKET_PROJECT}/outputs/reel-9x16.mp4`, `${r.status} ${loc}`);
+    check('presigned: X-Amz-Signature, 1 hour, our access key id, no secret, inline', /^[0-9a-f]{64}$/.test(u?.searchParams.get('X-Amz-Signature') || '') && u?.searchParams.get('X-Amz-Expires') === '3600' && (u?.searchParams.get('X-Amz-Credential') || '').startsWith(`${AKID}/`) && !loc.includes(SECRET) && !u?.searchParams.has('response-content-disposition'), loc);
+    check('the redirect is private', /private/.test(r.headers['cache-control'] || ''), r.headers['cache-control']);
+    let g = await getPresigned(fake, loc);
+    check('the presigned URL verifies on the (fake) bucket and returns the master', g.status === 200 && sha256(g.raw) === sha256(reel), `${g.status} ${g.body.slice(0, 120)}`);
+    r = await get(`/media/${BUCKET_PROJECT}/reel-9x16.mp4`);
+    check('the same URL for repeated requests (browser cache can hit)', r.headers.location === loc);
+    r = await get(`/media/${BUCKET_PROJECT}/reel-9x16.mp4?download=1`);
+    u = new URL(r.headers.location || 'http://x/');
+    check('?download=1 (bucket) -> presigned with attachment disposition', r.status === 302 && u.searchParams.get('response-content-disposition') === 'attachment; filename="reel-9x16.mp4"', r.headers.location);
+    g = await getPresigned(fake, r.headers.location);
+    check('the download URL verifies and the bucket answers Content-Disposition: attachment', g.status === 200 && g.headers['content-disposition'] === 'attachment; filename="reel-9x16.mp4"', `${g.status} ${g.headers['content-disposition']}`);
+    r = await get(`/media/${BUCKET_PROJECT}/${encodeURIComponent(cafe)}`);
+    u = new URL(r.headers.location || 'http://x/');
+    check('a unicode name with "&" and spaces is encoded in the key', r.status === 302 && u.pathname === `/projects/${BUCKET_PROJECT}/outputs/caf%C3%A9%20%26%20co.png`, r.headers.location);
+    g = await getPresigned(fake, r.headers.location);
+    check('... and its presigned URL verifies', g.status === 200 && g.raw.equals(PNG), String(g.status));
+    r = await get(`/media/${BUCKET_PROJECT}/reel-9x16.mp4?download=1&key=../../secret.png&X-Amz-Expires=999999`);
+    u = new URL(r.headers.location || 'http://x/');
+    check('the query string cannot change the key or the expiry', u.pathname === `/projects/${BUCKET_PROJECT}/outputs/reel-9x16.mp4` && u.searchParams.get('X-Amz-Expires') === '3600' && !u.searchParams.has('key'), r.headers.location);
 
-    // Upload with the token.
-    const clip = crypto.randomBytes(1500);
-    let r = await upload(port, api('clip.png'), { headers: BEARER, body: clip });
-    let out = {};
-    try {
-      out = JSON.parse(r.body);
-    } catch {}
-    check('PUT with Bearer -> 200 {name, size, sha256}', r.status === 200 && out.name === 'clip.png' && out.size === 1500 && out.sha256 === sha(clip), `${r.status} ${r.body}`);
-    check('PUT stored the file under MEDIA_DIR/<project>/', stored('clip.png') && sha(fs.readFileSync(path.join(mediaDir, MEDIA_PROJECT, 'clip.png'))) === sha(clip));
-    const side = path.join(mediaDir, MEDIA_PROJECT, '.clip.png.sha256');
-    check('PUT wrote the sha256 sidecar', fs.existsSync(side) && fs.readFileSync(side, 'utf8').startsWith(`${sha(clip)}  clip.png`), fs.existsSync(side) ? fs.readFileSync(side, 'utf8') : 'missing');
-    check('PUT leaves no temp file', tmpLeft().length === 0, tmpLeft().join(','));
+    r = await request(port, `/media/${BUCKET_PROJECT}/reel-9x16.mp4`);
+    check('/media (bucket) needs auth: 401, no Location', r.status === 401 && !r.headers.location, String(r.status));
+    r = await request(port, `/media/${BUCKET_PROJECT}/reel-9x16.mp4`, { headers: BEARER });
+    check('/media refuses the Bearer token (Basic only)', r.status === 401 && !r.headers.location, String(r.status));
+    r = await get(`/media/${LOCAL_PROJECT}/local.png`);
+    check('a file on this disk is still served from disk (200), not redirected', r.status === 200 && r.raw.equals(PNG) && !r.headers.location, String(r.status));
+    r = await get(`/media/${LOCAL_PROJECT}/remote-only.png`);
+    check('a file not on this disk redirects to the bucket', r.status === 302 && new URL(r.headers.location).pathname === `/projects/${LOCAL_PROJECT}/outputs/remote-only.png`, String(r.status));
 
-    let l = await list();
-    const item = l.files?.find((f) => f.name === 'clip.png');
-    check('GET /api/media/<project> (Bearer) lists it with size, sha256, mtime', l.status === 200 && item && item.size === 1500 && item.sha256 === sha(clip) && !isNaN(Date.parse(item.mtime)), JSON.stringify(l.files));
-    check('list does not show the sidecar or .tmp', l.files?.every((f) => !f.name.startsWith('.')), JSON.stringify(l.files));
-    check('list says the upload limit (X-Media-Max-Bytes)', l.headers['x-media-max-bytes'] === String(MAX_BYTES), l.headers['x-media-max-bytes']);
-    l = await list(MEDIA_PROJECT, AUTH);
-    check('GET /api/media/<project> works with Basic too', l.status === 200 && l.files?.some((f) => f.name === 'clip.png'), String(l.status));
-    l = await list(MEDIA_PROJECT, {});
-    check('GET /api/media/<project> needs auth', l.status === 401, String(l.status));
-    l = await list('2026-01-01-nope');
-    check('GET /api/media/<unknown project> -> 404', l.status === 404, String(l.status));
-
-    r = await request(port, `/media/${MEDIA_PROJECT}/clip.png`, { headers: AUTH });
-    check('uploaded file is served at /media/<project>/<file>', r.status === 200 && r.headers['content-type'] === 'image/png' && sha(r.raw) === sha(clip), `${r.status} ${r.headers['content-type']}`);
-    r = await request(port, `/media/${MEDIA_PROJECT}/clip.png`, { headers: BEARER });
-    check('/media still refuses the Bearer token (Basic only)', r.status === 401, String(r.status));
-    r = await request(port, `/projects/${MEDIA_PROJECT}`, { headers: AUTH });
-    check('uploaded file shows in the project gallery', r.status === 200 && r.body.includes(`/media/${MEDIA_PROJECT}/clip.png`) && noJunk(r.body), String(r.status));
-
-    // Replacing a file updates it and its sidecar.
-    const clip2 = crypto.randomBytes(900);
-    r = await upload(port, api('clip.png'), { headers: BEARER, body: clip2, chunked: true });
-    l = await list();
-    check('PUT (chunked) replaces the file and its sha256', r.status === 200 && l.files?.find((f) => f.name === 'clip.png')?.sha256 === sha(clip2), `${r.status} ${r.body}`);
-
-    // Expect: 100-continue is answered once the upload is allowed.
-    r = await upload(port, api('continue.png'), { headers: BEARER, body: PNG, expectContinue: true });
-    check('PUT with Expect: 100-continue -> 200', r.status === 200 && stored('continue.png'), `${r.status} ${r.body}`);
-    r = await upload(port, api('continue2.png'), { headers: AUTH, body: PNG, expectContinue: true });
-    check('Expect: 100-continue with Basic -> 403, body never asked for', r.status === 403 && !stored('continue2.png'), `${r.status} ${r.body}`);
-
-    // Who may write.
-    r = await upload(port, api('basic.png'), { headers: AUTH, body: PNG });
-    check('PUT with Basic only -> 403 (the password cannot write)', r.status === 403 && !stored('basic.png'), `${r.status} ${r.body}`);
-    r = await upload(port, api('wrong.png'), { headers: { Authorization: 'Bearer wrong-token-0123456789' }, body: PNG });
-    check('PUT with a wrong token -> 401', r.status === 401 && !stored('wrong.png'), String(r.status));
-    r = await upload(port, api('anon.png'), { body: PNG });
-    check('PUT without auth -> 401', r.status === 401 && !stored('anon.png'), String(r.status));
-    r = await upload(port, api('x.png', '2026-01-01-nope'), { headers: BEARER, body: PNG });
-    check('PUT to an unknown project -> 404 (no folder made)', r.status === 404 && !fs.existsSync(path.join(mediaDir, '2026-01-01-nope')), String(r.status));
-    r = await upload(port, api('x.png', '_template'), { headers: BEARER, body: PNG });
-    check('PUT to _template -> 400/404', [400, 404].includes(r.status) && !fs.existsSync(path.join(mediaDir, '_template')), String(r.status));
-    r = await upload(port, `/api/media/${MEDIA_PROJECT}/x.png`, { method: 'POST', headers: BEARER, body: PNG });
-    check('POST /api/media/... -> 405', r.status === 405, String(r.status));
-    r = await upload(port, '/ideas', { headers: BEARER, body: PNG });
-    check('PUT outside /api/media -> 405', r.status === 405, String(r.status));
-
-    // Bad names: nothing is written anywhere.
-    const badPaths = [
-      api('../x.mp4'),
-      api('.env'),
-      api('.x.png'),
-      api('a/b.mp4'),
-      api('x.exe'),
-      api('x'),
-      api('x.mp4.sha256'),
-      api('%2e%2e%2fx.mp4'),
-      api('a%2fb.mp4'),
-      api('a%5cb.mp4'),
-      api('x.png%00.mp4'),
-      api('-x.png'),
-      api('x%20y.png'),
-      api('caf%C3%A9.png'),
-      api('..png'),
-      `/api/media/..%2f${MEDIA_PROJECT}/x.png`,
-      `/api/media/%2e%2e/x.png`,
-      `/api/media/${MEDIA_PROJECT}%2f..%2f..%2f..%2foutside/x.png`,
+    // Traversal and odd names never produce a presigned URL outside projects/<p>/outputs/<file>.
+    const attacks = [
+      `/media/${BUCKET_PROJECT}/..%2f..%2f.env`, `/media/${BUCKET_PROJECT}/..%2fsecret.png`, `/media/${BUCKET_PROJECT}/%2e%2e/secret.png`, `/media/${BUCKET_PROJECT}/%2e%2e%2fsecret.png`,
+      `/media/..%2f${BUCKET_PROJECT}/x.mp4`, `/media/%2e%2e/${BUCKET_PROJECT}/x.mp4`, `/media/${BUCKET_PROJECT}%2f..%2fother/x.png`, `/media/${BUCKET_PROJECT}/a%2fb.mp4`,
+      `/media/${BUCKET_PROJECT}/a%5cb.mp4`, `/media/${BUCKET_PROJECT}/x.mp4%00.png`, `/media/${BUCKET_PROJECT}/sub/deep.png`, `/media/${BUCKET_PROJECT}/.env.mp4`,
+      `/media/${BUCKET_PROJECT}/_x.mp4`, `/media/${BUCKET_PROJECT}/notes.txt`, `/media/${BUCKET_PROJECT}/x`, `/media/${BUCKET_PROJECT}/..`, `/media/${BUCKET_PROJECT}/%2e%2e`,
+      `/media/${BUCKET_PROJECT}/x%0a.mp4`, `/media/${BUCKET_PROJECT}/x%7f.mp4`, `/media/${BUCKET_PROJECT}/x.mp4/..%2f..%2fsecret.png`, `/media/${BUCKET_PROJECT}/outputs/../secret.png`,
+      '/media/_template/t.png', '/media/2026-01-01-nope/x.mp4', '/media/secret.txt/x.png', `/media/${BUCKET_PROJECT}`, '/media/other/x.png', `/media/${BUCKET_PROJECT}/..%252fsecret.png`,
     ];
-    for (const p of badPaths) {
-      r = await upload(port, p, { headers: BEARER, body: PNG });
-      check(`PUT ${p} -> 400/404`, [400, 404].includes(r.status), `${r.status} ${r.body}`);
+    for (const a of attacks) {
+      for (const headers of [AUTH, {}]) {
+        const x = await request(port, a, { headers });
+        check(`bucket ${headers.Authorization ? 'auth' : 'anon'} ${a} -> ${x.status}, no presigned URL`, x.status !== 302 && x.status !== 200 && !x.headers.location, `${x.status} ${x.headers.location || ''}`);
+      }
     }
-    r = await upload(port, `/api/media/${MEDIA_PROJECT}/`, { headers: BEARER, body: PNG });
-    check('PUT to the project itself (no file name) -> 405', r.status === 405, `${r.status} ${r.body}`);
-    const contentAfter = walkFiles(dir);
-    check('bad names: the content folder is untouched', JSON.stringify(contentAfter) === JSON.stringify(contentBefore), contentAfter.filter((f) => !contentBefore.includes(f)).join(', '));
-    check('bad names: nothing written outside MEDIA_DIR', JSON.stringify(walkFiles(outside)) === JSON.stringify(['secret.png']), walkFiles(outside).join(','));
-    const vol = walkFiles(mediaDir);
-    check('bad names: MEDIA_DIR holds only the expected files', vol.every((f) => /^2026-10-03-qsme-nz-volume\/\.?(clip|continue)\.png(\.sha256)?$/.test(f)), vol.join(', '));
+    await traversalChecks(port, 'bucket');
 
-    // Size limit: 413, no temp file, nothing stored.
-    const big = crypto.randomBytes(MAX_BYTES + 1000);
-    r = await upload(port, api('big.png'), { headers: BEARER, body: big });
-    check('oversize (Content-Length) -> 413', r.status === 413, `${r.status} ${r.error || r.body}`);
-    check('oversize (Content-Length): nothing stored, no temp left', !stored('big.png') && tmpLeft().length === 0, tmpLeft().join(','));
-    r = await upload(port, api('big.png'), { headers: BEARER, body: big, chunked: true });
-    check('oversize (chunked, counted while streaming) -> 413', r.status === 413, `${r.status} ${r.error || r.body}`);
-    check('oversize (chunked): nothing stored, no temp left', !stored('big.png') && tmpLeft().length === 0, tmpLeft().join(','));
-    r = await upload(port, api('edge.png'), { headers: BEARER, body: crypto.randomBytes(MAX_BYTES) });
-    check('exactly MEDIA_MAX_BYTES is allowed', r.status === 200 && stored('edge.png'), `${r.status} ${r.body}`);
-
-    // An upload that is cut off leaves nothing behind.
-    r = await upload(port, api('cut.png'), { headers: BEARER, body: crypto.randomBytes(3000), abortAfter: 1000 });
-    for (let k = 0; k < 20 && tmpLeft().length; k++) await sleep(100);
-    check('aborted upload: no temp file, nothing stored', r.aborted && tmpLeft().length === 0 && !stored('cut.png'), tmpLeft().join(','));
-
-    // A body that does not match its declared sha256 is refused.
-    r = await upload(port, api('corrupt.png'), { headers: { ...BEARER, 'X-Content-SHA256': sha(Buffer.from('something else')) }, body: PNG });
-    check('X-Content-SHA256 mismatch -> 400, nothing stored', r.status === 400 && !stored('corrupt.png') && tmpLeft().length === 0, `${r.status} ${r.body}`);
-    r = await upload(port, api('verified.png'), { headers: { ...BEARER, 'X-Content-SHA256': sha(PNG) }, body: PNG });
-    check('X-Content-SHA256 match -> 200', r.status === 200 && stored('verified.png'), `${r.status} ${r.body}`);
-
-    // Symlinks inside MEDIA_DIR are never followed.
-    fs.symlinkSync(path.join(outside, 'secret.png'), path.join(mediaDir, MEDIA_PROJECT, 'link.png'));
-    r = await request(port, `/media/${MEDIA_PROJECT}/link.png`, { headers: AUTH });
-    check('symlinked file in MEDIA_DIR is not served', r.status === 404 && !r.body.includes('FAKE_API_KEY'), String(r.status));
-    l = await list();
-    check('symlinked file in MEDIA_DIR is not listed', l.files?.every((f) => f.name !== 'link.png'), JSON.stringify(l.files));
-    r = await upload(port, api('link.png'), { headers: BEARER, body: PNG });
-    check('PUT over a symlink -> 400, its target untouched', r.status === 400 && fs.readFileSync(path.join(outside, 'secret.png'), 'utf8').startsWith('FAKE_API_KEY'), `${r.status} ${r.body}`);
-    fs.symlinkSync(outside, path.join(mediaDir, SYMDIR_PROJECT));
-    l = await list(SYMDIR_PROJECT);
-    check('symlinked project folder in MEDIA_DIR lists nothing', l.status === 200 && l.files?.length === 0, JSON.stringify(l.files));
-    r = await request(port, `/media/${SYMDIR_PROJECT}/secret.png`, { headers: AUTH });
-    check('symlinked project folder in MEDIA_DIR is not served', r.status === 404, String(r.status));
-    r = await upload(port, api('new.png', SYMDIR_PROJECT), { headers: BEARER, body: PNG });
-    check('PUT into a symlinked project folder -> 400, nothing written outside', r.status === 400 && !fs.existsSync(path.join(outside, 'new.png')), `${r.status} ${r.body}`);
-    r = await request(port, `/projects/${SYMDIR_PROJECT}`, { headers: AUTH });
-    check('symlinked project folder: gallery shows nothing from outside', r.status === 200 && !r.body.includes('secret.png'), String(r.status));
-
-    // Preview fallback: only <name>.preview.mp4 on the volume -> it plays, labelled "preview".
-    const prev = crypto.randomBytes(2000);
-    r = await upload(port, api('reel-9x16.preview.mp4'), { headers: BEARER, body: prev });
-    check('PUT a .preview.mp4 -> 200', r.status === 200, `${r.status} ${r.body}`);
-    r = await request(port, `/projects/${MEDIA_PROJECT}`, { headers: AUTH });
+    // The gallery and /videos come from the bucket listing.
+    const listsBefore = lists();
+    r = await get(`/projects/${BUCKET_PROJECT}`);
     check(
-      'gallery plays the preview when the master is missing',
-      r.status === 200 && r.body.includes(`<video controls playsinline preload="metadata" src="/media/${MEDIA_PROJECT}/reel-9x16.preview.mp4">`),
+      'gallery (bucket): plays the preview, downloads the master, shows the stills',
+      r.status === 200 &&
+        r.body.includes(`<video controls playsinline preload="metadata" src="/media/${BUCKET_PROJECT}/reel-9x16.preview.mp4">`) &&
+        r.body.includes(`href="/media/${BUCKET_PROJECT}/reel-9x16.mp4?download=1"`) &&
+        r.body.includes(`/media/${BUCKET_PROJECT}/cover.png`) &&
+        r.body.includes(`/media/${BUCKET_PROJECT}/${encodeURIComponent(cafe)}`),
       String(r.status),
     );
-    check('the preview is labelled "preview" and named after the master', /reel-9x16\.mp4<\/a> <span class="media-tag"[^>]*>preview<\/span>/.test(r.body));
-    r = await request(port, `/media/${MEDIA_PROJECT}/reel-9x16.preview.mp4`, { headers: { ...AUTH, Range: 'bytes=0-9' } });
-    check('preview from the volume supports Range (206)', r.status === 206 && r.headers['content-range'] === 'bytes 0-9/2000' && r.headers['content-type'] === 'video/mp4', `${r.status} ${r.headers['content-range']}`);
-    r = await request(port, `/media/${MEDIA_PROJECT}/reel-9x16.preview.mp4`, { headers: { ...AUTH, Range: 'bytes=5000-' } });
-    check('preview from the volume: unsatisfiable Range 416', r.status === 416, String(r.status));
-    r = await request(port, '/api/projects', { headers: AUTH });
-    const vp = JSON.parse(r.body).find((p) => p.folder === MEDIA_PROJECT);
-    check('/api/projects marks the volume preview', vp?.media.some((m) => m.path === 'reel-9x16.preview.mp4' && m.preview === true), JSON.stringify(vp?.media));
+    check('gallery (bucket): no subfolder, non-media, or out-of-outputs objects', !/deep\.png|notes\.txt|secret\.png|t\.png/.test(r.body));
+    r = await get(`/projects/${LOCAL_PROJECT}`);
+    check('gallery: a project with local outputs shows those (local wins)', r.body.includes(`/media/${LOCAL_PROJECT}/local.png`) && !r.body.includes('remote-only.png'));
+    r = await get('/videos');
+    const card = r.body.split('<section class="vcard').find((c) => c.includes(`id="video-${BUCKET_PROJECT}"`)) || '';
+    check('/videos (bucket): card with the preview player, versions and the script', card.includes(`src="/media/${BUCKET_PROJECT}/reel-9x16.preview.mp4#t=0.1"`) && card.includes(`href="/media/${BUCKET_PROJECT}/reel-9x16.mp4?download=1"`) && card.includes('Straight from the bucket.') && card.includes('#Bucket'), card.slice(0, 400));
+    check('/videos (bucket): nothing live', !liveDanger(r.body), liveDanger(r.body));
+    check('/videos: two voices: each row names its speaker, "how" without the tag', card.includes('<p class="vspeaker">Mel</p>') && card.includes('<p class="vspeaker">Him</p>') && card.includes('<p class="how">Bone-dry.</p>') && card.includes('<p class="how">Flat.</p>') && card.includes('2 voices: Mel, Him'), card.slice(card.indexOf('vscript'), card.indexOf('vscript') + 900));
+    check('/videos: two voices: Copy all says who reads each line, per-line Copy is the bare text', card.includes('data-copy="Mel: Straight from the bucket.\nHim: Right." aria-label="Copy all lines, with who reads each"') && card.includes('data-copy="Right." aria-label="Copy line 2"'), card.slice(card.indexOf('vscript-actions'), card.indexOf('vscript-actions') + 300));
+    check('/videos: one Copy per platform: the post text and its hashtags (escaped)', card.includes('data-copy="Reel post. &quot;Quoted&quot; &amp; &lt;b&gt;bold&lt;/b&gt;\n\n#Reel #Bucket" aria-label="Copy the Instagram Reels (Fri 9 Oct, 19:30 NZDT) post text and hashtags"') && card.includes('>Copy Instagram Reels</button>') && card.includes('data-copy="- Title: Bucket short"') && card.includes('>Copy YouTube Shorts</button>'), card.slice(card.indexOf('vcaption-actions'), card.indexOf('vcaption-actions') + 900));
+    check('/videos: the player sits in its sticky stage', /<div class="vstage"><div class="vplayer ar-9x16"><video id="vp-\d+"/.test(card), card.slice(0, 600));
+    r = await get(`/videos/${BUCKET_PROJECT}/voice-script.txt`);
+    check('voice-script.txt (two voices): "Mel: ..." per line', r.status === 200 && r.body === 'Mel: Straight from the bucket.\nHim: Right.\n', JSON.stringify(r.body));
+    r = await get('/videos');
+    await get('/projects');
+    check('the bucket listing is cached (one listing for several pages, continuation tokens followed)', lists() - listsBefore <= 1 && fake.log.some((e) => e.query['continuation-token']), `${lists() - listsBefore} listings`);
+    check('the studio only ever lists the bucket (no writes, every request signed)', fake.log.filter((e) => !e.presigned).every((e) => e.method === 'GET' && e.query['list-type'] === '2' && e.sigOk), JSON.stringify(fake.log.filter((e) => !e.presigned).map((e) => [e.method, e.key, e.sigOk])));
 
-    // Locally the master wins; local and volume files are merged by name, local first.
-    const localPng = fs.readFileSync(path.join(dir, 'projects', LOCAL_PROJECT, 'outputs', 'local.png'));
-    r = await upload(port, api('local.png', LOCAL_PROJECT), { headers: BEARER, body: crypto.randomBytes(500) });
-    r = await upload(port, api('remote.png', LOCAL_PROJECT), { headers: BEARER, body: PNG });
-    r = await upload(port, api('reel.preview.mp4', LOCAL_PROJECT), { headers: BEARER, body: crypto.randomBytes(100) });
-    r = await request(port, `/projects/${LOCAL_PROJECT}`, { headers: AUTH });
-    const body = r.body;
-    const count = (needle) => body.split(needle).length - 1;
-    check('local master shown, its preview hidden', body.includes(`src="/media/${LOCAL_PROJECT}/reel.mp4"`) && !body.includes('reel.preview.mp4') && !body.includes('class="media-tag"'), String(r.status));
-    check('gallery = local + volume, deduped by name', count(`<img src="/media/${LOCAL_PROJECT}/local.png"`) === 1 && count(`<img src="/media/${LOCAL_PROJECT}/remote.png"`) === 1);
-    r = await request(port, `/media/${LOCAL_PROJECT}/local.png`, { headers: AUTH });
-    check('/media prefers the local file over the volume copy', r.status === 200 && sha(r.raw) === sha(localPng), String(r.status));
-    r = await request(port, `/media/${LOCAL_PROJECT}/remote.png`, { headers: AUTH });
-    check('/media falls back to the volume', r.status === 200 && sha(r.raw) === sha(PNG), String(r.status));
+    // CSP lets the bucket's presigned media and images through, nothing else.
+    const csp = r.headers['content-security-policy'] || '';
+    check('CSP allows the bucket origin for media and images only', csp.includes(`media-src 'self' http://${fake.host}`) && csp.includes(`img-src 'self' data: http://${fake.host}`) && !/script-src[^;]*storage|script-src[^;]*127/.test(csp), csp);
 
-    // Delete: Bearer only.
-    r = await upload(port, api('verified.png'), { method: 'DELETE', headers: AUTH });
-    check('DELETE with Basic only -> 403', r.status === 403 && stored('verified.png'), String(r.status));
-    r = await upload(port, api('verified.png'), { method: 'DELETE' });
-    check('DELETE without auth -> 401', r.status === 401 && stored('verified.png'), String(r.status));
-    r = await upload(port, api('verified.png'), { method: 'DELETE', headers: BEARER });
-    check('DELETE with Bearer -> 200, file and sidecar gone', r.status === 200 && !stored('verified.png') && !stored('.verified.png.sha256'), `${r.status} ${r.body}`);
-    r = await request(port, `/media/${MEDIA_PROJECT}/verified.png`, { headers: AUTH });
-    check('deleted file is no longer served', r.status === 404, String(r.status));
-    r = await upload(port, api('verified.png'), { method: 'DELETE', headers: BEARER });
-    check('DELETE of a missing file -> 404', r.status === 404, String(r.status));
-    r = await upload(port, api('../clip.png'), { method: 'DELETE', headers: BEARER });
-    check('DELETE with a bad name -> 400', r.status === 400 && stored('clip.png'), String(r.status));
+    // The read-only media API.
+    for (const [label, headers] of [['Basic', AUTH], ['Bearer', BEARER]]) {
+      r = await request(port, `/api/media/${BUCKET_PROJECT}`, { headers });
+      let files = [];
+      try {
+        files = JSON.parse(r.body);
+      } catch {}
+      const names = files.map((f) => f.name).sort();
+      check(`GET /api/media/<project> (${label}) lists the bucket for that project`, r.status === 200 && r.headers['x-media-storage'] === 'bucket' && JSON.stringify(names) === JSON.stringify([cafe, 'cover.png', 'reel-9x16.mp4', 'reel-9x16.preview.mp4'].sort()) && files.every((f) => f.size > 0 && f.url.startsWith(`/media/${BUCKET_PROJECT}/`)), `${r.status} ${r.body}`);
+    }
+    // A Bearer client can't use /media (password only), so the API hands it
+    // presigned links, each for its own key, fetchable with no other auth.
+    r = await request(port, `/api/media/${BUCKET_PROJECT}`, { headers: BEARER });
+    let items = [];
+    try {
+      items = JSON.parse(r.body);
+    } catch {}
+    check(
+      'GET /api/media: every file carries presigned links for its own key on the bucket host',
+      items.length === 4 &&
+        items.every((f) => {
+          const a = new URL(f.signedUrl);
+          const b = new URL(f.signedDownloadUrl);
+          const keyPath = `/projects/${BUCKET_PROJECT}/outputs/${encodeKey(f.name)}`;
+          return a.host === fake.host && a.pathname === keyPath && b.host === fake.host && b.pathname === keyPath && !a.searchParams.has('response-content-disposition') && /^attachment; /.test(b.searchParams.get('response-content-disposition') || '');
+        }) &&
+        !r.body.includes(SECRET),
+      r.body.slice(0, 600),
+    );
+    const reelItem = items.find((f) => f.name === 'reel-9x16.mp4');
+    g = await getPresigned(fake, reelItem?.signedUrl || 'http://x/');
+    check('GET /api/media: a Bearer client fetches the file through signedUrl (no password)', g.status === 200 && sha256(g.raw) === sha256(reel), String(g.status));
+    g = await getPresigned(fake, reelItem?.signedDownloadUrl || 'http://x/');
+    check('GET /api/media: signedDownloadUrl comes back as an attachment', g.status === 200 && g.headers['content-disposition'] === 'attachment; filename="reel-9x16.mp4"', `${g.status} ${g.headers['content-disposition']}`);
+    const left = Date.parse(reelItem?.signedUntil || '') - Date.now();
+    check('GET /api/media: signedUntil says how long the links last (55 to 60 minutes)', left > 54.9 * 60_000 && left <= 60 * 60_000, reelItem?.signedUntil);
+    r = await request(port, `/media/${BUCKET_PROJECT}/reel-9x16.mp4`, { headers: BEARER });
+    check('/media still refuses the Bearer token (the API hands out links instead)', r.status === 401 && !r.headers.location, String(r.status));
 
+    r = await request(port, `/api/media/${BUCKET_PROJECT}`);
+    check('GET /api/media/<project> needs auth', r.status === 401, String(r.status));
+    r = await get('/api/media/2026-01-01-nope');
+    check('GET /api/media/<unknown project> -> 404', r.status === 404, String(r.status));
+    for (const method of ['PUT', 'DELETE']) {
+      r = await rawRequest(port, `/api/media/${BUCKET_PROJECT}/x.png`, { method, headers: BEARER, body: PNG });
+      check(`${method} /api/media/... -> 405, nothing reaches the bucket`, r.status === 405 && !fake.log.some((e) => e.method === method), `${r.status} ${r.body}`);
+    }
+    r = await get('/api/projects');
+    const bp = JSON.parse(r.body).find((p) => p.folder === BUCKET_PROJECT);
+    check('/api/projects (bucket): play/download URLs', bp?.media.some((m) => m.path === 'reel-9x16.mp4' && m.play === `/media/${BUCKET_PROJECT}/reel-9x16.preview.mp4` && m.download === `/media/${BUCKET_PROJECT}/reel-9x16.mp4?download=1`), JSON.stringify(bp?.media));
     const log = s.log();
-    check('media server log has no errors', !/failed:|Error/.test(log), log.split('\n').find((x) => /failed:|Error/.test(x)));
+    check('bucket server log has no errors and no credentials', !/failed:|Error/.test(log) && !log.includes(SECRET), log.split('\n').find((x) => /failed:|Error/.test(x)));
   } finally {
     stop(s);
   }
 
   try {
-    // The volume outlives deploys: a restart still serves what was uploaded, and
-    // clears uploads a crash left in .tmp.
-    await sleep(300);
-    const stale = path.join(mediaDir, '.tmp', 'stale-upload');
-    fs.writeFileSync(stale, 'half an upload');
-    const old = new Date(Date.now() - 60 * 60 * 1000);
-    fs.utimesSync(stale, old, old);
-    s = await startServer('media-restart', env);
-    const r = await request(s.port, `/api/media/${MEDIA_PROJECT}`, { headers: AUTH });
-    check('after a restart the volume files are still listed', r.status === 200 && JSON.parse(r.body).some((f) => f.name === 'reel-9x16.preview.mp4'), r.body);
-    check('startup clears stale temp uploads', !fs.existsSync(stale));
-
-    // tools/motion/sync-media.mjs against this server.
-    const url = `http://127.0.0.1:${s.port}`;
-    const env2 = { STUDIO_URL: url, STUDIO_API_TOKEN: TOKEN };
-    const listOf = async (project) => JSON.parse((await request(s.port, `/api/media/${project}`, { headers: AUTH })).body);
-    const localPreview = fs.readFileSync(path.join(dir, 'projects', LOCAL_PROJECT, 'outputs', 'reel.preview.mp4'));
-    const localPng = fs.readFileSync(path.join(dir, 'projects', LOCAL_PROJECT, 'outputs', 'local.png'));
-    let x = await runSync(['--root', dir, '--wait', '0'], env2);
-    let files = await listOf(LOCAL_PROJECT);
-    const byName = (n) => files.find((f) => f.name === n);
-    check('sync-media: exits 0 and prints a summary', x.code === 0 && /sync-media: \d+ projects, 2 uploaded/.test(x.out), x.out);
-    check('sync-media: changed file re-uploaded (local.png now matches)', byName('local.png')?.sha256 === sha(localPng), JSON.stringify(files));
-    check('sync-media: .preview.mp4 uploaded', byName('reel.preview.mp4')?.sha256 === sha(localPreview), JSON.stringify(files));
-    check('sync-media: master .mp4 never uploaded', !byName('reel.mp4'), JSON.stringify(files));
-    check('sync-media: remote-only files kept without --prune', !!byName('remote.png') && /only on the Studio/.test(x.out), x.out);
-    check('sync-media: never prints the token', !x.out.includes(TOKEN));
-    x = await runSync(['--root', dir, '--wait', '0'], env2);
-    check('sync-media: second run uploads nothing', x.code === 0 && / 0 uploaded/.test(x.out) && /[1-9]\d* unchanged/.test(x.out), x.out);
-    x = await runSync(['--root', dir, '--wait', '0', '--prune', '--dry-run'], env2);
-    check('sync-media: --prune --dry-run deletes nothing', x.code === 0 && /would delete {2}2026-10-03-qsme-nz-local\/remote\.png/.test(x.out) && !!(await listOf(LOCAL_PROJECT)).find((f) => f.name === 'remote.png'), x.out);
-    x = await runSync(['--root', dir, '--wait', '0', '--prune'], env2);
-    files = await listOf(LOCAL_PROJECT);
-    check('sync-media: --prune deletes files gone locally', x.code === 0 && !byName('remote.png') && !!byName('local.png'), x.out);
-
-    // Token and URL from .env; a project the deploy doesn't have yet is waited for, then reported.
-    const syncRoot = path.join(tmp, 'sync-root');
-    fs.mkdirSync(path.join(syncRoot, 'projects', '2026-10-04-not-deployed', 'outputs'), { recursive: true });
-    fs.writeFileSync(path.join(syncRoot, 'projects', '2026-10-04-not-deployed', 'outputs', 'a.png'), PNG);
-    fs.writeFileSync(path.join(syncRoot, '.env'), `# comment\nOTHER_KEY=x\nSTUDIO_API_TOKEN="${TOKEN}"\nSTUDIO_URL=${url}\n`);
-    const t0 = Date.now();
-    x = await runSync(['--root', syncRoot, '--wait', '2'], {});
-    check('sync-media: reads the token from .env, retries a 404 for --wait, then fails', x.code === 1 && /retrying/.test(x.out) && /didn't list it in time/.test(x.out) && Date.now() - t0 >= 2000, x.out);
-    check('sync-media: never prints the token from .env', !x.out.includes(TOKEN));
-    fs.writeFileSync(path.join(syncRoot, '.env'), `STUDIO_API_TOKEN=wrong-token-0123456789\nSTUDIO_URL=${url}\n`);
-    x = await runSync(['--root', syncRoot, '--wait', '0'], {});
-    check('sync-media: a wrong token stops with a clear message', x.code === 1 && /rejected STUDIO_API_TOKEN/.test(x.out) && !x.out.includes('wrong-token'), x.out);
-    x = await runSync(['--root', syncRoot], { STUDIO_URL: 'http://example.com', STUDIO_API_TOKEN: TOKEN });
-    check('sync-media: refuses to send the token over plain http to a remote host', x.code === 1 && /must be https/.test(x.out), x.out);
+    // A bucket that is down never takes a page down; presigning needs no network.
+    const closed = await freePort();
+    s = await startServer('bucket-down', { ...env, BUCKET_ENDPOINT: `http://localhost:${closed}` });
+    let r = await request(s.port, `/projects/${BUCKET_PROJECT}`, { headers: AUTH });
+    check('bucket down: project page 200 (no gallery)', r.status === 200 && r.body.includes('Nothing rendered yet'), String(r.status));
+    r = await request(s.port, '/videos', { headers: AUTH });
+    check('bucket down: /videos 200 (local cards only)', r.status === 200 && r.body.includes(`video-${LOCAL_PROJECT}`) && !r.body.includes(`video-${BUCKET_PROJECT}`), String(r.status));
+    r = await request(s.port, `/media/${BUCKET_PROJECT}/reel-9x16.mp4`, { headers: AUTH });
+    check('bucket down: /media still redirects (presigning is local)', r.status === 302, String(r.status));
+    check('bucket down: one warning, no crash, no credentials in the log', /bucket listing failed/.test(s.log()) && !s.log().includes(SECRET), s.log());
   } finally {
     stop(s);
   }
 
   try {
-    // Dev mode (no password) still needs the token to write.
-    s = await startServer('media-dev', { STUDIO_DEV: '1', STUDIO_API_TOKEN: TOKEN, STUDIO_CONTENT_ROOT: dir, MEDIA_DIR: mediaDir, MEDIA_MAX_BYTES: String(MAX_BYTES) }, { host: null });
-    let r = await upload(s.port, `/api/media/${MEDIA_PROJECT}/dev.png`, { body: PNG });
-    check('dev mode: PUT without the token -> 401', r.status === 401 && !stored('dev.png'), String(r.status));
-    r = await upload(s.port, `/api/media/${MEDIA_PROJECT}/dev.png`, { headers: { Authorization: `Basic ${Buffer.from('a:').toString('base64')}` }, body: PNG });
-    check('dev mode: PUT with Basic -> 401/403', [401, 403].includes(r.status) && !stored('dev.png'), String(r.status));
-    r = await upload(s.port, `/api/media/${MEDIA_PROJECT}/dev.png`, { headers: { Authorization: `Bearer ${TOKEN}` }, body: PNG });
-    check('dev mode: PUT with the token -> 200', r.status === 200 && stored('dev.png'), String(r.status));
+    // Half-configured bucket: a clear message, and the studio runs without it.
+    s = await startServer('bucket-partial', { STUDIO_PASSWORD: PASSWORD, STUDIO_CONTENT_ROOT: dir, BUCKET_NAME: BUCKET, BUCKET_SECRET_ACCESS_KEY: SECRET });
+    const r = await request(s.port, `/media/${BUCKET_PROJECT}/reel-9x16.mp4`, { headers: AUTH });
+    check('partial BUCKET_*: studio starts, says which are missing, media is local only', /media bucket disabled: bucket settings incomplete: BUCKET_ENDPOINT, BUCKET_ACCESS_KEY_ID/.test(s.log()) && /media: local outputs\/ only \(bucket disabled/.test(s.log()) && !s.log().includes(SECRET) && r.status === 404, `${r.status} ${s.log()}`);
   } finally {
     stop(s);
+  }
+
+  // ------------------------------------------------- tools/motion/sync-media.mjs
+  const sf = await startFakeS3({ pageSize: 3 });
+  const root = path.join(tmp, 'sync-root');
+  const sw = (rel, data) => {
+    fs.mkdirSync(path.dirname(path.join(root, rel)), { recursive: true });
+    fs.writeFileSync(path.join(root, rel), data);
+  };
+  const P1 = '2026-10-05-qsme-nz-sync';
+  const files = {
+    'a-9x16.mp4': crypto.randomBytes(5000),
+    'a-9x16.preview.mp4': crypto.randomBytes(900),
+    'cover.png': PNG,
+    'voice.m4a': crypto.randomBytes(300),
+    'still.JPG': crypto.randomBytes(200),
+    'café clip.mp4': crypto.randomBytes(400),
+    'master.MOV': crypto.randomBytes(700),
+    'loop.webm': crypto.randomBytes(350),
+  };
+  for (const [n, b] of Object.entries(files)) sw(`projects/${P1}/outputs/${n}`, b);
+  sw(`projects/${P1}/outputs/notes.txt`, 'not media');
+  sw(`projects/${P1}/outputs/sub/deep.png`, PNG);
+  sw(`projects/${P1}/outputs/.hidden.png`, PNG);
+  sw(`projects/${P1}/outputs/_draft.png`, PNG);
+  sw(`projects/${P1}/post.md`, '# Post\n');
+  sw('projects/_template/outputs/t.png', PNG);
+  fs.mkdirSync(path.join(root, 'projects', '2026-10-05-sym'), { recursive: true });
+  fs.symlinkSync(path.join(root, 'projects', P1, 'outputs'), path.join(root, 'projects', '2026-10-05-sym', 'outputs'));
+  const syncEnv = { BUCKET_NAME: BUCKET, BUCKET_ENDPOINT: sf.endpoint, BUCKET_REGION: 'auto', BUCKET_ACCESS_KEY_ID: AKID, BUCKET_SECRET_ACCESS_KEY: SECRET };
+  const key = (n) => `projects/${P1}/outputs/${n}`;
+  const noCreds = (out) => !out.includes(SECRET) && !out.includes(AKID);
+  const puts = () => sf.log.filter((e) => e.method === 'PUT').length;
+  try {
+    let x = await runSync(['--root', root], syncEnv);
+    check('sync-media: uploads masters, previews, stills and audio, prints a summary', x.code === 0 && /sync-media: 2 projects, 8 files, 8 uploaded \(0\.0 MB\), 0 unchanged \(skipped\), 0 deleted, 0 failed/.test(x.out), x.out);
+    check('sync-media: keys are projects/<p>/outputs/<file> (unicode and spaces too)', Object.keys(files).every((n) => sf.objects.get(key(n))?.body.equals(files[n])), [...sf.objects.keys()].join(', '));
+    check('sync-media: subfolders, other types, dot-files, symlinked outputs/ and _template stay local', [...sf.objects.keys()].every((k) => k.startsWith(`projects/${P1}/outputs/`) && !/deep|notes|hidden|_draft|t\.png/.test(k)), [...sf.objects.keys()].join(', '));
+    check('sync-media: reports names the Studio cannot serve', /skipped 1 .*_draft\.png/.test(x.out), x.out);
+    check('sync-media: right Content-Type per file', sf.objects.get(key('a-9x16.mp4'))?.type === 'video/mp4' && sf.objects.get(key('a-9x16.preview.mp4'))?.type === 'video/mp4' && sf.objects.get(key('cover.png'))?.type === 'image/png' && sf.objects.get(key('voice.m4a'))?.type === 'audio/mp4' && sf.objects.get(key('still.JPG'))?.type === 'image/jpeg');
+    check('sync-media: every type the Studio shows goes up (.mov and .webm too)', sf.objects.get(key('master.MOV'))?.type === 'video/quicktime' && sf.objects.get(key('loop.webm'))?.type === 'video/webm', `${sf.objects.get(key('master.MOV'))?.type} ${sf.objects.get(key('loop.webm'))?.type}`);
+    check('sync-media: stores x-amz-meta-sha256', Object.keys(files).every((n) => sf.objects.get(key(n))?.meta.sha256 === sha256(files[n])));
+    const putLog = sf.log.filter((e) => e.method === 'PUT');
+    check('sync-media: PUTs are signed, UNSIGNED-PAYLOAD, with Content-Length (never chunked)', putLog.length === 8 && putLog.every((e) => e.sigOk && e.headers['x-amz-content-sha256'] === 'UNSIGNED-PAYLOAD' && e.headers['content-length'] && !e.headers['transfer-encoding']), JSON.stringify(putLog.map((e) => [e.key, e.sigOk])));
+    check('sync-media: never prints the credentials', noCreds(x.out));
+
+    let before = puts();
+    x = await runSync(['--root', root], syncEnv);
+    check('sync-media: a second run uploads nothing (size + ETag)', x.code === 0 && / 0 uploaded/.test(x.out) && /8 unchanged/.test(x.out) && puts() === before, x.out);
+    sf.setEtagMode('opaque');
+    const heads = sf.log.filter((e) => e.method === 'HEAD').length;
+    x = await runSync(['--root', root], syncEnv);
+    check('sync-media: with non-MD5 ETags it compares x-amz-meta-sha256 (HEAD) and still uploads nothing', x.code === 0 && /8 unchanged/.test(x.out) && puts() === before && sf.log.filter((e) => e.method === 'HEAD').length - heads === 8, x.out);
+    sf.setEtagMode('md5');
+    const changed = crypto.randomBytes(5000);
+    fs.writeFileSync(path.join(root, 'projects', P1, 'outputs', 'a-9x16.mp4'), changed); // same size, new bytes
+    x = await runSync(['--root', root], syncEnv);
+    check('sync-media: a changed file (same size) is uploaded again', x.code === 0 && / 1 uploaded/.test(x.out) && sf.objects.get(key('a-9x16.mp4'))?.body.equals(changed), x.out);
+
+    sw(`projects/${P1}/outputs/new.png`, PNG);
+    before = puts();
+    x = await runSync(['--root', root, '--dry-run'], syncEnv);
+    check('sync-media --dry-run: lists and compares, sends nothing', x.code === 0 && /would upload {2}projects\/2026-10-05-qsme-nz-sync\/outputs\/new\.png/.test(x.out) && /1 to upload/.test(x.out) && puts() === before && !sf.objects.has(key('new.png')), x.out);
+
+    sf.put(key('old.png'), PNG, 'image/png');
+    sf.put(`projects/${P1}/outputs/sub/kept.png`, PNG, 'image/png');
+    sf.put('other/kept.png', PNG, 'image/png');
+    x = await runSync(['--root', root], syncEnv);
+    check('sync-media: objects with no local file are kept without --prune', x.code === 0 && sf.objects.has(key('old.png')) && /1 only in the bucket \(kept; --prune deletes\)/.test(x.out), x.out);
+    x = await runSync(['--root', root, '--prune', '--dry-run'], syncEnv);
+    check('sync-media --prune --dry-run deletes nothing', x.code === 0 && /would delete {2}projects\/2026-10-05-qsme-nz-sync\/outputs\/old\.png/.test(x.out) && sf.objects.has(key('old.png')), x.out);
+    x = await runSync(['--root', root, '--prune'], syncEnv);
+    check('sync-media --prune deletes only our objects with no local file', x.code === 0 && !sf.objects.has(key('old.png')) && sf.objects.has(`projects/${P1}/outputs/sub/kept.png`) && sf.objects.has('other/kept.png') && sf.objects.has(key('cover.png')) && /1 deleted/.test(x.out), x.out);
+    const empty = path.join(tmp, 'empty-root');
+    fs.mkdirSync(path.join(empty, 'projects'), { recursive: true });
+    x = await runSync(['--root', empty, '--prune'], syncEnv);
+    check('sync-media --prune with no local media refuses to empty the bucket', x.code === 1 && /nothing was deleted/.test(x.out) && sf.objects.has(key('cover.png')), x.out);
+
+    // Credentials from `railway variables --service studio --kv` (a fake railway on PATH).
+    const bin = path.join(tmp, 'bin');
+    fs.mkdirSync(bin);
+    const pwdFile = path.join(tmp, 'railway-pwd');
+    const fakeRailway = (body) => {
+      fs.writeFileSync(path.join(bin, 'railway'), `#!/bin/sh\n[ "$*" = "variables --service studio --kv" ] || { echo "unexpected: $*" >&2; exit 3; }\npwd -P > "${pwdFile}"\n${body}\n`);
+      fs.chmodSync(path.join(bin, 'railway'), 0o755);
+    };
+    fakeRailway(`cat <<'EOF'\nSTUDIO_PASSWORD=not-for-sync-0123456789\nBUCKET_NAME=${BUCKET}\nBUCKET_ENDPOINT=${sf.endpoint}\nBUCKET_REGION=auto\nBUCKET_ACCESS_KEY_ID=${AKID}\nBUCKET_SECRET_ACCESS_KEY=${SECRET}\nEOF`);
+    const pathEnv = { PATH: `${bin}${path.delimiter}${process.env.PATH}` };
+    x = await runSync(['--root', root, '--dry-run'], pathEnv);
+    check('sync-media: reads BUCKET_* from `railway variables --service studio --kv` in the repo root', x.code === 0 && /credentials from Railway/.test(x.out) && fs.existsSync(pwdFile) && fs.readFileSync(pwdFile, 'utf8').trim() === fs.realpathSync(ROOT), `${x.out} pwd=${fs.existsSync(pwdFile) ? fs.readFileSync(pwdFile, 'utf8').trim() : '-'}`);
+    check('sync-media: never prints what railway returned', noCreds(x.out) && !x.out.includes('not-for-sync'), x.out);
+    fakeRailway(`echo "Unauthorized. Please login with \\\`railway login\\\`" >&2\necho "BUCKET_SECRET_ACCESS_KEY=${SECRET}" >&2\nexit 1`);
+    x = await runSync(['--root', root], pathEnv);
+    check('sync-media: a railway failure stops with a clear message (and no secrets)', x.code === 1 && /could not read the bucket credentials/.test(x.out) && /Unauthorized/.test(x.out) && noCreds(x.out), x.out);
+    x = await runSync(['--root', root], { BUCKET_NAME: BUCKET });
+    check('sync-media: half-set BUCKET_* in the environment is refused', x.code === 1 && /incomplete: BUCKET_ENDPOINT/.test(x.out), x.out);
+    x = await runSync(['--root', root], { ...syncEnv, BUCKET_SECRET_ACCESS_KEY: 'wrong-secret-0123456789' });
+    check('sync-media: a wrong key fails cleanly (403 from the bucket), without echoing it', x.code === 1 && /403/.test(x.out) && !x.out.includes('wrong-secret'), x.out);
+  } finally {
+    await sf.close();
+    await fake.close();
     fs.rmSync(tmp, { recursive: true, force: true });
   }
 }
@@ -1172,12 +1673,13 @@ async function main() {
     await phaseStartup();
     await phaseThrottle();
     await phaseFixture();
-    await phaseMediaVolume();
+    await phaseBucket();
   } catch (e) {
     failed++;
     console.error(`\n  FAIL  ${e.stack || e}`);
   } finally {
     for (const c of children) c.kill('SIGKILL');
+    for (const d of tmpDirs) fs.rmSync(d, { recursive: true, force: true });
   }
   console.log(`\n${passed} passed, ${failed} failed (${((Date.now() - t) / 1000).toFixed(1)}s)`);
   process.exit(failed ? 1 : 0);

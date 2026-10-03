@@ -1,0 +1,11 @@
+{
+  "url": "https://www.qsme.co.nz/knowledge-hub/schedule",
+  "mobile": false,
+  "settle": 4,
+  "steps": [
+    { "eval": "(() => { const h = [...document.querySelectorAll('h2,h3')].find(x => /^Days off/i.test(x.textContent.trim())); if (h) { h.scrollIntoView({ block: 'start' }); window.scrollBy(0, -300); } })()" },
+    { "wait": 1.2 },
+    { "scroll": 160, "dur": 2.0 },
+    { "wait": 2.0 }
+  ]
+}

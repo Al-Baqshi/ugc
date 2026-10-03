@@ -64,12 +64,15 @@
 #hook .conf i { width: 12px; height: 12px; border-radius: 50%; background: var(--red); display: block; }
 #hook .l1 { margin-top: 22px; font: 700 96px/1 var(--display); letter-spacing: -0.035em; }
 #hook .l2 { margin-top: 12px; font: 700 64px/1.05 var(--display); letter-spacing: -0.025em; color: #DCE5DF; }
-#hook .l3 { margin-top: 14px; font: 700 96px/1 var(--display); letter-spacing: -0.035em; color: var(--amber); }
+#hook .l3 { transform-origin: 0 60%; margin-top: 14px; font: 700 96px/1 var(--display); letter-spacing: -0.035em; color: var(--amber); }
+/* dark strip under the clock chip so it never sits on live handwriting (until the filmed diary replaces S1) */
+#topscrim { left: 0; right: 0; top: 0; height: 150px; background: linear-gradient(180deg, rgba(10,12,11,.92) 0%, rgba(10,12,11,.8) 55%, rgba(10,12,11,0) 100%); }
 #hookscrim { left: 0; right: 0; top: 0; height: 560px; background: linear-gradient(180deg, rgba(10,12,11,.88) 0%, rgba(10,12,11,.72) 55%, rgba(10,12,11,0) 100%); }
 
 /* ---------- S2: nine months later ---------- */
 #s2 { background: #000; overflow: hidden; }
-#done { position: absolute; height: 1350px; width: 2400px; left: -1150px; top: 0; transform-origin: 1690px 600px; }
+/* scaled from the frame's right edge (1080 px on screen = 2230 px into the image) so the lit left window stays out of frame */
+#done { position: absolute; height: 1350px; width: 2400px; left: -1150px; top: 0; transform-origin: 2230px 600px; }
 #s2shade { background: linear-gradient(180deg, rgba(5,8,7,.55), rgba(5,8,7,.35) 45%, rgba(5,8,7,.7)); }
 #nine { left: 60px; right: 60px; top: 560px; text-align: center; font: 700 112px/1 var(--display); letter-spacing: -0.035em; color: #fff; text-shadow: 0 4px 30px rgba(0,0,0,.5); }
 #nine small { display: block; margin-top: 22px; font: 600 30px/1 var(--mono); letter-spacing: .14em; color: #D8E0DA; text-shadow: none; }
@@ -79,12 +82,11 @@
 .mail .who { font: 700 32px/1.1 Inter, sans-serif; }
 .mail .to { font: 400 24px/1.2 Inter, sans-serif; color: #6B6B70; margin-top: 4px; }
 .mail .when { margin-left: auto; font: 500 23px/1.2 Inter, sans-serif; color: #6B6B70; text-align: right; }
-.mail .subj { padding: 26px 36px 0; font: 700 40px/1.1 Inter, sans-serif; }
-.mail .body { padding: 20px 36px 36px; font: 400 34px/1.35 Inter, sans-serif; color: #2B2B2E; }
-.mail .q { margin: 14px 0 16px; font: 600 54px/1.18 Inter, sans-serif; color: #111; letter-spacing: -0.01em; }
+.mail .body { padding: 28px 36px 40px; font: 400 36px/1.35 Inter, sans-serif; color: #2B2B2E; }
+.mail .q { margin: 16px 0 0; font: 600 64px/1.16 Inter, sans-serif; color: #111; letter-spacing: -0.015em; }
 .mail .q mark { background: #FDE68A; color: #111; padding: 0 8px; border-radius: 8px; white-space: nowrap; }
 
-/* ---------- S4/S5: product recreations (light app style, labelled illustrative) ---------- */
+/* ---------- S4/S5: product recreations (light app style, labelled "Recreated screen · demo data") ---------- */
 .app { position: absolute; left: 50px; top: 186px; width: 980px; height: 830px; border-radius: 22px; overflow: hidden; background: #F5F7F6; box-shadow: 0 34px 80px rgba(0,0,0,.6); font-family: Inter, sans-serif; color: #0F172A; }
 .app .chrome { position: absolute; left: 0; right: 0; top: 0; height: 50px; background: #E6EAE7; display: flex; align-items: center; gap: 9px; padding: 0 20px; border-bottom: 1px solid #D3D9D5; z-index: 5; }
 .app .chrome i { width: 13px; height: 13px; border-radius: 50%; background: #C2C9C5; display: block; }
@@ -102,9 +104,6 @@
 
 /* schedule */
 .tbar { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px 12px; }
-.tabs { display: flex; gap: 4px; background: #E9EEEB; border-radius: 12px; padding: 4px; }
-.tabs span { padding: 9px 16px; border-radius: 9px; font: 600 18px/1 Inter, sans-serif; color: #5B6B78; }
-.tabs span.on { background: #fff; color: #0F172A; box-shadow: 0 1px 2px rgba(0,0,0,.08); }
 .chips { display: flex; gap: 8px; }
 .sch { display: inline-flex; align-items: center; gap: 7px; padding: 8px 13px; border-radius: 999px; background: #fff; border: 1.5px solid #E1E7E3; font: 600 17px/1 Inter, sans-serif; color: #334155; white-space: nowrap; }
 .sch b { font-weight: 800; }
@@ -131,8 +130,6 @@
 .bar.on { background: #16A34A; } .bar.bk { background: #2563EB; } .bar.pl { background: #94A3B8; }
 .bar.wait { background: #FFF4D6; border: 2.5px dashed #E39A0C; }
 #rainband { position: absolute; top: 0; bottom: 0; width: 53px; background: linear-gradient(180deg, rgba(56,152,236,.20), rgba(56,152,236,.12)); }
-#today { position: absolute; top: -64px; bottom: 0; width: 3px; background: #16A34A; }
-#today span { position: absolute; top: 2px; left: 50%; transform: translateX(-50%); background: #16A34A; color: #fff; font: 800 12px/1 Inter, sans-serif; letter-spacing: .06em; padding: 4px 6px; border-radius: 5px; }
 #raintag { position: absolute; top: 4px; width: 53px; display: flex; justify-content: center; }
 #raintag span { background: #2B7BC8; color: #fff; font: 700 12px/1 Inter, sans-serif; padding: 4px 5px; border-radius: 5px; white-space: nowrap; }
 .legend { position: absolute; left: 24px; right: 24px; top: 694px; display: flex; gap: 22px; font: 500 16px/1 Inter, sans-serif; color: #5B6B78; }
@@ -161,22 +158,11 @@
 .dfoot .lnk { font: 600 21px/1 Inter, sans-serif; color: #5B6B78; padding: 0 12px; }
 .dfoot .btn.primary { height: 58px; padding: 0 28px; font-size: 23px; }
 
-.drawer { position: absolute; right: 0; top: 50px; bottom: 0; width: 486px; background: #fff; box-shadow: -24px 0 50px rgba(0,0,0,.18); padding: 26px 26px; }
-.drawer h4 { display: flex; align-items: center; justify-content: space-between; font: 700 32px/1 Inter, sans-serif; }
-.drawer h4 span { font: 400 30px/1 Inter, sans-serif; color: #94A3B8; }
-.srch { margin-top: 18px; height: 50px; border-radius: 12px; border: 1.5px solid #DDE3E0; display: flex; align-items: center; gap: 10px; padding: 0 14px; font: 400 18px/1 Inter, sans-serif; color: #94A3B8; white-space: nowrap; overflow: hidden; }
-.hist { margin-top: 18px; border-radius: 16px; border: 2px solid #CFE3F6; background: #F5FAFF; padding: 18px 18px 16px; }
-.hist .hl { display: flex; align-items: center; gap: 10px; font: 700 26px/1.15 Inter, sans-serif; color: #0B3B6B; }
-.hist .hl svg { width: 28px; height: 28px; color: #2B7BC8; flex: none; }
-.hist .mt { margin-top: 6px; font: 500 17px/1.2 Inter, sans-serif; color: #5B6B78; }
-.hist .ln { margin-top: 14px; font: 600 18px/1.3 Inter, sans-serif; color: #1E293B; }
-.hist .ln small { display: block; font: 500 16px/1.35 var(--mono); color: #475569; margin-top: 3px; }
-.hist .ln.w small { color: #92400E; font-family: Inter, sans-serif; font-weight: 600; }
-.hist .undo { margin-top: 14px; display: inline-flex; height: 40px; align-items: center; padding: 0 16px; border-radius: 10px; border: 1.5px solid #CBD5E1; background: #fff; font: 600 18px/1 Inter, sans-serif; color: #334155; }
-.hist.old { border-color: #E6EBE8; background: #fff; opacity: .7; padding: 14px 18px; }
-.hist.old .hl { font-size: 21px; color: #334155; }
 
 /* daily log */
+.dmk { background: #F5F7F6; color: inherit; padding: 2px 10px; margin-left: -10px; border-radius: 8px; }
+.qcard .qh .dmk { margin-left: 0; font: 700 19px/1 Inter, sans-serif; padding: 4px 8px; }
+.wet { filter: saturate(.5) brightness(.94) contrast(1.06); }
 .compose { margin: 20px 24px 0; background: #fff; border: 1.5px solid #E1E7E3; border-radius: 16px; padding: 16px; display: flex; gap: 12px; align-items: center; }
 .compose .in { flex: 1; height: 52px; border-radius: 12px; border: 1.5px solid #DDE3E0; display: flex; align-items: center; padding: 0 16px; font: 400 20px/1 Inter, sans-serif; color: #94A3B8; }
 .dayh { margin: 22px 28px 10px; display: flex; align-items: baseline; gap: 14px; font: 800 27px/1 Inter, sans-serif; color: #0F172A; }
@@ -213,16 +199,9 @@
 .bub .pic { width: 330px; height: 228px; border-radius: 10px; background-size: cover; margin: 4px 0 10px; }
 .mine { position: absolute; right: 24px; background: #DCF5E3; border: 1.5px solid #BFE8CB; border-radius: 18px 6px 18px 18px; padding: 12px 16px; font: 400 21px/1.3 Inter, sans-serif; color: #12391F; }
 .mcomp { position: absolute; left: 24px; right: 24px; bottom: 18px; height: 56px; border-radius: 14px; border: 1.5px solid #DDE3E0; background: #fff; display: flex; align-items: center; padding: 0 18px; font: 400 20px/1 Inter, sans-serif; color: #94A3B8; }
-.more { position: absolute; right: -54px; top: 10px; width: 42px; height: 42px; border-radius: 50%; background: #fff; border: 1.5px solid #D3DAD6; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 6px rgba(0,0,0,.08); }
 .menu { position: absolute; background: #fff; border-radius: 16px; box-shadow: 0 20px 50px rgba(0,0,0,.25); border: 1px solid #E1E7E3; padding: 8px; width: 360px; }
 .menu .it { display: flex; align-items: center; gap: 12px; padding: 14px 14px; border-radius: 10px; font: 600 21px/1 Inter, sans-serif; color: #1E293B; white-space: nowrap; }
 .menu .it svg { width: 24px; height: 24px; flex: none; }
-.ptag { position: absolute; left: 14px; top: 46px; }
-.minilog { position: absolute; right: 22px; bottom: 90px; width: 450px; background: #fff; border-radius: 18px; border: 1.5px solid #E1E7E3; box-shadow: 0 24px 60px rgba(0,0,0,.28); padding: 16px 0 6px; }
-.minilog .mh { padding: 0 18px 12px; display: flex; align-items: baseline; gap: 10px; font: 800 23px/1 Inter, sans-serif; border-bottom: 1px solid #EEF2EF; }
-.minilog .mh span { font: 600 18px/1 Inter, sans-serif; color: #7A8794; }
-.minilog .ent { margin: 10px 12px 8px; border: 0; padding: 4px 6px; }
-.minilog .ent.dim2 { opacity: .55; }
 
 .cursor { position: absolute; left: 0; top: 0; width: 34px; height: 46px; z-index: 30; filter: drop-shadow(0 3px 4px rgba(0,0,0,.35)); }
 .clickfx { position: absolute; width: 56px; height: 56px; margin: -28px 0 0 -28px; border-radius: 50%; border: 3px solid rgba(22,163,74,.85); z-index: 29; }
@@ -275,8 +254,8 @@
 #end { background: var(--bg); }
 #logoEnd { position: absolute; left: 305px; top: 300px; width: 470px; }
 #cta { position: absolute; left: 0; right: 0; top: 860px; display: flex; justify-content: center; }
-#cta .pill { font-size: 40px; padding: 20px 40px; }
-#url { position: absolute; left: 0; right: 0; top: 990px; text-align: center; font: 700 64px/1 var(--display); letter-spacing: -0.02em; }
+#cta .pill { font-size: 52px; padding: 26px 54px; }
+#url { position: absolute; left: 0; right: 0; top: 1020px; text-align: center; font: 700 64px/1 var(--display); letter-spacing: -0.02em; }
 #line2 { position: absolute; left: 60px; right: 60px; text-align: center; font: 700 62px/1.1 var(--display); letter-spacing: -0.025em; }
 #line1 { position: absolute; left: 60px; right: 60px; top: 160px; text-align: center; font: 700 62px/1.1 var(--display); letter-spacing: -0.025em; }
 .toplogo { position: absolute; left: 60px; top: 74px; width: 190px; }

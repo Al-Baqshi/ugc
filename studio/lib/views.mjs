@@ -3,6 +3,7 @@
 
 import { html, raw, fmt, hueClass, prettyDate, prettyDateTimeUTC, numberWord, plural, truncate, humanize, smartQuotes } from './util.mjs';
 import { STATUS_ORDER } from './content.mjs';
+import { scriptText } from './videos.mjs';
 
 // ------------------------------------------------------------------ icons
 
@@ -20,6 +21,10 @@ const ICON = {
   list: svg('<path d="M3 5h14M3 10h14M3 15h14"/>', 'i', 16),
   theme: svg('<circle cx="10" cy="10" r="6.25"/><path d="M10 3.75v12.5" /><path d="M10 3.75a6.25 6.25 0 0 1 0 12.5z" fill="currentColor" stroke="none"/>', 'i', 16),
   doc: svg('<path d="M5.5 2.75h6l3.5 3.5v11h-9.5z"/><path d="M11.25 2.75v3.75H15"/>', 'i', 16),
+  play: raw('<svg class="i" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false"><path d="M4.5 2.75v10.5l8.75-5.25z" fill="currentColor"/></svg>'),
+  download: svg('<path d="M8 2.5v8M4.5 7 8 10.5 11.5 7M3 13.5h10"/>', 'i', 15, 16),
+  image: svg('<rect x="2.5" y="3" width="11" height="10" rx="1.5"/><circle cx="6" cy="6.5" r="1.1"/><path d="m3 12 3.5-3.5 2.5 2.5 1.5-1.5 3 3"/>', 'i', 15, 16),
+  copy: svg('<rect x="5.5" y="5.5" width="8" height="8.5" rx="1.5"/><path d="M10.5 5.5V3.5A1.5 1.5 0 0 0 9 2H4A1.5 1.5 0 0 0 2.5 3.5V9A1.5 1.5 0 0 0 4 10.5h1.5"/>', 'i', 14, 16),
 };
 
 // ----------------------------------------------------------------- pieces
@@ -28,6 +33,7 @@ const NAV = [
   ['/ideas', 'Ideas', 'ideas'],
   ['/ventures', 'Ventures', 'ventures'],
   ['/projects', 'Projects', 'projects'],
+  ['/videos', 'Videos', 'videos'],
   ['/research', 'Research', 'research'],
   ['/log', 'Log', 'log'],
   ['/learnings', 'Learnings', 'learnings'],
@@ -159,7 +165,10 @@ function freshness(ctx) {
   return '';
 }
 
-export function layout(ctx, { title, active = '', body, wide = false }) {
+// Page scripts beyond app.js: a fixed list, served from /assets/.
+const PAGE_SCRIPTS = new Set(['videos.js']);
+
+export function layout(ctx, { title, active = '', body, wide = false, scripts = [] }) {
   const v = ctx.assetVersion;
   return html`<!doctype html>
 <html lang="en">
@@ -178,6 +187,7 @@ export function layout(ctx, { title, active = '', body, wide = false }) {
 <link rel="stylesheet" href="/assets/styles.css?v=${v}">
 <script src="/assets/theme.js?v=${v}"></script>
 <script src="/assets/app.js?v=${v}" defer></script>
+${scripts.filter((n) => PAGE_SCRIPTS.has(n)).map((n) => html`<script src="/assets/${n}?v=${v}" defer></script>`)}
 </head>
 <body${wide ? raw(' class="is-wide"') : ''}>
 <a class="skip" href="#main">Skip to content</a>
@@ -668,22 +678,160 @@ export function projectPage(ctx, snap, p, tab) {
       : emptyState('No files yet.', 'Copy the template files into this folder to get started.')
   }
   <section class="gallery" aria-labelledby="outputs-h">
-    ${secTitle(html`<span id="outputs-h">Outputs</span>`)}
+    ${secTitle(html`<span id="outputs-h">Outputs</span>`, p.media.some((m) => m.kind === 'video' && !m.rel.includes('/')) ? ['/videos#' + encodeURIComponent(`video-${p.folder}`), 'Script view'] : null)}
     ${
       p.media.length
         ? html`<ul class="media-grid">${p.media.map((m) => {
-            const label = m.preview
-              ? html`<span class="media-name"><a href="${m.url}" target="_blank" rel="noopener">${m.master}</a> <span class="media-tag" title="Small preview copy. The full-quality master stays on the Mac.">preview</span></span>`
-              : html`<a href="${m.url}" target="_blank" rel="noopener">${m.rel}</a>`;
-            const cap = html`<figcaption class="media-cap">${label}<span>${bytes(m.size)}</span></figcaption>`;
+            const name = m.preview
+              ? html`<span class="media-name"><a href="${m.url}" target="_blank" rel="noopener">${m.master}</a> <span class="media-tag" title="Only the small preview copy is here.">preview</span></span>`
+              : html`<span class="media-name"><a href="${m.url}" target="_blank" rel="noopener">${m.rel}</a></span>`;
+            const dl = html`<a class="media-dl" href="${m.downloadUrl}" download title="${m.play !== m.rel ? 'Download the full-quality file (the player shows a small preview)' : 'Download'}">${ICON.download}<span>${bytes(m.size) || 'Download'}</span></a>`;
+            const cap = html`<figcaption class="media-cap">${name}${dl}</figcaption>`;
             if (m.kind === 'image') return html`<li><figure class="media media--image"><a href="${m.url}" target="_blank" rel="noopener"><img src="${m.url}" alt="${m.name}" loading="lazy" decoding="async"></a>${cap}</figure></li>`;
-            if (m.kind === 'video') return html`<li><figure class="media media--video"><video controls playsinline preload="metadata" src="${m.url}"></video>${cap}</figure></li>`;
+            if (m.kind === 'video') return html`<li><figure class="media media--video"><video controls playsinline preload="metadata" src="${m.playUrl}"></video>${cap}</figure></li>`;
             return html`<li><figure class="media media--audio"><audio controls preload="none" src="${m.url}"></audio>${cap}</figure></li>`;
           })}</ul>`
         : html`<p class="sec-note">Nothing rendered yet. Files dropped in <code>projects/${p.folder}/outputs/</code> show up here.</p>`
     }
   </section>`;
   return layout(ctx, { title: p.title, active: 'projects', body });
+}
+
+// ------------------------------------------------------------------ videos
+
+const seconds = (n) => `${n.toFixed(1)}s`;
+const shortDate = (d) => prettyDate(d).replace(/ \d{4}$/, '');
+const cardId = (folder) => `video-${folder}`;
+
+/** A pill button; with `copy` it copies that text (videos.js), no inline handlers. */
+function copyButton(textToCopy, label, aria = '') {
+  return html`<button type="button" class="pbtn" data-copy="${textToCopy}"${aria ? html` aria-label="${aria}"` : ''}>${label}</button>`;
+}
+
+function videoVersions(card, vid) {
+  const rows = card.versions.map(
+    (v) => html`<li class="version${v === card.main ? ' is-current' : ''}">
+      <button type="button" class="vbtn" data-play="${vid}" data-src="${v.playUrl}" data-aspect="${v.aspect}" aria-pressed="${v === card.main ? 'true' : 'false'}" aria-label="Play ${v.label}${v.matchesScript && card.script ? ' (script timing)' : ''}">${ICON.play}</button>
+      <span class="vname"><span>${v.label}${v.matchesScript && card.script ? html`<span class="vnote">script timing</span>` : ''}${v.preview ? html`<span class="media-tag">preview only</span>` : ''}</span><small title="${v.master || v.rel}">${v.master || v.rel}</small></span>
+      <a class="vdl" href="${v.downloadUrl}" download aria-label="Download ${v.master || v.rel}, full quality${v.size ? `, ${bytes(v.size)}` : ''}">${ICON.download}<span>${bytes(v.size) || 'Download'}</span></a>
+    </li>`,
+  );
+  const stills = card.stills.map(
+    (m) => html`<li class="version">
+      <a class="vbtn" href="${m.url}" target="_blank" rel="noopener" aria-label="Open ${m.rel}">${ICON.image}</a>
+      <span class="vname"><span>Image</span><small title="${m.rel}">${m.rel}</small></span>
+      <a class="vdl" href="${m.downloadUrl}" download aria-label="Download ${m.rel}${m.size ? `, ${bytes(m.size)}` : ''}">${ICON.download}<span>${bytes(m.size) || 'Download'}</span></a>
+    </li>`,
+  );
+  return html`<p class="vhint">${ICON.play} plays a light preview here · ${ICON.download} saves the full-quality file</p>
+    <ul class="versions" aria-label="Versions">${rows}${stills}</ul>`;
+}
+
+function videoScript(card, vid, k) {
+  const s = card.script;
+  if (!s) {
+    return html`<div class="vscript vscript--none"><p class="sec-note">No voice script yet. It shows here once the project has a <code>vo-script.json</code>.</p></div>`;
+  }
+  const multi = s.speakers.length > 1;
+  return html`<div class="vscript">
+    <div class="vscript-head">
+      <div>
+        <h3 class="vscript-title">Voice script</h3>
+        <p class="vscript-meta">${plural(s.lines.length, 'line')}${multi ? ` · ${s.speakers.length} voices: ${s.speakers.join(', ')}` : ''} · timing matches <code>${card.scriptVideoName}</code> · QSME is said “Cue Ess Me”</p>
+      </div>
+      <div class="vscript-actions">
+        ${copyButton(scriptText(s).trimEnd(), 'Copy all', multi ? 'Copy all lines, with who reads each' : 'Copy all lines')}
+        <a class="pbtn" href="/videos/${encodeURIComponent(card.folder)}/voice-script.txt" download>${ICON.download}<span>.txt</span></a>
+      </div>
+    </div>
+    ${s.character ? html`<details class="vwho"><summary>Who is speaking</summary><p>${s.character}</p></details>` : ''}
+    <ol class="vlines" id="vl-${k}">
+      ${s.lines.map(
+        (l, i) => html`<li class="vline" data-start="${l.start}" data-end="${l.end}">
+          <button type="button" class="vtime" data-seek="${vid}" data-start="${l.start}" aria-label="Play from ${seconds(l.start)}">${seconds(l.start)}</button>
+          <div class="vline-body">
+            ${multi && l.speaker ? html`<p class="vspeaker">${l.speaker}</p>` : ''}
+            <p class="say">${l.say}</p>
+            ${l.how ? html`<p class="how">${l.how}</p>` : ''}
+            <details class="vmore"><summary>Details</summary>
+              <dl class="vfacts">
+                ${l.onScreen ? html`<div><dt>On screen</dt><dd>${l.onScreen}</dd></div>` : ''}
+                ${l.delivery ? html`<div><dt>Direction</dt><dd>${l.delivery}</dd></div>` : ''}
+                <div><dt>Recording</dt><dd>Save as <code>${l.id}.m4a</code> · must fit in ${seconds(l.max)}</dd></div>
+              </dl>
+            </details>
+          </div>
+          ${copyButton(l.say, 'Copy', `Copy line ${i + 1}`)}
+        </li>`,
+      )}
+    </ol>
+    <p class="vrec">Record it yourself: one voice memo per line, saved with the name under each line's details. Put them in <code>projects/${card.folder}/outputs/vo/incoming/</code> (or send them in chat) and say “VO files are in”.</p>
+  </div>`;
+}
+
+function videoCard(snap, card, k) {
+  const vid = `vp-${k}`;
+  const p = card.project;
+  return html`<section class="vcard${card.main.aspect === '16x9' ? ' vcard--land' : ''}" id="${cardId(card.folder)}" aria-labelledby="vt-${k}">
+    <header class="vcard-head">
+      <p class="vcard-meta">${card.venture ? vtag(snap, card.venture) : ''}${card.date ? dateTag(card.date) : ''}${card.status ? html`<span class="vcard-status">${truncate(card.status, 90)}</span>` : ''}</p>
+      <h2 class="vcard-title" id="vt-${k}"><a href="${p.url}">${card.title}</a></h2>
+    </header>
+    <div class="vgrid">
+      <div class="vleft">
+        <div class="vstage"><div class="vplayer ar-${card.main.aspect}"><video id="${vid}" controls playsinline preload="metadata" src="${card.main.playUrl}#t=0.1"${card.script ? html` data-lines="vl-${k}"` : ''}></video></div></div>
+        ${videoVersions(card, vid)}
+      </div>
+      ${videoScript(card, vid, k)}
+    </div>
+    ${
+      card.caption
+        ? html`<details class="vcaption"><summary>Post caption &amp; hashtags</summary>
+            <div class="vcaption-body">
+              <div class="vcaption-actions">
+                ${copyButton(card.caption.text, 'Copy caption', 'Copy the whole caption section')}
+                ${(card.caption.parts || []).map((part) => html`<button type="button" class="pbtn" data-copy="${part.text}" aria-label="Copy the ${part.title} ${part.quoted ? 'post text and hashtags' : 'section'}" title="${part.quoted ? 'The post text and its hashtags, ready to paste' : 'This section as plain text'}">Copy ${part.label}</button>`)}
+              </div>
+              ${prose(card.caption.html, 'prose--small')}
+            </div>
+          </details>`
+        : ''
+    }
+  </section>`;
+}
+
+export function videosPage(ctx, snap, cards, query) {
+  const venture = query.get('venture') || '';
+  const ventures = [...new Set(cards.map((c) => c.venture).filter(Boolean))].sort();
+  const shown = venture ? cards.filter((c) => c.venture === venture) : cards;
+  const chips = html`<nav class="chips" aria-label="Filter by venture">
+    <a class="chip" href="/videos"${!venture ? raw(' aria-current="true"') : ''}>All <span class="chip-n">${cards.length}</span></a>
+    ${ventures.map(
+      (n) => html`<a class="chip" href="/videos?venture=${encodeURIComponent(n)}"${venture === n ? raw(' aria-current="true"') : ''}><i class="dot ${hueClass(n)}" aria-hidden="true"></i>${ventureLabel(snap, n)} <span class="chip-n">${cards.filter((c) => c.venture === n).length}</span></a>`,
+    )}
+  </nav>`;
+  const jump = shown.length > 1
+    ? html`<nav class="vjump" aria-label="Jump to a video">${shown.map(
+        (c) => html`<a href="#${encodeURIComponent(cardId(c.folder))}">${c.date ? html`<b>${shortDate(c.date)}</b>` : ''}<span>${c.title}</span></a>`,
+      )}</nav>`
+    : '';
+  const body = html`
+  ${pageHead({
+    eyebrow: 'Production',
+    title: 'Videos',
+    dek: shown.length
+      ? `${plural(shown.length, 'video')}${venture ? ` for ${ventureLabel(snap, venture)}` : ''}, in publishing order, each with its own voice script beside it. Press play and the line being spoken lights up; tap a time to jump there.`
+      : '',
+  })}
+  <div class="toolbar">${chips}</div>
+  ${jump}
+  ${
+    shown.length
+      ? shown.map((c) => videoCard(snap, c, cards.indexOf(c)))
+      : emptyState(venture ? `No videos for ${ventureLabel(snap, venture)} yet.` : 'No videos yet.', html`A project shows here once its <code>outputs/</code> has an MP4.`)
+  }
+  <p class="vh" id="copy-status" aria-live="polite"></p>`;
+  return layout(ctx, { title: 'Videos', active: 'videos', body, wide: true, scripts: ['videos.js'] });
 }
 
 // ------------------------------------------------------- research and log

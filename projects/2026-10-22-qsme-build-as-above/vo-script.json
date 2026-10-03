@@ -1,0 +1,148 @@
+{
+  "venture": "qsme-build",
+  "video": "outputs/as-above-4x5.mp4",
+  "character": "Sam, a fictional Kiwi site manager (late 30s to 40s), the 'Sam' in the email and 'Sam K.' in the daily log. General urban New Zealand accent (Auckland or Wellington), not broad, not Australian. Dry, low and a bit sheepish: this is a confession to a mate in the site office, not a performance, so the joke is on the speaker, never on other site managers. The diary lines are read flat with a natural downstep (Monday a full sentence, Wednesday flatter, 'Ditto' the flattest). The product lines are the same person, a touch more awake, still with no announcer lift and no tagline cadence. Sam never says he uses QSME or that it saved him anything: product lines are plain instructions and observations, never a testimonial. It's an AI voice, so it never speaks as the founder and never says 'we built'. QSME is said only in the CTA, as 'Q-S-me' (kyoo-ess-mee). Casting: the same Kiwi QS voice as 'Six bids', 'Column H' and 'Day 23' (shortlist Arnold bISW1PJRBPT7aRbtPJlB, James QlZn2MPaf2jDn0461bnj), or an A/B with a Kiwi woman's voice (Sam works either way).",
+  "casting_line": "Confession. Site diary gets done Friday afternoon. Wednesday gets as above. Ditto.",
+  "settings": {
+    "model": "eleven_multilingual_v2",
+    "stability": 0.45,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "speed": 1,
+    "use_speaker_boost": true
+  },
+  "continuous_read_v2": "Confession. Site diary gets done Friday afternoon.\n\nMonday gets a paragraph.\n\nWednesday gets as above.\n\nDitto.\n\nNine months later.\n\nIt was. I think.\n\nLog the rain day once.\n\nIt's already in the diary.\n\nPhotos land on the day you post them.\n\nNot on Friday.\n\nIt writes the bits you'd forget by Friday.\n\nBook a thirty-minute demo at Q-S-me dot build.",
+  "lines": [
+    {
+      "id": "01-hook",
+      "start_s": 0.15,
+      "max_s": 2.5,
+      "on_screen": "CONFESSION pill · 'Site diary.' / 'Written Friday, 4:52pm.' (frame 0) · 'For Monday.' slams in amber at 0.55 · overhead paper diary, the pen writing Monday's entries",
+      "text_v2": "Confession. Site diary gets done Friday afternoon.",
+      "text_v3": "[sighs] Confession. Site diary gets done Friday afternoon.",
+      "delivery": "Low, dry and a little sheepish, like owning up to a mate across the desk. A tiny pause after 'Confession.' Dropped subject, natural Kiwi accent. 'Afternoon' (not 'arvo': the Global audience is UK and Gulf contractors and QS practices), said plainly. Falls at the end. Out by 2.65, before 'Monday gets a paragraph.' appears."
+    },
+    {
+      "id": "02-monday",
+      "start_s": 2.7,
+      "max_s": 1.45,
+      "on_screen": "'Monday gets a paragraph.' (2.65 to 4.25) · clock chip FRI 16 OCT · 4:52 PM · Monday's four handwritten lines",
+      "text_v2": "Monday gets a paragraph.",
+      "text_v3": "Monday gets a paragraph.",
+      "delivery": "Matter-of-fact, almost proud of Monday. Light lean on 'paragraph'. Cut 02, 03 and 04 from one take so the week drops a step in pitch and energy with each line. Out by 4.15, as the rain comes in."
+    },
+    {
+      "id": "03-wednesday",
+      "start_s": 6.05,
+      "max_s": 1.45,
+      "on_screen": "'Wednesday gets “As above.”' (6.0 to 7.6) · the pen writes 'As above.' on Wednesday (6.15), then Thursday (6.7)",
+      "text_v2": "Wednesday gets as above.",
+      "text_v3": "Wednesday gets as above.",
+      "delivery": "Lower and flatter than Monday, a shrug in the voice. Say 'as above' as a quote, slightly slower, no air quotes in the tone. Out by 7.5."
+    },
+    {
+      "id": "04-ditto",
+      "start_s": 7.75,
+      "max_s": 0.6,
+      "on_screen": "Friday 'Ditto.' written (7.7 to 7.95) and underlined (7.95 to 8.08) after the Wednesday caption has gone · the camera pulls back on the whole shrinking week (7.8 to 8.22) · clock FRI 16 OCT · 4:58 PM",
+      "text_v2": "Ditto.",
+      "text_v3": "Ditto.",
+      "delivery": "The flattest, lowest word in the piece. Dead stop. No smile, no breath after. Out by 8.35 so the cut to 'Nine months later.' (8.5) lands in silence."
+    },
+    {
+      "id": "05-nine-months",
+      "start_s": 8.55,
+      "max_s": 0.95,
+      "on_screen": "'Nine months later.' slams over the finished townhouses (8.5), then rises to the top as the email arrives (9.1)",
+      "text_v2": "Nine months later.",
+      "text_v3": "Nine months later.",
+      "delivery": "Plain narrator aside, slightly slower, a hint of dread. Falls. Out by 9.5 so the email chime (9.5) plays clean."
+    },
+    {
+      "id": "06-it-was",
+      "start_s": 12.0,
+      "max_s": 1.3,
+      "on_screen": "Back on the diary's Tuesday (11.8): red ring round 'Works progressed.' (11.92 to 12.32), red '?' in the blank WEATHER box (12.3) · 'It was.' (12.05) / 'Probably.' (12.55, amber)",
+      "text_v2": "It was. I think.",
+      "text_v3": "It was. [pause] I think.",
+      "delivery": "'It was.' confident, then a beat, then 'I think.' smaller and less sure: the whole joke in two words. The caption says 'Probably.' on purpose; the VO keeps 'I think.' as briefed. Out by 13.3, before the swipe (13.3)."
+    },
+    {
+      "id": "07-log-once",
+      "start_s": 13.85,
+      "max_s": 1.8,
+      "on_screen": "QSME (recreated screen, demo data): Schedule → 'Rain day' clicked (13.85), dialog (14.0), Tue 13 ticked (14.36), 'Push these tasks' (15.2), the chain slides a day (15.42 to 15.82) · caption 'Log the rain day once.' (13.52)",
+      "text_v2": "Log the rain day once.",
+      "text_v3": "Log the rain day once.",
+      "delivery": "Same voice, a touch brighter, like showing a mate the trick. Light lean on 'once', falling. Not a sell. Out by 15.65; the 'Push these tasks' click (15.2) can sit under the end of the line."
+    },
+    {
+      "id": "08-in-the-diary",
+      "start_s": 16.5,
+      "max_s": 1.7,
+      "on_screen": "Hard cut to the Daily log (16.36): 'Tue 13 Oct' gets the email's yellow marker (16.5 to 16.8), 'Rain day' (16.68) and 'Schedule change' (16.9) write themselves in · captions 'Log the rain day once.' (dimmed) / 'It writes itself into the diary.' (16.36 to 18.46)",
+      "text_v2": "It's already in the diary.",
+      "text_v3": "It's already in the diary.",
+      "delivery": "Mild, pleased surprise, kept small. Lean on 'already'. 'It' is the rain day: never read it as 'it writes the diary'. Out by 18.2."
+    },
+    {
+      "id": "09-photos",
+      "start_s": 18.65,
+      "max_s": 2.9,
+      "on_screen": "Project chat (18.55): Mia T. 'Rained off. Packing up.' then her photo 'Where we got to before the rain.' → click the photo (19.24) → 'Mark as proof of work' (19.68) → hard cut to the Daily log (19.85), where 'Proof of work · Mia T. · 11:42' lands under Tue 13 Oct (19.98 to 20.2) · caption 'Photos land on the day / you post them.' (18.6)",
+      "text_v2": "Photos land on the day you post them.",
+      "text_v3": "Photos land on the day you post them.",
+      "delivery": "Even and unhurried, one phrase. Light lean on 'day'. Out by 21.55 (the phone swipes in at 20.85; the line can run under it)."
+    },
+    {
+      "id": "10-not-friday",
+      "start_s": 22.15,
+      "max_s": 0.95,
+      "on_screen": "Phone browser at app.qsme.build: Add photo (21.38) → Take a photo (21.8) → shutter (21.96) → 'Site photo · Sam K. · 11:51' (standing water on site) lands under Tue 13 Oct (22.06 to 22.32) · 'Not on Friday.' slams in amber (22.12)",
+      "text_v2": "Not on Friday.",
+      "text_v3": "Not on Friday.",
+      "delivery": "Dry callback, a half-smile. Lean on 'Friday'. Out by 23.1; it may tail under the swipe to the close (22.9 to 23.2)."
+    },
+    {
+      "id": "11-the-bits",
+      "start_s": 23.6,
+      "max_s": 2.8,
+      "on_screen": "'It doesn't write the whole diary.' (23.02, read in silence) · paper Tuesday ('Works progressed.', weather blank, 'PAPER · WRITTEN FRI 4:53 PM') beside the QSME Tuesday card ('Daily log · Tue 13 Oct' in yellow marker at 23.5: Rain day 11:06 · Schedule change 11:06 · Proof of work 11:42 · Site photo 11:51) · 'It writes the bits / you'd forget by Friday.' (23.6)",
+      "text_v2": "It writes the bits you'd forget by Friday.",
+      "text_v3": "It writes the bits you'd forget by Friday.",
+      "delivery": "Honest and low-key, the payoff said like a tip, not a slogan. Lean on 'bits' (it's the qualifier: only some entries write themselves) and a small dry lean on 'Friday'. Falls. Out by 26.4; the line rises into the end card under it (25.52 to 25.92)."
+    },
+    {
+      "id": "12-cta",
+      "start_s": 26.4,
+      "max_s": 2.8,
+      "on_screen": "End card fades in under the close (25.5): QSME logo (25.55) · 'It writes the bits / you'd forget by Friday.' · pill 'Book a 30-minute demo' (25.8) · 'qsme.build' (25.95 to 29.25)",
+      "text_v2": "Book a thirty-minute demo at Q-S-me dot build.",
+      "text_v3": "Book a thirty-minute demo at Q-S-me dot build.",
+      "delivery": "One easy breath, a plain invitation to a colleague, not a sell. Light lean on 'book' and 'demo'. Say Q-S-me evenly (kyoo-ess-mee), no rise on 'build'. Regenerate any take that says 'kiss me' or spells four letters. Never add 'free' or any pricing (owner rule 2026-10-03). Out by 29.2 so the music resolves on its own."
+    }
+  ],
+  "silent_beats": [
+    "2.65 to 2.7: tiny gap between the hook and Monday",
+    "4.15 to 6.05: Tuesday. Rain on a tin roof and the pen writing 'Works progressed.' under the caption 'Tuesday: rained off.' No voice: the rain says it",
+    "9.5 to 12.0: the email ('Hi Sam, / Was Tue 13 Oct a rain day?'), time to read it, one generic mail chime at 9.5, then the hard cut back to the diary at 11.8",
+    "13.3 to 13.85: the swipe into QSME (13.3 to 13.6), music in at 13.3",
+    "15.65 to 16.5: the chain slides a day, then the hard cut to the Daily log (16.36)",
+    "23.1 to 23.6: the swipe to the close and 'It doesn't write the whole diary.' read in silence",
+    "29.2 to 29.25: music tail on the end card"
+  ],
+  "post_processing": [
+    "Primary source: render continuous_read_v2 three times on the chosen voice, slice it and place each piece at its start_s. Lines 02 to 04 must come from one take (a natural downstep through the week). Use per-line renders only as patches, with previous_text/next_text so the intonation carries over. Keep the least polished take.",
+    "Room tone bed: 60 s of a real quiet site office (fridge hum, distant traffic) recorded on a phone, under the whole 29.25 s at about -50 dBFS so silences never drop to digital zero.",
+    "EQ for a phone voice memo: high-pass 90 Hz, -2 dB shelf above 10 kHz, light de-ess. Compression 2:1 to 3:1, 3 to 4 dB GR. VO about -16 LUFS short-term; master -14 LUFS integrated, -1 dBTP. No reverb.",
+    "SFX synced to picture, ducked 10 to 12 dB under any word they overlap: pen scratch 0.0 to 2.36, 4.4 to 5.0, 6.15 to 6.5, 6.7 to 7.0, 7.7 to 7.95 (harder, 'Ditto'), ditto-mark ticks 6.05, 6.6 and 7.1, underline flick 7.95 to 8.08; a kettle clicking off at 1.6; rain on a tin roof 4.15 to 5.95 (fade in and out over 0.2 s); a low soft hit on 'Nine months later.' 8.5; one generic mail chime 9.5 (nothing that sounds like Outlook or Gmail); marker squeaks 11.92 to 12.32 (the ring) and 12.3 to 12.5 (the '?'); soft thuds on 'It was.' 12.05 and 'Probably.' 12.55; swipe whoosh 13.3 to 13.6; trackpad clicks 13.85, 14.36, 15.2, 19.24, 19.68; soft ticks as the log entries write in 16.68 and 16.9; a light pop as the proof-of-work entry lands in the log 20.0; phone taps 21.38 and 21.8; a soft camera shutter 21.96; swipe 22.9 to 23.2; paper slide 23.1. No OS-branded sounds.",
+    "Music: none under the skit (0 to 13.3). Enters on the swipe into QSME at 13.3, sits about 18 dB under the VO, dips for the shutter at 21.96 and resolves on one held chord at about 29.05.",
+    "Never time-stretch more than about 4%; if a take runs past max_s, use another take.",
+    "Bounce a mono VO stem and mux it onto outputs/as-above-4x5.mp4 with tools/mux as a separate track. If the 9:16 cut is built later on the same timeline, the same stem fits it."
+  ],
+  "total_characters": 325,
+  "changelog": [
+    "2026-10-04 first version, timed on the rendered 29.25 s 4:5 MP4 (outputs/as-above-4x5.mp4; output times after the edit list in motion/as-above.js). Product lines are instructions, not a testimonial; the payoff line says 'you'd' to match the caption. No API was called.",
+    "2026-10-04 (review pass) retimed on the re-rendered 29.25 s cut: the desk runs 1.2 s longer (diary captions 1.6 to 1.7 s each, 'Ditto.' after the Wednesday caption), the 'What happened' beat is cut, so line 08 'On the day.' is dropped (12 lines), and the Daily log caption holds 2.1 s. Hook says 'Friday afternoon', not 'arvo' (international English for the Global audience; the accent stays natural Kiwi). Story fix: Tuesday is rained off, so no VO change was needed there. No API was called."
+  ]
+}

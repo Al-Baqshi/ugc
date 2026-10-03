@@ -1,4 +1,4 @@
-// UGC Studio client: local times, theme toggle, project tabs, and search.
+// UGC Studio client: local times, theme toggle, project tabs, media link refresh, and search.
 (function () {
   'use strict';
   var $ = function (s, el) { return (el || document).querySelector(s); };
@@ -101,6 +101,32 @@
     });
   }
 
+  // ------------------------------------------------------------------ media
+  // On the deploy, media comes from signed bucket links that last about an
+  // hour, and a player keeps re-using the link it was redirected to. On a page
+  // left open longer, the next seek into unbuffered video fails (403). Ask
+  // /media again (a fresh link) and carry on from the same moment. At most one
+  // retry a minute per player, so a file that is really gone stays failed.
+  $$('video, audio').forEach(function (m) {
+    var last = 0;
+    var playing = false;
+    m.addEventListener('playing', function () { playing = true; });
+    m.addEventListener('pause', function () { playing = false; });
+    m.addEventListener('error', function () {
+      if (!m.error || m.error.code === 1 || !m.getAttribute('src')) return; // 1: aborted by the page
+      if (Date.now() - last < 60000) return;
+      last = Date.now();
+      var at = m.currentTime || 0;
+      var resume = playing;
+      m.addEventListener('loadedmetadata', function once() {
+        m.removeEventListener('loadedmetadata', once);
+        if (at > 0) { try { m.currentTime = at; } catch (e) {} }
+        if (resume) { var p = m.play(); if (p && typeof p.catch === 'function') p.catch(function () {}); }
+      });
+      m.load();
+    });
+  });
+
   // ----------------------------------------------------------------- search
   var dialog = $('#search');
   var input = $('#search-input');
@@ -115,6 +141,7 @@
     { k: 'Page', t: 'Ideas board', u: '/ideas', v: '' },
     { k: 'Page', t: 'Ventures', u: '/ventures', v: '' },
     { k: 'Page', t: 'Projects', u: '/projects', v: '' },
+    { k: 'Page', t: 'Videos', u: '/videos', v: '' },
     { k: 'Page', t: 'Research', u: '/research', v: '' },
     { k: 'Page', t: 'Log', u: '/log', v: '' },
     { k: 'Page', t: 'Learnings', u: '/learnings', v: '' },

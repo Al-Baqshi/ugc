@@ -2,7 +2,8 @@
 // Hi-res element crops of PUBLIC qsme.build pages (no login, nothing typed), plus line boxes of a highlight phrase.
 // Adapted from projects/2026-10-14-qsme-build-why-bids-never-compare/motion/still.mjs. One change: "el" may return an
 // ARRAY of elements, and the crop is their union (so a heading plus the first two list items can be one crop, with
-// nothing else on the page in frame).
+// nothing else on the page in frame). Added 2026-10-04: optional "prep" JS per shot, run before measuring (used to trim
+// the tendering card's second sentence, which says "without an account" / "sign up", banned on screen by the owner CTA rule).
 //
 //   node still.mjs <stills.json> <outDir>
 // stills.json: { cssWidth, cssHeight, dpr, shots: [ { name, url, el: "js returning Element or Element[]", pad: [t,r,b,l],
@@ -44,6 +45,8 @@ try {
       await sleep(3000); cur = s.url;
       await evaluate("document.querySelectorAll('[class*=cookie],[id*=cookie],[class*=consent]').forEach(e=>e.style.setProperty('display','none','important'))");
     }
+    // optional "prep": JS run on the page before measuring (e.g. trim a sentence we must not show, per the owner CTA rule)
+    if (s.prep) { const pr = await evaluate(s.prep); console.log('   prep:', JSON.stringify(pr)); await sleep(400); }
     const pad = s.pad || [24, 24, 24, 24];
     const r = await evaluate(`(() => { let els = (${s.el}); if (!els) return null; if (!Array.isArray(els)) els = [els]; if (!els.length || els.some(e => !e)) return null;
       els[0].scrollIntoView({ block: 'center' });

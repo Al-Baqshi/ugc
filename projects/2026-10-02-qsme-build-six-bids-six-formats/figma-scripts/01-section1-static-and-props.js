@@ -2,7 +2,7 @@
 // File f8xxaFvwdi6ijGxYj9WEWP, page 2:5 "02 · qsme.build — Six quotes, six formats". skillNames: resource:figma-use
 // Builds Section 1 "Static post — 1080×1350": the 1080×1350 static (band, illustrative flat-lay slot, label tabs,
 // sticky note, footer with the QSME logo instance of 2:27), shoot notes, and the six print/screen props A–F.
-// Section stays inside x 0..3991 so x>=4000, y=0 is free for the motion frame.
+// Section stays inside x 0..3991 so x>=4000, y=0 stays clear for the motion frame.
 // STATUS: NOT YET RUN (Figma Starter-plan MCP limit). Dry-run against a Plugin-API mock passes.
 const P=await figma.getNodeByIdAsync('2:5');await figma.setCurrentPageAsync(P);
 const SEC_NAME='Static post — 1080×1350';
@@ -192,8 +192,9 @@ if(comp&&comp.type==='COMPONENT'){
   try{for(const tn of comp.findAllWithCriteria({types:['TEXT']})){for(const sg of tn.getStyledTextSegments(['fontName']))await figma.loadFontAsync(sg.fontName);}}catch(e){logoInfo='font preload skipped: '+e.message;}
   const inst=track(comp.createInstance());lf.appendChild(inst);inst.rescale(ls_);inst.x=-192*ls_;inst.y=-133*ls_;named.logoInstance=inst.id;
 }else{logoInfo='2:27 not found; text fallback used';T(lf,'QSME',{f:'Space Grotesk',s:'Bold',size:44,c:'#3DC023',x:0,y:4});}
-const ft=T(foot,'qsme.build · Book a 30-minute demo',{s:'Medium',size:30,c:'#EEF4EF',name:'Footer CTA'});
-ft.setRangeFontName(0,10,FN('Inter','Semi Bold'));ft.setRangeFills(0,10,S('#4BCD32'));named.footerCta=ft.id;
+// Owner CTA rule 2026-10-03: the Global CTA reads exactly 'Book a 30-minute demo at qsme.build' (URL in green, chars 25..35).
+const ft=T(foot,'Book a 30-minute demo at qsme.build',{s:'Medium',size:30,c:'#EEF4EF',name:'Footer CTA'});
+ft.setRangeFontName(25,35,FN('Inter','Semi Bold'));ft.setRangeFills(25,35,S('#4BCD32'));named.footerCta=ft.id;
 // Photo slot between band and footer: illustrative flat-lay stand-in with a visible tag (real photo = flatlay-all.jpg).
 const slotY=bandH,slotH=footY-bandH;
 const slot=F(st,1080,slotH,{fill:'#CDBFA8',name:'REPLACE: real overhead flat-lay photo, all six bids face-up (flatlay-all.jpg)',x:0,y:slotY});

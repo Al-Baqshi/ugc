@@ -1,184 +1,186 @@
 {
-  "venture": "qsme-nz",
-  "character": "Mel: everyday Kiwi woman, late 30s, renovating her first place. Organised, a bit worn down by the thread but amused by it. She's the straight man, talking to a mate about her week. General NZ accent, never a caricature. She stays dry and under-played. The roll call is flat and bored, with a natural downward drift, and the product lines sound like the same person: no announcer lift, no tagline cadence. Optional A/B: a relaxed everyday Kiwi bloke reads the same words as a narrator. His hook is 'She asked the community page for a builder.'",
-  "continuous_read_v2": "Asked the community page for a builder.\n\nDeck Dave. Roof Dave.\nBig Dave. Little Dave.\n\nOr just put the actual job on Q-S-me.\n\nSend one job to the trades you choose.\n\nEvery one prices the same lines.\n\nIt's free to join. Your own crew's always free.",
-  "lines": [
-    {
-      "id": "vo00-hook",
-      "start_s": 0.0,
-      "max_s": 2.9,
-      "on_screen": "Hook: 'Asked the community page for a builder.' (burned-in) over '197 → 205 → 212 comments.' then 'Still no builder.' (1.3); hard cut to Mel's post card at 2.5",
-      "text_v2": "Asked the community page for a builder.",
-      "text_v3": "Asked the community page for a builder.",
-      "delivery": "Dry, tired Kiwi deadpan, like the first line of a story to a mate. Falls at the end, no lift on 'builder'. It may overhang the cut at 2.5 by up to 0.4 s over Mel's post card rather than being sped up. The burned-in kicker already shows these words, so it reads the same with the sound off."
-    },
-    {
-      "id": "vo01-deck-roof",
-      "start_s": 5.7,
-      "max_s": 1.35,
-      "on_screen": "Aroha W.: Deck Dave or Roof Dave? (thread stopped) · tally 'Dave count: 3' · scroll to Jase from 6.85",
-      "text_v2": "Deck Dave. Roof Dave.",
-      "text_v3": "Deck Dave. Roof Dave.",
-      "delivery": "Flat and bored, but with a natural downstep: each Dave a touch lower than the last. Reject any take where both pairs start on the same pitch or all four Daves are the same length. Cut from the same single roll-call request as vo02. Out by 7.05."
-    },
-    {
-      "id": "vo02-big-little",
-      "start_s": 7.1,
-      "max_s": 1.75,
-      "on_screen": "Jase M.: Big Dave did ours. Not Little Dave. · tally 'Dave count: 3' · fling blur from 8.4 (tally struck, 3 to 6, at 8.5 to 8.7)",
-      "text_v2": "Big Dave. Little Dave.",
-      "text_v3": "Big Dave. Little Dave.",
-      "delivery": "The downstep carries on from vo01: Big Dave lower than Roof Dave, and Little Dave the slowest and lowest. Say 'Little' the Kiwi way, with a centralised vowel (close to 'luttle'), a soft t and a dark l. Reject 'leetle' (Australian) and a clean American 'liddle'. Let the last Dave trail into the fling blur, with a hard out by 8.85 so the slam on Dave K. at 9.0 lands in total silence."
-    },
-    {
-      "id": "vo03-or-put",
-      "start_s": 13.3,
-      "max_s": 2.8,
-      "on_screen": "Swipe to QSME (13.1 to 13.5), then caption 'Or. Put the actual job on QSME.' (13.5 to 16.2) over the iPhone app's project tiles; red marker on 'Ask for quotes' (14.45) and 'Invite' (15.05)",
-      "text_v2": "Or just put the actual job on Q-S-me.",
-      "text_v3": "[exhales] Or just put the actual job on Q-S-me.",
-      "delivery": "A small breath under the end of the swipe, then one easy phrase with a light lean on 'actual' and a falling end. No pause after 'Or'. 'Just' keeps it a shrug, not a pitch. Say 'Q-S-me' (kyoo-ess-mee) plainly, never 'kiss me'. Out by 16.1, before the caption leaves."
-    },
-    {
-      "id": "vo04-send-one",
-      "start_s": 16.4,
-      "max_s": 2.9,
-      "on_screen": "Send one job to the trades you choose. (16.25 to 19.6) over the tenders recreation (Step 1, title and scope typed) and the contacts recreation (Add contact)",
-      "text_v2": "Send one job to the trades you choose.",
-      "text_v3": "Send one job to the trades you choose.",
-      "delivery": "Same voice, now relieved and matter-of-fact, the way she'd explain it to a mate. Light lean on 'you choose', no smile-sell, and it drops at the end like a statement. Out by 19.3."
-    },
-    {
-      "id": "vo05-same-lines",
-      "start_s": 19.8,
-      "max_s": 2.4,
-      "on_screen": "Every one prices the same lines. (19.65 to 22.55) over the tenders recreation (Step 2, Scope from SOQ, pockets ticked)",
-      "text_v2": "Every one prices the same lines.",
-      "text_v3": "Every one prices the same lines.",
-      "delivery": "Even and unhurried, a bit satisfied. One phrase, light lean on 'same', and let 'lines' fall like a shrug, not a tagline. Clear by 22.2 so the ding on the tally tick (about 22.95) plays in silence."
-    },
-    {
-      "id": "vo06-cta",
-      "start_s": 25.9,
-      "max_s": 3.4,
-      "on_screen": "End card: QSME logo / Free to join. / No listing fee on tenders. / Your own crew is always free. / qsme.co.nz",
-      "text_v2": "It's free to join. Your own crew's always free.",
-      "text_v3": "It's free to join. Your own crew's always free.",
-      "delivery": "Friendly and low-key, like a tip to a mate across the bench, with no rise at the end. 'It's free to join' as a flat aside, then a small lean on 'always'. Never read the URL. Out by 29.3 so the music can resolve."
-    }
-  ],
-  "male_alt_lines": [
-    {
-      "id": "vo00-hook_m",
-      "start_s": 0.0,
-      "max_s": 2.9,
-      "on_screen": "Hook: 'Asked the community page for a builder.' (burned-in) over '197 → 205 → 212 comments.' then 'Still no builder.' (1.3); hard cut to Mel's post card at 2.5",
-      "text_v2": "She asked the community page for a builder.",
-      "text_v3": "She asked the community page for a builder.",
-      "delivery": "A bloke telling the story about her, low, flat and bone-dry. 'She' so he doesn't sound like he wrote her post. Falls at the end; may overhang the 2.5 cut by up to 0.4 s."
-    },
-    {
-      "id": "vo01-deck-roof_m",
-      "start_s": 5.7,
-      "max_s": 1.35,
-      "on_screen": "Aroha W.: Deck Dave or Roof Dave? (thread stopped) · tally 'Dave count: 3' · scroll to Jase from 6.85",
-      "text_v2": "Deck Dave. Roof Dave.",
-      "text_v3": "Deck Dave. Roof Dave.",
-      "delivery": "A bloke reading the thread over her shoulder: low, flat and bone-dry, no grin in the voice. Natural downstep, each Dave a touch lower than the last. Cut from the same single request as vo02_m. Out by 7.05."
-    },
-    {
-      "id": "vo02-big-little_m",
-      "start_s": 7.1,
-      "max_s": 1.75,
-      "on_screen": "Jase M.: Big Dave did ours. Not Little Dave. · tally 'Dave count: 3' · fling blur from 8.4 (tally struck, 3 to 6, at 8.5 to 8.7)",
-      "text_v2": "Big Dave. Little Dave.",
-      "text_v3": "Big Dave. Little Dave.",
-      "delivery": "The downstep carries on, with Little Dave the slowest and lowest, as if he's given up. Say 'Little' the Kiwi way (centralised vowel, soft t, dark l). Trail into the fling blur, with a hard out by 8.85."
-    },
-    {
-      "id": "vo03-or-put_m",
-      "start_s": 13.3,
-      "max_s": 2.8,
-      "on_screen": "Swipe to QSME (13.1 to 13.5), then caption 'Or. Put the actual job on QSME.' (13.5 to 16.2) over the iPhone app's project tiles; red marker on 'Ask for quotes' (14.45) and 'Invite' (15.05)",
-      "text_v2": "Or just put the actual job on Q-S-me.",
-      "text_v3": "[exhales] Or just put the actual job on Q-S-me.",
-      "delivery": "Relaxed and unbothered. A small exhale under the swipe, then one easy phrase of plain common sense with a light lean on 'actual' and a falling end. 'Q-S-me' plainly. Out by 16.1."
-    },
-    {
-      "id": "vo04-send-one_m",
-      "start_s": 16.4,
-      "max_s": 2.9,
-      "on_screen": "Send one job to the trades you choose. (16.25 to 19.6) over the tenders recreation (Step 1, title and scope typed) and the contacts recreation (Add contact)",
-      "text_v2": "Send one job to the trades you choose.",
-      "text_v3": "Send one job to the trades you choose.",
-      "delivery": "Matter-of-fact, like a tradie explaining how it should work. Light lean on 'you choose', falling end. Out by 19.3."
-    },
-    {
-      "id": "vo05-same-lines_m",
-      "start_s": 19.8,
-      "max_s": 2.4,
-      "on_screen": "Every one prices the same lines. (19.65 to 22.55) over the tenders recreation (Step 2, Scope from SOQ, pockets ticked)",
-      "text_v2": "Every one prices the same lines.",
-      "text_v3": "Every one prices the same lines.",
-      "delivery": "Unhurried, with the quiet satisfaction of a tidy job. Lean on 'same', 'lines' falling. Clear by 22.2 for the ding."
-    },
-    {
-      "id": "vo06-cta_m",
-      "start_s": 25.9,
-      "max_s": 3.4,
-      "on_screen": "End card: QSME logo / Free to join. / No listing fee on tenders. / Your own crew is always free. / qsme.co.nz",
-      "text_v2": "It's free to join. Your own crew's always free.",
-      "text_v3": "It's free to join. Your own crew's always free.",
-      "delivery": "Easy and casual, like a tip to a mate at the barbecue. Flat finish on both sentences, small lean on 'always'. Out by 29.3."
-    }
-  ],
-  "casting_line": "Bathroom and a little deck. Six Daves later, still no builder. Bit much, eh.",
-  "settings": {
-    "model": "eleven_multilingual_v2",
-    "stability": 0.45,
-    "similarity_boost": 0.75,
-    "style": 0,
-    "speed": 1,
-    "use_speaker_boost": true
+ "venture": "qsme-nz",
+ "character": "Mel: everyday Kiwi woman, late 30s, renovating her first place. Organised, a bit worn down by the thread but amused by it. She's the straight man, talking to a mate about her week. General NZ accent, never a caricature. She stays dry and under-played. The roll call is flat and bored, with a natural downward drift, and the product lines sound like the same person: no announcer lift, no tagline cadence. Optional A/B: a relaxed everyday Kiwi bloke reads the same words as a narrator. His hook is 'She asked the community page for a builder.'",
+ "continuous_read_v2": "Asked the community page for a builder.\n\nDeck Dave. Roof Dave.\nBig Dave. Little Dave.\n\nOr. Put the actual job on Q-S-me.\n\nSend one job to the trades you choose.\n\nEvery quote covers the same lines.\n\nSign up at Q-S-me dot co dot en zed.",
+ "lines": [
+  {
+   "id": "vo00-hook",
+   "start_s": 0.0,
+   "max_s": 2.9,
+   "on_screen": "Hook: 'Asked the community page for a builder.' (burned-in) over '197 → 205 → 212 comments.' then 'Still no builder.' (1.3); hard cut to Mel's post card at 2.5",
+   "text_v2": "Asked the community page for a builder.",
+   "text_v3": "Asked the community page for a builder.",
+   "delivery": "Dry, tired Kiwi deadpan, like the first line of a story to a mate. Falls at the end, no lift on 'builder'. It may overhang the cut at 2.5 by up to 0.4 s over Mel's post card rather than being sped up. The burned-in kicker already shows these words, so it reads the same with the sound off."
   },
-  "post_processing": [
-    "Time base: every time in this script is in seconds on outputs/which-dave-30s-9x16.mp4, the complete 30 s reel (hook included, no +2.5 offset any more). outputs/which-dave-30s-4x5.mp4 runs on the same clock, so one VO/SFX/music stem lays onto both with tools/mux.",
-    "Generation (v2 is the default). (a) Hook: one request, no previous_text, no next_text. (b) Roll call: one request, 'Deck Dave. Roof Dave.\\nBig Dave. Little Dave.', with previous_text set to the hook line and no next_text. Cut vo01 and vo02 from the same take, and never butt a pair from one take against a pair from another. (c) vo03 to vo06: one request per line, using request stitching. Set previous_text to the line before; for vo03 that is the on-screen beat '...can anyone actually come and quote? Dave can.'. Set next_text to the line after for vo03 and vo04; leave it empty for vo05 (the ding follows, not speech) and vo06, so both end final. (d) Use a fixed seed for each take and log it, so a picked take can be regenerated exactly if a neighbouring line changes. Make 3 takes per request and pick by ear. (e) The continuous read is for casting and as the consistency reference. Use Eleven v3 only as a fallback, as ONE continuous request (casting line as warm-up, then the continuous read with '[exhales]' before 'Or just'), sliced afterwards.",
-    "Trim the leading and trailing digital silence from each slice. Inside each roll-call pair, close the full-stop gap to about 0.2 s with a cut over room tone (a cut, not a stretch). Never time-stretch more than about 4%. If a take runs past max_s, use another take rather than speeding it up.",
-    "Breaths: keep a quiet natural inhale at the head of any line that follows a silence (before Deck Dave, Or and It's free), pulled down 6 to 10 dB. Cut clicks, mouth noise and any breath in the middle of a phrase.",
-    "Room tone bed: record 30 to 60 s of your own quiet lounge or kitchen on the same phone. Run it as one unbroken layer from 0 to the end at about -48 to -45 dBFS. Keep it running through the Dave silence (9.0 to 11.0) and the 'Dave can.' silence (11.9 to 13.3). Silence that drops to digital zero between lines is the biggest AI tell.",
-    "EQ for a phone voice memo: high-pass at about 90 Hz (12 dB/oct), a gentle high shelf of -2 to -3 dB from about 10 kHz, and a small 1 to 2 dB dip around 6 to 8 kHz with a light de-esser. No presence boost.",
-    "Compression: 2:1 to 3:1, attack about 15 ms, release about 100 ms, 2 to 4 dB of gain reduction.",
-    "No reverb or 'room' plugin. If it still sounds too clean, worldize it: play the VO through a small speaker in the room and re-record it on the phone about 50 cm away; blend 20 to 40% under the dry track.",
-    "Hook (0 to 2.5): pings stacking under the count jumps (0.5 and 1.05) and the slam of 'Still no builder.' at 1.3, mixed under the VO. During the roll call (5.7 to 8.85) the VO sits under no music, only the comment pings at 5.55 and 6.9, plus any fling SFX from 8.4 under the trailing 'Little Dave'.",
-    "Music comes in at 13.5 (the end of the swipe). Hold it steady, about 6 to 8 LU under the VO, from 13.5 to 22.2. Dip it for the ding on the tally tick at about 22.95 so the ding plays clean, then bring it back for 'Know which Dave.' (23.75) and the end card (25.45), and resolve by 30.0.",
-    "Place lines by eye and ear, not on a grid. Start each roll-call slice 4 to 6 frames after its comment starts popping, once the ping has decayed (5.7 and 7.1). Treat the other start_s values as targets.",
-    "Master: VO mono and centred, 48 kHz. The reel should land at about -14 LUFS integrated with true peak at -1 dBTP. Dialogue around -14 to -16 LUFS short-term, about 30 LU above the room tone bed and 6 to 8 LU above the music."
-  ],
-  "total_characters": 236,
-  "changelog": [
-    "Time base (should-fix, applied with a different format): all start_s values are body-MP4 time; add 2.5 s on the 30 s reel. The schema has no time_base field, so instead of adding a new top-level key this is stated in post_processing[0] and every delivery note gives the reel time. Reel starts: vo01 5.7, vo02 7.1, vo03 13.25, vo04 15.75, vo05 18.2, vo06 25.9.",
-    "Timing comes from motion/timeline.js (re-checked). Aroha pops at 3.05 (settled about 3.29). The scroll to Jase runs 4.35 to 4.5 and Jase pops at 4.4 (settled about 4.64). The fling runs 5.9 to 6.5, with the slam at 6.5. 'Dave is.' is at 9.4. The swipe runs 10.6 to 11.0, cap1 11.05 to 13.0, cap2 from 13.05 and cap3 from 15.5 (fully in by 15.7). The tally redraw and ding come at 18.55 and 18.8, the end card at 22.95, the CTA at 23.35, and the body ends at 27.5.",
-    "Must-fix, roll-call windows: vo01 now runs 3.2 for 1.35 s (out by 4.55) and vo02 runs 4.6 for 1.75 s (hard out by 6.35). Both now start after the ping has decayed, and 'Little Dave' trails into the fling. If takes still overrun, the fallback is to hold Aroha 0.2 s longer in motion/timeline.js (shift every keyframe at or after 4.35 by +0.2, trim 0.2 s off the end card) and re-render. That hasn't been done, because this pass writes no files.",
-    "Must-fix, copy-paste Daves: 'same pitch on both pairs' is replaced by a natural downstep, with Little Dave the slowest and lowest, plus explicit reject criteria. Both pairs come from one request and are never mixed across takes.",
-    "Must-fix, 'Or.': the line is now 'Or just post the actual job.' at 10.75 with max 2.25 (out by 13.0), with the breath under the end of the swipe. '[sighs]' became '[exhales]' (v3 only). The delivery note and the breath rule now agree. The caption still reads 'Or. Post the actual job on QSME.'; for a word-for-word match, cap1 could become 'Or just post the actual job on QSME.' at the next re-render (optional).",
-    "Should-fix, product spacing: vo04 now runs 13.25 for 2.15 s (out by 15.4) and vo05 runs 15.7 for 2.7 s (out by 18.4). That leaves air around vo04, and the lines are no longer frame-locked to caption +0.05. Applied to the _m lines too.",
-    "[Superseded 2026-10-02, see the last entry] Should-fix, wording: 'Licence-verified tradies quote on it.' (the caption's 'trades' is left as is, and 'Licence-verified' stays word for word), 'Line by line, so it's apples with apples.', and 'Put the job up on Q-S-me. It's free to join.' at 23.4 for 3.5 s. The claim words are unchanged (always 'free to join', never a bare 'free') and there are no new claims.",
-    "Rejected (optional item): the male take does NOT keep 'quote it'. He reads exactly the same words as Mel, so the A/B tests only the voice.",
-    "Should-fix, v3 tags: every tag is removed except one '[exhales]' before 'Or just'. v3 is now only a fallback, as one continuous 331-character request (the casting line as warm-up plus the full script), sliced afterwards and never generated per line.",
-    "Should-fix, continuous read: it's updated to the revised wording (243 characters, hook included), with the roll call as one paragraph so the downstep runs across all four Daves. It's now the casting and consistency reference and the hook source. vo03 to vo06 come from stitched v2 requests. Small deviation from the critique: vo05 and vo06 get no next_text, so they end final (the ding follows vo05).",
-    "Should-fix, settings: speed 1.0 (was 0.95) and similarity_boost 0.75 (matches post.md). Stability stays 0.45 (0.50 for the male voice) and style stays 0, which keeps the clone's accent instead of exaggerating it. Raise stability to 0.50 if the roll call lifts or wobbles.",
-    "Should-fix, post-processing: breaths are kept (a quiet inhale after each silence) instead of removed. The music bed is held steady instead of pumping. The room tone now sits about 30 LU under the VO. Adjusted: the critique suggested dialogue at -16 to -18 LUFS, but then a -14 LUFS integrated master can't be reached, so dialogue is now -14 to -16 LUFS short-term. The music is 6 to 8 LU under the VO, which reconciles the critique's 8 dB and 6 LU figures.",
-    "Nice-to-have items applied: the roll call sits under the two comment pings only (the tally holds at 3 until 6.0, so there are no ticks), and each roll-call slice starts 4 to 6 frames after its pop (3.2 and 4.6).",
-    "Silent stretches (body time): 0.5 to 3.2 (Mel's post card and the first two comments; the hook VO may overhang to about 0.5), 6.35 to 10.75 (the slam at 6.5, the circle on Dave K., the 'Dave is.' beat), and 18.4 to 23.4 (the ding is the punchline).",
-    "Hook: 'Asked the community page for a builder.' (39 characters, about 2.7 to 3.0 s) belongs on the separately filmed 0 to 2.5 s clip. Let it overhang into body 0 to 0.5 over Mel's post card rather than speeding it up. For the male A/B only, use 'She asked the community page for a builder.' so he doesn't sound like he wrote her post.",
-    "QSME is written 'Q-S-me' everywhere (kyoo-ess-mee, confirmed in ventures/qsme-nz.md). If a take comes out as 'kiss me' or four spelled letters, add a pronunciation-dictionary alias rather than respelling the script.",
-    "No 'eh', 'yeah' or 'mate' in the lines. 'Just', 'so it's', 'up on' and 'it's' are the glue words that make it sound spoken, not decoration. NZ spelling ('Licence'), no exclamation marks, and every line falls at the end. The one 'eh' is in the casting line, to check the voice says it the Kiwi way.",
-    "Should-fix, casting: test every voice on three texts (about 164 characters per voice): the casting line, 'Deck Dave. Roof Dave. Big Dave. Little Dave.' and 'Put the job up on Q-S-me. It's free to join.' Reject a voice if: 'six', 'big' or 'little' come out fronted ('seeks / beeg / leetle', which is Australian) instead of the Kiwi centralised vowel; 'Dave' is a narrow US 'Dayv'; 'Bathroom' has a short US 'a'; Q-S-me comes out as 'kiss me' or four spelled letters; the 'eh' isn't Kiwi; or it drifts British.",
-    "Should-fix, budget, corrected (counting spoken text only). Casting 3 female voices is about 490 characters. The female v2 lines are about 830: the roll call 3x44, vo03 to vo06 3x150, and one 243-character reference read. The optional v3 fallback is about 660 (2x331), and the optional male A/B about 875 (casting, 3 takes per line, 3 hook takes). That's about 2,850 in total, or about 1,320 without the optional parts, of the ~5,970 characters left this cycle on the Free plan (10k a month, resets ~8 Oct). The Free plan has 3 voice slots: cast the female shortlist first, then remove the losers before adding the male voice. total_characters is 193 for the revised main lines.",
-    "Before this ships: the ElevenLabs Free plan has no commercial licence and requires attribution, so these takes are for testing and casting only until the plan is upgraded to Starter or higher. Turn on the TikTok and Meta AI-content labels for an ElevenLabs VO, per the integrity notes in post.md. The alternative in post.md, a founder or real Kiwi homeowner recording a phone voice memo, needs no label.",
-    "2026-10-02 fact-check fix (supersedes the wording entries above): 'Licence-verified tradies quote on it.' and 'Line by line, so it's apples with apples.' are not true today (licence verification isn't confirmed live; Compare bids is a totals table excl./incl. GST with a 'Lowest' tag, not a line-by-line matrix; 'apples with apples' overstates it). vo04 is now 'Tradies quote on the same job.' (id vo04-same-job, same 13.25 start, 2.15 max) and vo05 'Every quote's in one table, GST both ways.' (id vo05-one-table, same 15.7 start, 2.7 max), matching the re-rendered captions 'Tradies quote on / the same job' and 'Every quote in one table, / GST shown both ways'. Timings unchanged. total_characters 187. Ids changed, so regenerate vo04/vo05 takes if any old ones exist (outputs/vo/ was empty).",
-    "2026-10-02 (30 s rebuild, supersedes the time base and vo03 to vo06 wording above): the VO now lays onto outputs/which-dave-30s-9x16.mp4, the complete reel (kinetic H1 hook, no filmed shot, no owner recording), so every start_s is reel time (old body times + 2.5). Added vo00-hook at 0.0 ('Asked the community page for a builder.', max 2.9). vo03 is now 'Or just put the actual job on Q-S-me.' (13.3, max 2.8) to match the caption 'Or. Put the actual job on QSME.'. vo04 is now 'Send one job to the trades you choose.' (id vo04-send-one, 16.4, max 2.9) and vo05 'Every one prices the same lines.' (id vo05-same-lines, 19.8, max 2.4), matching the new captions. vo06 is now 'It's free to join. Your own crew's always free.' (25.9, max 3.4), matching the end card (pricing sheet: 'Your own tradies are always free'). The licence setup is gone: Mel's comment is '...can anyone actually come and quote?' and Kerry's reply 'Dave can.', so vo03's previous_text changed too. Ids changed, so regenerate any old vo03 to vo06 takes (outputs/vo/ holds only an empty incoming/ folder)."
-  ],
-  "video": "outputs/which-dave-30s-9x16.mp4"
+  {
+   "id": "vo01-deck-roof",
+   "start_s": 6.5,
+   "max_s": 1.3,
+   "on_screen": "Aroha W.: Deck Dave or Roof Dave? (pops 6.35, thread stopped) · tally 'Dave count: 3' struck out (6.5) and rewritten '5' (6.65, with a little rattle) · scroll to Jase from 7.65",
+   "text_v2": "Deck Dave. Roof Dave.",
+   "text_v3": "Deck Dave. Roof Dave.",
+   "delivery": "Flat and bored, but with a natural downstep: each Dave a touch lower than the last. Reject any take where both pairs start on the same pitch or all four Daves are the same length. Cut from the same single roll-call request as vo02. Out by 7.8."
+  },
+  {
+   "id": "vo02-big-little",
+   "start_s": 7.9,
+   "max_s": 1.75,
+   "on_screen": "Jase M.: Big Dave did ours. Not Little Dave. (pops 7.7) · tally '5' struck out (7.8) and rewritten '6 (ish)' (7.95) · fling blur from 9.2; slam on Dave K. at 9.8; tally '?' at 10.4",
+   "text_v2": "Big Dave. Little Dave.",
+   "text_v3": "Big Dave. Little Dave.",
+   "delivery": "The downstep carries on from vo01: Big Dave lower than Roof Dave, and Little Dave the slowest and lowest. Say 'Little' the Kiwi way, with a centralised vowel (close to 'luttle'), a soft t and a dark l. Reject 'leetle' (Australian) and a clean American 'liddle'. Let the last Dave trail into the fling blur, with a hard out by 9.65 so the slam on Dave K. at 9.8 lands in total silence."
+  },
+  {
+   "id": "vo03-or-put",
+   "start_s": 14.1,
+   "max_s": 2.6,
+   "on_screen": "Swipe to QSME (13.9 to 14.3), then caption 'Or. Put the actual job on QSME.' (14.3 to 17.0) over the real iPhone app's project tiles (demo data); red marker on 'Ask for quotes' (14.75) and 'Invite' (15.1), marker note 'Dave K.' → Invite (15.4, holds to the swipe at 16.9)",
+   "text_v2": "Or. Put the actual job on Q-S-me.",
+   "text_v3": "[exhales] Or. Put the actual job on Q-S-me.",
+   "delivery": "A small breath under the end of the swipe, then 'Or.' on its own as a dry little full stop (a beat, not a pause for effect), then one easy phrase with a light lean on 'actual' and a falling end. Say 'Q-S-me' (kyoo-ess-mee) plainly, never 'kiss me'. Out by 16.7, before the caption leaves (16.85)."
+  },
+  {
+   "id": "vo04-send-one",
+   "start_s": 17.15,
+   "max_s": 3.0,
+   "on_screen": "Send one job to the trades you choose. (17.05 to 20.4) over two muted recreations: tenders Step 1 'Tender details' (the title types 'Bathroom + deck', 17.3 to 17.95) and, from 18.05, contacts 'Add contact' (the name types 'Dave K.', 18.35 to 18.7) with the marker note 'your Dave' (18.9)",
+   "text_v2": "Send one job to the trades you choose.",
+   "text_v3": "Send one job to the trades you choose.",
+   "delivery": "Same voice, now relieved and matter-of-fact, the way she'd explain it to a mate. Light lean on 'you choose', no smile-sell, and it drops at the end like a statement. Out by 20.15, before the swipe at 20.25."
+  },
+  {
+   "id": "vo05-same-lines",
+   "start_s": 20.55,
+   "max_s": 2.4,
+   "on_screen": "Every quote covers the same lines. (20.42 to 23.1) over the tenders recreation Step 2 'Scope from SOQ' with Mel's job ('Pulled from your SOQ · Bathroom + deck'): Strip-out, Waterproofing & tiling and Deck framing tick (20.75, 21.05, 21.35), marker bracket (21.5) and note 'same list → every quote' (21.75)",
+   "text_v2": "Every quote covers the same lines.",
+   "text_v3": "Every quote covers the same lines.",
+   "delivery": "Even and unhurried, a bit satisfied. One phrase, light lean on 'same', and let 'lines' fall like a shrug, not a tagline. Clear by 22.95 so the ding on the tally tick (about 23.6) plays in silence."
+  },
+  {
+   "id": "vo06-sign-up",
+   "start_s": 25.55,
+   "max_s": 3.3,
+   "on_screen": "End card (from 25.0): the tally shrinks into the corner, QSME logo (25.2), 'Know which Dave.' moves up, green button 'Sign up at qsme.co.nz' (25.5, small pulses 26.9 and 28.4)",
+   "text_v2": "Sign up at Q-S-me dot co dot en zed.",
+   "text_v3": "Sign up at Q-S-me dot co dot en zed.",
+   "delivery": "A friendly nudge across the bench, not a sales pitch. 'Sign up' lands as the green button pops (25.5); say the URL clearly and naturally, the Kiwi way ('en zed'), no spelling-bee pauses and no rise at the end. Never 'free' or any pricing line (owner CTA rule 2026-10-03). Out by 28.85 so the music can resolve."
+  }
+ ],
+ "male_alt_lines": [
+  {
+   "id": "vo00-hook_m",
+   "start_s": 0.0,
+   "max_s": 2.9,
+   "on_screen": "Hook: 'Asked the community page for a builder.' (burned-in) over '197 → 205 → 212 comments.' then 'Still no builder.' (1.3); hard cut to Mel's post card at 2.5",
+   "text_v2": "She asked the community page for a builder.",
+   "text_v3": "She asked the community page for a builder.",
+   "delivery": "A bloke telling the story about her, low, flat and bone-dry. 'She' so he doesn't sound like he wrote her post. Falls at the end; may overhang the 2.5 cut by up to 0.4 s."
+  },
+  {
+   "id": "vo01-deck-roof_m",
+   "start_s": 6.5,
+   "max_s": 1.3,
+   "on_screen": "Aroha W.: Deck Dave or Roof Dave? (pops 6.35, thread stopped) · tally 'Dave count: 3' struck out (6.5) and rewritten '5' (6.65, with a little rattle) · scroll to Jase from 7.65",
+   "text_v2": "Deck Dave. Roof Dave.",
+   "text_v3": "Deck Dave. Roof Dave.",
+   "delivery": "A bloke reading the thread over her shoulder: low, flat and bone-dry, no grin in the voice. Natural downstep, each Dave a touch lower than the last. Cut from the same single request as vo02_m. Out by 7.8."
+  },
+  {
+   "id": "vo02-big-little_m",
+   "start_s": 7.9,
+   "max_s": 1.75,
+   "on_screen": "Jase M.: Big Dave did ours. Not Little Dave. (pops 7.7) · tally '5' struck out (7.8) and rewritten '6 (ish)' (7.95) · fling blur from 9.2; slam on Dave K. at 9.8; tally '?' at 10.4",
+   "text_v2": "Big Dave. Little Dave.",
+   "text_v3": "Big Dave. Little Dave.",
+   "delivery": "The downstep carries on, with Little Dave the slowest and lowest, as if he's given up. Say 'Little' the Kiwi way (centralised vowel, soft t, dark l). Trail into the fling blur, with a hard out by 9.65."
+  },
+  {
+   "id": "vo03-or-put_m",
+   "start_s": 14.1,
+   "max_s": 2.6,
+   "on_screen": "Swipe to QSME (13.9 to 14.3), then caption 'Or. Put the actual job on QSME.' (14.3 to 17.0) over the real iPhone app's project tiles (demo data); red marker on 'Ask for quotes' (14.75) and 'Invite' (15.1), marker note 'Dave K.' → Invite (15.4, holds to the swipe at 16.9)",
+   "text_v2": "Or. Put the actual job on Q-S-me.",
+   "text_v3": "[exhales] Or. Put the actual job on Q-S-me.",
+   "delivery": "Relaxed and unbothered. A small exhale under the swipe, a dry 'Or.', then one easy phrase of plain common sense with a light lean on 'actual' and a falling end. 'Q-S-me' plainly. Out by 16.7."
+  },
+  {
+   "id": "vo04-send-one_m",
+   "start_s": 17.15,
+   "max_s": 3.0,
+   "on_screen": "Send one job to the trades you choose. (17.05 to 20.4) over two muted recreations: tenders Step 1 'Tender details' (the title types 'Bathroom + deck', 17.3 to 17.95) and, from 18.05, contacts 'Add contact' (the name types 'Dave K.', 18.35 to 18.7) with the marker note 'your Dave' (18.9)",
+   "text_v2": "Send one job to the trades you choose.",
+   "text_v3": "Send one job to the trades you choose.",
+   "delivery": "Matter-of-fact, like a tradie explaining how it should work. Light lean on 'you choose', falling end. Out by 20.15."
+  },
+  {
+   "id": "vo05-same-lines_m",
+   "start_s": 20.55,
+   "max_s": 2.4,
+   "on_screen": "Every quote covers the same lines. (20.42 to 23.1) over the tenders recreation Step 2 'Scope from SOQ' with Mel's job ('Pulled from your SOQ · Bathroom + deck'): Strip-out, Waterproofing & tiling and Deck framing tick (20.75, 21.05, 21.35), marker bracket (21.5) and note 'same list → every quote' (21.75)",
+   "text_v2": "Every quote covers the same lines.",
+   "text_v3": "Every quote covers the same lines.",
+   "delivery": "Unhurried, with the quiet satisfaction of a tidy job. Lean on 'same', 'lines' falling. Clear by 22.95 for the ding (about 23.6)."
+  },
+  {
+   "id": "vo06-sign-up_m",
+   "start_s": 25.55,
+   "max_s": 3.3,
+   "on_screen": "End card (from 25.0): the tally shrinks into the corner, QSME logo (25.2), 'Know which Dave.' moves up, green button 'Sign up at qsme.co.nz' (25.5, small pulses 26.9 and 28.4)",
+   "text_v2": "Sign up at Q-S-me dot co dot en zed.",
+   "text_v3": "Sign up at Q-S-me dot co dot en zed.",
+   "delivery": "Easy and casual, like a tip to a mate at the barbecue. 'Sign up' as the button pops, the URL the Kiwi way ('en zed'), flat finish. Out by 28.85."
+  }
+ ],
+ "casting_line": "Bathroom and a little deck. Six Daves later, still no builder. Bit much, eh.",
+ "settings": {
+  "model": "eleven_multilingual_v2",
+  "stability": 0.45,
+  "similarity_boost": 0.75,
+  "style": 0,
+  "speed": 1,
+  "use_speaker_boost": true
+ },
+ "post_processing": [
+  "Time base: every time in this script is in seconds on outputs/which-dave-30s-9x16.mp4, the complete 30 s reel (hook included, no +2.5 offset any more). outputs/which-dave-30s-4x5.mp4 runs on the same clock, so one VO/SFX/music stem lays onto both with tools/mux.",
+  "Generation (v2 is the default). (a) Hook: one request, no previous_text, no next_text. (b) Roll call: one request, 'Deck Dave. Roof Dave.\\nBig Dave. Little Dave.', with previous_text set to the hook line and no next_text. Cut vo01 and vo02 from the same take, and never butt a pair from one take against a pair from another. (c) vo03 to vo06: one request per line, using request stitching. Set previous_text to the line before; for vo03 that is the on-screen beat '...can anyone actually come and quote? Dave can.'. Set next_text to the line after for vo03 and vo04; leave it empty for vo05 (the ding follows, not speech) and vo06, so both end final. (d) Use a fixed seed for each take and log it, so a picked take can be regenerated exactly if a neighbouring line changes. Make 3 takes per request and pick by ear. (e) The continuous read is for casting and as the consistency reference. Use Eleven v3 only as a fallback, as ONE continuous request (casting line as warm-up, then the continuous read with '[exhales]' before 'Or.'), sliced afterwards.",
+  "Trim the leading and trailing digital silence from each slice. Inside each roll-call pair, close the full-stop gap to about 0.2 s with a cut over room tone (a cut, not a stretch). Never time-stretch more than about 4%. If a take runs past max_s, use another take rather than speeding it up.",
+  "Breaths: keep a quiet natural inhale at the head of any line that follows a silence (before Deck Dave, Or and Sign up), pulled down 6 to 10 dB. Cut clicks, mouth noise and any breath in the middle of a phrase.",
+  "Room tone bed: record 30 to 60 s of your own quiet lounge or kitchen on the same phone. Run it as one unbroken layer from 0 to the end at about -48 to -45 dBFS. Keep it running through the Dave silence (9.8 to 12.1) and the 'Dave can.' silence (12.7 to 14.1). Silence that drops to digital zero between lines is the biggest AI tell.",
+  "EQ for a phone voice memo: high-pass at about 90 Hz (12 dB/oct), a gentle high shelf of -2 to -3 dB from about 10 kHz, and a small 1 to 2 dB dip around 6 to 8 kHz with a light de-esser. No presence boost.",
+  "Compression: 2:1 to 3:1, attack about 15 ms, release about 100 ms, 2 to 4 dB of gain reduction.",
+  "No reverb or 'room' plugin. If it still sounds too clean, worldize it: play the VO through a small speaker in the room and re-record it on the phone about 50 cm away; blend 20 to 40% under the dry track.",
+  "Hook (0 to 2.5): pings stacking under the count jumps (0.5 and 1.05) and the slam of 'Still no builder.' at 1.3, mixed under the VO. During the roll call (6.5 to 9.65) the VO sits under no music, only the comment pings at 6.35 and 7.7, plus any fling SFX from 9.2 under the trailing 'Little Dave'.",
+  "Music comes in at 14.3 (the end of the swipe). Hold it steady, about 6 to 8 LU under the VO, from 14.3 to 22.95. Dip it for the ding on the tally tick at about 23.6 so the ding plays clean, then bring it back for 'Know which Dave.' (24.1) and the end card (25.0), and resolve by 30.0.",
+  "Place lines by eye and ear, not on a grid. Start each roll-call slice 4 to 6 frames after its comment starts popping, once the ping has decayed (6.5 and 7.9). Treat the other start_s values as targets.",
+  "Master: VO mono and centred, 48 kHz. The reel should land at about -14 LUFS integrated with true peak at -1 dBTP. Dialogue around -14 to -16 LUFS short-term, about 30 LU above the room tone bed and 6 to 8 LU above the music."
+ ],
+ "total_characters": 223,
+ "changelog": [
+  "Time base (should-fix, applied with a different format): all start_s values are body-MP4 time; add 2.5 s on the 30 s reel. The schema has no time_base field, so instead of adding a new top-level key this is stated in post_processing[0] and every delivery note gives the reel time. Reel starts: vo01 5.7, vo02 7.1, vo03 13.25, vo04 15.75, vo05 18.2, vo06 25.9.",
+  "Timing comes from motion/timeline.js (re-checked). Aroha pops at 3.05 (settled about 3.29). The scroll to Jase runs 4.35 to 4.5 and Jase pops at 4.4 (settled about 4.64). The fling runs 5.9 to 6.5, with the slam at 6.5. 'Dave is.' is at 9.4. The swipe runs 10.6 to 11.0, cap1 11.05 to 13.0, cap2 from 13.05 and cap3 from 15.5 (fully in by 15.7). The tally redraw and ding come at 18.55 and 18.8, the end card at 22.95, the CTA at 23.35, and the body ends at 27.5.",
+  "Must-fix, roll-call windows: vo01 now runs 3.2 for 1.35 s (out by 4.55) and vo02 runs 4.6 for 1.75 s (hard out by 6.35). Both now start after the ping has decayed, and 'Little Dave' trails into the fling. If takes still overrun, the fallback is to hold Aroha 0.2 s longer in motion/timeline.js (shift every keyframe at or after 4.35 by +0.2, trim 0.2 s off the end card) and re-render. That hasn't been done, because this pass writes no files.",
+  "Must-fix, copy-paste Daves: 'same pitch on both pairs' is replaced by a natural downstep, with Little Dave the slowest and lowest, plus explicit reject criteria. Both pairs come from one request and are never mixed across takes.",
+  "Must-fix, 'Or.': the line is now 'Or just post the actual job.' at 10.75 with max 2.25 (out by 13.0), with the breath under the end of the swipe. '[sighs]' became '[exhales]' (v3 only). The delivery note and the breath rule now agree. The caption still reads 'Or. Post the actual job on QSME.'; for a word-for-word match, cap1 could become 'Or just post the actual job on QSME.' at the next re-render (optional).",
+  "Should-fix, product spacing: vo04 now runs 13.25 for 2.15 s (out by 15.4) and vo05 runs 15.7 for 2.7 s (out by 18.4). That leaves air around vo04, and the lines are no longer frame-locked to caption +0.05. Applied to the _m lines too.",
+  "[Superseded 2026-10-02, see the last entry] Should-fix, wording: 'Licence-verified tradies quote on it.' (the caption's 'trades' is left as is, and 'Licence-verified' stays word for word), 'Line by line, so it's apples with apples.', and '[retired pricing line]' at 23.4 for 3.5 s. (that pricing wording was retired by the owner CTA rule 2026-10-03) and there are no new claims.",
+  "Rejected (optional item): the male take does NOT keep 'quote it'. He reads exactly the same words as Mel, so the A/B tests only the voice.",
+  "Should-fix, v3 tags: every tag is removed except one '[exhales]' before 'Or just'. v3 is now only a fallback, as one continuous 331-character request (the casting line as warm-up plus the full script), sliced afterwards and never generated per line.",
+  "Should-fix, continuous read: it's updated to the revised wording (243 characters, hook included), with the roll call as one paragraph so the downstep runs across all four Daves. It's now the casting and consistency reference and the hook source. vo03 to vo06 come from stitched v2 requests. Small deviation from the critique: vo05 and vo06 get no next_text, so they end final (the ding follows vo05).",
+  "Should-fix, settings: speed 1.0 (was 0.95) and similarity_boost 0.75 (matches post.md). Stability stays 0.45 (0.50 for the male voice) and style stays 0, which keeps the clone's accent instead of exaggerating it. Raise stability to 0.50 if the roll call lifts or wobbles.",
+  "Should-fix, post-processing: breaths are kept (a quiet inhale after each silence) instead of removed. The music bed is held steady instead of pumping. The room tone now sits about 30 LU under the VO. Adjusted: the critique suggested dialogue at -16 to -18 LUFS, but then a -14 LUFS integrated master can't be reached, so dialogue is now -14 to -16 LUFS short-term. The music is 6 to 8 LU under the VO, which reconciles the critique's 8 dB and 6 LU figures.",
+  "Nice-to-have items applied: the roll call sits under the two comment pings only (the tally holds at 3 until 6.0, so there are no ticks), and each roll-call slice starts 4 to 6 frames after its pop (3.2 and 4.6).",
+  "Silent stretches (body time): 0.5 to 3.2 (Mel's post card and the first two comments; the hook VO may overhang to about 0.5), 6.35 to 10.75 (the slam at 6.5, the circle on Dave K., the 'Dave is.' beat), and 18.4 to 23.4 (the ding is the punchline).",
+  "Hook: 'Asked the community page for a builder.' (39 characters, about 2.7 to 3.0 s) belongs on the separately filmed 0 to 2.5 s clip. Let it overhang into body 0 to 0.5 over Mel's post card rather than speeding it up. For the male A/B only, use 'She asked the community page for a builder.' so he doesn't sound like he wrote her post.",
+  "QSME is written 'Q-S-me' everywhere (kyoo-ess-mee, confirmed in ventures/qsme-nz.md). If a take comes out as 'kiss me' or four spelled letters, add a pronunciation-dictionary alias rather than respelling the script.",
+  "No 'eh', 'yeah' or 'mate' in the lines. 'Just', 'so it's', 'up on' and 'it's' are the glue words that make it sound spoken, not decoration. NZ spelling ('Licence'), no exclamation marks, and every line falls at the end. The one 'eh' is in the casting line, to check the voice says it the Kiwi way.",
+  "Should-fix, casting: test every voice on three texts (about 164 characters per voice): the casting line, 'Deck Dave. Roof Dave. Big Dave. Little Dave.' and 'Sign up at Q-S-me dot co dot en zed.' Reject a voice if: 'six', 'big' or 'little' come out fronted ('seeks / beeg / leetle', which is Australian) instead of the Kiwi centralised vowel; 'Dave' is a narrow US 'Dayv'; 'Bathroom' has a short US 'a'; Q-S-me comes out as 'kiss me' or four spelled letters; the 'eh' isn't Kiwi; or it drifts British.",
+  "Should-fix, budget, corrected (counting spoken text only). Casting 3 female voices is about 490 characters. The female v2 lines are about 830: the roll call 3x44, vo03 to vo06 3x150, and one 243-character reference read. The optional v3 fallback is about 660 (2x331), and the optional male A/B about 875 (casting, 3 takes per line, 3 hook takes). That's about 2,850 in total, or about 1,320 without the optional parts, of the ~5,970 characters left this cycle on the Free plan (10k a month, resets ~8 Oct). The Free plan has 3 voice slots: cast the female shortlist first, then remove the losers before adding the male voice. total_characters is 193 for the revised main lines.",
+  "Before this ships: the ElevenLabs Free plan has no commercial licence and requires attribution, so these takes are for testing and casting only until the plan is upgraded to Starter or higher. Turn on the TikTok and Meta AI-content labels for an ElevenLabs VO, per the integrity notes in post.md. The alternative in post.md, a founder or real Kiwi homeowner recording a phone voice memo, needs no label.",
+  "2026-10-02 fact-check fix (supersedes the wording entries above): 'Licence-verified tradies quote on it.' and 'Line by line, so it's apples with apples.' are not true today (licence verification isn't confirmed live; Compare bids is a totals table excl./incl. GST with a 'Lowest' tag, not a line-by-line matrix; 'apples with apples' overstates it). vo04 is now 'Tradies quote on the same job.' (id vo04-same-job, same 13.25 start, 2.15 max) and vo05 'Every quote's in one table, GST both ways.' (id vo05-one-table, same 15.7 start, 2.7 max), matching the re-rendered captions 'Tradies quote on / the same job' and 'Every quote in one table, / GST shown both ways'. Timings unchanged. total_characters 187. Ids changed, so regenerate vo04/vo05 takes if any old ones exist (outputs/vo/ was empty).",
+  "2026-10-02 (30 s rebuild, supersedes the time base and vo03 to vo06 wording above): the VO now lays onto outputs/which-dave-30s-9x16.mp4, the complete reel (kinetic H1 hook, no filmed shot, no owner recording), so every start_s is reel time (old body times + 2.5). Added vo00-hook at 0.0 ('Asked the community page for a builder.', max 2.9). vo03 is now 'Or just put the actual job on Q-S-me.' (13.3, max 2.8) to match the caption 'Or. Put the actual job on QSME.'. vo04 is now 'Send one job to the trades you choose.' (id vo04-send-one, 16.4, max 2.9) and vo05 'Every one prices the same lines.' (id vo05-same-lines, 19.8, max 2.4), matching the new captions. vo06 is now '[retired pricing line]' (25.9, max 3.4), matching the end card (a pricing line, retired 2026-10-03). The licence setup is gone: Mel's comment is '...can anyone actually come and quote?' and Kerry's reply 'Dave can.', so vo03's previous_text changed too. Ids changed, so regenerate any old vo03 to vo06 takes (outputs/vo/ holds only an empty incoming/ folder).",
+  "2026-10-04 (complete rebuild of the product beat + owner CTA rule 2026-10-03; supersedes the vo03 to vo06 wording and every time above): the reel is re-rendered to outputs/which-dave-30s-9x16.mp4 (and -4x5.mp4, same clock). Mel's post card now holds 0.8 s longer so it can be read, so everything from 3.3 on sits 0.8 s later than the 2026-10-02 cut: vo01 6.5 (max 1.3), vo02 7.9 (out by 9.65, slam on Dave K. at 9.8), swipe to QSME 13.9 to 14.3, music in at 14.3. vo03 is now 'Or. Put the actual job on Q-S-me.' (14.1, max 2.4), word for word the caption. vo04 16.85 (max 2.6) and vo05 19.75 (max 2.4) keep their words. The ding is on the tally tick at about 23.15, 'Know which Dave.' at 23.85. vo06 is now 'Sign up at Q-S-me dot co dot en zed.' (id vo06-sign-up, 26.0, max 3.3), matching the end card 'Know which Dave.' + 'Sign up at qsme.co.nz'. The old '[retired pricing line]' is removed everywhere (owner rule: no free, no listing-fee, no own-crew-free lines). Male A/B lines follow the same times and words.",
+  "2026-10-04 review pass (supersedes the vo03 to vo06 times above; vo00 to vo02 starts unchanged): the product beat got the time the end card didn't need. A 14.3–17.0 (vo03 14.1, max 2.6, out by 16.7), B 17.0–20.4 (vo04 17.15, max 3.0, out by 20.15), C 20.4–23.1 (vo05 20.55, max 2.4, out by 22.95), callback 23.1–25.0 (tally 23.2, tick and ding about 23.6, '— the one you invited.' 23.6, 'Know which Dave.' 24.1), end card from 25.0 with the sign-up button at 25.5 (vo06 25.55, max 3.3, out by 28.85). vo05 text is now 'Every quote covers the same lines.' (was 'Every one prices the same lines.'): a bidder can choose to quote one all-in price, so 'prices' leaned toward itemised bids; the new line matches the reel, static, caption and ads word for word. The vo01/vo02 on-screen notes follow the new tally: 3 → 5 on Aroha (6.5–6.65) and 5 → 6 (ish) on Jase (7.8–7.95). On screen there is now one Dave all the way through: the phone note 'Dave K.' → Invite (15.4), the contacts name types 'Dave K.' with 'your Dave' (18.9), then 'Dave count: 1 — the one you invited.'"
+ ],
+ "video": "outputs/which-dave-30s-9x16.mp4"
 }

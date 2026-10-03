@@ -1,0 +1,845 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<title>Everything's finished. Except one bit of paper.</title>
+<!-- QSME NZ · "Everything's finished. Except one bit of paper." (idea qsme-nz-ccc-hunt) · 9:16 · silent master, burned-in captions.
+     Render (from the studio root):
+       node tools/motion/make.mjs projects/2026-11-01-qsme-nz-ccc-hunt/motion/ccc-hunt.html projects/2026-11-01-qsme-nz-ccc-hunt/outputs/ccc-hunt-9x16.mp4 --safe 65,300,1015,1250
+     Real footage:
+       clips/dusk/f_00000.jpg  first (clean) frame of assets/qsme/broll/stage-5-dusk.v1.mp4, used as a still with a slow push
+                          (the clip grows floating holographic UI panels from ~0.6 s); AI brand b-roll already live on qsme.co.nz,
+                          labelled "Illustrative footage", no people
+       clips/kb-docs.png  live public Knowledge Hub guide qsme.co.nz/knowledge-hub/site-documents ("For the council (consent → CCC)",
+                          the outlined "LBP Record of Work · Licensed Building Practitioner (LBP)" row under the column headers),
+                          still.mjs + still-kb-docs.json, no login, nothing typed
+     Skit graphics (generic, unbranded, names made up): the move-in list, the mail search, the garage box, the ute glovebox and the pie
+       receipt, the text thread to "Roofer".
+     Illustrative recreations (window bar "QSME · Demo house, Hamilton" + label "Illustrative · demo data"; swap for the owner's Session C,
+     see post.md — Session C #1 is a hard publication gate, no stand-in exception):
+       #dlg   Issue Certificate dialog (ProjectCertificates.tsx IssueCertificateDialog, origin/main, read only), over the roofer's
+              project page: the checklist (read only for him) and his Site Certificates card (empty state → the new row + toast)
+       #ck    Compliance & process checklist, Phase 2 (ProjectChecklist.tsx + checklist_templates.go nzNewBuildChecklist)
+       #certs Site Certificates card + CCC Pack button and its title text (ProjectCertificates.tsx), On-site safety card (ProjectDetail.tsx, 8.2)
+       #zip   the downloaded CCC_Pack.zip opened (ccc_pack_handler.go: 00_INDEX.pdf + ROW/ EnergyCerts/ Other/ folders)
+       #idx   00_INDEX.pdf first page (ccc_pack_handler.go buildCCCIndexPDF wording)
+     Colours: the app's "Clean white" light tokens from src/styles/theme.css (origin/main). Every certificate and file is a dummy (DEMO).
+     Owner CTA rule (2026-10-03): no "free" anywhere; the end card pushes "Sign up at qsme.co.nz". -->
+<link rel="stylesheet" href="../../../tools/motion/kit.css">
+<style>
+  body.nz #root { background: #020617; }
+  .scene { position: absolute; inset: 0; overflow: hidden; }
+  svg.i { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* ---------- shared overlays ---------- */
+  .chipT { position: absolute; top: 304px; display: inline-flex; align-items: center; gap: 12px; padding: 7px 18px; border-radius: 999px; background: rgba(2, 6, 23, .82); border: 2px solid rgba(248, 250, 252, .30); color: #F8FAFC; font: 500 25px/1.2 "JetBrains Mono"; white-space: nowrap; z-index: 60; }
+  .chipT b { width: 12px; height: 12px; border-radius: 50%; background: #3DC023; }
+  .illus { position: absolute; padding: 6px 14px; border: 2px dashed rgba(248, 250, 252, .55); border-radius: 8px; background: rgba(2, 6, 23, .82); color: rgba(248, 250, 252, .9); font: 500 24px/1.2 "JetBrains Mono"; white-space: nowrap; z-index: 60; }
+  .cap { position: absolute; left: 65px; width: 950px; bottom: 676px; display: flex; flex-direction: column; align-items: center; z-index: 50; }
+  .cap > span { display: inline-block; max-width: 950px; background: #F8FAFC; color: #020617; font: 800 56px/1.12 Manrope; letter-spacing: -0.022em; padding: 13px 28px 17px; border-radius: 14px; text-align: center; box-shadow: 0 14px 40px rgba(0, 0, 0, .42); text-wrap: balance; }
+  .cap em { font-style: normal; color: #15803D; }
+  .cap.dark > span { background: #020617; color: #F8FAFC; box-shadow: 0 0 0 2px rgba(248, 250, 252, .16), 0 18px 50px rgba(0, 0, 0, .55); }
+  .cap.dark em { color: #4ADE80; }
+  .capT { position: absolute; left: 65px; width: 950px; top: 318px; display: flex; flex-direction: column; align-items: flex-start; z-index: 50; }
+  .capT > span { display: inline-block; max-width: 950px; background: #F8FAFC; color: #020617; font: 800 54px/1.12 Manrope; letter-spacing: -0.022em; padding: 12px 26px 16px; border-radius: 14px; box-shadow: 0 14px 40px rgba(0, 0, 0, .42); text-wrap: balance; }
+  .capT em { font-style: normal; color: #15803D; }
+  .bgNavy { position: absolute; inset: 0; background: radial-gradient(1000px 900px at 50% 40%, #0B1A2E 0%, #020617 72%); }
+  .bgGreen { position: absolute; inset: 0; background: radial-gradient(1100px 900px at 50% 36%, rgba(61, 192, 35, .10), rgba(0, 0, 0, 0) 60%), linear-gradient(180deg, #071022 0%, #020617 70%); }
+  .ptr { position: absolute; left: -100px; top: -100px; width: 46px; height: 58px; z-index: 70; filter: drop-shadow(0 4px 8px rgba(0, 0, 0, .35)); }
+
+  /* ================= S1 · hook ================= */
+  #duskWrap { position: absolute; left: -904px; top: -40px; width: 2432px; height: 1368px; transform-origin: 1444px 640px; }
+  #dusk { width: 2432px; height: 1368px; }
+  #duskShade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(2, 6, 23, .66) 0%, rgba(2, 6, 23, .22) 28%, rgba(2, 6, 23, .08) 40%, rgba(2, 6, 23, .30) 55%, rgba(2, 6, 23, .78) 66%, #020617 72%); }
+  #h1 { position: absolute; left: 65px; top: 348px; width: 950px; color: #F8FAFC; font: 800 116px/0.96 Manrope; letter-spacing: -0.045em; text-shadow: 0 6px 34px rgba(0, 0, 0, .55); z-index: 5; }
+  #list { position: absolute; left: 90px; top: 612px; width: 900px; background: #F8F6EF; border-radius: 22px; padding: 26px 40px 22px; box-shadow: 0 40px 110px rgba(0, 0, 0, .6); z-index: 4; color: #0F172A; }
+  #list .lt { display: flex; justify-content: space-between; font: 700 34px/1 "JetBrains Mono"; letter-spacing: .12em; color: #3F3F46; padding-bottom: 14px; border-bottom: 3px solid #14161A; }
+  .lr { position: relative; display: flex; align-items: center; gap: 24px; height: 78px; border-bottom: 2px dashed rgba(20, 22, 26, .14); font: 700 47px/1 Manrope; letter-spacing: -0.02em; }
+  .lr:last-child { border-bottom: 0; }
+  .tk { position: relative; width: 52px; height: 52px; flex: none; }
+  .tk .ring { position: absolute; inset: 0; border-radius: 50%; border: 4px solid #CBD5E1; }
+  .tk .on { position: absolute; inset: 0; border-radius: 50%; background: #16A34A; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 34px; }
+  .tk .on svg.i { stroke-width: 3.2; }
+  .tk .bad { position: absolute; inset: 0; border-radius: 50%; background: #DC2626; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 32px; }
+  .tk .bad svg.i { stroke-width: 3.4; }
+  #r5txt { color: #0F172A; }
+  #r5red { position: absolute; left: 76px; top: 0; height: 78px; display: flex; align-items: center; color: #DC2626; }
+  #r5ring { position: absolute; left: -22px; top: -16px; width: 760px; height: 110px; }
+  #h2 { position: absolute; left: 65px; top: 1138px; z-index: 6; }
+  #h2 span { display: inline-block; background: #E0302A; color: #fff; font: 800 64px/1.05 Manrope; letter-spacing: -0.03em; padding: 14px 28px 18px; border-radius: 14px; box-shadow: 0 18px 50px rgba(0, 0, 0, .5); }
+
+  /* ================= S2 · the hunt ================= */
+  .hlab { position: absolute; left: 65px; top: 372px; z-index: 20; }
+  .hlab b { display: block; font: 600 28px/1 "JetBrains Mono"; letter-spacing: .16em; color: #FCA5A5; text-transform: uppercase; }
+  .hlab span { display: block; margin-top: 10px; font: 800 92px/1 Manrope; letter-spacing: -0.04em; color: #F8FAFC; }
+  .stamp { position: absolute; font: 400 120px/1 "Permanent Marker"; color: #EF4444; white-space: nowrap; z-index: 30; text-shadow: 0 4px 0 rgba(0, 0, 0, .25); }
+
+  /* 2a · inbox (generic, unbranded mail search) */
+  #mail { position: absolute; left: 90px; top: 540px; width: 900px; height: 800px; border-radius: 34px; background: #FFFFFF; box-shadow: 0 40px 110px rgba(0, 0, 0, .6); overflow: hidden; font-family: Inter; color: #1C1C1E; }
+  #mail .mtop { height: 150px; background: #F6F5F2; border-bottom: 2px solid #E3E2DD; display: flex; align-items: center; padding: 0 34px; }
+  #mail .msearch { flex: 1; height: 94px; border-radius: 47px; background: #FFFFFF; border: 3px solid #1C1C1E; display: flex; align-items: center; gap: 22px; padding: 0 32px; font: 500 46px/1 Inter; }
+  #mail .msearch svg.i { font-size: 44px; color: #6B6B70; }
+  #mq { white-space: pre; }
+  .caret { display: inline-block; width: 4px; height: 52px; background: #1C1C1E; margin-left: -14px; }
+  #mail .mempty { position: absolute; left: 0; right: 0; top: 280px; text-align: center; }
+  #mail .mempty svg.i { font-size: 120px; color: #C7C7CC; stroke-width: 1.6; }
+  #mail .mno { margin-top: 26px; font: 800 72px/1 Manrope; letter-spacing: -0.03em; color: #1C1C1E; }
+  #mail .mfor { margin-top: 18px; font: 400 38px/1.2 Inter; color: #6B6B70; }
+
+  /* 2b · garage box */
+  #box { position: absolute; left: 180px; top: 740px; width: 720px; height: 564px; z-index: 6; }
+  #floor2 { position: absolute; left: 90px; top: 1240px; width: 900px; height: 120px; border-radius: 50%; background: radial-gradient(closest-side, rgba(0, 0, 0, .55), rgba(0, 0, 0, 0)); }
+  .flap { transform-box: fill-box; }
+  .paper { position: absolute; left: 0; top: 0; width: 400px; height: 168px; background: #FFFFFF; border-radius: 10px; box-shadow: 0 18px 44px rgba(0, 0, 0, .45); padding: 22px 26px; z-index: 8; }
+  .paper .pt { font: 800 40px/1.05 Manrope; letter-spacing: -0.02em; color: #0F172A; }
+  .paper .pl { margin-top: 16px; height: 10px; border-radius: 5px; background: #E2E8F0; width: 86%; }
+  .paper .pl + .pl { width: 64%; margin-top: 12px; }
+  .paper .px { position: absolute; right: 18px; top: 16px; font: 400 52px/1 "Permanent Marker"; color: #EF4444; }
+
+  /* 2c · ute glovebox */
+  #dash { position: absolute; left: 0; top: 860px; width: 1080px; height: 1060px; z-index: 4; }
+  #gdoor { position: absolute; left: 270px; top: 1050px; width: 540px; height: 260px; border-radius: 30px; background: linear-gradient(180deg, #4A4F58 0%, #353941 100%); box-shadow: inset 0 2px 0 rgba(255, 255, 255, .10), 0 10px 30px rgba(0, 0, 0, .5); transform-origin: 50% 100%; z-index: 6; }
+  #gdoor i { position: absolute; left: 50%; top: 34px; width: 150px; height: 26px; margin-left: -75px; border-radius: 13px; background: #1C1F24; box-shadow: inset 0 3px 6px rgba(0, 0, 0, .6); }
+  #gin { position: absolute; left: 270px; top: 1310px; width: 540px; height: 170px; border-radius: 0 0 30px 30px; background: linear-gradient(180deg, #2B2F36, #3E434C); transform-origin: 50% 0; z-index: 6; box-shadow: 0 16px 30px rgba(0, 0, 0, .5); }
+  #rcpt { position: absolute; left: 230px; top: 500px; width: 620px; height: 600px; background: #FCFCF8; color: #1F2328; padding: 40px 40px 0; font: 500 30px/1.32 "JetBrains Mono"; z-index: 9; box-shadow: 0 30px 80px rgba(0, 0, 0, .55); transform-origin: 50% 50%; }
+  #rcpt .rc { text-align: center; }
+  #rcpt .rh { font: 800 44px/1.1 "JetBrains Mono"; letter-spacing: .08em; }
+  #rcpt .rs { color: #4B5058; font-size: 26px; }
+  #rcpt .rd { margin: 16px 0; border-top: 3px dashed #9CA3AF; }
+  #rcpt .ri { display: flex; justify-content: space-between; font: 800 40px/1.2 "JetBrains Mono"; }
+  #rcpt .rt { display: flex; justify-content: space-between; font: 700 34px/1.3 "JetBrains Mono"; }
+  #rcStamp { left: 400px; top: 930px; transform-origin: 50% 50%; }
+  #rcAside { position: absolute; left: 520px; top: 1118px; font: 700 46px/1 Kalam; color: #BFDBFE; transform: rotate(-4deg); white-space: nowrap; z-index: 31; }
+
+  /* ================= S3 · text thread (generic, unbranded) ================= */
+  #chat { position: absolute; inset: 0; background: #F5F4F0; font-family: Inter; color: #1C1C1E; }
+  #chead { position: absolute; left: 0; right: 0; top: 0; height: 490px; background: #FFFFFF; border-bottom: 2px solid #E3E2DD; }
+  #chead .in { position: absolute; left: 44px; right: 44px; top: 356px; height: 118px; display: flex; align-items: center; gap: 26px; }
+  #chead .back { font-size: 54px; color: #3478F6; color: #1C1C1E; }
+  #chead .av { width: 104px; height: 104px; border-radius: 50%; background: #8A7357; color: #fff; display: flex; align-items: center; justify-content: center; font: 600 48px/1 Inter; flex: none; }
+  #chead .nm { font: 700 46px/1.1 Inter; letter-spacing: -0.01em; }
+  #chead .sub { margin-top: 6px; font: 400 30px/1.2 Inter; color: #6B6B70; }
+  .msg { position: absolute; right: 44px; max-width: 780px; padding: 22px 34px 24px; border-radius: 44px; font: 400 45px/1.24 Inter; letter-spacing: -0.005em; background: #2E2E33; color: #FAFAF7; }
+  .day { position: absolute; left: 0; right: 0; text-align: center; font: 500 27px/1 Inter; color: #8E8E93; }
+  #compose { position: absolute; left: 0; right: 0; top: 1290px; height: 124px; background: #FFFFFF; border-top: 2px solid #E3E2DD; display: flex; align-items: center; gap: 22px; padding: 0 32px; }
+  #compose .plus { width: 72px; height: 72px; border-radius: 50%; background: #EFEEEA; flex: none; }
+  #compose .field { flex: 1; height: 80px; border-radius: 40px; border: 2px solid #DEDCD6; }
+  #kbd { position: absolute; left: 0; right: 0; top: 1414px; height: 520px; background: #D6D7DC; padding: 22px 10px 0; }
+  .krow { display: flex; justify-content: center; gap: 12px; margin-bottom: 18px; }
+  .key { width: 92px; height: 104px; border-radius: 14px; background: #FFFFFF; box-shadow: 0 3px 0 #A4A6AD; display: flex; align-items: center; justify-content: center; font: 400 44px/1 Inter; color: #1C1C1E; }
+  .key.w { width: 140px; background: #B7BAC2; }
+  .key.sp { width: 520px; }
+  #dlv { position: absolute; right: 72px; font: 500 26px/1 Inter; color: #8E8E93; }
+
+  /* ================= S4 · the real Knowledge Hub page ================= */
+  #t4 { position: absolute; left: 65px; top: 324px; width: 950px; z-index: 20; }
+  #t4 b { display: block; font: 600 30px/1 "JetBrains Mono"; letter-spacing: .16em; color: #4ADE80; }
+  #t4 span { display: block; margin-top: 14px; font: 800 72px/1.02 Manrope; letter-spacing: -0.035em; color: #F8FAFC; text-wrap: balance; }
+  #kb { position: absolute; left: 65px; top: 590px; width: 950px; height: 1400px; border-radius: 24px; overflow: hidden; background: #17181C; box-shadow: 0 0 0 2px rgba(248, 250, 252, .12), 0 40px 110px rgba(0, 0, 0, .7); }
+  #kbCam { position: absolute; left: 0; top: 0; width: 2580px; height: 3300px; transform-origin: 0 0; }
+  #kbCam img { width: 2580px; height: 3300px; }
+  /* the outline closes before the "Issued & tracked" column, so the frame ends on Document + Who issues it (no half-cut chip) */
+  #kbHi { position: absolute; left: 175px; top: 1356px; width: 1512px; height: 392px; border: 9px solid #4ADE80; border-radius: 24px; box-shadow: 0 0 0 9999px rgba(10, 11, 14, .42); }
+  #kbFade { position: absolute; inset: 0; background: linear-gradient(270deg, #17181C 0, rgba(23, 24, 28, .9) 10px, rgba(23, 24, 28, 0) 26px); pointer-events: none; }
+  #kbChip { position: absolute; left: 65px; top: 532px; z-index: 25; display: inline-flex; align-items: center; gap: 12px; padding: 7px 18px; border-radius: 999px; background: rgba(2, 6, 23, .88); border: 2px solid rgba(248, 250, 252, .30); color: #F8FAFC; font: 500 25px/1.2 "JetBrains Mono"; white-space: nowrap; }
+  #kbChip b { width: 12px; height: 12px; border-radius: 50%; background: #3DC023; }
+
+  /* ================= S5–S7 · recreated QSME app ("Clean white" light tokens) ================= */
+  .app { --bg: #fff; --fg: oklch(0.21 0.008 255); --muted: oklch(0.955 0.004 255); --mfg: oklch(0.44 0.0096 255); --sfg: oklch(0.52 0.0096 255);
+         --bd: oklch(0.895 0.0048 255); --inp: oklch(0.82 0.006 255); --pri: oklch(0.45 0.115 152); --pfg: oklch(0.99 0.005 152);
+         --succ: oklch(0.47 0.13 150); --warn: oklch(0.5 0.115 68); --dest: oklch(0.52 0.2 27);
+         font-family: Manrope, Inter, sans-serif; color: var(--fg); font-size: 14px; line-height: 20px; -webkit-font-smoothing: antialiased; }
+  .app svg.i { width: 16px; height: 16px; }
+  .app .xs { font-size: 12px; line-height: 16px; }
+  .app .mf { color: var(--mfg); }
+  .app .med { font-weight: 500; } .app .semi { font-weight: 600; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; height: 36px; padding: 0 16px; border-radius: 6px; font-size: 14px; font-weight: 500; white-space: nowrap; }
+  .btn.pri { background: var(--pri); color: var(--pfg); }
+  .btn.out { border: 1px solid var(--bd); background: #fff; box-shadow: 0 1px 2px rgba(0, 0, 0, .05); }
+  .btn.smb { height: 32px; padding: 0 12px; }
+  .badge { display: inline-flex; align-items: center; gap: 4px; border-radius: 6px; border: 1px solid var(--bd); padding: 2px 8px; font-size: 12px; line-height: 16px; font-weight: 500; white-space: nowrap; }
+  .badge.sec { background: var(--muted); border-color: transparent; font-weight: 400; }
+  .badge.hold { border-color: oklch(0.83 0.16 84); color: oklch(0.55 0.15 60); }
+  .badge.doc { color: var(--mfg); }
+  .badge svg.i { width: 12px; height: 12px; }
+
+  /* the window runs off the bottom of the phone screen; it fades into the background below the safe area instead of showing empty page */
+  .frame { position: absolute; left: 65px; width: 950px; border-radius: 22px; overflow: hidden; background: #fff; box-shadow: 0 0 0 2px rgba(255, 255, 255, .06), 0 40px 120px rgba(0, 0, 0, .7);
+           -webkit-mask-image: linear-gradient(180deg, #000 0, #000 900px, rgba(0, 0, 0, 0) 1160px); mask-image: linear-gradient(180deg, #000 0, #000 900px, rgba(0, 0, 0, 0) 1160px); }
+  .fbar { position: absolute; left: 0; right: 0; top: 0; height: 64px; background: #E9EDF1; border-bottom: 1px solid #D5DBE1; display: flex; align-items: center; gap: 10px; padding: 0 14px 0 20px; z-index: 3; }
+  .fbar i { width: 16px; height: 16px; border-radius: 50%; background: #FF5F57; flex: none; }
+  .fbar i:nth-child(2) { background: #FEBC2E; } .fbar i:nth-child(3) { background: #28C840; }
+  .fbar .who { margin-left: 12px; font: 700 25px/1 Manrope; letter-spacing: -0.01em; color: #1E293B; white-space: nowrap; }
+  .fbar .who b { color: #15803D; font-weight: 800; }
+  .fbar .illustrative { position: static; margin-left: auto; padding: 5px 12px; border: 2px dashed rgba(51, 65, 85, .6); border-radius: 7px; color: #1E293B; background: rgba(255, 255, 255, .7); font: 500 24px/1.2 "JetBrains Mono"; white-space: nowrap; }
+  .vp { position: absolute; left: 0; top: 64px; right: 0; bottom: 0; overflow: hidden; }
+  .zcam { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+
+  /* S5a · Issue Certificate dialog (over the dimmed project page) */
+  #f5 { top: 500px; height: 1440px; }
+  /* the roofer's view of the same project page: the owner's checklist (read only for him), then Site Certificates */
+  #pg5 { position: absolute; left: 0; top: 0; width: 560px; height: 1100px; background: #F4F5F7; padding: 14px; }
+  #pg5 .ci { margin-top: 10px; }
+  #c5body { position: relative; min-height: 92px; }
+  #c5empty { font-size: 14px; line-height: 20px; color: var(--mfg); padding-right: 6px; }
+  #c5row { position: absolute; left: 20px; right: 20px; top: 0; margin-top: 0; }
+  #dim5 { position: absolute; left: 0; top: 0; width: 560px; height: 1100px; background: rgba(0, 0, 0, .5); }
+  #dlg { position: absolute; left: 24px; top: 16px; width: 512px; background: #fff; border: 1px solid var(--bd); border-radius: 10px; padding: 24px; box-shadow: 0 10px 30px rgba(0, 0, 0, .18); }
+  #dlg .dt { font-size: 18px; line-height: 28px; font-weight: 600; }
+  #dlg .dd { margin-top: 6px; color: var(--mfg); }
+  #dlg .fl { margin-top: 14px; }
+  #dlg .lb { font-size: 14px; font-weight: 500; line-height: 20px; margin-bottom: 6px; }
+  .inp { position: relative; height: 36px; border: 1px solid var(--inp); border-radius: 6px; padding: 0 12px; display: flex; align-items: center; box-shadow: 0 1px 2px rgba(0, 0, 0, .05); white-space: nowrap; }
+  .inp .ph { position: absolute; left: 12px; color: var(--sfg); }
+  .inp .val { position: relative; }
+  .inp.ta { height: 60px; align-items: flex-start; padding-top: 8px; white-space: normal; }
+  .inp.ta .ph { top: 8px; }
+  .inp .chev { position: absolute; right: 10px; color: var(--mfg); }
+  .inp .ring { position: absolute; inset: -4px; border-radius: 9px; box-shadow: 0 0 0 3px rgba(100, 116, 139, .35); border: 1px solid var(--fg); }
+  .fileb { display: inline-flex; align-items: center; height: 24px; padding: 0 8px; margin-right: 10px; border-radius: 4px; background: var(--muted); font-size: 13px; font-weight: 600; color: var(--fg); }
+  #dlg .ft { margin-top: 18px; display: flex; justify-content: flex-end; gap: 8px; }
+  #toast { position: relative; margin: 60px 0 0 auto; width: 400px; height: 56px; background: #fff; border: 1px solid var(--bd); border-radius: 8px; box-shadow: 0 6px 20px rgba(0, 0, 0, .14); display: flex; align-items: center; gap: 10px; padding: 0 16px; font-size: 14px; font-weight: 600; }
+  #toast svg.i { width: 20px; height: 20px; color: var(--succ); }
+
+  /* S5b · Compliance & process checklist */
+  #f5b { top: 500px; height: 1440px; }
+  #ck { position: absolute; left: 0; top: 0; width: 560px; height: 1100px; background: #F4F5F7; padding: 14px; }
+  .card { background: #fff; border: 1px solid var(--bd); border-radius: 10px; box-shadow: 0 1px 2px rgba(0, 0, 0, .04); }
+  .card .hd { padding: 18px 20px 6px; display: flex; align-items: center; gap: 8px; font-size: 16px; line-height: 24px; font-weight: 600; }
+  .card .bd { padding: 10px 20px 20px; }
+  .ph2 { display: flex; justify-content: space-between; align-items: flex-start; }
+  .prog { margin: 6px 0 12px; height: 6px; border-radius: 3px; background: oklch(0.45 0.115 152 / .2); overflow: hidden; }
+  .prog i { display: block; height: 100%; width: 80%; background: var(--pri); }
+  .ci { display: flex; gap: 12px; align-items: flex-start; margin-top: 12px; }
+  .cb { position: relative; width: 16px; height: 16px; flex: none; margin-top: 2px; border-radius: 4px; border: 1px solid var(--inp); background: #fff; }
+  .cb .on { position: absolute; inset: -1px; border-radius: 4px; background: var(--pri); color: #fff; display: flex; align-items: center; justify-content: center; }
+  .cb .on svg.i { width: 12px; height: 12px; stroke-width: 3; }
+  .ct { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+  .ct .tt { font-size: 14px; font-weight: 500; }
+  .done .tt { color: var(--mfg); text-decoration: line-through; }
+  .cdesc { margin-top: 2px; font-size: 12px; line-height: 16px; color: var(--mfg); }
+  .clink { margin-top: 4px; display: flex; align-items: center; gap: 4px; font-size: 12px; line-height: 16px; color: var(--mfg); }
+  .clink svg.i { width: 12px; height: 12px; }
+  #ckStrike { position: absolute; left: 0; right: 0; top: 10px; height: 1.5px; background: var(--mfg); }
+  #ckHi { position: absolute; left: -8px; top: -6px; right: -8px; bottom: -6px; border-radius: 8px; background: oklch(0.95 0.035 152); border: 1.5px solid oklch(0.45 0.115 152 / .45); z-index: -1; }
+
+  /* S6 · Site Certificates + CCC Pack */
+  #certs { position: absolute; left: 0; top: 0; width: 560px; height: 1100px; background: #F4F5F7; padding: 14px; }
+  .srow { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--bd); }
+  .srow:last-child { border-bottom: 0; }
+  .srow .t1 { font-size: 14px; font-weight: 500; }
+  .srow .t2 { font-size: 12px; line-height: 16px; color: var(--mfg); }
+  .badge.pri { background: var(--pri); color: var(--pfg); border-color: transparent; font-size: 10px; line-height: 14px; }
+  .crow { margin-top: 8px; border: 1px solid var(--bd); border-radius: 6px; padding: 12px; position: relative; background: #fff; }
+  .crow .t1 { font-size: 14px; font-weight: 500; }
+  .crow .t2 { margin-top: 2px; font-size: 12px; line-height: 16px; color: var(--mfg); }
+  .crow .t3 { margin-top: 2px; display: flex; align-items: center; gap: 4px; font-size: 12px; line-height: 16px; color: var(--mfg); }
+  .crow .t3 svg.i { width: 12px; height: 12px; }
+  .crow.new { border-color: oklch(0.45 0.115 152 / .55); background: oklch(0.97 0.02 152); }
+  #packBtn { position: relative; }
+  #packBtn .spin { position: absolute; left: 12px; top: 8px; width: 16px; height: 16px; }
+  #tip { position: absolute; left: 196px; top: 62px; width: 322px; padding: 6px 10px; background: #FFFFE6; border: 1px solid #A3A3A3; color: #111; font: 400 12px/16px Inter; box-shadow: 0 2px 6px rgba(0, 0, 0, .18); z-index: 5; }
+
+  /* the zip, opened (generic file list) */
+  #zip { position: absolute; left: 90px; top: 520px; width: 900px; border-radius: 26px; background: #FFFFFF; box-shadow: 0 40px 120px rgba(0, 0, 0, .7); overflow: hidden; font-family: Inter; color: #1C1C1E; z-index: 20; }
+  #zip .zh { height: 104px; background: #F1F3F5; border-bottom: 2px solid #E2E5E9; display: flex; align-items: center; gap: 18px; padding: 0 30px; font: 700 40px/1 Inter; }
+  #zip .zh svg.i { font-size: 46px; color: #15803D; }
+  #zip .zh .illustrative { position: static; margin-left: auto; padding: 5px 12px; border: 2px dashed rgba(51, 65, 85, .6); border-radius: 7px; color: #1E293B; background: rgba(255, 255, 255, .7); font: 500 24px/1.2 "JetBrains Mono"; white-space: nowrap; }
+  .zr { display: flex; align-items: center; gap: 18px; height: 78px; padding: 0 30px; border-bottom: 1px solid #EEF0F2; font: 500 36px/1 Inter; white-space: nowrap; }
+  .zr svg.i { font-size: 40px; color: #64748B; }
+  .zr.f svg.i { color: #D97706; }
+  .zr.in { padding-left: 92px; }
+  .zr.hl { background: #ECFDF3; }
+  .zr .dm { margin-left: auto; font: 600 20px/1 "JetBrains Mono"; color: #B91C1C; border: 2px solid #FCA5A5; border-radius: 6px; padding: 4px 8px; }
+  #zdl { position: absolute; left: 0; top: 0; z-index: 25; display: inline-flex; align-items: center; gap: 14px; padding: 16px 26px; border-radius: 16px; background: #fff; color: #1C1C1E; font: 700 34px/1 Inter; box-shadow: 0 20px 60px rgba(0, 0, 0, .55); white-space: nowrap; }
+  #zdl svg.i { font-size: 40px; color: #15803D; }
+
+  /* S7 · 00_INDEX.pdf (gofpdf Arial → Helvetica) */
+  #idx { position: absolute; left: 115px; top: 470px; width: 850px; height: 1120px; background: #FFFFFF; color: #111; padding: 56px 60px; font-family: Helvetica, Arial, sans-serif; box-shadow: 0 40px 120px rgba(0, 0, 0, .7); transform-origin: 50% 0; }
+  #idx h1 { font: 700 46px/1.1 Helvetica, Arial, sans-serif; }
+  #idx p { margin-top: 12px; font: 400 25px/1.35 Helvetica, Arial, sans-serif; }
+  #idx h2 { margin-top: 34px; font: 700 31px/1.2 Helvetica, Arial, sans-serif; }
+  #idx table { margin-top: 14px; width: 100%; border-collapse: collapse; font: 400 21px/1.25 Helvetica, Arial, sans-serif; }
+  #idx th { background: #E6E6E6; text-align: left; font-weight: 700; border: 1px solid #333; padding: 7px 9px; }
+  #idx td { border: 1px solid #333; padding: 7px 9px; }
+  #idx .wm { position: absolute; right: 50px; top: 50px; font: 700 34px/1 "JetBrains Mono"; color: #DC2626; border: 4px solid #DC2626; border-radius: 8px; padding: 6px 12px; transform: rotate(6deg); opacity: .85; }
+  #dim7 { position: absolute; inset: 0; background: rgba(2, 6, 23, .84); }
+  #c7a { position: absolute; left: 65px; width: 950px; top: 620px; text-align: center; z-index: 30; }
+  #c7a span { display: inline-block; background: #F8FAFC; color: #020617; font: 800 58px/1.12 Manrope; letter-spacing: -0.022em; padding: 14px 30px 18px; border-radius: 14px; box-shadow: 0 14px 40px rgba(0, 0, 0, .42); text-wrap: balance; }
+  #c7b { position: absolute; left: 65px; width: 950px; top: 860px; text-align: center; z-index: 30; font: 800 104px/1 Manrope; letter-spacing: -0.04em; color: #F8FAFC; }
+  #c7b em { font-style: normal; color: #4ADE80; }
+
+  /* ================= S8 · end card ================= */
+  #s8bg { position: absolute; inset: 0; background: radial-gradient(900px 760px at 50% 44%, rgba(61, 192, 35, .16), rgba(0, 0, 0, 0) 62%), #020617; }
+  #eLogo { position: absolute; left: 360px; top: 290px; width: 360px; }
+  #eKick { position: absolute; left: 65px; width: 950px; top: 470px; text-align: center; font: 700 30px/1 "JetBrains Mono"; letter-spacing: .16em; color: #4ADE80; }
+  #eH { position: absolute; left: 65px; width: 950px; top: 518px; text-align: center; font: 800 88px/1.0 Manrope; letter-spacing: -0.04em; color: #F8FAFC; }
+  #eH em { font-style: normal; color: #4ADE80; }
+  #eRow { position: absolute; left: 115px; top: 740px; width: 850px; height: 112px; border-radius: 18px; background: #F8F6EF; display: flex; align-items: center; gap: 24px; padding: 0 30px; color: #0F172A; font: 700 46px/1 Manrope; letter-spacing: -0.02em; box-shadow: 0 30px 80px rgba(0, 0, 0, .55); }
+  #eRow .lands { margin-left: auto; font: 600 25px/1.2 "JetBrains Mono"; color: #15803D; text-align: right; white-space: nowrap; }
+  #eCta { position: absolute; left: 65px; width: 950px; top: 896px; text-align: center; }
+  #eCta span { display: inline-block; background: #16A34A; color: #fff; font: 800 56px/1 Manrope; letter-spacing: -0.02em; padding: 28px 52px 30px; border-radius: 16px; box-shadow: 0 20px 60px rgba(22, 163, 74, .35); }
+  #eSmall { position: absolute; left: 95px; width: 890px; top: 1052px; text-align: center; font: 400 24px/1.4 Inter; color: rgba(248, 250, 252, .74); }
+</style>
+</head>
+<body class="nz r9x16">
+<div id="root">
+
+  <!-- ===== S1 · hook ===== -->
+  <div id="s1" class="scene">
+    <!-- the b-roll's clean first frame as a still: from ~0.6 s the clip grows floating holographic UI panels, which read as AI glitches here -->
+    <div id="duskWrap"><img id="dusk" src="clips/dusk/f_00000.jpg" alt=""></div>
+    <div id="duskShade"></div>
+    <div id="h1">Everything's<br>finished.</div>
+    <div id="list">
+      <div class="lt"><span>MOVE IN BY CHRISTMAS</span><span>HAMILTON</span></div>
+      <div class="lr"><div class="tk"><div class="ring"></div><div class="on" id="k1"><svg class="i" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div></div>Painted</div>
+      <div class="lr"><div class="tk"><div class="ring"></div><div class="on" id="k2"><svg class="i" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div></div>Carpets down</div>
+      <div class="lr"><div class="tk"><div class="ring"></div><div class="on" id="k3"><svg class="i" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div></div>Final inspection passed</div>
+      <div class="lr"><div class="tk"><div class="ring"></div><div class="on" id="k4"><svg class="i" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div></div>Electrical CoC</div>
+      <div class="lr" id="r5"><div class="tk"><div class="ring"></div><div class="bad" id="k5"><svg class="i" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></div></div><span id="r5txt">Record of Work — Roofing</span><span id="r5red">Record of Work — Roofing</span>
+        <svg id="r5ring" viewBox="0 0 760 110"><path id="r5path" d="M110 18 C 300 2, 640 4, 742 40 C 770 60, 720 98, 520 104 C 330 110, 90 104, 64 76 C 40 50, 96 22, 190 14" fill="none" stroke="#DC2626" stroke-width="6" stroke-linecap="round"/></svg>
+      </div>
+    </div>
+    <div id="h2"><span>Except one bit of paper.</span></div>
+    <div id="lblDusk" class="illus" style="right:65px; top:304px;">Illustrative footage</div>
+  </div>
+
+  <!-- ===== S2 · the hunt ===== -->
+  <div id="s2" class="scene">
+    <div class="bgNavy"></div>
+
+    <div id="v1" class="scene">
+      <div id="lab1" class="hlab"><b>Search 1</b><span>Inbox.</span></div>
+      <div id="mail">
+        <div class="mtop"><div class="msearch"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><span id="mq">record of work</span><i class="caret" id="mcaret"></i></div></div>
+        <div class="mempty" id="mempty">
+          <svg class="i" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          <div class="mno">No results</div>
+          <div class="mfor">for “record of work”</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="v2" class="scene">
+      <div id="lab2" class="hlab"><b>Search 2</b><span>Garage.</span></div>
+      <div id="pp1" class="paper"><div class="pt">Oven warranty</div><div class="pl"></div><div class="pl"></div></div>
+      <div id="pp2" class="paper"><div class="pt">Tile samples</div><div class="pl"></div><div class="pl"></div></div>
+      <div id="pp3" class="paper"><div class="pt">Kitchen quote v3</div><div class="pl"></div><div class="pl"></div></div>
+      <div id="pp4" class="paper"><div class="pt">Paint colours</div><div class="pl"></div><div class="pl"></div></div>
+      <div id="floor2"></div>
+      <svg id="box" viewBox="0 0 600 470">
+        <defs>
+          <linearGradient id="bxF" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D4A56A"/><stop offset="1" stop-color="#B98A50"/></linearGradient>
+          <linearGradient id="bxL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C08F55"/><stop offset="1" stop-color="#A97B44"/></linearGradient>
+        </defs>
+        <g id="flapL"><path d="M60 170 L18 46 L262 46 L300 170 Z" fill="url(#bxL)" stroke="#8C6434" stroke-width="3" stroke-linejoin="round"/></g>
+        <g id="flapR"><path d="M300 170 L338 46 L582 46 L540 170 Z" fill="url(#bxL)" stroke="#8C6434" stroke-width="3" stroke-linejoin="round"/></g>
+        <path d="M60 170 L540 170 L520 196 L80 196 Z" fill="#4A321A"/>
+        <rect x="60" y="170" width="480" height="290" rx="6" fill="url(#bxF)" stroke="#8C6434" stroke-width="3"/>
+        <rect x="270" y="170" width="60" height="90" fill="#E7D3A8" opacity=".55"/>
+        <text x="300" y="300" text-anchor="middle" font-family="Permanent Marker" font-size="58" fill="#1F1A14">HOUSE STUFF</text>
+        <text x="300" y="372" text-anchor="middle" font-family="Permanent Marker" font-size="44" fill="#1F1A14" opacity=".85">BOX 3 OF 7</text>
+      </svg>
+      <div id="bxStamp" class="stamp" style="left:590px; top:352px;">Not it.</div>
+    </div>
+
+    <div id="v3" class="scene">
+      <div id="lab3" class="hlab"><b>Search 14</b><span>The ute.</span></div>
+      <svg id="dash" viewBox="0 0 1080 1060">
+        <defs>
+          <linearGradient id="dsh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A3E46"/><stop offset=".35" stop-color="#25282E"/><stop offset="1" stop-color="#121418"/></linearGradient>
+          <linearGradient id="cav" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#050607"/><stop offset="1" stop-color="#1A1C20"/></linearGradient>
+        </defs>
+        <path d="M-20 150 C 220 40, 860 40, 1100 150 L1100 1100 L-20 1100 Z" fill="url(#dsh)"/>
+        <path d="M-20 150 C 220 40, 860 40, 1100 150" fill="none" stroke="#565B64" stroke-width="4"/>
+        <rect x="270" y="190" width="540" height="260" rx="30" fill="url(#cav)"/>
+        <rect x="320" y="380" width="200" height="40" rx="6" fill="#2A2D33" transform="rotate(-4 420 400)"/>
+        <rect x="560" y="370" width="160" height="56" rx="6" fill="#30343B" transform="rotate(6 640 398)"/>
+        <rect x="70" y="250" width="120" height="80" rx="16" fill="#1B1D22"/>
+        <rect x="890" y="250" width="120" height="80" rx="16" fill="#1B1D22"/>
+      </svg>
+      <div id="gdoor"><i></i></div>
+      <div id="gin"></div>
+      <div id="rcpt">
+        <div class="rc rh">BAKERY &amp; CAFE</div>
+        <div class="rc rs">Hamilton · Tax invoice</div>
+        <div class="rc rs">Tue 13 Oct 2026 · 6:42 am</div>
+        <div class="rd"></div>
+        <div class="ri"><span>1 x MINCE &amp;</span><span></span></div>
+        <div class="ri"><span>  CHEESE PIE</span><span>$5.50</span></div>
+        <div class="rd"></div>
+        <div class="rt"><span>TOTAL</span><span>$5.50</span></div>
+        <div class="rt" style="font-weight:500; font-size:28px;"><span>CARD</span><span>APPROVED</span></div>
+        <div class="rd"></div>
+        <div class="rc rs">Cheers! See you tomorrow</div>
+      </div>
+      <div id="rcStamp" class="stamp">Not it.</div>
+      <div id="rcAside">(good pie though)</div>
+    </div>
+  </div>
+
+  <!-- ===== S3 · the text thread (generic, unbranded) ===== -->
+  <div id="s3" class="scene">
+    <div id="chat">
+      <div id="chead"><div class="in">
+        <svg class="i back" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>
+        <div class="av">R</div>
+        <div><div class="nm">Roofer</div><div class="sub">usually replies Sundays</div></div>
+      </div></div>
+      <div id="d1" class="day" style="top:516px;">Mon 9:12 am</div>
+      <div id="m1" class="msg" style="top:552px;">Need your Record of Work for the CCC, cheers</div>
+      <div id="d2" class="day" style="top:742px;">Wed 4:40 pm</div>
+      <div id="m2" class="msg" style="top:778px;">Just bumping this</div>
+      <div id="d3" class="day" style="top:910px;">Fri 7:05 am</div>
+      <div id="m3" class="msg" style="top:946px;">Any chance? (sorry, me again)</div>
+      <div id="dlv" style="top:1054px;">Delivered</div>
+      <div id="compose"><div class="plus"></div><div class="field"></div></div>
+      <div id="kbd" data-qa-ignore>
+        <div class="krow"><div class="key">q</div><div class="key">w</div><div class="key">e</div><div class="key">r</div><div class="key">t</div><div class="key">y</div><div class="key">u</div><div class="key">i</div><div class="key">o</div><div class="key">p</div></div>
+        <div class="krow"><div class="key">a</div><div class="key">s</div><div class="key">d</div><div class="key">f</div><div class="key">g</div><div class="key">h</div><div class="key">j</div><div class="key">k</div><div class="key">l</div></div>
+        <div class="krow"><div class="key w"></div><div class="key">z</div><div class="key">x</div><div class="key">c</div><div class="key">v</div><div class="key">b</div><div class="key">n</div><div class="key">m</div><div class="key w"></div></div>
+        <div class="krow"><div class="key w"></div><div class="key sp"></div><div class="key w"></div></div>
+      </div>
+    </div>
+    <div id="c3" class="cap dark"><span>He's on a job in Queenstown.<br><em>Fair enough.</em></span></div>
+  </div>
+
+  <!-- ===== S4 · next build: the real public guide ===== -->
+  <div id="s4" class="scene">
+    <div class="bgGreen"></div>
+    <div id="t4"><b>NEXT BUILD · IN QSME</b><span>The paper goes in while they're still on site.</span></div>
+    <div id="kbChip"><b></b>live · qsme.co.nz Knowledge Hub</div>
+    <div id="kb" data-qa-ignore>
+      <div id="kbCam"><img src="clips/kb-docs.png" alt="">
+        <div id="kbHi"></div>
+      </div>
+      <div id="kbFade"></div>
+    </div>
+  </div>
+
+  <!-- ===== S5 · the roofer issues the certificate (recreated) ===== -->
+  <div id="s5" class="scene">
+    <div class="bgGreen"></div>
+    <div id="c5a" class="capT"><span>The roofer records it <em>before he leaves site.</em></span></div>
+    <div id="f5" class="frame" data-qa-ignore>
+      <div class="fbar"><i></i><i></i><i></i><span class="who"><b>QSME</b> · Demo house, Hamilton</span><span class="illustrative">Illustrative · demo data</span></div>
+      <div class="vp"><div id="cam5" class="zcam app">
+        <div id="pg5">
+          <div class="card">
+            <div class="hd"><svg class="i" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4M12 16h4M8 11h.01M8 16h.01"/></svg>Compliance &amp; process checklist</div>
+            <div class="bd">
+              <div class="ph2"><div><div class="semi">Phase 2 · During Construction</div><div class="xs mf">Manage the build and the council inspection schedule.</div></div>
+                <div class="xs mf" style="display:flex; align-items:center; gap:6px; white-space:nowrap;"><span>4/5</span><svg class="i" viewBox="0 0 24 24" style="transform:rotate(180deg)"><path d="m6 9 6 6 6-6"/></svg></div></div>
+              <div class="prog"><i></i></div>
+              <div class="ci done"><div class="cb"><div class="on"><svg class="i" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div></div><div class="ct"><span class="tt">Council hold-point inspections booked &amp; passed</span></div></div>
+              <div class="ci"><div class="cb"></div><div class="ct"><span class="tt">Lead trades are LBPs; Records of Work collected</span></div></div>
+              <div class="ci done"><div class="cb"><div class="on"><svg class="i" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div></div><div class="ct"><span class="tt">Energy Work Certificates collected</span></div></div>
+              <div class="ci done"><div class="cb"><div class="on"><svg class="i" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div></div><div class="ct"><span class="tt">Variations vs Consent Amendments tracked</span></div></div>
+              <div class="ci done"><div class="cb"><div class="on"><svg class="i" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div></div><div class="ct"><span class="tt">Site management running</span></div></div>
+              <div class="ph2" style="margin-top:22px;"><div><div class="semi">Phase 3 · Post-Construction</div><div class="xs mf">Convert what you collected into a CCC and sign-off.</div></div>
+                <div class="xs mf" style="display:flex; align-items:center; gap:6px; white-space:nowrap;"><span>0/7</span><svg class="i" viewBox="0 0 24 24" style="transform:rotate(180deg)"><path d="m6 9 6 6 6-6"/></svg></div></div>
+              <div class="prog"><i style="width:0;"></i></div>
+              <div class="ci"><div class="cb"></div><div class="ct"><span class="tt">Final Building Inspection booked &amp; passed</span></div></div>
+              <div class="ci"><div class="cb"></div><div class="ct"><span class="tt">CCC applied for (Form 6)</span></div></div>
+            </div>
+          </div>
+          <div class="card" id="certs5" style="margin-top:14px;">
+            <div class="hd" style="justify-content:space-between; padding-bottom:10px;">
+              <span style="display:flex; align-items:center; gap:8px;"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>Site Certificates <span class="mf" id="c5n" style="font-weight:400;">(1)</span></span>
+              <span class="btn out smb"><svg class="i" viewBox="0 0 24 24"><path d="M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v4"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m3 15 2 2 4-4"/></svg>Issue Certificate</span>
+            </div>
+            <div class="bd" id="c5body" style="padding-top:0;">
+              <div id="c5empty">No certificates yet. Issue yours when the work is done — it lands in the compliance checklist and the CCC pack.</div>
+              <div id="c5row" class="crow new"><div class="t1">LBP Record of Work</div><div class="t2">Demo Roofing Ltd · #ROW-DEMO-0042 · 30 Oct 2026</div><div class="t3"><svg class="i" viewBox="0 0 24 24"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>Record-of-Work-Roofing-DEMO.pdf</div></div>
+            </div>
+          </div>
+          <div id="toast"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Certificate issued</div>
+        </div>
+        <div id="dim5"></div>
+        <div id="dlg">
+          <div class="dt">Issue Certificate</div>
+          <div class="dd sm">Record the certificate here and attach the official document issued through your certification system. It lands in the compliance checklist and the CCC pack.</div>
+          <div class="fl"><div class="lb">Certificate type</div>
+            <div class="inp" id="selT"><span class="ph" id="selPh">Select a certificate type</span><span class="val" id="selV">LBP Record of Work</span><svg class="i chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg><div class="ring" id="selRing"></div></div>
+            <div class="xs mf" id="selD" style="margin-top:6px;">Mandatory record of restricted building work (structural / weather-tightness) carried out or supervised by a Licensed Building Practitioner.</div>
+          </div>
+          <div class="fl"><div class="lb">Certificate number</div>
+            <div class="inp"><span class="ph" id="numPh">The number on the official certificate (optional)</span><span class="val" id="numV">ROW-DEMO-0042</span><div class="ring" id="numRing"></div></div></div>
+          <div class="fl"><div class="lb">Work covered</div>
+            <div class="inp ta"><span class="ph" id="wrkPh">e.g. Full electrical installation, garage subcircuit…</span><span class="val" id="wrkV">Roof cladding, flashings and spouting (demo)</span><div class="ring" id="wrkRing"></div></div></div>
+          <div class="fl"><div class="lb">Official certificate (PDF)</div>
+            <div class="inp"><span class="fileb">Choose File</span><span class="ph" id="filPh" style="left:112px;">No file chosen</span><span class="val" id="filV">Record-of-Work-Roofing-DEMO.pdf</span></div></div>
+          <div class="ft"><span class="btn out">Cancel</span><span class="btn pri" id="issBtn">Issue Certificate</span></div>
+        </div>
+      </div></div>
+    </div>
+    <svg id="ptr5" class="ptr" viewBox="0 0 46 58"><path d="M4 3 L4 47 L15 37 L23 55 L31 51 L23 34 L39 34 Z" fill="#fff" stroke="#111" stroke-width="3" stroke-linejoin="round"/></svg>
+
+    <div id="c5b" class="capT"><span>You check it. <em>Then you tick it.</em></span></div>
+    <div id="f5b" class="frame" data-qa-ignore>
+      <div class="fbar"><i></i><i></i><i></i><span class="who"><b>QSME</b> · Demo house, Hamilton</span><span class="illustrative">Illustrative · demo data</span></div>
+      <div class="vp"><div id="cam5b" class="zcam app">
+        <div id="ck"><div class="card">
+          <div class="hd"><svg class="i" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4M12 16h4M8 11h.01M8 16h.01"/></svg>Compliance &amp; process checklist</div>
+          <div class="bd">
+            <div class="ph2"><div><div class="semi">Phase 2 · During Construction</div><div class="xs mf">Manage the build and the council inspection schedule.</div></div>
+              <div class="xs mf" style="display:flex; align-items:center; gap:6px; white-space:nowrap;"><span id="ckN">4/5</span><svg class="i" viewBox="0 0 24 24" style="transform:rotate(180deg)"><path d="m6 9 6 6 6-6"/></svg></div></div>
+            <div class="prog"><i id="ckBar"></i></div>
+            <div class="ci done"><div class="cb"><div class="on"><svg class="i" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div></div><div><div class="ct"><span class="tt">Council hold-point inspections booked &amp; passed</span><span class="badge hold"><svg class="i" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4M12 17h.01"/></svg>Hold point</span><span class="badge doc"><svg class="i" viewBox="0 0 24 24"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>Doc</span><span class="badge sec">NZ Building Code</span></div>
+              <div class="cdesc">Inspection schedule: excavations, footings, pre-slab plumbing, framing, pre-line, post-line, drainage. Book in advance; never cover work before sign-off.</div></div></div>
+            <div class="ci" id="ckRow" style="position:relative; isolation:isolate;"><div id="ckHi"></div><div class="cb" id="ckBox"><div class="on" id="ckOn"><svg class="i" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div></div><div><div class="ct"><span class="tt" id="ckTt" style="position:relative;">Lead trades are LBPs; Records of Work collected<span id="ckStrike"></span></span><span class="badge doc"><svg class="i" viewBox="0 0 24 24"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>Doc</span><span class="badge sec">NZ Building Code</span></div>
+              <div class="cdesc">Restricted Building Work (structural / weather-tightness) must be done by Licensed Building Practitioners; collect each Record of Work as you go.</div>
+              <div class="clink"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>On the programme: Fri 30 Oct</div></div></div>
+            <div class="ci done"><div class="cb"><div class="on"><svg class="i" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div></div><div><div class="ct"><span class="tt">Energy Work Certificates collected</span><span class="badge doc"><svg class="i" viewBox="0 0 24 24"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>Doc</span></div>
+              <div class="cdesc">Electrical Safety Certificates (ESC) and gas Certificates of Compliance from certified tradespeople.</div></div></div>
+            <div class="ci done"><div class="cb"><div class="on"><svg class="i" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div></div><div><div class="ct"><span class="tt">Variations vs Consent Amendments tracked</span><span class="badge hold"><svg class="i" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4M12 17h.01"/></svg>Hold point</span><span class="badge doc"><svg class="i" viewBox="0 0 24 24"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>Doc</span><span class="badge sec">NZ Building Code</span></div>
+              <div class="cdesc">Minor non-structural change → inspector signs off on-site. Structural / weather-tightness change → pause and file a formal BC Amendment.</div></div></div>
+            <div class="ci done"><div class="cb"><div class="on"><svg class="i" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div></div><div><div class="ct"><span class="tt">Site management running</span><span class="badge sec">HSWA 2015</span></div>
+              <div class="cdesc">Daily Toolbox Talks, environmental controls (silt fences vs stormwater runoff), visitor/contractor sign-in register.</div></div></div>
+
+            <div class="ph2" style="margin-top:26px;"><div><div class="semi">Phase 3 · Post-Construction</div><div class="xs mf">Convert what you collected into a CCC and sign-off.</div></div>
+              <div class="xs mf" style="display:flex; align-items:center; gap:6px; white-space:nowrap;"><span>0/7</span><svg class="i" viewBox="0 0 24 24" style="transform:rotate(180deg)"><path d="m6 9 6 6 6-6"/></svg></div></div>
+            <div class="prog"><i style="width:0;"></i></div>
+            <div class="ci"><div class="cb"></div><div><div class="ct"><span class="tt">Final Building Inspection booked &amp; passed</span><span class="badge hold"><svg class="i" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4M12 17h.01"/></svg>Hold point</span></div>
+              <div class="cdesc">Booked once the build is functionally complete.</div></div></div>
+            <div class="ci"><div class="cb"></div><div><div class="ct"><span class="tt">CCC applied for (Form 6)</span><span class="badge hold"><svg class="i" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4M12 17h.01"/></svg>Hold point</span><span class="badge doc"><svg class="i" viewBox="0 0 24 24"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>Doc</span><span class="badge sec">NZ Building Code</span></div>
+              <div class="cdesc">Code Compliance Certificate. Council has 20 working days from application. Requires the full documentation pack.</div></div></div>
+            <div class="ci"><div class="cb"></div><div><div class="ct"><span class="tt">Doc pack: all LBP Records of Work</span><span class="badge doc"><svg class="i" viewBox="0 0 24 24"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>Doc</span></div>
+              <div class="cdesc">Submitted with the CCC application.</div></div></div>
+          </div>
+        </div></div>
+      </div></div>
+    </div>
+    <svg id="ptr5b" class="ptr" viewBox="0 0 46 58"><path d="M4 3 L4 47 L15 37 L23 55 L31 51 L23 34 L39 34 Z" fill="#fff" stroke="#111" stroke-width="3" stroke-linejoin="round"/></svg>
+  </div>
+
+  <!-- ===== S6 · the CCC pack (recreated) ===== -->
+  <div id="s6" class="scene">
+    <div class="bgGreen"></div>
+    <div id="c6" class="capT"><span>Every certificate + the council index. <em>One zip.</em></span></div>
+    <div id="f6" class="frame" style="top:500px; height:1440px;" data-qa-ignore>
+      <div class="fbar"><i></i><i></i><i></i><span class="who"><b>QSME</b> · Demo house, Hamilton</span><span class="illustrative">Illustrative · demo data</span></div>
+      <div class="vp"><div id="cam6" class="zcam app">
+        <div id="certs"><div class="card">
+          <div class="hd" style="justify-content:space-between; padding-bottom:10px;">
+            <span style="display:flex; align-items:center; gap:8px;"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>Site Certificates <span class="mf" style="font-weight:400;">(3)</span></span>
+            <span class="btn out smb" id="packBtn"><svg class="i" viewBox="0 0 24 24" id="packIco"><path d="M10 12v-1M10 18v-2M10 7V6M14 2v4a2 2 0 0 0 2 2h4"/><path d="M15.5 22H18a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v16a2 2 0 0 0 .274 1.01"/><circle cx="10" cy="20" r="2"/></svg><svg class="i spin" viewBox="0 0 24 24" id="packSpin"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>CCC Pack</span>
+          </div>
+          <div class="bd" style="padding-top:0;">
+            <div class="crow new"><div class="t1">LBP Record of Work</div><div class="t2">Demo Roofing Ltd · #ROW-DEMO-0042 · 30 Oct 2026</div><div class="t3"><svg class="i" viewBox="0 0 24 24"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>Record-of-Work-Roofing-DEMO.pdf</div></div>
+            <div class="crow"><div class="t1">Electrical Certificate of Compliance (CoC)</div><div class="t2">Demo Electrical Ltd · #COC-DEMO-0117 · 22 Oct 2026</div><div class="t3"><svg class="i" viewBox="0 0 24 24"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>Electrical-CoC-DEMO.pdf</div></div>
+            <div class="crow"><div class="t1">As-laid Drainage Plan</div><div class="t2">Demo Drainage Ltd · 9 Oct 2026</div><div class="t3"><svg class="i" viewBox="0 0 24 24"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>As-laid-drainage-DEMO.pdf</div></div>
+          </div>
+        </div>
+        <div class="card" style="margin-top:14px;">
+          <div class="hd" style="padding-bottom:6px;"><svg class="i" viewBox="0 0 24 24"><path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5"/><path d="M14 6a6 6 0 0 1 6 6v3"/><path d="M4 15v-3a6 6 0 0 1 6-6"/><rect x="2" y="15" width="20" height="4" rx="1"/></svg>On-site safety <span class="mf" style="font-weight:400;">(3)</span></div>
+          <div class="bd" style="padding-top:0;">
+            <div class="srow"><div><div class="t1">Demo Roofing Ltd</div><div class="t2">Roofing · 14 Oct 2026</div></div><span class="badge pri">Signed on</span></div>
+            <div class="srow"><div><div class="t1">Demo Electrical Ltd</div><div class="t2">Electrical · 12 Oct 2026</div></div><span class="badge pri">Signed on</span></div>
+            <div class="srow"><div><div class="t1">Demo Drainage Ltd</div><div class="t2">Drainage · 2 Oct 2026</div></div><span class="badge pri">Signed on</span></div>
+          </div>
+        </div></div>
+        <div id="tip">Download every certificate plus the council index, as one zip</div>
+      </div></div>
+    </div>
+    <svg id="ptr6" class="ptr" viewBox="0 0 46 58"><path d="M4 3 L4 47 L15 37 L23 55 L31 51 L23 34 L39 34 Z" fill="#fff" stroke="#111" stroke-width="3" stroke-linejoin="round"/></svg>
+    <div id="zdl" data-qa-ignore><svg class="i" viewBox="0 0 24 24"><path d="M10 12v-1M10 18v-2M10 7V6M14 2v4a2 2 0 0 0 2 2h4"/><path d="M15.5 22H18a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v16a2 2 0 0 0 .274 1.01"/><circle cx="10" cy="20" r="2"/></svg>CCC_Pack.zip</div>
+    <div id="zip" data-qa-ignore>
+      <div class="zh"><svg class="i" viewBox="0 0 24 24"><path d="M10 12v-1M10 18v-2M10 7V6M14 2v4a2 2 0 0 0 2 2h4"/><path d="M15.5 22H18a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v16a2 2 0 0 0 .274 1.01"/><circle cx="10" cy="20" r="2"/></svg>CCC_Pack.zip<span class="illustrative">Illustrative · demo files</span></div>
+      <div class="zr" id="z1"><svg class="i" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M10 9H8M16 13H8M16 17H8"/></svg>00_INDEX.pdf</div>
+      <div class="zr f" id="z2"><svg class="i" viewBox="0 0 24 24"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>EnergyCerts</div>
+      <div class="zr in" id="z3"><svg class="i" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M10 9H8M16 13H8M16 17H8"/></svg>Electrical-CoC-DEMO.pdf</div>
+      <div class="zr f" id="z4"><svg class="i" viewBox="0 0 24 24"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>Other</div>
+      <div class="zr in" id="z5"><svg class="i" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M10 9H8M16 13H8M16 17H8"/></svg>As-laid-drainage-DEMO.pdf</div>
+      <div class="zr f" id="z6"><svg class="i" viewBox="0 0 24 24"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>ROW</div>
+      <div class="zr in hl" id="z7"><svg class="i" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M10 9H8M16 13H8M16 17H8"/></svg>Record-of-Work-Roofing-DEMO.pdf</div>
+    </div>
+  </div>
+
+  <!-- ===== S7 · what it doesn't do ===== -->
+  <div id="s7" class="scene">
+    <div class="bgGreen"></div>
+    <div id="idx" data-qa-ignore>
+      <div class="wm">DEMO</div>
+      <h1>CCC Document Pack</h1>
+      <p>Project: Demo house, Hamilton<br>Compiled: 30 October 2026 16:12</p>
+      <p>Supporting documentation for the Code Compliance Certificate application (Form 6).</p>
+      <h2>Compliance checklist status</h2>
+      <table>
+        <tr><th>Item</th><th style="width:110px;">Phase</th><th style="width:140px;">Status</th></tr>
+        <tr><td>Building Consent (BC) approved &amp; printed on-site</td><td>pre</td><td>done</td></tr>
+        <tr><td>Lead trades are LBPs; Records of Work collected</td><td>during</td><td>done</td></tr>
+        <tr><td>Energy Work Certificates collected</td><td>during</td><td>done</td></tr>
+        <tr><td>Final Building Inspection booked &amp; passed</td><td>post</td><td>done</td></tr>
+        <tr><td>CCC applied for (Form 6)</td><td>post</td><td>pending</td></tr>
+      </table>
+    </div>
+    <div id="dim7"></div>
+    <div id="c7a"><span>You still lodge it with council.</span></div>
+    <div id="c7b">QSME just<br><em>ends the hunt.</em></div>
+    <div id="lbl7" class="illus" style="left:65px; top:304px;">Illustrative · demo data</div>
+  </div>
+
+  <!-- ===== S8 · end card ===== -->
+  <div id="s8" class="scene">
+    <div id="s8bg"></div>
+    <img id="eLogo" src="qsme-logo.svg" alt="QSME">
+    <div id="eKick">NEXT BUILD</div>
+    <div id="eH">Everything's finished.<br><em>Even the paper.</em></div>
+    <div id="eRow">
+      <div class="tk"><div class="ring"></div><div class="bad" id="eBad"><svg class="i" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></div><div class="on" id="eOn"><svg class="i" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div></div>
+      <span>Record of Work — Roofing</span><span class="lands" id="eLands">in the<br>CCC pack</span>
+    </div>
+    <div id="eCta"><span>Sign up at qsme.co.nz</span></div>
+    <div id="eSmall">A skit: names, house and certificates are made up. Trades record certificates once QSME has approved their licence. QSME doesn't issue certificates or the CCC, and you lodge the pack. The CCC pack and checklist templates come with a paid plan.</div>
+  </div>
+
+  <div id="skit" class="chipT" style="left:65px;">A skit · names made up</div>
+</div>
+
+<script src="../../../tools/motion/kit.js"></script>
+<script>
+  // ---------------- timing (seconds) ----------------
+  // 2026-10-04 review pass: conflict inside the first second (✗ 0.85, red box by 1.05), hook whip 0.5 s earlier,
+  // +0.8 s on the pie receipt, the guide push dropped (-0.9 s), +0.4 s for the certificate row and toast,
+  // a 10-word honesty beat with more room, and a 0.5 s longer end-card tail.
+  var T = {
+    s1: [0, 2.62], s2: [2.5, 8.72], v1: [2.5, 4.42], v2: [4.3, 6.2], v3: [6.06, 8.72],
+    s3: [8.56, 12.88], s4: [12.76, 16.15], s5: [16.03, 21.68], s6: [21.56, 24.8], s7: [24.66, 28.66], s8: [28.49, 32.2]
+  };
+  var END = 32.2;
+  var FB = 64;   // window title-bar height (px) on the recreated app screens
+  // the receipt's torn bottom edge (static)
+  (function () { var n = 26, pts = ['0 0', '100% 0']; for (var i = n; i >= 0; i--) pts.push((i / n * 100).toFixed(2) + '% ' + (i % 2 ? '100%' : 'calc(100% - 18px)'));
+    document.getElementById('rcpt').style.clipPath = 'polygon(' + pts.join(',') + ')'; })();
+  Kit.scene('#s1', T.s1[0], T.s1[1]).scene('#s2', T.s2[0], T.s2[1]).scene('#v1', T.v1[0], T.v1[1]).scene('#v2', T.v2[0], T.v2[1]).scene('#v3', T.v3[0], T.v3[1])
+     .scene('#s3', T.s3[0], T.s3[1]).scene('#s4', T.s4[0], T.s4[1]).scene('#s5', T.s5[0], T.s5[1]).scene('#s6', T.s6[0], T.s6[1])
+     .scene('#s7', T.s7[0], T.s7[1]).scene('#s8', T.s8[0], END + 1);
+
+  // whip helpers: a scene slides in from the right / out to the left with a little motion blur
+  function whipIn(sel, t, d) { d = d || 0.26; Kit.add(sel, 'x', [[t, 1080], [t + d, 0, 'swipe']]); Kit.add(sel, 'blur', [[t, 14], [t + d, 0, 'out']]); }
+  function whipOut(sel, t, d) { d = d || 0.22; Kit.add(sel, 'x', [[t, 0], [t + d, -1080, 'swipe']]); Kit.add(sel, 'blur', [[t, 0], [t + d, 14, 'in']]); }
+  function upIn(sel, t, d, dy) { d = d || 0.3; Kit.add(sel, 'y', [[t, dy || 1300], [t + d, 0, 'swipe']]); }
+  // a caption card that cuts in / out hard (no cross-fade with the card it replaces)
+  function hardCut(sel, t0, t1) { var k = [[0, 0], [t0, 1, 'hold']]; if (t1 != null) k.push([t1, 0, 'hold']); Kit.add(sel, 'opacity', k); }
+  function camera(el, vw, vh, keys) {   // keys: [t, cx, cy, s, ease] → centre image point (cx, cy) in a vw×vh viewport at scale s
+    var node = document.querySelector(el);
+    Kit.each(function (t) {
+      var a = keys[0], b = keys[0], p = 0;
+      if (t >= keys[keys.length - 1][0]) { a = b = keys[keys.length - 1]; }
+      else if (t > keys[0][0]) { for (var i = 1; i < keys.length; i++) if (t < keys[i][0]) { a = keys[i - 1]; b = keys[i]; p = Kit.ease[b[4] || 'inOut']((t - a[0]) / (b[0] - a[0])); break; } }
+      var s = a[3] + (b[3] - a[3]) * p, cx = a[1] + (b[1] - a[1]) * p, cy = a[2] + (b[2] - a[2]) * p;
+      node.style.transform = 'translate(' + (vw / 2 - s * cx).toFixed(2) + 'px,' + (vh / 2 - s * cy).toFixed(2) + 'px) scale(' + s.toFixed(4) + ')';
+    });
+  }
+  function pointer(sel, keys) { Kit.add(sel, 'x', keys.map(function (k) { return [k[0], k[1], k[3] || 'inOut']; })); Kit.add(sel, 'y', keys.map(function (k) { return [k[0], k[2], k[3] || 'inOut']; })); }
+  function press(sel, t) { Kit.add(sel, 'scale', [[t, 1], [t + 0.06, 0.92, 'out'], [t + 0.16, 1, 'out']]); }
+  // camera over a recreated app screen inside a .frame (FB px title bar). keys: [t, cx, cy, s, ease]; cx / cy may be functions
+  // (resolved once the scene is laid out, e.g. to centre a row). cam.screen(sel, t, fx, fy) → root px of a point on an element at time t.
+  function appCam(sel, frameSel, vw, vh, keys) {
+    var node = document.querySelector(sel), fr = document.querySelector(frameSel), res = null;
+    var cam = {
+      local: function (elSel, fx, fy) { var e = document.querySelector(elSel), x = 0, y = 0, n = e; while (n && n !== node) { x += n.offsetLeft; y += n.offsetTop; n = n.offsetParent; }
+        return [x + e.offsetWidth * (fx == null ? 0.5 : fx), y + e.offsetHeight * (fy == null ? 0.5 : fy)]; },
+      state: function (t) {
+        if (!res) { if (!node.offsetParent) return null; res = keys.map(function (k) { return [k[0], typeof k[1] === 'function' ? k[1](cam) : k[1], typeof k[2] === 'function' ? k[2](cam) : k[2], k[3], k[4]]; }); }
+        var a = res[0], b = res[0], p = 0;
+        if (t >= res[res.length - 1][0]) { a = b = res[res.length - 1]; }
+        else if (t > res[0][0]) { for (var i = 1; i < res.length; i++) if (t < res[i][0]) { a = res[i - 1]; b = res[i]; p = Kit.ease[b[4] || 'inOut']((t - a[0]) / (b[0] - a[0])); break; } }
+        return { cx: a[1] + (b[1] - a[1]) * p, cy: a[2] + (b[2] - a[2]) * p, s: a[3] + (b[3] - a[3]) * p };
+      },
+      screen: function (elSel, t, fx, fy) { var st = cam.state(t); if (!st || !document.querySelector(elSel).offsetParent) return null; var q = cam.local(elSel, fx, fy);
+        return [fr.offsetLeft + vw / 2 + st.s * (q[0] - st.cx), fr.offsetTop + FB + vh / 2 + st.s * (q[1] - st.cy)]; }
+    };
+    Kit.each(function (t) { var st = cam.state(t); if (!st) return; node.style.transform = 'translate(' + (vw / 2 - st.s * st.cx).toFixed(2) + 'px,' + (vh / 2 - st.s * st.cy).toFixed(2) + 'px) scale(' + st.s.toFixed(4) + ')'; });
+    return cam;
+  }
+  // pointer path whose targets are real elements inside a camera-scaled recreation, resolved once the scene is laid out
+  function ptrPath(sel, keys) {   // keys: [t, target, ease]; target = [x, y] (root px) or { ac: cam, el, t, fx, fy }
+    var node = document.querySelector(sel), res = null;
+    function resolve(tg) { if (Array.isArray(tg)) return tg; return tg.ac.screen(tg.el, tg.t, tg.fx, tg.fy); }
+    Kit.each(function (t) {
+      if (t < keys[0][0]) return;
+      if (!res) { var r = keys.map(function (k) { return [k[0], resolve(k[1]), k[2]]; }); if (r.some(function (k) { return !k[1]; })) return; res = r; }
+      var a = res[0], b = res[0], p = 0;
+      if (t >= res[res.length - 1][0]) { a = b = res[res.length - 1]; }
+      else for (var i = 1; i < res.length; i++) if (t < res[i][0]) { a = res[i - 1]; b = res[i]; p = Kit.ease[b[2] || 'inOut']((t - a[0]) / (b[0] - a[0])); break; }
+      var x = a[1][0] + (b[1][0] - a[1][0]) * p, y = a[1][1] + (b[1][1] - a[1][1]) * p;
+      node.style.left = (x - 5).toFixed(1) + 'px'; node.style.top = (y - 4).toFixed(1) + 'px';
+    });
+  }
+
+  // chip "A skit · names made up": the whole story part (hook → thread)
+  Kit.show('#skit', 0, 12.7);
+
+  // ================= S1 · hook (0 – 2.62): the conflict lands inside the first second =================
+  Kit.add('#duskWrap', 'scale', [[0, 1.0], [2.62, 1.07, 'linear']]);
+  Kit.add('#h1', 'scale', [[0, 1.03], [0.4, 1, 'out']]);
+  Kit.add('#list', 'y', [[0, 220], [0.15, 0, 'out']]);
+  Kit.add('#list', 'opacity', [[0, 0], [0.06, 1]]);
+  ['#k1', '#k2', '#k3', '#k4'].forEach(function (k, i) { var t = 0.25 + i * 0.15; Kit.add(k, 'scale', [[t, 0], [t + 0.14, 1, 'outBack']]); Kit.add(k, 'opacity', [[t, 0], [t + 0.05, 1]]); });
+  Kit.add('#k5', 'scale', [[0.85, 1.6], [0.97, 1, 'slam']]); Kit.add('#k5', 'opacity', [[0.85, 0], [0.89, 1]]);
+  Kit.add('#r5red', 'opacity', [[0.85, 0], [0.89, 1]]); Kit.add('#r5txt', 'opacity', [[0.85, 1], [0.89, 0]]);
+  Kit.add('#r5', 'x', [[0.91, 0], [0.96, -10], [1.01, 9], [1.06, -5], [1.11, 0]]);
+  Kit.add('#r5path', 'trim', [[0.95, 0], [1.3, 1, 'out']]);
+  Kit.slam('#h2', 0.91, { from: 1.25, dur: 0.14 });
+  Kit.add('#s1', 'x', [[2.42, 0], [2.62, -1080, 'swipe']]); Kit.add('#s1', 'blur', [[2.42, 0], [2.62, 12, 'in']]);
+
+  // ================= S2 · the hunt (2.5 – 8.72) =================
+  // 2a inbox
+  whipIn('#v1', 2.5, 0.24);
+  Kit.type('#mq', 2.8, 3.36);
+  Kit.add('#mcaret', 'opacity', [[2.5, 1], [3.4, 1], [3.42, 0, 'hold'], [3.6, 1, 'hold'], [3.8, 0, 'hold'], [4.0, 1, 'hold'], [4.2, 0, 'hold']]);
+  Kit.pop('#mempty', 3.48, { dy: 30 });
+  Kit.add('#mail', 'x', [[3.7, 0], [3.75, -12], [3.8, 10], [3.85, -6], [3.9, 0]]);
+  whipOut('#v1', 4.22, 0.2);
+  // 2b garage
+  whipIn('#v2', 4.3, 0.22);
+  Kit.add('#box', 'rotate', [[4.5, 0], [4.56, -2.5], [4.62, 2.5], [4.68, -1.5], [4.74, 0]]);
+  Kit.add('#flapL', 'scaleY', [[4.3, 0.14], [4.74, 0.14], [4.92, 1, 'outBack']]);
+  Kit.add('#flapR', 'scaleY', [[4.3, 0.14], [4.74, 0.14], [4.92, 1, 'outBack']]);
+  document.querySelectorAll('.flap, #flapL, #flapR').forEach(function (g) { g.style.transformBox = 'fill-box'; g.style.transformOrigin = '50% 100%'; });
+  var papers = [['#pp1', 72, 520, -8, 4.88], ['#pp2', 604, 500, 7, 5.02], ['#pp3', 92, 700, 5, 5.16], ['#pp4', 590, 690, -6, 5.3]];
+  papers.forEach(function (p) {
+    var t = p[4];
+    Kit.add(p[0], 'x', [[t, 340], [t + 0.3, p[1], 'out']]);
+    Kit.add(p[0], 'y', [[t, 900], [t + 0.3, p[2], 'out']]);
+    Kit.add(p[0], 'rotate', [[t, 0], [t + 0.3, p[3], 'out']]);
+    Kit.add(p[0], 'scale', [[t, 0.4], [t + 0.3, 1, 'out']]);
+    Kit.add(p[0], 'opacity', [[t, 0], [t + 0.05, 1]]);
+  });
+  Kit.slam('#bxStamp', 5.6, { from: 1.6, dur: 0.16 }); Kit.add('#bxStamp', 'rotate', [[5.6, -8]]);
+  whipOut('#v2', 6.0, 0.2);
+  // 2c ute: the receipt reads clean for ~0.55 s, then the stamp, then the aside gets ~0.7 s
+  whipIn('#v3', 6.06, 0.22);
+  Kit.add('#gdoor', 'scaleY', [[6.06, 1], [6.36, 1], [6.48, 0.02, 'in']]);
+  Kit.add('#gdoor', 'opacity', [[6.47, 1], [6.48, 0]]);
+  Kit.add('#gin', 'scaleY', [[6.06, 0], [6.48, 0], [6.6, 1, 'out']]);
+  Kit.add('#rcpt', 'y', [[6.54, 760], [6.96, 0, 'out']]);
+  Kit.add('#rcpt', 'scale', [[6.54, 0.32], [6.96, 1, 'out']]);
+  Kit.add('#rcpt', 'rotate', [[6.54, 10], [6.96, -2.5, 'out']]);
+  Kit.add('#rcpt', 'opacity', [[6.54, 0], [6.6, 1]]);
+  Kit.slam('#rcStamp', 7.5, { from: 1.6, dur: 0.16 }); Kit.add('#rcStamp', 'rotate', [[7.5, -9]]);
+  Kit.pop('#rcAside', 7.8, { dy: 14 });
+  whipOut('#s2', 8.5, 0.2);
+
+  // ================= S3 · text thread (8.5 – 12.88) =================
+  upIn('#s3', 8.5, 0.24, 1920);
+  Kit.pop('#d1', 8.76, { dy: 0 }); Kit.pop('#m1', 8.82, { dy: 40 });
+  Kit.pop('#d2', 9.38, { dy: 0 }); Kit.pop('#m2', 9.44, { dy: 40 });
+  Kit.pop('#d3', 10.04, { dy: 0 }); Kit.pop('#m3', 10.1, { dy: 40 });
+  Kit.pop('#dlv', 10.36, { dy: 0 });
+  Kit.pop('#c3', 10.72, { dy: 30 });
+  whipOut('#s3', 12.68, 0.2);
+
+  // ================= S4 · next build, in QSME: the live guide (12.7 – 16.15) =================
+  // no push to the "Issued & tracked" chip any more: hold on the outlined LBP Record of Work row and scroll gently
+  // until the frame ends on the column header row + the outlined row (Document · Who issues it).
+  whipIn('#s4', 12.7, 0.24);
+  Kit.pop('#t4', 12.86, { dy: 30 });
+  Kit.add('#kb', 'y', [[12.86, 700], [13.16, 0, 'swipe']]);
+  camera('#kbCam', 950, 1400, [
+    [12.96, 936, 1580, 0.62],
+    [13.45, 936, 1580, 0.62],
+    [15.25, 936, 1725, 0.62, 'inOut']
+  ]);
+  Kit.add('#kbHi', 'opacity', [[13.5, 0], [13.75, 1, 'out']]);
+  whipOut('#s4', 15.95, 0.2);
+
+  // ================= S5 · the roofer records it (15.97 – 19.0) =================
+  var VH = 1440 - FB;
+  whipIn('#s5', 15.97, 0.26);
+  Kit.pop('#c5a', 16.09, { dy: 24 }); Kit.add('#c5a', 'opacity', [[19.0, 0, 'hold']]);   // hard cut on the whip, no cross-fade
+  Kit.add('#f5', 'x', [[19.0, 0], [19.22, -1080, 'swipe']]);
+  // the dialog at 2×: start on the title and type, scroll down to the button while the fields fill; after it closes the page
+  // scrolls to his Site Certificates card, where the new row lands with the toast just below it
+  var certsTop = function (c) { return c.local('#certs5', 0.5, 0)[1] + 300; };   // card top at screen ~727 at 1.75×; the view starts in a gap above it
+  var cam5 = appCam('#cam5', '#f5', 950, VH, [[16.03, 280, 362, 2.0], [16.93, 280, 362, 2.0], [17.45, 280, 508, 2.0, 'inOut'],
+                                                [17.95, 280, 508, 2.0], [18.25, 280, certsTop, 1.75, 'inOut']]);   // 1.75×: the whole card width, nothing cut at the edges
+  Kit.add('#selRing', 'opacity', [[16.15, 0], [16.23, 1], [16.51, 1], [16.57, 0]]);
+  Kit.show('#selV', 16.35); Kit.add('#selPh', 'opacity', [[16.34, 1], [16.35, 0, 'hold']]);
+  Kit.fade('#selD', 16.37, 16.53);
+  Kit.add('#numRing', 'opacity', [[16.57, 0], [16.61, 1], [16.97, 1], [17.01, 0]]);
+  Kit.add('#numPh', 'opacity', [[16.63, 1], [16.65, 0, 'hold']]); Kit.type('#numV', 16.65, 16.93);
+  Kit.add('#wrkRing', 'opacity', [[17.01, 0], [17.05, 1], [17.45, 1], [17.49, 0]]);
+  Kit.add('#wrkPh', 'opacity', [[17.07, 1], [17.09, 0, 'hold']]); Kit.type('#wrkV', 17.09, 17.43);
+  Kit.add('#filPh', 'opacity', [[17.53, 1], [17.55, 0, 'hold']]); Kit.show('#filV', 17.55);
+  var tgIss = { ac: cam5, el: '#issBtn', t: 17.77, fx: 0.45, fy: 0.55 };
+  ptrPath('#ptr5', [[17.43, [780, 1500]], [17.77, tgIss, 'inOut'], [18.0, tgIss]]);
+  Kit.add('#ptr5', 'opacity', [[15.97, 0], [17.43, 0], [17.51, 1], [17.92, 1], [18.0, 0]]);
+  press('#issBtn', 17.81);
+  Kit.add('#dlg', 'opacity', [[17.93, 1], [18.05, 0, 'in']]); Kit.add('#dlg', 'scale', [[17.93, 1], [18.05, 0.97, 'in']]);
+  Kit.add('#dim5', 'opacity', [[17.93, 1], [18.07, 0, 'in']]);
+  Kit.add('#c5empty', 'opacity', [[18.25, 1], [18.29, 0]]);
+  Kit.show('#c5n', 18.27);
+  Kit.pop('#c5row', 18.27, { dy: 14 });
+  Kit.add('#toast', 'y', [[18.33, 40], [18.49, 0, 'out']]);
+  Kit.add('#toast', 'opacity', [[18.33, 0], [18.41, 1]]);
+  Kit.add('#toast', 'scale', [[18.33, 0.9], [18.49, 1, 'out']]);
+
+  // S5b · the owner's checklist: overview, then a gentle push that keeps the whole row and the Phase 2 counter in frame
+  Kit.add('#f5b', 'x', [[19.0, 1080], [19.26, 0, 'swipe']]);
+  hardCut('#c5b', 19.0, 21.48);
+  var rowY = function (c) { return c.local('#ckRow', 0, 0.5)[1] + 120; };
+  var cam5b = appCam('#cam5b', '#f5b', 950, VH, [[19.0, 280, 409.7, 950 / 560], [19.3, 280, 409.7, 950 / 560], [19.78, 282, rowY, 1.84, 'inOut']]);
+  var tgCk = { ac: cam5b, el: '#ckBox', t: 20.0, fx: 0.4, fy: 0.5 };
+  ptrPath('#ptr5b', [[19.56, [820, 1450]], [20.0, tgCk, 'inOut'], [21.56, tgCk]]);
+  Kit.add('#ptr5b', 'opacity', [[19.06, 0], [19.56, 0], [19.64, 1]]);
+  press('#ckBox', 20.04);
+  Kit.add('#ckOn', 'opacity', [[20.06, 0], [20.1, 1]]); Kit.add('#ckOn', 'scale', [[20.06, 0.5], [20.22, 1, 'outBack']]);
+  Kit.add('#ckStrike', 'clipX', [[20.12, 0], [20.42, 1, 'out']]);
+  Kit.add('#ckTt', 'color', [[20.12, '#2A2D33'], [20.26, '#5D636B']]);
+  Kit.count('#ckN', [[20.12, 4], [20.13, 5, 'hold']], function (v) { return Math.round(v) + '/5'; });
+  Kit.add('#ckBar', 'width', [[20.12, 393.6], [20.46, 492, 'out']]);
+  Kit.add('#ckHi', 'opacity', [[19.16, 1], [20.66, 1], [21.16, 0.0]]);
+
+  // ================= S6 · the CCC pack (21.48 – 24.8) =================
+  whipIn('#s6', 21.48, 0.24);
+  hardCut('#c6', 21.48);
+  var cam6 = appCam('#cam6', '#f6', 950, VH, [[21.48, 280, 380, 1.9]]);
+  var tgPack = { ac: cam6, el: '#packBtn', t: 22.02, fx: 0.5, fy: 0.62 };
+  ptrPath('#ptr6', [[21.66, [700, 1450]], [22.02, tgPack, 'inOut'], [23.06, tgPack]]);
+  Kit.add('#ptr6', 'opacity', [[21.48, 0], [21.66, 0], [21.72, 1], [22.86, 1], [22.96, 0]]);
+  Kit.add('#tip', 'opacity', [[22.11, 0], [22.16, 1], [22.58, 1], [22.62, 0]]);
+  press('#packBtn', 22.56);
+  Kit.add('#packIco', 'opacity', [[22.62, 1], [22.63, 0, 'hold'], [22.96, 1, 'hold']]);
+  Kit.add('#packSpin', 'opacity', [[0, 0], [22.62, 0], [22.63, 1, 'hold'], [22.96, 0, 'hold']]);
+  Kit.add('#packSpin', 'rotate', [[22.62, 0], [22.96, 300, 'linear']]);
+  Kit.add('#zdl', 'x', [[22.94, 640], [23.26, 316, 'out']]); Kit.add('#zdl', 'y', [[22.94, 660], [23.26, 418, 'out']]);
+  Kit.add('#zdl', 'opacity', [[22.94, 0], [23.0, 1], [23.36, 1], [23.46, 0]]);
+  Kit.add('#zdl', 'scale', [[22.94, 0.6], [23.26, 1.06, 'out'], [23.46, 0.9]]);
+  Kit.add('#zip', 'opacity', [[23.34, 0], [23.46, 1]]); Kit.add('#zip', 'scale', [[23.34, 0.9], [23.52, 1, 'out']]);
+  ['#z1', '#z2', '#z3', '#z4', '#z5', '#z6', '#z7'].forEach(function (z, i) { Kit.pop(z, 23.48 + i * 0.07, { dy: 16, dur: 0.18 }); });
+  Kit.add('#z7', 'background', [[24.06, '#FFFFFF'], [24.26, '#D1FAE5']]);
+  whipOut('#s6', 24.6, 0.2);
+
+  // ================= S7 · the index, and the honest limit (24.58 – 28.66) =================
+  whipIn('#s7', 24.58, 0.24);
+  Kit.add('#idx', 'y', [[24.58, 260], [24.96, 0, 'out']]);
+  Kit.add('#idx', 'rotate', [[24.58, 2], [24.96, -1.2, 'out']]);
+  Kit.add('#idx', 'scale', [[24.58, 1], [25.61, 1.04, 'linear']]);
+  Kit.add('#dim7', 'opacity', [[24.66, 0], [25.51, 0], [25.71, 1]]);
+  Kit.pop('#c7a', 25.59, { dy: 24 });
+  Kit.slam('#c7b', 27.09, { from: 1.2, dur: 0.15 });
+  Kit.show('#lbl7', 24.66);
+  Kit.add('#s7', 'opacity', [[28.49, 1], [28.65, 0, 'in']]);
+
+  // ================= S8 · end card (28.49 – 32.2) =================
+  var E = 28.49;
+  Kit.fade('#s8', E, E + 0.16);
+  Kit.add('#eLogo', 'opacity', [[E + 0.02, 0], [E + 0.2, 1, 'out']]); Kit.add('#eLogo', 'scale', [[E + 0.02, 0.94], [E + 0.3, 1, 'out']]);
+  Kit.pop('#eKick', E + 0.06, { dy: 16 });
+  Kit.pop('#eH', E + 0.1, { dy: 30 });
+  Kit.pop('#eRow', E + 0.2, { dy: 40 });
+  Kit.add('#eBad', 'opacity', [[E + 0.2, 1], [E + 0.54, 1], [E + 0.56, 0]]);
+  Kit.add('#eOn', 'opacity', [[0, 0], [E + 0.54, 0], [E + 0.56, 1]]); Kit.add('#eOn', 'scale', [[E + 0.54, 0.4], [E + 0.7, 1, 'outBack']]);
+  Kit.add('#eRow', 'scale', [[E + 0.54, 1], [E + 0.62, 1.03, 'out'], [E + 0.74, 1, 'out']]);
+  Kit.pop('#eLands', E + 0.64, { dy: 10 });
+  Kit.slam('#eCta', E + 0.7, { from: 1.12, dur: 0.14 });
+  Kit.pop('#eSmall', E + 0.8, { dy: 12 });
+
+  Kit.ready({ duration: END, fonts: ['800 60px Manrope', '700 40px Manrope', '400 40px Inter', '500 30px "JetBrains Mono"', '400 60px "Permanent Marker"', '700 40px Kalam'] });
+</script>
+</body>
+</html>

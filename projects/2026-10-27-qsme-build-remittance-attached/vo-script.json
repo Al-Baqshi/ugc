@@ -1,0 +1,200 @@
+{
+  "venture": "qsme-build",
+  "video": "outputs/remittance-attached-4x5.mp4",
+  "video_9x16": "outputs/remittance-attached-9x16.mp4",
+  "character": "The QS: the same narrator as 'Six bids. Six formats.' and 'Action: chase painter'. A mid-career quantity surveyor (late 30s to 40s) with a general, urban, professional New Zealand accent (Auckland or Wellington office), not broad or rural and not Australian. This time he is reading a month-end email thread over the accounts team's shoulder. He has seen this exact thread every month of his career and is sympathetic to both accounts teams: the joke is on the thread and the two spreadsheets, never on the people. Calm, dry, deadpan, a little weary, no announcer lift. He is a fictional narrator: he never claims to be a QSME customer and never speaks as the founder. Voice Design fallback, for when no library voice passes the casting line: \"New Zealander around 40, general NZ accent, urban and professional, not broad, low-mid register, dry and unhurried, faintly weary but amused, close-mic phone recording in a quiet site office, conversational, not a narrator or announcer.\"",
+  "casting_line": "Paid on the fourteenth, remittance attached. Yeah, nah. Nothing attached. Classic month-end.",
+  "continuous_read_v2": "Remittance attached.\n\nIt wasn't.\n\nNothing attached?\n\nReattached.\n\nThat's March's.\n\nWhich account?\n\nCan we jump on a call?\n\nBoth correct.\n\nAccording to themselves.\n\nProof and invoice, on the stage.\n\nNot in an inbox.\n\nOnly the payer can mark it paid.\n\nActually attached.\n\nAwaiting confirmation.\n\nOnly the receiver can confirm it.\n\nQ-S-me never touches the money.\n\nIt keeps the one record you both ticked.\n\nBook a thirty-minute demo at Q-S-me dot build.",
+  "settings": {
+    "model": "eleven_multilingual_v2",
+    "stability": 0.45,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "speed": 1,
+    "use_speaker_boost": true
+  },
+  "lines": [
+    {
+      "id": "vo01-hook",
+      "start_s": 0.1,
+      "max_s": 1.0,
+      "on_screen": "Paid on the 14th. / Remittance attached. (both on screen from frame 0) over a generic email (Wed 21 Oct, 09:12) whose only attachment strip reads '0 attachments'; it scrolls 0.15 to 0.70",
+      "text_v2": "Remittance attached.",
+      "text_v3": "Remittance attached.",
+      "delivery": "Read straight off the email, flat and polite, like someone reading it out to the person next to them. No irony yet. Falling end on 'attached'. Out by 1.1 so the red circle (0.75 to 1.10) closes in near-silence."
+    },
+    {
+      "id": "vo02-wasnt",
+      "start_s": 1.25,
+      "max_s": 0.8,
+      "on_screen": "(It wasn't.) slams on in red handwriting at 1.20, after the red marker circles '0 attachments' (0.75 to 1.10) and a '?' lands at 1.05",
+      "text_v2": "It wasn't.",
+      "text_v3": "[deadpan] It wasn't.",
+      "delivery": "Bone-dry aside, a touch quieter than vo01, as if to himself. Two flat syllables, no smirk. Out by 2.05, well before the cut to the thread (2.50)."
+    },
+    {
+      "id": "vo03-nothing",
+      "start_s": 2.83,
+      "max_s": 0.75,
+      "on_screen": "Reply 1 (Subcontractor, Wed 09:47): Nothing attached? (2.78) · the subject gains a second 'RE:'",
+      "text_v2": "Nothing attached?",
+      "text_v3": "Nothing attached?",
+      "delivery": "Reading the reply, not acting it: a mild, genuine question, small lift on 'attached'. vo03 to vo07 come from ONE request (the thread read), each reply a shade more tired than the last. Out by 3.58."
+    },
+    {
+      "id": "vo04-reattached",
+      "start_s": 3.68,
+      "max_s": 0.75,
+      "on_screen": "Reply 2 (Main contractor, Wed 11:03): Reattached. (3.63) + a 'Remittance_14-03.pdf' file chip",
+      "text_v2": "Reattached.",
+      "text_v3": "Reattached.",
+      "delivery": "Brisk and helpful, the way a busy accounts team types it. Flat finish. Out by 4.43."
+    },
+    {
+      "id": "vo05-march",
+      "start_s": 4.53,
+      "max_s": 0.75,
+      "on_screen": "Reply 3 (Subcontractor, Wed 13:20): That's March's. (4.48)",
+      "text_v2": "That's March's.",
+      "text_v3": "That's March's.",
+      "delivery": "A tiny pause before it, then deadpan. The file name on screen (14-03) has already told the viewer; the voice just confirms it. No laugh. Out by 5.28."
+    },
+    {
+      "id": "vo06-account",
+      "start_s": 5.38,
+      "max_s": 0.75,
+      "on_screen": "Reply 4 (Main contractor, Wed 15:41): Which account? (5.33)",
+      "text_v2": "Which account?",
+      "text_v3": "Which account?",
+      "delivery": "A little lower and slower, the first sign of fatigue. Out by 6.13."
+    },
+    {
+      "id": "vo07-call",
+      "start_s": 6.23,
+      "max_s": 1.9,
+      "on_screen": "Reply 5 (Subcontractor, Thu 08:58): Can we jump on a call? (6.18, held to 7.53; the subject now reads RE: x6)",
+      "text_v2": "Can we jump on a call?",
+      "text_v3": "[sighs] Can we jump on a call?",
+      "delivery": "The surrender. A small exhale before it, then the most familiar sentence in construction, read with total resignation and a slight downward drift. Not mocking anyone. Out by 8.13 at the latest (it runs under the swipe at 7.53, which is fine)."
+    },
+    {
+      "id": "vo08-both",
+      "start_s": 8.18,
+      "max_s": 0.65,
+      "on_screen": "Both correct. (7.85) over two generic spreadsheets: Stage 2 PAID 14/10 vs OUTSTANDING; the big PAID / OUTSTANDING callouts slam at 8.13 and 8.38",
+      "text_v2": "Both correct.",
+      "text_v3": "Both correct.",
+      "delivery": "Calm and level, almost generous, landing just after the PAID stamp (8.13). A beat of silence after it. Out by 8.83."
+    },
+    {
+      "id": "vo09-themselves",
+      "start_s": 8.88,
+      "max_s": 1.6,
+      "on_screen": "According to themselves. (8.83)",
+      "text_v2": "According to themselves.",
+      "text_v3": "According to themselves.",
+      "delivery": "The punchline, under-played: slower, with a light lean on 'themselves' and a falling end. The spreadsheets are the butt, not the people. Out by 10.48, before the swipe to the product at 10.63."
+    },
+    {
+      "id": "vo10-proof",
+      "start_s": 10.88,
+      "max_s": 2.2,
+      "on_screen": "Proof and invoice, on the stage. (10.83) over the subcontractor's screen (amber outline): a demo site photo flies into the upload, then 'Submit progress' (12.13) and 'Upload invoice' (12.83)",
+      "text_v2": "Proof and invoice, on the stage.",
+      "text_v3": "Proof and invoice, on the stage.",
+      "delivery": "Practical, like showing a mate where the form lives. Even pace, a small comma pause, falling end. Out by 13.08."
+    },
+    {
+      "id": "vo11-inbox",
+      "start_s": 13.18,
+      "max_s": 1.2,
+      "on_screen": "Not in an inbox. (green, 13.13) · toast 'Invoice attached to this milestone'",
+      "text_v2": "Not in an inbox.",
+      "text_v3": "Not in an inbox.",
+      "delivery": "A dry little callback to the thread, half a smile at most. Lean on 'inbox'. Out by 14.38, as the window flips to the other side (14.43)."
+    },
+    {
+      "id": "vo12-payer",
+      "start_s": 14.6,
+      "max_s": 2.2,
+      "on_screen": "Only the payer can mark it paid. (14.55, 'payer' in main-contractor blue) over the main contractor's screen: 'I paid outside QSME' (click 15.23), the 'Record this as paid outside QSME' dialog (15.31), reference typed 15.58 to 16.05, then a push-in on the warning with 'so this goes on your word.' highlighted 16.29 to 16.89 and quoted as a yellow caption",
+      "text_v2": "Only the payer can mark it paid.",
+      "text_v3": "Only the payer can mark it paid.",
+      "delivery": "Plain and precise, a rule read out. Light lean on 'payer'. No sell. Out by 16.8, so the highlight lands with the line just finished."
+    },
+    {
+      "id": "vo12b-attached",
+      "start_s": 17.6,
+      "max_s": 0.8,
+      "on_screen": "The payer picks 'Remittance_14-10.pdf' in 'Attach the invoice or receipt (optional)' (17.53) and a red handwritten '(Actually attached.)' slams on beside it (17.57): the callback to '(It wasn't.)'",
+      "text_v2": "Actually attached.",
+      "text_v3": "[deadpan] Actually attached.",
+      "delivery": "The same bone-dry aside as vo02, same level, same half-to-himself tone, so the callback is heard as well as seen. Out by 18.4, before the 'Awaiting confirmation' pill (18.59)."
+    },
+    {
+      "id": "vo13-awaiting",
+      "start_s": 18.61,
+      "max_s": 0.95,
+      "on_screen": "'Awaiting confirmation' pill pops at 18.59 with an amber ring pulse · 'Recorded as paid outside QSME. Waiting for Demo Framing Co. to confirm the money arrived.' · toast 'Recorded as paid outside QSME'",
+      "text_v2": "Awaiting confirmation.",
+      "text_v3": "Awaiting confirmation.",
+      "delivery": "Reading the status off the screen, deadpan, the way you'd read a parcel tracker. Out by 19.56 (the window flips at 19.58)."
+    },
+    {
+      "id": "vo14-receiver",
+      "start_s": 19.8,
+      "max_s": 2.2,
+      "on_screen": "Only the receiver can confirm it. (19.70, 'receiver' in subcontractor amber) over the subcontractor's screen: 'Confirm payment received' (click 20.30), the 'Confirm you received this payment' dialog (20.40), a push-in on the warning with 'don't confirm on a promise.' highlighted 20.70 to 21.30 and quoted as a yellow caption",
+      "text_v2": "Only the receiver can confirm it.",
+      "text_v3": "Only the receiver can confirm it.",
+      "delivery": "Same rhythm as vo12, so the two rules sound like a pair. Light lean on 'receiver'. Out by 22.0, before the tick (21.92) turns into settled (22.48)."
+    },
+    {
+      "id": "vo15-never",
+      "start_s": 22.73,
+      "max_s": 1.7,
+      "on_screen": "QSME never touches the money. (22.68, stays through the swipe to the split screen at 23.58) over 'Settled outside QSME and confirmed by both sides.' and 'Payment settled · Outside QSME'",
+      "text_v2": "Q-S-me never touches the money.",
+      "text_v3": "Q-S-me never touches the money.",
+      "delivery": "Calm and matter-of-fact, the honest line, not a reassurance pitch. 'Q-S-me' is kyoo-ess-mee: never 'kiss me', never four letters. Out by 24.43."
+    },
+    {
+      "id": "vo16-record",
+      "start_s": 24.48,
+      "max_s": 2.8,
+      "on_screen": "It keeps the one record / you both ticked. (24.33, held to 27.48) over both screens side by side, MAIN CONTRACTOR (blue outline) and SUBCONTRACTOR (amber outline), each reading 'Settled outside QSME and confirmed by both sides.', with STAGE 2 SETTLED / SETTLED in green (24.03, 24.18)",
+      "text_v2": "It keeps the one record you both ticked.",
+      "text_v3": "It keeps the one record you both ticked.",
+      "delivery": "The payoff, warmer than everything before it but still understated. A light lean on 'one' and on 'both'. Falling end. Out by 27.28, before the swipe to the end card at 27.48."
+    },
+    {
+      "id": "vo17-cta",
+      "start_s": 27.98,
+      "max_s": 2.7,
+      "on_screen": "End card: QSME logo · the real qsme.build/contact page, cropped to 'What happens on a demo?' + 'Thirty minutes on a working project that resembles yours.' (highlighted 28.33 to 28.73) · Book a 30-minute demo (27.98) · qsme.build (28.14) · (the one call worth jumping on) in red handwriting (28.78)",
+      "text_v2": "Book a thirty-minute demo at Q-S-me dot build.",
+      "text_v3": "Book a thirty-minute demo at Q-S-me dot build.",
+      "delivery": "Same calm voice, a friendly nudge with the faintest smile (the on-screen note does the joke, the voice doesn't). No announcer lift, falling end. 'Q-S-me dot build'. Starts with the green button (27.98). Out by 30.68."
+    }
+  ],
+  "paid_alt_hook_lines": [
+    {
+      "id": "alt01-paid-friday",
+      "start_s": 0.1,
+      "max_s": 1.0,
+      "on_screen": "Paid test only (from gl-i-paid-you-last-week): replaces vo01/vo02 over the same hook frames, with on-screen kicker swapped to 'I paid you Friday.' / 'Nothing's landed.'",
+      "text_v2": "I paid you Friday.",
+      "text_v3": "I paid you Friday.",
+      "delivery": "Voice A (the main contractor's accounts person, any natural Kiwi voice): sure of it, a little defensive. Out by 1.1."
+    },
+    {
+      "id": "alt02-nothing-landed",
+      "start_s": 1.25,
+      "max_s": 1.0,
+      "on_screen": "Paid test only: 'Nothing's landed.' lands where '(It wasn't.)' sits now (1.20)",
+      "text_v2": "Nothing's landed.",
+      "text_v3": "Nothing's landed.",
+      "delivery": "Voice B (the subcontractor's accounts person): flat, tired, no blame. Out by 2.25."
+    }
+  ]
+}

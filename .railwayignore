@@ -44,11 +44,11 @@ projects/*/figma-scripts/
 projects/*/clips/
 *.jpg.tmp
 
-# Media never goes up with the code: Railway refuses uploads over ~100 MB.
-# The Studio reads renders from its volume (MEDIA_DIR); `npm run publish` sends
-# previews, images and audio there with tools/motion/sync-media.mjs. Masters stay
-# on this Mac. outputs/ is left out whole, and media files anywhere else too (the
-# Studio only serves media from the volume or outputs/, so they'd be dead weight).
+# Media never goes up with the code: Railway refuses uploads over ~100 MB, and the
+# Studio doesn't need it there. Masters, previews, stills and audio live in the
+# Railway storage bucket (`npm run publish` syncs them with tools/motion/sync-media.mjs)
+# and the Studio links to them with presigned URLs. outputs/ is left out whole, and
+# media files anywhere else too.
 # [xX] classes: the match is case-sensitive, so CLIP.MP4 must not slip through.
 projects/*/outputs/
 *.[mM][pP]4
@@ -62,3 +62,9 @@ projects/*/outputs/
 *.[mM][pP]3
 *.[mM]4[aA]
 *.[wW][aA][vV]
+*.[mM]4[vV]
+*.[aA][aA][cC]
+
+# The footer's "Content synced" stamp. It is in .gitignore (it changes on every
+# publish), and `railway up` reads .gitignore too, so let it back in explicitly.
+!/studio/synced.txt

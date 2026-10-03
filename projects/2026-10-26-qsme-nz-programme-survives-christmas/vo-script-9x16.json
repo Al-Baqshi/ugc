@@ -1,0 +1,125 @@
+{
+ "venture": "qsme-nz",
+ "video": "outputs/january-lie-9x16.mp4",
+ "character": "Mel: everyday Kiwi woman, late 30s, the same dry narrator as the other QSME NZ videos. Here she is talking a mate (a small Auckland developer doing four townhouses) through his programme, in the second person: 'your spreadsheet', 'your buyer'. General NZ accent, never a caricature, no announcer lift. The cold open is deadpan: she treats the spreadsheet as a keen worker and doesn't laugh at her own joke. The product lines sound like the same person explaining something useful across a smoko table. The 'Congratulations' is bone-dry, the only line with a smile in it. Optional A/B: a relaxed Kiwi bloke reads the same words.",
+ "settings": {
+  "model": "eleven_multilingual_v2",
+  "stability": 0.45,
+  "similarity_boost": 0.75,
+  "style": 0,
+  "speed": 1,
+  "use_speaker_boost": true
+ },
+ "continuous_read_v2": "Only one on your job working Christmas Day? Your spreadsheet.\n\nWorked Labour Day. Boxing Day. New Year's.\n\nDidn't even go to the bach.\n\nHandover the fifteenth. She'll be right.\n\nSame job in Q-S-me.\n\nShutdown's on by default. We switched it off.\n\nSwitch it back on.\n\nOnly four are public holidays. Your spreadsheet called the rest normal working days.\n\nMove them off. There's your real finish.\n\nCongratulations. Your finish date just got later. It was always February.\n\nA finish date you can still say out loud in January.",
+ "lines": [
+  {
+   "id": "v01-hook",
+   "start_s": 0.1,
+   "max_s": 3.1,
+   "on_screen": "Hook: 'Only one on your job working Christmas Day?' + 'Your spreadsheet.' (1.35); Santa hat on the 25 Dec cell (0.25); label 'Generic spreadsheet · demo data' from frame 0",
+   "text_v2": "Only one on your job working Christmas Day? Your spreadsheet.",
+   "text_v3": "Only one on your job working Christmas Day? Your spreadsheet.",
+   "delivery": "As vo01 in the master: dry question, beat, flat answer as the green line slams in."
+  },
+  {
+   "id": "v02-worked",
+   "start_s": 3.7,
+   "max_s": 2.8,
+   "on_screen": "Caption 'Worked Labour Day. Worked Boxing Day. Worked New Year's.' (3.6 to 6.4); rings 3.95 / 4.65 / 5.35",
+   "text_v2": "Worked Labour Day. Boxing Day. New Year's.",
+   "text_v3": "Worked Labour Day. Boxing Day. New Year's.",
+   "delivery": "Deadpan list, each item a touch flatter, on the rings."
+  },
+  {
+   "id": "v03-bach",
+   "start_s": 6.6,
+   "max_s": 1.8,
+   "on_screen": "Caption 'Didn't even go to the bach.' (6.6 to 8.2)",
+   "text_v2": "Didn't even go to the bach.",
+   "text_v3": "Didn't even go to the bach.",
+   "delivery": "Mock-admiring, under the breath. 'Bach' = 'batch'."
+  },
+  {
+   "id": "v04-handover",
+   "start_s": 8.4,
+   "max_s": 1.8,
+   "on_screen": "Caption 'Handover 15 Jan. She'll be right.' (8.4 to 10.0); ring on Handover (8.95)",
+   "text_v2": "Handover the fifteenth. She'll be right.",
+   "text_v3": "Handover the fifteenth. She'll be right.",
+   "delivery": "Relaxed Kiwi shrug, no wink. Out by 10.2 for the whip."
+  },
+  {
+   "id": "v05-same-job",
+   "start_s": 10.5,
+   "max_s": 1.8,
+   "on_screen": "Whip to the illustrative QSME schedule (portrait crop, 1.4x), FINISHES Wed 20 Jan 2027; caption 'Same job in QSME.' (10.5 to 12.3)",
+   "text_v2": "Same job in Q-S-me.",
+   "text_v3": "Same job in Q-S-me.",
+   "delivery": "Matter-of-fact; 'Q-S-me' plainly."
+  },
+  {
+   "id": "v06-default",
+   "start_s": 12.5,
+   "max_s": 2.6,
+   "on_screen": "Caption 'Shutdown on by default — we switched it off.' (12.5 to 15.3); bars run straight through Christmas",
+   "text_v2": "Shutdown's on by default. We switched it off.",
+   "text_v3": "Shutdown's on by default. We switched it off.",
+   "delivery": "Dry, a little conspiratorial: we set it up to match the spreadsheet."
+  },
+  {
+   "id": "v07-back-on",
+   "start_s": 15.5,
+   "max_s": 1.5,
+   "on_screen": "Days off (15.2): 'This site works straight through Christmas and the New Year.' → toggle on (16.0): 'Shut 23 December to 11 January, every year…'; caption 'Switch it back on.' (15.5 to 16.9)",
+   "text_v2": "Switch it back on.",
+   "text_v3": "Switch it back on.",
+   "delivery": "Simple instruction, lands on the toggle."
+  },
+  {
+   "id": "v08-the-rest",
+   "start_s": 17.2,
+   "max_s": 5.0,
+   "on_screen": "Captions 'Only 4 are public holidays.' (17.2 to 19.3) and 'Your spreadsheet called the rest working days.' (19.5 to 22.2); 'Christmas shutdown' band + dark rings on the 5 jobs (17.2); notice '5 jobs are planned on days the site is shut' + 'Move them off the days off' (19.8)",
+   "text_v2": "Only four are public holidays. Your spreadsheet called the rest normal working days.",
+   "text_v3": "Only four are public holidays. Your spreadsheet called the rest normal working days.",
+   "delivery": "The callback; second sentence drier. No count of working days."
+  },
+  {
+   "id": "v09-real-finish",
+   "start_s": 22.6,
+   "max_s": 2.4,
+   "on_screen": "'Move them off the days off' pressed (22.3); bars jump; FINISHES → Wed 3 Feb 2027 (23.1); caption 'Move them off. There's your real finish.' (22.6 to 25.05)",
+   "text_v2": "Move them off. There's your real finish.",
+   "text_v3": "Move them off. There's your real finish.",
+   "delivery": "Quiet satisfaction, falling end."
+  },
+  {
+   "id": "v10-congrats",
+   "start_s": 25.4,
+   "max_s": 3.7,
+   "on_screen": "Celebration: 'Congratulations.' / 'Your finish date just got later.' / FINISHES Wed 20 Jan 2027 struck → Wed 3 Feb 2027; confetti below the card; caption 'It was always February. Now you know.' (26.4 to 29.1)",
+   "text_v2": "Congratulations. Your finish date just got later. It was always February.",
+   "text_v3": "Congratulations. Your finish date just got later. It was always February.",
+   "delivery": "Deadpan certificate-presentation; beat after 'Congratulations.'; 'It was always February' as a flat shrug."
+  },
+  {
+   "id": "v11-payoff",
+   "start_s": 29.5,
+   "max_s": 3.4,
+   "on_screen": "End card: 'A finish date you can still say out loud in January.' + green 'Sign up at qsme.co.nz' (30.3)",
+   "text_v2": "A finish date you can still say out loud in January.",
+   "text_v3": "A finish date you can still say out loud in January.",
+   "delivery": "Warm, dry callback, falling on 'January'. The sign-up CTA is on screen and in the caption copy; no 'free'."
+  }
+ ],
+ "male_alt_lines": [],
+ "post_processing": [
+  "Time base: seconds on outputs/january-lie-9x16.mp4 (33.0 s). Same voice, settings and processing as vo-script.json; v01–v04, v08 and v10 can be cut from the master's takes (vo01–vo04, vo12, vo14) if the timing fits.",
+  "A single sleigh-bell shake at 0.25 under the hat, then room tone; music from the whip (10.3), confetti lift at 26.2, resolve by 33.0."
+ ],
+ "total_characters": 501,
+ "changelog": [
+  "2026-10-04: first script for the 30.0 s 9:16 cut 'The January lie'.",
+  "2026-10-04 (review fixes): re-timed to the 33.0 s cut; shutdown on by default → 'we switched it off' → 'Switch it back on.'; 'Now you know' replaces 'Now it's on paper' on screen; no Anniversary band in the cut."
+ ]
+}

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Before publishing: make/refresh a small <name>.preview.mp4 next to every master MP4 in projects/*/outputs/.
-// Only previews go to the Studio (tools/motion/sync-media.mjs uploads them; .railwayignore keeps media out of the code upload). Masters stay on this Mac.
+// The Studio plays the previews in the page and offers the masters as downloads; tools/motion/sync-media.mjs uploads both to the storage bucket (.railwayignore keeps all media out of the code upload).
 import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';

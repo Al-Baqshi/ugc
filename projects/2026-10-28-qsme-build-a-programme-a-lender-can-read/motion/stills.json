@@ -1,0 +1,22 @@
+{
+ "cssWidth": 1440,
+ "cssHeight": 900,
+ "dpr": 2,
+ "shots": [
+  {
+   "name": "sched-from-soq",
+   "url": "https://qsme.build/platform",
+   "el": "[...document.querySelectorAll('#schedule .module-body p')].find(e=>e.textContent.includes('Pull jobs straight out'))",
+   "pad": [8, 30, 10, 30],
+   "hl": "they arrive with their durations and whether weather stops them"
+  },
+  {
+   "name": "sched-asked",
+   "url": "https://qsme.build/platform",
+   "el": "[...document.querySelectorAll('#schedule .module-body p')].find(e=>e.textContent.includes('asked, not told'))",
+   "pad": [8, 30, 10, 30],
+   "upto": "the people on it are asked, not told.",
+   "hl": "the people on it are asked, not told."
+  }
+ ]
+}

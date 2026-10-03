@@ -3,8 +3,13 @@
 // 2026-10-03 review: Global cut shows bid totals EXCL. tax only (no Compare-on toggle, no incl. column, no 'calc.': the live Global screen still says GST and grosses up at 15%);
 // corner label is 'Illustrative · demo data' (was an editor's note); no 'agreement → e-sign' line (6.2 held back for Global); product beat sits in one column x 100..980 so the 9:16 can punch in;
 // captions match the VO word for word ('Sideways.', 'Most complete one.', 'here's what I sent.'); E's tag reads 'cheapest' until the flick and sits above the flying pages; sticky says 'ceilings IN ✓'.
+// 2026-10-04 owner CTA rule (2026-10-03): the end card reads exactly 'Book a 30-minute demo at qsme.build' (logo, then the sentence as a two-line lockup, URL in green with an underline that draws in);
+// the end card is held 0.5s longer (DUR 29.8 → 30.3, nothing before 27.17 moves) so the longer CTA VO ('Book a 30-minute demo at Q-S-me dot build.', ~2.7s) fits on both the 4:5 and the 9:16.
+// 2026-10-04 review 2: tab 'Bidder B' highlights its own letter (hlLast; hl() matched the B of 'Bidder'); bid E holds 0.5s longer (+0.5s from the whiteboard cut, W adds 1.0 from 12.3);
+// the product promise gets 1.0s more (sheets held, lock line 22.1 → 24.29, everything from the totals table on +1.0); hook banners from 0.3s, one every 0.12s (chip 0.55);
+// phone screen off-white with a scroll bar and a larger 'Sent from my phone'; the cursor enters from the right of the table, clear of the lower third; headline pops grow from the left edge. DUR 30.3 → 31.8.
 const P=await figma.getNodeByIdAsync('2:5');await figma.setCurrentPageAsync(P);
-const NAME='Motion — Six bids (LinkedIn 4:5)';const DUR=29.8;const W=t=>t+(t>=16.7?0.8:t>=12.3?0.5:t>=10.0?0.3:0);
+const NAME='Motion — Six bids (LinkedIn 4:5)';const DUR=31.8;const W=t=>t+(t>=16.7?1.3:t>=12.3?1.0:t>=10.0?0.3:0);
 const removed=[];for(const n of P.children.filter(n=>n.name===NAME)){removed.push(n.id);n.remove();}
 const hex=h=>{h=h.replace('#','');if(h.length===3)h=h.split('').map(c=>c+c).join('');return{r:parseInt(h.slice(0,2),16)/255,g:parseInt(h.slice(2,4),16)/255,b:parseInt(h.slice(4,6),16)/255}};
 const S=(h,o)=>[o===undefined?{type:'SOLID',color:hex(h)}:{type:'SOLID',color:hex(h),opacity:o}];
@@ -20,6 +25,7 @@ function T(p,str,o={}){const t=figma.createText();t.fontName=FN(o.f||'Inter',o.s
   if(o.fill){t.textAutoResize='HEIGHT';t.layoutSizingHorizontal='FILL'}else if(o.w){t.textAutoResize='HEIGHT';t.resize(o.w,Math.max(t.height,1))}
   if(o.x!==undefined)t.x=o.x;if(o.y!==undefined)t.y=o.y;return t}
 const hl=(t,sub,c)=>{const i=t.characters.indexOf(sub);if(i>=0)t.setRangeFills(i,i+sub.length,S(c||AC));return t};
+const hlLast=(t,sub,c)=>{const i=t.characters.lastIndexOf(sub);if(i>=0)t.setRangeFills(i,i+sub.length,S(c||AC));return t};   // tab labels: 'Bidder B' must light the trailing B, not the B of 'Bidder'
 function geo(n,p,o){n.fills=o.fill?S(o.fill,o.op):[];if(o.r!==undefined)n.cornerRadius=o.r;if(o.stroke){n.strokes=S(o.stroke,o.sop);n.strokeWeight=o.sw||1;n.strokeAlign=o.sa||'INSIDE';if(o.dash)n.dashPattern=o.dash}if(o.name)n.name=o.name;if(o.fx)n.effects=o.fx;if(o.opacity!==undefined)n.opacity=o.opacity;if(p)p.appendChild(n);if(o.x!==undefined)n.x=o.x;if(o.y!==undefined)n.y=o.y;if(o.rot)n.rotation=o.rot;return n}
 const R=(p,w,h,o={})=>{const n=figma.createRectangle();n.resize(w,h);return geo(n,p,o)};
 const El=(p,w,h,o={})=>{const n=figma.createEllipse();n.resize(w,h);return geo(n,p,o)};
@@ -108,14 +114,16 @@ const [cC1]=[cap(sC,'One says “as discussed”.','“as discussed”.')];
 // ═════ SCENE D — price below
 const sD=scene('Scene D — price below');const tD=tag(sD,'D · “price below”');
 const ph=keep('D phone',F(sD,440,900,{x:320,y:150,fill:'#070B09',r:64,stroke:'#2A3A30',sw:2,fx:[sh(18,50,0.55)],name:'D — phone, generic mail app'}));
-const scr=F(ph,412,872,{x:14,y:14,fill:'#FFFFFF',r:50,name:'Screen'});
+const scr=F(ph,412,872,{x:14,y:14,fill:'#EDEDE8',r:50,name:'Screen'});   // off-white (was #FFFFFF, the brightest thing in the video while scrolled)
+const SFP=36;
 const ct=keep('D content',F(scr,412,2520,{x:0,y:0,clip:false,name:'Mail content (scrolls)'}));
 T(ct,'4:59',{s:'Semi Bold',c:'#111111',x:40,y:20});T(ct,'‹ Inbox',{s:'Medium',size:34,c:'#3B403D',x:24,y:84});
 const avD=AL(ct,'HORIZONTAL',{fill:'#2B6CB0',r:999,w:72,h:72,main:'CENTER',x:24,y:150,name:'Avatar D'});T(avD,'D',{s:'Bold',size:36,c:'#FFFFFF'});
 T(ct,'Bidder D',{s:'Bold',size:36,c:'#111111',x:112,y:148});T(ct,'4:59 pm',{c:'#80868B',x:112,y:192});
 T(ct,'Re: Tender',{s:'Bold',size:40,c:'#111111',x:24,y:270});
 T(ct,'Price below. Cheers.',{size:44,lh:58,c:'#111111',w:364,x:24,y:344,name:'Body — Price below. Cheers.'});
-T(ct,'Sent from my phone',{c:'#9AA0A6',x:24,y:2440,name:'Sent from my phone'});
+T(ct,'Sent from my phone',{size:SFP,c:'#7C8287',w:384,x:14,y:2440,align:'CENTER',name:'Sent from my phone'});   // 36px, one line across the screen (was 32px, left); the 9:16 also pushes in on it, so the empty email reads from the picture
+const sbar=R(scr,7,120,{x:400,y:40,fill:'#A3A8A4',r:4,opacity:0,name:'Scroll bar'});   // shows how far down the empty scroll goes
 const [cD1,cD2]=cap2(sD,'One says “price below”…','…there’s nothing below.',null,'nothing below.');
 
 // ═════ SCENE E — page 9
@@ -178,7 +186,7 @@ const [cG1,cG2]=cap2(sG,'In fairness…','here’s what I sent.',null,'what I se
 //     no incl. column / 'calc.' / Compare-on toggle on Global: the live Global screen still says GST and works it out at 15%)
 // (c) open Bidder F → 'Award bid' → payment contract with milestones + retention (the agreement / e-sign step is not shown on Global: NZ-law templates)
 // Everything in this scene sits in one column, x 100..980, so the 9:16 cut can punch in on it and keep text inside x 150..930.
-const RT=t=>+(t-0.8).toFixed(3);   // H and Z keyframes are written in real video seconds (W() adds 0.8 from 16.7)
+const RT=t=>+(t-1.3).toFixed(3);   // H and Z keyframes are written in real video seconds of the 31.8s cut (W() adds 1.3 from 16.7)
 const sH=scene('Scene H — QSME same lines, compare totals, award');
 const lgS=logo(sH,230,60,64,'QSME logo (small)');
 const ill=pill(sH,'Illustrative · demo data',{fill:G,stroke:SU,sw:2,dash:[8,6],c:MU,s:'Medium',r:10,py:10,px:18,name:'Illustrative · demo data'});
@@ -192,7 +200,7 @@ const sheets='ABCDEF'.split('').map((L,i)=>{
   const body=F(sht,SW,SBH,{y:TABH-6,fill:RA,r:20,stroke:BO,sw:2,fx:[sh(14,40,0.45)],clip:false,name:'Sheet body '+L});
   const tab=F(sht,TABW,TABH,{x:18+i*TABG,y:0,fill:RA,r:12,stroke:BO,sw:2,name:'Tab '+L});
   R(sht,TABW-4,14,{x:20+i*TABG,y:TABH-10,fill:RA,name:'Tab join '+L});
-  hl(T(tab,'Bidder '+L,{s:'Semi Bold',size:24,c:MU,w:TABW,x:0,y:10,align:'CENTER',name:'Tab text '+L}),L);
+  hlLast(T(tab,'Bidder '+L,{s:'Semi Bold',size:24,c:MU,w:TABW,x:0,y:10,align:'CENTER',name:'Tab text '+L}),L);
   T(body,'Plasterboard & ceilings',{s:'Semi Bold',size:32,c:INK,x:32,y:26});
   T(body,'Cut from your estimate',{size:24,c:MU,w:360,x:SW-32-360,y:32,align:'RIGHT'});
   T(body,'LINE',{f:'JetBrains Mono',s:'Medium',size:22,c:SU,x:32,y:98});T(body,'QTY',{f:'JetBrains Mono',s:'Medium',size:22,c:SU,w:190,x:430,y:98,align:'RIGHT'});T(body,'RATE',{f:'JetBrains Mono',s:'Medium',size:22,c:SU,x:660,y:98});
@@ -236,9 +244,16 @@ const cAw=cap(sH,'Award → contract created','contract created');
 
 // ═════ SCENE Z — end card
 const sZ=scene('Scene Z — End card');
-const lgZ=logo(sZ,620,255,360,'QSME logo (end card)');   // x 255 (was 230): the Global wordmark has no ®, so its frame is shifted 25px to keep the letters centred on x 540
-const url=T(sZ,'qsme.build',{f:'Space Grotesk',s:'Bold',size:104,lh:110,ls:-3,c:INK,w:960,x:60,y:604,align:'CENTER',name:'qsme.build'});
-const btn=pill(sZ,'Book a 30-minute demo',{fill:AC,c:OA,f:'Space Grotesk',s:'Bold',size:52,py:26,px:56,fx:[sh(0,48,0.45,0,AC)],name:'Button — Book a 30-minute demo'});btn.x=540-btn.width/2;btn.y=790;
+// Owner CTA rule (2026-10-03): the card reads exactly 'Book a 30-minute demo at qsme.build'. No pricing line of any kind.
+const ZY=392,Z_AT_DY=10;   // logo top; the block (logo → underline) is centred on y ~630, the point the 9:16 cut scales the end card about
+const lgZ=logo(sZ,620,255,ZY,'QSME logo (end card)');   // x 255 (was 230): the Global wordmark has no ®, so its frame is shifted 25px to keep the letters centred on x 540
+const cta1=T(sZ,'Book a 30-minute demo',{f:'Space Grotesk',s:'Bold',size:76,lh:84,ls:-2,c:INK,w:960,x:60,y:ZY+270,align:'CENTER',name:'CTA line 1 — Book a 30-minute demo'});
+const ctaRow=F(sZ,960,140,{x:60,y:ZY+356,clip:false,name:'CTA line 2 — at qsme.build'});
+const atT=T(ctaRow,'at',{f:'Space Grotesk',s:'Medium',size:76,lh:110,ls:-2,c:MU,name:'at'});
+const url=T(ctaRow,'qsme.build',{f:'Space Grotesk',s:'Bold',size:108,lh:110,ls:-3,c:AC,name:'qsme.build'});
+{const gap=24,tw=atT.width+gap+url.width;atT.x=Math.round(480-tw/2);url.x=Math.round(atT.x+atT.width+gap);url.y=0;atT.y=Z_AT_DY;}
+const uline=R(ctaRow,Math.round(url.width-6),7,{fill:AC,r:4,x:url.x+3,y:128,name:'URL underline'});
+const btn=ctaRow;   // (kept for the return value: btnW = the CTA row width)
 
 // ═════ COUNTER (global, on top)
 const ctr=F(M,260,90,{x:766,y:64,clip:false,name:'Counter'});
@@ -269,14 +284,14 @@ const vis=(n,a,b)=>K(n,'OPACITY',[...(a<=0?[[0,1]]:[[0,0],[a,1,'h']]),...(b<DUR?
 const fin=(n,a,d,b)=>K(n,'OPACITY',[[a,0],[a+d,1,'o'],...(b&&b<DUR?[[b,0,'h']]:[])]);
 const mv=(n,a,d,dx,dy,e)=>{if(dx)K(n,'TRANSLATION_X',[[a,dx],[a+d,0,e||'o']]);if(dy)K(n,'TRANSLATION_Y',[[a,dy],[a+d,0,e||'o']])};
 const sc=(n,k)=>{K(n,'SCALE_X',k);K(n,'SCALE_Y',k)};
-const SC=[[s0,0,2.4],[sA,2.4,4.2],[sB,4.2,6.1],[sC,6.1,7.6],[sD,7.6,10.0],[sE,10.0,12.3],[sF,12.3,16.7],[sG,16.7,19.4],[sH,19.4,RT(27.2)],[sZ,RT(27.2),99]];
+const SC=[[s0,0,2.4],[sA,2.4,4.2],[sB,4.2,6.1],[sC,6.1,7.6],[sD,7.6,10.0],[sE,10.0,12.3],[sF,12.3,16.7],[sG,16.7,19.4],[sH,19.4,RT(28.7)],[sZ,RT(28.7),99]];
 SC.forEach(([s,a,b])=>vis(s,a,b));
 // counter steps
 const CT=[0,2.4,4.2,6.1,7.6,10.0,12.3,16.7];cts.forEach((t,i)=>{vis(t,CT[i],CT[i+1]);if(i)sc(t,[[CT[i],1.35],[CT[i]+0.18,1,'o']])});
 // hook
-sc(h1,[[0,1.06],[0.2,1,'o']]);vis(h2,0.4,99);sc(h2,[[0.4,1.32],[0.52,1,'i']]);
-fin(chip,0.75,0.2);mv(chip,0.75,0.25,0,16);
-banners.forEach((b,i)=>{const t=0.95+i*0.15;fin(b,t,0.16);mv(b,t,0.2,0,-26)});
+sc(h1,[[0,1.06],[0.2,1,'o']]);K(h1,'TRANSLATION_X',[[0,0.03*h1.width],[0.2,0,'o']]);vis(h2,0.4,99);sc(h2,[[0.4,1.32],[0.52,1,'i']]);K(h2,'TRANSLATION_X',[[0.4,0.16*h2.width],[0.52,0,'i']]);   // pops anchored on the left edge (x 60): '6 formats.' no longer clips at the frame edge
+fin(chip,0.55,0.2);mv(chip,0.55,0.25,0,16);
+banners.forEach((b,i)=>{const t=0.3+i*0.12;fin(b,t,0.16);mv(b,t,0.2,0,-26)});   // motion inside the first second: everyone at 4:59
 // A
 vis(cA1,2.5,99);vis(cA2,3.05,99);
 fin(aw,2.4,0.24);mv(aw,2.4,0.32,240,0);K(aw,'ROTATION',[[2.4,10],[2.72,0,'o'],[3.25,0,'l'],[3.65,-6,'io']]);
@@ -290,6 +305,7 @@ vis(circ,6.75,99);sc(circ,[[6.75,1.15],[6.9,1,'o']]);vis(qm,6.95,99);
 // D
 fin(ph,7.6,0.25);mv(ph,7.6,0.3,0,120);vis(cD1,7.7,99);
 K(ct,'TRANSLATION_Y',[[8.35,0],[9.25,-1700,'io']]);vis(cD2,9.4,99);
+K(sbar,'OPACITY',[[8.35,0],[8.5,1,'o']]);K(sbar,'TRANSLATION_Y',[[8.35,0],[9.25,640,'io']]);
 // E
 fin(ew,10.0,0.22);mv(ew,10.0,0.25,0,60);vis(cE1,10.1,99);
 vis(tE,0,11.35);vis(tE9,11.35,99);   // tag flips to 'page 9' at 11.65 (real), on the last flick, just before 'till page nine.'
@@ -308,28 +324,30 @@ vis(cT1,15.45,99);vis(cT2,15.85,99);
 fin(mw,16.7,0.25);mv(mw,16.7,0.3,0,50);vis(cG1,16.85,99);vis(cG2,17.6,99);
 K(mw,'TRANSLATION_X',[[18.3,0],[18.36,-10,'o'],[18.43,8,'io'],[18.5,0,'o']]);
 // H (times in real video seconds through RT)
-vis(lgS,RT(20.2),99);vis(ill,RT(20.2),99);
+vis(lgS,RT(20.7),99);vis(ill,RT(20.7),99);
 // (a) six sheets land one on top of the other, 0.12s apart: tab changes, lines don't
-sheets.forEach((s,i)=>{const t=RT(20.17+i*0.13);K(s,'OPACITY',[[t,0],[t+0.05,1,'o']]);K(s,'TRANSLATION_Y',[[t,-34],[t+0.16,0,'o']]);sc(s,[[t,1.04],[t+0.16,1,'o']])});
-K(stack,'OPACITY',[[RT(22.66),1],[RT(22.79),0,'i']]);K(stack,'TRANSLATION_Y',[[RT(22.66),0],[RT(22.79),-30,'i']]);
-K(hid,'OPACITY',[[RT(21.45),0],[RT(21.65),1,'o'],[RT(22.66),1,'l'],[RT(22.79),0,'i']]);K(hid,'TRANSLATION_Y',[[RT(21.45),16],[RT(21.7),0,'o']]);
-vis(cH1,RT(20.2),RT(22.8));vis(cH2,RT(21.0),RT(22.8));
+sheets.forEach((s,i)=>{const t=RT(20.67+i*0.13);K(s,'OPACITY',[[t,0],[t+0.05,1,'o']]);K(s,'TRANSLATION_Y',[[t,-34],[t+0.16,0,'o']]);sc(s,[[t,1.04],[t+0.16,1,'o']])});
+K(stack,'OPACITY',[[RT(24.16),1],[RT(24.29),0,'i']]);K(stack,'TRANSLATION_Y',[[RT(24.16),0],[RT(24.29),-30,'i']]);
+K(hid,'OPACITY',[[RT(22.1),0],[RT(22.3),1,'o'],[RT(24.16),1,'l'],[RT(24.29),0,'i']]);K(hid,'TRANSLATION_Y',[[RT(22.1),16],[RT(22.35),0,'o']]);   // lock line up ~2.1s (was 1.3s)
+vis(cH1,RT(20.7),RT(24.3));vis(cH2,RT(21.5),RT(24.3));
 // (b) totals table, rows in, 'Lowest' on F
-K(tbl,'OPACITY',[[RT(22.77),0],[RT(22.92),1,'o']]);mv(tbl,RT(22.77),0.24,0,50);
-trows.forEach((r,i)=>{const t=RT(22.95+i*0.08);K(r,'OPACITY',[[t,0],[t+0.1,1,'o']]);K(r,'TRANSLATION_X',[[t,70],[t+0.2,0,'s']])});
-vis(low,RT(23.75),99);sc(low,[[RT(23.75),1.5],[RT(23.87),1,'i']]);
-fin(lt,RT(23.0),0.25);vis(cTb,RT(22.85),RT(25.45));
+K(tbl,'OPACITY',[[RT(24.27),0],[RT(24.42),1,'o']]);mv(tbl,RT(24.27),0.24,0,50);
+trows.forEach((r,i)=>{const t=RT(24.45+i*0.08);K(r,'OPACITY',[[t,0],[t+0.1,1,'o']]);K(r,'TRANSLATION_X',[[t,70],[t+0.2,0,'s']])});
+vis(low,RT(25.25),99);sc(low,[[RT(25.25),1.5],[RT(25.37),1,'i']]);
+fin(lt,RT(24.5),0.25);vis(cTb,RT(24.35),RT(26.95));
 // (c) click Bidder F → bid opens → Award bid → contract created
-K(curH,'OPACITY',[[0,0],[RT(24.25),1,'h'],[RT(25.6),1,'l'],[RT(25.75),0,'o']]);
-K(curH,'TRANSLATION_X',[[RT(24.25),dRow.x+260],[RT(24.7),dRow.x,'io'],[RT(24.95),dRow.x,'l'],[RT(25.3),0,'io']]);
-K(curH,'TRANSLATION_Y',[[RT(24.25),dRow.y+260],[RT(24.7),dRow.y,'io'],[RT(24.95),dRow.y,'l'],[RT(25.3),0,'io']]);
-fin(scrim,RT(24.8),0.15);
-K(bp,'OPACITY',[[RT(24.8),0],[RT(24.95),1,'o'],[RT(25.45),1,'l'],[RT(25.55),0,'o']]);mv(bp,RT(24.8),0.2,0,60);
-sc(awb,[[RT(25.33),1],[RT(25.38),0.9,'o'],[RT(25.48),1,'o']]);
-fin(cc,RT(25.45),0.2);mv(cc,RT(25.45),0.28,0,70);chips.forEach((c,i)=>vis(c,RT(25.65+i*0.1),99));
-vis(cAw,RT(25.45),99);
+const cIn={x:dRow.x+(1000-pRow.x),y:dRow.y-100};   // start: master x 1000 (right of the table), 100px above row F's centre, so it passes over row E and clears the 'Lowest' tag
+K(curH,'OPACITY',[[0,0],[RT(25.75),0,'h'],[RT(25.85),1,'o'],[RT(27.1),1,'l'],[RT(27.25),0,'o']]);
+K(curH,'TRANSLATION_X',[[RT(25.75),cIn.x],[RT(26.2),dRow.x,'io'],[RT(26.45),dRow.x,'l'],[RT(26.8),0,'io']]);
+K(curH,'TRANSLATION_Y',[[RT(25.75),cIn.y],[RT(26.2),dRow.y,'io'],[RT(26.45),dRow.y,'l'],[RT(26.8),0,'io']]);
+fin(scrim,RT(26.3),0.15);
+K(bp,'OPACITY',[[RT(26.3),0],[RT(26.45),1,'o'],[RT(26.95),1,'l'],[RT(27.05),0,'o']]);mv(bp,RT(26.3),0.2,0,60);
+sc(awb,[[RT(26.83),1],[RT(26.88),0.9,'o'],[RT(26.98),1,'o']]);
+fin(cc,RT(26.95),0.2);mv(cc,RT(26.95),0.28,0,70);chips.forEach((c,i)=>vis(c,RT(27.15+i*0.1),99));
+vis(cAw,RT(26.95),99);
 // Z
-fin(lgZ,RT(27.17),0.15);sc(lgZ,[[RT(27.17),0.94],[RT(27.6),1,'o']]);fin(url,RT(27.32),0.18);fin(btn,RT(27.48),0.22);mv(btn,RT(27.48),0.3,0,30);
+fin(lgZ,RT(28.67),0.15);sc(lgZ,[[RT(28.67),0.94],[RT(29.1),1,'o']]);fin(cta1,RT(28.82),0.18);mv(cta1,RT(28.82),0.28,0,24);fin(ctaRow,RT(28.98),0.22);mv(ctaRow,RT(28.98),0.3,0,30);
+const uW=uline.width;vis(uline,RT(29.28),99);K(uline,'WIDTH',[[RT(29.28),1],[RT(29.62),uW,'o']]);
 
 // resting state on canvas = end card
 scenes.forEach(s=>{if(s!==sZ)s.opacity=0});cts.forEach(t=>t.opacity=0);
@@ -340,7 +358,7 @@ for(const [n,f,k] of Q){try{n.applyManualKeyframeTrack({type:'PROPERTY',name:f},
 // fill tracks (colour): row F turns green when it is tagged 'Lowest', flashes on the click
 const C=(h)=>({type:'COLOR',value:{...hex(h),a:1}});
 const FTk=(n,keys)=>{try{n.manualKeyframeTracks={...(n.manualKeyframeTracks||{}),fills:{0:{keyframes:keys.map(([t,h,e])=>({timelinePosition:Math.round(W(t)*1000)/1000,value:C(h),...(e?{easing:EZ[e]}:{})}))}}};nT++}catch(e){errs.push('fill '+n.name+': '+e.message)}};
-FTk(trows[5],[[RT(23.74),RB[1]],[RT(23.75),'#1F4019','h'],[RT(24.74),'#1F4019','l'],[RT(24.75),'#2E6526','h'],[RT(24.95),'#1F4019','o']]);
+FTk(trows[5],[[RT(25.24),RB[1]],[RT(25.25),'#1F4019','h'],[RT(26.24),'#1F4019','l'],[RT(26.25),'#2E6526','h'],[RT(26.45),'#1F4019','o']]);
 let tls=null;try{tls=sZ.timelines;if(tls&&tls[0]&&tls[0].duration<DUR)sZ.setTimelineDuration(tls[0].id,DUR);tls=sZ.timelines}catch(e){errs.push('final timeline: '+e.message)}
 return{frameId:M.id,x:M.x,y:M.y,removed,tracks:nT,queued:Q.length,errs:errs.slice(0,25),errCount:errs.length,timelines:tls,fontFallbacks:fb,shots,ids,
   aBox:pa.absoluteBoundingBox&&{x:Math.round(pa.absoluteBoundingBox.x-M.x),y:Math.round(pa.absoluteBoundingBox.y-M.y),w:Math.round(pa.absoluteBoundingBox.width),h:Math.round(pa.absoluteBoundingBox.height)},

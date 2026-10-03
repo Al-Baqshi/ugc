@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<title>Thumbnail: My AI can't move the dates (QSME Global, 16:9)</title>
+<!-- YouTube / LinkedIn thumbnail, rendered at 1920x1080 and downsized to 1280x720:
+     node tools/motion/make.mjs projects/2026-10-21-qsme-build-claude-writes-my-tender/motion/thumb.html <scratch>/thumb.mp4 --still 0.5 --still-only
+     sips -Z 1280 <scratch>/thumb.png --out projects/2026-10-21-qsme-build-claude-writes-my-tender/outputs/claude-writes-my-tender-thumb.png
+     Built around the hook exchange so the subject (AI) reads at phone size. The chat and the schedule crop are recreations
+     (demo data) and carry the Illustrative tag. SWAP: when Session B shot 1 is in, set #reply to the real reply's first
+     sentence, word for word (one string). -->
+<link rel="stylesheet" href="../../../tools/motion/kit.css">
+<style>
+  #root { background: var(--bg); }
+  #grid { background-image: linear-gradient(rgba(75,205,50,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(75,205,50,.045) 1px, transparent 1px); background-size: 64px 64px; }
+  #glow { background: radial-gradient(900px 600px at 10% 0%, rgba(61,192,35,.16), transparent 70%), radial-gradient(900px 700px at 100% 100%, rgba(61,192,35,.10), transparent 70%); }
+  .disp { font-family: var(--display); font-weight: 700; letter-spacing: -0.035em; line-height: 0.95; }
+
+  .chat { position: absolute; border-radius: 26px; overflow: hidden; background: #fff; color: #1C1C1E; font-family: Inter, sans-serif; box-shadow: 0 40px 110px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.07); }
+  .cbar { height: 64px; background: #F3F2EE; border-bottom: 1px solid #E3E2DD; display: flex; align-items: center; gap: 10px; padding: 0 26px; }
+  .cbar i { width: 15px; height: 15px; border-radius: 50%; background: #D6D4CE; }
+  .cbar .ct { margin-left: 14px; font: 600 25px/1 Inter; color: #6B6B70; }
+  .cbar .tm { margin-left: auto; font: 500 24px/1 var(--mono); color: #8A8A8F; }
+  .me { position: absolute; right: 40px; top: 104px; background: #ECEAE5; border-radius: 30px 30px 8px 30px; padding: 22px 36px; font: 600 54px/1.15 Inter; letter-spacing: -0.01em; white-space: nowrap; }
+  .ai { position: absolute; left: 40px; top: 262px; display: flex; gap: 24px; align-items: center; }
+  .av { flex: none; width: 76px; height: 76px; border-radius: 50%; background: #5F6368; color: #fff; font: 700 27px/76px Inter; text-align: center; letter-spacing: .04em; }
+  #reply { font: 800 60px/1.1 Inter; letter-spacing: -0.02em; color: #111; white-space: nowrap; }
+
+  .win { position: absolute; border-radius: 22px; overflow: hidden; background: #fff; font-family: Inter, sans-serif; box-shadow: 0 40px 110px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.07); }
+  .win .bar { height: 56px; background: #18211D; display: flex; align-items: center; gap: 10px; padding: 0 22px; }
+  .win .bar i { width: 14px; height: 14px; border-radius: 50%; background: #34403A; }
+  .win .bar .url { margin-left: 12px; padding: 8px 16px; border-radius: 9px; background: #0E1512; color: #86958B; font: 500 22px/1 var(--mono); white-space: nowrap; }
+  .gb { position: absolute; height: 52px; border-radius: 10px; color: #fff; font: 700 22px/52px Inter; padding: 0 16px; white-space: nowrap; }
+  .tagI { position: absolute; padding: 6px 16px; border: 2px dashed var(--ink-50); border-radius: 8px; color: var(--ink-70); font: 500 22px/1.2 var(--mono); background: rgba(12,19,16,.85); white-space: nowrap; }
+</style>
+</head>
+<body class="build r16x9">
+<div id="root">
+  <div id="grid" class="fill"></div>
+  <div id="glow" class="fill"></div>
+
+  <!-- the exchange -->
+  <div class="chat" style="left:80px; top:70px; width:1150px; height:400px;">
+    <div class="cbar"><i></i><i></i><i></i><span class="ct">Your AI assistant</span><span class="tm">9:40 pm</span></div>
+    <div class="me">Push the programme back a week.</div>
+    <div class="ai"><div class="av">AI</div><div id="reply">I can’t change the schedule.</div></div>
+  </div>
+
+  <!-- the schedule, untouched: four bars, today line (recreated, demo data) -->
+  <div class="win" style="left:1290px; top:70px; width:700px; height:400px;">
+    <div class="bar"><i></i><i></i><i></i><span class="url">app.qsme.build · Schedule</span></div>
+    <div id="chart" style="position:absolute; left:0; top:56px; right:0; bottom:0;"></div>
+  </div>
+
+  <div class="disp" style="position:absolute; left:74px; top:628px; font-size:250px; color:var(--accent); white-space:nowrap;">On purpose.</div>
+  <div class="tagI" style="left:84px; top:990px;">Illustrative · recreated chat and schedule · demo data</div>
+</div>
+<script src="../../../tools/motion/kit.js"></script>
+<script>
+(function () {
+  // days shown: Sun 18 Oct .. Tue 27 Oct, 66px a day; today = Tue 20
+  const D = 66, HDR = 58, RH = 70, c = document.getElementById('chart');
+  let h = '';
+  for (let i = 0; i < 10; i++) {
+    const day = 18 + i, wk = (i === 0 || i === 6 || i === 7);
+    if (wk) h += `<div style="position:absolute; left:${i * D}px; top:${HDR}px; width:${D}px; bottom:0; background:repeating-linear-gradient(135deg, #EEF2F6 0 7px, #F8FAFC 7px 14px);"></div>`;
+    if (i < 9) h += `<div style="position:absolute; left:${i * D}px; top:20px; width:${D}px; text-align:center; font:600 20px/1 var(--mono); color:${wk ? '#CBD5E1' : '#64748B'};">${day}</div>`;
+  }
+  h += `<div style="position:absolute; left:0; right:0; top:${HDR - 2}px; height:2px; background:#E2E8F0;"></div>`;
+  const tx = 2 * D + D / 2;
+  h += `<div style="position:absolute; left:${tx - 2}px; top:${HDR - 6}px; width:4px; bottom:0; background:#16A34A;"></div>`;
+  const bars = [
+    { s: -7, e: 5, c: '#ea580c', l: '12–23 Oct · Tom R.' },
+    { s: 1, e: 10, c: '#0284c7', l: '19–28 Oct · Priya S.' },
+    { s: 3, e: 9, c: '#2563eb', l: '21–27 Oct · Lee W.', wait: true },
+    { s: 4, e: 5, c: '#9ca3af', l: '22–23' },
+  ];
+  bars.forEach((b, i) => {
+    const x = b.s * D + 3, w = (b.e - b.s + 1) * D - 6, y = HDR + 14 + i * RH;
+    const ring = b.wait ? 'box-shadow:0 0 0 3px #fff, 0 0 0 7px #f59e0b;' : '';
+    const pad = b.s < 0 ? `padding-left:${-x + 16}px;` : '';
+    h += `<div class="gb" style="left:${x}px; top:${y}px; width:${w}px; background:${b.c}; ${ring} ${pad} box-sizing:border-box;">${b.l}</div>`;
+  });
+  c.innerHTML = h;
+  Kit.ready({ duration: 1, fonts: ['700 60px "Space Grotesk"', '600 30px Inter', '700 30px Inter', '800 30px Inter', '500 24px "JetBrains Mono"', '600 24px "JetBrains Mono"'] });
+})();
+</script>
+</body>
+</html>

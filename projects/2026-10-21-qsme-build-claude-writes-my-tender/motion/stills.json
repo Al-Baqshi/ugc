@@ -2,27 +2,43 @@
  "cssWidth": 1440,
  "cssHeight": 900,
  "dpr": 2,
- "_note": "Public qsme.build pages only, no login, nothing typed. Element crops so nothing else on the page is in frame (never the /platform AI module, which says 'summarise bids').",
+ "_note": "Public qsme.build pages only, no login, nothing typed. Element crops so nothing else on the page is in frame (never the /platform AI module, which says 'summarise bids'). 2026-10-04: card-award trims its second sentence ('You can award to a firm without an account; ... when they sign up.') before the crop, because the owner CTA rule bans 'without an account' on screen.",
  "shots": [
   {
    "name": "card-award",
    "url": "https://qsme.build/platform/tendering",
    "el": "[...document.querySelectorAll('li.card')].find(e=>e.textContent.includes('Award is a person'))",
-   "pad": [20, 20, 20, 20],
-   "hl": "No automation and no assistant awards a tender."
+   "pad": [
+    20,
+    16,
+    20,
+    16
+   ],
+   "hl": "No automation and no assistant awards a tender.",
+   "prep": "(() => { const card = [...document.querySelectorAll('li.card')].find(e=>e.textContent.includes('Award is a person')); if (!card) return 'NO CARD'; const tw = document.createTreeWalker(card, NodeFilter.SHOW_TEXT); let n, cut = 0; while ((n = tw.nextNode())) { const i = n.textContent.indexOf('You can award to a firm'); if (i >= 0) { n.textContent = n.textContent.slice(0, i).replace(/\\s+$/, ''); cut++; let x = n.nextSibling; while (x) { const nx = x.nextSibling; x.remove(); x = nx; } } } card.style.setProperty('height','auto','important'); card.style.setProperty('min-height','0','important'); card.style.setProperty('align-self','start','important'); return { cut, h: card.getBoundingClientRect().height, text: card.innerText }; })()"
   },
   {
    "name": "card-draft-check",
    "url": "https://qsme.build/platform/estimating",
    "el": "[...document.querySelectorAll('li.card')].find(e=>e.textContent.includes('Draft with AI, then check'))",
-   "pad": [20, 20, 20, 20],
+   "pad": [
+    20,
+    20,
+    20,
+    20
+   ],
    "hl": "Every draft is a suggestion for a person to check, not a figure to trust."
   },
   {
    "name": "demo-what-happens",
    "url": "https://qsme.build/contact",
    "el": "(() => { const h = [...document.querySelectorAll('h2')].find(e=>e.textContent.includes('What happens on a demo')); if (!h) return null; const li = [...h.nextElementSibling.querySelectorAll('li')]; return [h, li[0], li[1]]; })()",
-   "pad": [28, 36, 10, 36],
+   "pad": [
+    28,
+    36,
+    10,
+    36
+   ],
    "hl": "Thirty minutes on a working project that resembles yours."
   }
  ]

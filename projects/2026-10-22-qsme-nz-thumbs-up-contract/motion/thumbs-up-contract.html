@@ -3,18 +3,23 @@
 <head>
 <meta charset="utf-8">
 <title>Our whole contract is a thumbs-up</title>
-<!-- QSME NZ · "Our whole contract is a thumbs-up" · 9:16 · 29.8 s · silent master with burned-in captions (Mel VO script for later).
+<!-- QSME NZ · "Our whole contract is a thumbs-up" · 9:16 · 31.64 s · silent master with burned-in captions (Mel VO script for later).
      Render (from the studio root):
        node tools/motion/make.mjs projects/2026-10-22-qsme-nz-thumbs-up-contract/motion/thumbs-up-contract.html projects/2026-10-22-qsme-nz-thumbs-up-contract/outputs/thumbs-up-contract-9x16.mp4 --safe 65,300,1015,1250
      Real footage:
        clips/kb-quote.png  live public Knowledge Hub, qsme.co.nz/knowledge-hub/agreements ("AI never makes up an amount…"), still.mjs + still-kb-quote.json, no login
-       clips/kb-free.png   same page ("Agreements is free on every plan. The AI actions use AI credits…"), still-kb-free.json
-     Stand-ins (labelled "Illustrative recreation · demo data"; swap for the owner's Session B, see post.md "Owner recordings to swap in"):
-       #d1 Bring in a document (new-agreement-dialog.tsx ImportView), #d2 the draft (agreement-detail.tsx + agreement-editor.tsx),
-       #d3 the Agreements list (agreements-page.tsx), #ph the public signing page in a phone browser (agreement-signing-page.tsx),
-       #cert the certificate page (agreement_pdf.go agreementCertificate). Wording, layout and the light "Clean white" theme
-       tokens come from origin/main (read only). The draft's wording is our guess at the AI write-up: the real take decides it.
-     The thumbs-up is our own SVG drawing (no Apple/Google/WhatsApp emoji art), the text thread is a generic, unbranded UI. -->
+       clips/signup.png    live public sign-up page, qsme.co.nz/sign-up ("Get started with QSME / What brings you here? / I hire / I provide services"), still-signup.json, no login, nothing typed
+     Owner CTA rule (2026-10-03): no "free", no "no account" lines anywhere; the end card pushes "Sign up at qsme.co.nz".
+     Recreated screens (viewer-facing label "Recreated screen · demo data"; swap for the owner's Session B, see post.md "Owner recordings to swap in"):
+       #d1 Bring in a document (new-agreement-dialog.tsx ImportView), #d2 the draft + Who signs + "Send for signing" (agreement-detail.tsx,
+       agreement-editor.tsx, signers-panel.tsx), #inbox the signing e-mail in a generic inbox (email_service.go subject line only),
+       #ph the public signing page in a phone browser (agreement-signing-page.tsx), #d3 the Agreements list (agreements-page.tsx),
+       #cert the certificate page (agreement_pdf.go agreementCertificate). Wording, layout and the light "Clean white" theme tokens come
+       from origin/main (read only). The draft's wording is our guess at the AI write-up: the real take decides it.
+     Review fixes 2026-10-04 (2nd pass): captions cut and retimed to ~2.5 words/s, the real Knowledge Hub quote held 3.6 s behind whips,
+       the blanks are filled by hand on screen and "Send for signing" is pressed, the thread re-ordered so the 👍 is the answer,
+       an "A skit" chip from frame 0, a longer end card that scrolls the real sign-up page to "I provide services", no edge glitch on the dive.
+     The thumbs-up is our own SVG drawing (no Apple/Google/WhatsApp emoji art), the text thread and the inbox are generic, unbranded UI. -->
 <link rel="stylesheet" href="../../../tools/motion/kit.css">
 <style>
   body.nz #root { background: #020617; }
@@ -26,11 +31,17 @@
   .cap > span { display: inline-block; max-width: 950px; background: #F8FAFC; color: #020617; font: 800 58px/1.1 Manrope; letter-spacing: -0.022em; padding: 13px 28px 17px; border-radius: 14px; text-align: center; box-shadow: 0 14px 40px rgba(0, 0, 0, .42); }
   .cap em { font-style: normal; color: #15803D; }
   .cap .bk { background: #FDE68A; border-radius: 8px; padding: 0 8px; color: #78350F; }
+  .cap.dark > span { background: #020617; color: #F8FAFC; box-shadow: 0 0 0 2px rgba(248, 250, 252, .16), 0 18px 50px rgba(0, 0, 0, .55); }
+  .cap.dark em { color: #4ADE80; }
   .cap .mkG { font-family: "Permanent Marker"; font-weight: 400; color: #15803D; letter-spacing: 0; }
+  .cap.dark .mkG { color: #4ADE80; }
 
   .chipT { position: absolute; top: 306px; display: inline-flex; align-items: center; gap: 12px; padding: 8px 18px; border-radius: 999px; background: rgba(2, 6, 23, .78); border: 2px solid rgba(248, 250, 252, .22); color: rgba(248, 250, 252, .92); font: 500 25px/1.2 "JetBrains Mono"; white-space: nowrap; z-index: 30; }
   .chipT b { width: 12px; height: 12px; border-radius: 50%; background: #3DC023; }
-  .illus { position: absolute; padding: 6px 14px; border: 2px dashed rgba(248, 250, 252, .55); border-radius: 8px; background: rgba(2, 6, 23, .78); color: rgba(248, 250, 252, .85); font: 500 23px/1.2 "JetBrains Mono"; white-space: nowrap; z-index: 30; }
+  .illus { position: absolute; padding: 6px 14px; border: 2px dashed rgba(248, 250, 252, .55); border-radius: 8px; background: rgba(2, 6, 23, .78); color: rgba(248, 250, 252, .85); font: 500 21px/1.2 "JetBrains Mono"; white-space: nowrap; z-index: 30; }
+
+  /* "A skit" disclosure from frame 0 */
+  #skit { position: absolute; left: 65px; top: 300px; z-index: 46; display: inline-flex; align-items: center; padding: 7px 18px; border-radius: 999px; background: rgba(2, 6, 23, .88); border: 2px solid rgba(248, 250, 252, .34); color: #F8FAFC; font: 500 25px/1.2 "JetBrains Mono"; white-space: nowrap; }
 
   /* ================= S1 · the text thread (generic, unbranded) ================= */
   #cam1 { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 0 0; }
@@ -46,25 +57,26 @@
   .msg.in { left: 44px; background: #FFFFFF; color: #1C1C1E; border: 2px solid #E6E4DE; }
   .msg.out { right: 44px; background: #2E2E33; color: #FAFAF7; }
   .stamp { position: absolute; font: 500 26px/1 Inter; color: #8E8E93; }
-  #m4 { position: absolute; left: 860px; top: 958px; width: 176px; height: 176px; transform-origin: 50% 80%; }
-  #compose { position: absolute; left: 0; right: 0; top: 1150px; height: 124px; background: #FFFFFF; border-top: 2px solid #E3E2DD; display: flex; align-items: center; gap: 22px; padding: 0 32px; }
+  /* Jono's reply: an emoji-only message (incoming, left) */
+  #m4 { position: absolute; left: 52px; top: 874px; width: 160px; height: 160px; transform-origin: 50% 60%; }
+  #compose { position: absolute; left: 0; right: 0; top: 1162px; height: 124px; background: #FFFFFF; border-top: 2px solid #E3E2DD; display: flex; align-items: center; gap: 22px; padding: 0 32px; }
   #compose .plus { width: 72px; height: 72px; border-radius: 50%; background: #EFEEEA; display: flex; align-items: center; justify-content: center; }
   #compose .field { flex: 1; height: 80px; border-radius: 40px; border: 2px solid #DEDCD6; display: flex; align-items: center; padding: 0 30px; font: 400 36px/1 Inter; color: #A1A1A6; }
-  #kbd { position: absolute; left: 0; right: 0; top: 1274px; height: 646px; background: #D6D7DC; padding: 26px 10px 0; }
+  #kbd { position: absolute; left: 0; right: 0; top: 1286px; height: 646px; background: #D6D7DC; padding: 26px 10px 0; }
   .krow { display: flex; justify-content: center; gap: 12px; margin-bottom: 22px; }
   .key { width: 92px; height: 116px; border-radius: 14px; background: #FFFFFF; box-shadow: 0 3px 0 #A4A6AD; display: flex; align-items: center; justify-content: center; font: 400 48px/1 Inter; color: #1C1C1E; }
   .key.w { width: 140px; background: #B7BAC2; font-size: 34px; }
   .key.sp { width: 520px; font-size: 32px; color: #55565C; }
   #nav1 { position: absolute; inset: 0; background: radial-gradient(900px 900px at 50% 46%, #0B1A2E 0%, #020617 70%); }
-  #capHook { position: absolute; left: 65px; width: 950px; top: 318px; text-align: center; z-index: 45; }
+  #capHook { position: absolute; left: 65px; width: 950px; top: 352px; text-align: center; z-index: 45; }
   #capHook span { display: inline-block; background: #020617; color: #F8FAFC; font: 800 84px/1.05 Manrope; letter-spacing: -0.035em; padding: 16px 34px 22px; border-radius: 18px; box-shadow: 0 18px 50px rgba(2, 6, 23, .35); }
 
   /* the big thumb that leaves the phone (root coordinates) */
   #bigT { position: absolute; left: 0; top: 0; width: 100px; height: 100px; z-index: 44; transform-origin: 50% 50%; }
 
-  /* ================= S2 · the contract, in full ================= */
+  /* ================= S2 · the contract, in full (the page runs off the bottom of the frame) ================= */
   #s2bg { background: radial-gradient(1000px 900px at 50% 40%, #0B1A2E 0%, #020617 72%); }
-  #paper { position: absolute; left: 70px; top: 312px; width: 940px; height: 860px; background: radial-gradient(900px 600px at 30% 0%, #FFFFFF, rgba(255, 255, 255, 0) 70%), #F8F6EF; border-radius: 18px; box-shadow: 0 40px 120px rgba(0, 0, 0, .65), 0 0 0 2px rgba(255, 255, 255, .05); padding: 38px 48px; color: #14161A; transform-origin: 50% 0; overflow: hidden; }
+  #paper { position: absolute; left: 70px; top: 312px; width: 940px; height: 1900px; background: radial-gradient(900px 600px at 30% 0%, #FFFFFF, rgba(255, 255, 255, 0) 70%), #F8F6EF; border-radius: 18px; box-shadow: 0 40px 120px rgba(0, 0, 0, .65), 0 0 0 2px rgba(255, 255, 255, .05); padding: 38px 48px; color: #14161A; transform-origin: 50% 0; overflow: hidden; }
   #paper::after { content: ""; position: absolute; left: 30px; top: 0; bottom: 0; width: 3px; background: rgba(224, 48, 42, .22); }
   .plab { font: 500 25px/1 "JetBrains Mono"; letter-spacing: .12em; color: #6B6B70; }
   .ptitle { margin-top: 14px; font: 800 70px/1 Manrope; letter-spacing: -0.03em; color: #020617; }
@@ -73,23 +85,22 @@
   .row { position: relative; padding: 20px 0 6px; border-bottom: 2px dashed rgba(20, 22, 26, .16); }
   .row .tag { font: 600 24px/1 "JetBrains Mono"; letter-spacing: .14em; color: #8A8B90; }
   .row .q { margin-top: 10px; font: 800 52px/1.1 Manrope; letter-spacing: -0.025em; color: #020617; display: flex; align-items: center; gap: 18px; }
-  .row .q svg { flex: none; width: 70px; height: 70px; }
+  .row .q svg { flex: none; width: 84px; height: 84px; }
   .row .mk { position: absolute; right: 6px; font: 400 46px/1 "Permanent Marker"; color: #DC2626; transform: rotate(-4deg); white-space: nowrap; }
-  #t1 { width: 112px !important; height: 112px !important; }
   #rowSig .q { font-size: 52px; }
   #sigLine { flex: 1; height: 60px; }
 
-  /* ================= S3 · the desktop window (illustrative recreation of the signed-in app) ================= */
+  /* ================= S3 · the desktop window (recreated signed-in app; runs off the bottom of the frame) ================= */
   #s3bg, #s5bg { background: radial-gradient(1100px 900px at 50% 36%, rgba(61, 192, 35, .10), rgba(0, 0, 0, 0) 60%), linear-gradient(180deg, #071022 0%, #020617 70%); }
-  .win { position: absolute; left: 65px; top: 318px; width: 950px; height: 770px; border-radius: 22px; overflow: hidden; background: #E9EEF2; box-shadow: 0 0 0 2px rgba(255, 255, 255, .06), 0 40px 120px rgba(0, 0, 0, .7); transform-origin: 50% 45%; }
-  .wbar { position: absolute; left: 0; top: 0; right: 0; height: 46px; background: #E6EAEE; border-bottom: 1px solid #D5DBE1; display: flex; align-items: center; gap: 10px; padding: 0 18px; }
+  .win { position: absolute; left: 65px; top: 318px; width: 950px; height: 1700px; border-radius: 22px 22px 0 0; overflow: hidden; background: #E9EEF2; box-shadow: 0 0 0 2px rgba(255, 255, 255, .06), 0 40px 120px rgba(0, 0, 0, .7); }
+  .wbar { position: absolute; left: 0; top: 0; right: 0; height: 46px; background: #E6EAEE; border-bottom: 1px solid #D5DBE1; display: flex; align-items: center; gap: 10px; padding: 0 14px 0 18px; z-index: 2; }
   .wbar i { width: 16px; height: 16px; border-radius: 50%; background: #FF5F57; }
   .wbar i:nth-child(2) { background: #FEBC2E; } .wbar i:nth-child(3) { background: #28C840; }
   .wtab { margin-left: 18px; padding: 6px 18px 6px 14px; background: #FFFFFF; border-radius: 10px 10px 0 0; align-self: flex-end; height: 38px; display: flex; align-items: center; gap: 10px; font: 500 20px/1 Manrope; color: #334155; }
   .wtab svg { width: 20px; height: 20px; }
-  .vp { position: absolute; left: 0; top: 46px; width: 950px; height: 684px; overflow: hidden; background: #FFFFFF; }
-  .wstat { position: absolute; left: 0; right: 0; bottom: 0; height: 40px; background: #0B1226; display: flex; align-items: center; justify-content: center; font: 500 23px/1 "JetBrains Mono"; color: rgba(248, 250, 252, .82); }
-  .wstat span { border: 2px dashed rgba(248, 250, 252, .45); border-radius: 6px; padding: 2px 12px; }
+  .wbar .illustrative { position: static; margin-left: auto; padding: 3px 10px; border: 2px dashed rgba(51, 65, 85, .55); border-radius: 6px; color: #334155; background: rgba(255, 255, 255, .55); font: 500 18px/1.2 "JetBrains Mono"; white-space: nowrap; }
+  .wfast { margin-left: 8px; padding: 4px 12px; border-radius: 6px; background: #0B1226; color: #F8FAFC; font: 500 18px/1.2 "JetBrains Mono"; white-space: nowrap; }
+  .vp { position: absolute; left: 0; top: 46px; width: 950px; height: 1654px; overflow: hidden; background: #FFFFFF; }
   .lay { position: absolute; inset: 0; overflow: hidden; }
   .cam { position: absolute; left: 0; top: 0; width: 633px; transform-origin: 0 0; }
 
@@ -110,8 +121,8 @@
   .badge { display: inline-flex; align-items: center; gap: 4px; border-radius: 6px; border: 1px solid transparent; padding: 2px 8px; font-size: 12px; line-height: 16px; font-weight: 500; white-space: nowrap; }
 
   /* d1 · Bring in a document */
-  #d1page { position: absolute; left: 0; top: 0; width: 633px; height: 1400px; background: #fff; padding: 20px 16px; }
-  #d1dim { position: absolute; left: 0; top: 0; width: 633px; height: 1400px; background: rgba(0, 0, 0, .5); }
+  #d1page { position: absolute; left: 0; top: 0; width: 633px; height: 2600px; background: #fff; padding: 20px 16px; }
+  #d1dim { position: absolute; left: 0; top: 0; width: 633px; height: 2600px; background: rgba(0, 0, 0, .5); }
   #dlg { position: absolute; left: 16px; top: 18px; width: 601px; background: #fff; border: 1px solid var(--bd); border-radius: 10px; padding: 24px; box-shadow: 0 10px 30px rgba(0, 0, 0, .18); }
   .dt { display: flex; align-items: center; gap: 8px; font-size: 18px; line-height: 28px; font-weight: 600; }
   .dt .ib { width: 32px; height: 32px; margin-left: -8px; display: flex; align-items: center; justify-content: center; }
@@ -173,23 +184,33 @@
   .pc .pmark { flex: 1; display: flex; align-items: center; gap: 12px; padding: 8px 0; font-size: 12px; line-height: 16px; text-transform: uppercase; letter-spacing: .025em; color: var(--mfg); }
   .pc .pmark::before, .pc .pmark::after { content: ""; height: 1px; flex: 1; background: var(--bd); }
   .caret { display: inline-block; width: 1.5px; height: 17px; background: var(--fg); vertical-align: -3px; margin-left: 1px; }
+  /* who signs (signers-panel.tsx) */
+  .wrow { display: flex; align-items: center; justify-content: space-between; gap: 12px; border: 1px solid var(--bd); border-radius: 8px; padding: 12px; }
+  .sw { position: relative; flex: none; width: 32px; height: 18px; border-radius: 9px; background: var(--pri); }
+  .sw::after { content: ""; position: absolute; right: 2px; top: 2px; width: 14px; height: 14px; border-radius: 50%; background: #fff; }
+  .sli { border: 1px solid var(--bd); border-radius: 8px; padding: 12px; }
+  .sli + .sli { margin-top: 8px; }
+  .slh { display: flex; align-items: flex-start; gap: 12px; }
+  .av8 { flex: none; margin-top: 2px; width: 32px; height: 32px; border-radius: 50%; background: var(--muted); color: var(--mfg); display: flex; align-items: center; justify-content: center; }
+  .sas { margin-top: 8px; padding-left: 44px; }
   /* edit graphics that live in the content (they move with the camera) */
   .hlw { position: relative; display: inline; z-index: 0; }
   .hl { position: absolute; left: -3px; right: -3px; top: 1px; bottom: 0; background: rgba(250, 204, 21, .55); border-radius: 3px; z-index: -1; }
   .ring { position: absolute; border: 2.5px solid #16A34A; border-radius: 8px; box-shadow: 0 0 8px rgba(22, 163, 74, .45); pointer-events: none; }
   .cursor { position: absolute; left: 0; top: 0; width: 17px; height: 25px; transform-origin: 1.5px 1.5px; z-index: 20; }
-
-  /* the "sped up" chip */
-  #fast { position: absolute; right: 87px; top: 384px; padding: 6px 14px; border-radius: 8px; background: rgba(2, 6, 23, .82); color: #F8FAFC; font: 500 23px/1.2 "JetBrains Mono"; z-index: 25; }
+  .blurv { display: inline-block; filter: blur(5px); color: var(--fg); }
 
   /* the live Knowledge Hub card (real capture) */
-  #kb { position: absolute; left: 90px; top: 318px; width: 900px; height: 904px; border-radius: 24px; overflow: hidden; background: #191B1F; box-shadow: 0 0 0 2px rgba(248, 250, 252, .14), 0 40px 120px rgba(0, 0, 0, .7); }
-  #kbBodyW { position: absolute; left: 0; top: 119px; width: 900px; height: 785px; overflow: hidden; }
-  #kbBody { position: absolute; left: 0; top: 0; width: 900px; transform-origin: 0 0; }
-  #kbBody img { width: 900px; height: auto; }
-  #kbHead { position: absolute; left: 0; top: 0; width: 900px; height: 119px; overflow: hidden; z-index: 3; }
-  #kbHead img { width: 900px; height: auto; }
-  #kbLive { position: absolute; left: 22px; bottom: 22px; padding: 7px 14px; border-radius: 8px; background: rgba(2, 6, 23, .86); border: 2px solid rgba(61, 192, 35, .6); color: #F8FAFC; font: 500 23px/1.2 "JetBrains Mono"; z-index: 4; }
+  /* card px = capture px x 950/1290; header = capture 0..171, body = capture 690.. (the quote and the line under it) */
+  #kb { position: absolute; left: 65px; top: 468px; width: 950px; height: 600px; border-radius: 24px; overflow: hidden; background: #191B1F; box-shadow: 0 0 0 2px rgba(248, 250, 252, .14), 0 40px 120px rgba(0, 0, 0, .7); }
+  #kbBodyW { position: absolute; left: 0; top: 126px; width: 950px; height: 474px; overflow: hidden; }
+  #kbBody { position: absolute; left: 0; top: 0; width: 950px; transform-origin: 0 0; }
+  #kbBody img { width: 950px; height: auto; }
+  #kbHead { position: absolute; left: 0; top: 0; width: 950px; height: 126px; overflow: hidden; z-index: 3; }
+  #kbHead img { width: 950px; height: auto; }
+  #kbFade { position: absolute; left: 0; right: 0; bottom: 0; height: 90px; background: linear-gradient(180deg, rgba(25, 27, 31, 0), #191B1F); z-index: 2; }
+  #kbLive { position: absolute; left: 65px; top: 392px; display: inline-flex; align-items: center; gap: 12px; padding: 8px 18px; border-radius: 999px; background: rgba(2, 6, 23, .78); border: 2px solid rgba(61, 192, 35, .6); color: #F8FAFC; font: 500 25px/1.2 "JetBrains Mono"; white-space: nowrap; z-index: 30; }
+  #kbLive b { width: 12px; height: 12px; border-radius: 50%; background: #3DC023; }
 
   /* ================= S4 · the phone, in the ute ================= */
   #s4bg { background: radial-gradient(700px 500px at 82% 8%, rgba(255, 190, 120, .20), rgba(0, 0, 0, 0) 70%), radial-gradient(900px 700px at 10% 30%, rgba(120, 160, 220, .14), rgba(0, 0, 0, 0) 70%), linear-gradient(180deg, #1A1E26 0%, #0C0E12 55%, #08090B 100%); }
@@ -197,13 +218,27 @@
   #phone { position: absolute; left: 143px; top: 388px; width: 794px; height: 1680px; border-radius: 92px; background: #0E0F12; box-shadow: 0 0 0 3px #2A2C31, 0 50px 120px rgba(0, 0, 0, .75); }
   #pscr { position: absolute; left: 22px; top: 22px; width: 750px; height: 1636px; border-radius: 72px; overflow: hidden; background: #F7F8FA; }
   #pcam { position: absolute; left: 0; top: 0; width: 375px; height: 818px; transform: scale(2); transform-origin: 0 0; }
-  #pstat { position: absolute; left: 0; top: 0; width: 375px; height: 44px; display: flex; align-items: center; justify-content: space-between; padding: 0 28px 0 34px; font: 600 15px/1 Inter; color: #111; background: #F2F3F5; z-index: 3; }
+  #pstat { position: absolute; left: 0; top: 0; width: 375px; height: 44px; display: flex; align-items: center; justify-content: space-between; padding: 0 28px 0 34px; font: 600 15px/1 Inter; color: #111; background: #F2F3F5; z-index: 5; }
   #purl { position: absolute; left: 0; top: 44px; width: 375px; height: 50px; background: #F2F3F5; border-bottom: 1px solid #E1E3E8; display: flex; align-items: center; justify-content: center; z-index: 3; }
   #purl .pill { display: flex; align-items: center; justify-content: center; gap: 6px; width: 340px; height: 36px; border-radius: 12px; background: #E4E6EB; font: 500 15px/1 Inter; color: #1F2328; }
   #purl .pill svg { width: 13px; height: 13px; }
   #pv { position: absolute; left: 0; top: 94px; width: 375px; height: 724px; overflow: hidden; }
   #pg { position: absolute; left: 0; top: 0; width: 375px; padding: 24px 16px; background: oklch(0.955 0.004 255 / .3); }
   #pg > * + * { margin-top: 16px; }
+  /* a generic, unbranded mail inbox (the signing link arrives by e-mail) */
+  #inbox { position: absolute; left: 0; top: 44px; width: 375px; height: 774px; background: #FFFFFF; z-index: 4; font-family: Inter; color: #111; }
+  #inbox .ibh { padding: 14px 18px 10px; font: 700 28px/1.1 Inter; letter-spacing: -0.01em; }
+  #inbox .isr { margin: 0 16px 8px; height: 34px; border-radius: 10px; background: #EEF0F3; }
+  .irow { position: relative; display: flex; gap: 10px; padding: 12px 16px 12px 22px; border-bottom: 1px solid #ECEDEF; }
+  .irow.on { background: #F2F6FF; }
+  .irow .udot { position: absolute; left: 8px; top: 27px; width: 8px; height: 8px; border-radius: 50%; background: #2F6FED; }
+  .irow .iav { flex: none; width: 36px; height: 36px; border-radius: 50%; background: #9AA1AB; color: #fff; display: flex; align-items: center; justify-content: center; font: 600 16px/1 Inter; }
+  .irow .ib { flex: 1; min-width: 0; }
+  .irow .it { display: flex; justify-content: space-between; align-items: baseline; font: 600 15px/1.3 Inter; }
+  .irow .it span { font: 400 12px/1 Inter; color: #6B7280; }
+  .irow .is { margin-top: 2px; font: 600 14px/1.35 Inter; }
+  .irow .ip { margin-top: 2px; font: 400 13px/1.35 Inter; color: #6B7280; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .irow .bar { height: 10px; border-radius: 5px; background: #E8EAED; margin-top: 7px; }
   .sender { display: flex; flex-direction: column; gap: 12px; border: 1px solid var(--bd); border-radius: 12px; background: #fff; padding: 16px; }
   .sender .lg { width: 56px; height: 56px; border-radius: 12px; border: 1px solid var(--bd); display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; color: var(--mfg); }
   .sender p { font-size: 16px; line-height: 24px; font-weight: 600; }
@@ -224,7 +259,6 @@
   .art .kvv dd { font-weight: 500; }
   .art .cl { display: flex; gap: 12px; }
   .art .cl .n { width: 28px; flex: none; font-weight: 600; color: var(--mfg); font-variant-numeric: tabular-nums; }
-  .blurv { display: inline-block; filter: blur(5px); color: var(--fg); }
   .parties > * + * { margin-top: 16px; }
   .party .ln { height: 48px; display: flex; align-items: flex-end; padding-bottom: 4px; border-bottom: 1px dashed oklch(0.44 0.0096 255 / .4); }
   .party .ln.s { border-bottom: 1px solid oklch(0.21 0.008 255 / .4); }
@@ -242,8 +276,8 @@
   .toast svg { width: 18px; height: 18px; flex: none; }
   #touch { position: absolute; left: 0; top: 0; width: 40px; height: 40px; margin: -20px 0 0 -20px; border-radius: 50%; background: rgba(255, 255, 255, .55); border: 3px solid rgba(60, 64, 72, .55); box-shadow: 0 2px 10px rgba(0, 0, 0, .25); z-index: 6; }
 
-  /* ================= S5 · certificate ================= */
-  #cert { position: absolute; left: 100px; top: 326px; width: 880px; height: 790px; background: #FFFFFF; border-radius: 6px; box-shadow: 0 40px 120px rgba(0, 0, 0, .7); padding: 46px 54px; color: #1A1A1A; font-family: Arial, Helvetica, sans-serif; transform-origin: 50% 100%; }
+  /* ================= S5 · certificate (runs off the bottom of the frame) ================= */
+  #cert { position: absolute; left: 100px; top: 326px; width: 880px; height: 1700px; background: #FFFFFF; border-radius: 6px; box-shadow: 0 40px 120px rgba(0, 0, 0, .7); padding: 46px 54px; color: #1A1A1A; font-family: Arial, Helvetica, sans-serif; transform-origin: 50% 30%; }
   #cert .top { display: flex; justify-content: space-between; align-items: flex-start; font-size: 22px; color: #555; }
   #cert .top b { font-size: 26px; color: #1A1A1A; }
   #cert h4 { margin-top: 30px; font-size: 34px; font-weight: 700; color: #111; }
@@ -253,21 +287,25 @@
   #cert .kv dt { color: #6B6B6B; }
   #cert .kv dd { color: #1A1A1A; }
   #cert .bl { display: inline-block; filter: blur(7px); }
-  #certTag { right: 22px; bottom: 20px; position: absolute; border-color: rgba(30, 30, 30, .35); color: rgba(30, 30, 30, .7); background: rgba(255, 255, 255, .9); }
+  #certTag { right: 14px; top: 8px; position: absolute; border-color: rgba(30, 30, 30, .35); color: rgba(30, 30, 30, .7); background: rgba(255, 255, 255, .9); font-size: 18px; padding: 3px 10px; }
 
   /* ================= S6 · end card ================= */
   #s6 { background: radial-gradient(900px 760px at 50% 44%, #0B2A1A 0%, #020617 72%); }
-  #logo { position: absolute; left: 401px; top: 312px; width: 278px; height: 91px; overflow: hidden; }
+  #logo { position: absolute; left: 401px; top: 306px; width: 278px; height: 91px; overflow: hidden; }
   #logo img { position: absolute; width: 354.3px; left: -45.1px; top: -38.5px; }
-  #eHead { left: 65px; width: 950px; top: 432px; text-align: center; font: 800 80px/1.02 Manrope; letter-spacing: -0.04em; color: #F8FAFC; }
+  #eHead { left: 65px; width: 950px; top: 408px; text-align: center; font: 800 84px/1.04 Manrope; letter-spacing: -0.04em; color: #F8FAFC; }
   #eHead .g { color: #3DC023; }
-  #eShot { left: 90px; top: 650px; width: 900px; height: 200px; border-radius: 20px; overflow: hidden; background: #191B1F; box-shadow: 0 0 0 2px rgba(248, 250, 252, .14), 0 30px 80px rgba(0, 0, 0, .6); }
-  #eShot img { position: absolute; left: 0; width: 900px; height: auto; }
-  #eRing { position: absolute; border: 4px solid #3DC023; border-radius: 12px; box-shadow: 0 0 24px rgba(61, 192, 35, .55); }
-  #eLive { position: absolute; right: 14px; bottom: 12px; padding: 5px 12px; border-radius: 8px; background: rgba(2, 6, 23, .86); border: 2px solid rgba(61, 192, 35, .6); color: #F8FAFC; font: 500 21px/1.2 "JetBrains Mono"; }
-  #ePillW { left: 65px; width: 950px; top: 942px; text-align: center; }
-  #ePill { display: inline-block; background: #16A34A; color: #fff; font: 700 54px/1 Inter; padding: 22px 56px; border-radius: 12px; letter-spacing: -0.01em; }
-  #eSmall { left: 65px; width: 950px; top: 1078px; text-align: center; font: 500 34px/1.3 Inter; color: rgba(248, 250, 252, .74); }
+  #eHead .ti { width: 1.02em; height: 1.02em; vertical-align: -0.14em; }
+  #eSig { left: 252px; top: 574px; width: 620px; height: 50px; }
+  /* real capture of the public sign-up page (capture px x 900/1290); the still scrolls from the heading to "I provide services" */
+  #eLive { position: absolute; left: 90px; top: 634px; display: inline-flex; align-items: center; gap: 10px; padding: 6px 14px; border-radius: 999px; background: rgba(2, 6, 23, .86); border: 2px solid rgba(61, 192, 35, .6); color: #F8FAFC; font: 500 22px/1.2 "JetBrains Mono"; white-space: nowrap; }
+  #eLive b { width: 10px; height: 10px; border-radius: 50%; background: #3DC023; }
+  #eShot { left: 90px; top: 686px; width: 900px; height: 362px; border-radius: 20px; overflow: hidden; background: #15171A; box-shadow: 0 0 0 2px rgba(248, 250, 252, .14), 0 30px 80px rgba(0, 0, 0, .6); }
+  #eShot img { position: absolute; left: 0; top: -153.5px; width: 900px; height: auto; }
+  #eFade { position: absolute; left: 0; right: 0; bottom: 0; height: 48px; background: linear-gradient(180deg, rgba(21, 23, 26, 0), #15171A 92%); }
+  #ePillW { left: 65px; width: 950px; top: 1060px; text-align: center; }
+  #ePill { display: inline-block; background: #16A34A; color: #fff; font: 700 56px/1 Inter; padding: 22px 50px; border-radius: 12px; letter-spacing: -0.015em; box-shadow: 0 16px 44px rgba(22, 163, 74, .32); }
+  #eSmall { left: 65px; width: 950px; top: 1172px; text-align: center; font: 500 26px/1.3 Inter; color: rgba(248, 250, 252, .68); }
 </style>
 </head>
 <body class="nz r9x16">
@@ -285,12 +323,11 @@
       <path d="M50 122 C 50 109, 56 102, 67 101" fill="none" stroke="#FFF1B8" stroke-width="6" stroke-linecap="round" opacity=".8"/>
       <path d="M46 170 C 62 179, 110 181, 142 179" fill="none" stroke="#E89A12" stroke-width="7" stroke-linecap="round" opacity=".5"/>
     </symbol>
-    <filter id="hblur" x="-20%" y="-10%" width="140%" height="120%"><feGaussianBlur id="hblurG" stdDeviation="0 0"/></filter>
   </defs>
 </svg>
 <div id="root">
 
-  <!-- ================= S1 · HOOK: the thread ================= -->
+  <!-- ================= S1 · HOOK: the thread (the 👍 is Jono's answer to the heat-pump question) ================= -->
   <div id="s1" class="scene">
     <div id="cam1">
       <div id="chat" data-qa-ignore>
@@ -302,11 +339,11 @@
           <div class="av">J</div>
           <div><div class="nm">Jono (sparky)</div><div class="sub">mobile</div></div>
         </div>
-        <div class="stamp" style="left:0;right:0;top:462px;text-align:center">Tue 30 Sep</div>
-        <div class="msg in" style="top:500px">Rewire's $18,400 all up.<br>Can start Monday</div>
-        <div class="msg out" style="top:680px">Legend. Heat-pump wiring in that?</div>
-        <div class="msg in" style="top:860px">Sweet as, see you Monday</div>
+        <div class="stamp" style="left:0;right:0;top:490px;text-align:center">Wed 14 Oct</div>
+        <div class="msg in" style="top:524px">Rewire's $18,400 all up.<br>Can start Monday</div>
+        <div class="msg out" style="top:702px">Legend. Heat-pump wiring in that?</div>
         <svg id="m4" viewBox="0 0 200 200"><use href="#thumb"/></svg>
+        <div class="msg out" style="top:1046px">Sweet as, see you Monday</div>
         <div id="compose">
           <div class="plus"><svg width="34" height="34" viewBox="0 0 34 34"><path d="M17 5 V29 M5 17 H29" stroke="#55565C" stroke-width="4" stroke-linecap="round"/></svg></div>
           <div class="field">Message</div>
@@ -321,6 +358,7 @@
     </div>
     <div id="nav1"></div>
   </div>
+  <div id="skit">A skit · names made up</div>
   <div id="capHook"><span>Our entire contract:</span></div>
   <svg id="bigT" viewBox="0 0 200 200"><use href="#thumb"/></svg>
 
@@ -328,23 +366,23 @@
   <div id="s2" class="scene">
     <div id="s2bg" class="fill"></div>
     <div id="paper">
-      <div class="plab">AGREED BY TEXT · TUE 30 SEP</div>
+      <div class="plab">AGREED BY TEXT · WED 14 OCT</div>
       <div class="ptitle">THE REWIRE CONTRACT</div>
       <div class="psub">Complete and unabridged.</div>
       <div class="prule"></div>
       <div class="row" id="row1"><div class="tag">CLAUSE 1</div><div class="q"><span>Full rewire. $18,400.</span><svg id="t1" viewBox="0 0 200 200"><use href="#thumb"/></svg></div></div>
-      <div class="row" id="row2" style="height:172px"><div class="tag">CLAUSE 2</div><div class="q"><span>Heat-pump wiring included?</span><svg id="t2" viewBox="0 0 200 200"><use href="#thumb"/></svg></div><div class="mk" id="mk2" style="top:120px">(unclear)</div></div>
-      <div class="row" id="row3" style="height:172px"><div class="tag">CLAUSE 3</div><div class="q"><span>Payment stages?</span><svg id="t3" viewBox="0 0 200 200"><use href="#thumb"/></svg></div><div class="mk" id="mk3" style="top:120px">(also unclear)</div></div>
+      <div class="row" id="row2" style="height:172px"><div class="tag">CLAUSE 2</div><div class="q"><span>Heat-pump wiring included?</span><svg id="t2" viewBox="0 0 200 200"><use href="#thumb"/></svg></div><div class="mk" id="mk2" style="top:126px">(unclear)</div></div>
+      <div class="row" id="row3" style="height:172px"><div class="tag">CLAUSE 3</div><div class="q"><span>Payment stages?</span><svg id="t3" viewBox="0 0 200 200"><use href="#thumb"/></svg></div><div class="mk" id="mk3" style="top:126px">(also unclear)</div></div>
       <div class="row" id="rowSig" style="border-bottom:0"><div class="q"><span>Signed:</span><svg id="sigLine" viewBox="0 0 560 60" preserveAspectRatio="none"><path id="sigPath" d="M6 52 L 554 52" fill="none" stroke="#14161A" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 14"/></svg></div></div>
     </div>
-    <div id="capS2" class="cap"><span>Agreed in every sense.<br>Except a signature.</span></div>
+    <div id="capS2" class="cap dark"><span>Agreed. <em>Never signed.</em></span></div>
   </div>
 
-  <!-- ================= S3 · AGREEMENTS (illustrative recreation) + the live Knowledge Hub ================= -->
+  <!-- ================= S3 · AGREEMENTS (recreated) + the live Knowledge Hub ================= -->
   <div id="s3" class="scene">
     <div id="s3bg" class="fill"></div>
     <div id="win3" class="win" data-qa-ignore>
-      <div class="wbar"><i></i><i></i><i></i><span class="wtab"><svg viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 17-2.156-1.868A.5.5 0 0 0 18 15.5v.5a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1c0-2.545-3.991-3.97-8.5-4a1 1 0 0 0 0 5c4.153 0 4.745-11.295 5.708-13.5a2.5 2.5 0 1 1 3.31 3.284"/><path d="M3 21h18"/></svg>Agreements</span></div>
+      <div class="wbar"><i></i><i></i><i></i><span class="wtab"><svg viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 17-2.156-1.868A.5.5 0 0 0 18 15.5v.5a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1c0-2.545-3.991-3.97-8.5-4a1 1 0 0 0 0 5c4.153 0 4.745-11.295 5.708-13.5a2.5 2.5 0 1 1 3.31 3.284"/><path d="M3 21h18"/></svg>Agreements</span><span class="wfast" id="fast">sped up</span><span class="illustrative">Recreated screen · demo data</span></div>
       <div class="vp">
         <!-- d1 · New agreement → Bring in one you already have → Bring in a document -->
         <div id="d1" class="lay app">
@@ -364,8 +402,8 @@
 
 Copy it out of the e-mail or the Word file — headings, numbered terms and all. Every word comes across as it is.</span><span class="tx" id="taTx" style="display:none">Jono: Rewire's $18,400 all up. Can start Monday
 Me: Legend. Heat-pump wiring in that?
-Jono: Sweet as, see you Monday
-Me: <svg class="ti" style="width:18px;height:18px;vertical-align:-3px" viewBox="0 0 200 200"><use href="#thumb"/></svg></span></div>
+Jono: <svg class="ti" style="width:18px;height:18px;vertical-align:-3px" viewBox="0 0 200 200"><use href="#thumb"/></svg>
+Me: Sweet as, see you Monday</span></div>
                   <p class="xs mf" style="margin-top:6px" id="wc">Nothing pasted yet</p>
                 </div>
                 <div class="about" id="about">
@@ -377,7 +415,7 @@ Me: <svg class="ti" style="width:18px;height:18px;vertical-align:-3px" viewBox="
                 <div id="modes">
                   <div class="sm med" style="margin-bottom:4px">How do you want to use it?</div>
                   <div class="choice on" id="chExact"><span class="radio"></span><span><span class="ct">Keep every word</span><span class="cd">It says exactly what it says now. QSME lays the words out as terms so it can be signed, and you can still edit them. Nothing reads it, so nothing can reword it. Uses no AI credit.</span></span></div>
-                  <div class="choice" id="chFramed"><span class="radio"></span><span><span class="ct">Write it up as a proper agreement</span><span class="cd">For notes, an e-mail, or a rough draft. QSME keeps every point of the deal, drops what was never part of it, and writes it up the way its own agreements are written — using what it knows about this job. Uses one AI credit.</span></span></div>
+                  <div class="choice" id="chFramed"><span class="radio"></span><span><span class="ct" id="frT">Write it up as a proper agreement</span><span class="cd">For notes, an e-mail, or a rough draft. QSME keeps every point of the deal, drops what was never part of it, and writes it up the way its own agreements are written — using what it knows about this job. Uses one AI credit.</span></span></div>
                   <div class="choice off"><span class="radio"></span><span><span class="ct">Sign it as it is</span><span class="cd">There is no document here to sign — the words you pasted become the agreement itself.</span></span></div>
                   <div class="choice off"><span class="radio"></span><span><span class="ct">Let AI read it</span><span class="cd">The words are already here, so there is nothing to read off a page.</span></span></div>
                 </div>
@@ -388,11 +426,12 @@ Me: <svg class="ti" style="width:18px;height:18px;vertical-align:-3px" viewBox="
                 <div class="btn pri" id="goBtn" style="width:100%"><svg class="i" data-i="fileUp" id="goIco"></svg><svg class="i spin" data-i="loader" id="goSpin" style="display:none"></svg><span id="goLbl">Bring it in</span></div>
               </div>
             </div>
+            <div class="ring" id="rFr"></div>
             <svg class="cursor" id="cur1" viewBox="0 0 34 50"><path d="M3 3 L3 39 L12 31 L18.5 45.5 L25 42.5 L18.8 28.6 L30.5 28.2 Z" fill="#111" stroke="#fff" stroke-width="3" stroke-linejoin="round"/></svg>
           </div>
         </div>
 
-        <!-- d2 · the draft QSME wrote (agreement detail + editor) -->
+        <!-- d2 · the draft QSME wrote (agreement detail + editor), then Who signs + Send for signing -->
         <div id="d2" class="lay app">
           <div id="cam2d" class="cam">
             <div id="d2page">
@@ -408,19 +447,19 @@ Me: <svg class="ti" style="width:18px;height:18px;vertical-align:-3px" viewBox="
                     <p class="h">The wording here is new — read it before you send it</p>
                     <p class="b">QSME wrote this up as an agreement from what you gave it. It kept the points of the deal and left out what was not part of it, but these are not your words. Read every term, and check anything it filled in for you.</p>
                     <div style="margin-top:12px"><span class="btn out smb"><svg class="i" data-i="eye"></svg>Open the original</span></div>
-                    <label class="tick"><span class="cbox"><svg viewBox="0 0 12 12"><path d="M2 6.5 L5 9 L10 3"/></svg></span><span>I have read this, and it says what we agreed.</span></label>
+                    <label class="tick"><span class="cbox on"><svg viewBox="0 0 12 12"><path d="M2 6.5 L5 9 L10 3"/></svg></span><span>I have read this, and it says what we agreed.</span></label>
                   </div>
-                  <div class="bbar" id="bbar"><p>5 blanks still in [square brackets]. Fill them in, or take out the terms that do not apply.</p><span class="btn out smb" style="background:#fff"><svg class="i" data-i="sparkles"></svg>Fill them in with AI</span></div>
+                  <div class="bbar" id="bbar"><p><span id="bN">5 blanks</span> still in [square brackets]. Fill them in, or take out the terms that do not apply.</p></div>
                   <div class="ed" id="ed">
                     <div class="pc"><div class="gut"></div><div class="body">This agreement is between <span class="hlw" id="nmMel">Mel Turner</span>, the owner, and <span class="hlw" id="nmJono">Jono Hale</span>, the electrician, for a full rewire of the house.</div><div class="dots"><svg class="i" data-i="dots"></svg></div></div>
                     <div class="pc"><div class="gut"></div><div class="body hd">The job at a glance</div><div class="dots"><svg class="i" data-i="dots"></svg></div></div>
-                    <div class="pc"><div class="gut"></div><div class="kv"><div class="inp h9">Site</div><div class="inp h9"><span class="hlw">[site address]<i class="hl" id="hl1"></i></span></div></div><div class="dots"><svg class="i" data-i="dots"></svg></div></div>
+                    <div class="pc" id="rowSite"><div class="gut"></div><div class="kv"><div class="inp h9">Site</div><div class="inp h9"><span class="hlw"><span id="bSite">[site address]</span><span class="caret" id="kSite"></span><i class="hl" id="hl1"></i></span></div></div><div class="dots"><svg class="i" data-i="dots"></svg></div></div>
                     <div class="pc"><div class="gut"></div><div class="kv"><div class="inp h9">The work</div><div class="inp h9">Full rewire of the house</div></div><div class="dots"><svg class="i" data-i="dots"></svg></div></div>
-                    <div class="pc"><div class="gut"></div><div class="kv"><div class="inp h9">Price</div><div class="inp h9"><span class="hlw" id="sum">$18,400</span>&nbsp;<span class="hlw">[plus or including GST]<i class="hl" id="hl2"></i></span></div></div><div class="dots"><svg class="i" data-i="dots"></svg></div></div>
-                    <div class="pc"><div class="gut"></div><div class="kv"><div class="inp h9">Start</div><div class="inp h9"><span class="hlw">[start date]<i class="hl" id="hl3"></i></span></div></div><div class="dots"><svg class="i" data-i="dots"></svg></div></div>
-                    <div class="pc"><div class="gut"></div><div class="kv"><div class="inp h9">Finish</div><div class="inp h9"><span class="hlw">[finish date]<i class="hl" id="hl4"></i></span></div></div><div class="dots"><svg class="i" data-i="dots"></svg></div></div>
+                    <div class="pc"><div class="gut"></div><div class="kv"><div class="inp h9">Price</div><div class="inp h9"><span class="hlw" id="sum">$18,400</span>&nbsp;<span class="hlw"><span id="bGst">[plus or including GST]</span><span class="caret" id="kGst"></span><i class="hl" id="hl2"></i></span></div></div><div class="dots"><svg class="i" data-i="dots"></svg></div></div>
+                    <div class="pc"><div class="gut"></div><div class="kv"><div class="inp h9">Start</div><div class="inp h9"><span class="hlw"><span id="bStart">[start date]</span><span class="caret" id="kStart"></span><i class="hl" id="hl3"></i></span></div></div><div class="dots"><svg class="i" data-i="dots"></svg></div></div>
+                    <div class="pc"><div class="gut"></div><div class="kv"><div class="inp h9">Finish</div><div class="inp h9"><span class="hlw"><span id="bFin">[finish date]</span><span class="caret" id="kFin"></span><i class="hl" id="hl4"></i></span></div></div><div class="dots"><svg class="i" data-i="dots"></svg></div></div>
                     <div class="pc"><div class="gut"></div><div class="body hd">Payment</div><div class="dots"><svg class="i" data-i="dots"></svg></div></div>
-                    <div class="pc"><div class="gut">1.</div><div class="body">Mel pays the price in <span class="hlw">[payment stages]<i class="hl" id="hl5"></i></span>.</div><div class="dots"><svg class="i" data-i="dots"></svg></div></div>
+                    <div class="pc" id="rowPay"><div class="gut">1.</div><div class="body">Mel pays the price in <span class="hlw"><span id="bPay">[payment stages]</span><span class="caret" id="kPay"></span><i class="hl" id="hl5"></i></span>.</div><div class="dots"><svg class="i" data-i="dots"></svg></div></div>
                     <div class="pc"><div class="gut"></div><div class="body hd">The work</div><div class="dots"><svg class="i" data-i="dots"></svg></div></div>
                     <div class="pc" id="pc2"><div class="gut">2.</div><div class="body"><span id="c2t">Jono does a full rewire of the house.</span><span class="caret" id="c2c" style="display:none"></span></div><div class="dots"><svg class="i" data-i="dots"></svg></div></div>
                     <div class="pc focus" id="pc3" style="display:none"><div class="gut">3.</div><div class="body"><span id="c3t">Heat-pump wiring: included.</span><span class="caret" id="c3c"></span></div><div class="dots"><svg class="i" data-i="dots"></svg></div></div>
@@ -428,38 +467,58 @@ Me: <svg class="ti" style="width:18px;height:18px;vertical-align:-3px" viewBox="
                   </div>
                 </div>
               </div>
+              <div class="cardx" style="margin-top:16px">
+                <div class="ch" style="padding-top:20px"><div class="ctitle" style="font-size:16px;line-height:24px;height:auto">Who signs</div></div>
+                <div class="cc">
+                  <div class="wrow"><span><span class="sm med" style="display:block">I am signing this too</span><span class="xs mf" style="display:block">Most agreements are signed by both sides. You sign here in QSME.</span></span><span class="sw"></span></div>
+                  <div>
+                    <div class="sli"><div class="slh"><span class="av8"><svg class="i" data-i="user"></svg></span><div style="flex:1;min-width:0"><p class="sm med">Mel Turner (you)</p><p class="xs mf"><span class="blurv">xxxxxxx@xxxxxx.co.nz</span></p></div></div><div class="sas"><p class="xs mf">Signing as</p><div class="inp h9" style="margin-top:4px">Owner</div></div></div>
+                    <div class="sli"><div class="slh"><span class="av8"><svg class="i" data-i="user"></svg></span><div style="flex:1;min-width:0"><p class="sm med">Jono Hale</p><p class="xs mf"><span class="blurv">xxxxxx@xxxxx.co.nz</span></p></div><span class="mf" style="width:32px;height:32px;display:flex;align-items:center;justify-content:center"><svg class="i" data-i="x"></svg></span></div><div class="sas"><p class="xs mf">Signing as</p><div class="inp h9" style="margin-top:4px">Electrician</div></div></div>
+                  </div>
+                  <div class="btn out" style="width:100%"><svg class="i" data-i="plus"></svg>Add someone to sign</div>
+                </div>
+              </div>
+              <div class="btn pri" id="sendBtn" style="width:100%;margin-top:16px;height:40px;font-size:15px"><svg class="i" data-i="send"></svg>Send for signing</div>
             </div>
             <div class="ring" id="rMel"></div><div class="ring" id="rJono"></div><div class="ring" id="rSum"></div><div class="ring" id="rC3"></div>
             <svg class="cursor" id="cur2" viewBox="0 0 34 50"><path d="M3 3 L3 39 L12 31 L18.5 45.5 L25 42.5 L18.8 28.6 L30.5 28.2 Z" fill="#111" stroke="#fff" stroke-width="3" stroke-linejoin="round"/></svg>
           </div>
         </div>
       </div>
-      <div class="wstat"><span>Illustrative recreation · demo data</span></div>
     </div>
-    <div id="fast">sped up</div>
 
     <!-- the real, public Knowledge Hub (captured live, no login) -->
     <div id="kb" data-qa-ignore>
-      <div id="kbBodyW"><div id="kbBody"><img src="clips/kb-quote.png" alt="" style="margin-top:-119px"><svg id="kbFx" class="abs" style="left:0;top:-119px;width:900px;height:1951px" viewBox="0 0 1290 2796"><path id="kbU1" d="M183 851 L 1076 851" fill="none" stroke="#3DC023" stroke-width="7" stroke-linecap="round"/><path id="kbU2" d="M183 923 L 318 923" fill="none" stroke="#3DC023" stroke-width="7" stroke-linecap="round"/></svg></div></div>
+      <div id="kbBodyW"><div id="kbBody"><img src="clips/kb-quote.png" alt="" style="margin-top:-508px"><svg id="kbFx" class="abs" style="left:0;top:-508px;width:950px;height:2059px" viewBox="0 0 1290 2796"><path id="kbU1" d="M183 853 L 1076 853" fill="none" stroke="#3DC023" stroke-width="7" stroke-linecap="round"/><path id="kbU2" d="M183 925 L 318 925" fill="none" stroke="#3DC023" stroke-width="7" stroke-linecap="round"/><path id="kbU3" d="M183 997 L 322 997" fill="none" stroke="#FBBF24" stroke-width="7" stroke-linecap="round"/></svg></div><div id="kbFade"></div></div>
       <div id="kbHead"><img src="clips/kb-quote.png" alt=""></div>
-      <div id="kbLive">qsme.co.nz · Knowledge Hub · live</div>
     </div>
+    <div id="kbLive"><b></b>live · qsme.co.nz Knowledge Hub</div>
 
-    <div id="cap3a" class="cap"><span>So I pasted the thread<br>into QSME.</span></div>
-    <div id="cap3b" class="cap"><span>What we said: <em>in.</em><br>What we didn't: <span class="bk">[blank]</span></span></div>
-    <div id="cap3d" class="cap"><span>The thumbs-up didn't say.<br><em>So you do.</em></span></div>
+    <div id="cap3a" class="cap dark"><span>Paste the thread<br><em>into QSME.</em></span></div>
+    <div id="cap3b" class="cap dark"><span>What we said: <em>in.</em><br>What we didn't: <span class="bk">[blank]</span></span></div>
+    <div id="cap3d" class="cap dark"><span>The thumbs-up didn't say.<br><em>So you do.</em></span></div>
+    <div id="capF" class="cap dark"><span>Fill the blanks. <em>Send.</em></span></div>
   </div>
 
-  <!-- ================= S4 · JONO SIGNS, PHONE BROWSER (illustrative recreation) ================= -->
+  <!-- ================= S4 · JONO SIGNS, PHONE BROWSER (recreated) ================= -->
   <div id="s4" class="scene">
     <div id="s4bg" class="fill"></div>
     <div id="dashb"></div>
-    <div class="chipT" style="left:65px"><b></b>Jono's phone · the link</div>
-    <div class="illus" style="right:65px;top:308px">Illustrative recreation · demo data</div>
+    <div class="chipT" style="left:65px"><b></b>Jono's phone</div>
+    <div class="illus illustrative" style="right:65px;top:310px">Recreated screen · demo data</div>
     <div id="phone" data-qa-ignore>
       <div id="pscr">
         <div id="pcam" class="app">
           <div id="pstat"><span>6:38</span><svg width="64" height="14" viewBox="0 0 120 30"><g fill="#111"><rect x="0" y="20" width="6" height="10" rx="2"/><rect x="10" y="14" width="6" height="16" rx="2"/><rect x="20" y="8" width="6" height="22" rx="2"/><rect x="30" y="2" width="6" height="28" rx="2"/></g><rect x="88" y="5" width="28" height="20" rx="5" fill="none" stroke="#111" stroke-width="2.5"/><rect x="91" y="8" width="20" height="14" rx="2.5" fill="#111"/></svg></div>
+          <div id="inbox">
+            <div class="ibh">Inbox</div>
+            <div class="isr"></div>
+            <div class="irow on" id="irow"><i class="udot"></i><span class="iav" style="background:#16A34A">Q</span><div class="ib"><div class="it"><b style="font-weight:600">QSME</b><span>6:37 pm</span></div><div class="is">Mel Turner has sent you "Rewire agreement" to sign</div><div class="ip">Kia ora Jono, Mel Turner has sent you an agreement to read and sign.</div></div></div>
+            <div class="irow"><span class="iav"></span><div class="ib"><div class="bar" style="width:42%;margin-top:3px"></div><div class="bar" style="width:86%"></div><div class="bar" style="width:64%"></div></div></div>
+            <div class="irow"><span class="iav"></span><div class="ib"><div class="bar" style="width:34%;margin-top:3px"></div><div class="bar" style="width:78%"></div><div class="bar" style="width:70%"></div></div></div>
+            <div class="irow"><span class="iav"></span><div class="ib"><div class="bar" style="width:48%;margin-top:3px"></div><div class="bar" style="width:82%"></div><div class="bar" style="width:58%"></div></div></div>
+            <div class="irow"><span class="iav"></span><div class="ib"><div class="bar" style="width:38%;margin-top:3px"></div><div class="bar" style="width:74%"></div><div class="bar" style="width:66%"></div></div></div>
+          </div>
           <div id="purl"><div class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="#1F2328" stroke-width="2.4" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>qsme.co.nz</div></div>
           <div id="pv">
             <div id="pg">
@@ -467,7 +526,7 @@ Me: <svg class="ti" style="width:18px;height:18px;vertical-align:-3px" viewBox="
               <div class="scard">
                 <div class="hd">
                   <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
-                    <div><div style="font-size:20px;line-height:28px;font-weight:600">Rewire agreement</div><p class="xs mf" style="margin-top:4px">AG-7C41D2 · sent 21 Oct 2026</p></div>
+                    <div><div style="font-size:20px;line-height:28px;font-weight:600">Rewire agreement</div><p class="xs mf" style="margin-top:4px">AG-7C41D2 · sent 15 Oct 2026</p></div>
                     <span class="badge" id="phBadgeA" style="border-color:var(--bd)">Waiting on you</span>
                   </div>
                   <div class="prog"><b id="phProg">1 of 2 signed</b><span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Mel Turner</span><span><i class="dot" id="phDot"></i>Jono Hale</span></div>
@@ -476,18 +535,18 @@ Me: <svg class="ti" style="width:18px;height:18px;vertical-align:-3px" viewBox="
                   <div class="art">
                     <p>This agreement is between Mel Turner, the owner, and Jono Hale, the electrician, for a full rewire of the house.</p>
                     <h3>The job at a glance</h3>
-                    <dl class="kvv"><dt>Site</dt><dd><span class="blurv">00 Xxxxxxx Street, Tauranga</span></dd></dl>
+                    <dl class="kvv"><dt>Site</dt><dd>Demo site, Tauranga</dd></dl>
                     <dl class="kvv"><dt>The work</dt><dd>Full rewire of the house</dd></dl>
                     <dl class="kvv"><dt>Price</dt><dd>$18,400 including GST</dd></dl>
-                    <dl class="kvv"><dt>Start</dt><dd>27 Oct 2026</dd></dl>
-                    <dl class="kvv"><dt>Finish</dt><dd>7 Nov 2026</dd></dl>
+                    <dl class="kvv"><dt>Start</dt><dd>19 Oct 2026</dd></dl>
+                    <dl class="kvv"><dt>Finish</dt><dd>30 Oct 2026</dd></dl>
                     <h3>Payment</h3>
                     <div class="cl"><span class="n">1.</span><p>Mel pays the price in two stages: half at the start, half when the work is finished.</p></div>
                     <h3>The work</h3>
                     <div class="cl"><span class="n">2.</span><p>Jono does a full rewire of the house.</p></div>
                     <div class="cl" id="phC3"><span class="n">3.</span><p>Heat-pump wiring: included.</p></div>
                     <div class="parties">
-                      <div class="party"><div class="ln s"><span class="sig">Mel Turner</span></div><p class="pn">Mel Turner</p><p class="pr">Owner · signed 21 Oct 2026</p></div>
+                      <div class="party"><div class="ln s"><span class="sig">Mel Turner</span></div><p class="pn">Mel Turner</p><p class="pr">Owner · signed 15 Oct 2026</p></div>
                       <div class="party"><div class="ln" id="phJLn"><span class="sig" id="phJSig" style="display:none">Jono Hale</span></div><p class="pn">Jono Hale</p><p class="pr" id="phJRole">Electrician · not signed</p></div>
                     </div>
                   </div>
@@ -508,7 +567,7 @@ Me: <svg class="ti" style="width:18px;height:18px;vertical-align:-3px" viewBox="
                     <div class="btn out" style="width:100%;margin-top:8px">I do not agree</div>
                     <p class="xs mf" style="margin-top:20px">QSME records your name, the time, and the exact wording you signed, so both sides can show afterwards what was agreed. Some documents — wills, affidavits and a handful of others — cannot be signed electronically in New Zealand.</p>
                   </div>
-                  <div id="closedN" class="closed" style="display:none"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><p style="font-weight:500">You have signed this</p><p class="sm mf" style="max-width:280px">Signed 21 Oct 2026. Download a copy below and keep it.</p></div>
+                  <div id="closedN" class="closed" style="display:none"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><p style="font-weight:500">You have signed this</p><p class="sm mf" style="max-width:280px">Signed 15 Oct 2026. Download a copy below and keep it.</p></div>
                   <div class="sep" style="margin:24px 0"></div>
                   <div class="btn out" style="width:100%"><svg class="i" data-i="download"></svg>Download a copy</div>
                 </div>
@@ -522,15 +581,15 @@ Me: <svg class="ti" style="width:18px;height:18px;vertical-align:-3px" viewBox="
         </div>
       </div>
     </div>
-    <div id="cap4a" class="cap"><span>Jono signs from the link.<br><em>No account needed.</em></span></div>
-    <div id="cap4b" class="cap"><span>Signed. Download a copy<br>below and keep it.</span></div>
+    <div id="cap4a" class="cap dark"><span>He signs <em>on his phone.</em></span></div>
+    <div id="cap4b" class="cap dark"><span>Signed.<br><em>Before Monday.</em></span></div>
   </div>
 
-  <!-- ================= S5 · THE SENDER'S LIST + THE CERTIFICATE (illustrative recreation) ================= -->
+  <!-- ================= S5 · THE SENDER'S LIST + THE CERTIFICATE (recreated) ================= -->
   <div id="s5" class="scene">
     <div id="s5bg" class="fill"></div>
     <div id="win5" class="win" data-qa-ignore>
-      <div class="wbar"><i></i><i></i><i></i><span class="wtab"><svg viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 17-2.156-1.868A.5.5 0 0 0 18 15.5v.5a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1c0-2.545-3.991-3.97-8.5-4a1 1 0 0 0 0 5c4.153 0 4.745-11.295 5.708-13.5a2.5 2.5 0 1 1 3.31 3.284"/><path d="M3 21h18"/></svg>Agreements</span></div>
+      <div class="wbar"><i></i><i></i><i></i><span class="wtab"><svg viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 17-2.156-1.868A.5.5 0 0 0 18 15.5v.5a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1c0-2.545-3.991-3.97-8.5-4a1 1 0 0 0 0 5c4.153 0 4.745-11.295 5.708-13.5a2.5 2.5 0 1 1 3.31 3.284"/><path d="M3 21h18"/></svg>Agreements</span><span class="illustrative">Recreated screen · demo data</span></div>
       <div class="vp">
         <div id="d3" class="lay app">
           <div id="cam3d" class="cam">
@@ -559,8 +618,8 @@ Me: <svg class="ti" style="width:18px;height:18px;vertical-align:-3px" viewBox="
                     </span>
                   </div>
                   <div style="position:relative;height:16px;margin-top:2px">
-                    <p class="xs mf" id="lnA" style="position:absolute;left:0;top:0;white-space:nowrap">With Jono Hale · Sent 21 Oct 2026 · AG-7C41D2</p>
-                    <p class="xs mf" id="lnB" style="position:absolute;left:0;top:0;white-space:nowrap">With Jono Hale · Signed 21 Oct 2026 · AG-7C41D2</p>
+                    <p class="xs mf" id="lnA" style="position:absolute;left:0;top:0;white-space:nowrap">With Jono Hale · Sent 15 Oct 2026 · AG-7C41D2</p>
+                    <p class="xs mf" id="lnB" style="position:absolute;left:0;top:0;white-space:nowrap">With Jono Hale · Signed 15 Oct 2026 · AG-7C41D2</p>
                   </div>
                 </div>
               </div>
@@ -569,43 +628,43 @@ Me: <svg class="ti" style="width:18px;height:18px;vertical-align:-3px" viewBox="
           </div>
         </div>
       </div>
-      <div class="wstat"><span>Illustrative recreation · demo data</span></div>
     </div>
 
     <div id="cert" data-qa-ignore>
       <div class="top"><span><b>Mel Turner</b><br>Rewire agreement</span><span style="text-align:right">AG-7C41D2<br>Signed</span></div>
       <h4>Certificate of completion</h4>
       <p class="ct">This page records how this agreement was signed. It is produced by QSME from its own records and is not part of the agreed terms.</p>
-      <dl class="kv"><dt>Document</dt><dd>Rewire agreement</dd><dt>Completed</dt><dd>21 Oct 2026, 6:39 pm</dd></dl>
+      <dl class="kv"><dt>Document</dt><dd>Rewire agreement</dd><dt>Completed</dt><dd>15 Oct 2026, 6:39 pm</dd></dl>
       <h5>Signed by Jono Hale</h5>
       <dl class="kv">
         <dt>Part signed as</dt><dd>Electrician</dd>
         <dt>E-mail</dt><dd><span class="bl">xxxxxxxx@xxxxxx.co.nz</span></dd>
         <dt>Name typed</dt><dd>Jono Hale</dd>
         <dt>Agreed to sign electronically</dt><dd>Yes</dd>
-        <dt>Signed</dt><dd>21 Oct 2026, 6:39 pm</dd>
+        <dt>Signed</dt><dd>15 Oct 2026, 6:39 pm</dd>
         <dt>From</dt><dd><span class="bl">000.000.000.00</span></dd>
         <dt>Device</dt><dd><span class="bl">Xxxxxx · Xxxxxx 00</span></dd>
         <dt>Document signed (SHA-256)</dt><dd style="font-family:'JetBrains Mono';font-size:21px">9c4e1a07b2d5…f83a</dd>
       </dl>
-      <div class="illus" id="certTag">Illustrative recreation · demo data</div>
+      <div class="illus illustrative" id="certTag">Recreated screen · demo data</div>
     </div>
 
-    <div id="cap5a" class="cap"><span>Everyone has signed.<br><svg class="ti" viewBox="0 0 200 200"><use href="#thumb"/></svg> <span class="mkG">(clear)</span></span></div>
-    <div id="cap5b" class="cap"><span>And a certificate:<br>who, when, what.</span></div>
+    <div id="cap5a" class="cap dark"><span>Everyone has signed.<br><svg class="ti" viewBox="0 0 200 200"><use href="#thumb"/></svg> <span class="mkG">(clear)</span></span></div>
+    <div id="cap5b" class="cap dark"><span>Plus a <em>certificate.</em></span></div>
   </div>
 
   <!-- ================= S6 · END CARD ================= -->
   <div id="s6" class="scene">
     <div id="logo"><img src="qsme-logo.svg" alt="QSME"></div>
-    <div id="eHead" class="abs">Signed from a link.<br><span class="g">No account. No printer.</span></div>
+    <div id="eHead" class="abs">Turn the <svg class="ti" id="eThumb" viewBox="0 0 200 200"><use href="#thumb"/></svg><br><span class="g">into a signature.</span></div>
+    <svg id="eSig" class="abs" viewBox="0 0 640 56" preserveAspectRatio="none"><path id="eSigP" d="M8 34 C 60 46, 120 18, 176 30 C 220 40, 238 50, 262 36 C 300 16, 352 44, 410 34 C 470 24, 540 30, 632 22" fill="none" stroke="#3DC023" stroke-width="7" stroke-linecap="round"/></svg>
+    <div id="eLive"><b></b>live · qsme.co.nz/sign-up</div>
     <div id="eShot" class="abs" data-qa-ignore>
-      <img src="clips/kb-free.png" alt="" style="top:-876px">
-      <div id="eRing"></div>
-      <div id="eLive">qsme.co.nz · Knowledge Hub · live</div>
+      <img id="eImg" src="clips/signup.png" alt="">
+      <div id="eFade"></div>
     </div>
-    <div id="ePillW" class="abs"><span id="ePill">qsme.co.nz</span></div>
-    <div id="eSmall" class="abs">Templates and write-ups are a starting point, not legal advice. The AI write-up uses a credit.</div>
+    <div id="ePillW" class="abs"><span id="ePill">Sign up at qsme.co.nz</span></div>
+    <div id="eSmall" class="abs">A skit: names and job made up. Templates and write-ups are a starting point, not legal advice. The AI write-up uses a credit.</div>
   </div>
 </div>
 
@@ -627,15 +686,37 @@ Me: <svg class="ti" style="width:18px;height:18px;vertical-align:-3px" viewBox="
     x: '<path d="M18 6 6 18"/><path d="m6 6 12 12"/>',
     loader: '<path d="M21 12a9 9 0 1 1-6.219-8.56"/>',
     eye: '<path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/>',
-    sparkles: '<path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>',
     dots: '<circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/>',
     download: '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/>',
     plus: '<path d="M5 12h14"/><path d="M12 5v14"/>',
     fileText: '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/>',
     signature: '<path d="m21 17-2.156-1.868A.5.5 0 0 0 18 15.5v.5a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1c0-2.545-3.991-3.97-8.5-4a1 1 0 0 0 0 5c4.153 0 4.745-11.295 5.708-13.5a2.5 2.5 0 1 1 3.31 3.284"/><path d="M3 21h18"/>',
-    check: '<circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>'
+    check: '<circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>',
+    send: '<path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/>',
+    user: '<circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/>'
   };
   document.querySelectorAll('svg[data-i]').forEach(s => { s.setAttribute('viewBox', '0 0 24 24'); s.innerHTML = IC[s.dataset.i]; });
+
+  /* ================= MASTER TIMES (seconds) ================= */
+  const T = {
+    // hook
+    Z0: 0.42, Z1: 1.30, BIG_ON: 0.80, FLY0: 1.80, FLY1: 2.24, S1_END: 1.88,
+    // S2 the contract
+    S2: 1.74, R2: 3.20, R3: 4.18, RSIG: 5.12, CAPS2: 5.58, W1: 7.06,
+    // S3 d1 (paste + pick + write it up)
+    PASTE: 7.70, PICK: 8.46, GO: 8.76, D2: 9.14,
+    // S3 d2 (the draft), the live quote, the hand-typed term
+    CAP3B: 9.40, KB0: 12.04, KB1: 15.94, ENTER: 16.60, TY0: 16.66, TY1: 17.24,
+    // fill the blanks, send
+    FB: 18.66, SEND: 20.12, W4: 20.24,
+    // S4 the phone
+    INB: 20.98, DRAW0: 22.12, DRAW1: 22.56, TICK: 22.80, SIGN: 22.96, DONE: 23.08, W5: 24.38,
+    // S5 list + certificate
+    FLIP: 24.86, CERT: 26.02, W6: 27.42,
+    // S6 end card
+    END: 31.64
+  };
+  const W = 0.28;   // every whip lasts 0.28 s
 
   /* ---------- helpers: content-space boxes and cameras ---------- */
   // box of `el` inside the camera layer `cam`, in the layer's own (unscaled) px
@@ -643,7 +724,7 @@ Me: <svg class="ti" style="width:18px;height:18px;vertical-align:-3px" viewBox="
     const c = cam.getBoundingClientRect(), b = (typeof el === 'string' ? $(el) : el).getBoundingClientRect();
     return { x: (b.left - c.left) / s, y: (b.top - c.top) / s, w: b.width / s, h: b.height / s };
   }
-  // keys: [t, cx, cy, s, ease] = content point (cx, cy) at the viewport centre at scale s
+  // keys: [t, cx, cy, s, ease] = content point (cx, cy) at the focus centre at scale s
   function camAt(keys, t) {
     if (t <= keys[0][0]) return { x: keys[0][1], y: keys[0][2], s: keys[0][3] };
     for (let i = 1; i < keys.length; i++) {
@@ -655,58 +736,66 @@ Me: <svg class="ti" style="width:18px;height:18px;vertical-align:-3px" viewBox="
   function applyCam(node, c, VW, VH) { node.style.transform = 'translate(' + (VW / 2 - c.x * c.s).toFixed(2) + 'px,' + (VH / 2 - c.y * c.s).toFixed(2) + 'px) scale(' + c.s.toFixed(4) + ')'; }
   function seg(a, b, t0, t1, t) { const p = E.inOut(pr(t, t0, t1)); return { x: lerp(a.x, b.x, p), y: lerp(a.y, b.y, p) }; }
   function place(node, x, y, sc) { node.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px) scale(' + (sc || 1) + ')'; }
-  function ring(node, bx, pad, on) { if (!bx) return; Object.assign(node.style, { left: (bx.x - pad) + 'px', top: (bx.y - pad) + 'px', width: (bx.w + pad * 2) + 'px', height: (bx.h + pad * 2) + 'px' }); }
+  function ring(node, bx, pad) { if (!bx) return; Object.assign(node.style, { left: (bx.x - pad) + 'px', top: (bx.y - pad) + 'px', width: (bx.w + pad * 2) + 'px', height: (bx.h + pad * 2) + 'px' }); }
+  function scaleOf(node) { return parseFloat((node.style.transform.match(/scale\(([\d.]+)\)/) || [0, 1])[1]); }
+  // pointer along waypoints [{t, p}] (eased between neighbours, holding on equal points)
+  function along(wps, t) {
+    if (t <= wps[0].t) return wps[0].p;
+    for (let i = 1; i < wps.length; i++) if (t < wps[i].t) return seg(wps[i - 1].p, wps[i].p, wps[i - 1].t, wps[i].t, t);
+    return wps[wps.length - 1].p;
+  }
 
   /* ================= S1: the thread → the thumb fills the frame ================= */
-  // the 👍 message in the chat: centre and size in chat px
-  const M4 = { x: 860 + 88, y: 958 + 88, s: 176 };
-  const Z = { t0: 0.86, t1: 2.04, P0: { x: M4.x, y: M4.y }, P1: { x: 540, y: 918 }, size1: 740 };
-  const BIG_ON = 1.38;
-  function zoomAt(t) {
-    const p = E.inOut(pr(t, Z.t0, Z.t1));
-    const s = Math.exp(lerp(0, Math.log(Z.size1 / M4.s), p));
-    return { P: { x: lerp(Z.P0.x, Z.P1.x, p), y: lerp(Z.P0.y, Z.P1.y, p) }, s };
-  }
+  // Jono's 👍 in the chat (centre and size in chat px). The camera is a pure zoom about anchor A, chosen so the thumb
+  // ends centred at P1 at 740 px: with A inside the frame the chat layer always covers the frame (no edge strip).
+  const M4 = { x: 52 + 80, y: 874 + 80, s: 160 };
+  const P1 = { x: 540, y: 918 }, SE = 740 / M4.s;
+  const A = { x: (M4.x * SE - P1.x) / (SE - 1), y: (M4.y * SE - P1.y) / (SE - 1) };
+  function zoomAt(t) { const e = E.inOut(pr(t, T.Z0, T.Z1)); const s = Math.exp(e * Math.log(SE)); return { s, P: { x: A.x + (M4.x - A.x) * s, y: A.y + (M4.y - A.y) * s } }; }
   // where the thumb docks in the contract (clause 1), measured from layout (the paper only fades in)
   let DOCK = null;
   function dockBox() { if (DOCK) return DOCK; const t1 = $('#t1'), keep = t1.style.transform; t1.style.transform = 'none'; const r = $('#root').getBoundingClientRect(), b = t1.getBoundingClientRect(); t1.style.transform = keep; DOCK = { x: b.left - r.left + b.width / 2, y: b.top - r.top + b.height / 2, s: b.width }; return DOCK; }
-  const FLY = { t0: 2.58, t1: 3.04 };
   Kit.each(function (t) {
     const z = zoomAt(t);
     if ($('#s1').style.display !== 'none') {
-      $('#cam1').style.transform = 'translate(' + (z.P.x - M4.x * z.s).toFixed(2) + 'px,' + (z.P.y - M4.y * z.s).toFixed(2) + 'px) scale(' + z.s.toFixed(4) + ')';
+      $('#cam1').style.transform = 'translate(' + (A.x * (1 - z.s)).toFixed(2) + 'px,' + (A.y * (1 - z.s)).toFixed(2) + 'px) scale(' + z.s.toFixed(4) + ')';
     }
     const big = $('#bigT');
-    if (t < BIG_ON || t >= FLY.t1) { big.style.visibility = 'hidden'; return; }
+    if (t < T.BIG_ON || t >= T.FLY1) { big.style.visibility = 'hidden'; return; }
     big.style.visibility = 'visible';
     let cx = z.P.x, cy = z.P.y, size = M4.s * z.s, rot = 0, sx = 1, sy = 1;
     // "gavel": a hard landing with a tiny squash
-    if (t >= 2.04 && t < 2.30) { const q = pr(t, 2.04, 2.30); sy = 1 - 0.07 * Math.sin(Math.PI * q); sx = 1 + 0.04 * Math.sin(Math.PI * q); }
-    if (t >= FLY.t0) {
-      if ($('#s2').style.display !== 'none') {
-        const d = dockBox(), q = E.swipe(pr(t, FLY.t0, FLY.t1));
-        cx = lerp(Z.P1.x, d.x, q); cy = lerp(Z.P1.y, d.y, q) - Math.sin(Math.PI * q) * 60; size = lerp(Z.size1, d.s, q); rot = -10 * Math.sin(Math.PI * q);
-      }
+    if (t >= T.Z1 && t < T.Z1 + 0.26) { const q = pr(t, T.Z1, T.Z1 + 0.26); sy = 1 - 0.07 * Math.sin(Math.PI * q); sx = 1 + 0.04 * Math.sin(Math.PI * q); }
+    if (t >= T.FLY0 && $('#s2').style.display !== 'none') {
+      const d = dockBox(), q = E.swipe(pr(t, T.FLY0, T.FLY1));
+      cx = lerp(P1.x, d.x, q); cy = lerp(P1.y, d.y, q) - Math.sin(Math.PI * q) * 60; size = lerp(740, d.s, q); rot = -10 * Math.sin(Math.PI * q);
     }
     big.style.width = size + 'px'; big.style.height = size + 'px';
     big.style.transform = 'translate(' + (cx - size / 2).toFixed(1) + 'px,' + (cy - size / 2).toFixed(1) + 'px) rotate(' + rot.toFixed(2) + 'deg) scale(' + sx.toFixed(3) + ',' + sy.toFixed(3) + ')';
   });
 
   /* ================= S3: cameras, cursor, typing, rings ================= */
+  // VH is the focus box (the top 684 px of the window, above the captions); the window itself runs off the frame
   const VW = 950, VH = 684;
   const d1 = $('#d1'), d2 = $('#d2'), cam1d = $('#cam1d'), cam2d = $('#cam2d');
-  const PASTE = 9.86, PICK = 10.88, GO = 11.38;
-  const ENTER = 16.34, TY0 = 16.42, TY1 = 17.04;
   const C3 = 'Heat-pump wiring: included.';
+  const FILLS = [
+    { id: 'Site',  v: 'Demo site, Tauranga', c: 18.96, a: 18.98, b: 19.14 },
+    { id: 'Gst',   v: 'including GST', c: 19.18, a: 19.20, b: 19.30 },
+    { id: 'Start', v: '19 Oct 2026', c: 19.34, a: 19.36, b: 19.44 },
+    { id: 'Fin',   v: '30 Oct 2026', c: 19.48, a: 19.50, b: 19.58 },
+    { id: 'Pay',   v: 'two stages: half at the start, half when the work is finished', c: 19.62, a: 19.64, b: 19.84 }
+  ];
+  FILLS.forEach((f, i) => { f.node = $('#b' + f.id); f.orig = f.node.textContent; f.k = $('#k' + f.id); f.hl = $('#hl' + (i + 1)); });
   let wordsN = null;
   Kit.each(function (t) {
     if ($('#s3').style.display === 'none') return;
     /* ---- d1: Bring in a document ---- */
     if (d1.style.display !== 'none') {
-      const pasted = t >= PASTE, framed = t >= PICK, busy = t >= GO;
+      const pasted = t >= T.PASTE, framed = t >= T.PICK, busy = t >= T.GO;
       $('#taPh').style.display = pasted ? 'none' : '';
       $('#taTx').style.display = pasted ? '' : 'none';
-      $('#ta1').classList.toggle('focus', t >= 9.74 && t < 10.3);
+      $('#ta1').classList.toggle('focus', t >= 7.60 && t < 8.06);
       if (pasted && wordsN == null) wordsN = $('#taTx').textContent.trim().split(/\s+/).length;
       $('#wc').textContent = pasted ? wordsN + ' words' : 'Nothing pasted yet';
       $('#chExact').classList.toggle('on', !framed);
@@ -715,70 +804,98 @@ Me: <svg class="ti" style="width:18px;height:18px;vertical-align:-3px" viewBox="
       $('#goLbl').textContent = busy ? 'Writing it up — this can take a minute…' : framed ? 'Write it up' : 'Bring it in';
       $('#goIco').style.display = busy ? 'none' : '';
       $('#goSpin').style.display = busy ? '' : 'none';
-      $('#goSpin').style.transform = 'rotate(' + ((t - GO) * 900) + 'deg)';
-      // camera: top → the four ways → the button (scale 1.5 = 633 css px across the window)
-      const s0 = 1.5;
-      const ta = boxIn(cam1d, '#ta1', 1), md = boxIn(cam1d, '#modes', 1), bt = boxIn(cam1d, '#goBtn', 1), fr = boxIn(cam1d, '#chFramed', 1);
-      // boxIn with s=1 gives scaled px: convert using the current scale
-      const cs = parseFloat((cam1d.style.transform.match(/scale\(([\d.]+)\)/) || [0, 1])[1]);
+      $('#goSpin').style.transform = 'rotate(' + ((t - T.GO) * 900) + 'deg)';
+      const cs = scaleOf(cam1d);
       const u = b => ({ x: b.x / cs, y: b.y / cs, w: b.w / cs, h: b.h / cs });
-      const TA = u(ta), MD = u(md), BT = u(bt), FR = u(fr);
+      const TA = u(boxIn(cam1d, '#ta1', 1)), MD = u(boxIn(cam1d, '#modes', 1)), BT = u(boxIn(cam1d, '#goBtn', 1)), FR = u(boxIn(cam1d, '#chFramed', 1)), FT = u(boxIn(cam1d, '#frT', 1));
+      // camera: top → the four ways → the button (scale 1.5 = 633 css px across the window)
       const c = camAt([
-        [9.40, 316, 228, s0], [9.86, 316, 228, s0], [10.18, 316, 236, 1.56, 'out'],
-        [10.60, 316, MD.y + 150, 1.62, 'inOut'], [11.00, 316, MD.y + 150, 1.62],
-        [11.30, 316, BT.y - 100, 1.62, 'inOut'], [12, 316, BT.y - 100, 1.62]
+        [7.20, 316, 228, 1.5], [T.PASTE, 316, 228, 1.5], [7.98, 316, 236, 1.56, 'out'],
+        [8.36, 316, MD.y + 150, 1.62, 'inOut'], [8.56, 316, MD.y + 150, 1.62],
+        [8.76, 316, BT.y - 190, 1.62, 'inOut'], [T.D2, 316, BT.y - 190, 1.62]
       ], t);
       applyCam(cam1d, c, VW, VH);
+      ring($('#rFr'), FT, 4);
       // the pointer (content px)
-      const cur = $('#cur1');
       const pA = { x: 470, y: TA.y + 150 }, pB = { x: TA.x + 200, y: TA.y + 60 }, pC = { x: FR.x + 22, y: FR.y + 22 }, pD = { x: BT.x + BT.w / 2 + 40, y: BT.y + 20 };
       let pos, click = 0;
-      if (t < 9.70) pos = seg(pA, pB, 9.46, 9.70, t);
-      else if (t < 10.60) { pos = pB; click = t > 9.72 && t < 9.80 ? 1 : 0; }
-      else if (t < 10.86) pos = seg(pB, pC, 10.60, 10.84, t);
-      else if (t < 11.06) { pos = pC; click = t > 10.86 && t < 10.94 ? 1 : 0; }
-      else if (t < 11.34) pos = seg(pC, pD, 11.06, 11.32, t);
-      else { pos = pD; click = t > 11.36 && t < 11.44 ? 1 : 0; }
-      place(cur, pos.x, pos.y, click ? 0.86 : 1);
+      if (t < 7.58) pos = seg(pA, pB, 7.38, 7.58, t);
+      else if (t < 8.20) { pos = pB; click = t > 7.60 && t < 7.68 ? 1 : 0; }
+      else if (t < 8.42) pos = seg(pB, pC, 8.20, 8.40, t);
+      else if (t < 8.56) { pos = pC; click = t > 8.44 && t < 8.52 ? 1 : 0; }
+      else if (t < 8.74) pos = seg(pC, pD, 8.56, 8.72, t);
+      else { pos = pD; click = t > 8.74 && t < 8.82 ? 1 : 0; }
+      place($('#cur1'), pos.x, pos.y, click ? 0.86 : 1);
     }
     /* ---- d2: the draft ---- */
     if (d2.style.display !== 'none') {
-      const cs = parseFloat((cam2d.style.transform.match(/scale\(([\d.]+)\)/) || [0, 1])[1]);
+      const cs = scaleOf(cam2d);
       const B = sel => boxIn(cam2d, sel, cs);
-      // the new term: Enter at the end of term 2, then typed
-      const hasC3 = t >= ENTER;
+      // the new term: Enter at the end of term 2, then typed by hand
+      const hasC3 = t >= T.ENTER;
       $('#pc3').style.display = hasC3 ? '' : 'none';
-      $('#pc2').classList.toggle('focus', t >= 16.16 && t < ENTER);
-      $('#c2c').style.display = t >= 16.16 && t < ENTER ? '' : 'none';
-      const n = clamp(Math.round(C3.length * pr(t, TY0, TY1)), 0, C3.length);
+      $('#pc2').classList.toggle('focus', t >= 16.46 && t < T.ENTER);
+      $('#c2c').style.display = t >= 16.46 && t < T.ENTER ? '' : 'none';
+      const n = clamp(Math.round(C3.length * pr(t, T.TY0, T.TY1)), 0, C3.length);
       $('#c3t').textContent = C3.slice(0, n);
-      $('#c3c').style.opacity = t > TY1 + 0.2 ? (Math.floor((t - TY1) / 0.5) % 2 ? 0 : 1) : 1;
+      $('#c3c').style.display = t < T.FB ? '' : 'none';
+      $('#c3c').style.opacity = t > T.TY1 + 0.2 ? (Math.floor((t - T.TY1) / 0.5) % 2 ? 0 : 1) : 1;
+      $('#pc3').classList.toggle('focus', t < T.FB);
+      // the five blanks, filled in by hand (sped up)
+      let left = FILLS.length;
+      FILLS.forEach(f => {
+        if (t < f.a) { f.node.textContent = f.orig; f.hl.style.visibility = ''; }
+        else { f.node.textContent = f.v.slice(0, Math.round(f.v.length * pr(t, f.a, f.b))); f.hl.style.visibility = 'hidden'; }
+        f.k.style.display = (t >= f.c && t < f.b + 0.06) ? '' : 'none';
+        if (t >= f.b) left--;
+      });
+      $('#bN').textContent = left === 1 ? '1 blank' : left + ' blanks';
+      $('#bbar').style.visibility = left ? '' : 'hidden';
+      $('#sendBtn').style.filter = t >= T.SEND && t < T.SEND + 0.14 ? 'brightness(.82)' : 'none';
       const ed = B('#bbar'), p2 = B('#pc2'), bMel = B('#nmMel'), bJono = B('#nmJono'), bSum = B('#sum'), t2 = B('#c2t'), b3 = hasC3 ? B('#c3t') : null;
+      const gS = B('#rowSite'), gP = B('#rowPay'), sb = B('#sendBtn');
+      const glY = (gS.y + gP.y + 40) / 2, sbY = sb.y + sb.h / 2 - 70;
       const c = camAt([
-        [11.80, 316, 168, 1.52], [12.30, 316, 176, 1.52], [12.72, 316, ed.y + 182, 1.66, 'inOut'], [14.2, 316, ed.y + 188, 1.72, 'linear'],
-        [15.80, 272, p2.y + 30, 2.0, 'hold'], [17.6, 272, p2.y + 40, 2.12, 'linear']
+        [T.D2, 316, 168, 1.52], [9.46, 316, 176, 1.52], [9.86, 316, ed.y + 160, 1.62, 'inOut'], [12.14, 316, ed.y + 166, 1.68, 'linear'],
+        [T.KB1, 272, p2.y + 30, 2.0, 'hold'], [T.FB, 272, p2.y + 40, 2.1, 'linear'],
+        [T.FB + 0.28, 316, glY, 1.6, 'inOut'], [19.86, 316, glY + 6, 1.6, 'linear'],
+        [20.06, 316, sbY, 1.66, 'swipe'], [20.60, 316, sbY + 4, 1.68, 'linear']
       ], t);
       applyCam(cam2d, c, VW, VH);
       ring($('#rMel'), bMel, 3); ring($('#rJono'), bJono, 3); ring($('#rSum'), bSum, 3);
       if (b3) ring($('#rC3'), b3, 5);
-      // pointer: to the end of term 2, click
+      // pointer: (a) to the end of term 2, click; (b) through the five blanks, then "Send for signing"
       const cur = $('#cur2');
-      const pE = { x: t2.x + t2.w + 6, y: t2.y + 6 };
-      const pS = { x: pE.x + 120, y: pE.y + 90 };
-      let pos = pS, click = 0, vis = t >= 15.95 && t < ENTER + 0.05;
-      if (t < 16.14) pos = seg(pS, pE, 15.96, 16.14, t); else { pos = pE; click = t > 16.15 && t < 16.22 ? 1 : 0; }
+      let pos = { x: 0, y: 0 }, click = 0, vis = false;
+      if (t >= 16.22 && t < T.ENTER + 0.05) {
+        vis = true;
+        const pE = { x: t2.x + t2.w + 6, y: t2.y + 6 }, pS = { x: pE.x + 120, y: pE.y + 90 };
+        if (t < 16.44) pos = seg(pS, pE, 16.26, 16.44, t); else { pos = pE; click = t > 16.46 && t < 16.53 ? 1 : 0; }
+      } else if (t >= T.FB && t < T.W4 + 0.06) {
+        vis = true;
+        const c2r = cam2d.getBoundingClientRect(), at = f => { const r = f.node.parentElement.getClientRects()[0]; return { x: (r.left - c2r.left) / cs + 6, y: (r.top - c2r.top) / cs + r.height / cs / 2 }; };
+        const end3 = b3 ? { x: b3.x + b3.w + 6, y: b3.y + 8 } : at(FILLS[0]);
+        const wps = [{ t: T.FB, p: end3 }];
+        FILLS.forEach(f => { const p = at(f); wps.push({ t: f.c - 0.01, p }); wps.push({ t: f.b + 0.02, p }); });
+        const pSend = { x: sb.x + sb.w / 2 + 36, y: sb.y + sb.h / 2 + 2 };
+        wps.push({ t: 20.06, p: pSend });
+        pos = along(wps, t);
+        FILLS.forEach(f => { if (t > f.c && t < f.c + 0.06) click = 1; });
+        if (t > T.SEND && t < T.SEND + 0.08) click = 1;
+      }
       place(cur, pos.x, pos.y, click ? 0.86 : 1); cur.style.opacity = vis ? 1 : 0; cur.style.visibility = vis ? 'visible' : 'hidden';
     }
   });
 
-  /* ================= S4: phone page scroll, finger, signature ================= */
+  /* ================= S4: inbox tap, phone page scroll, finger, signature ================= */
   const pg = $('#pg'), PS = 2;
   const SIG = $('#sig'); let SIGLEN = null;
-  const DRAW = { t0: 19.50, t1: 20.38 }, TICK = 20.70, SIGN = 20.98, DONE = 21.14;
+  const SC1 = [21.04, 21.40], SC2 = [21.86, 22.08], SC3 = [22.58, 22.72];
   let PH = null, PHC = null;
   Kit.each(function (t) {
     if ($('#s4').style.display === 'none') return;
-    const signed = t >= DONE;
+    $('#inbox').style.display = t < T.INB ? '' : 'none';
+    const signed = t >= T.DONE;
     $('#signIt').style.display = signed ? 'none' : '';
     $('#closedN').style.display = signed ? '' : 'none';
     const pgR = pg.getBoundingClientRect();
@@ -790,33 +907,36 @@ Me: <svg class="ti" style="width:18px;height:18px;vertical-align:-3px" viewBox="
     // scroll positions (page px at the top of the viewport)
     const Y1 = c3.y - 150, Y2 = pad.y - 60;
     let y = 0;
-    if (t < 18.30) y = 0; else if (t < 18.84) y = lerp(0, Y1, E.scroll(pr(t, 18.30, 18.84))); else if (t < 19.06) y = Y1; else if (t < 20.44) y = lerp(Y1, Y2, E.scroll(pr(t, 19.06, 19.48))); else y = lerp(Y2, Y2 + 110, E.scroll(pr(t, 20.44, 20.60)));
-    if (signed) y = lerp(Y2 + 110, PHC.y - 70, E.out(pr(t, DONE, DONE + 0.32)));
+    if (t < SC1[0]) y = 0; else if (t < SC1[1]) y = lerp(0, Y1, E.scroll(pr(t, SC1[0], SC1[1]))); else if (t < SC2[0]) y = Y1;
+    else if (t < SC3[0]) y = lerp(Y1, Y2, E.scroll(pr(t, SC2[0], SC2[1]))); else y = lerp(Y2, Y2 + 110, E.scroll(pr(t, SC3[0], SC3[1])));
+    if (signed) y = lerp(Y2 + 110, PHC.y - 70, E.out(pr(t, T.DONE, T.DONE + 0.32)));
     pg.style.transform = 'translateY(' + (-y).toFixed(2) + 'px)';
     // motion blur on the fast scroll
-    const v = (t >= 18.30 && t < 18.70) ? Math.sin(Math.PI * pr(t, 18.30, 18.70)) : 0;
+    const v = (t >= SC1[0] && t < SC1[0] + 0.34) ? Math.sin(Math.PI * pr(t, SC1[0], SC1[0] + 0.34)) : 0;
     pg.style.filter = v > 0.05 ? 'blur(' + (v * 1.6).toFixed(2) + 'px)' : 'none';
     // signature, drawn with a finger
     if (SIGLEN == null) SIGLEN = SIG.getTotalLength();
-    const k = pr(t, DRAW.t0, DRAW.t1);
+    const k = pr(t, T.DRAW0, T.DRAW1);
     SIG.style.strokeDasharray = SIGLEN + ' ' + SIGLEN; SIG.style.strokeDashoffset = (SIGLEN * (1 - k)).toFixed(2);
     SIG.style.visibility = k > 0 ? 'visible' : 'hidden';
     $('#padPh').style.display = k > 0 ? 'none' : '';
-    $('#consentBox').classList.toggle('on', t >= TICK + 0.04);
-    $('#signBtn').style.filter = t >= SIGN && t < DONE ? 'brightness(.85)' : 'none';
+    $('#consentBox').classList.toggle('on', t >= T.TICK + 0.04);
+    $('#signBtn').style.filter = t >= T.SIGN && t < T.DONE ? 'brightness(.85)' : 'none';
     $('#phJSig').style.display = signed ? '' : 'none';
     $('#phJLn').classList.toggle('s', signed);
-    $('#phJRole').textContent = signed ? 'Electrician · signed 21 Oct 2026' : 'Electrician · not signed';
+    $('#phJRole').textContent = signed ? 'Electrician · signed 15 Oct 2026' : 'Electrician · not signed';
     $('#phProg').textContent = signed ? '2 of 2 signed' : '1 of 2 signed';
     // the touch point (page px → pcam px: pv is 94px down the screen)
     const touch = $('#touch'); let tp = null, press = 0;
     const padP = SIG.getPointAtLength(SIGLEN * k), pk = { x: pad.x + padP.x * (pad.w / 293), y: pad.y + padP.y * (pad.h / 128) };
     const toScr = p => ({ x: p.x, y: p.y - y + 94 });
-    if (t >= DRAW.t0 - 0.12 && t < DRAW.t1 + 0.10) { tp = toScr(pk); press = 1; }
-    else if (t >= TICK - 0.10 && t < TICK + 0.16) { tp = toScr({ x: cons.x + 20, y: cons.y + cons.h / 2 }); press = t >= TICK ? 1 : 0.6; }
-    else if (t >= SIGN - 0.10 && t < SIGN + 0.18) { tp = toScr({ x: btn.x + btn.w / 2 + 30, y: btn.y + btn.h / 2 }); press = t >= SIGN ? 1 : 0.6; }
+    if (t >= 20.78 && t < T.INB) { const r = $('#irow').getBoundingClientRect(), pc = $('#pcam').getBoundingClientRect(); tp = { x: (r.left - pc.left) / PS + 196, y: (r.top - pc.top) / PS + r.height / PS / 2 }; press = t >= 20.86 ? 1 : 0.6; }
+    else if (t >= T.DRAW0 - 0.12 && t < T.DRAW1 + 0.06) { tp = toScr(pk); press = 1; }
+    else if (t >= T.TICK - 0.10 && t < T.TICK + 0.12) { tp = toScr({ x: cons.x + 20, y: cons.y + cons.h / 2 }); press = t >= T.TICK ? 1 : 0.6; }
+    else if (t >= T.SIGN - 0.08 && t < T.SIGN + 0.14) { tp = toScr({ x: btn.x + btn.w / 2 + 30, y: btn.y + btn.h / 2 }); press = t >= T.SIGN ? 1 : 0.6; }
     touch.style.visibility = tp ? 'visible' : 'hidden';
     if (tp) touch.style.transform = 'translate(' + tp.x.toFixed(1) + 'px,' + tp.y.toFixed(1) + 'px) scale(' + (press >= 1 ? 1 : 0.8) + ')';
+    $('#irow').style.background = t >= 20.86 && t < T.INB ? '#E3EBFF' : '';
     // rings
     const r3 = $('#rPhC3'); const b3 = toScr({ x: c3.x, y: c3.y }); Object.assign(r3.style, { left: (b3.x - 6) + 'px', top: (b3.y - 4) + 'px', width: (c3.w + 12) + 'px', height: (c3.h + 8) + 'px' });
     if (signed) { const cn = PHC, bc = toScr({ x: cn.x, y: cn.y }); Object.assign($('#rClosed').style, { left: (bc.x - 4) + 'px', top: (bc.y - 4) + 'px', width: (cn.w + 8) + 'px', height: (cn.h + 8) + 'px' }); }
@@ -826,112 +946,114 @@ Me: <svg class="ti" style="width:18px;height:18px;vertical-align:-3px" viewBox="
   Kit.each(function (t) {
     if ($('#s5').style.display === 'none') return;
     const cam = $('#cam3d');
-    const cs = parseFloat((cam.style.transform.match(/scale\(([\d.]+)\)/) || [0, 1])[1]);
-    const lc = boxIn(cam, '#lcard', cs);
-    applyCam(cam, camAt([[23.0, 260, 186, 1.83], [23.5, 260, 190, 1.83], [24.9, 260, lc.y + 10, 1.88, 'inOut']], t), VW, VH);
+    const lc = boxIn(cam, '#lcard', scaleOf(cam));
+    applyCam(cam, camAt([[T.W5, 260, 186, 1.83], [T.FLIP, 260, 190, 1.83], [26.10, 260, lc.y + 10, 1.88, 'inOut']], t), VW, VH);
     ring($('#rCard'), lc, 4);
   });
 
-  /* ================= TIMELINE (29.8 s) ================= */
-  Kit.scene('#s1', 0, 2.62).scene('#s2', 2.50, 9.60).scene('#s3', 9.28, 17.78).scene('#s4', 17.46, 23.32).scene('#s5', 23.02, 26.36).scene('#s6', 26.30, 29.8);
-  Kit.scene('#capHook', 0, 2.70);
+  /* ================= TIMELINE (31.64 s) ================= */
+  Kit.scene('#s1', 0, T.S1_END).scene('#s2', T.S2, T.W1 + W).scene('#s3', T.W1, T.W4 + W).scene('#s4', T.W4, T.W5 + W).scene('#s5', T.W5, T.W6 + W).scene('#s6', T.W6, T.END + 1);
+  Kit.scene('#capHook', 0, T.S1_END).scene('#skit', 0, T.S1_END);
 
-  // ---- S1 hook: frame 0 reads "Our entire contract:" over the thread
-  Kit.add('#m4', 'opacity', [[0, 0], [0.28, 0, 'hold'], [0.34, 1]]);
-  Kit.add('#m4', 'scale', [[0.28, 0.35], [0.56, 1, 'outBack']]);
-  Kit.add('#m4', 'opacity', [[BIG_ON, 1], [BIG_ON + 0.001, 0, 'hold']]);
-  Kit.add('#nav1', 'opacity', [[0, 0], [1.36, 0], [1.84, 1, 'out']]);
-  Kit.add('#chat', 'blur', [[1.2, 0], [1.8, 6]]);
-  Kit.out('#capHook', 2.50, 0.12);
+  // ---- S1 hook: frame 0 already reads "A skit" + "Our entire contract:" over the whole thread; Jono's 👍 is the answer
+  Kit.add('#m4', 'scale', [[0.08, 1], [0.22, 1.16, 'out'], [0.40, 1, 'inOut']]);
+  Kit.add('#m4', 'opacity', [[T.BIG_ON, 1], [T.BIG_ON + 0.001, 0, 'hold']]);
+  Kit.add('#nav1', 'opacity', [[0, 0], [T.BIG_ON, 0], [1.20, 1, 'out']]);
+  Kit.add('#chat', 'blur', [[0.60, 0], [1.10, 6]]);
+  Kit.out('#capHook', 1.74, 0.12).out('#skit', 1.74, 0.12);
 
-  // ---- S2 the contract, read deadpan
-  Kit.add('#paper', 'opacity', [[2.50, 0], [2.86, 1, 'out']]);
-  Kit.add('#t1', 'opacity', [[0, 0], [FLY.t1, 0, 'hold'], [FLY.t1 + 0.001, 1, 'hold']]);
-  Kit.add('#t1', 'scale', [[FLY.t1, 1.18], [FLY.t1 + 0.16, 1, 'slam']]);
-  Kit.pop('#row1 .tag', 2.86, { dy: 14 }).pop('#row1 .q > span', 2.94, { dy: 18 });
-  Kit.pop('#row2', 4.26, { dy: 22 });
-  Kit.add('#t2', 'opacity', [[0, 0], [4.62, 0, 'hold'], [4.66, 1]]); Kit.add('#t2', 'scale', [[4.62, 1.6], [4.78, 1, 'slam']]);
-  Kit.add('#mk2', 'clipX', [[4.84, 0], [5.14, 1]]); Kit.show('#mk2', 4.84);
-  Kit.pop('#row3', 5.82, { dy: 22 });
-  Kit.add('#t3', 'opacity', [[0, 0], [6.16, 0, 'hold'], [6.20, 1]]); Kit.add('#t3', 'scale', [[6.16, 1.6], [6.32, 1, 'slam']]);
-  Kit.add('#mk3', 'clipX', [[6.38, 0], [6.80, 1]]); Kit.show('#mk3', 6.38);
-  Kit.pop('#rowSig', 7.16, { dy: 18 });
-  Kit.add('#sigPath', 'trim', [[7.24, 0], [7.60, 1, 'out']]);
-  Kit.add('#paper', 'scale', [[7.46, 1], [7.82, 0.875, 'inOut']]);
-  Kit.add('#paper', 'scale', [[7.82, 0.875], [9.30, 0.89, 'linear']]);
-  Kit.pop('#capS2', 7.72).out('#capS2', 9.26, 0.1);
+  // ---- S2 the contract, read deadpan (one clause a second)
+  Kit.add('#paper', 'opacity', [[T.S2, 0], [T.S2 + 0.34, 1, 'out']]);
+  Kit.add('#t1', 'opacity', [[0, 0], [T.FLY1, 0, 'hold'], [T.FLY1 + 0.001, 1, 'hold']]);
+  Kit.add('#t1', 'scale', [[T.FLY1, 1.18], [T.FLY1 + 0.16, 1, 'slam']]);
+  Kit.pop('#row1 .tag', 2.04, { dy: 14 }).pop('#row1 .q > span', 2.10, { dy: 18 });
+  Kit.pop('#row2', T.R2, { dy: 22 });
+  Kit.add('#t2', 'opacity', [[0, 0], [T.R2 + 0.30, 0, 'hold'], [T.R2 + 0.34, 1]]); Kit.add('#t2', 'scale', [[T.R2 + 0.30, 1.6], [T.R2 + 0.46, 1, 'slam']]);
+  Kit.add('#mk2', 'clipX', [[T.R2 + 0.50, 0], [T.R2 + 0.80, 1]]); Kit.show('#mk2', T.R2 + 0.50);
+  Kit.pop('#row3', T.R3, { dy: 22 });
+  Kit.add('#t3', 'opacity', [[0, 0], [T.R3 + 0.30, 0, 'hold'], [T.R3 + 0.34, 1]]); Kit.add('#t3', 'scale', [[T.R3 + 0.30, 1.6], [T.R3 + 0.46, 1, 'slam']]);
+  Kit.add('#mk3', 'clipX', [[T.R3 + 0.50, 0], [T.R3 + 0.88, 1]]); Kit.show('#mk3', T.R3 + 0.50);
+  Kit.pop('#rowSig', T.RSIG, { dy: 18 });
+  Kit.add('#sigPath', 'trim', [[T.RSIG + 0.08, 0], [T.RSIG + 0.42, 1, 'out']]);
+  Kit.add('#paper', 'scale', [[T.RSIG + 0.26, 1], [T.RSIG + 0.62, 0.875, 'inOut']]);
+  Kit.add('#paper', 'scale', [[T.RSIG + 0.62, 0.875], [T.W1 + W, 0.89, 'linear']]);
+  Kit.pop('#capS2', T.CAPS2).out('#capS2', 7.02, 0.1);
   // whip to the laptop
-  Kit.add('#s2', 'x', [[9.28, 0], [9.56, -1080, 'swipe']]);
-  Kit.add('#s2', 'blur', [[9.28, 0], [9.44, 12], [9.56, 18]]);
+  Kit.add('#s2', 'x', [[T.W1, 0], [T.W1 + W, -1080, 'swipe']]);
+  Kit.add('#s2', 'blur', [[T.W1, 0], [T.W1 + 0.16, 12], [T.W1 + W, 18]]);
 
-  // ---- S3 Agreements (illustrative recreation)
-  Kit.add('#s3', 'x', [[9.28, 1080], [9.56, 0, 'swipe']]);
-  Kit.add('#win3', 'blur', [[9.28, 10], [9.60, 0, 'out']]);
-  Kit.scene('#d1', 9.28, 11.86).scene('#d2', 11.86, 17.8);
-  Kit.pop('#cap3a', 9.62).out('#cap3a', 11.80, 0.1);
-  Kit.add('#fast', 'opacity', [[0, 0], [11.42, 0, 'hold'], [11.46, 1], [11.82, 1], [11.86, 0]]);
-  // the draft lands
-  Kit.add('#d2', 'opacity', [[11.86, 0], [12.00, 1, 'out']]);
-  Kit.pop('#cap3b', 12.02).out('#cap3b', 13.92, 0.1);
-  Kit.add('#rMel', 'opacity', [[0, 0], [12.84, 0, 'hold'], [12.96, 1], [13.86, 1], [13.98, 0]]);
-  Kit.add('#rJono', 'opacity', [[0, 0], [12.90, 0, 'hold'], [13.02, 1], [13.86, 1], [13.98, 0]]);
-  Kit.add('#rSum', 'opacity', [[0, 0], [12.98, 0, 'hold'], [13.10, 1], [13.86, 1], [13.98, 0]]);
-  ['#hl1', '#hl2', '#hl3', '#hl4', '#hl5'].forEach((h, i) => Kit.add(h, 'clipX', [[0, 0], [13.14 + i * 0.1, 0, 'hold'], [13.34 + i * 0.1, 1, 'out']]));
-  // out to the live Knowledge Hub, and back
-  Kit.add('#win3', 'scale', [[13.92, 1], [14.20, 0.9, 'in'], [15.86, 0.9], [16.12, 1, 'out']]);
-  Kit.add('#win3', 'opacity', [[13.92, 1], [14.16, 0, 'in'], [15.86, 0], [16.06, 1, 'out']]);
-  Kit.add('#kb', 'opacity', [[0, 0], [13.96, 0, 'hold'], [14.20, 1, 'out'], [15.80, 1], [15.98, 0, 'in']]);
-  Kit.add('#kb', 'y', [[13.96, 180], [14.30, 0, 'out'], [15.80, 0], [15.98, 120, 'in']]);
-  Kit.add('#kbBody', 'scale', [[14.0, 1.0], [15.98, 1.16, 'linear']]);
-  Kit.add('#kbBody', 'y', [[14.0, 0], [15.98, -170, 'linear']]);
-  Kit.add('#kbBody', 'x', [[14.0, 0], [15.98, -72, 'linear']]);
-  Kit.add('#kbU1', 'trim', [[14.50, 0], [14.92, 1, 'out']]);
-  Kit.add('#kbU2', 'trim', [[14.92, 0], [15.04, 1, 'out']]);
-  // the heat-pump line, typed by hand
-  Kit.add('#rC3', 'opacity', [[0, 0], [17.12, 0, 'hold'], [17.24, 1]]);
-  Kit.pop('#cap3d', 16.12).out('#cap3d', 17.50, 0.1);
+  // ---- S3 Agreements (recreated)
+  Kit.add('#s3', 'x', [[T.W1, 1080], [T.W1 + W, 0, 'swipe']]);
+  Kit.scene('#d1', T.W1, T.D2).scene('#d2', T.D2, T.W4 + W);
+  Kit.pop('#cap3a', 7.12).out('#cap3a', 9.12, 0.1);
+  Kit.add('#rFr', 'opacity', [[0, 0], [T.PICK + 0.04, 0, 'hold'], [T.PICK + 0.16, 1]]);
+  // "sped up" (title bar): the write-up wait, then the blanks montage
+  Kit.add('#fast', 'opacity', [[0, 0], [T.GO + 0.02, 0, 'hold'], [T.GO + 0.06, 1], [T.D2 - 0.02, 1], [T.D2, 0], [T.FB + 0.28, 0, 'hold'], [T.FB + 0.32, 1], [19.86, 1], [19.90, 0]]);
+  // the draft lands (hard cut from the spinner)
+  Kit.pop('#cap3b', T.CAP3B).out('#cap3b', 12.00, 0.1);
+  Kit.add('#rMel', 'opacity', [[0, 0], [9.96, 0, 'hold'], [10.08, 1], [11.92, 1], [12.04, 0]]);
+  Kit.add('#rJono', 'opacity', [[0, 0], [10.02, 0, 'hold'], [10.14, 1], [11.92, 1], [12.04, 0]]);
+  Kit.add('#rSum', 'opacity', [[0, 0], [10.08, 0, 'hold'], [10.20, 1], [11.92, 1], [12.04, 0]]);
+  ['#hl1', '#hl2', '#hl3', '#hl4', '#hl5'].forEach((h, i) => Kit.add(h, 'clipX', [[0, 0], [10.26 + i * 0.1, 0, 'hold'], [10.46 + i * 0.1, 1, 'out']]));
+  // whip out to the live Knowledge Hub, hold it 3.6 s, whip back (no dissolve: two text layers never overlap)
+  Kit.add('#win3', 'x', [[T.KB0, 0], [T.KB0 + W, -1080, 'swipe'], [T.KB1, -1080], [T.KB1 + 0.001, 1080, 'hold'], [T.KB1 + W, 0, 'swipe']]);
+  Kit.add('#win3', 'blur', [[T.W1, 10], [T.W1 + 0.32, 0, 'out'], [T.KB0, 0], [T.KB0 + 0.16, 12], [T.KB0 + W, 18], [T.KB1, 18], [T.KB1 + 0.001, 10, 'hold'], [T.KB1 + 0.32, 0, 'out']]);
+  ['#kb', '#kbLive'].forEach(s => Kit.add(s, 'x', [[0, 1080], [T.KB0, 1080], [T.KB0 + W, 0, 'swipe'], [T.KB1, 0], [T.KB1 + W, -1080, 'swipe']]));
+  Kit.add('#kb', 'blur', [[T.KB0, 10], [T.KB0 + 0.32, 0, 'out'], [T.KB1, 0], [T.KB1 + 0.16, 12], [T.KB1 + W, 18]]);
+  // slow push, already tight on the quote (body px: quote centre ~ (455, 150) held near (475, 205))
+  Kit.add('#kbBody', 'scale', [[T.KB0, 1.26], [T.KB1 + W, 1.36, 'inOut']]);
+  Kit.add('#kbBody', 'x', [[T.KB0, -98], [T.KB1 + W, -144, 'inOut']]);
+  Kit.add('#kbBody', 'y', [[T.KB0, 16], [T.KB1 + W, 1, 'inOut']]);
+  Kit.add('#kbU1', 'trim', [[12.74, 0], [13.44, 1, 'out']]);
+  Kit.add('#kbU2', 'trim', [[13.44, 0], [13.62, 1, 'out']]);
+  Kit.add('#kbU3', 'trim', [[14.34, 0], [14.64, 1, 'out']]);
+  // the heat-pump line, typed by hand; ring held while the caption reads
+  Kit.pop('#cap3d', 16.24).out('#cap3d', 18.64, 0.1);
+  Kit.add('#rC3', 'opacity', [[0, 0], [T.TY1 + 0.06, 0, 'hold'], [T.TY1 + 0.18, 1], [T.FB, 1], [T.FB + 0.10, 0]]);
+  // fill the blanks by hand, then "Send for signing"
+  Kit.pop('#capF', T.FB + 0.08).out('#capF', T.W4, 0.1);
   // whip up to the phone
-  Kit.add('#s3', 'y', [[17.48, 0], [17.76, -1920, 'swipe']]);
+  Kit.add('#s3', 'y', [[T.W4, 0], [T.W4 + W, -1920, 'swipe']]);
 
-  // ---- S4 Jono signs in the phone's browser
-  Kit.add('#s4', 'y', [[17.48, 1920], [17.76, 0, 'swipe']]);
-  Kit.add('#phone', 'y', [[17.76, 30], [18.20, 0, 'out']]);
-  Kit.add('#rPhC3', 'opacity', [[0, 0], [18.86, 0, 'hold'], [18.98, 1], [19.30, 1], [19.40, 0]]);
-  Kit.pop('#cap4a', 17.84).out('#cap4a', 19.40, 0.1);
-  Kit.add('#toast', 'opacity', [[0, 0], [DONE, 0, 'hold'], [DONE + 0.12, 1, 'out']]);
-  Kit.add('#toast', 'y', [[DONE, 20], [DONE + 0.2, 0, 'out']]);
-  Kit.add('#rClosed', 'opacity', [[0, 0], [DONE + 0.16, 0, 'hold'], [DONE + 0.30, 1]]);
-  Kit.add('#closedN', 'scale', [[DONE, 0.96], [DONE + 0.2, 1, 'outBack']]);
-  Kit.pop('#cap4b', 21.20).out('#cap4b', 23.00, 0.1);
+  // ---- S4 Jono gets the e-mail and signs in the phone's browser
+  Kit.add('#s4', 'y', [[T.W4, 1920], [T.W4 + W, 0, 'swipe']]);
+  Kit.add('#phone', 'y', [[T.W4 + W, 30], [T.W4 + W + 0.42, 0, 'out']]);
+  Kit.add('#rPhC3', 'opacity', [[0, 0], [21.42, 0, 'hold'], [21.54, 1], [21.84, 1], [21.94, 0]]);
+  Kit.pop('#cap4a', 20.58).out('#cap4a', 22.38, 0.1);
+  Kit.add('#toast', 'opacity', [[0, 0], [T.DONE, 0, 'hold'], [T.DONE + 0.12, 1, 'out']]);
+  Kit.add('#toast', 'y', [[T.DONE, 20], [T.DONE + 0.2, 0, 'out']]);
+  Kit.add('#rClosed', 'opacity', [[0, 0], [T.DONE + 0.16, 0, 'hold'], [T.DONE + 0.30, 1]]);
+  Kit.add('#closedN', 'scale', [[T.DONE, 0.96], [T.DONE + 0.2, 1, 'outBack']]);
+  Kit.pop('#cap4b', T.DONE).out('#cap4b', T.W5 - 0.02, 0.1);
   // whip to the sender's list
-  Kit.add('#s4', 'x', [[23.02, 0], [23.30, -1080, 'swipe']]);
-  Kit.add('#s4', 'blur', [[23.02, 0], [23.18, 12], [23.30, 18]]);
+  Kit.add('#s4', 'x', [[T.W5, 0], [T.W5 + W, -1080, 'swipe']]);
+  Kit.add('#s4', 'blur', [[T.W5, 0], [T.W5 + 0.16, 12], [T.W5 + W, 18]]);
 
   // ---- S5 everyone has signed → certificate
-  Kit.add('#s5', 'x', [[23.02, 1080], [23.30, 0, 'swipe']]);
-  const FLIP = 23.62;
-  [['#secA', 1], ['#icA', 1], ['#bdA', 1], ['#lnA', 1], ['#secB', 0], ['#icB', 0], ['#bdB', 0], ['#lnB', 0]].forEach(([s, a]) => Kit.add(s, 'opacity', a ? [[FLIP, 1], [FLIP + 0.18, 0]] : [[0, 0], [FLIP, 0], [FLIP + 0.18, 1]]));
-  Kit.add('#lcard', 'scale', [[FLIP, 1], [FLIP + 0.12, 1.035, 'out'], [FLIP + 0.34, 1, 'inOut']]);
-  Kit.add('#rCard', 'opacity', [[0, 0], [FLIP + 0.10, 0, 'hold'], [FLIP + 0.24, 1]]);
-  Kit.pop('#cap5a', 23.40).out('#cap5a', 24.86, 0.1);
-  Kit.add('#cert', 'y', [[0, 1800], [24.80, 1800], [25.12, 0, 'out']]);
-  Kit.add('#cert', 'rotate', [[24.80, 4], [25.12, -1.2, 'out']]);
-  Kit.add('#win5', 'opacity', [[24.86, 1], [25.12, 0.35]]);
-  Kit.pop('#cap5b', 25.02).out('#cap5b', 26.26, 0.1);
+  Kit.add('#s5', 'x', [[T.W5, 1080], [T.W5 + W, 0, 'swipe'], [T.W6, 0], [T.W6 + W, -1080, 'swipe']]);
+  Kit.add('#s5', 'blur', [[T.W6, 0], [T.W6 + 0.16, 12], [T.W6 + W, 18]]);
+  [['#secA', 1], ['#icA', 1], ['#bdA', 1], ['#lnA', 1], ['#secB', 0], ['#icB', 0], ['#bdB', 0], ['#lnB', 0]].forEach(([s, a]) => Kit.add(s, 'opacity', a ? [[T.FLIP, 1], [T.FLIP + 0.18, 0]] : [[0, 0], [T.FLIP, 0], [T.FLIP + 0.18, 1]]));
+  Kit.add('#lcard', 'scale', [[T.FLIP, 1], [T.FLIP + 0.12, 1.035, 'out'], [T.FLIP + 0.34, 1, 'inOut']]);
+  Kit.add('#rCard', 'opacity', [[0, 0], [T.FLIP + 0.10, 0, 'hold'], [T.FLIP + 0.24, 1]]);
+  Kit.pop('#cap5a', 24.68).out('#cap5a', 26.10, 0.1);
+  Kit.add('#cert', 'y', [[0, 1800], [T.CERT, 1800], [T.CERT + 0.32, 0, 'out']]);
+  Kit.add('#cert', 'rotate', [[T.CERT, 4], [T.CERT + 0.32, -1.2, 'out']]);
+  Kit.add('#win5', 'opacity', [[T.CERT + 0.06, 1], [T.CERT + 0.32, 0.35]]);
+  Kit.pop('#cap5b', 26.18).out('#cap5b', 27.38, 0.1);
 
-  // ---- S6 end card
-  Kit.fade('#logo', 26.34, 26.56).add('#logo', 'scale', [[26.34, 0.94], [26.66, 1, 'out']]);
-  Kit.pop('#eHead', 26.42);
-  Kit.pop('#eShot', 26.70, { dy: 40, dur: 0.3 });
-  Kit.add('#eShot img', 'scale', [[26.70, 1.0], [29.8, 1.03]]);
-  Kit.add('#eRing', 'opacity', [[0, 0], [27.20, 0, 'hold'], [27.36, 1]]);
-  Kit.pop('#ePillW', 27.02, { dy: 24 });
-  Kit.pop('#eSmall', 27.30, { dy: 16 });
+  // ---- S6 end card: complete by 28.14, held 3.5 s; the real sign-up page scrolls from "Get started" to "I provide services"
+  Kit.add('#s6', 'x', [[T.W6, 1080], [T.W6 + W, 0, 'swipe']]);
+  Kit.fade('#logo', 27.52, 27.72).add('#logo', 'scale', [[27.52, 0.94], [27.82, 1, 'out']]);
+  Kit.pop('#eHead', 27.58);
+  Kit.add('#eThumb', 'scale', [[27.58, 1.5], [27.76, 1, 'slam']]);
+  Kit.add('#eSigP', 'trim', [[27.80, 0], [28.14, 1, 'out']]);
+  Kit.pop('#eShot', 27.70, { dy: 40, dur: 0.3 }).pop('#eLive', 27.74, { dy: 20 });
+  Kit.add('#eImg', 'y', [[28.60, 0], [30.10, -614.7, 'scroll']]);
+  Kit.pop('#ePillW', 27.86, { dy: 24 });
+  Kit.add('#ePill', 'scale', [[27.86, 0.92], [28.12, 1, 'outBack']]);
+  Kit.pop('#eSmall', 27.98, { dy: 16 });
 
-  // ring around "Agreements is free on every plan." on the live capture (capture px → card px)
-  (function () { const k = 900 / 1290, oy = -876; const x0 = 123, y0 = 1287, w = 731, h = 66; Object.assign($('#eRing').style, { left: (x0 * k - 10) + 'px', top: (y0 * k + oy - 8) + 'px', width: (w * k + 20) + 'px', height: (h * k + 16) + 'px' }); })();
-
-  Kit.ready({ duration: 29.8, fonts: ['800 60px Manrope', '600 20px Manrope', '500 14px Manrope', '400 14px Manrope', '700 24px Manrope', '400 46px Inter', '600 40px Inter', '700 54px Inter', '500 34px Inter', 'italic 400 36px Inter', '400 46px "Permanent Marker"', '500 24px "JetBrains Mono"', '600 22px Caveat'] });
+  Kit.ready({ duration: T.END, fonts: ['800 60px Manrope', '600 20px Manrope', '500 14px Manrope', '400 14px Manrope', '700 24px Manrope', '400 46px Inter', '600 40px Inter', '700 54px Inter', '500 34px Inter', '600 15px Inter', '400 13px Inter', '700 28px Inter', 'italic 400 36px Inter', '400 46px "Permanent Marker"', '500 24px "JetBrains Mono"', '600 22px Caveat'] });
 })();
 </script>
 </body>

@@ -1,6 +1,8 @@
 # Review trail: Which Dave? (sharpened version of "The Facebook group")
 
 > **2026-10-02 fact-check:** this trail is kept as history. Its recommendations to say 'Verified' / 'Licence-verified trades', 'compared line by line', 'apples with apples', or to show a 'Dave K.' verification indicator are withdrawn: none of that is live (research/2026-10-02-qsme-platform-truth.md). The current copy is in post.md (see Discussion history).
+>
+> **2026-10-04 owner CTA rule (2026-10-03):** every pricing recommendation below ('Free to join', 'No listing fee', 'Create a project. Free.', success-fee lines in ads) is withdrawn too. The CTA is 'Sign up at qsme.co.nz', with no pricing line anywhere.
 
 Draft written, then critiqued by two independent reviewers, then revised.
 
@@ -112,3 +114,17 @@ Draft written, then critiqued by two independent reviewers, then revised.
 - Group name changed to 'Hillcrest Locals (Unofficial)', with a search check recorded in the brief (Platform nice). Counter animation reduced to three states, 197, 205 and 212 (Platform nice). cover.png specified for IG and TikTok (Platform nice). LinkedIn dropped by default, kept only as a 1080x1350 PDF with at most 3 hashtags if the user confirms (Platform nice).
 - Not applied yet: Humor's 'Are any of these Daves LBP?' line. It depends on QSME confirming that its verification covers LBP, so it's now part of the licences open question.
 - Kept unchanged, as both reviewers asked: the premise and core joke, H1 as the chosen hook, the thread lines in NZ English, Dave's comment alone at the peak, 'Dave is.', the Dave-count running gag ending in a tick, ping rhythm into silence into a single ding, 'Or. Post the actual job.' and 'Know which Dave.', the marked-up-screenshot static, generic non-Meta UI, no invented proof, real demo screens only, real hands and no AI people, and the cheap Figma, iPhone, ElevenLabs and CapCut path.
+
+## 2026-10-04 review of the 30 s reel: applied
+
+Verdict was "fix" (one must-fix, six should-fix, two nice). All applied in `motion/which-dave-30s.js` (+ `static.html`), both MP4s and the static re-rendered, QA passed on both safe boxes, contact sheets and spot frames checked.
+
+- [must-fix] One Dave: the contacts recreation now types 'Dave K.' (overlay in the field's own font, synced to the clip's typing) under 'your Dave'; the phone note 'Dave K.' → Invite comes in at 15.4 and holds 1.4 s before the swipe.
+- [should-fix] Tally counts on the jokes: 3 → 5 on Aroha (6.5–6.65), 5 → 6 (ish) on Jase (7.8–7.95), ? at 10.4; a short rattle on every change.
+- [should-fix] Mock data shows Mel's job: tender title 'Bathroom + deck', project 'Bathroom + deck', pockets Strip-out / Waterproofing & tiling / Deck framing (still labelled 'Recreation of the app · mock data').
+- [should-fix] No underline on 'Pulled from your SOQ'; a bracket plus the note 'same list → every quote' instead. No 'line by line'.
+- [should-fix] Recreations about 1.95x (text about 32–33 px), chips 28 px, every product beat centred in the safe box (cards run to about y 1245 in 9:16).
+- [should-fix] Re-timed: A 14.3–17.0, B 17.0–20.4, C 20.4–23.1, callback 23.1–25.0 (tally 23.2, sub 23.6, 'Know which Dave.' 24.1), end card 25.0 (logo 25.2, button 25.5, pulses 26.9 / 28.4). VO re-timed to match.
+- [should-fix] Correction to the changelog line above: the 'Hillcrest Locals (Unofficial)' check was never recorded in a brief (there is no brief.md). Done 2026-10-04 as a public web search (no group by that name found) and logged in post.md; the in-Facebook search needs a login, so the owner runs it before posting.
+- [nice] 'Every one prices the same lines.' → 'Every quote covers the same lines.' in the reel, static, caption, ads, carousel slide 6 and VO.
+- [nice] 4:5: the comment list sits 120 px lower so the thread fills the feed frame.

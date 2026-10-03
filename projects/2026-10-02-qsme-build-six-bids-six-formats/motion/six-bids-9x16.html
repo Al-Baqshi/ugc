@@ -5,16 +5,23 @@
 <title>Six bids. Six formats. — QSME Global, 9:16 (Shorts / Reels)</title>
 <!-- Motion kit page: the 4:5 master (outputs/six-bids-linkedin-4x5.mp4) placed inside the 9:16 safe box, with a branded top band
      and the master's captions re-set large in a bottom band (the master's own small captions sit under the band and are covered).
-     Frames:  tools/motion/extract projects/2026-10-02-qsme-build-six-bids-six-formats/outputs/six-bids-linkedin-4x5.mp4 projects/2026-10-02-qsme-build-six-bids-six-formats/motion/clips/master 30 0 29.8 1080
+     Frames:  tools/motion/extract projects/2026-10-02-qsme-build-six-bids-six-formats/outputs/six-bids-linkedin-4x5.mp4 projects/2026-10-02-qsme-build-six-bids-six-formats/motion/clips/master 30 0 31.8 1080
               python3 projects/2026-10-02-qsme-build-six-bids-six-formats/motion/strip-icc.py projects/2026-10-02-qsme-build-six-bids-six-formats/motion/clips/master
               (extract tags its JPEGs with the HDTV colour profile; Chrome then draws them a shade darker than the page and the master's edges show.
                Dropping the profile is lossless and makes Chrome read the pixels as sRGB, as the master was drawn.)
      Render:  node tools/motion/make.mjs projects/2026-10-02-qsme-build-six-bids-six-formats/motion/six-bids-9x16.html projects/2026-10-02-qsme-build-six-bids-six-formats/outputs/six-bids-9x16.mp4 --safe 65,300,1015,1250
-     Same timeline as the 4:5 master up to 29.8s, so vo-script.md applies unchanged; the 9:16 then holds the end card 0.5s longer (30.3s)
-     so qsme.build is on screen for about 3s (Shorts end-card target: at least 2.5s).
+     Same timeline and length as the 4:5 master (31.8s, 954 frames, frame for frame), so vo-script.md applies unchanged.
+     2026-10-04 review 2: the master's own lock line is the only 'Bidders never see your rates or budget.' (the band's third caption line is gone); the master holds bid E
+     0.5s longer and the product promise 1.0s longer (31.8s); captions are timed in master seconds (CAPS) instead of frame numbers; the top band spans the hook's
+     punched-in column (x 166..914) until the 2.4s cut; the kicker flips to 'Illustrative · demo data' on the first product frame (20.7); the note-14 zoom now shows
+     the page down to its '9 of 9' footer and bottom edge; a slow push-in on the empty phone (9.3–10.3); a soft floor glow under the safe box so the frame never
+     reads as a letterboxed 4:5.
+     2026-10-04 owner CTA rule: the master's end card reads exactly 'Book a 30-minute demo at qsme.build' and is held to the end on both cuts
+     (the 9:16 adds no hold of its own); here it steps up 1.3x → 1.345x, so the CTA reads on a phone for ~3.1s (28.7–31.8; Shorts target: at least 2.5s).
      2026-10-03 review: a 'camera' on the master (hook 0.78, note-14 snap-zoom ~1.4x, email 0.78, product beat 0.88→0.9, end card 1.3x),
      a top cover that hides the master's own logo/label/counter while it is punched in (the band's wordmark and kicker stay), captions
-     matching the VO word for word, 'Bidders never see your rates or budget.' as a third caption line, and the Global wordmark without ®. -->
+     matching the VO word for word, 'Bidders never see your rates or budget.' as a third caption line (removed in review 2: it doubled the master's own line),
+     and the Global wordmark without ®. -->
 <link rel="stylesheet" href="../../../tools/motion/kit.css">
 <style>
   /* Geometry. The master (1080x1350) is scaled 0.68 → 734x918, placed at x 173, y 330: it sits inside the safe box 65,300,1015,1250.
@@ -41,7 +48,7 @@
   /* Global wordmark without ® (until the owner confirms where QSME is registered); crop = the letters only, right edge on the column (x 866) */
   #wm { left: 761px; top: 302px; width: 105px; height: 34px; overflow: hidden; }
   #wm img { position: absolute; width: 132.8px; left: -16.6px; top: -14.4px; }
-  #segs { left: 214px; top: 350px; width: 652px; height: 6px; display: flex; gap: calc(var(--g, 10) * 1px); border-radius: 4px; overflow: hidden; }
+  #segs { left: calc(var(--sl, 214) * 1px); top: 350px; width: calc(var(--sw, 652) * 1px); height: 6px; display: flex; gap: calc(var(--g, 10) * 1px); border-radius: 4px; overflow: hidden; }
   #segs i { flex: 1; display: block; background: var(--line); position: relative; }
   #segs i b { position: absolute; inset: 0; background: var(--accent); display: block; transform-origin: 0 50%; }
 
@@ -51,9 +58,12 @@
   .cap { position: absolute; left: 150px; width: 780px; top: 1064px; text-align: center; font-family: var(--display); font-weight: 700; letter-spacing: -0.02em; font-size: 60px; line-height: 1.1; color: var(--ink); }
   .cap > div { text-wrap: balance; }
   .cap em { font-style: normal; color: var(--accent); }
-  /* a small third line: an on-screen product line (not a subtitle), set apart in muted Inter with the lock */
-  .cap .l3 { margin-top: 4px; font: 600 38px/44px var(--body); letter-spacing: -0.01em; color: var(--ink-70); display: flex; justify-content: center; align-items: center; gap: 12px; white-space: nowrap; }
-  .cap .l3 svg { width: 26px; height: 32px; flex: none; }
+  /* floor under the safe box (y > 1250, no text): a soft green pool of light so the lower third of the phone screen is never flat letterbox black */
+  #floor { left: 0; top: 1252px; width: 1080px; height: 668px;   /* starts below the safe box: it sits above the master and the band, so it must never tint anything at y ≤ 1250 */
+    background:
+      radial-gradient(ellipse 600px 250px at 540px 50px, rgba(61, 192, 35, 0.09) 0%, rgba(61, 192, 35, 0.04) 45%, rgba(61, 192, 35, 0) 100%),
+      linear-gradient(to bottom, rgba(24, 38, 30, 0.6) 0, rgba(24, 38, 30, 0.85) 90px, rgba(24, 38, 30, 0.35) 400px, rgba(24, 38, 30, 0) 668px);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 110px); mask-image: linear-gradient(to bottom, transparent 0, #000 110px); }
 </style>
 </head>
 <body class="build r9x16">
@@ -62,6 +72,7 @@
   <div id="topcover" class="abs"></div>
 
   <div id="band" class="abs"></div>
+  <div id="floor" class="abs"></div>
   <div id="caps"></div>
 
   <div id="kicker" class="abs kick"><i></i>Tender day</div>
@@ -71,27 +82,31 @@
 </div>
 <script src="../../../tools/motion/kit.js"></script>
 <script>
-  const DUR = 30.3, FPS = 30;   // master is 29.8s (894 frames); the clip holds its last frame for the extra 0.5s
+  const DUR = 31.8, FPS = 30;   // = the master: 31.8s, 954 frames (2026-10-04 review 2: bid E +0.5s, product promise +1.0s)
   const T = f => (f - 0.5) / FPS;   // first frame (of the 4:5 master) on which something is visible → a time safely before it
+  const F = s => Math.ceil(s * FPS - 1e-6);   // a master keyframe time (s) → the first master frame that shows it
+  const S = s => T(F(s));                       // … → a page time safely before that frame (cuts and captions land on the master's own frame)
 
   // The master, frame for frame (30 fps, same timeline)
   // (t0 a hair early: make.mjs renders t = (i/30).toFixed(5), and 0.03333 × 30 would otherwise floor to the frame before → a stutter every third frame)
-  Kit.clip('#master', { dir: 'clips/master', t0: -0.001, fps: FPS, frames: 894, ext: '.jpg' });
+  Kit.clip('#master', { dir: 'clips/master', t0: -0.001, fps: FPS, frames: 954, ext: '.jpg' });
 
-  // Captions: the master's words, highlights and cut points (first visible frame of each line, read off the master's caption strip).
-  // [line 1, line 2 or null, frame line 1 appears, frame line 2 appears, frame both go, size (px, optional)]
+  // Master cut points (real seconds on the 31.8s MP4)
+  const CUT = { A: 2.4, B: 4.2, C: 6.1, D: 7.6, E: 10.3, F: 13.3, G: 18.0, H: 20.7, Z: 28.7 };
+  // Captions: the master's words, highlights and times (seconds, from 04-motion.figma.js through its W() warp).
+  // [line 1, line 2 or null, line 1 appears, line 2 appears, both go, size (px, optional)]
   const CAPS = [
-    ['One’s a PDF.', '<em>Sideways.</em>', 75, 92, 126],
-    ['One’s a spreadsheet.', '<em>All merged.</em>', 129, 150, 183],
-    ['One says <em>“as discussed”.</em>', null, 186, null, 228],
-    ['One says “price below”…', '…there’s <em>nothing below.</em>', 231, 282, 309],
-    ['One’s the cheapest…', 'till <em>page nine.</em>', 312, 351, 384],
-    ['And one…', 'is a photo of a <em>whiteboard.</em>', 384, 408, 449],
-    ['Honestly?', '<em>Most complete</em> one.', 479, 491, 525],
-    ['In fairness…', 'here’s <em>what I sent.</em>', 530, 552, 606],   // the email on screen carries the punchline
-    ['So we built QSME.', '<em>Same lines</em> for every bidder.', 606, 630, 684],
-    ['Six bids. <em>One table.</em>', null, 686, null, 765],
-    ['Award → <em>contract created</em>', null, 765, null, 816],
+    ['One’s a PDF.', '<em>Sideways.</em>', 2.5, 3.05, CUT.B],
+    ['One’s a spreadsheet.', '<em>All merged.</em>', 4.3, 5.0, CUT.C],
+    ['One says <em>“as discussed”.</em>', null, 6.2, null, CUT.D],
+    ['One says “price below”…', '…there’s <em>nothing below.</em>', 7.7, 9.4, CUT.E],
+    ['One’s the cheapest…', 'till <em>page nine.</em>', 10.4, 11.7, CUT.F],
+    ['And one…', 'is a photo of a <em>whiteboard.</em>', 13.3, 14.1, 15.45],
+    ['Honestly?', '<em>Most complete</em> one.', 16.45, 16.85, CUT.G],
+    ['In fairness…', 'here’s <em>what I sent.</em>', 18.15, 18.9, CUT.H],   // the email on screen carries the punchline
+    ['So we built QSME.', '<em>Same lines</em> for every bidder.', 20.7, 21.5, 24.3],   // the master's own lock line (22.1–24.29) sits above: no third line here
+    ['Six bids. <em>One table.</em>', null, 24.35, null, 26.95],
+    ['Award → <em>contract created</em>', null, 26.95, null, CUT.Z],
   ];
   const host = document.getElementById('caps');
   CAPS.forEach(([a, b, f1, f2, f3, size], i) => {
@@ -99,9 +114,6 @@
     c.innerHTML = '<div class="l1">' + a + '</div>' + (b ? '<div class="l2">' + b + '</div>' : '');
     host.appendChild(c);
   });
-  // "Same lines for every bidder." gets the key differentiator under it, in the live wording, while the master's own callout is up (21.45–22.77)
-  const LOCK = '<svg viewBox="0 0 26 32" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="13" width="22" height="17" rx="4" fill="#A9B8AE"/><path d="M7 13 V9 a6 6 0 0 1 12 0 V13" fill="none" stroke="#A9B8AE" stroke-width="3.2"/></svg>';
-  document.getElementById('cap8').insertAdjacentHTML('beforeend', '<div class="l3">' + LOCK + 'Bidders never see your rates or budget.</div>');
   // One size (60 px) for every caption; a caption only steps down if its text box would run past y 1248 (safety net: none should).
   function fit() {
     const R = document.getElementById('root').getBoundingClientRect();
@@ -110,23 +122,24 @@
       c.style.fontSize = s + 'px'; while (bottom() > 1248 && s > 44) { s -= 1; c.style.fontSize = s + 'px'; } c.dataset.size = s;
     });
   }
-  CAPS.forEach(([a, b, f1, f2, f3], i) => {
+  CAPS.forEach(([a, b, t1, t2, t3], i) => {
     const c = document.getElementById('cap' + i);
-    Kit.show(c.querySelector('.l1'), T(f1), T(f3));
-    if (b) Kit.show(c.querySelector('.l2'), T(f2), T(f3));
+    Kit.show(c.querySelector('.l1'), S(t1), S(t3));
+    if (b) Kit.show(c.querySelector('.l2'), S(t2), S(t3));
   });
-  Kit.add('#cap8 .l3', 'opacity', [[0, 0], [21.45, 0, 'hold'], [21.65, 1, 'out'], [T(684), 0, 'hold']]);
   // The band (which hides the master's small captions) is up whenever a caption is; it drops away in the hook (the six banners
   // run down into the caption strip), during the whiteboard snap-zoom (the board fills the strip) and on the end card.
-  Kit.show('#band', T(75), T(449)).add('#band', 'opacity', [[T(479), 1, 'hold'], [T(816), 0, 'hold']]);
+  Kit.show('#band', S(2.5), S(15.45)).add('#band', 'opacity', [[S(16.45), 1, 'hold'], [S(CUT.Z), 0, 'hold']]);
 
   // ---- Camera on the master. cam(P, S, e): master point P (in 4:5 px) sits at page point S, at e page px per master px (0.68 = as placed).
   const K = 0.68, L0 = 172.8, T0 = 330, OX = 367.2, OY = 428.4;
-  function cam(P, S, e) { const s = e / K; return { x: S[0] - L0 - OX - s * (P[0] * K - OX), y: S[1] - T0 - OY - s * (P[1] * K - OY), s }; }
+  function cam(P, Q, e) { const s = e / K; return { x: Q[0] - L0 - OX - s * (P[0] * K - OX), y: Q[1] - T0 - OY - s * (P[1] * K - OY), s }; }
   const REST = { x: 0, y: 0, s: 1 };
-  const HOOK = cam([540, 64], [540, 370], 0.78);      // hook block 1.15x: master x 60..1020 → 166..914, kicker at y 370 (under the segments), banner F text ends ~y 1233
-  const NOTE = cam([540, 504], [540, 690], 0.952);    // bid E: snap-zoom (1.4x) on the highlighted 'Note 14: Excludes ceilings.' — like the whiteboard zoom later
-  const NOTE2 = cam([540, 504], [540, 690], 0.975);
+  const HOOK = cam([540, 64], [540, 370], 0.78);      // hook block 1.15x: master x 60..1020 → 166..914 (the top band follows), kicker at y 370 (under the segments), banner F text ends ~y 1233
+  const PHONE = cam([540, 926], [540, 925], 0.88);    // bid D: after the scroll, a slow push-in on the empty screen and 'Sent from my phone' (1.3x); phone bottom ~y 1034, the master's own caption stays under the band (≥ y 1059)
+  const PHONE2 = cam([540, 926], [540, 925], 0.9);
+  const NOTE = cam([540, 504], [540, 540], 0.952);    // bid E: snap-zoom (1.4x) on 'Note 14: Excludes ceilings.', framed from note 12 down to the '9 of 9' footer and the page's bottom edge (~y 1029)
+  const NOTE2 = cam([540, 504], [540, 540], 0.975);   // … slow push; the page's bottom edge stays above the caption band (~y 1041 at the end)
   const MAIL = cam([540, 510], [540, 690], 0.78);     // the QS's own email, 1.15x: window x 60..1020 → 166..914; body text ~41px
   const MAIL2 = cam([540, 510], [540, 690], 0.8);
   const PROD = cam([540, 600], [540, 715], 0.88);     // product beat: master column x 100..980 → 153..927 (text ≥ 165 and ≤ 907), y 262..948 → 418..1021
@@ -135,37 +148,51 @@
   // [time, state, ease into it]
   const CAM = [
     [0, HOOK],
-    [T(72), REST, 'hold'],                 // cut to bid A (2.4s)
+    [S(CUT.A), REST, 'hold'],              // cut to bid A (2.4s)
+    [9.30, REST],                          // the scroll has landed (9.25)
+    [9.55, PHONE, 'swipe'],                // lean in on the empty email as '…there's nothing below.' lands (9.4)
+    [S(CUT.E) - 0.01, PHONE2, 'linear'],
+    [S(CUT.E), REST, 'hold'],              // cut to bid E (10.3)
     [11.70, REST],                         // page 9 fully revealed (last flick lands 11.65)
     [11.92, NOTE, 'swipe'],                // snap in as the highlighter starts (11.8)
-    [T(384) - 0.01, NOTE2, 'linear'],
-    [T(384), REST, 'hold'],                // cut to the whiteboard (12.8)
-    [T(525), MAIL, 'hold'],                // cut to the email (17.5)
-    [T(606) - 0.01, MAIL2, 'linear'],
-    [T(606), PROD, 'hold'],                // cut to the product beat (20.2)
-    [T(816) - 0.01, PROD2, 'linear'],
-    [T(816), END, 'hold'],                 // cut to the end card (27.2)
+    [S(CUT.F) - 0.01, NOTE2, 'linear'],    // held 1.4s (to 13.3): the highlight finishes (12.2) and sits
+    [S(CUT.F), REST, 'hold'],              // cut to the whiteboard (13.3)
+    [S(CUT.G), MAIL, 'hold'],              // cut to the email (18.0)
+    [S(CUT.H) - 0.01, MAIL2, 'linear'],
+    [S(CUT.H), PROD, 'hold'],              // cut to the product beat (20.7)
+    [S(CUT.Z) - 0.01, PROD2, 'linear'],
+    [S(CUT.Z), END, 'hold'],               // cut to the end card (28.7)
     [DUR, END2, 'linear'],
   ];
   ['x', 'y'].forEach(p => Kit.add('#master', p, CAM.map(([t, c, e]) => [t, c[p], e])));
   Kit.add('#master', 'scale', CAM.map(([t, c, e]) => [t, c.s, e]));
-  // top cover: fades in with the note-14 zoom, off on the whiteboard cut, on for the whole product beat, off for the end card
-  Kit.add('#topcover', 'opacity', [[0, 0], [11.70, 0, 'hold'], [11.86, 1, 'out'], [T(384), 0, 'hold'], [T(606), 1, 'hold'], [T(816), 0, 'hold']]);
+  // top cover: hides the master's own tag/counter strip while the master is punched in. Before each push-in it fades on lowered 36px (solid to y 420),
+  // which takes the tag and counter out while the camera is still at rest (they sit at y ~379–415; the phone top is at 432), then it rides up with
+  // the camera, so nothing of the master's strip ever shows through the band mid-move. Note-14 zoom: it ends lifted 30px, so note 12 clears its soft edge.
+  // On for the whole product beat (the cut there is a hard switch), off for the end card.
+  Kit.add('#topcover', 'opacity', [[0, 0], [9.18, 0, 'hold'], [9.30, 1, 'out'], [S(CUT.E), 0, 'hold'], [11.58, 0, 'hold'], [11.70, 1, 'out'], [S(CUT.F), 0, 'hold'], [S(CUT.H), 1, 'hold'], [S(CUT.Z), 0, 'hold']]);
+  Kit.add('#topcover', 'y', [[0, 36], [9.30, 36], [9.55, 0, 'swipe'], [S(CUT.E), 36, 'hold'], [11.70, 36], [11.92, -30, 'swipe'], [S(CUT.F), 0, 'hold']]);
 
   // Top band
+  // during the hook the master is punched in to 1.15x (its column runs x 166..914), so the band spans the same column; it steps to 214..866 on the 2.4s cut
+  Kit.add('#kicker', 'x', [[0, -48], [S(CUT.A), 0, 'hold']]);
+  Kit.add('#wm', 'x', [[0, 48], [S(CUT.A), 0, 'hold']]);
+  Kit.add('#segs', 'var:--sl', [[0, 166], [S(CUT.A), 214, 'hold']]);
+  Kit.add('#segs', 'var:--sw', [[0, 748], [S(CUT.A), 652, 'hold']]);
   // segments fill on the master's counter steps (1/6 … 6/6)
-  const STEP = [72, 126, 183, 228, 309, 384];
+  const STEP = [CUT.A, CUT.B, CUT.C, CUT.D, CUT.E, CUT.F];
   document.querySelectorAll('#segs b').forEach((b, i) => {
-    const t = T(STEP[i]);
+    const t = S(STEP[i]);
     Kit.add(b, 'scaleX', [[0, 0], [t, 0, 'hold'], [t + 0.2, 1, 'out']]);
   });
-  // "Six bids. One table." (frame 686): the six segments close up into one bar
-  Kit.add('#segs', 'var:--g', [[T(686), 10], [T(686) + 0.35, 0, 'swipe']]);
-  // product beat (frame 606, "So we built QSME."): the kicker turns into the disclosure. The band wordmark stays (the master's own logo is under the top cover,
-  // so there is only ever one logo on screen); the whole band clears by 27.13, before the end-card logo arrives (27.17), so the brand card stands alone
-  const BAND_OUT = 26.97;
-  Kit.add('#kicker', 'opacity', [[0, 1], [T(606), 1, 'hold'], [T(606) + 0.15, 0, 'out']]);
-  Kit.add('#kicker2', 'opacity', [[0, 0], [T(606) + 0.1, 0, 'hold'], [T(606) + 0.3, 1, 'out'], [BAND_OUT, 1, 'hold'], [BAND_OUT + 0.16, 0, 'out']]);
+  // "Six bids. One table." (24.35): the six segments close up into one bar
+  Kit.add('#segs', 'var:--g', [[S(24.35), 10], [S(24.35) + 0.35, 0, 'swipe']]);
+  // product beat (20.7, "So we built QSME."): the kicker becomes the disclosure on the first product frame (a hard switch on the cut, so no UI frame is ever unlabelled).
+  // The band wordmark stays (the master's own logo is under the top cover, so there is only ever one logo on screen); the whole band clears by 28.63,
+  // before the end-card logo arrives (28.67), so the brand card stands alone
+  const BAND_OUT = 28.47;
+  Kit.add('#kicker', 'opacity', [[0, 1], [S(CUT.H), 0, 'hold']]);
+  Kit.add('#kicker2', 'opacity', [[0, 0], [S(CUT.H), 1, 'hold'], [BAND_OUT, 1, 'hold'], [BAND_OUT + 0.16, 0, 'out']]);
   Kit.add('#wm', 'opacity', [[0, 1], [BAND_OUT, 1, 'hold'], [BAND_OUT + 0.16, 0, 'out']]);
   Kit.add('#segs', 'opacity', [[0, 1], [BAND_OUT, 1, 'hold'], [BAND_OUT + 0.16, 0, 'out']]);
 

@@ -43,7 +43,7 @@ if(comp&&comp.type==='COMPONENT'){try{for(const tn of comp.findAllWithCriteria({
 // Logo cropped to the visible wordmark (x 192–1477, y 133–549 of the 1509×688 component).
 function logo(p,w,name){const s=w/1285;const fr=F(p,w,416*s,{name:name||'QSME logo (instance of 2:27)'});if(comp&&comp.type==='COMPONENT'){const i=track(comp.createInstance());fr.appendChild(i);i.rescale(s);i.x=-192*s;i.y=-133*s;}else{T(fr,'QSME',{f:'Space Grotesk',s:'Bold',size:Math.round(w/4.5),c:'#3DC023',x:0,y:0});}return fr}
 
-// Place below everything already on the page (x stays 0, so x>=4000,y=0 remains free).
+// Place below everything already on the page (x stays 0, so x>=4000,y=0 stays clear).
 const bottom=P.children.reduce((m,n)=>Math.max(m,n.y+n.height),0);
 const sec=figma.createSection();track(sec);sec.name=SEC_NAME;sec.x=0;sec.y=Math.ceil(bottom+200);sec.resizeWithoutConstraints(3991,4000);sec.fills=S('#E7EBE7');
 const H=(str,y)=>T(sec,str,{f:'JetBrains Mono',s:'Medium',size:22,c:'#5B6B60',ls:6,x:120,y});
@@ -129,8 +129,11 @@ R(plate,6,44,{fill:'#3DC023',r:3,name:'Accent bar'});
 const ltt=T(plate,'QSME · tendering & estimating software',{f:'Space Grotesk',s:'Medium',size:36,ls:-1,c:'#EEF4EF',name:'Lower-third text'});ltt.setRangeFontName(0,4,FN('Space Grotesk','Bold'));ltt.setRangeFills(0,4,S('#4BCD32'));
 named.lowerThird=lt.id;named.lowerThirdRightClearance=Math.round(1080-(plate.x+plate.width));
 upd(cap(lt,'Lower-third','Reel 21.5–25.0 / paid 18.5–21.5. Plate stays more than 150px clear of the right edge.'));
-function endCard(w,h,name,cy){const f=F(sec,w,h,{fill:'#0C1310',name});const col=AL(f,'VERTICAL',{name:'End card content',gap:44,align:'CENTER'});logo(col,640,'QSME logo (instance of 2:27)');T(col,'qsme.build',{f:'Space Grotesk',s:'Bold',size:96,ls:-2,c:'#EEF4EF',name:'URL'});
-  const btn=AL(col,'HORIZONTAL',{name:'CTA pill',fill:'#3DC023',r:999,pad:[24,48,24,48],align:'CENTER'});T(btn,'Book a 30-minute demo',{s:'Semi Bold',size:44,c:'#06130A',name:'CTA'});
+// Owner CTA rule 2026-10-03: the end card reads exactly 'Book a 30-minute demo at qsme.build' (same lockup as the motion end card).
+function endCard(w,h,name,cy){const f=F(sec,w,h,{fill:'#0C1310',name});const col=AL(f,'VERTICAL',{name:'End card content',gap:44,align:'CENTER'});logo(col,640,'QSME logo (instance of 2:27)');
+  const cta=AL(col,'VERTICAL',{name:'CTA — Book a 30-minute demo at qsme.build',gap:6,align:'CENTER'});
+  T(cta,'Book a 30-minute demo',{f:'Space Grotesk',s:'Bold',size:68,ls:-2,c:'#EEF4EF',name:'CTA line 1'});
+  const u=T(cta,'at qsme.build',{f:'Space Grotesk',s:'Bold',size:96,ls:-2,c:'#4BCD32',name:'CTA line 2 (URL)'});u.setRangeFills(0,2,S('#A9B8AE'));
   col.x=Math.round((w-col.width)/2);col.y=Math.round(cy-col.height/2);return {f,col};}
 const e916=endCard(1080,1920,'End card — 9:16 (1080×1920, hold ≥2.5s)',850);e916.f.x=1340;e916.f.y=Y4;
 const e45=endCard(1080,1350,'End card — 4:5 (1080×1350, hold ≥2.5s)',675);e45.f.x=1340+1080+80;e45.f.y=Y4;

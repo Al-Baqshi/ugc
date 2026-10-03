@@ -1,0 +1,28 @@
+{
+ "url": "https://www.qsme.co.nz/sign-up",
+ "dpr": 3,
+ "cssWidth": 430,
+ "cssHeight": 932,
+ "boxes": {
+  "h1": [
+   72,
+   231,
+   1146,
+   108
+  ],
+  "hire": [
+   267,
+   606,
+   888,
+   420
+  ],
+  "provide": [
+   267,
+   1200,
+   888,
+   420
+  ],
+  "freeText": null,
+  "docHeight": 3021
+ }
+}

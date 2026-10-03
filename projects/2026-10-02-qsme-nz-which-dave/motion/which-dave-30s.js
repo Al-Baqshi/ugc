@@ -1,31 +1,44 @@
-// Which Dave? — 30 s reel, rebuilt 2026-10-02, review fixes 2026-10-03 (no filmed shot, no owner recording).
+// Which Dave? — 30 s reel. Rebuilt 2026-10-02, review fixes 2026-10-03, product beat + end card rebuilt 2026-10-04 to the
+// calendar concept and the owner CTA rule (no filmed shot, no owner recording, no pricing / "free" lines anywhere).
+// 2026-10-04 review pass: one Dave all the way through (the contacts name types "Dave K."), Mel's job in the mock data
+// ("Bathroom + deck"), the tally counts 1 → 3 → 5 → 6 (ish) → ? on the comments, bigger recreations, 28 px chips, the
+// product beat gets the time the end card didn't need, "Every quote covers the same lines.", 4:5 thread sits lower.
 //   0.0–2.5   hook: "212 comments. Still no builder." as kinetic text over the full-frame thread, count 197 → 205 → 212
-//   2.5–14.3  the thread. Mel's post card now holds to 4.1 (underline on "Keen for a few quotes" 3.05–3.4), so every thread
-//             keyframe from reel 3.3 on sits 0.8 s later than the 2026-10-02 cut: the Daves, the slam on "Dave here. Which Dave
-//             do you mean?" (9.8), "...can anyone actually come and quote?" (12.1) / "Dave can." (12.7), swipe to QSME 13.9–14.3
-//   14.3–17.0 "Or just put the actual job on QSME." over the REAL iPhone app still (04-project, demo data): the "Project" nav bar
+//   2.5–14.3  the thread. Mel's post card holds to 4.1 (underline on "Keen for a few quotes" 3.05–3.4) so it can be read; the
+//             tally: 1 (4.45) → 3 (5.5, Sam) → 5 (6.65, Aroha) → 6 (ish) (7.95, Jase) → ? (10.4, after the slam on
+//             "Dave here. Which Dave do you mean?" at 9.8), "...can anyone actually come and quote?" (12.1) / "Dave can." (12.7),
+//             swipe to QSME 13.9–14.3
+//   14.3–17.0 A  "Or. Put the actual job on QSME." over the REAL iPhone app still (04-project, demo data): the "Project" nav bar
 //             and the tile grid (the "42 Rimu Street townhouses" header and stats row between them are cropped out), in a
-//             phone-style frame; red marker on "Ask for quotes" (15.15) and "Invite" (15.7), marker note "Dave K." → Invite (16.0)
-//   17.0–22.9 tenders recreation, Step 2 "Scope from SOQ" only, at 1.6x: heading + the pocket rows. Cropped out: the
-//             "Pulled from your SOQ · <project>" strip, the lines/$ column, the NZD total, the walkthrough caption and the mouse
-//             pointer (rows are cut from a pointer-free frame, unticked/ticked). "Send one job to the trades you choose." (17.05)
-//             with the marker under "Pick the line items to put out to tender" and three pockets ticking; then
-//             "They all quote on the same lines." (20.0) with a marker bracket on the ticked rows
-//   22.9–25.9 callback, big and centred: "Dave count: 1" (23.0) + green tick (23.3) / "— the one you invited." (23.6) /
-//             "Know which Dave." (24.15)
-//   25.85–30  end card: Free to join. / No listing fee on tenders. / Inviting your own tradie is always free. /
-//             pill "Create a project, free · qsme.co.nz"; the tally shrinks into the upper-left corner (25.9–26.3)
-// Walkthrough crops are from motion/clips/tender-soq (muted JPEG frames of assets/qsme/walkthroughs/client-tenders.mp4),
-// labelled "Recreation of the app · mock data". No contacts, comparison, publish-to-market or "Quick Jobs" frames are used.
+//             phone-style frame; red marker on "Ask for quotes" (14.75) and "Invite" (15.1), marker note "Dave K." → Invite
+//             (15.4, holds 1.5 s)
+//   17.0–20.4 B  "Send one job to the trades you choose." Two muted, cropped walkthrough recreations stacked:
+//             tenders Step 1 "Tender details" with the title typing "Bathroom + deck" (overlay in the field's own font) and
+//             contacts "Add contact" (18.05) with the Name typing "Dave K." (overlay; the "auto-link" subline is covered;
+//             email, phone, notes, the list behind and every walkthrough caption are cropped out); marker "your Dave" (18.9)
+//   20.4–23.1 C  "Every quote covers the same lines." tenders Step 2 "Scope from SOQ" relabelled to Mel's job ("Bathroom + deck";
+//             rows "Strip-out" / "Waterproofing & tiling" / "Deck framing" tick 20.75, 21.05, 21.35), marker bracket (21.5)
+//             + note "same list → every quote" (21.75). No underline on "Pulled from your SOQ". Lines/$ column, totals,
+//             pointer and captions cropped out.
+//   23.1–25.0 D  callback: "Dave count: 1" (23.2) + green tick (23.45) / "— the one you invited." (23.6) / "Know which Dave." (24.1)
+//   25.0–30   end card: the tally shrinks into the upper-left corner, QSME logo (25.2), "Know which Dave." moves up,
+//             green button "Sign up at qsme.co.nz" (25.5, pulses 26.9 and 28.4). (Owner CTA rule 2026-10-03.)
+// Walkthrough crops come from motion/clips (muted JPEG frames of assets/qsme/walkthroughs/client-tenders.mp4 and
+// client-contacts.mp4), each labelled "Recreation of the app · mock data". Their mock text is swapped for Mel's job with
+// HTML overlays in the recreation's own font, size and colour (still mock data, still labelled). No comparison,
+// publish-to-market, "Quick Jobs", contact-list or "saved automatically" frames are used.
 (function () {
   'use strict';
   const R45 = document.body.classList.contains('r4x5');
   const SB = R45 ? 1530 : 1250;        // safe-box bottom in stage coords (4:5: frame 1290 + 240)
+  const SAFE_T = 300;                  // safe-box top in stage coords (both cuts)
   const q = R45 ? 1 : 0;
+  const L45 = q * 120;                 // 4:5: the comment list sits 120 px lower so the thread fills the feed frame
   const BODY = 2.5;                    // the thread section's own clock starts at reel 2.5 s
   const HOLD = 0.8;                    // extra hold on Mel's post card: thread keys at body >= 0.8 move by +0.8
   const $ = id => document.getElementById(id);
   const LOGO = 'qsme-logo.svg';
+  const centreTop = h => Math.round(SAFE_T + (SB - SAFE_T - h) / 2);
 
   // ---------------------------------------------------------------- markup
   const chrome = cls => `
@@ -42,11 +55,21 @@
       <svg class="abs" style="left:888px;top:144px" width="52" height="52" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="#1C1C1E" stroke-width="2.2"/><path d="M15.5 15.5L21 21" stroke="#1C1C1E" stroke-width="2.4" stroke-linecap="round"/></svg>
       <svg class="abs" style="left:966px;top:144px" width="52" height="52" viewBox="0 0 24 24"><g fill="#1C1C1E"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></g></svg>
     </div>`;
-  // a horizontal band of a source image (source px x0.., y0..y1) scaled by k, stacked at `top` inside its panel
+  // a band of a source image (source px x0.., y0..) scaled by k, positioned inside its panel (the iPhone still)
   const bandImg = (src, x0, y0, k, natW, id, extra) => `<img ${id ? `id="${id}" ` : ''}src="${src}" alt="" style="position:absolute;display:block;max-width:none;width:${(natW * k).toFixed(2)}px;left:${(-x0 * k).toFixed(2)}px;top:${(-y0 * k).toFixed(2)}px;${extra || ''}">`;
   const band = (top, w, h, inner, id) => `<div ${id ? `id="${id}" ` : ''}class="abs" style="left:0;top:${top.toFixed(2)}px;width:${w}px;height:${h.toFixed(2)}px;overflow:hidden">${inner}</div>`;
-  const chip = (id, text) => `<div class="chipw" style="display:flex;justify-content:center;margin-top:-21px;position:relative"><span id="${id}" class="rchip">${text}</span></div>`;
+  // a band of a 1920x1080 walkthrough frame (rows y0..y1 from x0) scaled by k. Everything inside is laid out in SOURCE px,
+  // so the overlays (covers + the swapped mock text) sit exactly on the recreation's own UI and scale with it.
+  const sband = (top, x0, y0, y1, k, img, inner, id, imgCls) => `<div ${id ? `id="${id}" ` : ''}class="abs" style="left:0;top:${top.toFixed(2)}px;width:950px;height:${((y1 - y0) * k).toFixed(2)}px;overflow:hidden"><div class="abs" style="left:0;top:0;width:1920px;height:1080px;transform-origin:0 0;transform:scale(${k}) translate(${-x0}px,${-y0}px)"><img ${imgCls ? `class="${imgCls}" ` : ''}src="${img}" alt="" style="position:absolute;left:0;top:0;width:1920px;height:1080px;max-width:none">${inner || ''}</div></div>`;
+  const cover = (x0, y0, x1, y1, bg, id) => `<div ${id ? `id="${id}" ` : ''}class="abs" style="left:${x0}px;top:${y0}px;width:${x1 - x0}px;height:${y1 - y0}px;background:${bg}"></div>`;
+  // mock text in the recreation's font (Inter, calibrated on the source frames: ink width + baseline)
+  // (a 0.3 px source blur matches the softness of the upscaled 1080p recreation, so the swapped text doesn't look pasted on)
+  const utext = (x, top, size, weight, col, text, id) => `<div ${id ? `id="${id}" ` : ''}class="abs" style="left:${x}px;top:${top}px;font:${weight} ${size}px/1 Inter;color:${col};white-space:nowrap;filter:blur(0.3px)">${text}</div>`;
+  const typed = (x, top, size, id) => `<div class="abs" style="left:${x}px;top:${top}px;font:400 ${size}px/1 Inter;color:#0F172A;white-space:nowrap;filter:blur(0.3px)"><span id="${id}T"></span><i id="${id}Car" class="car"></i></div>`;
+  const chip = (id, text, left) => `<div class="chipw" style="display:flex;justify-content:${left ? 'flex-start' : 'center'};${left ? 'padding-left:' + left + 'px;' : ''}margin-top:-21px;position:relative"><span id="${id}" class="rchip">${text}</span></div>`;
   const REC = 'Recreation of the app · mock data';
+  const frame = (dir, i) => `clips/${dir}/f_${String(i).padStart(5, '0')}.jpg`;
+  const INK = '#0F172A';
 
   // A — the real iPhone still (1440x2560): "Project" nav bar (y 56–240) + tile grid (y 920–1330), x 150–1290
   const PHONE = '../../../assets/qsme/phone/04-project.png';
@@ -54,26 +77,40 @@
   const kP = 950 / (PH.x1 - PH.x0);
   PH.navH = (PH.nav[1] - PH.nav[0]) * kP; PH.gridH = (PH.grid[1] - PH.grid[0]) * kP; PH.h = PH.navH + PH.gridH;
   const phX = x => (x - PH.x0) * kP, phY = y => PH.navH + (y - PH.grid[0]) * kP;   // grid source px → panel px
-  const capA = 330 + q * 150, phTop = capA + 236;
 
-  // B/C — tenders recreation, Step 2 (1920x1080 frames): heading y 240–392 + pocket rows, x 664.. at 1.6x
-  const SOQ0 = 'clips/tender-soq/f_00000.jpg', SOQ1 = 'clips/tender-soq/f_00091.jpg';   // 0 ticked / 3 ticked, both pointer-free
-  const SQ = { x0: 664, k: 1.6, head: [240, 392], rows: [[453, 517], [517, 580], [580, 643], [643, 707]] };
-  const sqHeadH = (SQ.head[1] - SQ.head[0]) * SQ.k;
-  const sqRowTop = i => sqHeadH + (SQ.rows[i][0] - SQ.rows[0][0]) * SQ.k;
-  const sqY = y => sqHeadH + (y - SQ.rows[0][0]) * SQ.k;        // row-area source y → panel y
-  const sqH = sqRowTop(3) + (SQ.rows[3][1] - SQ.rows[3][0]) * SQ.k;
-  const capBC = 330 + q * 130, sqTop = capBC + 220;
-  const sqRows = SQ.rows.map(([y0, y1], i) => band(sqRowTop(i), 950, (y1 - y0) * SQ.k,
-    bandImg(SOQ0, SQ.x0, y0, SQ.k, 1920) + (i < 3 ? bandImg(SOQ1, SQ.x0, y0, SQ.k, 1920, 'tk' + i, 'opacity:0') : ''))).join('');
-  const taps = [0, 1, 2].map(i => `<div id="tap${i}" class="tap abs" style="left:${((709 - SQ.x0) * SQ.k - 40).toFixed(1)}px;top:${(sqY((SQ.rows[i][0] + SQ.rows[i][1]) / 2) - 40).toFixed(1)}px"></div>`).join('');
+  // B1 — tenders Step 1 (tender-step1 = client-tenders 3.5–5.5 s, 1920x1080): "Tender details" heading, subline, title label
+  //      and field, x 664.. at 1.95x (the field runs off the right edge; the pointer stays at x ≥ 1490), y 318–498.
+  //      The field's text (placeholder, then "Civils & Earthworks Package") is covered; "Bathroom + deck" types on top.
+  const S1 = { dir: 'tender-step1', n: 60, x0: 664, y0: 318, y1: 498, k: 1.95 };
+  S1.h = (S1.y1 - S1.y0) * S1.k;
+  // B2 — contacts "Add contact" (contacts-add = client-contacts 4.2–6.4 s): two bands at 1.95x from x 730 — heading (y 204–262,
+  //      the "They'll auto-link to their QSME account by email" subline covered) and Name label + field (y 284–370).
+  //      From the first typed frame the field's text is covered and "Dave K." types on top.
+  const CT = { dir: 'contacts-add', x0: 730, k: 1.95, b1: [204, 262], b2: [284, 370] };
+  CT.h1 = (CT.b1[1] - CT.b1[0]) * CT.k; CT.h = CT.h1 + (CT.b2[1] - CT.b2[0]) * CT.k;
+  const ctX = x => (x - CT.x0) * CT.k, ctY = y => (y <= CT.b1[1] ? (y - CT.b1[0]) * CT.k : CT.h1 + (y - CT.b2[0]) * CT.k);
 
-  // D — callback block (9:16 top; 4:5 adds 140)
+  // C — tenders Step 2 "Scope from SOQ" (tender-soq = client-tenders 7.85–10.95 s): heading, subline, "Pulled from your SOQ"
+  //     strip and the first three pocket rows, x 664.. at 1.9x, y 296–643. Unticked rows from f_00000, ticked from f_00091
+  //     (both pointer-free). The project name and the three row labels are swapped for Mel's job.
+  const SOQ0 = frame('tender-soq', 0), SOQ1 = frame('tender-soq', 91);
+  const SQ = { x0: 664, k: 1.9, y0: 296, y1: 643, rows: [[453, 517], [517, 580], [580, 643]], base: [491.5, 554.5, 617.5] };
+  const sqY = y => (y - SQ.y0) * SQ.k, sqX = x => (x - SQ.x0) * SQ.k;
+  const sqH = (SQ.y1 - SQ.y0) * SQ.k;
+  const ROWS = ['Strip-out', 'Waterproofing &amp; tiling', 'Deck framing'];
+  const LBL = { x: 736, size: 16.85 }, LBLtop = b => +(b - 0.8633 * LBL.size).toFixed(2);   // Inter, line-height 1: baseline at 0.8633em
+  const rowText = (bg, pre) => SQ.base.map((b, i) => cover(732, Math.round(b - 17), 1110, Math.round(b + 6), bg) + utext(LBL.x, LBLtop(b), LBL.size, 600, INK, ROWS[i], pre ? pre + i : '')).join('');
+  const sqTicks = SQ.rows.map(([y0, y1], i) => sband(sqY(y0), SQ.x0, y0, y1, SQ.k, SOQ1, rowText('#E1F4E8'), 'tk' + i)).join('');
+  const taps = [0, 1, 2].map(i => `<div id="tap${i}" class="tap abs" style="left:${(sqX(709) - 40).toFixed(1)}px;top:${(sqY((SQ.rows[i][0] + SQ.rows[i][1]) / 2) - 40).toFixed(1)}px"></div>`).join('');
+
+  // D — callback block (9:16 top; 4:5 adds 140); E — end card: "Know which Dave." moves up 90, logo above, button below
   const dTop = 560 + q * 140;
+  const knowTop = dTop + 300, knowEnd = knowTop - 90;
+  const logoTop = knowEnd - 181 - 56, pillTop = knowEnd + 154 + 52;
 
   $('stage').innerHTML = `
   <div id="app">
-    <div id="viewport" class="abs" data-qa-ignore style="height:${SB - 510}px"><div id="list"></div></div>
+    <div id="viewport" class="abs" data-qa-ignore style="height:${SB - 510}px"><div id="list" style="top:${90 + L45}px"></div></div>
     <div class="fade abs" style="top:500px;height:100px;background:linear-gradient(#fff 75%,rgba(255,255,255,0))"></div>
     <div class="fade abs" style="top:${SB - 56}px;height:56px;background:linear-gradient(rgba(255,255,255,0),#fff)"></div>
     ${chrome()}
@@ -96,16 +133,16 @@
     <div id="tallyWrap" class="abs" style="left:80px;top:420px;transform:rotate(3deg);transform-origin:0 50%">
       <div id="tinner" style="position:relative;height:80px">
         <div id="tlabel" class="mk" style="left:0">Dave count:</div>
-        <div id="tv1" class="mk">1</div><div id="tv3" class="mk">3</div><div id="tv6" class="mk">6 (ish)</div><div id="tvq" class="mk">?</div>
-        <svg id="x1" class="abs"></svg><svg id="x3" class="abs"></svg><svg id="x6" class="abs"></svg>
+        <div id="tv1" class="mk">1</div><div id="tv3" class="mk">3</div><div id="tv5" class="mk">5</div><div id="tv6" class="mk">6 (ish)</div><div id="tvq" class="mk">?</div>
+        <svg id="x1" class="abs"></svg><svg id="x3" class="abs"></svg><svg id="x5" class="abs"></svg><svg id="x6" class="abs"></svg>
       </div>
     </div>
   </div>
 
   <div id="qsme" class="abs">
     <!-- A: the real iPhone app still -->
-    <div class="capwrap abs" style="top:${capA}px"><div id="capA" class="cap">Or just put the actual<br>job on <span class="g">QSME</span>.</div></div>
-    <div id="gPhone" class="grp abs" style="left:65px;width:950px;top:${phTop}px">
+    <div id="capAw" class="capwrap abs" style="top:330px"><div id="capA" class="cap">Or. Put the actual<br>job on <span class="g">QSME</span>.</div></div>
+    <div id="gPhone" class="grp abs" style="left:65px;width:950px;top:566px">
       <div class="panel dark phone" style="position:relative;height:${PH.h.toFixed(2)}px">
         <div id="phZoom" class="abs" style="left:0;top:0;width:950px;height:${PH.h.toFixed(2)}px;transform-origin:830px 327px">
           ${band(0, 950, PH.navH, bandImg(PHONE, PH.x0, PH.nav[0], kP, 1440))}
@@ -113,39 +150,52 @@
           <svg id="mkAsk" class="abs"></svg><svg id="mkInv" class="abs"></svg>
         </div>
       </div>
-      ${chip('chA', 'QSME iPhone app · demo data')}
+      ${chip('chA', 'QSME iPhone app · demo data', 24)}
       <svg id="arrA" class="abs"></svg>
       <div id="daveA" class="mk abs" style="left:610px;top:${(PH.h + 52).toFixed(1)}px;font-size:60px;line-height:72px;color:#F0473C;transform-origin:0 50%">Dave K.</div>
     </div>
 
-    <!-- B + C: one recreation (Step 2, scope from SOQ), two captions -->
-    <div class="capwrap abs" style="top:${capBC}px"><div id="capB" class="cap s">Send one job to the<br>trades you choose.</div></div>
-    <div class="capwrap abs" style="top:${capBC}px"><div id="capC" class="cap s">They all quote on<br>the same lines.</div></div>
-    <div id="gSoq" class="grp abs" style="left:65px;width:950px;top:${sqTop}px">
+    <!-- B: tenders Step 1 + contacts, one caption -->
+    <div id="capBw" class="capwrap abs" style="top:330px"><div id="capB" class="cap s">Send one job to the<br>trades you choose.</div></div>
+    <div id="gB" class="grp abs" style="left:65px;width:950px;top:550px">
+      <div id="gS1" class="abs" style="left:0;top:0;width:950px">
+        <div class="panel" style="position:relative;height:${S1.h.toFixed(2)}px">
+          <div id="s1Zoom" class="abs" style="left:0;top:0;width:950px;height:${S1.h.toFixed(2)}px;transform-origin:200px 200px">
+            ${sband(0, S1.x0, S1.y0, S1.y1, S1.k, frame(S1.dir, 0), cover(686, 450, 1400, 488, '#FFFFFF') + typed(694, 460.2, 16.8, 's1'), '', 's1img')}
+          </div>
+        </div>
+        ${chip('chS1', REC)}
+      </div>
+      <div id="gCt" class="abs" style="left:0;top:0;width:950px">
+        <div class="panel" style="position:relative;height:${CT.h.toFixed(2)}px">
+          ${sband(0, CT.x0, CT.b1[0], CT.b1[1], CT.k, frame(CT.dir, 0), cover(797, 242, 1180, 262, '#FFFFFF'), '', 'ctimg')}
+          ${sband(CT.h1, CT.x0, CT.b2[0], CT.b2[1], CT.k, frame(CT.dir, 0), `<div id="ctOv" style="opacity:0">${cover(750, 320, 1400, 358, '#FFFFFF')}${typed(760.5, 330.2, 16.6, 'ct')}</div>`, '', 'ctimg')}
+          <svg id="arrCt" class="abs"></svg>
+          <div id="daveCt" class="mk abs" style="font-size:54px;line-height:64px;color:#E0302A;transform-origin:0 50%">your Dave</div>
+        </div>
+        ${chip('chCt', REC)}
+      </div>
+    </div>
+
+    <!-- C: tenders Step 2, scope from SOQ, relabelled to Mel's job -->
+    <div id="capCw" class="capwrap abs" style="top:330px"><div id="capC" class="cap s">Every quote covers<br>the same lines.</div></div>
+    <div id="gSoq" class="grp abs" style="left:65px;width:950px;top:550px">
       <div class="panel" style="position:relative;height:${sqH.toFixed(2)}px">
-        <div id="sqZoom" class="abs" style="left:0;top:0;width:950px;height:${sqH.toFixed(2)}px;transform-origin:285px 260px">
-          ${band(0, 950, sqHeadH, bandImg(SOQ0, SQ.x0, SQ.head[0], SQ.k, 1920))}
-          ${sqRows}
+        <div id="sqZoom" class="abs" style="left:0;top:0;width:950px;height:${sqH.toFixed(2)}px;transform-origin:285px 320px">
+          ${sband(0, SQ.x0, SQ.y0, SQ.y1, SQ.k, SOQ0, cover(885, 411, 1140, 432, '#E5ECFE') + utext(889, 413.45, 15, 600, '#1E3A8A', 'Bathroom + deck') + rowText('#FFFFFF', 'lb'))}
+          ${sqTicks}
           ${taps}
-          <svg id="mkPick" class="abs"></svg><svg id="mkBr" class="abs"></svg>
+          <svg id="mkBr" class="abs"></svg>
+          <div id="noteC" class="mk abs" style="font-size:50px;line-height:60px;color:#E0302A;transform-origin:0 50%">same list<br><svg id="noteArr" width="46" height="30" viewBox="0 0 46 30" style="display:inline-block;vertical-align:middle;margin:0 10px 0 2px;overflow:visible"><path d="M3 16 C14 14 26 15.5 39 14.5" fill="none" stroke="#E0302A" stroke-width="5" stroke-linecap="round"/><path d="M29 5.5 L40.5 14.5 L30 23.5" fill="none" stroke="#E0302A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>every quote</div>
         </div>
       </div>
       ${chip('chC', REC)}
     </div>
 
-    <!-- D: the callback -->
-    <div id="know" class="abs" style="top:${dTop + 300}px"><div id="knowC" class="cap">Know which Dave.</div></div>
-
-    <!-- end card -->
-    <div id="end" class="abs">
-      <div id="logo" class="abs" style="top:${596 + q * 140}px"><img src="${LOGO}" alt="" style="width:708.5px;left:-90.1px;top:-77px"></div>
-      <div id="cta" class="abs" style="top:${836 + q * 140}px">
-        <div id="ctaA">Free to join.</div>
-        <div id="ctaB" class="ctaL"><span>No listing fee on tenders.</span></div>
-        <div id="ctaB2" class="ctaL"><span>Inviting your own tradie is <b>always free</b>.</span></div>
-        <div id="ctaCw"><span id="ctaC">Create a project, free · qsme.co.nz</span></div>
-      </div>
-    </div>
+    <!-- D: the callback; E: end card -->
+    <div id="know" class="abs" style="top:${knowTop}px"><div id="knowC" class="cap">Know which Dave.</div></div>
+    <div id="logo" class="abs" style="top:${logoTop}px"><img src="${LOGO}" alt="" style="width:708.5px;left:-90.1px;top:-77px"></div>
+    <div id="cta" class="abs" style="top:${pillTop}px"><span id="ctaC">Sign up at qsme.co.nz</span></div>
 
     <div id="t2pos" class="abs" style="left:65px;top:${dTop}px;transform-origin:0 0">
       <div id="t2wrap" style="position:relative;transform:rotate(2deg);transform-origin:50% 50%">
@@ -171,8 +221,9 @@
   </div>`;
   // chip + small helpers (kept here so the label reads the same on every recreation)
   const st = document.createElement('style');
-  st.textContent = `.rchip{font:500 22px/1 'JetBrains Mono',monospace;color:#CBD5E1;background:#0B1226;border:2px solid rgba(248,250,252,.28);border-radius:999px;padding:10px 20px 11px;white-space:nowrap;letter-spacing:.01em}
-    .tap{width:80px;height:80px;border-radius:50%;background:rgba(15,23,42,.22);opacity:0;visibility:hidden}`;
+  st.textContent = `.rchip{font:500 28px/1 'JetBrains Mono',monospace;color:#CBD5E1;background:#0B1226;border:2px solid rgba(248,250,252,.28);border-radius:999px;padding:10px 22px 11px;white-space:nowrap;letter-spacing:.005em}
+    .tap{width:80px;height:80px;border-radius:50%;background:rgba(15,23,42,.22);opacity:0;visibility:hidden}
+    .car{position:absolute;top:0;width:1.5px;height:18px;background:${INK};opacity:0}`;
   document.head.appendChild(st);
 
   // ---------------------------------------------------------------- seeded hand-drawn marker paths (same maths as reel-body.html / static.html)
@@ -222,6 +273,7 @@
   buildList($('hlist'), HITEMS, 'h');
   const circ = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); circ.id = 'circle'; circ.setAttribute('class', 'abs'); $('list').appendChild(circ);
 
+
   // ---------------------------------------------------------------- thread timeline (Figma-motion semantics, body clock)
   function bez(x1, y1, x2, y2) { return function (x) { if (x <= 0) return 0; if (x >= 1) return 1; let lo = 0, hi = 1, t = 0.5; for (let i = 0; i < 40; i++) { const cx = 3 * x1 * t * (1 - t) * (1 - t) + 3 * x2 * t * t * (1 - t) + t * t * t; if (Math.abs(cx - x) < 1e-6) break; if (cx < x) lo = t; else hi = t; t = (lo + hi) / 2; } return 3 * y1 * t * (1 - t) * (1 - t) + 3 * y2 * t * t * (1 - t) + t * t * t; }; }
   const EZ = { L: x => x, I: bez(.32, 0, .67, 0), O: bez(.33, 1, .68, 1), IO: bez(.65, 0, .35, 1), H: x => (x < 1 ? 0 : 1), SCROLL: bez(0.2, 0.7, 0.3, 1), SLAM: bez(0.5, 0, 0.9, 0.55), SWIPE: bez(0.7, 0, 0.25, 1) };
@@ -234,7 +286,7 @@
     const add = (id, f, k, fixed) => T.push({ id, f, k: k.map(a => ({ t: fixed ? a[0] : sh(a[0]), v: a[1], fn: EZ[a[2] || 'L'] })) });
     const pop = (id, t) => { add(id, 'OPACITY', [[t, 0], [t + 0.16, 1, 'O']]); add(id, 'TY', [[t, 36], [t + 0.24, 0, 'O']]); };
     const showAt = (id, t) => add(id, 'OPACITY', [[0, 0], [t, 1, 'H']]);
-    const top = M.itemTop, S = (i, y) => Math.round(y - M.listY0 - top[i]);
+    const top = M.itemTop, S = (i, y) => Math.round(y + L45 - M.listY0 - top[i]);
     const S1 = S(2, 840), S2 = S(3, 820), S3 = S(12, 640), S4 = S(17, 640);
     // 0.00–1.6 Mel's post card fills the screen; the underline draws once the post has been read (reel 3.05–3.4) and sits
     // for 0.7 s; the card collapses into the pinned strip at body 0.8 + HOLD (reel 4.1)
@@ -257,17 +309,24 @@
     add('list', 'TY', [[3.0, 0], [3.15, S1, 'SCROLL'], [4.35, S1], [4.5, S2, 'SCROLL'], [5.9, S2], [6.5, S3 - 18, 'SLAM'], [6.62, S3, 'O'], [8.5, S3], [8.8, S4, 'IO']]);
     add('list', 'BLUR', [[5.9, 0], [6.1, 7, 'I'], [6.42, 7], [6.5, 0], [8.5, 0], [8.6, 4, 'I'], [8.72, 4], [8.8, 0]]);
     add('circle', 'OPACITY', [[6.64, 0], [6.65, 1, 'H']]); add('circle', 'TRIM', [[6.65, 0], [7.0, 1, 'O']]);
-    // red-marker tally 1 → 3 → 6 (ish) → ?
+    // red-marker tally, counting the Daves as they arrive: 1 (Kerry) → 3 (Sam, reel 5.5) → 5 (Aroha, reel 6.65)
+    // → 6 (ish) (Jase, reel 7.95) → ? (after the slam on Dave K., reel 10.4). Each change: strike, rattle, new number.
     add('tlabel', 'OPACITY', [[1.15, 0], [1.25, 1, 'O']]); add('tlabel', 'SCALE', [[1.15, 1.18], [1.35, 1, 'O']]);
     add('tv1', 'OPACITY', [[1.15, 0], [1.25, 1, 'O'], [2.17, 1], [2.25, 0]]); add('tv1', 'SCALE', [[1.15, 1.4], [1.35, 1, 'O']]);
-    add('x1', 'OPACITY', [[2.04, 0], [2.05, 1, 'H'], [2.17, 1], [2.25, 0]]); add('x1', 'TRIM', [[2.05, 0], [2.17, 1, 'O']]);
-    add('tv3', 'OPACITY', [[2.2, 0], [2.28, 1, 'O'], [6.17, 1], [6.25, 0]]); add('tv3', 'SCALE', [[2.2, 1.4], [2.4, 1, 'O']]);
-    add('x3', 'OPACITY', [[6.0, 0], [6.01, 1, 'H'], [6.17, 1], [6.25, 0]]); add('x3', 'TRIM', [[6.01, 0], [6.13, 1, 'O']]);
-    add('tv6', 'OPACITY', [[6.2, 0], [6.28, 1, 'O'], [7.07, 1], [7.15, 0]]); add('tv6', 'SCALE', [[6.2, 1.4], [6.4, 1, 'O']]);
-    add('x6', 'OPACITY', [[6.94, 0], [6.95, 1, 'H'], [7.07, 1], [7.15, 0]]); add('x6', 'TRIM', [[6.95, 0], [7.07, 1, 'O']]);
-    add('tvq', 'OPACITY', [[7.1, 0], [7.18, 1, 'O']]); add('tvq', 'SCALE', [[7.1, 1.5], [7.32, 1, 'O']]);
-    add('tinner', 'ROT', [[5.95, 0], [6.02, 5], [6.09, -4], [6.16, 4], [6.23, -3], [6.3, 0, 'O']]);
-    add('tinner', 'TX', [[5.95, 0], [6.02, -6], [6.09, 6], [6.16, -5], [6.23, 4], [6.3, 0, 'O']]);
+    const change = (x, from, to, s, toEnd) => {
+      add(x, 'OPACITY', [[s - 0.01, 0], [s, 1, 'H'], [s + 0.12, 1], [s + 0.2, 0]]); add(x, 'TRIM', [[s, 0], [s + 0.12, 1, 'O']]);
+      return [s + 0.12, s + 0.2, s + 0.15];   // old number fades 0.12–0.2 after the strike starts; new one pops at +0.15
+    };
+    const keysOf = (tin, tout) => { const k = [[tin, 0], [tin + 0.08, 1, 'O']]; if (tout) k.push([tout[0], 1], [tout[1], 0]); return k; };
+    const c13 = change('x1', 'tv1', 'tv3', 2.05), c35 = change('x3', 'tv3', 'tv5', 3.2), c56 = change('x5', 'tv5', 'tv6', 4.5), c6q = change('x6', 'tv6', 'tvq', 6.94);
+    add('tv3', 'OPACITY', keysOf(c13[2], c35)); add('tv3', 'SCALE', [[c13[2], 1.4], [c13[2] + 0.2, 1, 'O']]);
+    add('tv5', 'OPACITY', keysOf(c35[2], c56)); add('tv5', 'SCALE', [[c35[2], 1.4], [c35[2] + 0.2, 1, 'O']]);
+    add('tv6', 'OPACITY', keysOf(c56[2], c6q)); add('tv6', 'SCALE', [[c56[2], 1.4], [c56[2] + 0.2, 1, 'O']]);
+    add('tvq', 'OPACITY', keysOf(c6q[2])); add('tvq', 'SCALE', [[c6q[2], 1.5], [c6q[2] + 0.22, 1, 'O']]);
+    // a short rattle on every change (the same shake the 3 → 6 change had)
+    const rot = [[0, 0]], tx = [[0, 0]];
+    [2.05, 3.2, 4.5, 6.94].forEach(s => { rot.push([s, 0], [s + 0.035, 5], [s + 0.07, -4], [s + 0.105, 3], [s + 0.17, 0, 'O']); tx.push([s, 0], [s + 0.035, -6], [s + 0.07, 6], [s + 0.105, -4], [s + 0.17, 0, 'O']); });
+    add('tinner', 'ROT', rot); add('tinner', 'TX', tx);
     // body 11.4–11.8 (reel 13.9–14.3) the group app swipes away to QSME
     add('app', 'TX', [[10.6, 0], [11.0, -1080, 'SWIPE']]);
     add('qsme', 'TX', [[10.6, 0], [11.0, -1080, 'SWIPE']]);
@@ -301,39 +360,72 @@
   Kit.add('#hk2', 'rotate', [[1.3, -3], [1.46, -1.5, 'slam']]);
 
   // ---------------------------------------------------------------- QSME product beat (reel time)
-  // A 14.3–17.0: the real iPhone app still
+  // A 14.3–17.0: the real iPhone app still; the "Dave K." note is in by 15.5 and holds 1.4 s before the swipe
   Kit.pop('#capA', 14.3, { dy: 30 }); Kit.add('#capA', 'opacity', [[16.85, 1], [17.0, 0, 'in']]); Kit.add('#capA', 'y', [[16.85, 0], [17.0, -24, 'in']]);
   Kit.pop('#gPhone', 14.35, { dy: 44, dur: 0.32, fade: 0.2 });
   Kit.add('#phZoom', 'scale', [[14.5, 1], [16.95, 1.02, 'inOut']]);
-  Kit.add('#daveA', 'opacity', [[16.1, 0], [16.2, 1, 'out']]); Kit.add('#daveA', 'scale', [[16.1, 1.25], [16.3, 1, 'out']]); Kit.add('#daveA', 'rotate', [[0, -3]]);
+  Kit.add('#daveA', 'opacity', [[15.4, 0], [15.5, 1, 'out']]); Kit.add('#daveA', 'scale', [[15.4, 1.25], [15.6, 1, 'out']]); Kit.add('#daveA', 'rotate', [[0, -3]]);
   Kit.add('#gPhone', 'x', [[16.9, 0], [17.22, -1100, 'swipe']]);
-  // B 17.0–20.0 and C 20.0–22.9: one recreation, two captions
-  Kit.add('#gSoq', 'x', [[16.9, 1100], [17.22, 0, 'swipe']]);
-  Kit.add('#sqZoom', 'scale', [[17.25, 1], [22.8, 1.025, 'inOut']]);
-  Kit.pop('#capB', 17.05, { dy: 30 }); Kit.add('#capB', 'opacity', [[19.8, 1], [19.95, 0, 'in']]); Kit.add('#capB', 'y', [[19.8, 0], [19.95, -24, 'in']]);
-  [18.3, 18.8, 19.3].forEach((t, i) => {
+
+  // B 17.0–20.4: tenders Step 1 (title types "Bathroom + deck") + contacts (name types "Dave K."), "Send one job to the trades you choose."
+  Kit.add('#gB', 'x', [[16.9, 1100], [17.22, 0, 'swipe'], [20.25, 0], [20.57, -1100, 'swipe']]);
+  Kit.pop('#capB', 17.05, { dy: 30 }); Kit.add('#capB', 'opacity', [[20.25, 1], [20.4, 0, 'in']]); Kit.add('#capB', 'y', [[20.25, 0], [20.4, -24, 'in']]);
+  Kit.add('#s1Zoom', 'scale', [[17.2, 1], [20.3, 1.02, 'inOut']]);
+  Kit.pop('#gCt', 18.05, { dy: 40, dur: 0.3, fade: 0.2 });
+  Kit.add('#daveCt', 'opacity', [[18.9, 0], [19.0, 1, 'out']]); Kit.add('#daveCt', 'scale', [[18.9, 1.25], [19.1, 1, 'out']]); Kit.add('#daveCt', 'rotate', [[0, -4]]);
+  // footage: a pure function of t (frame index clamped to the clip), so any frame renders the same on its own. The typed
+  // overlays follow the clip's own typing: the title over tender-step1 frames 1–17 (the field loses focus at 19), the
+  // name over contacts-add frames 15–25 (the field's own placeholder shows until 14; it stays focused to the end, 31).
+  const clipFrame = (t, t0, from, speed, n) => Math.max(from, Math.min(n - 1, from + Math.floor(Math.max(0, t - t0) * 30 * speed + 1e-6)));
+  const S1T = 'Bathroom + deck', CTT = 'Dave K.', T_S1 = 17.25, SP_S1 = 0.9, T_CT = 18.1, SP_CT = 1.0;
+  const s1img = document.querySelector('.s1img'), ctimgs = [...document.querySelectorAll('.ctimg')];
+  const s1T = $('s1T'), s1Car = $('s1Car'), ctT = $('ctT'), ctCar = $('ctCar'), ctOv = $('ctOv');
+  const blinkOn = (t, t0) => Math.floor(Math.max(0, t - t0) * 2.4) % 2 === 0;
+  Kit.each(t => {
+    const fa = clipFrame(t, T_S1, 0, SP_S1, S1.n), a = frame(S1.dir, fa);
+    if (s1img.getAttribute('src') !== a) s1img.setAttribute('src', a);
+    const na = Math.max(0, Math.min(S1T.length, Math.round((fa - 1) / 16 * S1T.length)));
+    if (s1T.textContent !== S1T.slice(0, na)) s1T.textContent = S1T.slice(0, na);
+    s1Car.style.left = (s1T.offsetWidth + 1) + 'px';
+    s1Car.style.opacity = fa < 19 && ((na > 0 && na < S1T.length) || blinkOn(t, T_S1)) ? 1 : 0;
+    const fb = clipFrame(t, T_CT, 8, SP_CT, 32), b = frame(CT.dir, fb);
+    ctimgs.forEach(im => { if (im.getAttribute('src') !== b) im.setAttribute('src', b); });
+    const nb = fb < 15 ? -1 : Math.min(CTT.length, Math.round((fb - 14) / 11 * CTT.length));
+    ctOv.style.opacity = nb < 0 ? 0 : 1;
+    if (ctT.textContent !== CTT.slice(0, Math.max(0, nb))) ctT.textContent = CTT.slice(0, Math.max(0, nb));
+    ctCar.style.left = (ctT.offsetWidth + 1) + 'px';
+    ctCar.style.opacity = nb >= 0 && ((nb < CTT.length) || blinkOn(t, T_CT)) ? 1 : 0;
+  });
+
+  // C 20.4–23.1: Scope from SOQ (Mel's job), "Every quote covers the same lines."
+  Kit.add('#gSoq', 'x', [[20.25, 1100], [20.57, 0, 'swipe']]);
+  Kit.add('#sqZoom', 'scale', [[20.6, 1], [22.95, 1.02, 'inOut']]);
+  Kit.pop('#capC', 20.42, { dy: 30 }); Kit.add('#capC', 'opacity', [[22.95, 1], [23.1, 0, 'in']]); Kit.add('#capC', 'y', [[22.95, 0], [23.1, -24, 'in']]);
+  [20.75, 21.05, 21.35].forEach((t, i) => {
     Kit.add('#tk' + i, 'opacity', [[t, 0], [t + 0.1, 1, 'out']]);
     Kit.add('#tap' + i, 'opacity', [[t - 0.08, 0], [t - 0.02, 1], [t + 0.22, 0, 'out']]);
     Kit.add('#tap' + i, 'scale', [[t - 0.08, 0.45], [t + 0.22, 1.25, 'out']]);
   });
-  Kit.pop('#capC', 20.0, { dy: 30 }); Kit.add('#capC', 'opacity', [[22.75, 1], [22.9, 0, 'in']]); Kit.add('#capC', 'y', [[22.75, 0], [22.9, -24, 'in']]);
-  Kit.add('#gSoq', 'opacity', [[22.8, 1], [23.05, 0, 'in']]);
-  Kit.add('#gSoq', 'scale', [[22.8, 1], [23.05, 0.94, 'out']]);
-  // D 22.9–25.9: the callback, big and centred (no sound needed: the tick pops)
-  Kit.add('#t2label', 'opacity', [[23.0, 0], [23.1, 1, 'out']]); Kit.add('#t2label', 'scale', [[23.0, 1.18], [23.2, 1, 'out']]);
-  Kit.add('#t2v', 'opacity', [[23.0, 0], [23.1, 1, 'out']]); Kit.add('#t2v', 'scale', [[23.0, 1.4], [23.2, 1, 'out']]);
-  Kit.add('#tick', 'scale', [[23.46, 1], [23.6, 1.22, 'out'], [23.8, 1, 'out']]);
-  Kit.pop('#t2sub', 23.6, { dy: 18 }); Kit.out('#t2sub', 25.7, 0.15);
-  Kit.add('#knowC', 'opacity', [[24.15, 0], [24.35, 1, 'out'], [25.7, 1], [25.85, 0]]);
-  Kit.add('#knowC', 'scale', [[24.15, 0.9], [24.45, 1, 'outBack']]);
-  // end card 25.85–30
-  Kit.fade('#end', 25.85, 26.15);
-  Kit.fade('#logo', 26.0, 26.3); Kit.add('#logo', 'scale', [[26.0, 0.94], [26.4, 1, 'out']]);
-  Kit.pop('#ctaA', 26.25, { dy: 28 }); Kit.pop('#ctaB', 26.45, { dy: 28 }); Kit.pop('#ctaB2', 26.65, { dy: 28 }); Kit.pop('#ctaC', 26.85, { dy: 28 });
+  Kit.add('#noteC', 'opacity', [[21.75, 0], [21.85, 1, 'out']]); Kit.add('#noteC', 'scale', [[21.75, 1.2], [21.95, 1, 'out']]); Kit.add('#noteC', 'rotate', [[0, -3]]);
+  Kit.add('#gSoq', 'opacity', [[22.95, 1], [23.2, 0, 'in']]);
+  Kit.add('#gSoq', 'scale', [[22.95, 1], [23.2, 0.94, 'out']]);
+
+  // D 23.1–25.0: the callback, big and centred (no sound needed: the tick pops)
+  Kit.add('#t2label', 'opacity', [[23.2, 0], [23.3, 1, 'out']]); Kit.add('#t2label', 'scale', [[23.2, 1.18], [23.4, 1, 'out']]);
+  Kit.add('#t2v', 'opacity', [[23.2, 0], [23.3, 1, 'out']]); Kit.add('#t2v', 'scale', [[23.2, 1.4], [23.4, 1, 'out']]);
+  Kit.add('#tick', 'scale', [[23.62, 1], [23.76, 1.22, 'out'], [23.96, 1, 'out']]);
+  Kit.pop('#t2sub', 23.6, { dy: 18 }); Kit.out('#t2sub', 24.85, 0.15);
+  Kit.add('#knowC', 'opacity', [[24.1, 0], [24.3, 1, 'out']]);
+  Kit.add('#knowC', 'scale', [[24.1, 0.9], [24.4, 1, 'outBack']]);
+  // E 25.0–30: end card. "Know which Dave." stays and moves up; logo, then the sign-up button (in by 25.6, holds 4.4 s)
+  Kit.add('#know', 'y', [[25.0, 0], [25.4, knowEnd - knowTop, 'inOut']]);
+  Kit.fade('#logo', 25.2, 25.5); Kit.add('#logo', 'scale', [[25.2, 0.94], [25.6, 1, 'out']]);
+  Kit.pop('#ctaC', 25.5, { dy: 28 });
+  Kit.add('#ctaC', 'scale', [[26.9, 1], [27.1, 1.045, 'out'], [27.35, 1, 'inOut'], [28.4, 1], [28.6, 1.045, 'out'], [28.85, 1, 'inOut']]);
 
   // ---------------------------------------------------------------- layout that needs measuring
   const setup = (async () => {
-    await Promise.all(['400 50px Inter', '500 30px Inter', '600 30px Inter', '800 104px Inter', '800 60px Manrope', '66px "Permanent Marker"', '500 22px "JetBrains Mono"'].map(f => document.fonts.load(f)));
+    await Promise.all(['400 50px Inter', '500 30px Inter', '600 30px Inter', '400 17px Inter', '600 17px Inter', '800 104px Inter', '800 60px Manrope', '66px "Permanent Marker"', '500 28px "JetBrains Mono"'].map(f => document.fonts.load(f)));
     await document.fonts.ready;
     // Mel's card: centred in the safe box
     const card = $('card'), morph = $('morph');
@@ -345,10 +437,10 @@
     const r2 = rel($('mbl2'), pt); markerAt($('u2'), underlinePts(r2.w + 6).map(([x, y]) => [x + r2.x - 3, y + r2.y + r2.h - 3]), 4.5, '#E0302A');
     // tally values + strike-outs
     const lw = $('tlabel').offsetWidth, vx = lw + 20;
-    ['tv1', 'tv3', 'tv6', 'tvq'].forEach(id => $(id).style.left = vx + 'px');
-    [['x1', 'tv1'], ['x3', 'tv3'], ['x6', 'tv6']].forEach(([x, v]) => { const w = $(v).offsetWidth; markerAt($(x), strikePts(w, 80).map(([a, b]) => [a + vx, b]), 6, '#E0302A'); });
+    ['tv1', 'tv3', 'tv5', 'tv6', 'tvq'].forEach(id => $(id).style.left = vx + 'px');
+    [['x1', 'tv1'], ['x3', 'tv3'], ['x5', 'tv5'], ['x6', 'tv6']].forEach(([x, v]) => { const w = $(v).offsetWidth; markerAt($(x), strikePts(w, 80).map(([a, b]) => [a + vx, b]), 6, '#E0302A'); });
     $('tinner').style.width = (vx + $('tv6').offsetWidth) + 'px';
-    // callback tally (120px marker) + big green tick, centred; at 25.9–26.3 it shrinks into the upper-left corner
+    // callback tally (120px marker) + big green tick, centred; at 25.0–25.4 it shrinks into the upper-left corner
     const lw2 = $('t2label').offsetWidth; $('t2v').style.left = (lw2 + 30) + 'px';
     const tx0 = lw2 + 30 + $('t2v').offsetWidth + 34, sz = 108;
     markerAt($('tick'), [[tx0, 45 + sz * 0.5], [tx0 + sz * 0.38, 45 + sz * 0.9], [tx0 + sz * 1.05, 45 - 7]], 13, '#3DC023');
@@ -358,10 +450,10 @@
     const L0 = Math.round((1080 - W2) / 2);
     $('t2pos').style.left = L0 + 'px';
     const sEnd = 41 / 120;   // ends at the old corner size (66px marker × 0.62)
-    Kit.add('#t2pos', 'x', [[25.9, 0], [26.3, 80 - L0, 'inOut']]);
-    Kit.add('#t2pos', 'y', [[25.9, 0], [26.3, 330 - dTop, 'inOut']]);
-    Kit.add('#t2pos', 'scale', [[25.9, 1], [26.3, sEnd, 'inOut']]);
-    Kit.add('#tick path', 'trim', [[23.3, 0], [23.5, 1, 'out']]);
+    Kit.add('#t2pos', 'x', [[25.0, 0], [25.4, 80 - L0, 'inOut']]);
+    Kit.add('#t2pos', 'y', [[25.0, 0], [25.4, 330 - dTop, 'inOut']]);
+    Kit.add('#t2pos', 'scale', [[25.0, 1], [25.4, sEnd, 'inOut']]);
+    Kit.add('#tick path', 'trim', [[23.45, 0], [23.65, 1, 'out']]);
     // thread geometry + circle around Dave K.
     const itemTop = ITEMS.map((_, i) => $('c' + i).offsetTop);
     const db = $('c12').querySelector('.bub');
@@ -380,35 +472,59 @@
     markerAt($('hkCirc'), ellipsePts(nr.w / 2, nr.h / 2 + 4, nr.w / 2 + 14, nr.h / 2 + 10), 7, '#E0302A');
     Kit.add('#hkCirc path', 'trim', [[1.1, 0], [1.4, 1, 'out']]);
 
-    // iPhone still: red marker hugging the "Ask for quotes" and "Invite" tiles (tile boxes measured on the 1440x2560 capture);
+    // product beat layout: each beat (caption + panels + chips + marker notes) is centred in the safe box, so the
+    // cards use the frame down to the safe bottom instead of leaving it empty
+    const CAPGAP = 46, STACK = 26;
+    const chipBelow = Math.round($('chS1').parentElement.getBoundingClientRect().bottom - $('chS1').parentElement.previousElementSibling.getBoundingClientRect().bottom);
+    const place = (wrapId, capId, grpId, contentH, gap) => { const ch = $(capId).offsetHeight, top = centreTop(ch + gap + contentH); $(wrapId).style.top = top + 'px'; $(grpId).style.top = (top + ch + gap) + 'px'; return { top, capH: ch, grpTop: top + ch + gap, bottom: top + ch + gap + contentH }; };
+    const LA = place('capAw', 'capA', 'gPhone', PH.h + 52 + 72, 50);
+    const LB = place('capBw', 'capB', 'gB', S1.h + chipBelow + STACK + CT.h + chipBelow, CAPGAP);
+    $('gCt').style.top = (S1.h + chipBelow + STACK).toFixed(1) + 'px';
+    const LC = place('capCw', 'capC', 'gSoq', sqH + chipBelow, CAPGAP);
+
+    // A: red marker hugging the "Ask for quotes" and "Invite" tiles (tile boxes measured on the 1440x2560 capture);
     // the Invite ring stays inside stage x 1000 even at the end of the push-in
     const tile = (x0, x1, y0, y1, f, pad) => ({ cx: phX((x0 + x1) / 2), cy: phY((y0 + y1) / 2), rx: (x1 - x0) / 2 * kP * f + pad, ry: (y1 - y0) / 2 * kP + 10 });
-    const ask = tile(731, 992, 943, 1116, 1, 6), inv = tile(1015, 1276, 943, 1116, 0.82, 0);   // Ask clears its label; Invite stays inside x 1000
+    const ask = tile(731, 992, 943, 1116, 1, 6), inv = tile(1015, 1276, 943, 1116, 0.82, 0);
     markerAt($('mkAsk'), ellipsePts(ask.cx, ask.cy, ask.rx, ask.ry), 7, '#F0473C');
     markerAt($('mkInv'), ellipsePts(inv.cx, inv.cy, inv.rx, inv.ry, -0.2), 7, '#F0473C');
-    Kit.add('#mkAsk path', 'trim', [[15.15, 0], [15.5, 1, 'out']]);
-    Kit.add('#mkInv path', 'trim', [[15.7, 0], [16.05, 1, 'out']]);
+    Kit.add('#mkAsk path', 'trim', [[14.75, 0], [15.05, 1, 'out']]);
+    Kit.add('#mkInv path', 'trim', [[15.1, 0], [15.4, 1, 'out']]);
     // marker note: "Dave K." under the panel, arrow up through the gutter between "Daily log" and "AI SOQ" into the Invite ring
+    // (the chip is left-aligned so the arrow clears it)
     const gx = phX(1003.5), dv = $('daveA'), dvTop = PH.h + 52;
     const a0 = [gx - 4, dvTop - 6], a1 = [gx, phY(1290)], a2 = [gx + 2, phY(1170)], a3 = [gx + 8, phY(1128)], tip = [gx + 34, phY(1112)];
     const ang = Math.atan2(tip[1] - a3[1], tip[0] - a3[0]), hl = 26;
     const head = [[tip[0] - hl * Math.cos(ang - 0.5), tip[1] - hl * Math.sin(ang - 0.5)], tip, [tip[0] - hl * Math.cos(ang + 0.5), tip[1] - hl * Math.sin(ang + 0.5)]];
     markerMulti($('arrA'), [[a0, a1, a2, a3, tip], head], 6, '#F0473C');
     const ap = $('arrA').querySelectorAll('path');   // shaft, then the head (each path gets its own draw-on)
-    Kit.add(ap[0], 'trim', [[16.0, 0], [16.22, 1, 'out']]); Kit.add(ap[1], 'trim', [[16.2, 0], [16.3, 1, 'out']]);
+    Kit.add(ap[0], 'trim', [[15.3, 0], [15.5, 1, 'out']]); Kit.add(ap[1], 'trim', [[15.48, 0], [15.58, 1, 'out']]);
     dv.style.left = Math.round(gx - 60) + 'px';
-    // SOQ step: marker under "Pick the line items to put out to tender" (source x 680–983, baseline y 374)
-    markerAt($('mkPick'), underlinePts((983 - 680) * SQ.k + 10).map(([x, y]) => [x + (680 - SQ.x0) * SQ.k - 5, y + (374 - SQ.head[0]) * SQ.k + 4]), 7, '#E0302A');
-    Kit.add('#mkPick path', 'trim', [[17.55, 0], [17.95, 1, 'out']]);
-    // bracket on the three ticked rows (Civils & Earthworks → Structural Frame), drawn on the empty right side of the rows
-    const yA = sqY(459) + 4, yB = sqY(638) - 4, ym = (yA + yB) / 2, bx = 878;
-    markerAt($('mkBr'), [[bx - 30, yA], [bx - 6, yA + 6], [bx + 2, yA + 34], [bx + 3, ym - 26], [bx + 10, ym - 6], [bx + 30, ym], [bx + 10, ym + 6], [bx + 3, ym + 26], [bx + 2, yB - 34], [bx - 6, yB - 6], [bx - 30, yB]], 7, '#E0302A');
-    Kit.add('#mkBr path', 'trim', [[20.35, 0], [20.8, 1, 'out']]);
 
-    // end card: keep each line on one line inside the safe width
-    document.querySelectorAll('.ctaL > span').forEach(s => { let f = 46; while (s.offsetWidth > 940 && f > 34) { f--; s.parentElement.style.fontSize = f + 'px'; } });
-    const pill = $('ctaC'); let pf = 46; while (pill.offsetWidth > 940 && pf > 32) { pf--; pill.style.fontSize = pf + 'px'; pill.style.lineHeight = Math.round(pf * 1.22) + 'px'; }
-    return { cardH, cardTop, pinnedFont: fs, hookFont: hs, hkTop, SB, tallyW: W2, pillFont: pf };
+    // B2: "your Dave" in the empty right half of the Name field, arrow back to the typed "Dave K." (field x 745–1445,
+    // y 315–363; the name ends near x 821)
+    const dc = $('daveCt'), fy = ctY(339);
+    const noteX = Math.round(ctX(965)), noteY = Math.round(fy - 32);
+    dc.style.left = noteX + 'px'; dc.style.top = noteY + 'px';
+    const b0 = [noteX - 16, fy + 4], b1 = [ctX(920), fy + 10], b2 = [ctX(870), fy + 6], btip = [ctX(836), fy - 2];
+    const bang = Math.atan2(btip[1] - b2[1], btip[0] - b2[0]), bhl = 24;
+    const bhead = [[btip[0] - bhl * Math.cos(bang - 0.5), btip[1] - bhl * Math.sin(bang - 0.5)], btip, [btip[0] - bhl * Math.cos(bang + 0.5), btip[1] - bhl * Math.sin(bang + 0.5)]];
+    markerMulti($('arrCt'), [[b0, b1, b2, btip], bhead], 6, '#E0302A');
+    const bp = $('arrCt').querySelectorAll('path');
+    Kit.add(bp[0], 'trim', [[18.75, 0], [18.95, 1, 'out']]); Kit.add(bp[1], 'trim', [[18.92, 0], [19.0, 1, 'out']]);
+
+    // C: a bracket on the three ticked rows, just right of the longest new label, and the note beside it
+    const labelR = sqX(LBL.x) + Math.max(...[0, 1, 2].map(i => $('lb' + i).offsetWidth)) * SQ.k;
+    const yA = sqY(SQ.rows[0][0] + 9) + 2, yB = sqY(SQ.rows[2][1] - 16), ym = (yA + yB) / 2, bx = Math.round(labelR + 34);
+    markerAt($('mkBr'), [[bx - 30, yA], [bx - 6, yA + 6], [bx + 2, yA + 34], [bx + 3, ym - 26], [bx + 10, ym - 6], [bx + 30, ym], [bx + 10, ym + 6], [bx + 3, ym + 26], [bx + 2, yB - 34], [bx - 6, yB - 6], [bx - 30, yB]], 7, '#E0302A');
+    Kit.add('#mkBr path', 'trim', [[21.5, 0], [21.8, 1, 'out']]);
+    const nc = $('noteC'), ncX = bx + 46; let nf = 50;
+    while (ncX + nc.offsetWidth > 935 && nf > 36) { nf--; nc.style.fontSize = nf + 'px'; nc.style.lineHeight = Math.round(nf * 1.2) + 'px'; const s = nf / 50; const ar = $('noteArr'); ar.setAttribute('width', (46 * s).toFixed(1)); ar.setAttribute('height', (30 * s).toFixed(1)); }
+    nc.style.left = ncX + 'px'; nc.style.top = Math.round(ym - nc.offsetHeight / 2 + 4) + 'px';
+
+    // end card: button fits the safe width
+    const pill = $('ctaC'); let pf = 54; while (pill.offsetWidth > 940 && pf > 36) { pf--; pill.style.fontSize = pf + 'px'; }
+    return { cardH, cardTop, pinnedFont: fs, hookFont: hs, hkTop, SB, tallyW: W2, pillFont: pf, chipBelow, A: LA, B: LB, C: LC, S1h: Math.round(S1.h), CTh: Math.round(CT.h), sqH: Math.round(sqH), noteFont: nf, noteX: ncX, noteW: nc.offsetWidth, bracketX: bx };
   })();
 
   Kit.ready({ duration: 30 });

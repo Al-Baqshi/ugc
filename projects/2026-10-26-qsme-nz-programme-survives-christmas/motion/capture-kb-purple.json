@@ -1,0 +1,11 @@
+{
+  "url": "https://www.qsme.co.nz/knowledge-hub/schedule-colours",
+  "mobile": false,
+  "settle": 4,
+  "steps": [
+    { "eval": "(() => { const h = [...document.querySelectorAll('h2,h3')].find(x => /purple chain/i.test(x.textContent)); if (h) { h.scrollIntoView({ block: 'start' }); window.scrollBy(0, -260); } })()" },
+    { "wait": 1.2 },
+    { "scroll": 200, "dur": 2.4 },
+    { "wait": 2.0 }
+  ]
+}

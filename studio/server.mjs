@@ -4,14 +4,16 @@
 import http from 'node:http';
 import fs from 'node:fs';
 import fsp from 'node:fs/promises';
-import os from 'node:os';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import zlib from 'node:zlib';
 import { fileURLToPath } from 'node:url';
-import { createContent, LISTABLE, isInside } from './lib/content.mjs';
-import { createMediaStore, parseMaxBytes, parseBytes, isUploadName, MediaError, DEFAULT_MIN_FREE_BYTES } from './lib/media.mjs';
+import { createContent, LISTABLE, mediaUrl } from './lib/content.mjs';
+import { createS3, bucketConfigFromEnv, attachmentDisposition } from './lib/s3.mjs';
+import { createBucketMedia } from './lib/storage.mjs';
 import { createThrottle } from './lib/throttle.mjs';
-import { configureMarkdown } from './lib/markdown.mjs';
+import { configureMarkdown, renderMarkdown } from './lib/markdown.mjs';
+import { videoCards, voScript, scriptText } from './lib/videos.mjs';
 import * as views from './lib/views.mjs';
 
 const STUDIO_DIR = path.dirname(fileURLToPath(import.meta.url));
@@ -25,9 +27,6 @@ const DEV_REQUESTED = process.env.STUDIO_DEV === '1';
 const DEV = DEV_REQUESTED && !ON_RAILWAY; // dev mode can never switch on in a deploy
 const PASSWORD = process.env.STUDIO_PASSWORD || '';
 const API_TOKEN = process.env.STUDIO_API_TOKEN || '';
-// Uploads and deletes. Defaults to the API token; set STUDIO_MEDIA_TOKEN so the
-// read token handed to n8n and other tools can't write.
-const MEDIA_TOKEN = process.env.STUDIO_MEDIA_TOKEN || API_TOKEN;
 const HOST = process.env.HOST || (DEV ? '127.0.0.1' : '0.0.0.0'); // dev mode stays on this machine
 const LOOPBACK = new Set(['127.0.0.1', '::1', 'localhost']);
 const EXPOSED = !LOOPBACK.has(HOST);
@@ -41,7 +40,6 @@ if (DEV_REQUESTED && ON_RAILWAY) console.warn('[studio] STUDIO_DEV=1 ignored: th
 if (DEV && !PASSWORD && EXPOSED) refuse(`Dev mode without STUDIO_PASSWORD only listens on 127.0.0.1, not ${HOST}. Unset HOST, or set STUDIO_PASSWORD.`);
 if (PASSWORD && PASSWORD.length < MIN_SECRET && (!DEV || EXPOSED)) refuse(`STUDIO_PASSWORD must be at least ${MIN_SECRET} characters.`);
 if (API_TOKEN && API_TOKEN.length < MIN_SECRET && (!DEV || EXPOSED)) refuse(`STUDIO_API_TOKEN must be at least ${MIN_SECRET} characters.`);
-if (process.env.STUDIO_MEDIA_TOKEN && MEDIA_TOKEN.length < MIN_SECRET && (!DEV || EXPOSED)) refuse(`STUDIO_MEDIA_TOKEN must be at least ${MIN_SECRET} characters.`);
 
 const STARTED = new Date();
 
@@ -59,67 +57,41 @@ function readSynced() {
 const ctx = { started: STARTED, synced: DEV ? null : readSynced(), dev: DEV, assetVersion: STARTED.getTime().toString(36) };
 const ctxFor = (snap) => (snap ? { ...ctx, updated: snap.updated || null } : ctx);
 
-// Media on a persistent volume (Railway: MEDIA_DIR=/data/media). Code deploys
-// carry no media; tools/motion/sync-media.mjs uploads it through /api/media.
-const MEDIA_DIR = process.env.MEDIA_DIR ? path.resolve(process.env.MEDIA_DIR) : '';
-const MEDIA_MAX_BYTES = parseMaxBytes(process.env.MEDIA_MAX_BYTES, (m) => console.warn(`[studio] ${m}`));
-const MEDIA_MIN_FREE_BYTES = parseBytes('MEDIA_MIN_FREE_BYTES', process.env.MEDIA_MIN_FREE_BYTES, DEFAULT_MIN_FREE_BYTES, { warn: (m) => console.warn(`[studio] ${m}`) });
-
-/** `p` with symlinks resolved as far as it exists (MEDIA_DIR may not exist yet). */
-function realish(p) {
-  let rest = '';
-  for (let cur = path.resolve(p); ; ) {
-    try {
-      return path.join(fs.realpathSync(cur), rest);
-    } catch {
-      const up = path.dirname(cur);
-      if (up === cur) return path.resolve(p);
-      rest = path.join(path.basename(cur), rest);
-      cur = up;
-    }
-  }
-}
-
-// MEDIA_DIR is written to and swept: it must be a folder of its own, never the
-// content, anything above it, or the home folder.
-if (MEDIA_DIR) {
-  const home = os.homedir();
-  const unsafe = [[MEDIA_DIR, ROOT, home], [realish(MEDIA_DIR), realish(ROOT), realish(home)]].some(
-    ([m, r, h]) => m === r || isInside(r, m) || isInside(m, r) || m === h || isInside(m, h) || m === path.parse(m).root,
-  );
-  if (unsafe) refuse(`MEDIA_DIR=${MEDIA_DIR} must be a dedicated folder outside the content root (${ROOT}) and not your home folder.`);
-}
-
-let media = null;
-if (MEDIA_DIR) {
-  media = createMediaStore({ dir: MEDIA_DIR, maxBytes: MEDIA_MAX_BYTES, minFreeBytes: MEDIA_MIN_FREE_BYTES });
-  try {
-    media.init();
-  } catch (e) {
-    // A missing volume must not take the dashboard down: pages still work, uploads fail.
-    console.error(`[studio] could not prepare MEDIA_DIR ${MEDIA_DIR}: ${e.message}`);
-  }
-  if (API_TOKEN && MEDIA_TOKEN === API_TOKEN) console.warn('[studio] uploads use STUDIO_API_TOKEN; set STUDIO_MEDIA_TOKEN to keep write access off the read token');
+// Media lives in a private storage bucket (Railway: BUCKET_* variables). The
+// studio never carries the bytes: /media/... redirects to a presigned GET.
+// Without BUCKET_* (local dev) media is served from projects/*/outputs/.
+let bucket = null;
+let bucketDisabled = false;
+try {
+  const cfg = bucketConfigFromEnv(process.env);
+  if (cfg) bucket = createBucketMedia(createS3(cfg), { warn: (m) => console.warn(`[studio] ${m}`) });
+} catch (e) {
+  // A broken bucket setting must not take the dashboard down: pages still work.
+  bucketDisabled = true;
+  console.error(`[studio] media bucket disabled: ${e.message}`);
 }
 
 configureMarkdown({ root: ROOT });
-const content = createContent(ROOT, { media });
+const content = createContent(ROOT, { bucket, renderCaption: (md, docRel) => renderMarkdown(md, { docRel }) });
 
 // Static assets: a fixed whitelist, nothing else under studio/ is reachable.
 const ASSETS = {
   'styles.css': 'text/css; charset=utf-8',
   'app.js': 'text/javascript; charset=utf-8',
+  'videos.js': 'text/javascript; charset=utf-8',
   'theme.js': 'text/javascript; charset=utf-8',
   'favicon.svg': 'image/svg+xml',
 };
 
+// Media and images may come from the bucket (presigned redirects), nothing else.
+const MEDIA_ORIGIN = bucket ? ` ${bucket.origin}` : '';
 const CSP = [
   "default-src 'none'",
   "script-src 'self'",
   "style-src 'self' https://fonts.googleapis.com",
   'font-src https://fonts.gstatic.com',
-  "img-src 'self' data:",
-  "media-src 'self'",
+  `img-src 'self' data:${MEDIA_ORIGIN}`,
+  `media-src 'self'${MEDIA_ORIGIN}`,
   "connect-src 'self'",
   "manifest-src 'self'",
   "base-uri 'none'",
@@ -154,13 +126,12 @@ function clientIp(req) {
 }
 
 /**
- * Which credential the request carries, if it is valid.
- *   basic   the password (pages, API, media; never writes)
- *   bearer  STUDIO_API_TOKEN on /api/* (reads)
- *   media   the media token on /api/media/* (reads and writes)
- * @returns {'basic'|'bearer'|'media'|'missing'|'bad'}
+ * Which credential the request carries, if it is valid. Everything is read-only.
+ *   basic   the password (pages, API, media)
+ *   bearer  STUDIO_API_TOKEN, on /api/* only
+ * @returns {'basic'|'bearer'|'missing'|'bad'}
  */
-function authorize(req, isApi, isMediaApi) {
+function authorize(req, isApi) {
   const header = String(req.headers.authorization || '');
   const sp = header.indexOf(' ');
   const scheme = sp === -1 ? header : header.slice(0, sp);
@@ -175,7 +146,6 @@ function authorize(req, isApi, isMediaApi) {
   }
   if (/^bearer$/i.test(scheme)) {
     if (!cred) return 'bad';
-    if (isMediaApi && MEDIA_TOKEN && safeEqual(cred, MEDIA_TOKEN)) return 'media';
     if (isApi && API_TOKEN && safeEqual(cred, API_TOKEN)) return 'bearer';
     return 'bad';
   }
@@ -198,9 +168,42 @@ function securityHeaders(req, res) {
   }
 }
 
-function send(req, res, status, body, headers = {}) {
-  const buf = Buffer.isBuffer(body) ? body : Buffer.from(String(body ?? ''), 'utf8');
-  res.writeHead(status, { 'Content-Length': buf.length, ...headers });
+// Pages and JSON are gzipped when they are big (/videos is ~650 KB of HTML),
+// but only for requests nobody else can make on the viewer's behalf. Another
+// site can make the browser load a page here (the cached password is sent),
+// and a compressed page that reflects a query value next to private content
+// leaks that content through its size (BREACH). So: same-origin requests and
+// typed or bookmarked navigations (Sec-Fetch-Site: same-origin / none), and
+// Bearer clients (a browser never attaches that header by itself). Anything
+// else, including browsers that don't send Sec-Fetch-Site, gets it uncompressed.
+const GZIP_MIN = 8 * 1024;
+function acceptsGzip(req) {
+  for (const part of String(req.headers['accept-encoding'] || '').toLowerCase().split(',')) {
+    const [name, ...params] = part.trim().split(';').map((x) => x.trim());
+    if (name !== 'gzip' && name !== 'x-gzip') continue;
+    const q = params.find((p) => p.startsWith('q='));
+    return !q || Number(q.slice(2)) > 0;
+  }
+  return false;
+}
+function mayCompress(req) {
+  if (!acceptsGzip(req)) return false;
+  const site = String(req.headers['sec-fetch-site'] || '').toLowerCase();
+  if (site === 'same-origin' || site === 'none') return true;
+  return /^bearer\s/i.test(String(req.headers.authorization || ''));
+}
+
+function send(req, res, status, body, headers = {}, { compress = false } = {}) {
+  let buf = Buffer.isBuffer(body) ? body : Buffer.from(String(body ?? ''), 'utf8');
+  const extra = {};
+  if (compress) {
+    extra.Vary = 'Accept-Encoding, Sec-Fetch-Site, Authorization';
+    if (buf.length >= GZIP_MIN && mayCompress(req)) {
+      buf = zlib.gzipSync(buf, { level: 6 });
+      extra['Content-Encoding'] = 'gzip';
+    }
+  }
+  res.writeHead(status, { 'Content-Length': buf.length, ...headers, ...extra });
   res.end(req.method === 'HEAD' ? undefined : buf);
 }
 
@@ -208,10 +211,10 @@ const text = (req, res, status, body, extra = {}) =>
   send(req, res, status, body, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store', ...extra });
 
 const page = (req, res, status, body) =>
-  send(req, res, status, String(body), { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'private, no-cache' });
+  send(req, res, status, String(body), { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'private, no-cache' }, { compress: true });
 
 const json = (req, res, status, data, extra = {}) =>
-  send(req, res, status, JSON.stringify(data, null, 2) + '\n', { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store', ...extra });
+  send(req, res, status, JSON.stringify(data, null, 2) + '\n', { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store', ...extra }, { compress: true });
 
 function unauthorized(req, res, isApi, scheme = 'Basic') {
   const headers = { 'WWW-Authenticate': `${scheme} realm="UGC Studio", charset="UTF-8"`, 'Cache-Control': 'no-store' };
@@ -227,14 +230,15 @@ async function serveAsset(req, res, name) {
   return true;
 }
 
-async function serveMedia(req, res, file) {
+/** Serve a file from this disk, with Range support. `download` asks the browser to save it. */
+async function serveMedia(req, res, file, { download = false } = {}) {
   const total = file.size;
   const base = {
     'Content-Type': file.type,
     'Accept-Ranges': 'bytes',
     'Last-Modified': file.mtime.toUTCString(),
     'Cache-Control': 'private, max-age=3600',
-    'Content-Disposition': 'inline',
+    'Content-Disposition': download ? attachmentDisposition(file.name) : 'inline',
   };
   let start = 0;
   let end = total - 1;
@@ -267,70 +271,52 @@ async function serveMedia(req, res, file) {
   stream.pipe(res);
 }
 
+/**
+ * /media/<project>/<file...>: from this disk when the file is here (local dev),
+ * else a 302 to a presigned GET on the bucket (Railway). The key is only ever
+ * projects/<project>/outputs/<file>, for a project in the content and a plain
+ * file name with a media extension (lib/storage.mjs checks it again).
+ */
+async function media(req, res, segs, query) {
+  const [, folder, ...parts] = segs;
+  const download = query.get('download') === '1';
+  const file = await content.mediaFile(folder, parts.join('/'));
+  if (file) return serveMedia(req, res, file, { download });
+  if (bucket && parts.length === 1 && (await content.hasProject(folder))) {
+    const url = bucket.presign(folder, parts[0], { download });
+    // The URL stays the same for a few minutes (see storage.mjs), so the
+    // redirect may be cached briefly; it is valid for at least 55 minutes.
+    if (url) return send(req, res, 302, '', { Location: url, 'Cache-Control': 'private, max-age=300' });
+  }
+  return text(req, res, 404, 'Not found\n');
+}
+
 // -------------------------------------------------------------- media API
 
-// Uploads in flight at once; more get 429 (sync-media sends one at a time).
-const MAX_UPLOADS = 4;
-let uploading = 0;
-
 /**
- *   GET    /api/media/<project>         list MEDIA_DIR/<project> (Basic, API or media token)
- *   PUT    /api/media/<project>/<file>  store the body (media token only)
- *   DELETE /api/media/<project>/<file>  remove it (media token only)
- * handle() has already checked auth (writes need the media token).
- * Every answer says which content upload is live (X-Studio-Synced, from
- * studio/synced.txt), so sync-media can tell "old deploy" from "not deployed".
+ * GET /api/media/<project>: what the bucket holds for that project (read-only;
+ * Basic or Bearer). [] without a bucket. Cached like the gallery (~60 s).
+ * /media itself takes the password only, so each file also carries presigned
+ * bucket links a Bearer client can fetch directly: signedUrl (inline),
+ * signedDownloadUrl (attachment), both good until signedUntil (about an hour).
  */
 async function mediaApi(req, res, segs) {
-  res.setHeader('X-Studio-Synced', ctx.synced ? ctx.synced.toISOString() : '');
-  const n = segs.length;
-  const [, , project, name] = segs;
-  const write = req.method === 'PUT' || req.method === 'DELETE';
-  if (n === 3 && !write) {
-    if (!LISTABLE(project) || !(await content.hasProject(project))) return json(req, res, 404, { error: 'unknown project' });
-    const files = media ? await media.list(project) : [];
-    return send(req, res, 200, JSON.stringify(files.map((f) => ({ name: f.name, size: f.size, sha256: f.sha256, mtime: f.mtime.toISOString() })), null, 2) + '\n', {
-      'Content-Type': 'application/json; charset=utf-8',
-      'Cache-Control': 'no-store',
-      'X-Media-Max-Bytes': String(MEDIA_MAX_BYTES),
-      'X-Media-Storage': media ? 'volume' : 'none',
-    });
-  }
-  if (n !== 4 || !write) {
-    if (n === 4 || n === 3) return json(req, res, 405, { error: 'method not allowed' }, n === 4 ? { Allow: 'PUT, DELETE' } : { Allow: 'GET, HEAD' });
-    return json(req, res, 404, { error: 'not found' });
-  }
-  if (!media) return json(req, res, 503, { error: 'media storage is not configured (MEDIA_DIR)' });
-  if (!LISTABLE(project)) return json(req, res, 400, { error: 'bad project name' });
-  if (!isUploadName(name)) return json(req, res, 400, { error: 'bad file name: use letters, digits, ".", "_" or "-" and a media extension' });
-  if (!(await content.hasProject(project))) return json(req, res, 404, { error: 'unknown project' });
-  try {
-    if (req.method === 'DELETE') {
-      const gone = await media.remove(project, name);
-      return gone ? json(req, res, 200, { deleted: name }) : json(req, res, 404, { error: 'not found' });
-    }
-    if (uploading >= MAX_UPLOADS) return json(req, res, 429, { error: 'too many uploads at once' }, { 'Retry-After': '10' });
-    uploading++;
-    let out;
-    try {
-      const expectedSha256 = String(req.headers['x-content-sha256'] || '').trim();
-      out = await media.put(project, name, req, {
-        expectedSha256,
-        onAccepted: () => {
-          if (/^100-continue$/i.test(String(req.headers.expect || '').trim())) res.writeContinue();
-        },
-      });
-    } finally {
-      uploading--;
-    }
-    return json(req, res, 200, out);
-  } catch (e) {
-    if (e instanceof MediaError) {
-      if (res.headersSent || res.destroyed) return;
-      return json(req, res, e.status, { error: e.message });
-    }
-    throw e;
-  }
+  if (segs.length !== 3) return json(req, res, 404, { error: 'not found' });
+  const project = segs[2];
+  if (!LISTABLE(project) || !(await content.hasProject(project))) return json(req, res, 404, { error: 'unknown project' });
+  const files = bucket ? (await bucket.list()).get(project) || [] : [];
+  const until = bucket ? bucket.signedUntil() : null;
+  const out = files.map((f) => ({
+    name: f.name,
+    size: f.size,
+    etag: f.etag || null,
+    mtime: f.mtime || null,
+    url: mediaUrl(project, f.name),
+    signedUrl: bucket.presign(project, f.name),
+    signedDownloadUrl: bucket.presign(project, f.name, { download: true }),
+    signedUntil: until,
+  }));
+  return json(req, res, 200, out, { 'X-Media-Storage': bucket ? 'bucket' : 'none' });
 }
 
 // ---------------------------------------------------------------- routing
@@ -362,8 +348,21 @@ function projectJson(p) {
     meta: p.meta,
     url: p.url,
     files: p.docs.map((d) => ({ name: `${d.name}.md`, path: d.rel, body: d.body })),
-    media: p.media.map((m) => ({ path: m.rel, url: m.url, kind: m.kind, type: m.type, size: m.size, preview: !!m.preview })),
+    // url: the file itself. play: what the page plays (the small preview when
+    // there is one). download: the full-quality file as an attachment.
+    media: p.media.map((m) => ({ path: m.rel, url: m.url, play: m.playUrl, download: m.downloadUrl, kind: m.kind, type: m.type, size: m.size, preview: !!m.preview })),
   };
+}
+
+/** voice-script.txt for one project: every line to say, one per line. */
+function voiceScriptTxt(req, res, p) {
+  const script = p.vo ? voScript(p.vo) : null;
+  if (!script) return text(req, res, 404, 'No voice script for this project.\n');
+  return send(req, res, 200, scriptText(script), {
+    'Content-Type': 'text/plain; charset=utf-8',
+    'Content-Disposition': attachmentDisposition(`${p.folder}-voice-script.txt`),
+    'Cache-Control': 'private, no-cache',
+  });
 }
 
 async function route(req, res, segs, query) {
@@ -383,17 +382,17 @@ async function route(req, res, segs, query) {
   if (a === 'search.json' && n === 1) {
     const snap = await content.snapshot();
     const pb = await content.playbook();
-    return send(req, res, 200, JSON.stringify(views.searchIndex(snap, pb)), {
-      'Content-Type': 'application/json; charset=utf-8',
-      'Cache-Control': 'private, no-cache',
-    });
+    return send(
+      req,
+      res,
+      200,
+      JSON.stringify(views.searchIndex(snap, pb)),
+      { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'private, no-cache' },
+      { compress: true },
+    );
   }
 
-  if (a === 'media' && n >= 3) {
-    const file = await content.mediaFile(b, segs.slice(2).join('/'));
-    if (!file) return text(req, res, 404, 'Not found\n');
-    return serveMedia(req, res, file);
-  }
+  if (a === 'media' && n >= 3) return media(req, res, segs, query);
 
   if (a === 'api' && b === 'media') return mediaApi(req, res, segs);
 
@@ -448,6 +447,15 @@ async function route(req, res, segs, query) {
     return page(req, res, 404, views.notFoundPage(vctx, 'venture'));
   }
 
+  if (a === 'videos') {
+    if (n === 1) return page(req, res, 200, views.videosPage(vctx, snap, videoCards(snap.projects), query));
+    if (n === 3 && c === 'voice-script.txt') {
+      const p = snap.projects.find((x) => x.folder === b);
+      if (p) return voiceScriptTxt(req, res, p);
+    }
+    return page(req, res, 404, views.notFoundPage(vctx, 'video'));
+  }
+
   if (a === 'projects') {
     if (n === 1) return page(req, res, 200, views.projectsPage(vctx, snap));
     if (n === 2) {
@@ -493,11 +501,8 @@ async function handle(req, res) {
   const rawPath = q === -1 ? rawUrl : rawUrl.slice(0, q);
   const query = new URLSearchParams(q === -1 ? '' : rawUrl.slice(q + 1));
 
-  // The only writes: uploads and deletes under /api/media/, with the API token.
-  const isWrite = req.method === 'PUT' || req.method === 'DELETE';
-  if (req.method !== 'GET' && req.method !== 'HEAD' && !(isWrite && rawPath.startsWith('/api/media/'))) {
-    return text(req, res, 405, 'Method not allowed\n', { Allow: 'GET, HEAD' });
-  }
+  // Read-only: nothing here writes (media goes straight to the bucket).
+  if (req.method !== 'GET' && req.method !== 'HEAD') return text(req, res, 405, 'Method not allowed\n', { Allow: 'GET, HEAD' });
 
   // Unhealthy without a password, so Railway keeps the previous deploy instead of
   // swapping in a studio that answers 503 everywhere.
@@ -508,23 +513,16 @@ async function handle(req, res) {
   if (!PASSWORD && !DEV) return text(req, res, 503, 'STUDIO_PASSWORD not set\n');
 
   const isApi = rawPath === '/api' || rawPath.startsWith('/api/');
-  const isMediaApi = rawPath.startsWith('/api/media/');
-  // Writes always need the media token (even in dev mode); the password, or a
-  // read-only API token, is never enough.
-  if (PASSWORD || isWrite) {
+  if (PASSWORD) {
     const ip = clientIp(req);
     if (throttle.isLockedOut(ip)) return text(req, res, 429, 'Too many attempts. Try again later.\n', { 'Retry-After': '900' });
-    const result = authorize(req, isApi, isMediaApi);
+    const result = authorize(req, isApi);
     if (result === 'missing' || result === 'bad') {
       if (result === 'bad') {
         throttle.noteFailure(ip);
         if (throttle.slow()) await sleep(1000);
       }
-      return unauthorized(req, res, isApi, isWrite ? 'Bearer' : 'Basic');
-    }
-    if (isWrite && result !== 'media') {
-      const why = result === 'bearer' ? 'this API token is read-only: uploads and deletes need STUDIO_MEDIA_TOKEN' : 'uploads and deletes need the media token (Authorization: Bearer)';
-      return json(req, res, 403, { error: why });
+      return unauthorized(req, res, isApi);
     }
   }
 
@@ -540,8 +538,8 @@ async function handle(req, res) {
   if (!decoded.startsWith('/') || rawPath.includes('..') || decoded.includes('..') || decoded.includes('\0') || decoded.includes('\\')) {
     return text(req, res, 400, 'Bad request\n');
   }
-  // Media API names are single path segments: an encoded separator is never part of one.
-  if (rawPath.startsWith('/api/media/') && /%(2f|5c|00)/i.test(rawPath)) return json(req, res, 400, { error: 'bad path' });
+  // Project and file names are single path segments: an encoded separator is never part of one.
+  if (/^\/(api\/)?media\//.test(rawPath) && /%(2f|5c|00)/i.test(rawPath)) return text(req, res, 400, 'Bad request\n');
   const segs = decoded.split('/').filter(Boolean);
   if (segs.some((s) => s.startsWith('.'))) return text(req, res, 404, 'Not found\n');
 
@@ -549,9 +547,9 @@ async function handle(req, res) {
 }
 
 /**
- * A response can go out before the request body has been read (a refused or
- * oversized upload). Drain what is left so the client can read the answer, but
- * never for more than a few seconds.
+ * A response can go out before the request body has been read (a refused PUT
+ * or POST). Drain what is left so the client can read the answer, but never
+ * for more than a few seconds.
  */
 function lingerOnUnreadBody(req, res) {
   res.on('finish', () => {
@@ -578,15 +576,10 @@ function onRequest(req, res) {
 }
 
 const server = http.createServer(onRequest);
-// "Expect: 100-continue" (curl on big uploads): answer only once the upload is
-// allowed, so a refused upload is never sent.
-server.on('checkContinue', onRequest);
-
+// Requests carry no bodies worth waiting for: headers within 20s, the whole
+// request within 30s (responses, like a long local video, are not limited).
 server.headersTimeout = 20_000;
-// No whole-request deadline: an upload of a few hundred MB can take minutes.
-// Headers still have 20s, a stalled upload is dropped after 2 minutes idle
-// (lib/media.mjs), and an unread body after a response gets 5s (above).
-server.requestTimeout = 0;
+server.requestTimeout = 30_000;
 
 server.listen(PORT, HOST, () => {
   const mode = PASSWORD ? 'password required' : DEV ? 'DEV MODE, no password' : 'locked: STUDIO_PASSWORD not set';
@@ -594,7 +587,10 @@ server.listen(PORT, HOST, () => {
   const shown = addr.family === 'IPv6' ? `[${addr.address}]` : addr.address;
   console.log(`[studio] UGC Studio on http://${shown}:${addr.port} (${mode})`);
   console.log(`[studio] content root: ${ROOT}`);
-  console.log(`[studio] media: ${MEDIA_DIR ? `${MEDIA_DIR} (uploads up to ${MEDIA_MAX_BYTES} bytes, ${MEDIA_TOKEN ? (MEDIA_TOKEN === API_TOKEN ? 'with STUDIO_API_TOKEN' : 'with STUDIO_MEDIA_TOKEN') : 'no token set: uploads refused'})` : 'local outputs/ only (MEDIA_DIR not set, uploads off)'}`);
+  const where = bucket
+    ? `bucket ${bucket.bucket} (${bucket.origin}), presigned links; local outputs/ first when present`
+    : `local outputs/ only (${bucketDisabled ? 'bucket disabled, see above' : 'no BUCKET_* set'})`;
+  console.log(`[studio] media: ${where}`);
 });
 
 for (const sig of ['SIGINT', 'SIGTERM']) {

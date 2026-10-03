@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<title>Programme survives Christmas thumbnail</title>
+<!-- YouTube thumbnail (1920x1080 still at t=2.2): the master's hook frame (headline + the Santa-hat cell on the generic spreadsheet)
+     plus the payoff bottom-left, away from YouTube's timestamp (bottom-right): the QSME mark and the struck-through FINISHES card.
+     Render: node tools/motion/make.mjs <this> <scratch>/thumb.mp4 --still 2.2 --still-only → copy to outputs/programme-survives-christmas-thumbnail-1920x1080.png -->
+<link rel="stylesheet" href="../../../tools/motion/kit.css">
+<link rel="stylesheet" href="psc.css">
+<style>
+  #root { background: #1A1F2B; }
+  .scam { position: absolute; left: 0; top: 0; transform-origin: 0 0; --cx: 1022; --cy: 423; --cs: 0.9; --sy: 520;
+    transform: translate(calc(960px - var(--cs) * var(--cx) * 1px), calc(var(--sy) * 1px - var(--cs) * var(--cy) * 1px)) scale(var(--cs)); }
+  .full { position: absolute; inset: 0; overflow: hidden; }
+  .hl { position: absolute; left: 96px; right: 96px; top: 64px; text-align: center; font: 800 92px/1.04 Manrope; letter-spacing: -0.035em; color: #F8FAFC; z-index: 50; text-shadow: 0 6px 30px rgba(2,6,23,.55); }
+  #coldTop { position: absolute; left: 0; right: 0; top: 0; height: 360px; background: linear-gradient(180deg, rgba(2,6,23,.96) 0%, rgba(2,6,23,.86) 52%, rgba(2,6,23,0) 100%); z-index: 40; }
+  #coldBot { position: absolute; left: 0; right: 0; bottom: 0; height: 360px; background: linear-gradient(0deg, rgba(2,6,23,.92) 0%, rgba(2,6,23,.6) 45%, rgba(2,6,23,0) 100%); z-index: 40; }
+  #glow { position: absolute; border-radius: 6px; box-shadow: 0 0 0 4px rgba(224,48,42,.85), 0 0 34px 10px rgba(255,214,102,.65); }
+  #pay { position: absolute; left: 60px; bottom: 56px; display: flex; align-items: center; gap: 26px; z-index: 55; padding: 16px 16px 16px 24px; border-radius: 30px; background: rgba(2,6,23,.94); box-shadow: 0 24px 60px rgba(0,0,0,.5), 0 0 0 1.5px rgba(255,255,255,.1); }
+  #pay .logo { position: relative; width: 210px; height: 120px; overflow: hidden; flex: none; }
+  #pay .logo img { position: absolute; left: -31px; top: 0; width: 264px; }
+  #pay .card { display: flex; flex-direction: column; justify-content: center; padding: 18px 30px 20px; border-radius: 20px; background: #fff; }
+  #pay .card i { font: 700 22px/1 "JetBrains Mono"; font-style: normal; letter-spacing: .12em; color: #64748B; }
+  #pay .row { display: flex; align-items: baseline; gap: 22px; margin-top: 12px; white-space: nowrap; }
+  #pay .row s { text-decoration: none; position: relative; font: 700 44px/1 Inter; color: #94A3B8; }
+  #pay .row s:after { content: ''; position: absolute; left: -6px; right: -6px; top: 52%; height: 5px; background: #E0302A; border-radius: 2px; transform: rotate(-3deg); }
+  #pay .row u { text-decoration: none; font: 800 44px/1 Inter; color: #94A3B8; }
+  #pay .row b { font: 800 76px/1 Inter; letter-spacing: -0.02em; color: #0F172A; }
+</style>
+</head>
+<body class="nz r16x9">
+<div id="root"></div>
+<script src="../../../tools/motion/kit.js"></script>
+<script src="sched.js"></script>
+<script src="story.js"></script>
+<script>
+(function () {
+  'use strict';
+  var d = Sched.day, R = document.getElementById('root');
+  var sg = Story.sheetGeo(), c25 = sg.cell(3, d(2026, 12, 25));
+  R.innerHTML = '<div id="cold" class="full"><div id="scam" class="scam">' + Story.sheet('sh') + '</div><div id="coldTop"></div><div id="coldBot"></div>' +
+    '<div id="h1" class="hl" style="top:72px;font-size:68px">Only one on your job working Christmas Day?</div>' +
+    '<div id="h2" class="hl" style="top:150px;font-size:124px;color:#3DC023">Your spreadsheet.</div></div>' +
+    '<div id="pay"><div class="logo"><img src="qsme-logo.svg" alt="QSME"></div>' +
+    '<div class="card"><i>FINISHES</i><div class="row"><s>Wed 20 Jan</s><u>→</u><b>Wed 3 Feb</b></div></div></div>';
+  document.getElementById('shann').innerHTML = '<div id="glow" style="left:' + c25.x + 'px;top:' + c25.y + 'px;width:' + c25.w + 'px;height:' + c25.h + 'px"></div>' + Story.hat('hat', c25.x - 6, c25.y - 70, 0.76, -10);
+  // the same camera as the master's hook at 2.2 s
+  Kit.add('#scam', 'var:--cs', [[0, 1.38], [3.1, 1.43, 'linear']]).add('#scam', 'var:--cx', [[0, 640], [3.1, 650, 'linear']]).add('#scam', 'var:--cy', [[0, 318], [3.1, 320, 'linear']]).add('#scam', 'var:--sy', [[0, 748]]);
+  Kit.ready({ duration: 3, fonts: ['800 60px Manrope', '500 20px Inter', '700 20px Inter', '800 20px Inter', '700 20px "JetBrains Mono"'] });
+})();
+</script>
+</body>
+</html>

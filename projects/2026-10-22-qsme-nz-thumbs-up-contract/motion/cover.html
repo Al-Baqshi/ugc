@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<title>Thumbs-up contract cover</title>
+<!-- Cover (1080x1920): the master's frame at 1.62 s (motion/cover-base.png, made with make.mjs --still 1.62) plus the stakes line
+     "Full rewire · $18,400" under the thumb, inside the 3:4 grid crop (y 240–1680; a static cover, so the Reels UI overlay does not apply).
+     Render (from the studio root):
+       node tools/motion/make.mjs projects/2026-10-22-qsme-nz-thumbs-up-contract/motion/cover.html projects/2026-10-22-qsme-nz-thumbs-up-contract/outputs/thumbs-up-contract-cover-1080x1920.mp4 --safe 65,240,1015,1680 --still 0 --still-only
+     (then delete the -frames.png contact sheet it leaves in outputs/) -->
+<link rel="stylesheet" href="../../../tools/motion/kit.css">
+<style>
+  #base { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+  #line { position: absolute; left: 65px; width: 950px; top: 1262px; text-align: center; }
+  #line span { display: inline-block; background: #020617; color: #F8FAFC; font: 800 58px/1.1 Manrope; letter-spacing: -0.022em; padding: 13px 30px 17px; border-radius: 14px; box-shadow: 0 0 0 2px rgba(248, 250, 252, .16), 0 18px 50px rgba(0, 0, 0, .55); }
+  #line em { font-style: normal; color: #4ADE80; }
+</style>
+</head>
+<body class="nz r9x16">
+<div id="root">
+  <img id="base" src="cover-base.png" alt="" data-qa-ignore>
+  <div id="line"><span>Full rewire · <em>$18,400</em></span></div>
+</div>
+<script src="../../../tools/motion/kit.js"></script>
+<script>Kit.ready({ duration: 1, fonts: ['800 58px Manrope'] });</script>
+</body>
+</html>

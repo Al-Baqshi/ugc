@@ -1,0 +1,12 @@
+{
+  "cssWidth": 1280, "cssHeight": 900, "dpr": 2,
+  "shots": [
+    {
+      "name": "contact-demo-line",
+      "url": "https://qsme.build/contact",
+      "el": "(()=>{const h=[...document.querySelectorAll('h2,h3,h4,p,strong')].find(e=>e.textContent.trim()==='What happens on a demo?'); const li=[...document.querySelectorAll('li')].find(e=>e.textContent.trim().startsWith('Thirty minutes on a working project')); return [h,li]})()",
+      "pad": [26, 40, 6, 40],
+      "hl": "Thirty minutes on a working project that resembles yours."
+    }
+  ]
+}

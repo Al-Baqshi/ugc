@@ -1,0 +1,21 @@
+{
+  "url": "https://www.qsme.co.nz/knowledge-hub/site-documents",
+  "cssWidth": 860,
+  "cssHeight": 1100,
+  "dpr": 3,
+  "mobile": false,
+  "settle": 6,
+  "evals": [
+    "(() => { const h = [...document.querySelectorAll('h3')].find(x => x.textContent.includes('For the council')); h.scrollIntoView({ block: 'start' }); window.scrollBy(0, -170); })()"
+  ],
+  "boxes": {
+    "h3": "(() => [...document.querySelectorAll('h3')].find(x => x.textContent.includes('For the council')))()",
+    "thead": "(() => { const h = [...document.querySelectorAll('h3')].find(x => x.textContent.includes('For the council')); return h.parentElement.querySelector('thead'); })()",
+    "row": "(() => [...document.querySelectorAll('tr')].find(x => x.textContent.includes('LBP Record of Work')))()",
+    "doc": "(() => [...document.querySelectorAll('tr')].find(x => x.textContent.includes('LBP Record of Work')).cells[0])()",
+    "who": "(() => [...document.querySelectorAll('tr')].find(x => x.textContent.includes('LBP Record of Work')).cells[1])()",
+    "badge": "(() => [...document.querySelectorAll('tr')].find(x => x.textContent.includes('LBP Record of Work')).cells[2].firstElementChild)()",
+    "lands": "(() => [...document.querySelectorAll('tr')].find(x => x.textContent.includes('LBP Record of Work')).cells[3])()",
+    "header": "(() => document.querySelector('header') || document.querySelector('nav'))()"
+  }
+}

@@ -8,7 +8,9 @@
      → outputs/static-212-comments-1080x1350.png
      Rebuilt 2026-10-02 from the Figma static (same layout) with a fact-checked end band: no 'licence-verified', no 'line by line'.
      2026-10-02 (30 s rebuild): licence setup swapped for the quote setup ('Keen for a few quotes.' / '...can anyone actually come and quote?' / 'Dave can.'),
-     end band matched to the new reel ('Send one job to the trades you choose. Every one prices the same lines.' / 'Free to join. No listing fee on tenders.'). -->
+     end band matched to the new reel ('Send one job to the trades you choose. Every one prices the same lines.').
+     2026-10-04 (owner CTA rule 2026-10-03): the pricing line is gone; the band ends on a green 'Sign up at qsme.co.nz' button.
+     2026-10-04 review pass: 'Every one prices the same lines.' → 'Every quote covers the same lines.' (a bidder may quote one all-in price, so 'prices' leaned toward itemised; matches the reel, caption, ads and VO). -->
 <link rel="stylesheet" href="../../../tools/motion/kit.css">
 <style>
   body.r4x5 #root { background: #FFFFFF; color: #1C1C1E; }
@@ -39,10 +41,10 @@
 
   /* QSME end band (text only) */
   #band { left: 0; top: 1046px; width: 1080px; height: 304px; background: #020617; border-top: 6px solid #15803D; }
-  #know { position: absolute; left: 58px; top: 31px; font: 800 84px/1.1 Manrope; letter-spacing: -0.03em; color: #F8FAFC; white-space: nowrap; }
-  #sub { position: absolute; left: 58px; top: 128px; font: 400 31px/39px Inter; color: rgba(248,250,252,.7); white-space: nowrap; }
-  #cta { position: absolute; left: 58px; top: 228px; font: 500 30px/40px Inter; color: #F8FAFC; white-space: nowrap; }
-  #cta span { color: #3DC023; font-weight: 600; }
+  #know { position: absolute; left: 58px; top: 24px; font: 800 84px/1.1 Manrope; letter-spacing: -0.03em; color: #F8FAFC; white-space: nowrap; }
+  #sub { position: absolute; left: 58px; top: 119px; font: 400 31px/38px Inter; color: rgba(248,250,252,.7); white-space: nowrap; }
+  #cta { position: absolute; left: 58px; top: 207px; white-space: nowrap; }
+  #cta span { display: inline-block; background: #16A34A; color: #fff; font: 700 32px/40px Inter; letter-spacing: -0.005em; padding: 9px 26px 11px; border-radius: 9px; }
   #blogo { position: absolute; left: 826px; top: 40px; width: 200px; height: 60.3px; overflow: hidden; }
   #blogo img { position: absolute; width: 236.2px; left: -30px; top: -25.7px; max-width: none; }
 </style>
@@ -75,8 +77,8 @@
 
   <div id="band" class="abs">
     <div id="know">Know which Dave.</div>
-    <div id="sub">Send one job to the trades you choose.<br>Every one prices the same lines.</div>
-    <div id="cta">Free to join. No listing fee on tenders. <span>qsme.co.nz</span></div>
+    <div id="sub">Send one job to the trades you choose.<br>Every quote covers the same lines.</div>
+    <div id="cta"><span>Sign up at qsme.co.nz</span></div>
     <div id="blogo"><img src="qsme-logo.svg" alt="QSME"></div>
   </div>
 </div>

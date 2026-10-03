@@ -1,0 +1,21 @@
+{
+ "url": "https://qsme.build/id/security",
+ "cssWidth": 390,
+ "cssHeight": 390,
+ "dpr": 4,
+ "mobile": true,
+ "settle": 3,
+ "fullPage": false,
+ "evals": [
+  "document.querySelectorAll('[class*=cookie],[id*=cookie],[class*=consent]').forEach(e=>e.style.setProperty('display','none','important'))",
+  "(()=>{const dt=document.querySelectorAll('dl.faq dt')[0]; scrollTo(0, dt.getBoundingClientRect().top+scrollY-178); return 1})()"
+ ],
+ "boxes": {
+  "header": "document.querySelector('header')",
+  "dt1": "document.querySelectorAll('dl.faq dt')[0]",
+  "dd1": "document.querySelectorAll('dl.faq dd')[0]",
+  "item2": "document.querySelectorAll('dl.faq .faq__item')[1]",
+  "firstWord": "(()=>{const t=document.querySelectorAll('dl.faq dd')[0].firstChild; const s=t.textContent; let i=Math.min(...['.','\u3002','\u0964','\u060c'].map(c=>{const k=s.indexOf(c); return k<0?1e9:k})); const r=document.createRange(); r.setStart(t,0); r.setEnd(t,i+1); return r})()",
+  "rest": "(()=>{const t=document.querySelectorAll('dl.faq dd')[0].firstChild; const s=t.textContent; let i=Math.min(...['.','\u3002','\u0964','\u060c'].map(c=>{const k=s.indexOf(c); return k<0?1e9:k})); const r=document.createRange(); r.setStart(t,i+1); r.setEnd(t,s.length); return r})()"
+ }
+}

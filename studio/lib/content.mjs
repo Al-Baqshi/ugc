@@ -13,6 +13,7 @@ import {
   sectionText,
 } from './markdown.mjs';
 import { fmt, isoDate, humanize, isHttpUrl, esc } from './util.mjs';
+import { captionMarkdown, captionParts, plainFromMarkdown } from './videos.mjs';
 
 export const STATUS_ORDER = ['raw', 'scored', 'agreed', 'in production', 'posted', 'killed'];
 
@@ -114,31 +115,46 @@ export function masterOf(rel) {
   return m && m[1] ? `${m[1]}.mp4` : null;
 }
 
+/** "x.mp4" -> "x.preview.mp4", else null. */
+export function previewOf(rel) {
+  return /\.mp4$/i.test(rel) && !masterOf(rel) ? rel.replace(/\.mp4$/i, '.preview.mp4') : null;
+}
+
 /**
- * Gallery list: local outputs/ first, then files on the media volume that are
- * not also local (deduped by path). A "<name>.preview.mp4" is hidden when its
- * master "<name>.mp4" is listed (locally: show the master); without the master
- * (on Railway only previews exist) it stays, marked as a preview.
+ * Gallery list. A master "<name>.mp4" and its "<name>.preview.mp4" become one
+ * item: it plays the small preview in the page (`play`) and downloads the
+ * master. A preview without its master stays, marked `preview: true`.
  */
-export function mergeMedia(local, stored) {
-  const seen = new Set(local.map((m) => m.rel));
-  const all = [...local, ...stored.filter((m) => !seen.has(m.rel))];
-  const rels = new Set(all.map((m) => m.rel));
+export function groupMedia(items) {
+  const byRel = new Map(items.map((m) => [m.rel, m]));
   const out = [];
-  for (const m of all) {
+  for (const m of items) {
     const master = masterOf(m.rel);
-    if (master && rels.has(master)) continue;
-    out.push(master ? { ...m, preview: true, master } : m);
+    if (master) {
+      if (byRel.has(master)) continue; // shown with its master
+      out.push({ ...m, preview: true, master: master.split('/').pop(), play: m.rel });
+      continue;
+    }
+    const pv = previewOf(m.rel);
+    const p = pv ? byRel.get(pv) : null;
+    out.push(p ? { ...m, play: p.rel, playSize: p.size } : { ...m, play: m.rel });
   }
   return out.sort((a, b) => a.rel.localeCompare(b.rel));
 }
 
+/** "/media/<folder>/<rel>" with every segment encoded. */
+export function mediaUrl(folder, rel) {
+  return `/media/${encodeURIComponent(folder)}/${String(rel).split('/').map(encodeURIComponent).join('/')}`;
+}
+
 /**
  * @param {string} root content folder
- * @param {{ media?: ReturnType<import('./media.mjs').createMediaStore> | null }} [opts]
- *   media: the MEDIA_DIR store (Railway volume). Local outputs/ win over it.
+ * @param {{ bucket?: ReturnType<import('./storage.mjs').createBucketMedia> | null,
+ *           renderCaption?: (md: string, docRel: string) => string }} [opts]
+ *   bucket: the storage bucket. A project's gallery is its local outputs/ when
+ *   it has any media there, else the bucket listing for that project.
  */
-export function createContent(root, { media = null } = {}) {
+export function createContent(root, { bucket = null, renderCaption = null } = {}) {
   root = path.resolve(root);
   const cache = new Map();
   const warned = new Set();
@@ -413,17 +429,17 @@ export function createContent(root, { media = null } = {}) {
           .find((v) => rest === v || rest.startsWith(`${v}-`)) || '';
     }
     const slugPart = venture && rest.startsWith(`${venture}-`) ? rest.slice(venture.length + 1) : rest;
-    const local = (await outputsDir(folder)) ? await walkMedia(`projects/${folder}/outputs`) : [];
-    const stored = media
-      ? (await media.list(folder, { hashes: false })).map((f) => {
-          const ext = path.extname(f.name).slice(1).toLowerCase();
-          return { rel: f.name, name: f.name, ext, kind: MEDIA_TYPES[ext][0], type: MEDIA_TYPES[ext][1], size: f.size };
-        })
-      : [];
-    const gallery = mergeMedia(local, stored).map((m) => ({
-      ...m,
-      url: `/media/${encodeURIComponent(folder)}/${m.rel.split('/').map(encodeURIComponent).join('/')}`,
-    }));
+    let items = (await outputsDir(folder)) ? await walkMedia(`projects/${folder}/outputs`) : [];
+    let source = items.length ? 'local' : '';
+    if (!items.length && bucket) {
+      items = (await bucket.list()).get(folder) || [];
+      source = items.length ? 'bucket' : '';
+    }
+    const gallery = groupMedia(items).map((m) => {
+      const url = mediaUrl(folder, m.rel);
+      return { ...m, url, playUrl: m.play === m.rel ? url : mediaUrl(folder, m.play), downloadUrl: `${url}?download=1` };
+    });
+    const vo = await loadJson(`projects/${folder}/vo-script.json`);
     return {
       kind: 'project',
       folder,
@@ -436,9 +452,33 @@ export function createContent(root, { media = null } = {}) {
       meta,
       docs,
       media: gallery,
+      mediaSource: source,
+      vo: vo && typeof vo === 'object' && !Array.isArray(vo) ? vo : null,
+      caption: post ? captionOf(post) : null,
       warnings,
       url: `/projects/${encodeURIComponent(folder)}`,
     };
+  }
+
+  /** A JSON file, parsed and cached by mtime; null if missing or unparseable (warned once). */
+  function loadJson(rel) {
+    return cached(path.join(root, rel), 'json', (text) => JSON.parse(text));
+  }
+
+  // The caption block of post.md, rendered once per version of the file
+  // (doc objects are replaced when the file or the tree changes).
+  const captions = new WeakMap();
+  function captionOf(doc) {
+    if (captions.has(doc)) return captions.get(doc);
+    let value = null;
+    try {
+      const md = captionMarkdown(doc.body);
+      if (md) value = { md, text: plainFromMarkdown(md), parts: captionParts(md), html: renderCaption ? renderCaption(md, doc.rel) : '' };
+    } catch (e) {
+      console.warn(`[studio] could not read the caption in ${doc.rel}: ${e?.message || e}`);
+    }
+    captions.set(doc, value);
+    return value;
   }
 
   // ------------------------------------------------- research / log / other
@@ -526,8 +566,8 @@ export function createContent(root, { media = null } = {}) {
   }
 
   /**
-   * Resolve a media file for a project, or null. Local projects/<folder>/outputs/
-   * first (dev), else MEDIA_DIR/<folder>/<file> (Railway). Whitelisted extensions only.
+   * A media file on this disk (projects/<folder>/outputs/...), or null.
+   * Whitelisted extensions only. The bucket is the server's job (a redirect).
    */
   async function mediaFile(folder, relPath) {
     if (!LISTABLE(folder)) return null;
@@ -538,16 +578,13 @@ export function createContent(root, { media = null } = {}) {
     if (!(await hasProject(folder))) return null;
     const type = MEDIA_TYPES[ext][1];
     const local = await localMediaFile(folder, parts);
-    if (local) return { ...local, type };
-    if (parts.length !== 1) return null;
-    const stored = media ? await media.file(folder, parts[0]) : null;
-    if (stored) return { ...stored, type };
-    // A master <name>.mp4 that only exists as <name>.preview.mp4 (Railway keeps
-    // previews only): serve the preview, so links to the master still play.
-    if (ext === 'mp4' && !/\.preview\.mp4$/i.test(parts[0])) {
-      const pv = parts[0].replace(/\.mp4$/i, '.preview.mp4');
-      const preview = (await localMediaFile(folder, [pv])) || (media ? await media.file(folder, pv) : null);
-      if (preview) return { ...preview, type: 'video/mp4' };
+    if (local) return { ...local, type, name: parts[parts.length - 1] };
+    // A master <name>.mp4 that only exists as <name>.preview.mp4 here: serve
+    // the preview, so links to the master still play.
+    if (parts.length === 1 && ext === 'mp4' && !masterOf(parts[0])) {
+      const pv = previewOf(parts[0]);
+      const preview = pv ? await localMediaFile(folder, [pv]) : null;
+      if (preview) return { ...preview, type: 'video/mp4', name: pv };
     }
     return null;
   }

@@ -1,0 +1,17 @@
+{
+  "url": "https://www.qsme.co.nz/sign-up",
+  "cssWidth": 430,
+  "cssHeight": 932,
+  "dpr": 3,
+  "mobile": true,
+  "settle": 4,
+  "evals": [],
+  "boxes": {
+    "title": "[...document.querySelectorAll('h1,h2,h3,p,div,span')].find(e => e.children.length === 0 && e.textContent.trim() === 'Get started with QSME')",
+    "q": "[...document.querySelectorAll('h1,h2,h3,p,div,span')].find(e => e.children.length === 0 && e.textContent.trim() === 'What brings you here?')",
+    "hire": "[...document.querySelectorAll('h1,h2,h3,p,div,span')].find(e => e.children.length === 0 && e.textContent.trim() === 'I hire')",
+    "hireCard": "(() => { let e = [...document.querySelectorAll('h1,h2,h3,p,div,span')].find(e => e.children.length === 0 && e.textContent.trim() === 'I hire'); for (let i = 0; i < 6 && e; i++) { e = e.parentElement; if (e && e.textContent.includes('Main contractors') && e.textContent.length < 400) return e; } return null; })()",
+    "review": "(() => { const p = [...document.querySelectorAll('p,div,span')].find(e => e.children.length === 0 && e.textContent.includes('review proposals')); if (!p) return null; const r = document.createRange(); const n = p.firstChild; const i = n.textContent.indexOf('review proposals'); r.setStart(n, i); r.setEnd(n, i + 'review proposals'.length); return r; })()",
+    "provide": "[...document.querySelectorAll('h1,h2,h3,p,div,span')].find(e => e.children.length === 0 && e.textContent.trim() === 'I provide services')"
+  }
+}

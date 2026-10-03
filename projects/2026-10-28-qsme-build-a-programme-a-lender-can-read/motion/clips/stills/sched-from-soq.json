@@ -1,0 +1,29 @@
+{
+ "url": "https://qsme.build/platform",
+ "captured": "2026-10-03T14:07:38.743Z",
+ "dpr": 2,
+ "w": 1160,
+ "h": 190,
+ "hl": [
+  [
+   623,
+   20,
+   405,
+   40
+  ],
+  [
+   60,
+   71,
+   935,
+   40
+  ],
+  [
+   60,
+   122,
+   432,
+   40
+  ]
+ ],
+ "hl2": [],
+ "text": "The schedule is a Gantt programme. Pull jobs straight out of the schedule of quantities and they arrive with their durations and whether weather stops them, or start from a saved template."
+}

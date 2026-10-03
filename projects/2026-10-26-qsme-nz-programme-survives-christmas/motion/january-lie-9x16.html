@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<title>The January lie (9:16 cut)</title>
+<!-- QSME NZ · "The January lie" · 33 s 9:16 cut of "How a programme survives Christmas" (beats 1–3) for Reels / TikTok.
+     Same builders as the 16:9 master (sched.js / story.js / psc.css). Generic spreadsheet (no brand UI) → illustrative QSME
+     schedule (verbatim wording, demo data, labelled) → the finish moves out → end card.
+     The schedule is a portrait crop (21 Dec – 7 Feb, 7 rows) built small and scaled up 1.4x so the UI reads on a phone;
+     the Christmas shutdown is ON by default in QSME, so the cut says "we switched it off", then switches it back on.
+     All text inside 65,300,1015,1250; captions kept within x 65–940 (clear of the TikTok / Reels right-rail buttons).
+     Owner CTA rule 2026-10-03: no "free"; CTA = Sign up at qsme.co.nz. -->
+<link rel="stylesheet" href="../../../tools/motion/kit.css">
+<link rel="stylesheet" href="psc.css">
+<style>
+  #root { background: radial-gradient(900px 1300px at 50% 42%, #0C1B30 0%, #050B1C 55%, #020617 100%); }
+  .caption { left: 65px; right: 140px; top: auto; bottom: 676px; font-size: 46px; line-height: 1.17; z-index: 60; }
+  .caption.box > span { display: inline-block; max-width: 875px; padding: 8px 20px; border-radius: 12px; box-shadow: 0 10px 30px rgba(2,6,23,.5); }
+  .lbl { position: absolute; padding: 5px 12px; border-radius: 8px; font: 500 22px/1.2 "JetBrains Mono"; white-space: nowrap; z-index: 55; }
+  .lbl.ill { border: 2px dashed rgba(248,250,252,.55); color: rgba(248,250,252,.82); background: rgba(2,6,23,.6); }
+  .lbl.drm { border: 2px solid rgba(248,250,252,.35); color: rgba(248,250,252,.85); background: rgba(2,6,23,.62); }
+  .hl { position: absolute; left: 65px; right: 65px; text-align: center; font: 800 66px/1.06 Manrope; letter-spacing: -0.035em; color: #F8FAFC; z-index: 50; }
+  .panel { position: absolute; left: 65px; top: 350px; width: 950px; height: 700px; border-radius: 22px; overflow: hidden; z-index: 20; --ct: 0;
+    clip-path: inset(calc(var(--ct) * 1px) 0 0 0 round 22px); box-shadow: 0 30px 80px rgba(0,0,0,.55); }
+  #apw { top: 340px; height: 740px; }
+  #apz { position: absolute; left: 0; top: 0; width: 680px; height: 530px; transform: scale(1.39706); transform-origin: 0 0; }
+  .pcam { position: absolute; left: 0; top: 0; transform-origin: 0 0; --cx: 475; --cy: 380; --cs: 1;
+    transform: translate(calc(475px - var(--cs) * var(--cx) * 1px), calc(350px - var(--cs) * var(--cy) * 1px)) scale(var(--cs)); }
+  #shp { background: #1A1F2B; }
+  #shpann .mk { font-size: 54px; transform: rotate(-3deg); }
+  #glow { position: absolute; border-radius: 6px; box-shadow: 0 0 0 4px rgba(224,48,42,.85), 0 0 34px 10px rgba(255,214,102,.65); }
+  #ap .gantt .gn .dd { display: none; }
+  #ap .gantt .gn { padding: 0 10px 0 12px; }
+  /* the notice sits over the two bottom rows (plumbing, handover), which are not on shut days */
+  #ap .notice { white-space: normal; flex-wrap: wrap; row-gap: 10px; column-gap: 10px; padding: 12px 14px; font-size: 16.5px; }
+  #ap .notice > span:first-of-type { flex: 1 1 380px; }
+  #ap .notice .btn { margin-left: 32px; }
+  #cel { z-index: 47; }
+  #cel .veil { position: absolute; inset: 0; background: rgba(2,6,23,.88); backdrop-filter: blur(7px); -webkit-backdrop-filter: blur(7px); }
+  #cel .k1 { position: absolute; left: 65px; right: 65px; top: 330px; text-align: center; font: 800 104px/1 Manrope; letter-spacing: -0.045em; color: #F8FAFC; }
+  #cel .k2 { position: absolute; left: 65px; right: 65px; top: 460px; text-align: center; font: 800 62px/1.08 Manrope; letter-spacing: -0.03em; color: #3DC023; }
+  #cel .card2 { position: absolute; left: 140px; top: 650px; width: 800px; height: 300px; border-radius: 26px; background: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 30px 80px rgba(0,0,0,.5); }
+  #cel .card2 i { font: 700 26px/1 "JetBrains Mono"; font-style: normal; letter-spacing: .12em; color: #64748B; }
+  #cel .card2 s { text-decoration: none; position: relative; font: 700 44px/1 Inter; color: #94A3B8; margin-top: 18px; }
+  #cel .card2 s:after { content: ''; position: absolute; left: -6px; right: -6px; top: 52%; height: 5px; background: #E0302A; border-radius: 2px; transform: rotate(-3deg); }
+  #cel .card2 b { font: 800 86px/1 Inter; letter-spacing: -0.02em; color: #0F172A; margin-top: 18px; }
+  /* confetti is masked out above the card, so it never crosses the headline or the subline */
+  #confw { position: absolute; inset: 0; -webkit-mask-image: linear-gradient(180deg, transparent 0, transparent 625px, #000 700px); mask-image: linear-gradient(180deg, transparent 0, transparent 625px, #000 700px); }
+  .conf { position: absolute; width: 16px; height: 30px; border-radius: 3px; }
+  #end .bgw { position: absolute; left: -968px; top: 0; width: 2048px; height: 1152px; transform-origin: 1500px 500px; }
+  #end .bgw img { width: 2048px; height: 1152px; }
+  #end .ov { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(2,6,23,.35) 0%, rgba(2,6,23,.45) 30%, rgba(2,6,23,.92) 52%, #020617 64%); }
+  #end .logo { position: absolute; left: 65px; top: 640px; width: 240px; height: 138px; overflow: hidden; }
+  #end .e1 { position: absolute; left: 65px; right: 65px; top: 800px; font: 800 78px/1.04 Manrope; letter-spacing: -0.04em; color: #F8FAFC; }
+  #end .e1 .a { color: #3DC023; }
+  #end .btnx { position: absolute; left: 65px; top: 1120px; display: inline-flex; align-items: center; height: 100px; padding: 0 40px; border-radius: 16px; background: #16A34A; color: #fff; font: 800 50px/1 Manrope; letter-spacing: -0.01em; white-space: nowrap; box-shadow: 0 20px 50px rgba(22,163,74,.35); }
+</style>
+</head>
+<body class="nz r9x16">
+<div id="root"></div>
+<script src="../../../tools/motion/kit.js"></script>
+<script src="sched.js"></script>
+<script src="story.js"></script>
+<script>
+(function () {
+  'use strict';
+  var S = Sched, G = S.G, d = S.day, R = document.getElementById('root'), H = '';
+  function add(h) { H += h; }
+  var caps = [];
+  function cap(t0, t1, html) { caps.push([t0, t1, html]); }
+  /* clock: hook 0–3.3 · sheet 3.3–10.3 · QSME 10.3–25.1 (Days off 15.0, back on 16.0, band 17.0, notice 19.8, move 22.4) · celebration 25.1–29.2 · end 29.2–33.0 */
+  var EX = 3.3, WH = 9.9, AP = 10.3, DO = 15.0, ON = 16.0, CL = 17.0, NT = 19.8, MV = 22.4, CEL = 25.1, TE = 29.2, D = 33.0;
+
+  /* ---------- the generic spreadsheet (compact: Task + dates, two-line day headers) ---------- */
+  var so = { compact: true, cA: 250, cd: 52 }, sg = Story.sheetGeo(so);
+  var c25 = sg.cell(3, d(2026, 12, 25)), cLab = sg.cell(1, 'E'), cBox = sg.cell(3, d(2026, 12, 28)), cNY = sg.cell(4, d(2027, 1, 1)), cHO = sg.cell(12, d(2027, 1, 15));
+  add('<div id="pbg" class="fill" style="overflow:hidden"><img src="clips/lockup/f_00060.jpg" alt="" style="position:absolute;left:-1166px;top:0;width:3413px;height:1920px;filter:blur(26px) brightness(.32) saturate(.8)"></div>');
+  add('<div id="shp" class="panel" data-qa-ignore><div id="pc1" class="pcam">' + Story.sheet('sh', so) + '</div></div>');
+  add('<div id="h1" class="hl" style="top:318px">Only one on your job working Christmas Day?</div>');
+  add('<div id="h2" class="hl" style="top:470px;font-size:100px;color:#3DC023">Your spreadsheet.</div>');
+
+  /* ---------- the QSME schedule (illustrative): portrait crop, built at 680x530 and scaled 1.4x ---------- */
+  var GP = { x0: d(2026, 12, 21), days: 49, dayW: 9.4, rowH: 56, nameW: 200, headH: 44, rows: ['p1', 'kit', 'tile', 'land', 'p2', 'plb', 'hand'], head: 'week', title: 'Task', fs: 1.0, lab: 'short' };
+  add('<div id="apw" class="panel" data-qa-ignore style="background:#F4F6F5"><div id="apz">' + Story.app('ap', { w: 680, h: 530, port: true, gantt: GP, gx: 10, gy: 82, gw: 660, gh: 438, fin: 'Wed 20 Jan 2027',
+      ntcPos: 'left:16px;top:412px;width:648px', ntc: '5 jobs are planned on days the site is shut', extra: Story.daysOff('apD', { x: 20, y: 84, w: 640, noHol: true }) }) + '</div></div>');
+
+  /* ---------- celebration (no green confetti: it would match the subline) ---------- */
+  var conf = '', seed = 7; function rnd() { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
+  var CC = ['#F59E0B', '#A855F7', '#0EA5E9', '#F8FAFC', '#E0302A'];
+  for (var i = 0; i < 44; i++) conf += '<div id="cf' + i + '" class="conf" style="left:532px;top:790px;background:' + CC[i % CC.length] + '"></div>';
+  add('<div id="cel" class="fill"><div class="veil"></div><div id="confw">' + conf + '</div><div id="k1" class="k1">Congratulations.</div><div id="k2" class="k2">Your finish date<br>just got later.</div>' +
+      '<div id="k3" class="card2"><i>FINISHES</i><s>Wed 20 Jan 2027</s><b>Wed 3 Feb 2027</b></div></div>');
+
+  /* ---------- end card ---------- */
+  add('<div id="end" class="fill"><div id="ebg" class="bgw"><img id="eimg" alt=""></div><div class="ov"></div>' +
+      '<div id="elogo" class="logo"><img src="qsme-logo.svg" alt="QSME" style="position:absolute;left:-35px;top:0;width:300px"></div>' +
+      '<div id="e1" class="e1">A finish date you can still say out loud in <span class="a">January.</span></div>' +
+      '<div id="ebtn" class="btnx">Sign up at qsme.co.nz</div></div>');
+
+  /* labels (the spreadsheet is labelled from frame 0: under the hook panel, then the usual top slot) */
+  add('<div id="lbS0" class="lbl drm" style="right:65px;top:1062px">Generic spreadsheet · demo data</div>');
+  add('<div id="lbS" class="lbl drm" style="right:65px;top:304px">Generic spreadsheet · demo data</div>');
+  add('<div id="lbI" class="lbl ill" style="right:65px;top:300px">Illustrative screen · demo data</div>');
+  add('<div id="lbE" class="lbl ill" style="right:65px;top:304px;font-size:20px">Illustrative screens · demo data · b-roll</div>');
+
+  /* captions (bottom edge of the box at 1244; x 65–940) */
+  cap(EX + 0.3, 6.4, 'Worked Labour Day. Worked Boxing Day. Worked New Year\'s.');
+  cap(6.6, 8.2, 'Didn\'t even go to the bach.');
+  cap(8.4, 10.0, 'Handover 15 Jan. She\'ll be right.');
+  cap(AP + 0.2, 12.3, 'Same job in QSME.');
+  cap(12.5, DO + 0.3, 'Shutdown on by default — we switched it off.');
+  cap(DO + 0.5, CL - 0.1, 'Switch it back on.');
+  cap(CL + 0.2, NT - 0.5, 'Only 4 are public holidays.');
+  cap(NT - 0.3, MV - 0.2, 'Your spreadsheet called the rest working days.');
+  cap(MV + 0.2, CEL - 0.05, 'Move them off. There\'s your real finish.');
+  cap(CEL + 1.3, TE - 0.1, 'It was always February. Now you know.');
+  caps.forEach(function (c, i) { add('<div id="cap' + i + '" class="caption box"><span>' + c[2] + '</span></div>'); });
+  R.innerHTML = H;
+
+  /* ======================= TIMELINE ======================= */
+  Kit.scene('#pbg', 0, TE).scene('#shp', 0, AP).scene('#apw', WH, CEL + 0.4).scene('#cel', CEL, TE).scene('#end', TE, D + 1);
+  Kit.scene('#lbS0', 0, EX + 0.3).scene('#lbS', EX + 0.3, WH).scene('#lbI', AP, CEL).scene('#lbE', TE + 1.2, D + 1);
+  // hook: the panel shows only its lower part under the headline, then opens up
+  Kit.add('#shp', 'var:--ct', [[0, 250], [EX, 250], [EX + 0.5, 0, 'swipe']]);
+  Kit.add('#h1', 'opacity', [[0, 1], [EX - 0.2, 1], [EX + 0.1, 0, 'in']]).add('#h1', 'y', [[EX - 0.2, 0], [EX + 0.1, -30, 'in']]);
+  Kit.slam('#h2', 1.35, { from: 1.25 }).add('#h2', 'opacity', [[EX - 0.2, 1], [EX + 0.1, 0, 'in']]);
+  var pc = '#pc1';
+  Kit.add(pc, 'var:--cs', [[0, 1.3], [EX, 1.36, 'linear'], [EX + 0.6, 0.82, 'swipe'], [8.2, 0.84, 'linear'], [8.8, 0.9, 'swipe'], [AP, 0.93, 'linear']]);
+  Kit.add(pc, 'var:--cx', [[0, 385], [EX, 390, 'linear'], [EX + 0.6, 580, 'swipe'], [8.2, 590, 'linear'], [8.8, 940, 'swipe']]);
+  Kit.add(pc, 'var:--cy', [[0, 239], [EX, 241, 'linear'], [EX + 0.6, 400, 'swipe'], [8.2, 400, 'linear'], [8.8, 600, 'swipe']]);
+  var ann = document.getElementById('shann');
+  ann.id = 'shpann';
+  ann.innerHTML =
+    '<div id="glow" style="left:' + c25.x + 'px;top:' + c25.y + 'px;width:' + c25.w + 'px;height:' + c25.h + 'px"></div>' +
+    Story.hat('hat', c25.x - 10, c25.y - 70, 0.76, -10) +
+    Story.ring('rLab', cLab.cx, cLab.cy, 52, 30) + '<div id="tLab" class="mk" style="left:' + (cLab.x + cLab.w + 30) + 'px;top:' + (cLab.y - 8) + 'px">Labour Day</div>' +
+    Story.ring('rBox', cBox.cx, cBox.cy, 40, 30) + '<div id="tBox" class="mk" style="left:' + (cBox.x + 40) + 'px;top:' + (cBox.y - 62) + 'px">Boxing Day</div>' +
+    Story.ring('rNY', cNY.cx, cNY.cy, 40, 30) + '<div id="tNY" class="mk" style="left:' + (cNY.x + 34) + 'px;top:' + (cNY.y - 60) + 'px">New Year\'s</div>' +
+    Story.ring('rHO', cHO.cx - 2, cHO.cy, 50, 34) + '<div id="tHO" class="mk" style="left:' + (cHO.x - 520) + 'px;top:' + (cHO.y + 50) + 'px;font-size:56px;transform:rotate(-4deg)">She\'ll be right.</div>';
+  Kit.add('#glow', 'opacity', [[0, 0.65], [0.3, 1], [1.2, 0.8], [2.2, 1], [EX + 0.3, 0, 'in']]);
+  Kit.add('#hat', 'opacity', [[0.25, 0], [0.29, 1]]).add('#hat', 'y', [[0.25, -120], [0.45, 0, 'slam']]).add('#hat', 'rotate', [[0.45, -10], [0.57, -17, 'out'], [0.75, -10, 'inOut']]);
+  [['rLab', 'tLab', EX + 0.65], ['rBox', 'tBox', EX + 1.35], ['rNY', 'tNY', EX + 2.05], ['rHO', 'tHO', 8.95]].forEach(function (a) {
+    Kit.add('#' + a[0], 'trim', [[a[2], 0], [a[2] + 0.4, 1, 'out']]);
+    Kit.add('#' + a[1], 'clipX', [[a[2] + 0.25, 0], [a[2] + 0.7, 1]]).add('#' + a[1], 'opacity', [[a[2] + 0.24, 0], [a[2] + 0.25, 1]]);
+  });
+  // whip from the spreadsheet to QSME
+  Kit.add('#shp', 'x', [[WH, 0], [AP, -1100, 'swipe']]);
+  Kit.add('#apw', 'x', [[WH, 1100], [AP, 0, 'swipe']]);
+
+  /* ---------- QSME portrait chart (S0 → S1 only: no Anniversary day off in this cut) ---------- */
+  var BK = { kit: 'S0', tile: 'S0', plb: 'S0' }, WT = { kit: 'waiting', tile: 'waiting', plb: 'waiting' }, RA = { kit: 'amber', tile: 'amber', plb: 'amber' };
+  var HL = {}; S.onShut(S.P.S0).forEach(function (t) { HL[t.id] = 'hl'; });
+  var ST = { S0: { r: S.P.S0 }, S0h: { r: S.P.S0, deco: { ring: HL } }, S1p: { r: S.P.S1, deco: { ghost: BK, st: WT, ring: RA } } };
+  Kit.each(G.run('apg', GP, ST, [[0, 'S0'], [CL + 0.2, 'S0h', 0.3, 'out'], [MV + 0.1, 'S1p', 0.9, 'swipe']]));
+  document.querySelectorAll('#apg .bar .drag').forEach(function (n) { var e = document.createElement('div'); e.className = 'rh'; e.style.cssText = 'position:absolute;inset:-4px;border-radius:9px;border:3px solid #0F172A;opacity:0'; n.appendChild(e); });
+  Kit.each(function (t) { var p = t >= CL + 0.2 && t < MV + 0.15 ? Math.min(1, (t - CL - 0.2) / 0.3) : 0; document.querySelectorAll('#apg .rh').forEach(function (n) { n.style.opacity = HL[n.parentNode.id.replace('apgd_', '')] ? p : 0; }); });
+  Story.textAt('#apfinD', [[0, 'Wed 20 Jan 2027'], [MV + 0.7, 'Wed 3 Feb 2027']]);
+  Kit.add('#apfin', 'scale', [[MV + 0.65, 1], [MV + 0.85, 1.12, 'out'], [MV + 1.2, 1, 'inOut']]);
+  Kit.add('#apfin', 'borderColor', [[0, '#E2E8F0'], [MV + 0.6, '#E2E8F0'], [MV + 0.7, '#F59E0B']]);
+  Kit.add('#apgshut', 'opacity', [[0, 0], [CL, 0, 'hold'], [CL + 0.4, 1, 'out']]);
+  Kit.add('#apgann', 'opacity', [[0, 0]]);   // the Anniversary day off is never added in this cut
+  // days off dialog: the shutdown starts switched off (we switched it off), then goes back on
+  Kit.add('#apD', 'opacity', [[0, 0], [DO + 0.2, 0, 'hold'], [DO + 0.4, 1, 'out'], [CL, 1], [CL + 0.18, 0, 'in']]).add('#apD', 'scale', [[DO + 0.2, 0.96], [DO + 0.45, 1, 'out']]);
+  Kit.add('#apscr', 'opacity', [[0, 0], [DO + 0.2, 0], [DO + 0.4, 1], [CL, 1], [CL + 0.2, 0]]);
+  Kit.add('#apDoff', 'opacity', [[0, 1], [ON + 0.05, 1], [ON + 0.25, 0]]).add('#apDon', 'opacity', [[0, 0], [ON + 0.05, 0], [ON + 0.25, 1]]);
+  Kit.add('#apDpre', 'opacity', [[0, 0.25], [ON + 0.1, 0.25], [ON + 0.4, 1, 'out']]);
+  Kit.add('#apDtg', 'background', [[0, '#CBD5E1'], [ON, '#CBD5E1'], [ON + 0.15, '#16A34A']]).add('#apDtgk', 'x', [[ON, 0], [ON + 0.17, 22, 'out']]);
+  Kit.add('#apntc', 'opacity', [[0, 0], [NT, 0, 'hold'], [NT + 0.3, 1, 'out'], [MV + 0.25, 1], [MV + 0.5, 0, 'in']]).add('#apntc', 'y', [[NT, 16], [NT + 0.3, 0, 'out']]);
+  Kit.add('#apntcB', 'scale', [[MV - 0.1, 1], [MV, 0.94], [MV + 0.15, 1]]);
+  Kit.add('#aptst', 'opacity', [[0, 0]]);
+  // cursor (app coords, measured on the 680x530 shell)
+  var CUR = { days: [384, 36], tog: [607, 290], mv: [180, 476] };
+  Story.cursor('#apcur', [[AP, 420, 300], [DO - 0.3, CUR.days[0], CUR.days[1]], [DO, CUR.days[0], CUR.days[1], 1], [ON - 0.4, CUR.tog[0], CUR.tog[1]], [ON - 0.05, CUR.tog[0], CUR.tog[1], 1], [CL + 0.5, 470, 330],
+    [MV - 0.6, CUR.mv[0], CUR.mv[1]], [MV - 0.1, CUR.mv[0], CUR.mv[1], 1], [MV + 1.2, 470, 300]]);
+
+  /* ---------- celebration ---------- */
+  Kit.add('#cel', 'opacity', [[CEL, 0], [CEL + 0.25, 1], [TE - 0.2, 1], [TE, 0]]);
+  Kit.slam('#k1', CEL + 0.2, { from: 1.2 }).pop('#k2', CEL + 0.7, { dy: 26 });
+  Kit.add('#k3', 'opacity', [[CEL + 1.0, 0], [CEL + 1.1, 1]]).add('#k3', 'scale', [[CEL + 1.0, 0.7], [CEL + 1.3, 1, 'outBack']]);
+  seed = 99;
+  for (var j = 0; j < 44; j++) {
+    var ang = rnd() * Math.PI * 2, sp = 420 + rnd() * 560, vx = Math.cos(ang) * sp * 0.7, vy = Math.sin(ang) * sp - 300, r0 = rnd() * 360, rr = (rnd() - 0.5) * 900, t0 = CEL + 1.1 + rnd() * 0.15;
+    var xs = [], ys = [], rs = [];
+    for (var s = 0; s <= 10; s++) { var tt = s * 0.3; xs.push([t0 + tt, vx * tt * 0.8, s ? 'linear' : undefined]); ys.push([t0 + tt, vy * tt + 560 * tt * tt * 0.6, s ? 'linear' : undefined]); rs.push([t0 + tt, r0 + rr * tt, s ? 'linear' : undefined]); }
+    Kit.add('#cf' + j, 'x', xs).add('#cf' + j, 'y', ys).add('#cf' + j, 'rotate', rs).add('#cf' + j, 'opacity', [[t0 - 0.01, 0], [t0, 1], [t0 + 2.2, 1], [t0 + 2.7, 0]]);
+  }
+
+  /* ---------- end card ---------- */
+  Kit.clip('#eimg', { dir: 'clips/complete', t0: TE, fps: 30, ext: '.jpg', frames: 192, speed: 0.75, from: 45 });
+  Kit.add('#ebg', 'scale', [[TE, 1.0], [D, 1.06, 'linear']]);
+  Kit.add('#end', 'opacity', [[TE, 0], [TE + 0.3, 1]]);
+  Kit.pop('#elogo', TE + 0.25, { dy: 20 }).pop('#e1', TE + 0.5, { dy: 30 }).pop('#ebtn', TE + 1.1, { dy: 24 });
+  Kit.add('#ebtn', 'scale', [[TE + 2.4, 1], [TE + 2.6, 1.05, 'out'], [TE + 2.9, 1, 'inOut']]);
+
+  caps.forEach(function (c, i) { Kit.pop('#cap' + i, c[0], { dy: 18 }); Kit.out('#cap' + i, c[1] - 0.12, 0.12); });
+  Kit.ready({ duration: D, fonts: ['800 60px Manrope', '400 20px Inter', '500 20px Inter', '600 20px Inter', '700 20px Inter', '800 20px Inter', '400 40px "Permanent Marker"', '500 20px "JetBrains Mono"', '700 20px "JetBrains Mono"'] });
+})();
+</script>
+</body>
+</html>

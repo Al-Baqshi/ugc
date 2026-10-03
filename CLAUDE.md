@@ -20,7 +20,7 @@ The user relies on this folder, not the chat, as the source of truth. In every c
 - **Venture facts the user confirms** → update `ventures/<venture>.md` and remove the ❓.
 Save as you go, not at the end. Tell the user in one line what was saved where.
 
-**Then publish:** after saving, run `npm run publish` (background) so the live Studio matches the folder: https://studio-production-ccb0.up.railway.app (login: any username + `STUDIO_PASSWORD` from `.env`). Never print the password. The JSON feed for other tools is `/api/ideas` (Bearer `STUDIO_API_TOKEN`).
+**Then publish:** after saving, run `npm run publish` (background) so the live Studio matches the folder (code via `railway up`; videos/stills go to the private Railway bucket `ugc-videos` via tools/motion/sync-media.mjs, played through short-lived signed links): https://studio-production-ccb0.up.railway.app (login: any username + `STUDIO_PASSWORD` from `.env`). Never print the password. The JSON feed for other tools is `/api/ideas` (Bearer `STUDIO_API_TOKEN`).
 
 **Then back up (standing rule, user 2026-10-03):** run `tools/backup.sh "<what changed>"` (background). It commits + pushes everything to the private repo https://github.com/Al-Baqshi/ugc (secrets refused), refreshes `context/memory/` from Claude's memory, and uploads new/changed videos to the `videos-YYYY-MM` Release. The repo is the record: a new computer or cloud session should be able to continue from it alone (see README → New machine).
 

@@ -11,3 +11,4 @@ metadata:
 - railway.json "config as code" is deprecated; works until 2026-12-01, migrate with `railway config migrate` before then.
 
 Related: [[feedback-save-everything-locally]], [[user-ugc-goals]]
+- Videos/stills live in the private Railway bucket `ugc-videos` (region sin, S3 endpoint t3.storageapi.dev). The studio service gets BUCKET_* via Railway variable references `${{ugc-videos.*}}`; the local sync tool reads them at runtime from `railway variables --service studio --kv` (never stored/printed). A volume `studio-media` (/data) was created first and is now unused — remove it once the bucket is live (ask the user).

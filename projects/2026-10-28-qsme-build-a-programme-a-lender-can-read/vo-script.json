@@ -1,0 +1,371 @@
+{
+ "venture": "qsme-build",
+ "video": "outputs/a-programme-a-lender-can-read-16x9.mp4",
+ "character": "Best: the founder, a professional quantity surveyor, in his own voice, recorded on a decent USB or lapel mic in a quiet office (this is the deep-dive and the standing link for demo follow-ups). Fallback (AI): the same mid-career Kiwi QS voice as 'Six bids. Six formats.', 'Why six bids never compare' and 'Action: chase painter' (late 30s to 40s, general urban New Zealand accent, not broad, not Australian). Calm and dry, a colleague walking a developer through what a lender actually reads. Explaining, never selling. An AI voice never speaks as the founder and is never captioned as him.",
+ "casting_line": "Your programme. As the lender sees it. One contract, counted six times. Q-S-me dot build.",
+ "series_rule": "The burned-in captions and the big hook/title type are the subtitles, so every voiced line is read word for word ('A4' is read 'A-four', '30-minute' is read 'thirty-minute'). Chapter numbers are spoken with the card title. Sticky notes, chips, toasts and product wording on the screens are not captions and stay unvoiced.",
+ "time_base": "Seconds on outputs/a-programme-a-lender-can-read-16x9.mp4 (128.1 s). The page is authored on a 132.5 s clock and an edit list (motion/lender.js → SKIPS/HOLDS) maps the file onto it: the title's hold and the middle of every chapter card are cut, chapter 3 holds three still frames for its captions, and two long holds in chapter 5 are cut. These are real file times (window.__toReal(authored) converts).",
+ "settings": {
+  "model": "eleven_multilingual_v2",
+  "stability": 0.45,
+  "similarity_boost": 0.75,
+  "style": 0,
+  "speed": 1,
+  "use_speaker_boost": true
+ },
+ "continuous_read_v2": "Your programme. As the lender sees it.\n\nNo dates on the bars.\n\nIt runs off the page.\n\nOne contract, counted six times.\n\nSo what's actually holding this build up?\n\nA programme a lender can read.\n\nSix fixes. One printout.\n\nOne. From the estimate.\n\nStart from what you priced.\n\nEach job brings its own days.\n\nEven the rain flag comes across.\n\nThen you link what waits for what.\n\nTwo. Slips and rain.\n\nOne slip moves what's linked.\n\nAnyone booked is asked, not told.\n\nNothing changes for them until they say yes.\n\nRained off? See what moves before you push.\n\nThree. What drives the finish.\n\nPurple decides the finish date.\n\nGrey has room.\n\nThe painter everyone chased? Never purple.\n\nPurple slips a day, the finish slips a day.\n\nFour. Your days off.\n\nThis one runs straight through the site's own shutdown.\n\nYour holidays and shutdowns? Add them as days off.\n\nWork moves later. Never earlier.\n\nMid-January was never real.\n\nFive. Money, once.\n\nEstimates carry a squiggle. Agreed prices don't.\n\nAnd a contract counts once, not six times.\n\nPaid is what's been recorded as paid.\n\nSix. Print it.\n\nThe whole chart fits across the A-four.\n\nThe task list follows.\n\nDates in words, on every bar.\n\nWhen, how long, how much. Up top.\n\nAnd the lender's question, answered in one sentence.\n\nOn your letterhead.\n\nBring your current programme to a thirty-minute demo. Q-S-me dot build.",
+ "lines": [
+  {
+   "id": "vo01-your-programme",
+   "start_s": 0.05,
+   "max_s": 2.05,
+   "on_screen": "Frame 1: 'Your programme. / As the lender sees it.' (big type, left) beside the printed A4 already on the desk ('Programme_Rev4_FINAL.xlsx — Gantt', generic spreadsheet), chip 'Example figures'; the red ring and 'DATES?' land by 0.8",
+   "text_v2": "Your programme. As the lender sees it.",
+   "text_v3": "Your programme. [dry] As the lender sees it.",
+   "delivery": "Two halves, one breath: the first flat and a little proud, the second drier and a half-step down, a small lean on 'lender'. Brisk. Out by 2.1."
+  },
+  {
+   "id": "vo02-no-dates",
+   "start_s": 2.15,
+   "max_s": 2.05,
+   "on_screen": "Caption 'No dates on the bars.' · red marker ring round the bars, 'DATES?'",
+   "text_v2": "No dates on the bars.",
+   "text_v3": "No dates on the bars.",
+   "delivery": "Matter-of-fact, reading the page like a lender would. Out by 4.3."
+  },
+  {
+   "id": "vo03-off-the-page",
+   "start_s": 4.4,
+   "max_s": 2.2,
+   "on_screen": "Caption 'It runs off the page.' · red marker arrow off the right edge, 'ENDS WHERE?'",
+   "text_v2": "It runs off the page.",
+   "text_v3": "It runs off the page.",
+   "delivery": "Same flat read, a touch slower on 'off the page'. Out by 6.7."
+  },
+  {
+   "id": "vo04-six-times",
+   "start_s": 6.85,
+   "max_s": 2.65,
+   "on_screen": "Caption 'One contract, counted six times.' · marker ring on the subtotal '2,700,000' (turns red), a bracket down the six 450,000s, 'one 450k contract × 6?' under them",
+   "text_v2": "One contract, counted six times.",
+   "text_v3": "[sighs] One contract, counted six times.",
+   "delivery": "The wince line. Dry, with a tiny pause after 'contract'. Lean on 'six'. Out by 9.6."
+  },
+  {
+   "id": "vo05-holding-up",
+   "start_s": 9.8,
+   "max_s": 2.3,
+   "on_screen": "'So what's actually holding this build up?' (big type, 'up?' in green) beside the marked-up printout",
+   "text_v2": "So what's actually holding this build up?",
+   "text_v3": "So what's actually holding this build up?",
+   "delivery": "The lender's question, asked plainly and fairly, not mocking. Lean on 'actually'. Falling end, no lift. It may finish under the title wipe (out by 12.1)."
+  },
+  {
+   "id": "vo06-title",
+   "start_s": 12.5,
+   "max_s": 1.85,
+   "on_screen": "Title card over frame-stage b-roll: 'A programme a lender can read.'",
+   "text_v2": "A programme a lender can read.",
+   "text_v3": "A programme a lender can read.",
+   "delivery": "Calm, the title of the talk. Out by 14.35."
+  },
+  {
+   "id": "vo07-six-fixes",
+   "start_s": 14.45,
+   "max_s": 1.45,
+   "on_screen": "'Six fixes. One printout.' + the chapter list 1–6",
+   "text_v2": "Six fixes. One printout.",
+   "text_v3": "Six fixes. One printout.",
+   "delivery": "Two short statements. Out by 15.9, before the wipe."
+  },
+  {
+   "id": "vo08-ch1",
+   "start_s": 16.3,
+   "max_s": 1.35,
+   "on_screen": "Card '1 · Fix 1 of 6 · From the estimate. · No retyping.'",
+   "text_v2": "One. From the estimate.",
+   "text_v3": "One. From the estimate.",
+   "delivery": "Chapter read: number, beat, title. Brisk; the card is 1.2 s. Out by 17.65."
+  },
+  {
+   "id": "vo09-priced",
+   "start_s": 17.75,
+   "max_s": 4.1,
+   "on_screen": "Caption 'Start from what you priced.' over 'Import tasks onto Riverside Terraces — Stage 3', the seven pockets ticked, 'Link them one after the other' unticked, 'Import 23 tasks'",
+   "text_v2": "Start from what you priced.",
+   "text_v3": "Start from what you priced.",
+   "delivery": "Easy, practical. Lean on 'priced'. Then let the clicks play."
+  },
+  {
+   "id": "vo10-own-days",
+   "start_s": 22.35,
+   "max_s": 3.4,
+   "on_screen": "Caption 'Each job brings its own days.' as 23 bars land end to end · sticky 'No retyping.'",
+   "text_v2": "Each job brings its own days.",
+   "text_v3": "Each job brings its own days.",
+   "delivery": "Quietly pleased, like a tidy spreadsheet. Lean on 'own'."
+  },
+  {
+   "id": "vo11-rain-flag",
+   "start_s": 26.2,
+   "max_s": 2.7,
+   "on_screen": "Live page qsme.build/platform, highlighted: 'they arrive with their durations and whether weather stops them'",
+   "text_v2": "Even the rain flag comes across.",
+   "text_v3": "Even the rain flag comes across.",
+   "delivery": "A small aside, a hint of a smile on 'rain flag'."
+  },
+  {
+   "id": "vo12-link",
+   "start_s": 29.2,
+   "max_s": 3.4,
+   "on_screen": "Caption 'Then you link what waits for what.' · arrows draw in, bars slide into overlaps, rows re-sort and renumber in date order · toast 'Linked: Insulation starts after Electrical rough-in'",
+   "text_v2": "Then you link what waits for what.",
+   "text_v3": "Then you link what waits for what.",
+   "delivery": "Plain and even: this is the person's job, not the software's. Lean on 'you'. Out by 32.6."
+  },
+  {
+   "id": "vo13-ch2",
+   "start_s": 33.1,
+   "max_s": 1.5,
+   "on_screen": "Card '2 · Slips and rain. · Asked, not told.'",
+   "text_v2": "Two. Slips and rain.",
+   "text_v3": "Two. Slips and rain.",
+   "delivery": "Chapter read. It may run over the card into the screen (out by 34.6)."
+  },
+  {
+   "id": "vo14-one-slip",
+   "start_s": 34.75,
+   "max_s": 4.4,
+   "on_screen": "Caption 'One slip moves what's linked.' · pushed in on the chart: Insulation dragged 3 working days, everything after it slides · toast '9 moved · 2 sent for OK — 10 that follow them came too · Undo'",
+   "text_v2": "One slip moves what's linked.",
+   "text_v3": "One slip moves what's linked.",
+   "delivery": "Say it as the bar is grabbed. Even, unfussed."
+  },
+  {
+   "id": "vo15-asked",
+   "start_s": 39.6,
+   "max_s": 2.6,
+   "on_screen": "Live page qsme.build/platform: 'A task with a crew booked on it is never moved on them: the people on it are asked, not told.'",
+   "text_v2": "Anyone booked is asked, not told.",
+   "text_v3": "Anyone booked is asked, not told.",
+   "delivery": "On the subcontractors' side. Lean on 'asked' and 'told'."
+  },
+  {
+   "id": "vo16-say-yes",
+   "start_s": 42.6,
+   "max_s": 4.3,
+   "on_screen": "Second demo account (Demo Linings Ltd), pushed in: 'New dates — can you make them?' · 'Confirm dates' pressed (45.1)",
+   "text_v2": "Nothing changes for them until they say yes.",
+   "text_v3": "Nothing changes for them until they say yes.",
+   "delivery": "Reassuring, plain. Finish just after the click lands."
+  },
+  {
+   "id": "vo17-rain",
+   "start_s": 47.85,
+   "max_s": 4.4,
+   "on_screen": "Caption 'Rained off? See what moves before you push.' · 'Rain day' dialog pushed in: Tue 13 Oct ticked, 'What moves: 2 tasks move', 'Push these tasks' (50.85)",
+   "text_v2": "Rained off? See what moves before you push.",
+   "text_v3": "Rained off? See what moves before you push.",
+   "delivery": "A real question, then the answer. Lean on 'before'."
+  },
+  {
+   "id": "vo18-ch3",
+   "start_s": 53.5,
+   "max_s": 2.4,
+   "on_screen": "Card '3 · What drives the finish. · Purple and grey.'",
+   "text_v2": "Three. What drives the finish.",
+   "text_v3": "Three. What drives the finish.",
+   "delivery": "Chapter read. It may run over the card into the screen (out by 55.9)."
+  },
+  {
+   "id": "vo19-purple",
+   "start_s": 56.95,
+   "max_s": 2.05,
+   "on_screen": "View → Show → 'What drives the finish date' ticked (56.45); purple rings pop down to Handover",
+   "text_v2": "Purple decides the finish date.",
+   "text_v3": "Purple decides the finish date.",
+   "delivery": "Matter-of-fact. Lean on 'Purple'."
+  },
+  {
+   "id": "vo20-grey",
+   "start_s": 59.3,
+   "max_s": 2.35,
+   "on_screen": "Caption 'Grey has room.' · sticky on Driveways & landscaping: 'pushed by yesterday's rain / finish didn't move ✓'",
+   "text_v2": "Grey has room.",
+   "text_v3": "Grey has room.",
+   "delivery": "Short and dry, then let it sit. Out by 61.65."
+  },
+  {
+   "id": "vo21-painter",
+   "start_s": 61.9,
+   "max_s": 2.55,
+   "on_screen": "Caption 'The painter everyone chased? Never purple.' · biro ring round Painting (no purple ring), sticky 'never purple'",
+   "text_v2": "The painter everyone chased? Never purple.",
+   "text_v3": "[amused] The painter everyone chased? Never purple.",
+   "delivery": "A little smile on 'everyone chased', then flat on 'Never purple', never a laugh. Works without having seen last week's video. Out by 64.45."
+  },
+  {
+   "id": "vo22-purple-slips",
+   "start_s": 64.85,
+   "max_s": 4.25,
+   "on_screen": "Pushed in: Kitchens & joinery stretched a day; Electrical fit-off, Final clean and Handover follow; 'Finish: Fri 15 Jan', '+1 day'; back out for the toast",
+   "text_v2": "Purple slips a day, the finish slips a day.",
+   "text_v3": "Purple slips a day, the finish slips a day.",
+   "delivery": "Two matching halves, same rhythm, falling end on the second 'day'."
+  },
+  {
+   "id": "vo23-ch4",
+   "start_s": 69.7,
+   "max_s": 1.2,
+   "on_screen": "Card '4 · Your days off. · Later, never earlier.'",
+   "text_v2": "Four. Your days off.",
+   "text_v3": "Four. Your days off.",
+   "delivery": "Chapter read, brisk (out by 70.9)."
+  },
+  {
+   "id": "vo24-straight-through",
+   "start_s": 70.95,
+   "max_s": 3.2,
+   "on_screen": "Pushed in: dashed biro box over 21 Dec – 8 Jan · sticky 'site's shut · planned as working days'",
+   "text_v2": "This one runs straight through the site's own shutdown.",
+   "text_v3": "This one runs straight through the site's own shutdown.",
+   "delivery": "Dry, a bit rueful: we've all done it. Lean on 'straight through'."
+  },
+  {
+   "id": "vo25-days-off",
+   "start_s": 74.5,
+   "max_s": 4.2,
+   "on_screen": "'Days off' · 'Public holidays — None between now and the end of this job.' · 'Add a day off' → 'Year-end shutdown', 21 Dec 2026 to 8 Jan 2027 → 'Add it' (77.75)",
+   "text_v2": "Your holidays and shutdowns? Add them as days off.",
+   "text_v3": "Your holidays and shutdowns? Add them as days off.",
+   "delivery": "Helpful, unhurried. Small pause after the question. Lean on 'days off'."
+  },
+  {
+   "id": "vo26-later",
+   "start_s": 79.25,
+   "max_s": 2.05,
+   "on_screen": "A named band appears; eight jobs step over it · toast 'Year-end shutdown added — 8 jobs moved'",
+   "text_v2": "Work moves later. Never earlier.",
+   "text_v3": "Work moves later. Never earlier.",
+   "delivery": "Two firm short beats, the second a touch lower."
+  },
+  {
+   "id": "vo27-mid-january",
+   "start_s": 81.6,
+   "max_s": 2.5,
+   "on_screen": "Pushed in on the band and the new finish: 'Finish: Fri 5 Feb', '+3 weeks'",
+   "text_v2": "Mid-January was never real.",
+   "text_v3": "[dry] Mid-January was never real.",
+   "delivery": "The quiet punchline, at the situation, not at anyone. Flat, almost under the breath. Out by 84.1."
+  },
+  {
+   "id": "vo28-ch5",
+   "start_s": 84.7,
+   "max_s": 2.4,
+   "on_screen": "Card '5 · Money, once. · Estimates vs agreed prices.'",
+   "text_v2": "Five. Money, once.",
+   "text_v3": "Five. Money, once.",
+   "delivery": "Chapter read. It may run over the card into the screen (out by 87.1)."
+  },
+  {
+   "id": "vo29-squiggle",
+   "start_s": 87.65,
+   "max_s": 2.95,
+   "on_screen": "Pushed in on the Cost and Paid columns · biro rings on '~92,000' and '450,000'",
+   "text_v2": "Estimates carry a squiggle. Agreed prices don't.",
+   "text_v3": "Estimates carry a squiggle. Agreed prices don't.",
+   "delivery": "Lightly amused by 'squiggle', then plain. Lean on 'don't'."
+  },
+  {
+   "id": "vo30-once",
+   "start_s": 91.05,
+   "max_s": 4.35,
+   "on_screen": "Six rows of one contract highlighted; only the first carries '450,000 · paid 315,000'; the hook's '2,700,000' is struck out (93.4)",
+   "text_v2": "And a contract counts once, not six times.",
+   "text_v3": "And a contract counts once, not six times.",
+   "delivery": "The payoff to the hook. Lean on 'once'. Unhurried."
+  },
+  {
+   "id": "vo31-paid",
+   "start_s": 95.85,
+   "max_s": 2.65,
+   "on_screen": "Pushed in on the highlighted summary line 'Contracted 904,000 · Paid 601,000 · Still to contract ~574,300' · sticky 'Paid = recorded as paid'",
+   "text_v2": "Paid is what's been recorded as paid.",
+   "text_v3": "Paid is what's been recorded as paid.",
+   "delivery": "Careful and plain: this is the honest bit for a lender."
+  },
+  {
+   "id": "vo32-ch6",
+   "start_s": 99.1,
+   "max_s": 1.05,
+   "on_screen": "Card '6 · Print it. · Never runs off the side.'",
+   "text_v2": "Six. Print it.",
+   "text_v3": "Six. Print it.",
+   "delivery": "Chapter read, brisk (out by 100.15)."
+  },
+  {
+   "id": "vo33-fits-a4",
+   "start_s": 100.25,
+   "max_s": 2.5,
+   "on_screen": "Download menu → 'As a PDF — the chart and the task list' (click 101.6); the printout slides onto the desk",
+   "text_v2": "The whole chart fits across the A-four.",
+   "text_v3": "The whole chart fits across the A-four.",
+   "delivery": "Even. 'A-four' said the normal way ('ay four'). Let the paper land after it."
+  },
+  {
+   "id": "vo34-task-list",
+   "start_s": 103.05,
+   "max_s": 1.6,
+   "on_screen": "Page 1 flicks aside: page 2, 'Task list'",
+   "text_v2": "The task list follows.",
+   "text_v3": "The task list follows.",
+   "delivery": "Light, quick. Out by 104.65."
+  },
+  {
+   "id": "vo35-dates-words",
+   "start_s": 104.95,
+   "max_s": 2.1,
+   "on_screen": "Page 1 whole, then a push onto the bars and their dates",
+   "text_v2": "Dates in words, on every bar.",
+   "text_v3": "Dates in words, on every bar.",
+   "delivery": "Lean on 'every'. Out by 107.05."
+  },
+  {
+   "id": "vo36-up-top",
+   "start_s": 107.4,
+   "max_s": 3.35,
+   "on_screen": "Push in on ON SITE FROM · FINISHES · HOW LONG · TASKS · NEXT MILESTONE and the money boxes",
+   "text_v2": "When, how long, how much. Up top.",
+   "text_v3": "When, how long, how much. Up top.",
+   "delivery": "Three even beats, then a plain 'Up top.' No sell."
+  },
+  {
+   "id": "vo37-question",
+   "start_s": 111.05,
+   "max_s": 4.25,
+   "on_screen": "Push in on 'What drives the finish date: 7 linked tasks, ringed in purple, ending with Handover on 5 February 2027.' and the highlighted 'Any one of them running late moves the whole finish.'",
+   "text_v2": "And the lender's question, answered in one sentence.",
+   "text_v3": "And the lender's question, answered in one sentence.",
+   "delivery": "The callback to the hook question. Quiet satisfaction, falling end. Then silence: the sentence holds on its own until the pen (117.35)."
+  },
+  {
+   "id": "vo38-letterhead",
+   "start_s": 119.2,
+   "max_s": 1.65,
+   "on_screen": "Push in on the title and 'Demo Developments · Demo letterhead · fictional'",
+   "text_v2": "On your letterhead.",
+   "text_v3": "On your letterhead.",
+   "delivery": "Short, plain. Out by 120.85."
+  },
+  {
+   "id": "vo39-cta",
+   "start_s": 121.5,
+   "max_s": 4.8,
+   "on_screen": "End card: QSME logo · 'Bring your current programme to a 30-minute demo.' · button 'Book a 30-minute demo' · qsme.build",
+   "text_v2": "Bring your current programme to a thirty-minute demo. Q-S-me dot build.",
+   "text_v3": "Bring your current programme to a thirty-minute demo. Q-S-me dot build.",
+   "delivery": "A friendly invitation across the desk, never a pitch. 'Q-S-me dot build' clearly, no rise. Never 'free' or any pricing line (owner CTA rule 2026-10-03). Out by 126.3."
+  }
+ ],
+ "male_alt_lines": []
+}

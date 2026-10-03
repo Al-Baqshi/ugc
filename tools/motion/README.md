@@ -42,12 +42,16 @@ Speed: a 30 s 9:16 render takes about 2.5 min. Up to ~6 renders can run at once 
 1. `node tools/motion/previews.mjs` makes/refreshes a small `<name>.preview.mp4` next to every master `<name>.mp4` in `projects/*/outputs/`.
 2. Stamps `studio/synced.txt`.
 3. `railway up --detach` sends the code and markdown only (a few MB). `.railwayignore` leaves out all of `projects/*/outputs/` and every video, image and audio file, because Railway refuses uploads over ~100 MB.
-4. `node tools/motion/sync-media.mjs` uploads media to the Studio's volume (`MEDIA_DIR` on Railway) through `PUT /api/media/<project>/<file>`: top-level `*.preview.mp4`, `*.png`, `*.jpg`, `*.jpeg`, `*.webp`, `*.gif`, `*.mp3`, `*.m4a`, `*.wav` in each `outputs/`. Masters (`*.mp4` without `.preview`) and subfolders never go up. Each file's sha256 is compared with the Studio's list, so only new or changed files are sent (streamed, never loaded into memory). If the new deploy isn't live yet it retries for up to 6 minutes, then prints a one-line summary.
+4. `node tools/motion/sync-media.mjs` syncs media to the Studio's **Railway storage bucket** (private, S3-compatible): the top-level files of each `projects/<project>/outputs/` (every type the Studio shows: masters `*.mp4 *.mov *.webm`, previews `*.preview.mp4`, stills `*.png *.jpg *.jpeg *.webp *.gif`, audio `*.mp3 *.m4a *.wav`) go up as `projects/<project>/outputs/<file>` with the right Content-Type. Subfolders and other file types stay on this Mac.
 
-Reads `STUDIO_API_TOKEN` (and `STUDIO_URL`, default the live Studio) from `.env`, or the environment; never prints them. File names must be letters, digits, `.`, `_`, `-` (others are skipped and listed). On the Studio a video plays as its preview, tagged "preview"; locally the gallery shows the master.
+Only new or changed files are sent: the bucket listing's size and ETag (the MD5 of a single-part upload) are compared with the local file, then, if that isn't conclusive, the object's `x-amz-meta-sha256` (written on every upload) with a HEAD. Uploads stream from disk (one PUT per file, up to 5 GB) and are retried on network errors. It ends with a one-line summary: uploaded (MB), unchanged (skipped), deleted, failed. Names the Studio can't serve (leading `_`, control characters) are skipped and listed.
+
+Credentials: the `BUCKET_*` variables are read at run time from `railway variables --service studio --kv` (run in the repo root, so the folder must be `railway link`ed and you logged in). If all of `BUCKET_NAME`, `BUCKET_ENDPOINT`, `BUCKET_ACCESS_KEY_ID`, `BUCKET_SECRET_ACCESS_KEY` are set in the environment, those are used instead. They are never printed and never written to disk.
+
+In the Studio, the player shows the light preview and the download button gets the full-quality master; the bytes come straight from the bucket through presigned links (bucket egress is free), never through the Studio.
 
 ```bash
 npm run sync-media                    # just the upload step
-npm run sync-media -- --dry-run       # what would be uploaded/deleted
-npm run sync-media -- --prune         # also delete Studio files that are gone locally
+npm run sync-media -- --dry-run       # list and compare only: what would be uploaded/deleted
+npm run sync-media -- --prune         # also delete bucket objects whose local file is gone
 ```

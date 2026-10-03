@@ -1,0 +1,24 @@
+{
+ "url": "https://qsme.build/security",
+ "cssWidth": 390,
+ "cssHeight": 488,
+ "dpr": 4,
+ "mobile": true,
+ "settle": 3,
+ "fullPage": true,
+ "clipCss": [
+  3990,
+  416
+ ],
+ "evals": [
+  "document.querySelectorAll('[class*=cookie],[id*=cookie],[class*=consent]').forEach(e=>e.style.setProperty('display','none','important'))"
+ ],
+ "boxes": {
+  "ctaBand": "document.querySelector('.cta-band')",
+  "ctaH2": "document.querySelector('.cta-band h2')",
+  "ctaP": "document.querySelector('.cta-band p')",
+  "ctaBtns": "document.querySelectorAll('.cta-band .btn')",
+  "ctaPTrue": "(()=>{const t=document.querySelector('.cta-band p').firstChild; const r=document.createRange(); const i=t.textContent.indexOf('We answer'); r.setStart(t,i); r.setEnd(t,t.textContent.length); return r})()",
+  "ctaH2Text": "(()=>{const r=document.createRange(); r.selectNodeContents(document.querySelector('.cta-band h2')); return r})()"
+ }
+}

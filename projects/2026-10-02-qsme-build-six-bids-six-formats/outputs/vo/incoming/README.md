@@ -1,7 +1,7 @@
 # Drop your VO files here
 
 Voice: **Arnold (or James)** from the ElevenLabs Voice Library (search "New Zealand"), reading as the QS.
-In the ElevenLabs website (works on the free plan): Text to Speech → pick the voice → model **Eleven Multilingual v2** → stability ~45%, similarity ~75%, style 0, speed 1.0.
+In the ElevenLabs website (works on the entry plan): Text to Speech → pick the voice → model **Eleven Multilingual v2** → stability ~45%, similarity ~75%, style 0, speed 1.0.
 Paste ONE line at a time, generate, download, and save it here with the exact file name below (mp3, m4a or wav all work).
 Or record yourself on your phone (Voice Memos) — one file per line, same names. A real Kiwi voice beats any AI.
 
@@ -26,4 +26,4 @@ Then tell Claude "VO files are in" — it runs:
 python3 tools/make_vo.py projects/2026-10-02-qsme-build-six-bids-six-formats --files projects/2026-10-02-qsme-build-six-bids-six-formats/outputs/vo/incoming
 ```
 
-⚠️ Free-plan ElevenLabs audio has no commercial licence: fine for reviewing the cut, not for posting a QSME ad. A phone recording of your own voice has no such limit.
+⚠️ Unpaid-plan ElevenLabs audio has no commercial licence: fine for reviewing the cut, not for posting a QSME ad. A phone recording of your own voice has no such limit.
