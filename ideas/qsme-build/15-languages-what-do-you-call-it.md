@@ -30,7 +30,7 @@ hook: "Schedule of quantities → Leistungsverzeichnis → 工程量清单 → �
 4. 38–50s The right-to-left moment: the Arabic and Persian pages mirroring. Caption: 'Arabic and Persian read right to left. So does the site.'
 5. 50–60s HONEST CARD: 'The website speaks 15 languages. The app speaks English, Spanish and Arabic, so far.'
 6. 60–70s The going-global poster as end card: 'Now speaking 15 languages · Yours next — tell us'.
-7. 70–78s CTA: 'Request a language or book a demo →' plus the comment prompt: 'What do you call it where you work?'
+7. 70–78s CTA: 'Book a 30-minute demo at qsme.build' plus the comment prompt: 'What do you call it where you work?'
 
 ## Hook layers
 - **Text:** Schedule of quantities → Leistungsverzeichnis → 工程量清单 → جدول الكميات
@@ -47,7 +47,7 @@ hook: "Schedule of quantities → Leistungsverzeichnis → 工程量清单 → �
 - kinetic: The verbatim site quote; the vocabulary cycle, using only words captured from the live pages; the honest app-languages card; the comment prompt; burned-in captions. Kiwi VO script for later.
 - kinetic: assets/qsme/brand/qsme-build-going-global.png ('Now speaking 15 languages') as the end card.
 
-**CTA:** Request a language or book a demo at qsme.build, and tell us what you call it.
+**CTA:** Book a 30-minute demo at qsme.build
 
 **Why now:** qsme.build launched in 15 languages on 27 Sep ('QSME now speaks 15 languages'). Everything is public, so this is week-1 producible with no signed-in footage.
 
