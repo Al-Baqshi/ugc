@@ -1,0 +1,16 @@
+{
+  "url": "https://qsme.build/security", "cssWidth": 390, "cssHeight": 760, "dpr": 3, "mobile": true, "settle": 3, "fullPage": true, "maxCssHeight": 2600,
+  "evals": [
+    "document.querySelectorAll('[class*=cookie],[id*=cookie],[class*=consent]').forEach(e=>e.style.setProperty('display','none','important'))",
+    "(()=>{const h=[...document.querySelectorAll('h3')].find(e=>e.textContent.trim()==='Bidder visibility rules'); h.closest('li').scrollIntoView({block:'center'}); return 1})()"
+  ],
+  "boxes": {
+    "card": "[...document.querySelectorAll('h3')].find(e=>e.textContent.trim()==='Bidder visibility rules').closest('li')",
+    "title": "[...document.querySelectorAll('h3')].find(e=>e.textContent.trim()==='Bidder visibility rules')",
+    "s1": "(()=>{const p=[...document.querySelectorAll('h3')].find(e=>e.textContent.trim()==='Bidder visibility rules').nextElementSibling; const t=p.firstChild; const r=document.createRange(); r.setStart(t,t.textContent.indexOf('A bidder')); r.setEnd(t, t.textContent.indexOf('quantities.')+11); return r})()",
+    "s2": "(()=>{const p=[...document.querySelectorAll('h3')].find(e=>e.textContent.trim()==='Bidder visibility rules').nextElementSibling; const t=p.firstChild; const r=document.createRange(); r.setStart(t,t.textContent.indexOf('Rates, amounts')); r.setEnd(t, t.textContent.length); return r})()",
+    "notHidden": "(()=>{const p=[...document.querySelectorAll('h3')].find(e=>e.textContent.trim()==='Bidder visibility rules').nextElementSibling; const t=p.firstChild; const r=document.createRange(); r.setStart(t,t.textContent.indexOf('not hidden')); r.setEnd(t, t.textContent.indexOf('not hidden')+10); return r})()",
+    "h1": "document.querySelector('h1')",
+    "header": "document.querySelector('header')"
+  }
+}

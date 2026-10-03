@@ -1,0 +1,20 @@
+{
+  "url": "https://www.qsme.co.nz/",
+  "mobile": true,
+  "width": 1080,
+  "height": 1920,
+  "scale": 2.5,
+  "fps": 30,
+  "settle": 3.0,
+  "steps": [
+    { "wait": 1.2 },
+    { "click": "input[placeholder^='e.g. 12 Queen']" },
+    { "wait": 0.5 },
+    { "type": "474 Great North Road, Grey Lynn", "cps": 9 },
+    { "wait": 1.6 },
+    { "click": "li[role=option] button" },
+    { "wait": 0.3 },
+    { "scroll": 560, "dur": 0.8 },
+    { "wait": 3.5 }
+  ]
+}

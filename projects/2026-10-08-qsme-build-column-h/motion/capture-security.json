@@ -1,0 +1,11 @@
+{
+  "url": "https://qsme.build/security",
+  "mobile": true,
+  "width": 1080, "height": 1350, "scale": 2, "fps": 20, "settle": 3,
+  "steps": [
+    { "eval": "document.querySelectorAll('[class*=cookie],[id*=cookie],[class*=consent]').forEach(e=>e.style.setProperty('display','none','important'))" },
+    { "wait": 1.0 },
+    { "eval": "(async()=>{const h=[...document.querySelectorAll('h3')].find(e=>e.textContent.trim()==='Bidder visibility rules'); const card=h.closest('li'); const target=card.getBoundingClientRect().top+scrollY-170; const start=scrollY; const T=1800; const t0=performance.now(); await new Promise(r=>{function f(){const p=Math.min(1,(performance.now()-t0)/T); const e=p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2; scrollTo(0,start+(target-start)*e); p<1?requestAnimationFrame(f):r()} f()}); return 1})()" },
+    { "wait": 1.5 }
+  ]
+}

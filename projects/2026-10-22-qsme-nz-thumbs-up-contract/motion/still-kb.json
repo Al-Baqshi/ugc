@@ -1,0 +1,15 @@
+{
+  "url": "https://www.qsme.co.nz/knowledge-hub/agreements",
+  "cssWidth": 430,
+  "cssHeight": 932,
+  "dpr": 3,
+  "mobile": true,
+  "settle": 5,
+  "evals": [
+    "(() => { const e = [...document.querySelectorAll('blockquote, p')].find(x => x.textContent.includes('AI never makes up an amount')); if (e) e.scrollIntoView({ block: 'center' }); })()"
+  ],
+  "boxes": {
+    "quote": "[...document.querySelectorAll('blockquote')].find(x => x.textContent.includes('AI never makes up an amount'))",
+    "quoteP": "[...document.querySelectorAll('blockquote p, blockquote')].find(x => x.textContent.trim().startsWith('AI never makes up'))"
+  }
+}

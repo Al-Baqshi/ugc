@@ -1,0 +1,131 @@
+{
+  "venture": "qsme-nz",
+  "video": "outputs/granny-flat-for-mum-9x16.mp4",
+  "character": "Mel: everyday Kiwi woman, late 30s, the same Mel as 'Which Dave?'. She's organising a granny flat out the back so her Mum can move closer, and tells it like she's talking to a mate over the fence. General New Zealand accent, natural and unhurried, never a caricature, never Australian. Dry, warm, under-played; the self-own is hers (the cross-lease, the bins), never the neighbours'. She never speaks as a customer giving a testimonial and never says what QSME 'told' her: she reads the screen out loud. No announcer lift, no exclamation marks. AI voice, so she never speaks as the founder.",
+  "voice": "Mel casting in projects/2026-10-02-qsme-voice-casting: shortlist Jenna 7R9vnLAE0ZSpY0xWp0mv or Ellie BujbDaM2eT58IpdbIc8J. Use the same voice as 'Which Dave?' so the NZ series sounds like one person.",
+  "casting_line": "Granny flat for Mum. Can often, where the site meets the conditions. Righto. We're a cross-lease. Might bake something.",
+  "settings": {
+    "model": "eleven_multilingual_v2",
+    "stability": 0.45,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "speed": 1,
+    "use_speaker_boost": true
+  },
+  "continuous_read_v2": "Granny flat for Mum. Easy, apparently.\n\nSo we looked it up first.\n\nCan often. Where the site meets the conditions. Righto.\n\nThen we hit Required.\n\nWe're a cross-lease. ... Oh.\n\nFlat one's us. Flat two's next door.\n\nThey get a say.\n\nOnly ever talked about bins.\n\nSo. Lim, title, cuppa with next door.\n\nMight bake something.\n\nAuckland? Check yours. Sign up at Q-S-me dot co dot en zed.",
+  "lines": [
+    {
+      "id": "vo01-hook",
+      "start_s": 0.15,
+      "max_s": 1.9,
+      "on_screen": "Granny flat / for Mum. + speech bubble “Easy now. / The rules changed.” (both from frame 1) · navy pill “— every barbecue since winter” (0.5) · b-roll gf-3-placed, labelled Illustrative, freezes and dims at 2.05 · REQUIRED stamp slams at 2.15 (not voiced)",
+      "text_v2": "Granny flat for Mum. Easy, apparently.",
+      "text_v3": "Granny flat for Mum. [dry] Easy, apparently.",
+      "delivery": "Warm and plain on 'Granny flat for Mum', like telling a mate the plan. A tiny beat, then 'Easy, apparently' a notch flatter, half-believing the barbecue wisdom. No eye-roll, no sarcasm. 'now' is dropped by default (the bubble already says it). Out by 2.05 so the stamp thud at 2.15 lands in silence; if a take runs long, pick a brisker take."
+    },
+    {
+      "id": "vo02-looked",
+      "start_s": 3.2,
+      "max_s": 1.75,
+      "on_screen": "So we looked up our section first. (3.15–4.85) · card 'What this site would require' rises in, chip 'QSME Site research', label 'Recreated QSME screen · demo data' · quick scroll down to the granny-flat row (3.4–4.25)",
+      "text_v2": "So we looked it up first.",
+      "text_v3": "So we looked it up first.",
+      "delivery": "Sensible, a bit pleased with herself for doing the homework. Light and quick, falling at the end. Out by 4.95."
+    },
+    {
+      "id": "vo03-can-often",
+      "start_s": 5.0,
+      "max_s": 3.45,
+      "on_screen": "“Can often.” Read the conditions. (5.0–8.6) · highlighter sweeps 'can often' (4.45–4.85) then 'where the site meets the conditions' (5.15–5.95) on the row 'Granny flat without consent'",
+      "text_v2": "Can often. Where the site meets the conditions. Righto.",
+      "text_v3": "Can often. Where the site meets the conditions. [beat] Righto.",
+      "delivery": "Reading the screen out loud to herself. 'Can often' slowed down slightly, as she clocks the hedge. 'Where the site meets the conditions' read flat and careful, like fine print, riding the second highlight. Then a short beat and a very Kiwi, slightly deflated 'Righto.' Out by 8.45."
+    },
+    {
+      "id": "vo04-required",
+      "start_s": 9.4,
+      "max_s": 1.4,
+      "on_screen": "Then we clicked “Required”. (9.25–10.95) · cursor lands on the 'Required' pill and clicks at 10.05 · list collapses to the must-haves 10.1–10.5 · push-in to the cross-lease row 10.6–11.45",
+      "text_v2": "Then we hit Required.",
+      "text_v3": "Then we hit Required.",
+      "delivery": "Matter-of-fact, almost brisk. Land 'Required' on the click at 10.05. Out by 10.8 and leave 10.8–11.55 silent so the collapse and the push-in carry the beat."
+    },
+    {
+      "id": "vo05-crosslease",
+      "start_s": 11.55,
+      "max_s": 2.6,
+      "on_screen": "Because we're on a cross-lease. (11.5–15.7) · small: 'Read from the legal description: a clue, not a title search.' (11.9) · REQUIRED badge pulses (11.45) on 'Other cross-lease owners' consent' under NEIGHBOURS & APPROVALS · highlighter on 'must consent to any change of footprint' (12.2–13.05) · red marker circle on 'because: Cross-lease title' (13.35–13.95)",
+      "text_v2": "We're a cross-lease. ... Oh.",
+      "text_v3": "[sighs] We're a cross-lease. [beat] Oh.",
+      "delivery": "The penny drops. 'We're a cross-lease' said slowly, like it's only just meant something. Then a real beat and a small, quiet 'Oh.' landing on the red circle (about 13.4). Not alarmed, just realising. The 'they get a say' line is saved for the sketch, so don't add it here. Out by 14.15, leaving the circle and the reading time clear."
+    },
+    {
+      "id": "vo06-flats",
+      "start_s": 16.1,
+      "max_s": 2.25,
+      "on_screen": "Marker sketch (15.75): 'ONE SECTION, SHARED.' '(that's a cross-lease)' · FLAT 1 '(us)' with two stick figures · pan right (17.35–18.15) past the dashed green granny flat '60 m² / granny flat? / for Mum' and the bins to FLAT 2 (drawn 17.7–18.25)",
+      "text_v2": "Flat one's us. Flat two's next door.",
+      "text_v3": "Flat one's us. Flat two's next door.",
+      "delivery": "Explaining the drawing, like pointing at a napkin sketch at the kitchen table. Plain, unhurried. 'Flat one's us' on the first view; 'Flat two's next door' as the camera arrives on Flat 2 (about 17.9). Out by 18.35."
+    },
+    {
+      "id": "vo07-say",
+      "start_s": 18.45,
+      "max_s": 1.5,
+      "on_screen": "Flat 2 gets a say. (18.35–20.05) · the finished sketch: granny flat, red- and yellow-lid bins, Flat 2",
+      "text_v2": "They get a say.",
+      "text_v3": "They get a say.",
+      "delivery": "Short and flat, a little sheepish. The only time 'a say' is spoken, so give it a hair of weight. Out by 19.95 so the punchline gets clean air."
+    },
+    {
+      "id": "vo08-bins",
+      "start_s": 20.2,
+      "max_s": 1.9,
+      "on_screen": "We've only ever talked about bins. (20.15–22.4) · red arrow draws up from the caption to the bins (20.2–20.6) · both bin lids give a little hop (20.6–20.95)",
+      "text_v2": "Only ever talked about bins.",
+      "text_v3": "[laughs softly] Only ever talked about bins.",
+      "delivery": "The self-own. Dry, a touch embarrassed, the smallest smile in the voice on 'bins'. Never a dig at the neighbour: she's laughing at how little they've talked. Out by 22.1 (cut to the LIM row at 22.4)."
+    },
+    {
+      "id": "vo09-lim",
+      "start_s": 22.8,
+      "max_s": 2.4,
+      "on_screen": "Next: the LIM, the title, and a cuppa with next door. (22.75–27.35) · highlighter on 'Order a LIM and the title before committing' (22.95–23.75) on the CHECK row 'LIM & Record of Title' under COSTS & CHECKS",
+      "text_v2": "So. Lim, title, cuppa with next door.",
+      "text_v3": "So. Lim, title, cuppa with next door.",
+      "delivery": "Ticking off a to-do list on her fingers. 'So.' on its own, then three quick items, the last one slower and a bit daunted. LIM is said as one word, 'lim' (rhymes with 'him'), the way most Kiwis say it; never spelled out. Out by 25.2."
+    },
+    {
+      "id": "vo10-bake",
+      "start_s": 25.25,
+      "max_s": 1.5,
+      "on_screen": "(might bake something) writes on in green marker (25.2–25.9), next to a teacup doodle (24.65–25.4)",
+      "text_v2": "Might bake something.",
+      "text_v3": "[beat] Might bake something.",
+      "delivery": "The button. Thrown away, quieter, almost to herself, deadpan. No laugh. The joke dies if it's performed. Out by 26.75."
+    },
+    {
+      "id": "vo11-cta",
+      "start_s": 27.55,
+      "max_s": 4.0,
+      "on_screen": "End card: QSME wordmark · See what your Auckland section would require. · live qsme.co.nz homepage 'Search your address' strip with a focus ring (28.2) · 'Sign up → search your address → Site research' (28.05) · pill 'Sign up at qsme.co.nz' slams at 28.25 · 'Indicative only. Not a LIM, title search or planning advice.' (28.5)",
+      "text_v2": "Auckland? Check yours. Sign up at Q-S-me dot co dot en zed.",
+      "text_v3": "Auckland? Check yours. Sign up at Q-S-me dot co dot en zed.",
+      "delivery": "Same Mel, same register, no announcer lift. 'Auckland?' as a quick genuine question, 'Check yours' as friendly advice, then 'Sign up at' straight into the URL, plain and even, matching the pill word for word: 'Sign up at Cue Ess Me dot co dot en zed' (never 'kiss me', never four letters). The pill is already up (28.25), so there's no need to rush to it. Never add 'free', 'no sign-up' or anything about price. Out by 31.55 (video ends 31.9). If takes keep running past 31.55, pick a brisker take; the approved shorter fallback line is 'Auckland? Sign up at Q-S-me dot co dot en zed.' ('Sign up at' always stays)."
+    }
+  ],
+  "male_alt_lines": [],
+  "silent_beats": [
+    "2.05–3.2: the freeze, the REQUIRED stamp thud (2.15) and the cut to the card (no voice).",
+    "10.8–11.55: the list collapsing to the must-haves and the push-in to the cross-lease row (soft whoosh only).",
+    "14.15–16.1: reading time on the circled 'because: Cross-lease title', the paper slide-in (15.75) and the first marker strokes.",
+    "26.75–27.55: the cuppa beat settles and the end card arrives."
+  ],
+  "post_processing": "Lay each line at start_s with tools/mux on the silent master (no time-stretching; if a take runs past max_s, pick a brisker take, never cut words). Music bed ducked 10–12 dB under VO. Light room tone, no reverb. Loudness target -14 LUFS integrated for Reels/TikTok, true peak -1 dBTP.",
+  "changelog": [
+    "2026-10-02: written against outputs/granny-flat-for-mum-9x16.mp4 (33.2 s, final timings). Not voiced: ElevenLabs upgrade pending.",
+    "2026-10-02 (v2): re-timed to the 31.9 s re-cut after review. Line 1 drops 'now' by default ('Easy, apparently.'); line 5 is now 'We're a cross-lease. ... Oh.' so 'they get a say' is said once, in the sketch; every start time moved. Not voiced: ElevenLabs upgrade pending.",
+    "2026-10-03 (v3): owner CTA rule (sign-ups, never 'free' or 'no sign-up'). vo11-cta is now 'Auckland? Check yours. Sign up at Q-S-me dot co dot en zed.' (starts 27.55, max 4.0 s, matches the new 'Sign up at qsme.co.nz' pill); on_screen updated for the end-card path line 'Sign up → search your address → Site research'. Other lines unchanged. Not voiced: ElevenLabs upgrade pending."
+  ],
+  "total_characters": 363
+}

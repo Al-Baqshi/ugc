@@ -1,0 +1,400 @@
+{
+  "venture": "qsme-build",
+  "idea_id": "qsme-build-six-quotes-six-formats",
+  "title": "Six bids. Six formats.",
+  "job": "Organic first, then paid. Over four weeks, post organic from the founder's personal LinkedIn profile, with the QSME page reposting each one: week 1 the reel (Hook 1), week 2 the carousel (Hook 4's framing on slide 1), week 3 the static, week 4 the Hook 2 binder static. This gives a directional read on which hook and format QSs and PMs comment on and share. Run the clean hook split (Hook 1 vs Hook 4) only in paid, as a 35s cut with the full ad anatomy, and boost the winning organic post as a Thought Leader Ad if LinkedIn supports that format. There is no real social proof yet, so the paid version relies on problem→solution and demo.",
+  "platforms": [
+    "LinkedIn (primary), posted from the founder's personal profile and reposted by the QSME page: feed video (week 1), document carousel titled 'Six bids. Six formats.' (week 2), single image (week 3), Hook 2 binder single image (week 4)",
+    "LinkedIn Ads (only if organic shows signal): 35s video ad, Hook 1 vs Hook 4, Lead Gen Form with the 'Request demo' button; carousel as a document ad",
+    "YouTube Shorts (9:16 re-export; qsme.build large on the end card for at least 2.5s; related-video/channel link to the demo page)",
+    "Instagram / Facebook (optional cross-post: 4:5 static and carousel, 9:16 reel; IG CTA 'link in bio', FB full tracked URL in the caption)"
+  ],
+  "core_joke_one_sentence": "A deadpan QS counts through six bids for the same plasterboard & ceilings package (a PDF scanned sideways, a spreadsheet of merged cells, a lump sum 'as discussed', an email that says 'price below' with nothing below, the cheapest one that excludes ceilings on page 9, and a photo of a whiteboard), decides the whiteboard was the most complete bid of the lot, then admits their own tender email just said 'drawings attached, please price.'",
+  "hooks": [
+    {
+      "mechanism": "Mid-action start (deadpan count), made readable with sound off",
+      "text_layer": "Large, top third: '6 bids. 6 formats.' Small chip: 'Tender closed 5:00pm'. Counter '0/6' top-right. The six banners on the foreground phone are each stamped '4:59 pm'.",
+      "verbal_layer": "\"Six subbies. Six quotes. Six formats.\"",
+      "visual_layer": "Frame 1: a phone propped in the soft-focus foreground. Six generic 'New message' banners (subject 'Tender – Plasterboard & ceilings', each stamped 4:59 pm, no OS or app logos) stack down its lock screen 0.15s apart. Behind it the QS, already mid-sigh at their own desk in window light, stares into the lens, with the six bids fanned out in front of them. Focus racks from the phone to their face on 'Six formats.'",
+      "audio_layer": "Six generic message pings within about 1s, synced to the banners (not an Outlook or iOS sound), then dead silence as they speak",
+      "why": "Every QS and PM knows tender close. With sound off there are now four layers: the big text, the banners that make the pings visible, the everyone-at-4:59 joke, and the rack focus. The 0/6 counter keeps people watching to see what #6 is, and the whiteboard stays the peak of the escalation. 'Subbies' stays in the VO only until the markets are confirmed."
+    },
+    {
+      "mechanism": "Pattern break (odd object)",
+      "text_layer": "'This is a tender submission.'",
+      "verbal_layer": "(one beat of silence) \"...This is a tender submission.\"",
+      "visual_layer": "A phone photo of the whiteboard bid (marker prices, flash glare in one corner, half-erased site sketch) slid into a clear sleeve labelled 'TENDER – PLASTERBOARD & CEILINGS – BIDDER F' and clipped into a ring binder",
+      "audio_layer": "Marker squeak, then a binder ring snapping shut",
+      "why": "The strongest single frame, but it spends the punchline in second 1. Used as the week-4 single-image static, captioned 'This is a tender submission.', after the reel, carousel and static have run. It could be a paid hook test later. Never the reel opener."
+    },
+    {
+      "mechanism": "Asterisk reveal (insider fine print)",
+      "text_layer": "'Cheapest bid. By a mile.*'",
+      "verbal_layer": "\"Cheapest bid. By a mile.\"",
+      "visual_layer": "Bid E's total circled in red pen. A highlighter drags down the page to a tiny asterisk, then a snap to page 9: '*Note 14: Excludes ceilings.'",
+      "audio_layer": "Room tone, then one highlighter squeak",
+      "why": "Every QS has been burned by the cheapest bid's fine print. The on-screen asterisk carries the joke with sound off, and the package name ('& ceilings') makes the exclusion land. No countdown graphics, so it stays UGC. It uses up Bid E's beat, so it works as a standalone short or a later paid hook test, not as the reel opener."
+    },
+    {
+      "mechanism": "Contrarian (parody of LinkedIn's thought-leader voice)",
+      "text_layer": "'Unpopular opinion: the best bid was a photo of a whiteboard.'",
+      "verbal_layer": "\"Unpopular opinion: the whiteboard bid wins.\"",
+      "visual_layer": "The QS holds the phone up to the lens showing the whiteboard photo, completely straight-faced. The five 'proper' bids sit in a neat, ignored pile beside them.",
+      "audio_layer": "Room tone only; one pen click at the end of the line",
+      "why": "High curiosity (why would that win?), and it takes the subbie's side from second 1. At 6 words (about 2.4s) it is trimmed to exactly 2.5s like Hook 1, so the body starts on the same frame. In this variant only, the 6/6 VO becomes the callback 'And yes… the whiteboard.' and the snap-zoom onto 'CEILINGS … INCL' does the work. Its framing, without the reveal, gets an organic read as carousel slide 1. The paid A/B challenger."
+    },
+    {
+      "mechanism": "Dialogue cold-open (the subbie wins)",
+      "text_layer": "'Subbie, 4:59pm:'",
+      "verbal_layer": "Speakerphone, cheerful: \"Did you get my price?\" QS, staring at the phone: \"I got… a photo. Of a whiteboard.\" Speakerphone: \"Yep. Ceilings are in.\"",
+      "visual_layer": "Phone on speaker lying on the desk. The QS looks at the photo, then slowly at the camera.",
+      "audio_layer": "Ringtone cut off mid-ring, compressed speakerphone voice",
+      "why": "Rewritten so the subbie wins the exchange, and 'Ceilings are in' calls back the cheapest bid. It needs a second voice (a real person, or a clearly fictional ElevenLabs voice). Parked as a part-2 post told from the subbie's side, not the reel hook."
+    }
+  ],
+  "chosen_hook_index": 0,
+  "chosen_reason": "Hook 1 (mid-action count, index 0). Tender close is a ritual every QS and PM has lived through, so this LinkedIn audience recognises it instantly. With the stacking 4:59 banners, the big '6 bids. 6 formats.' text and the rack focus, it now reads with sound off, which is how LinkedIn autoplays. The 0/6→6/6 counter keeps people watching, and the whiteboard is saved for the peak rather than spent in frame 1. Hook 4 (contrarian) is the paid A/B challenger and gets an organic read through carousel slide 1.",
+  "static_post": {
+    "size": "1080x1350 (4:5) for the LinkedIn and IG/FB feed. The 1200x1500 export is dropped because it has the same ratio.",
+    "headline": "Six bids. Six formats.",
+    "subline": "Next tender: one schedule. Every bidder gets the same lines.",
+    "mock_content": [
+      "Top band, small muted kicker: 'Plasterboard & ceilings package · Tender closed 5:00pm'",
+      "Top band, headline: 'Six bids. Six formats.'",
+      "Top band, subline in brand green: 'Next tender: one schedule. Every bidder gets the same lines.'",
+      "Label 'A · sideways PDF' (printed header on the prop reads 'Quote_FINAL_v3_revised(2).pdf')",
+      "Label 'B · merged cells' (rows 12–40 selected as one block on the laptop)",
+      "Label 'C · \"as discussed\"'",
+      "Label 'D · \"price below\"' (phone shows 'Price below. Cheers.' and empty white below)",
+      "Label 'E · page 9' (note 14 highlighted: 'Excludes ceilings.')",
+      "Label 'F · whiteboard' (phone shows the whiteboard photo with 'Ceilings … INCL' underlined twice)",
+      "Handwritten sticky note beside F: 'most complete one, honestly'",
+      "Footer: QSME logo · qsme.build · Book a 30-minute demo"
+    ],
+    "visual_description": "Headline and subline sit on a solid #0C1310 band across the top 22%: kicker in muted #A9B8AE, headline in Space Grotesk SemiBold at 72px or more in #EEF4EF, subline in brand green #3DC023. Below the band is a real overhead phone photo, not a render. The six props (designed in Figma, printed) lie on a real, slightly cluttered desk in window light: a coffee ring, a highlighter, the edge of a hi-vis vest on the chair. A: a printout with grey scanner edges, rotated 90°, its printed header reading 'Quote_FINAL_v3_revised(2).pdf'. B: a laptop showing a generic spreadsheet (no Excel logo or ribbon) with one huge merged block selected. C: a plain 'Bidder C' letterhead with one total and 'As discussed.' D: a phone showing a generic mail app, 'Price below. Cheers.' and empty white below. E: a stapled quote open at page 9 with note 14 highlighted yellow; its total is visibly the lowest. F: a phone showing the real whiteboard photo (glare in one corner) with the yellow sticky note beside it. Labels are three words or fewer, 32px or larger, white on small dark tabs. The sticky note is the one thing left to read up close. Small QSME mark in the footer. No stock people, no gradients, nothing that looks like a SaaS banner.",
+    "cta": "Book a 30-minute demo at qsme.build"
+  },
+  "carousel": [
+    {
+      "n": 1,
+      "headline": "Unpopular opinion: the best bid here is Bid F.",
+      "body": "Six bids. Six formats. Let's open them. →",
+      "visual": "Real overhead flat-lay of the six bids on the desk (a second set-up from the static shoot). Bid F is a phone lying face-down with a yellow sticky note marked 'F' on its back, so the reveal is saved for slide 6. Counter '0/6' top-right, small QSME mark bottom-right."
+    },
+    {
+      "n": 2,
+      "headline": "Bid A. Bid B.",
+      "body": "A: a PDF. Scanned. Sideways.\nB: a spreadsheet where rows 12 to 40 are one merged cell.",
+      "visual": "Split frame. Left: the sideways scan with grey scanner shadow and the printed header 'Quote_FINAL_v3_revised(2).pdf'. Right: a generic spreadsheet with rows 12–40 selected as one giant merged block. Counter '2/6'."
+    },
+    {
+      "n": 3,
+      "headline": "Bid C.",
+      "body": "One number. Two words: 'As discussed.'",
+      "visual": "Plain letterhead reading 'Bidder C' with a single total. The words 'As discussed.' are circled in red pen with a small '?' in the margin. Counter '3/6'."
+    },
+    {
+      "n": 4,
+      "headline": "Bid D.",
+      "body": "\"Price below. Cheers.\"",
+      "visual": "Hand holding a phone with a generic mail app: 'Price below. Cheers.', then a long, empty white scroll ending in a tiny grey 'Sent from my phone'. Counter '4/6'."
+    },
+    {
+      "n": 5,
+      "headline": "Bid E. The cheapest. By a mile.",
+      "body": "Then page 9, note 14: 'Excludes ceilings.'",
+      "visual": "Close photo of page 9 with yellow highlighter over note 14 and the page footer reading '9 of 9'. Counter '5/6'."
+    },
+    {
+      "n": 6,
+      "headline": "Bid F. A photo of a whiteboard.",
+      "body": "Honestly? The most complete bid of the lot.",
+      "visual": "Full-bleed real phone photo of the real whiteboard: 'Boards supply & fix – 1,240 m² @ 38.50 / Ceilings – 380 m² @ 62.00 – INCL (underlined twice) / Jointing & finishing – incl / Access – incl / Validity 30 days / TOTAL 71,300 + tax'. Glare and a half-erased site sketch in one corner, clear of the lines. An inset crop (about a third of the slide) zooms in on 'Ceilings … INCL'. Counter '6/6'."
+    },
+    {
+      "n": 7,
+      "headline": "In fairness, here's what I sent them.",
+      "body": "Nobody got the same list.\nWith QSME: price the estimate once. Cut the tender from it. Every bidder gets the same lines.",
+      "visual": "Full-frame laptop on the same real desk, showing the QS's own sent email in a generic mail UI: subject 'Tender: Plasterboard & ceilings package', body 'Drawings attached. Please price.' and nothing else."
+    },
+    {
+      "n": 8,
+      "headline": "Same lines. One table. Award.",
+      "body": "Bidders never see your rates or budget.\nAward creates the contract, with milestones and retention. The agreement then goes out for e-sign.\nBook a 30-minute demo: qsme.build",
+      "visual": "QSME 'Compare bids' crop from a demo project with fictional data: one row per bidder (Bidder A–F) with the total excl. tax and incl. tax and the 'Lowest' tag, readable at phone size (owner screen-recording; not a per-line grid of every bidder's rates, which isn't live). In the corner, the same real whiteboard now reads '6 bids. 1 schedule.' in marker (callback)."
+    }
+  ],
+  "reel": {
+    "length_s": 30,
+    "aspect": "4:5 (1080x1350) master for the LinkedIn feed; 9:16 (1080x1920) export for Shorts/Reels from the same footage. Shoot 9:16 and keep faces and text inside the central 4:5 area. In the 9:16 export, keep all text between y=300 and y=1400 and more than 150px from the right edge.",
+    "beats": [
+      {
+        "t": "0.0–2.5",
+        "role": "hook",
+        "visual": "Phone propped in the soft-focus foreground; six generic 'New message' banners (each stamped 4:59 pm, no OS or app branding) stack down its lock screen 0.15s apart. Behind it the QS (founder, around 40, sleeves rolled, own desk, window light), already mid-sigh, stares into the lens with six bids fanned out. Focus racks to their face on 'Six formats.'",
+        "on_screen_text": "Large, top third: '6 bids. 6 formats.' · small chip 'Tender closed 5:00pm' · counter 0/6 top-right",
+        "vo": "Six subbies. Six quotes. Six formats.",
+        "sfx": "Six generic message pings within about 1s, synced to the banners, then silence"
+      },
+      {
+        "t": "2.5–4.5",
+        "role": "problem",
+        "visual": "Overhead insert: a hand rotates a sideways-scanned printout 90°; its printed header reads 'Quote_FINAL_v3_revised(2).pdf'. Cut back to the QS slowly tilting their head to match.",
+        "on_screen_text": "Caption: 'One's a PDF. Scanned sideways.' · counter 1/6 (the filename is readable on the prop)",
+        "vo": "One's a PDF. Scanned sideways.",
+        "sfx": "Paper slide on the desk (recorded on set)"
+      },
+      {
+        "t": "4.5–6.5",
+        "role": "problem",
+        "visual": "Screen capture of a generic spreadsheet (no Excel logo or ribbon): rows 12–40 are one merged block. The QS clicks the column header to sort, a plain generic alert 'Can't sort merged cells.' appears, and they close it.",
+        "on_screen_text": "Caption: 'One's a spreadsheet. All merged.' · counter 2/6 (the alert text is part of the screen)",
+        "vo": "One's a spreadsheet. All merged.",
+        "sfx": "One trackpad click, nothing else"
+      },
+      {
+        "t": "6.5–8.0",
+        "role": "problem",
+        "visual": "Letterhead 'Bidder C' with one total and the words 'As discussed.' Cut to the QS looking off-camera, trying to work out which of forty phone calls that was.",
+        "on_screen_text": "Caption: 'One says \"as discussed\".' · counter 3/6",
+        "vo": "One says 'as discussed'.",
+        "sfx": "None (room tone)"
+      },
+      {
+        "t": "8.0–11.0",
+        "role": "problem",
+        "visual": "Phone in hand, generic mail app: 'Price below. Cheers.' The thumb scrolls down into empty white and holds about 0.7s, ending on a tiny grey 'Sent from my phone'.",
+        "on_screen_text": "Caption: 'One says \"price below\"…' then, after the scroll, '…there's nothing below.' · counter 4/6",
+        "vo": "One says 'price below'… there's nothing below.",
+        "sfx": "Phone tap, then silence through the scroll"
+      },
+      {
+        "t": "11.0–13.5",
+        "role": "problem (the cheapest bid, placed right before the flip)",
+        "visual": "Fast page flick from the cover of a stapled quote to page 9; a highlighter drags across 'Note 14: Excludes ceilings.' The footer reads '9 of 9'.",
+        "on_screen_text": "Caption: 'One's the cheapest… till page nine.' · counter 5/6",
+        "vo": "One's the cheapest… till page nine.",
+        "sfx": "Page flicks + highlighter squeak"
+      },
+      {
+        "t": "13.5–16.5",
+        "role": "problem (peak of the escalation)",
+        "visual": "The QS turns their phone to the lens: a real photo of a real whiteboard, with itemised lines, validity and a total, 'Ceilings … INCL' underlined twice, and glare plus a half-erased sketch in one corner. Hold a full second, straight face.",
+        "on_screen_text": "Caption: 'And one… is a photo of a whiteboard.' · counter 6/6 (Hook 4 variant: 'And yes… the whiteboard.')",
+        "vo": "And one… is a photo of a whiteboard.",
+        "sfx": "Silence, then one marker squeak"
+      },
+      {
+        "t": "16.5–17.0",
+        "role": "payoff detail (callback to the cheapest bid)",
+        "visual": "0.5s snap-zoom in the edit, using the full-res whiteboard photo, onto 'CEILINGS … INCL' underlined twice",
+        "on_screen_text": "None (the whiteboard text is the joke)",
+        "vo": "",
+        "sfx": "None"
+      },
+      {
+        "t": "17.0–18.5",
+        "role": "problem (twist / status flip)",
+        "visual": "Back to the QS, deadpan, the smallest shrug",
+        "on_screen_text": "Caption: 'Honestly? Most complete one here.'",
+        "vo": "Honestly? Most complete one here.",
+        "sfx": "None"
+      },
+      {
+        "t": "18.5–21.5",
+        "role": "self-own (the joke turns on the QS)",
+        "visual": "The QS turns the laptop to the lens: their own sent email in a generic mail UI, subject 'Tender: Plasterboard & ceilings package', body 'Drawings attached. Please price.' and nothing else. A tiny wince.",
+        "on_screen_text": "Caption: 'In fairness… mine said \"drawings attached, please price.\"'",
+        "vo": "In fairness… mine said 'drawings attached, please price.'",
+        "sfx": "None"
+      },
+      {
+        "t": "21.5–25.0",
+        "role": "product intro + solution",
+        "visual": "Screen recording of a demo project with fictional data, one UI state per clip: (a) the tender's scope as a bidder sees it: the same lines and quantities for every bidder, rate column blank (your rates and budget never shown); then (b) 'Compare bids': one row per bidder with totals excl. and incl. tax and the 'Lowest' tag, punched in at 2–3x. Totals only: no per-line grid across bidders (that view isn't live).",
+        "on_screen_text": "Lower-third: 'QSME · tendering & estimating software' · captions: 'So we built QSME. Same lines for every bidder.' then 'Six bids. One table.'",
+        "vo": "So we built QSME. Same lines for every bidder. Six bids. One table.",
+        "sfx": "Music cue starts (tidy pulse, 96 BPM), ducked under speech; soft UI clicks"
+      },
+      {
+        "t": "25.0–27.0",
+        "role": "value",
+        "visual": "Screen, punched in: the cursor opens Bidder F's row, clicks 'Award bid', and the payment contract appears with milestones and retention; 'Make the agreement' → send for e-sign is shown as the next step (signing is not part of award)",
+        "on_screen_text": "'Award → contract created'",
+        "vo": "",
+        "sfx": "One crisp click on 'Award bid'"
+      },
+      {
+        "t": "27.0–30.0",
+        "role": "CTA",
+        "visual": "The QS at the real whiteboard finishes writing '6 bids. 1 schedule.' and caps the marker. End card from 27.5s: QSME logo, 'qsme.build', 'Book a 30-minute demo', held 2.5s and large enough for Shorts.",
+        "on_screen_text": "End card: qsme.build · Book a 30-minute demo",
+        "vo": "Book a demo at qsme.build.",
+        "sfx": "Marker squeak + cap click; music resolves on one chord"
+      }
+    ],
+    "music": {
+      "direction": "No music under the six-bid count or the self-own. Deadpan needs dead air, so each bid gets one small real sound instead, recorded on set where possible. Music enters only at the product beat (21.5s) as a tidy, minimal pulse that feels like rows snapping into line, then resolves on a single chord under the end card. No trending track and no stock 'corporate ukulele'. Duck it about 18 dB under speech.",
+      "mood": "Dry and understated, quietly satisfied: order after chaos",
+      "bpm": "90–100 BPM (suggest 96) for the 8.5s solution/CTA cue; a 17s version for the paid cut, which enters at 18.5s",
+      "source": "ElevenLabs Music on a plan that covers commercial use: a 10s instrumental, e.g. 'minimal clean plucked synth and soft kick, 96 BPM, understated, no vocals, resolves on one chord at 8.5s', plus a 17s version for the paid cut. Alternative: a royalty-free library on a plan that explicitly covers business/brand channels and paid social ads (not a personal or creator tier); add the LinkedIn page and ad account if the licence requires channel registration. SFX: record paper, trackpad, highlighter, marker and cap sounds live on set; generic message pings from ElevenLabs Sound Effects.",
+      "licensing_note": "LinkedIn has no licensed music library for posts, so anything posted there, organic or paid, needs music you hold rights to: generated, or royalty-free on a commercial/brand plan. IG/FB business accounts are generally limited to Meta's commercial Sound Collection for organic posts, and trending songs are not cleared for brand or ad use. Paid ads on any platform: generated or commercially licensed only. CapCut is for cutting and captions only: no CapCut library music, sound effects, AI voices, stickers or templates, because these are often not cleared for commercial use. Confirm the ElevenLabs plan includes commercial use before using its music or VO in ads."
+    },
+    "voice": {
+      "character": "'The QS who's seen every spreadsheet horror': a mid-career quantity surveyor (late 30s to 40s), calm and dry, never raises their voice, amused rather than angry. Quietly on the subbies' side, and honest enough to admit the tender email was theirs.",
+      "accent_and_delivery": "If the founder or a real QS films, use their own natural accent and wording; don't coach it. The AI VO uses a natural, general urban New Zealand accent (the user confirmed Kiwi for both QSME NZ and qsme.build on 2026-10-02; see ventures/qsme-build.md), never broad, never Australian, no American hype. vo-script.md is the timed source for the VO. Delivery is the same either way: flat deadpan, unhurried, short sentences. A real half-second pause before 'a photo of a whiteboard', a tiny wince on 'In fairness…', and the only warmth on 'Honestly? Most complete one here.' Never an announcer read, including the CTA.",
+      "elevenlabs_direction": "Only for the no-person version (Figma kinetic type + VO). Voice Design prompt: 'Mid-career quantity surveyor, around 40, general urban New Zealand accent, not broad, low-mid register, dry and deadpan, slightly tired but amused, conversational, close to the mic like a phone recording, no announcer energy.' Generate 3 candidates and keep the least polished one. Use Eleven v3 for audio tags such as [sighs] and [pause] (check the current tag list). Starting settings: stability about 45–55, similarity about 75, style exaggeration 0–15, speed about 0.95. Example lines: '[sighs] Six subbies. Six quotes. Six formats.', 'And one… [pause] is a photo of a whiteboard.', 'In fairness… [pause] mine said \"drawings attached, please price.\"' An AI voice must not present itself as the founder, so the product line becomes 'Next tender: one schedule. Every bidder gets the same lines.' instead of 'So we built QSME.' Render each line separately, 3 takes per line, so the edit controls timing. Note the chosen voice ID in ventures/qsme-build.md. Never clone a real person's voice without their explicit consent (the founder cloning their own voice is fine).",
+      "real_person_alternative": "Recommended for LinkedIn: (a) the founder on camera at their own desk. They perform the skit and deliver the product half as themselves ('So we built QSME. Same lines for every bidder.' and the CTA). (b) A real QS who isn't a QSME user performs only the skit (0–21.5s). The product beats are then screen recording plus on-screen text, or the founder's voice-over, never the QS's voice on product or CTA lines. Add a paid-partnership disclosure if they're paid, and get a simple written release. Either way: phone, window light, about 30–45 minutes to film. ElevenLabs then supplies only the pings and music."
+    }
+  },
+  "caption": "REEL (LinkedIn, week 1)\nEvery QS has had this tender close. Six bids, all in at 4:59. Six formats. Number six is the best one.\n\nIn fairness, the tender email said \"drawings attached, please price.\" We've all sent that one.\n\nQSME is tendering and estimating software: price your estimate once, cut the tender from it, and every bidder gets the same lines. Bidders never see your rates or budget, and the award creates the contract.\n\n30-minute demo: qsme.build (link in comments)\n\nWhat's the strangest format a quote has ever reached you in?\n\n---\nCAROUSEL (LinkedIn document, week 2; document title 'Six bids. Six formats.')\nEvery QS has had this tender close. Six bids. Six formats. Unpopular opinion: Bid F is the best one.\n\nQSME is tendering and estimating software: price your estimate once, cut the tender from it, and every bidder gets the same lines. Bidders never see your rates or budget.\n\n30-minute demo: qsme.build (link in comments)\n\nWhat's the strangest format a quote has ever reached you in?\n\n---\nSTATIC (week 3; the only caption that names the whiteboard)\nEvery QS has had this tender close. Six bids. Six formats. One was a photo of a whiteboard. It was the most complete.\n\nIn fairness, the tender email said \"drawings attached, please price.\" We've all sent that one.\n\nQSME is tendering and estimating software: price your estimate once, cut the tender from it, and every bidder gets the same lines. Bidders never see your rates or budget.\n\n30-minute demo: qsme.build (link in comments)\n\nWhat's the strangest format a quote has ever reached you in?\n\n---\nBINDER STATIC (week 4, Hook 2)\nThis is a tender submission.\n\nQSME is tendering and estimating software: one schedule, and every bidder gets the same lines.\n\n30-minute demo: qsme.build (link in comments)\n\nWhat's the strangest format a quote has ever reached you in?\n\n(IG: replace the demo line with 'Book a 30-minute demo: link in bio.' FB: use the full tracked URL.)",
+  "hashtags": [
+    "#QuantitySurveying",
+    "#Tendering",
+    "#Estimating",
+    "#Preconstruction"
+  ],
+  "cta_line": "Send one schedule, get six bids you can actually compare. Book a 30-minute demo at qsme.build.",
+  "production_workflow": [
+    {
+      "step": "1. Agree hook + concept + spend",
+      "tool": "Claude + user",
+      "what": "The user picks the hook (recommended: Hook 1, with Hook 4 as the paid challenger), decides who's on camera, answers the open questions, and says yes before anything costs money. Estimate: about 2h for props and printing, 45min shoot, 2h edit. Spend: one month of an ElevenLabs paid plan with commercial use, plus printing. No AI video spend if a real person films.",
+      "output": "Agreed concept; idea card status → agreed; project folder projects/YYYY-MM-DD-qsme-build-six-quotes/ with brief.md"
+    },
+    {
+      "step": "2. Final copy",
+      "tool": "Claude",
+      "what": "Timestamped script where the captions are the VO word for word, the 8 carousel slides, the static copy, the four captions (reel, carousel, static, binder), the 35s paid script, and one UTM link per asset",
+      "output": "script.md, captions.md, paid-35s.md, utm-links.md"
+    },
+    {
+      "step": "3. Props + brand frames",
+      "tool": "Figma",
+      "what": "One file, 'QSME Build – Six quotes', using the brand tokens from ventures/qsme-build.md (#0C1310, #3DC023, Space Grotesk SemiBold, Inter, logo at ventures/assets/qsme-logo.svg). Props: 'Bidder A–F' letterheads with visible totals, Bid E clearly the lowest; a printed header 'Quote_FINAL_v3_revised(2).pdf' for the sideways scan; the quote cover and page 9 only (note 14 'Excludes ceilings.', footer '9 of 9'), with pages 2–8 printed filler; a generic spreadsheet with rows 12–40 merged and a generic 'Can't sort merged cells.' alert; a generic mail UI with 'Price below. Cheers.', a long empty scroll and 'Sent from my phone'; the QS's own sent email ('Tender: Plasterboard & ceilings package / Drawings attached. Please price.'); six generic notification banners stamped 4:59 pm with no OS or app logos; a sticky note 'F'; the binder sleeve label for Hook 2. Frames: static 1080x1350, carousel 8 × 1080x1350, lower-third, end card.",
+      "output": "Printable prop PDFs + phone/laptop screen PNGs + banner animation + empty layout frames"
+    },
+    {
+      "step": "4. Real photos (zero AI)",
+      "tool": "Phone + printer + a real whiteboard",
+      "what": "Write Bid F on a real whiteboard to the spec (itemised boards and ceilings lines, 'Ceilings … INCL' underlined twice, jointing incl, access incl, validity 30 days, total + tax). Photograph it on a phone with the glare and half-erased sketch in one corner, clear of the lines. Then shoot two overhead flat-lays on a real desk in window light: all six face-up (static), and Bid F face-down with the sticky note 'F' (carousel slide 1). Also shoot the binder shot for Hook 2.",
+      "output": "whiteboard.jpg, flatlay-all.jpg, flatlay-f-hidden.jpg, binder.jpg"
+    },
+    {
+      "step": "5. Static + carousel",
+      "tool": "Figma",
+      "what": "Static: the solid #0C1310 band across the top 22% with kicker, headline and green subline; the photo below; labels of three words or fewer at 32px or more. Carousel: real photos in the frames, counters top-right, the whiteboard inset crop on slide 6, the 'Compare bids' totals crop (6 bidders, excl./incl. tax, 'Lowest') on slide 8. Export the carousel as a PDF titled 'Six bids. Six formats.' for LinkedIn and as PNGs for IG/FB.",
+      "output": "Static PNG (1080x1350), binder static PNG, carousel PDF + 8 PNGs"
+    },
+    {
+      "step": "6. Product screen recordings",
+      "tool": "QSME demo project (fictional data) + Mac/iOS screen recorder",
+      "what": "Owner records these (signed-in screens), one UI state per clip, punched in at 2–3x with a slow push-in: (1) the bidder's view of the tender: the same lines, rate column empty (ideally split-screen with the owner's priced SOQ); (2) 'Compare bids' with six demo bids: totals excl./incl. tax, 'Compare on' toggle, 'Lowest' tag; (3) click a bid → 'Award bid' → the contract with milestones and retention (Active Work); (4) Agreements: 'Make the agreement' → 'Send for signing'; (5) estimate → tender cut from it (for slide 7 and the paid cut). The comparison is totals only: never film or describe a per-line grid of every bidder's rates. On a Global (non-GST) demo, check the labels first (they may still say GST).",
+      "output": "3 clips of about 4s usable each, 1080p or higher"
+    },
+    {
+      "step": "7a. Film the talking head (recommended)",
+      "tool": "Phone (founder, or a real QS for the skit only)",
+      "what": "Shoot 9:16 at eye level, window light, real desk, natural accent, uncoached. 3 takes per line plus inserts: the foreground phone with the rack focus to the face (phone Cinematic/portrait video mode, or a blur ramp in the edit); the sideways PDF rotate; the spreadsheet sort click and alert close; the 'price below' empty scroll; the page flick + highlighter; the whiteboard phone reveal; the laptop turned to the lens with the sent email; writing '6 bids. 1 schedule.' and capping the marker. Record the real paper, trackpad, highlighter and marker sounds on set.",
+      "output": "Raw clips + inserts + live SFX"
+    },
+    {
+      "step": "7b. Fallback: no person on camera",
+      "tool": "Figma (kinetic type) + ElevenLabs VO",
+      "what": "One Figma frame per beat, using the real prop photos, big type and the counter. Animate with Smart Animate and export as MP4 (the connected Figma integration lists a video export tool; test it on one frame first, and fall back to screen-recording the prototype). The VO follows the ElevenLabs direction, with the product line 'Next tender: one schedule. Every bidder gets the same lines.' Use Higgsfield/Runway/Veo only if a human on screen is truly needed and nobody will film: a fictional QS, not a testimonial, AI-labelled where required. Not recommended for LinkedIn.",
+      "output": "Kinetic MP4 + VO WAVs"
+    },
+    {
+      "step": "8. Sound",
+      "tool": "ElevenLabs (SFX + Music)",
+      "what": "SFX: six generic message pings, plus any sound not captured on set (no cartoon sounds). Music: a 10s cue (organic) and a 17s cue (paid), 96 BPM, resolving on one chord. Check the plan covers commercial use.",
+      "output": "WAV stems"
+    },
+    {
+      "step": "9. Edit",
+      "tool": "CapCut (cutting and captions only)",
+      "what": "Cut tight and start late. Burned-in captions are the VO word for word, large enough to read with sound off, and double as the subtitles: no separate subtitle track, no SRT, and LinkedIn auto-captions off at upload if offered. Only the top-right counter 0/6→6/6, with no '1/6 ·' prefixes. The 0.5s snap-zoom on 'CEILINGS … INCL' at 16.5s. Music in at 21.5s, ducked under speech. No CapCut library music, SFX, AI voices, stickers or templates; all audio comes from the set recording and the ElevenLabs stems. Export 1080x1350 for LinkedIn and 1080x1920 for Shorts/Reels, with 9:16 text between y=300 and y=1400 and more than 150px from the right edge, and the end card held at least 2.5s.",
+      "output": "2 MP4s (4:5, 9:16)"
+    },
+    {
+      "step": "10. QA",
+      "tool": "Claude + user",
+      "what": "Watch with sound off: does the hook read in under 3s? Check every claim against the research file ('gets the same lines', 'never see your rates or budget', 'award creates the contract'). No real brands, logos, OS UI, names or client data. Check that the subbies aren't the butt of the joke and the self-own lands, and that nothing shows or claims a per-line grid of every bidder's rates (the live screen compares totals). Third-watch test: is it still funny?",
+      "output": "Approved files; idea card updated"
+    },
+    {
+      "step": "11. Publish + learn",
+      "tool": "User (LinkedIn), Claude for logging",
+      "what": "The user posts from the founder's personal profile and the QSME page reposts: week 1 reel, week 2 carousel, week 3 static, week 4 binder static. The founder posts the first comment with their own true strangest-quote story (not written by us); the tracked link goes in a separate comment. UTMs: qsme.build/?utm_source=linkedin&utm_medium=organic&utm_campaign=six-quotes&utm_content=reel-h1 (then carousel-h4, static-whiteboard, static-binder; utm_source=instagram/facebook for cross-posts). After 7 days per post, log impressions, comments, reposts, average watch time (if LinkedIn shows it) and demo bookings by utm_content. Winner = highest (comments + reposts) per 1,000 impressions, with at least 1,000 impressions; a video must also average at least 10s watch time. Treat organic results as directional only.",
+      "output": "A row per post in learnings.md + notes on the idea card"
+    },
+    {
+      "step": "12. Paid (only if organic shows signal)",
+      "tool": "CapCut + LinkedIn Campaign Manager (user)",
+      "what": "35s cut from the same footage. 0–2.5 Hook 1 or Hook 4 (both exactly 2.5s). 2.5–13.5 bids 1–5 as in the organic reel. 13.5–17.0 the whiteboard + snap-zoom (Hook 4 variant VO: 'And yes… the whiteboard.'). 17.0–18.5 'Honestly? Most complete one here.' 18.5–21.5 product intro: lower-third 'QSME · tendering & estimating software', VO 'QSME fixes the tender, not the subbies.' over estimate → tender. 21.5–25.5 value: VO 'Price the estimate once. Every bidder gets the same lines.', on-screen 'Bidders never see your rates or budget.' 25.5–29.0 demo: VO 'Six bids. One table. Award creates the contract.' over 'Compare bids' (totals excl./incl. tax, 'Lowest') → 'Award bid' → contract with milestones and retention, then the agreement sent for e-sign. 29.0–35.0 CTA at the whiteboard: VO 'Send one schedule, get six bids you can actually compare. Book a 30-minute demo.' End card qsme.build. About 85 words; the founder voices the product lines. Run it as a video ad with a Lead Gen Form ('Request demo'), and the carousel as a document ad. A/B Hook 1 vs Hook 4 with everything else fixed. Boost the winning organic post as a Thought Leader Ad if the format supports it. Set a fixed test budget before launch. Judge hooks on video view rate and 25%/50% completion, then CTR and cost per demo request.",
+      "output": "2 ad variants + a view-rate/completion/CTR comparison logged in learnings.md"
+    }
+  ],
+  "integrity_notes": [
+    "Product claims come only from the research file and venture profile, and are worded to match: 'tendering & estimating software'; one estimate with every tender cut from it, so every bidder gets the same lines ('prices the same lines' waits until the bidder flow is confirmed); bidders never see your rates or budget; bids compared as totals excl. and incl. tax in one table with a 'Lowest' tag (each bid opens to its own lines); award creates the contract with milestones and retention, and the agreement is then sent for e-sign. Never say or show a per-line grid of every bidder's rates: that matrix exists only on an unmerged branch. 'The contract's already made' was removed.",
+    "Still dropped until confirmed: 'same tax basis', automatic exclusion detection, and 'lowest conforming bid'. The page-9 exclusion is shown only as the problem. The live comparison shows totals only, so there are no per-bidder line rows to show blank, and nothing implies 'QSME catches exclusions'.",
+    "No social proof anywhere: no customer counts, logos, time-saved figures, star ratings or testimonials. 'Six bids', 'page 9', 'note 14', 'rows 12–40', '4:59' and the whiteboard rates and totals are props inside the skit, not data.",
+    "Who speaks: the founder may say 'So we built QSME' and the CTA because they are the company. A real QS who isn't a user performs only the skit and never voices product or CTA lines; disclose a paid partnership if they're paid, and get a written release. An AI voice never presents itself as the founder.",
+    "First person: the captions open with the generic 'Every QS has had this tender close.' and make no claim that a specific tender happened. First-person lines ('mine said…', 'here's what I sent them') live only inside the clearly staged skit and carousel. 'We've all sent that one' assumes the poster is a QS; if the founder isn't, change it to 'Most tender emails look like that.'",
+    "The joke is aimed at the situation and at ourselves, not at subbies (who are qsme.build users): the whiteboard bidder wins, the QS admits their own tender email caused it, and the paid line is 'QSME fixes the tender, not the subbies.' Hook 5 was rewritten so the subbie wins, and it's parked.",
+    "No real brands or identities: generic spreadsheet (no Excel logo or ribbon), generic mail UI, generic alert and generic notification banners (no OS or app branding, no Outlook/iOS sounds). Bidders are labelled 'Bidder A–F' with no company names. No real projects, addresses or client tenders. Screen recordings use a demo project with fictional data. For the NZ twin, any 'Facebook group' screen must be a generic community-group UI (neutral grey, no logo, made-up group name, no Facebook colours, layout or reaction icons).",
+    "Any AI-generated QS must be fictional, must not resemble a real identifiable person, must not be framed as a testimonial, and must be AI-labelled where LinkedIn/Meta rules require. Flag this to the user before using one.",
+    "Audio rights: no trending or chart music on LinkedIn or in ads; generated or commercially licensed music on a brand/ads-cleared plan only; no CapCut library audio, voices, stickers or templates. No voice cloning of a real person without their explicit consent.",
+    "Comment seeding: the founder's first comment must be a true story of their own. We don't write one for them.",
+    "Nothing gets generated, spent or posted until the user approves the hook and the spend. The user does the posting."
+  ],
+  "open_questions": [
+    "Hook: Hook 1 for the organic reel, with Hook 4 as the paid challenger (and as the carousel slide-1 framing)?",
+    "Who goes on camera: you as founder (recommended: you can voice the product half), a real QS you know (skit only), or nobody (Figma kinetic type + ElevenLabs voice)?",
+    "Have you worked as a QS or run tenders yourself? That decides whether 'mine said \"drawings attached, please price\"' and 'We've all sent that one' are honest coming from you.",
+    "~~How do bidders respond in QSME?~~ Answered by research/2026-10-02-qsme-platform-truth.md: invited bidders price the same lines cut from the SOQ (a total or itemised), and emailed PDF quotes can be added to the comparison. 'Same lines for every bidder' is true. Still open: can they attach exclusions to specific lines?",
+    "~~In the comparison view, do unpriced lines show as blank?~~ Answered: the live comparison is a table of totals (excl. / incl. GST, 'Lowest'), one bid opens at a time to its own lines; the per-line grid across bidders is branch-only. Still open: does the iOS app show the comparison (for a portrait-native recording)?",
+    "~~Does the comparison normalise tax basis or surface exclusions?~~ Answered: it works out the missing side at 15% and marks it 'calc.' (display only, the bidder's own figure stays bold); it does not detect exclusions or judge 'conforming'. Global screens may still say GST.",
+    "Which markets is qsme.build for (AU, UK, Middle East, US)? That decides 'subbies' vs 'subs', 'plasterboard' vs 'drywall', and the AI fallback accent.",
+    "Is your personal LinkedIn profile the posting account, with the QSME page reposting? Organic only for now, or a fixed LinkedIn test budget for the winning hook? Which demo-booking URL should the UTM links point to, and is a LinkedIn Lead Gen Form OK for paid?",
+    "Brand tokens and the logo are in ventures/qsme-build.md (pulled from the site 2026-10-02). Is there an existing Figma file or library to use instead? Is there a demo project with fictional data we can screen-record?",
+    "Humor limits for qsme.build: is joking about quote formats OK now that the post takes the subbies' side and the QS takes the blame?",
+    "ElevenLabs: does your plan include commercial use (needed for music and VO in ads)?",
+    "Want the NZ twin next (qsme.co.nz, 'The Facebook group' idea, Kiwi VO, FB/IG) built with the same workflow, and Hook 5 as a part-2 post from the subbie's side?"
+  ],
+  "changelog": [
+    "Reel: added a self-own beat at 18.5–21.5s. The QS turns the laptop to show their own tender email, 'Drawings attached. Please price.', and everything after it is retimed, so the joke lands on the QS, not the subbies (A, must-fix). Spoken words are now 68, inside the 70-word budget.",
+    "Rewrote the 'price below' bid in the reel, static and carousel: 'One says \"price below\"… there's nothing below.' over an empty scroll ending on 'Sent from my phone' (A must-fix, B should-fix).",
+    "Swapped the order so the cheapest bid sits at 5/6, right before the whiteboard (B). A preferred 'nothing below' at 5/6. We went with B because the new whiteboard spec makes 'CEILINGS … INCL' a direct answer to the cheapest bid's 'Excludes ceilings', and that callback reads best when the two beats are back to back. Bidder letters follow the new order: 'price below' is now Bid D, the cheapest is now Bid E.",
+    "Renamed the package 'Plasterboard & ceilings package' everywhere, and note 14 now reads 'Excludes ceilings.', so 'cheapest by a mile' is earned (A). Chose this over the 'Painting package' option because it powers the whiteboard callback. 'Internal linings' was on B's keep list, but A's point that it's NZ/AU jargon for a global brand wins.",
+    "Specified the whiteboard so 'most complete' is visible: itemised boards and ceilings lines, jointing and access incl, validity, total, 'Ceilings … INCL' underlined twice, glare kept off the lines. Added a 0.5s snap-zoom at 16.5s and the same crop on carousel slide 6 (A).",
+    "Hook 1 now works with sound off (B, must-fix): large '6 bids. 6 formats.' text, a 'Tender closed 5:00pm' chip, six generic banners stacking on a foreground phone in sync with the pings, and a rack focus to the QS. A's '4:59' idea goes on the banners' timestamps, so the text still matches the VO (B) and the frame carries the extra joke (A). 'Subbies' stays in the VO only until the markets are confirmed.",
+    "Captions: on-screen text is now the VO word for word and doubles as the captions. The '1/6 ·' prefixes are gone (only the top-right counter remains), and there's no separate subtitle track, no SRT, and LinkedIn auto-captions are off (B). Where A wanted a second text layer (the filename on 1/6, 'rows 12–40', 'nothing below'), that information now lives on the props (printed header, merged selection, generic alert, empty scroll), so both critiques are met without words on screen twice. A's 'Cheapest. Until page 9.' label is replaced by the identical-meaning VO caption.",
+    "Spreadsheet beat: removed the cartoon 'error bonk'. A sort click now triggers a generic 'Can't sort merged cells.' alert, with one trackpad click only (A).",
+    "Bid C cut to 1.5s and its VO to 'One says \"as discussed\".' to pay for the longer 'price below' beat (B). Acting direction changed to 'trying to work out which of forty phone calls that was' (A).",
+    "Who speaks (B, must-fix): the founder on camera is now the default and delivers the product half as the founder ('So we built QSME. Same lines for every bidder.'). A real QS who isn't a user performs only the skit. AI and non-founder versions use A's line 'Next tender: one schedule. Every bidder gets the same lines.'",
+    "Product clarity (B, must-fix): added the lower-third 'QSME · tendering & estimating software' at 21.5s, 'With QSME:' on slide 7, and a QSME sentence in every caption.",
+    "Claim precision (B): 'gets the same lines' replaces 'prices the same lines' everywhere; 'Bidders never see your rates or budget' replaces 'stay hidden'; 'the contract's already made' is removed, and the value beat is on-screen only ('Award → contract created'), which also follows A's no-VO value beat.",
+    "Implied claim (B): the cheapest bid's blank ceiling rows appear in the comparison only if the demo really shows them blank; otherwise nothing is highlighted. Kept A's 'Excludes ceilings.' wording and the unchanged VO ('One's the cheapest… till page nine.') rather than adding 'Ceilings by others' to the VO, which would have broken the 2.5s beat A asked to keep word for word.",
+    "Solution footage (B): one UI state per beat, punched in to about 6 rows × Bidder A–F at 2–3x with a slow push-in. The estimate → tender state moves to slide 7 and the paid cut. Record the iOS app if it shows the comparison.",
+    "Caption rewritten (A and B, must-fix). It opens with 'Every QS has had this tender close.' (B: no staged first-person event) and keeps A's '4:59', 'number six is the best one' and the self-own, as 'We've all sent that one' rather than 'my tender email'. It no longer retells the bids, names the product, says 'link in comments', and ends with the comment question word for word. Added separate captions for the carousel (no spoilers), the static (the only one that names the whiteboard) and the binder post. Did not use B's 'The subbies didn't do anything wrong' line: A flagged it as explaining the joke, and the self-own now does that job.",
+    "Carousel slide 1 (B, must-fix): Bid F is now a face-down phone with a sticky note 'F'. The headline uses Hook 4's framing without the reveal ('Unpopular opinion: the best bid here is Bid F.'), so the contrarian hook gets an organic read as B's test plan asks.",
+    "Carousel slide 7: A's headline and visual ('In fairness, here's what I sent them.' over the QS's own sent email) replace 'The problem was never the subbies.' B had kept that line, but A showed it explains the joke. Body cut to B's density ('Nobody got the same list.' + 'With QSME: …'), and rates/budget moved to slide 8 (B).",
+    "Hook 3 rebuilt as the asterisk gag ('Cheapest bid. By a mile.*' → '*Note 14: Excludes ceilings.') with no countdown ring (A).",
+    "Hook 4: VO cut to 'Unpopular opinion: the whiteboard bid wins.' (2.4s) and 'this week' removed. Both hooks are trimmed to exactly 2.5s, and in the Hook 4 variant only, 6/6 becomes the callback 'And yes… the whiteboard.' (A and B agree; used B's wording).",
+    "Hook 5 rewritten so the subbie wins ('Yep. Ceilings are in.') and parked as a part-2 post from the subbie's side (A). Hook 2 is now the week-4 binder static (B).",
+    "Organic plan (B, must-fix): week 1 reel, week 2 carousel, week 3 static, week 4 binder static. Posted from the founder's personal profile and reposted by the QSME page. Organic is treated as directional, the clean hook split happens only in paid, and the winning post is boosted as a Thought Leader Ad if supported.",
+    "Paid 35s cut written as a full beat sheet (B): product intro 'QSME fixes the tender, not the subbies.', value, demo, and an explicit CTA using the cta_line, with a Lead Gen Form ('Request demo'); about 85 words. The self-own beat is left out of the paid cut because that line does the same job in fewer seconds.",
+    "Measurement (B): one UTM link per asset, a winner rule ((comments + reposts) per 1,000 impressions, at least 1,000 impressions, at least 10s average watch for video), paid judged on view rate, 25%/50% completion, then CTR, and a fixed test budget.",
+    "Static (B): headline and subline on a solid #0C1310 band across the top 22%, labels of three words or fewer at 32px or more; the filename and sticky note stay on the props. The headline is now 'Six bids. Six formats.' (no 'subbies' on screen), and the 1200x1500 export is dropped.",
+    "Licensing (B): music sourcing limited to plans that explicitly cover brand channels and paid ads; CapCut used for cutting and captions only, with no library audio, voices, stickers or templates; real sounds recorded on set where possible.",
+    "Cross-posting (B): IG 'link in bio', FB full tracked URL, Shorts end card with qsme.build held 2.5s, LinkedIn document titled 'Six bids. Six formats.' with the link in a comment. 9:16 text is kept between y=300 and y=1400 and 150px clear of the right edge.",
+    "Voice (A): the neutral-accent rule now applies only to the AI fallback; a founder or real QS uses their own accent and words, uncoached.",
+    "Comment seeding (A): the founder posts the first comment with a true strangest-quote story of their own; we don't write it.",
+    "Production (B): design only the quote cover and page 9; time and spend estimate added to step 1. LinkedIn hashtags are now #QuantitySurveying #Tendering #Estimating #Preconstruction (#Construction dropped as too broad); build a separate IG set (e.g. #quantitysurveyor #constructionlife #estimating) only if the cross-post goes ahead.",
+    "NZ twin note (B): no mocked Facebook UI; use a generic community-group screen. Added to the integrity notes for when that idea is built.",
+    "Kept as reviewers asked: the core joke and status flip, the 'Six subbies. Six quotes. Six formats.' VO, the pings into silence, the 0/6→6/6 counter, 'One's the cheapest… till page nine.' and '9 of 9', the 'As discussed' red circle, 'Honestly? Most complete one here.', no music under the count, the filename and sticky note, the '6 bids. 1 schedule.' whiteboard callback, the comment question word for word, the cta_line, real props with zero AI, Bidder A–F, 9:16 with a protected 4:5 centre, and no spending or posting before approval.",
+    "2026-10-02 — Fact-check fix against research/2026-10-02-qsme-platform-truth.md. Why: the product beat showed a grid with every bidder's rate on every line, and that matrix only exists on an unmerged branch (the live 'Compare bids' screen compares totals). What changed: the beat now shows only what is live, still labelled 'Illustrative — swap for real QSME screen (demo data)'. It goes (a) six identical bidder sheets, the same lines cut from the estimate with the rate column blank and 'Bidders never see your rates or budget.', then (b) 'Compare bids': totals excl. tax / incl. tax ('calc.') with a 'Lowest' tag on Bidder F, then (c) Bidder F → 'Award bid' → 'Contract created' with milestones and retention, and 'make the agreement → send for e-sign' as the next step (signing is not part of award). Kept 'So we built QSME. Same lines for every bidder.' (true: bidders price identical lines cut from the SOQ) and added the caption + VO 'Six bids. One table.'. Fixed the dark/dim frames at the whiteboard cut (~12.8s): the board is now on screen from the first frame. Moved the tags, counter, label and hook headline inside the 4:5 safe box, and kept every whiteboard line inside it during the punch-in (zoom 1.25 instead of 1.5, other lines dimmed). Re-rendered with tools/motion (QA pass on 60,60,1020,1290); now 29.8s, end card from 27.2s. Copy: carousel slide 8 is now 'Same lines. One table. Award.', the paid-cut VO is 'Six bids. One table. Award creates the contract.', and the shoot plan, owner screen-recording list, integrity notes and three answered open questions are updated. The Voice section now says Kiwi, as confirmed on 2026-10-02. vo-script.md/json now has 12 lines (new line 11 at 22.85, CTA at 27.3), and no copy claims a per-line comparison. Still open: the real owner screen-recordings (listed under Production status) to replace the illustrative stand-ins.",
+    "2026-10-02 — 9:16 Shorts/Reels cut made: `outputs/six-bids-9x16.mp4` (+ `-frames.png`), 29.8s, from `motion/six-bids-9x16.html`. The 4:5 master is placed frame for frame inside the 9:16 safe box with a branded top band ('Tender day', QSME wordmark, six bid segments that fill with the counter and join into one bar on 'Six bids. One table.'; 'Illustrative · demo data' over the product beat) and a bottom band that re-sets each caption large (60px; 54px for the three-line 'In fairness…' caption) on the master's exact cut frames, so the frame doesn't read as letterboxed. Soft edges where the page flicks and the whiteboard zoom leave the 4:5 frame; the end card steps up 1.3x for phone reading. No new claims, no new footage. QA passed on the 9:16 safe box and on a stricter box that keeps text 150px clear of the right-hand buttons. Same timeline, so `vo-script.md` applies as is (no second VO script). Fixed `figma-scripts/03-section2-carousel.js` slide 8 to 'Same lines. One table. Award.', with a totals-table placeholder and the post.json body. The carousel and statics stay on hold for week 1."
+  ]
+}

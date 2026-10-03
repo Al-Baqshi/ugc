@@ -1,0 +1,65 @@
+/* Stand-in for the owner's hands-only filmed shot: a printed demo pack on a timber bench (top-down).
+   Swap for the real filmed shot (see post.md, "Owner recordings to swap in"). */
+.bench { position: absolute; inset: 0; overflow: hidden; background: #2A1C12; }
+.bench .cam { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; }
+.bench .wood { position: absolute; left: -200px; top: -200px; width: 2320px; height: 1480px;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0) 0 268px, rgba(38,22,10,.6) 268px 271px, rgba(255,232,200,.10) 271px 273px, rgba(0,0,0,0) 273px 590px, rgba(38,22,10,.55) 590px 593px, rgba(255,232,200,.10) 593px 595px, rgba(0,0,0,0) 595px 905px, rgba(38,22,10,.6) 905px 908px, rgba(255,232,200,.1) 908px 910px, rgba(0,0,0,0) 910px 1230px, rgba(38,22,10,.55) 1230px 1233px, rgba(255,232,200,.1) 1233px 1235px, rgba(0,0,0,0) 1235px),
+    repeating-linear-gradient(0.8deg, rgba(70,42,20,.11) 0 2px, rgba(0,0,0,0) 2px 8px, rgba(255,236,205,.05) 8px 10px, rgba(0,0,0,0) 10px 19px),
+    repeating-linear-gradient(-0.5deg, rgba(60,34,14,.08) 0 1px, rgba(0,0,0,0) 1px 37px),
+    radial-gradient(800px 120px at 25% 38%, rgba(60,34,14,.16), rgba(0,0,0,0) 70%),
+    radial-gradient(900px 140px at 72% 64%, rgba(255,226,186,.08), rgba(0,0,0,0) 70%),
+    radial-gradient(700px 110px at 60% 18%, rgba(60,34,14,.12), rgba(0,0,0,0) 70%),
+    linear-gradient(180deg, #A17C55 0%, #97714B 35%, #8C6844 70%, #84603D 100%); }
+.bench .light { position: absolute; inset: 0; background: radial-gradient(1250px 820px at 46% 50%, rgba(255,214,160,.10) 0%, rgba(0,0,0,0) 45%, rgba(10,6,2,.62) 100%); pointer-events: none; }
+.bench .topfade { position: absolute; left: 0; right: 0; top: 0; height: 330px; background: linear-gradient(180deg, rgba(2,6,23,.88) 0%, rgba(2,6,23,.55) 55%, rgba(2,6,23,0) 100%); pointer-events: none; }
+
+/* the printed pack (A3 landscape, ~1.41 ratio), with visible sheet edges */
+.pack { position: absolute; width: 900px; height: 636px; background: #F7F5EF; border-radius: 3px;
+  box-shadow: 1px 1px 0 #E6E2D8, 2px 2px 0 #F5F2EA, 3px 3px 0 #DDD8CC, 4px 4px 0 #F3F0E8, 5px 5px 0 #E2DDD2, 6px 6px 0 #F1EEE6, 7px 7px 0 #D9D3C6, 8px 8px 0 #EFECE4,
+    9px 9px 0 #E0DBCF, 10px 10px 0 #F0EDE5, 11px 11px 0 #D6D0C3, 12px 12px 0 #EDE9E0, 13px 13px 0 #DCD6CA, 14px 14px 0 #EAE6DC, 15px 15px 0 #D2CBBE, 16px 16px 0 #E6E1D6,
+    17px 17px 0 #CFC8BA, 18px 18px 0 #C9C2B3, 30px 40px 46px rgba(30,15,5,.55), 8px 10px 14px rgba(30,15,5,.35); }
+.pack .cv { position: absolute; inset: 0; padding: 46px 52px; overflow: hidden; }
+.pack .dp { font: 800 74px/1 Manrope; letter-spacing: -0.03em; color: #1F2937; }
+.pack .s1 { font: 600 28px/1.25 Inter; color: #475569; margin-top: 14px; }
+.pack .s2 { font: 500 22px/1.2 "JetBrains Mono"; color: #64748B; margin-top: 14px; }
+.pack .art { position: absolute; right: 60px; top: 236px; width: 470px; height: 300px; }
+.pack .foot { position: absolute; left: 52px; top: 158px; font: 500 20px/1.3 "JetBrains Mono"; color: #64748B; }
+.pack .stamp { position: absolute; right: 50px; bottom: 36px; padding: 8px 16px; border: 3px solid rgba(185,28,28,.75); border-radius: 6px; color: rgba(185,28,28,.8); font: 800 22px/1 Inter; letter-spacing: .1em; transform: rotate(-4deg); }
+.pack .rule { position: absolute; left: 52px; right: 52px; top: 196px; height: 2px; background: #CBD5E1; }
+.clip { position: absolute; width: 170px; height: 54px; border-radius: 6px 6px 10px 10px; background: linear-gradient(180deg, #2B2F36, #111317); box-shadow: 0 8px 12px rgba(0,0,0,.45); }
+.clip:before, .clip:after { content: ''; position: absolute; top: -46px; width: 10px; height: 60px; border: 5px solid #A8AEB6; border-bottom: none; border-radius: 40px 40px 0 0; }
+.clip:before { left: 30px; width: 46px; } .clip:after { right: 30px; width: 46px; }
+
+/* sticky notes + marker */
+.stk { position: absolute; padding: 22px 28px 26px; background: linear-gradient(180deg, #FDE68A 0%, #FCD34D 100%); color: #1F2937; border-radius: 3px;
+  box-shadow: 0 18px 30px rgba(30,15,5,.45), 0 2px 0 rgba(0,0,0,.05); font: 400 46px/1.15 Kalam; white-space: nowrap; }
+.stk:before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 26px; background: rgba(0,0,0,.04); }
+.mkr { font-family: "Permanent Marker", cursive; color: #C81E1E; white-space: nowrap; position: absolute; }
+
+/* printed spreadsheet (A4 portrait) */
+.xls { position: absolute; width: 520px; height: 735px; background: #FBFBF8; border-radius: 2px; padding: 34px 30px; box-shadow: 1px 1px 0 #E7E4DA, 2px 2px 0 #DCD8CC, 22px 30px 40px rgba(30,15,5,.5); }
+.xls .h { font: 700 34px/1.1 Inter; color: #111827; position: relative; display: inline-block; }
+.xls .fn { font: 500 17px/1.2 "JetBrains Mono"; color: #6B7280; margin-top: 8px; }
+.xls table { width: 100%; border-collapse: collapse; margin-top: 22px; font: 500 14.5px/1.15 Inter; color: #374151; }
+.xls th { font: 700 13px/1 Inter; background: #E5E7EB; text-align: left; padding: 7px 5px; border: 1px solid #C7CBD1; }
+.xls td { padding: 6px 5px; border: 1px solid #D5D9DE; white-space: nowrap; }
+.xls td.n { text-align: right; }
+
+/* drainage sheets (arrive later) */
+.dsheet { position: absolute; width: 760px; height: 537px; background: #F8F7F2; border-radius: 2px; box-shadow: 1px 1px 0 #E6E2D8, 2px 2px 0 #D8D3C6, 3px 3px 0 #EFECE4, 4px 4px 0 #D2CCBF, 20px 28px 36px rgba(30,15,5,.5); padding: 36px 40px; }
+.dsheet .dp { font: 800 54px/1 Manrope; letter-spacing: -0.03em; color: #1F2937; }
+.dsheet .s2 { font: 500 20px/1.2 "JetBrains Mono"; color: #64748B; margin-top: 10px; }
+.dsheet svg { position: absolute; left: 40px; right: 40px; top: 150px; width: 680px; height: 340px; }
+
+/* desktop notification card used on the bench */
+.note { width: 680px; }
+.note .tx { font-size: 24px; }
+.note .tx .big { display: block; font: 700 26px/1.3 Inter; color: #0F172A; margin-top: 6px; }
+
+.note.big { width: 1120px; padding: 28px 34px; gap: 24px; border-radius: 20px; align-items: flex-start; }
+.note.big .ti { width: 68px; height: 68px; border-radius: 16px; }
+.note.big .ti svg { width: 38px; height: 38px; }
+.note.big .tx { font-size: 30px; line-height: 1.35; }
+.note.big .tx .big { font-size: 42px; line-height: 1.25; margin-top: 10px; letter-spacing: -0.01em; }
+.note.big .mkw svg { bottom: -14px; height: 20px; }

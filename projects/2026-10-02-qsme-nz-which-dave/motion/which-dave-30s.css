@@ -1,0 +1,82 @@
+/* Which Dave? 30 s reel (2026-10-02 rebuild, 2026-10-03 review fixes). Shared by which-dave-30s.html (9:16) and which-dave-30s-4x5.html (4:5).
+   Everything is laid out on a 1080x1920 #stage. In 4:5 the stage is moved up 240px and the safe box's bottom moves
+   from 1250 to 1530 (stage coords), so the 4:5 frame (1080x1350) shows stage y 240..1590 with text inside 60..1290. */
+:root { --navy:#020617; --ink:#F8FAFC; --green:#15803D; --btn:#16A34A; --logo:#3DC023; --red:#E0302A; --red2:#F0473C; }
+#root { background:#fff; }
+#stage { position:absolute; left:0; top:0; width:1080px; height:1920px; overflow:hidden; background:#fff; font-family:Inter, sans-serif; }
+body.r4x5 #stage { transform:translateY(-240px); }
+.abs { position:absolute; }
+svg { overflow:visible; }
+
+/* ---------- generic community-group app (neutral, not any real platform) ---------- */
+#app { position:absolute; left:0; top:0; width:1080px; height:1920px; background:#fff; }
+.chrome { left:0; top:0; width:1080px; height:240px; background:#F6F5F2; border-bottom:2px solid #E3E2DD; }
+#morph { left:65px; width:950px; background:#fff; border:2px solid #D6D5CF; border-radius:20px; box-shadow:0 8px 28px rgba(0,0,0,.10); }
+#card { left:65px; width:950px; }
+.grow { display:flex; align-items:center; gap:20px; padding:26px 34px; }
+.gav { width:72px; height:72px; border-radius:16px; background:#8A8A80; color:#fff; font:600 27px Inter; display:flex; align-items:center; justify-content:center; letter-spacing:.02em; }
+.gname { font:600 40px/1.2 Inter; color:#1C1C1E; }
+.hr { height:2px; background:#E8E8E3; }
+.pbody { padding:36px 48px 38px; display:flex; flex-direction:column; gap:28px; position:relative; }
+.arow { display:flex; align-items:center; gap:20px; }
+.aname { font:600 44px/1.15 Inter; color:#1C1C1E; }
+.ameta { font:400 30px/1.2 Inter; color:#6B6B70; }
+.ptext { font:400 62px/80px Inter; color:#1A1A1A; letter-spacing:-0.005em; }
+.pcount { font:500 38px/1.2 Inter; color:#6B6B70; }
+#mbl, #mbl2 { white-space:nowrap; }
+#pinned { left:65px; top:300px; width:950px; height:100px; padding:8px 24px; display:flex; align-items:center; }
+#ptxt { font:400 34px/42px Inter; color:#2A2A2C; position:relative; }
+#ptxt b { font-weight:600; color:#1C1C1E; }
+#viewport { left:0; top:510px; width:1080px; overflow:hidden; }
+#list, #hlist { position:absolute; left:65px; top:90px; width:950px; display:flex; flex-direction:column; gap:26px; }
+.cm { display:flex; gap:20px; align-items:flex-start; position:relative; }
+.av { width:84px; height:84px; flex:none; border-radius:50%; color:#fff; font:600 30px Inter; display:flex; align-items:center; justify-content:center; letter-spacing:.01em; }
+.bub { background:#EFEFEA; border-radius:32px; padding:18px 30px 22px; max-width:846px; }
+.nm { font:600 34px/1.2 Inter; color:#1C1C1E; display:flex; align-items:center; gap:14px; }
+.tag { font:500 24px/1 Inter; color:#55555A; background:#E0E0DA; border-radius:8px; padding:7px 12px; }
+.tx { font:400 50px/61px Inter; color:#1A1A1A; margin-top:2px; white-space:pre-line; }
+.fb { background:#F1F1EC; border-radius:32px; padding:24px 30px; display:flex; flex-direction:column; gap:16px; }
+.bar { height:28px; border-radius:14px; background:#DDDCD5; }
+.bar.n { height:22px; background:#D3D2CA; }
+.fade { left:0; width:1080px; pointer-events:none; }
+.mk { font-family:'Permanent Marker', cursive; font-size:66px; line-height:80px; color:var(--red); white-space:nowrap; position:absolute; top:0; }
+.mk.big { font-size:120px; line-height:140px; }
+
+/* ---------- hook (0-2.5 s): kinetic H1 over the full-frame thread ---------- */
+#hook { left:0; top:0; width:1080px; height:1920px; background:#fff; overflow:hidden; }
+#hthread { left:0; top:240px; width:1080px; height:1680px; overflow:hidden; }
+#hlist { top:40px; }
+#hwash { left:0; top:0; width:1080px; height:1920px; background:radial-gradient(ellipse 760px 520px at 50% var(--hy, 760px), rgba(255,255,255,.92) 30%, rgba(255,255,255,.55) 70%, rgba(255,255,255,.35) 100%); }
+#hk { left:65px; width:950px; display:flex; flex-direction:column; align-items:center; text-align:center; gap:18px; }
+#hkSub { font:600 40px/1.25 Inter; color:#fff; background:#1C1C1E; border-radius:10px; padding:12px 26px 14px; }
+.hl { font:800 104px/1.04 Inter; letter-spacing:-0.035em; color:#0B0B0C; white-space:nowrap; }
+.hl > span.box { background:#fff; border-radius:14px; padding:4px 22px 10px; box-shadow:0 6px 24px rgba(0,0,0,.14), 0 0 0 3px #0B0B0C; display:inline-block; }
+#hkNum { display:inline-block; color:var(--red); }
+#hkCountWrap { position:relative; display:inline-block; margin-right:16px; }
+#hkNum { font-variant-numeric:tabular-nums; }
+
+/* ---------- QSME (navy) ---------- */
+#qsme { left:1080px; top:0; width:1080px; height:1920px; background:var(--navy); overflow:hidden; }
+.capwrap { left:65px; width:950px; display:flex; flex-direction:column; align-items:center; }
+.cap { background:var(--ink); color:var(--navy); font:800 64px/1.08 Manrope; letter-spacing:-0.025em; padding:22px 36px 26px; border-radius:10px; max-width:950px; text-align:center; }
+.cap.s { font-size:58px; }
+.cap .g { color:var(--green); }
+.panel { width:950px; overflow:hidden; border-radius:22px; box-shadow:0 18px 50px rgba(0,0,0,.45), 0 0 0 2px rgba(248,250,252,.10); background:#fff; }
+.panel img { position:absolute; display:block; max-width:none; }
+.panel.dark { background:#0B1220; box-shadow:0 18px 50px rgba(0,0,0,.5), 0 0 0 2px rgba(61,192,35,.35); }
+/* phone-style frame around the real iPhone still: dark bezel + thin rim, rounder corners */
+.panel.phone { border-radius:40px; box-shadow:0 0 0 12px #1B2433, 0 0 0 14px rgba(148,163,184,.38), 0 26px 60px rgba(0,0,0,.55); }
+.lbl { left:65px; width:950px; text-align:center; font:500 24px/30px 'JetBrains Mono', monospace; color:rgba(248,250,252,.62); letter-spacing:.01em; white-space:nowrap; }
+.lbl b { color:rgba(248,250,252,.85); font-weight:600; }
+#qlogo { left:410px; width:260px; height:79px; overflow:hidden; }
+#qlogo img, #logo img { position:absolute; max-width:none; }
+#end { left:0; top:0; width:1080px; height:1920px; background:var(--navy); }
+#logo { left:240px; width:600px; height:181px; overflow:hidden; }
+#cta { left:65px; width:950px; text-align:center; }
+#ctaA { font:800 96px/1.05 Manrope; letter-spacing:-0.03em; color:var(--ink); }
+.ctaL { font:500 46px/1.3 Inter; color:rgba(248,250,252,.78); margin-top:14px; }
+.ctaL b { color:var(--ink); font-weight:600; }
+#ctaCw { margin-top:40px; }
+#ctaC { display:inline-block; background:var(--btn); color:#fff; font:600 46px/56px Inter; padding:14px 46px 16px; border-radius:10px; }
+#know { left:65px; width:950px; display:flex; justify-content:center; }
+#knowC { font-size:96px; padding:22px 44px 28px; }

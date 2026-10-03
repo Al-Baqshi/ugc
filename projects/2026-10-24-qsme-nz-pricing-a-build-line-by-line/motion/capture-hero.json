@@ -1,0 +1,2 @@
+{ "url": "https://www.qsme.co.nz/", "width": 3840, "height": 2160, "scale": 2, "fps": 30, "settle": 4,
+  "steps": [ { "wait": 3.0 } ] }

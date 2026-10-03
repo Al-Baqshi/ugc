@@ -1,0 +1,188 @@
+{
+ "venture": "qsme-nz",
+ "video": "outputs/walk-away-number-9x16.mp4",
+ "character": "Mel: everyday Kiwi woman, late 30s, a first-time small developer with her partner (the 'we'). The same Mel as 'Which Dave?', so the NZ series sounds like one person. General NZ accent, never broad or a caricature, not Australian. Dry, under-played, amused at herself: the joke is her own auction FOMO, never bidders, agents or auction houses. She talks to a mate, not to camera; product moments sound like the same person, no announcer lift, no tagline cadence. AI voice, never presented as a real customer or testimonial.",
+ "casting_line": "Night before the auction. Our budget? A vibe. Margin goes red. Ouch. Bid with a number, not a feeling. Q-S-me dot co dot en zed.",
+ "voice": "Mel: whichever NZ female voice wins casting in projects/2026-10-02-qsme-voice-casting (shortlist \u2b50 Jenna 7R9vnLAE0ZSpY0xWp0mv, \u2b50 Ellie BujbDaM2eT58IpdbIc8J). Same voice as 'Which Dave?'.",
+ "settings": {
+  "model": "eleven_multilingual_v2",
+  "stability": 0.45,
+  "similarity_boost": 0.75,
+  "style": 0,
+  "speed": 1,
+  "use_speaker_boost": true
+ },
+ "continuous_read_v2": "Night before the auction. Our budget? A vibe.\n\nSo we ran the numbers.\n\nSale price: one-point-two a home.\n\nLand? The vibe.\n\nTwenty-four. Sweet as.\n\nThen the builder's real rate.\n\nMargin goes red.\n\nOuch.\n\nMost we can pay: nine-seventeen.\n\nThat's the paddle limit.\n\nNext morning. Note's on the paddle.\n\nGoing once\u2026\n\nPaddle stays down.\n\nLost the auction. Kept the margin.\n\nBid with a number, not a feeling.\n\nSmall print, big letters.\n\nRun yours before the room does.\n\nSign up at Q-S-me.",
+ "silent_on_purpose": [
+  "3.05-3.6 whip into the laptop",
+  "16.45-18.15 the old note slides in and is crossed out, the new note slaps on and the marker writes WALK-AWAY NUMBER (marker squeak only)",
+  "22.05-22.8 car to the room, the room settles",
+  "23.35-23.62 the paddle freezes mid-air and starts its slow drop",
+  "31.0-32.85 reading time for the small print"
+ ],
+ "lines": [
+  {
+   "id": "vo01-hook",
+   "start_s": 0.2,
+   "max_s": 2.85,
+   "on_screen": "Night before / the auction. (frame 1) \u00b7 Our budget: (0.42) \u00b7 A VIBE. (0.70, yellow marker) \u00b7 sticky note '$1.1m-ish? (felt right in the car)' slaps on at 1.10",
+   "text_v2": "Night before the auction. Our budget? A vibe.",
+   "text_v3": "Night before the auction. Our budget? [sighs] A vibe.",
+   "delivery": "Mel, half-admitting it to a mate. 'Night before the auction' is plain and a little tired. Small lift on 'budget?' as if she's asking herself, then a beat, then 'A vibe.' flat and falling, owning it. Not a joke voice, no grin. Land 'vibe' just after the marker slams (0.70) and before the note slaps on. Out by 3.05, before the whip (3.2)."
+  },
+  {
+   "id": "vo02-ran",
+   "start_s": 3.6,
+   "max_s": 1.55,
+   "on_screen": "So we ran the numbers. (3.52 to 5.3) \u00b7 the Rough feasibility card, 'Your numbers, our arithmetic.', green underline on 'Rough feasibility' (3.95)",
+   "text_v2": "So we ran the numbers.",
+   "text_v3": "So we ran the numbers.",
+   "delivery": "Brisk, practical, slightly sheepish: the grown-up move, finally. Even stress, falling on 'numbers'. Out by 5.15."
+  },
+  {
+   "id": "vo03-sale",
+   "start_s": 5.45,
+   "max_s": 1.7,
+   "on_screen": "Sale price: $1.2m a home. (5.38 to 7.26) \u00b7 zoom on 'Sale price per home', 1200000 typed 5.64 to 6.09",
+   "text_v2": "Sale price: one-point-two a home.",
+   "text_v3": "Sale price: one-point-two a home.",
+   "delivery": "Reading it off as she types. Quick and conversational, Kiwi 'one-point-two' (no 'million'), light lean on 'home'. Out by 7.15."
+  },
+  {
+   "id": "vo04-land",
+   "start_s": 7.42,
+   "max_s": 1.5,
+   "on_screen": "Land price: the vibe. $1.1m. (7.34 to 9.26) \u00b7 zoom on 'Land price', 1100000 typed 7.38 to 7.83",
+   "text_v2": "Land? The vibe.",
+   "text_v3": "Land? The vibe.",
+   "delivery": "Dry callback to the hook. 'Land?' small rising question to herself, a tiny pause, then 'The vibe.' flat, as if that settles it. The number is on screen; don't voice it. Out by 8.92."
+  },
+  {
+   "id": "vo05-sweet",
+   "start_s": 9.42,
+   "max_s": 1.3,
+   "on_screen": "24% margin. Sweet as. (9.34 to 10.78) \u00b7 Profit $698,000 and Margin on cost 24.1% in green, green ring on 24.1%",
+   "text_v2": "Twenty-four. Sweet as.",
+   "text_v3": "Twenty-four. Sweet as.",
+   "delivery": "Pleased with herself, a touch too pleased: the set-up for the fall. 'Twenty-four' bright, 'Sweet as' relaxed and very Kiwi (both words even, falling). Out by 10.72."
+  },
+  {
+   "id": "vo06-rate",
+   "start_s": 10.92,
+   "max_s": 1.45,
+   "on_screen": "Then the builder's real rate. (10.86 to 12.46) \u00b7 zoom on 'Build cost per m\u00b2 \u2014 edit to your builder's rate', 4000 selected 11.27, 4900 typed 11.46 to 11.76",
+   "text_v2": "Then the builder's real rate.",
+   "text_v3": "Then the builder's real rate.",
+   "delivery": "The mood drops a notch. Flat and slower, a little lean on 'real'. Like she already knows. Out by 12.37."
+  },
+  {
+   "id": "vo07-red",
+   "start_s": 12.6,
+   "max_s": 1.0,
+   "on_screen": "Margin goes red. (12.54 to 14.3) \u00b7 Margin on cost 10.1% in red, red marker loop draws 12.6 to 13.0",
+   "text_v2": "Margin goes red.",
+   "text_v3": "Margin goes red.",
+   "delivery": "Deadpan report, no drama, each word a touch lower. Out by 13.6."
+  },
+  {
+   "id": "vo08-ouch",
+   "start_s": 13.85,
+   "max_s": 0.55,
+   "on_screen": "'Ouch.' red marker scrawl next to 10.1% (from 13.08)",
+   "text_v2": "Ouch.",
+   "text_v3": "[quietly] Ouch.",
+   "delivery": "Under her breath, a small wince, not a cry. A real beat of silence before it (13.6 to 13.85). Reject any take that sounds performed or rises. Out by 14.4."
+  },
+  {
+   "id": "vo09-most",
+   "start_s": 14.82,
+   "max_s": 1.65,
+   "on_screen": "Most we can pay: $917k. (14.76 to 16.54) \u00b7 the green box 'What you could pay for the land to keep a 20% margin: $917,000', value ringed in green, the app's grey disclaimer in full below it",
+   "text_v2": "Most we can pay: nine-seventeen.",
+   "text_v3": "Most we can pay: nine-seventeen.",
+   "delivery": "Calm, decided, the turn of the story. 'Nine-seventeen' (as Kiwis say $917k) said clearly, falling. Not sad about it: relieved to have a number. Out by 16.47 so the paper slide and marker squeak have the stage."
+  },
+  {
+   "id": "vo10-paddle",
+   "start_s": 18.15,
+   "max_s": 1.3,
+   "on_screen": "That's the paddle limit. (18.1 to 19.56, lands on the $917k stroke) \u00b7 sticky note 'WALK-AWAY NUMBER $917k', the old '$1.1m-ish?' note crossed out",
+   "text_v2": "That's the paddle limit.",
+   "text_v3": "That's the paddle limit.",
+   "delivery": "Firm and simple, like writing it in pen. Light lean on 'limit'. Out by 19.45, before the whip (19.58)."
+  },
+  {
+   "id": "vo11-morning",
+   "start_s": 19.95,
+   "max_s": 2.1,
+   "on_screen": "Next morning. / Note's on the paddle. (19.9 to 22.3) \u00b7 windscreen with morning sky, dashboard clock 9:40 AM SAT, indicator ticking until 21.8",
+   "text_v2": "Next morning. Note's on the paddle.",
+   "text_v3": "Next morning. Note's on the paddle.",
+   "delivery": "Quiet, a bit nervous but organised, said in the car with the engine off. Two short phrases, small gap between. Out by 22.05."
+  },
+  {
+   "id": "vo12-once",
+   "start_s": 22.8,
+   "max_s": 0.6,
+   "on_screen": "Going once\u2026 (22.76 to 23.48) \u00b7 BID IN THE ROOM $925,000 \u00b7 the paddle shoots up 23.0 to 23.12 (motion blur), freezes 23.12 to 23.42",
+   "text_v2": "Going once\u2026",
+   "text_v3": "Going once\u2026",
+   "delivery": "Mel quoting the auctioneer under her breath, not doing an auctioneer voice. Trail off on the ellipsis as the paddle shoots up. Out by 23.4: the freeze and the start of the drop play in silence."
+  },
+  {
+   "id": "vo13-down",
+   "start_s": 23.62,
+   "max_s": 0.85,
+   "on_screen": "Paddle stays down. (23.56 to 24.5) \u00b7 the paddle drops slowly back down, 23.42 to 24.02",
+   "text_v2": "Paddle stays down.",
+   "text_v3": "Paddle stays down.",
+   "delivery": "Small, firm, almost to herself, as the paddle sinks. A tiny exhale before it is fine. Out by 24.47."
+  },
+  {
+   "id": "vo14-lost",
+   "start_s": 24.65,
+   "max_s": 1.75,
+   "on_screen": "Lost the auction. / Kept the margin. (24.58 to 26.42) \u00b7 the $925,000 fades back",
+   "text_v2": "Lost the auction. Kept the margin.",
+   "text_v3": "Lost the auction. Kept the margin.",
+   "delivery": "The punchline, dry and a little proud of it. 'Lost the auction.' flat, a half-beat, then 'Kept the margin.' with a faint smile you can hear. Not triumphant. Out by 26.4."
+  },
+  {
+   "id": "vo15-number",
+   "start_s": 26.55,
+   "max_s": 2.4,
+   "on_screen": "Bid with a number, not a feeling. (26.5 to 29.32)",
+   "text_v2": "Bid with a number, not a feeling.",
+   "text_v3": "Bid with a number, not a feeling.",
+   "delivery": "The lesson, said to a mate, not to camera. Even and unhurried, slight lean on 'number', falling on 'feeling'. No tagline lift. Out by 28.95."
+  },
+  {
+   "id": "vo16-small",
+   "start_s": 29.5,
+   "max_s": 1.5,
+   "on_screen": "Small print, big letters: \u00b7 Rough maths: no GST, tax, holding period or agent fees. \u00b7 Not financial advice. \u00b7 Run it past your builder, QS and bank. (29.44 to 32.85)",
+   "text_v2": "Small print, big letters.",
+   "text_v3": "Small print, big letters.",
+   "delivery": "Bone-dry, almost bored, amused at ourselves. Then stop: 31.0 to 32.85 is reading time with no VO."
+  },
+  {
+   "id": "vo17-cta",
+   "start_s": 32.9,
+   "max_s": 1.75,
+   "on_screen": "QSME logo (32.86) \u00b7 Run your numbers / before the room does. (32.94) \u00b7 real qsme.co.nz homepage still (33.12), cropped just below the 'Get started' button, which is ringed green (33.85)",
+   "text_v2": "Run yours before the room does.",
+   "text_v3": "Run yours before the room does.",
+   "delivery": "Easy, warm, one breath, like passing on a tip. No announcer lift. Out by 34.65."
+  },
+  {
+   "id": "vo18-url",
+   "start_s": 34.75,
+   "max_s": 1.75,
+   "on_screen": "Site research comes with your account. / Auckland first. (33.52) \u00b7 pill Sign up at qsme.co.nz (33.7, held to 36.6)",
+   "text_v2": "Sign up at Q-S-me.",
+   "text_v3": "Sign up at Q-S-me.",
+   "delivery": "Plain and even, like finishing the tip: 'sign up at cue ess mee', no rise at the end, no announcer lift. The pill on screen carries the full address (Sign up at qsme.co.nz). Regenerate any take that says 'kiss me' or spells four letters. Out by 36.3."
+  }
+ ],
+ "male_alt_lines": []
+}

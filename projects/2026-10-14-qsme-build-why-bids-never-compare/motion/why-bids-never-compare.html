@@ -1,0 +1,1043 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<title>Why six bids never compare (QSME Global, 16:9 long-form)</title>
+<!-- Motion-kit page. Render from the studio root:
+     node tools/motion/make.mjs projects/2026-10-14-qsme-build-why-bids-never-compare/motion/why-bids-never-compare.html \
+          projects/2026-10-14-qsme-build-why-bids-never-compare/outputs/why-bids-never-compare-16x9.mp4 --safe 96,54,1824,1026
+     Product screens below are designed stand-ins, flagged "Recreated screen · demo data" in the top bar (#tagIll) while on screen.
+     Public qsme.build pages are real element captures (clips/stills). End-card b-roll: clips/fitout-long. -->
+<link rel="stylesheet" href="../../../tools/motion/kit.css">
+<style>
+  /* ---------- canvas ---------- */
+  #root { background: var(--bg); }
+  #grid { background-image: linear-gradient(rgba(75,205,50,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(75,205,50,.045) 1px, transparent 1px); background-size: 64px 64px; }
+  #glow { background: radial-gradient(900px 600px at 12% 0%, rgba(61,192,35,.14), transparent 70%), radial-gradient(900px 700px at 100% 100%, rgba(61,192,35,.07), transparent 70%); }
+  .g { color: var(--accent); }
+  .r { color: var(--red); }
+  .disp { font-family: var(--display); font-weight: 700; letter-spacing: -0.03em; line-height: 1.02; }
+  .mono { font-family: var(--mono); }
+  .kick { font: 600 26px/1 var(--mono); letter-spacing: .14em; color: var(--ink-50); text-transform: uppercase; }
+
+  /* ---------- captions (burned in, sound off) ---------- */
+  .cap { position: absolute; left: 160px; right: 160px; bottom: 66px; display: flex; justify-content: center; text-align: center; }
+  .cap span { font: 700 54px/1.2 var(--display); letter-spacing: -0.015em; color: var(--ink); background: rgba(7,12,9,.9); border: 2px solid var(--line); padding: 10px 30px 12px; border-radius: 16px; box-decoration-break: clone; -webkit-box-decoration-break: clone; text-wrap: balance; max-width: 1560px; }
+  .cap span b { color: var(--accent); font-weight: 700; }
+
+  /* ---------- top bar (chapters) ---------- */
+  #topbar { position: absolute; left: 96px; right: 96px; top: 58px; height: 44px; }
+  #series { position: absolute; left: 4px; top: 10px; font: 600 22px/1 var(--mono); letter-spacing: .14em; color: var(--ink-50); }
+  #pips { position: absolute; right: 4px; top: 0; display: flex; gap: 10px; }
+  .pip { width: 44px; height: 44px; border-radius: 10px; border: 2px solid var(--line); color: var(--ink-50); background: #0C1310; display: flex; align-items: center; justify-content: center; font: 700 22px/1 var(--mono); }
+
+  /* ---------- chapter cards + wipe ---------- */
+  #wipe { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; background: #14211A; border-right: 18px solid var(--accent); z-index: 50; }
+  .chcard .num { position: absolute; left: 150px; top: 250px; font: 700 400px/0.8 var(--display); color: var(--accent); letter-spacing: -0.05em; }
+  .chcard .ck { position: absolute; left: 520px; top: 318px; }
+  .chcard .ttl { position: absolute; left: 516px; top: 366px; width: 1250px; font-size: 100px; }
+  .chcard .sub { position: absolute; left: 520px; top: 720px; width: 1200px; font: 500 40px/1.3 var(--body); color: var(--ink-70); }
+
+  /* ---------- hook props ---------- */
+  .prop { position: absolute; box-shadow: 0 24px 60px rgba(0,0,0,.55); }
+  .paper { background: #F4F2EC; border-radius: 4px; color: #26282B; font-family: Inter, sans-serif; }
+  .bars i { display: block; height: 10px; border-radius: 3px; background: #CFCCC4; margin: 0 0 13px; }
+  .ptag { position: absolute; top: -18px; left: -18px; width: 48px; height: 48px; border-radius: 50%; background: var(--accent); color: var(--on-accent); font: 700 26px/48px var(--display); text-align: center; box-shadow: 0 6px 16px rgba(0,0,0,.4); }
+  .lap .screen { position: absolute; left: 14px; top: 14px; right: 14px; bottom: 30px; background: #fff; border-radius: 6px; overflow: hidden; }
+  .lap .cells { position: absolute; inset: 0; background-image: linear-gradient(#DADDE0 1px, transparent 1px), linear-gradient(90deg, #DADDE0 1px, transparent 1px); background-size: 58px 24px; }
+  #tender { position: absolute; width: 440px; height: 560px; background: #FBFAF7; border-radius: 4px; box-shadow: 0 40px 90px rgba(0,0,0,.65); color: #1E2023; font-family: Inter, sans-serif; }
+
+  /* ---------- app window stand-ins (light, like the QSME web app) ---------- */
+  .win { position: absolute; border-radius: 16px; overflow: hidden; background: #F4F6F5; color: #0F172A; font-family: Inter, sans-serif; box-shadow: 0 34px 100px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.07); }
+  .win .bar { position: absolute; left: 0; right: 0; top: 0; height: 50px; background: #18211D; display: flex; align-items: center; gap: 9px; padding: 0 18px; }
+  .win .bar i { width: 13px; height: 13px; border-radius: 50%; background: #34403A; flex: none; }
+  .win .bar .url { margin-left: 12px; padding: 7px 16px; border-radius: 8px; background: #0E1512; color: #86958B; font: 500 18px/1 var(--mono); white-space: nowrap; }
+  .win .bar .illustrative { position: static; margin-left: auto; font-size: 17px; padding: 4px 10px; white-space: nowrap; }
+  .win .body { position: absolute; top: 50px; left: 0; right: 0; bottom: 0; padding: 34px 44px; }
+  .site { background: #0F1714; }
+  .site .bar .live { margin-left: auto; display: flex; align-items: center; gap: 10px; font: 600 18px/1 var(--mono); color: var(--accent); letter-spacing: .08em; }
+  .site .bar .live b { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
+  .site img { position: absolute; left: 0; top: 50px; }
+  .hl { position: absolute; background: rgba(75,205,50,.30); border-radius: 6px; mix-blend-mode: screen; }
+  .uline { position: absolute; height: 6px; border-radius: 3px; background: var(--accent); }
+
+  .h-app { font: 700 38px/1.15 Inter, sans-serif; letter-spacing: -0.01em; color: #0F172A; }
+  .muted-app { color: #64748B; }
+  .steplbl { font: 700 18px/1 Inter, sans-serif; letter-spacing: .1em; color: #64748B; }
+  .stepbar { display: flex; gap: 10px; }
+  .stepbar i { flex: 1; height: 6px; border-radius: 3px; background: #E2E8F0; }
+  .stepbar i.on { background: #16A34A; }
+  .box { background: #fff; border: 2px solid #E2E8F0; border-radius: 14px; }
+  .row { display: flex; align-items: center; gap: 18px; }
+  .cb { flex: none; width: 30px; height: 30px; border: 2px solid #CBD5E1; border-radius: 8px; background: #fff; position: relative; }
+  .cb .tk { position: absolute; left: -2px; top: -2px; width: 30px; height: 30px; border-radius: 8px; background: #16A34A; opacity: 0; display: flex; align-items: center; justify-content: center; }
+  .pill-app { display: inline-flex; align-items: center; padding: 5px 14px; border-radius: 999px; font: 600 20px/1 Inter, sans-serif; }
+  .p-green { background: #DCFCE7; color: #166534; }
+  .p-grey { background: #F1F5F9; color: #475569; }
+  .p-amber { background: #FEF3C7; color: #92400E; border: 2px solid #FCD34D; }
+  .info { background: #EFF6FF; border: 2px solid #BFDBFE; color: #1E3A8A; border-radius: 12px; }
+  .warn { background: #FFFBEB; border: 2px solid #FCD34D; color: #92400E; border-radius: 12px; }
+  .tbl { width: 100%; border-collapse: collapse; }
+  .tbl th { text-align: left; font: 700 18px/1 Inter, sans-serif; letter-spacing: .08em; text-transform: uppercase; color: #64748B; padding: 0 12px 14px; border-bottom: 2px solid #E2E8F0; }
+  .tbl td { font: 500 23px/1.2 Inter, sans-serif; padding: 15px 12px; border-bottom: 1px solid #E2E8F0; white-space: nowrap; }
+  .tbl td.n, .tbl th.n { text-align: right; font-family: var(--mono); }
+  .inp { display: inline-block; width: 100%; height: 36px; border: 2px dashed #CBD5E1; border-radius: 8px; background: #F8FAFC; }
+
+  /* ---------- kinetic cards ---------- */
+  .dcard { position: absolute; background: var(--bg-raised); border: 2px solid var(--line); border-radius: 18px; }
+  .chipk { display: inline-flex; align-items: center; gap: 12px; padding: 9px 20px; border-radius: 999px; border: 2px solid var(--line); background: #0F1A15; font: 600 24px/1.1 var(--mono); color: var(--ink-70); white-space: nowrap; }
+  .chipk.acc { border-color: #2C5B22; color: var(--accent); }
+  .bub { flex: none; width: 92px; height: 92px; border-radius: 50%; background: #1A2A21; border: 3px solid var(--line); display: flex; align-items: center; justify-content: center; font: 700 44px/1 var(--display); color: var(--ink); }
+  .mk { font-family: "Permanent Marker", cursive; color: #F87171; }
+  .chipk.amb { border-color: #5B4A22; color: #F2C46D; }
+
+  /* ---------- ch4: a QS's own napkin maths on an engineering pad (not product UI) ---------- */
+  #pad { background-color: #F1F4EA; background-image: linear-gradient(rgba(70,130,80,.13) 1px, transparent 1px), linear-gradient(90deg, rgba(70,130,80,.13) 1px, transparent 1px); background-size: 32px 32px; border-radius: 6px; box-shadow: 0 30px 70px rgba(0,0,0,.6); color: #1E3A8A; }
+  .hw { font: 700 44px/1.2 Kalam, cursive; white-space: nowrap; display: flex; align-items: center; }
+  .hwk { display: inline-block; width: 56px; color: #2B2E33; }
+  .hwl { font: 400 30px/1 Kalam, cursive; color: #5E6650; white-space: nowrap; }
+  .rw { position: relative; display: inline-block; text-align: center; }
+  .rw svg { position: absolute; left: -18px; top: -10px; }
+
+  /* ---------- "fair fight": six bids filed into six identical rows (kinetic, not product UI) ---------- */
+  .frow { position: absolute; left: 380px; width: 1160px; height: 92px; background: #F4F2EC; border-radius: 8px; box-shadow: 0 14px 34px rgba(0,0,0,.45); color: #26282B; display: flex; align-items: center; gap: 16px; padding: 0 30px 0 22px; font-family: Inter, sans-serif; }
+  .ftag { flex: none; width: 52px; height: 52px; border-radius: 50%; background: var(--accent); color: var(--on-accent); font: 700 28px/52px var(--display); text-align: center; }
+  .fname { flex: none; width: 150px; font: 700 28px/1 Inter, sans-serif; }
+  .fchip { padding: 8px 14px; border-radius: 8px; background: #E4E7DE; color: #3D4A40; font: 600 21px/1 var(--mono); white-space: nowrap; }
+  .ftot { margin-left: auto; font: 700 34px/1 var(--mono); }
+
+  /* ---------- cursor ---------- */
+  #cursor { position: absolute; left: 0; top: 0; width: 38px; height: 46px; z-index: 40; pointer-events: none; }
+  #ring { position: absolute; left: 0; top: 0; width: 64px; height: 64px; margin: -32px 0 0 -32px; border-radius: 50%; border: 4px solid #4BCD32; z-index: 39; opacity: 0; }
+</style>
+</head>
+<body class="build r16x9">
+<div id="root">
+  <div id="grid" class="fill"></div>
+  <div id="glow" class="fill"></div>
+
+  <!-- =================== HOOK + TITLE (0 – 13.07) =================== -->
+  <div id="s0" class="fill">
+    <div id="hChip" class="abs chipk" style="left:120px; top:226px;">Plasterboard &amp; ceilings · tender closed 5:00 pm</div>
+    <div id="h1" class="abs disp" style="left:112px; top:296px; font-size:200px;">6 bids.</div>
+    <div id="h2" class="abs disp" style="left:118px; top:510px; font-size:112px;"><span class="r">0</span> that compare.</div>
+    <div id="h3" class="abs" style="left:122px; top:672px; font:500 58px/1.1 var(--body); color:var(--ink-70);">It’s not the subcontractors.</div>
+    <div id="h4" class="abs disp g" style="left:116px; top:752px; font-size:116px;">It’s the tender.</div>
+
+    <div id="tKick" class="abs kick" style="left:122px; top:150px;">Part 2 · after “Six bids. Six formats.”</div>
+    <div id="tTitle" class="abs disp" style="left:116px; top:196px; font-size:104px; width:980px;">Five reasons bids don’t compare.</div>
+    <div id="tList" class="abs" style="left:122px; top:448px; width:960px; font:600 36px/1.2 var(--body);">
+      <div id="tl1" class="row" style="height:66px;"><span class="mono g" style="width:56px;">1</span>Everyone read the scope differently</div>
+      <div id="tl2" class="row" style="height:66px;"><span class="mono g" style="width:56px;">2</span>Two drawing revisions in circulation</div>
+      <div id="tl3" class="row" style="height:66px;"><span class="mono g" style="width:56px;">3</span>The scope changed. One bidder never heard.</div>
+      <div id="tl4" class="row" style="height:66px;"><span class="mono g" style="width:56px;">4</span>“Plus tax”, “incl. tax”</div>
+      <div id="tl5" class="row" style="height:66px;"><span class="mono g" style="width:56px;">5</span>It came by email</div>
+    </div>
+    <div id="tSub" class="abs" style="left:122px; top:800px; font:500 36px/1.3 var(--body); color:var(--ink-70);">And the fix for each one.</div>
+
+    <div id="pile" class="fill">
+      <!-- A: the sideways PDF -->
+      <div id="pA" class="prop paper" style="left:1100px; top:66px; width:280px; height:340px;">
+        <div style="position:absolute; left:24px; top:30px; right:24px;" class="bars"><i style="width:30%"></i></div>
+        <div style="position:absolute; left:-118px; top:150px; width:340px; transform:rotate(-90deg); font:600 17px/1 var(--mono); color:#4A4D52;">Quote_FINAL_v3_revised(2).pdf</div>
+        <div style="position:absolute; left:84px; top:70px; width:150px; height:240px; display:flex; gap:12px;">
+          <i style="flex:1; background:#D9D6CE; border-radius:3px; height:80%"></i><i style="flex:1; background:#D9D6CE; border-radius:3px;"></i><i style="flex:1; background:#D9D6CE; border-radius:3px; height:60%"></i><i style="flex:1; background:#D9D6CE; border-radius:3px; height:92%"></i><i style="flex:1; background:#D9D6CE; border-radius:3px; height:70%"></i>
+        </div>
+        <div class="ptag">A</div>
+      </div>
+      <!-- B: merged-cells laptop -->
+      <div id="pB" class="prop lap" style="left:1430px; top:80px; width:380px; height:260px; background:#2A2E33; border-radius:14px;">
+        <div class="screen"><div class="cells"></div>
+          <div style="position:absolute; left:58px; top:48px; width:232px; height:72px; background:#fff; border:2px solid #9AA3AD; display:flex; align-items:center; justify-content:center; font:700 17px/1.2 Inter; color:#333; text-align:center;">PRICE AS PER<br>DRAWINGS</div>
+          <div style="position:absolute; left:58px; top:144px; width:116px; height:24px; background:#fff; font:600 15px/24px var(--mono); color:#C0392B; padding-left:6px;">#REF!</div>
+        </div>
+        <div style="position:absolute; left:-20px; right:-20px; bottom:-10px; height:20px; background:#3A3F45; border-radius:0 0 12px 12px;"></div>
+        <div class="ptag">B</div>
+      </div>
+      <!-- C: "as discussed" letter -->
+      <div id="pC" class="prop paper" style="left:1110px; top:372px; width:280px; height:340px; padding:26px 24px;">
+        <div style="font:800 22px/1 Inter; letter-spacing:.02em; border-bottom:2px solid #333; padding-bottom:10px;">BIDDER C</div>
+        <div style="font:500 15px/1.4 Inter; margin-top:14px; color:#555;">Re: Plasterboard &amp; ceilings</div>
+        <div style="font:700 20px/1.3 Inter; margin-top:14px;">Total: 72,000 + tax</div>
+        <div style="font:600 26px/1.2 Inter; margin-top:22px;">As discussed.</div>
+        <div style="font:500 15px/1.4 Inter; margin-top:30px; color:#555;">Regards,</div>
+        <div class="ptag">C</div>
+      </div>
+      <!-- D: phone, "price below" -->
+      <div id="pD" class="prop" style="left:1545px; top:380px; width:190px; height:360px; background:#15181B; border-radius:30px; padding:12px;">
+        <div style="position:absolute; inset:12px; background:#fff; border-radius:20px; padding:30px 16px; color:#222;">
+          <div style="font:700 15px/1.3 Inter;">Re: Tender</div>
+          <div style="font:500 15px/1.4 Inter; color:#555; margin-top:8px;">Price below.</div>
+          <div style="margin-top:150px; font:500 12px/1.3 Inter; color:#999;">Sent from my phone</div>
+        </div>
+        <div class="ptag">D</div>
+      </div>
+      <!-- E: page 7 of 9, excludes ceilings -->
+      <div id="pE" class="prop paper" style="left:1100px; top:670px; width:280px; height:340px; padding:26px 24px;">
+        <div class="bars"><i style="width:90%"></i><i style="width:76%"></i><i style="width:84%"></i><i style="width:60%"></i></div>
+        <div style="font:700 17px/1.3 Inter; margin-top:12px; color:#222; display:inline-block; border-bottom:4px solid #E0302A;">Note 14: Excludes ceilings.</div>
+        <div class="bars" style="margin-top:22px;"><i style="width:80%"></i><i style="width:66%"></i></div>
+        <div style="position:absolute; bottom:18px; left:0; right:0; text-align:center; font:500 14px/1 Inter; color:#888;">7 of 9</div>
+        <div class="ptag">E</div>
+      </div>
+      <!-- F: whiteboard photo -->
+      <div id="pF" class="prop" style="left:1420px; top:750px; width:380px; height:250px; background:#F7F8F8; border:10px solid #C9CDD1; border-radius:6px; padding:16px 18px; font:400 18px/1.5 Kalam, cursive; color:#1E3A8A;">
+        <div>Boards supply &amp; fix – 1,240 m² @ 38.50</div>
+        <div>Ceilings – 380 m² @ 62.00 – INCL</div>
+        <div>Jointing &amp; finishing – incl</div>
+        <div style="font-weight:700; margin-top:6px;">TOTAL 71,300 + TAX</div>
+        <div class="ptag">F</div>
+      </div>
+      <!-- the tender, laid on top -->
+      <div id="tender" style="left:1230px; top:250px;">
+        <div style="position:absolute; left:36px; top:36px; font:700 18px/1 var(--mono); letter-spacing:.2em; color:#6B6F75;">TENDER</div>
+        <div style="position:absolute; left:36px; top:70px; right:36px; font:800 34px/1.1 Inter; letter-spacing:-.01em;">Plasterboard &amp; ceilings</div>
+        <div style="position:absolute; left:36px; top:158px; right:36px; font:500 17px/1.5 Inter; color:#5A5E64;">To: Bidders A–F<br>Closes Friday, 5:00 pm</div>
+        <div style="position:absolute; left:36px; right:36px; top:230px; height:2px; background:#E3E1DA;"></div>
+        <div id="tenderLine" style="position:absolute; left:36px; top:262px; font:600 27px/1.35 Inter;">Drawings attached.<br>Please price.</div>
+        <svg style="position:absolute; left:0; top:0;" width="440" height="560" viewBox="0 0 440 560"><path id="tCircle" d="M250 246 C 330 250, 346 292, 328 320 C 308 354, 200 364, 118 358 C 36 352, 6 318, 16 288 C 28 250, 112 236, 202 238 C 244 239, 274 245, 296 254" fill="none" stroke="#E0302A" stroke-width="6" stroke-linecap="round"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- =================== CHAPTER CARDS =================== -->
+  <div id="c1" class="fill chcard"><div class="num">1</div><div class="ck kick">Reason 1 of 5</div><div class="ttl disp">Everyone read the scope differently.</div></div>
+  <div id="c2" class="fill chcard"><div class="num">2</div><div class="ck kick">Reason 2 of 5</div><div class="ttl disp">Two drawing revisions in circulation.</div></div>
+  <div id="c3" class="fill chcard"><div class="num">3</div><div class="ck kick">Reason 3 of 5</div><div class="ttl disp" style="font-size:92px;">The scope changed on Tuesday. One bidder never heard.</div></div>
+  <div id="c4" class="fill chcard"><div class="num">4</div><div class="ck kick">Reason 4 of 5</div><div class="ttl disp">“Plus tax.”<br>“Incl. tax.”</div><div class="sub" style="top:620px;">Same job. Two different numbers.</div></div>
+  <div id="c5" class="fill chcard"><div class="num">5</div><div class="ck kick">Reason 5 of 5</div><div class="ttl disp">It came by email.</div><div class="sub" style="top:500px;">As a PDF. At 4:59 pm.</div></div>
+  <div id="cH" class="fill chcard"><div class="ck kick" style="left:160px; top:380px;">What it won’t do</div><div class="ttl disp" style="left:154px; top:428px; font-size:150px;">The honest bit.</div></div>
+
+  <!-- =================== CH1: SCOPE =================== -->
+  <div id="s1a" class="fill">
+    <div id="m1" class="abs box" style="left:120px; top:250px; width:600px; height:380px; background:#FBFBFA; color:#1C1C1E; padding:28px 32px; font-family:Inter;">
+      <div style="font:600 18px/1 var(--mono); color:#8A8F95; letter-spacing:.1em;">SENT</div>
+      <div style="font:500 22px/1.5 Inter; color:#55595F; margin-top:18px;">To: Bidders A–F</div>
+      <div style="font:700 22px/1.4 Inter; margin-top:6px;">Tender – Plasterboard &amp; ceilings package</div>
+      <div style="height:2px; background:#ECEBE7; margin:22px 0;"></div>
+      <div style="font:600 32px/1.3 Inter;">Drawings attached.<br>Please price.</div>
+    </div>
+    <svg class="abs" style="left:0; top:0;" width="1920" height="1080">
+      <path id="l1a" d="M720 440 C 800 440, 800 245, 900 245" fill="none" stroke="#2C5B22" stroke-width="3"/>
+      <path id="l1b" d="M720 440 C 800 440, 800 245, 1360 245" fill="none" stroke="#2C5B22" stroke-width="3"/>
+      <path id="l1c" d="M720 440 C 800 440, 800 470, 900 470" fill="none" stroke="#2C5B22" stroke-width="3"/>
+      <path id="l1d" d="M720 440 C 800 440, 800 470, 1360 470" fill="none" stroke="#2C5B22" stroke-width="3"/>
+      <path id="l1e" d="M720 440 C 800 440, 800 695, 900 695" fill="none" stroke="#2C5B22" stroke-width="3"/>
+      <path id="l1f" d="M720 440 C 800 440, 800 695, 1360 695" fill="none" stroke="#2C5B22" stroke-width="3"/>
+    </svg>
+    <div id="scA" class="dcard row" style="left:900px; top:160px; width:430px; height:170px; padding:0 26px;"><div class="bub" style="width:70px;height:70px;font-size:32px;">A</div><div style="font:600 29px/1.25 var(--body);">Did their own<br>take-off</div></div>
+    <div id="scB" class="dcard row" style="left:1360px; top:160px; width:430px; height:170px; padding:0 26px;"><div class="bub" style="width:70px;height:70px;font-size:32px;">B</div><div style="font:600 29px/1.25 var(--body);">“As per drawings”<br><span class="muted">(which ones?)</span></div></div>
+    <div id="scC" class="dcard row" style="left:900px; top:385px; width:430px; height:170px; padding:0 26px;"><div class="bub" style="width:70px;height:70px;font-size:32px;">C</div><div style="font:600 29px/1.25 var(--body);">“As discussed.”</div></div>
+    <div id="scD" class="dcard row" style="left:1360px; top:385px; width:430px; height:170px; padding:0 26px;"><div class="bub" style="width:70px;height:70px;font-size:32px;">D</div><div style="font:600 29px/1.25 var(--body);">“Price below.”<br><span class="muted">(Nothing below.)</span></div></div>
+    <div id="scE" class="dcard row" style="left:900px; top:610px; width:430px; height:170px; padding:0 26px;"><div class="bub" style="width:70px;height:70px;font-size:32px;">E</div><div style="font:600 29px/1.25 var(--body);">Excludes ceilings<br><span class="muted">(note 14, page 9)</span></div></div>
+    <div id="scF" class="dcard row" style="left:1360px; top:610px; width:430px; height:170px; padding:0 26px;"><div class="bub" style="width:70px;height:70px;font-size:32px;">F</div><div style="font:600 29px/1.25 var(--body);">Ceilings INCL<br><span class="muted">(on a whiteboard)</span></div></div>
+  </div>
+
+  <div id="s1b" class="fill">
+    <div id="w1b" data-qa-ignore class="win" style="left:250px; top:120px; width:1420px; height:740px;">
+      <div class="bar"><i></i><i></i><i></i><span class="url">app.qsme.build · Tenders</span></div>
+      <div class="body" style="background:#fff;">
+        <div class="row" style="justify-content:space-between;"><div class="h-app">Create New Tender</div><div class="steplbl">STEP 3 OF 4</div></div>
+        <div class="stepbar" style="margin-top:18px;"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div>
+        <div style="font:700 28px/1.2 Inter; margin-top:30px;">SOQ jobs to include (optional)</div>
+        <div class="muted-app" style="font:500 21px/1.45 Inter; margin-top:8px; width:1200px;">Bidders will see these and add their own values. Only active SOQ pockets are listed — draft pockets stay hidden until you activate them.</div>
+        <div class="box" style="margin-top:22px; padding:0;">
+          <div class="row" style="padding:18px 26px; border-bottom:2px solid #E2E8F0; justify-content:space-between; background:#F8FAFC; border-radius:12px 12px 0 0;">
+            <div class="row" style="gap:16px;"><span style="font:700 27px/1 Inter;">Plasterboard &amp; ceilings</span><span class="pill-app p-green">Active</span></div>
+            <div class="row" style="gap:14px;"><div id="cbAll" class="cb"><div id="tkAll" class="tk"><svg width="20" height="16" viewBox="0 0 20 16"><path d="M2 8 L8 13 L18 2" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><span style="font:600 23px/1 Inter;">Select whole pocket</span></div>
+          </div>
+          <div class="row" style="padding:15px 26px; border-bottom:1px solid #E2E8F0;"><div class="cb"><div id="tkJ1" class="tk"><svg width="20" height="16" viewBox="0 0 20 16"><path d="M2 8 L8 13 L18 2" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><span style="font:500 24px/1 Inter; flex:1;">Boards supply &amp; fix</span><span class="muted-app" style="font:500 20px/1 Inter;">3 lines</span></div>
+          <div class="row" style="padding:15px 26px; border-bottom:1px solid #E2E8F0;"><div class="cb"><div id="tkJ2" class="tk"><svg width="20" height="16" viewBox="0 0 20 16"><path d="M2 8 L8 13 L18 2" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><span style="font:500 24px/1 Inter; flex:1;">Ceilings</span><span class="muted-app" style="font:500 20px/1 Inter;">2 lines</span></div>
+          <div class="row" style="padding:15px 26px; border-bottom:1px solid #E2E8F0;"><div class="cb"><div id="tkJ3" class="tk"><svg width="20" height="16" viewBox="0 0 20 16"><path d="M2 8 L8 13 L18 2" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><span style="font:500 24px/1 Inter; flex:1;">Jointing &amp; finishing</span><span class="muted-app" style="font:500 20px/1 Inter;">2 lines</span></div>
+          <div class="row" style="padding:15px 26px;"><div class="cb"><div id="tkJ4" class="tk"><svg width="20" height="16" viewBox="0 0 20 16"><path d="M2 8 L8 13 L18 2" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><span style="font:500 24px/1 Inter; flex:1;">Access</span><span class="muted-app" style="font:500 20px/1 Inter;">1 line</span></div>
+        </div>
+        <div class="row" style="margin-top:18px; justify-content:space-between;"><span id="selCount" class="muted-app" style="font:600 22px/1 Inter;">0 of 4 selected</span><span class="pill-app" style="background:#16A34A; color:#fff; padding:12px 26px; border-radius:10px; font-size:22px;">Next →</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="s1c" class="fill">
+    <div id="lab1L" class="abs chipk" style="left:110px; top:126px;">YOU · your SOQ, rates in</div>
+    <div id="lab1R" class="abs chipk acc" style="left:990px; top:126px;">EVERY BIDDER · same lines, no rates</div>
+    <div id="w1cL" class="win" style="left:110px; top:190px; width:840px; height:600px;">
+      <div class="bar"><i></i><i></i><i></i><span class="url">app.qsme.build · SOQ</span></div>
+      <div class="body" style="background:#fff; padding:28px 30px;">
+        <div style="font:700 28px/1.2 Inter;">Plasterboard &amp; ceilings</div>
+        <table class="tbl" style="margin-top:22px;">
+          <tr><th>Line</th><th class="n">Qty</th><th class="n">Rate</th><th class="n">Total</th></tr>
+          <tr><td>Boards supply &amp; fix</td><td class="n">1,240 m²</td><td id="r1" class="n">36.00</td><td class="n">44,640</td></tr>
+          <tr><td>Ceilings</td><td class="n">380 m²</td><td id="r2" class="n">58.00</td><td class="n">22,040</td></tr>
+          <tr><td>Jointing &amp; finishing</td><td class="n">1,240 m²</td><td id="r3" class="n">4.20</td><td class="n">5,208</td></tr>
+          <tr><td>Access</td><td class="n">1 item</td><td id="r4" class="n">2,100.00</td><td class="n">2,100</td></tr>
+          <tr><td style="font-weight:700; border-bottom:none;">Pocket total</td><td style="border-bottom:none;"></td><td style="border-bottom:none;"></td><td class="n" style="font-weight:700; border-bottom:none;">73,988</td></tr>
+        </table>
+      </div>
+    </div>
+    <div id="w1cR" class="win" style="left:990px; top:190px; width:820px; height:600px;">
+      <div class="bar"><i></i><i></i><i></i><span class="url">app.qsme.build · Tenders</span></div>
+      <div class="body" style="background:#fff; padding:22px 26px;">
+        <div class="row" style="gap:8px;">
+          <span id="bt1" class="pill-app" style="background:#F1F5F9; color:#475569; border:2px solid #E2E8F0;">Bidder A</span>
+          <span id="bt2" class="pill-app" style="background:#F1F5F9; color:#475569; border:2px solid #E2E8F0;">B</span>
+          <span id="bt3" class="pill-app" style="background:#F1F5F9; color:#475569; border:2px solid #E2E8F0;">C</span>
+          <span id="bt4" class="pill-app" style="background:#F1F5F9; color:#475569; border:2px solid #E2E8F0;">D</span>
+          <span id="bt5" class="pill-app" style="background:#F1F5F9; color:#475569; border:2px solid #E2E8F0;">E</span>
+          <span id="bt6" class="pill-app" style="background:#F1F5F9; color:#475569; border:2px solid #E2E8F0;">F</span>
+        </div>
+        <div style="font:700 26px/1.2 Inter; margin-top:20px;">Plasterboard &amp; ceilings</div>
+        <table id="bTbl" class="tbl" style="margin-top:16px;">
+          <tr><th>Line</th><th class="n">Est Qty</th><th>Bid Qty</th><th>Rate</th><th>Total Cost</th></tr>
+          <tr id="br1"><td>Boards supply &amp; fix</td><td class="n">1,240 m²</td><td><span class="inp"></span></td><td><span class="inp"></span></td><td><span class="inp"></span></td></tr>
+          <tr id="br2"><td>Ceilings</td><td class="n">380 m²</td><td><span class="inp"></span></td><td><span class="inp"></span></td><td><span class="inp"></span></td></tr>
+          <tr id="br3"><td>Jointing &amp; finishing</td><td class="n">1,240 m²</td><td><span class="inp"></span></td><td><span class="inp"></span></td><td><span class="inp"></span></td></tr>
+          <tr id="br4"><td style="border-bottom:none;">Access</td><td class="n" style="border-bottom:none;">1 item</td><td style="border-bottom:none;"><span class="inp"></span></td><td style="border-bottom:none;"><span class="inp"></span></td><td style="border-bottom:none;"><span class="inp"></span></td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div id="s1d" class="fill">
+    <div id="ch1d" class="abs chipk acc" style="left:160px; top:300px;"><span style="width:10px;height:10px;border-radius:50%;background:var(--accent);display:inline-block;"></span>Live page · qsme.build · captured 2 Oct 2026</div>
+    <div id="w1d" class="win site" style="left:160px; top:368px; width:1600px; height:310px;">
+      <div class="bar"><i></i><i></i><i></i><span class="url">qsme.build/platform/tendering</span></div>
+      <img src="clips/stills/faq-private.png" style="width:1600px;">
+      <div id="hl1d" class="hl" style="left:439px; top:216px; width:693px; height:44px;"></div>
+    </div>
+  </div>
+
+  <!-- =================== CH2: DRAWINGS =================== -->
+  <div id="s2a" class="fill">
+    <div id="dB" class="abs" style="left:150px; top:170px; width:740px; height:524px;">
+      <svg width="740" height="524" viewBox="0 0 740 524">
+        <rect x="0" y="0" width="740" height="524" rx="6" fill="#F8FAFC"/>
+        <rect x="22" y="22" width="696" height="480" fill="none" stroke="#1F3A5F" stroke-width="3"/>
+        <path d="M60 60 H520 V420 H60 Z M60 240 H300 M300 60 V420 M300 300 H520" fill="none" stroke="#1F3A5F" stroke-width="4"/>
+        <g stroke="#9DB0C8" stroke-width="1.5"><path d="M80 80 H280 M80 110 H280 M80 140 H280 M80 170 H280 M80 200 H280 M110 70 V230 M150 70 V230 M190 70 V230 M230 70 V230 M270 70 V230"/></g>
+        <g fill="none" stroke="#1F3A5F" stroke-width="2.5"><circle cx="400" cy="140" r="16"/><circle cx="460" cy="140" r="16"/><circle cx="400" cy="200" r="16"/><circle cx="460" cy="200" r="16"/><circle cx="180" cy="330" r="16"/></g>
+        <rect x="540" y="400" width="160" height="88" fill="#fff" stroke="#1F3A5F" stroke-width="2.5"/>
+        <text x="552" y="428" font-family="JetBrains Mono" font-weight="600" font-size="15" fill="#1F3A5F">RCP · LEVEL 1</text>
+        <text x="552" y="474" font-family="Space Grotesk" font-weight="700" font-size="34" fill="#1F3A5F">Rev B</text>
+      </svg>
+    </div>
+    <div id="dC" class="abs" style="left:1030px; top:170px; width:740px; height:524px;">
+      <svg width="740" height="524" viewBox="0 0 740 524">
+        <rect x="0" y="0" width="740" height="524" rx="6" fill="#F8FAFC"/>
+        <rect x="22" y="22" width="696" height="480" fill="none" stroke="#1F3A5F" stroke-width="3"/>
+        <path d="M60 60 H520 V420 H60 Z M60 240 H300 M300 60 V420 M300 300 H520" fill="none" stroke="#1F3A5F" stroke-width="4"/>
+        <g stroke="#9DB0C8" stroke-width="1.5"><path d="M80 80 H280 M80 110 H280 M80 140 H280 M80 170 H280 M80 200 H280 M110 70 V230 M150 70 V230 M190 70 V230 M230 70 V230 M270 70 V230"/></g>
+        <g fill="none" stroke="#1F3A5F" stroke-width="2.5"><circle cx="400" cy="140" r="16"/><circle cx="460" cy="140" r="16"/><circle cx="400" cy="200" r="16"/><circle cx="460" cy="200" r="16"/><circle cx="180" cy="330" r="16"/></g>
+        <rect x="318" y="318" width="186" height="84" fill="none" stroke="#1F3A5F" stroke-width="3" stroke-dasharray="10 7"/>
+        <text x="332" y="366" font-family="JetBrains Mono" font-weight="600" font-size="15" fill="#1F3A5F">NEW BULKHEAD</text>
+        <path id="cloud" d="M300 330 q 0 -26 26 -26 q 8 -20 34 -14 q 18 -16 40 -4 q 22 -14 44 0 q 26 -8 38 14 q 26 6 22 34 q 18 22 -2 44 q 4 28 -26 32 q -14 22 -40 12 q -22 16 -44 2 q -26 12 -42 -8 q -28 4 -32 -22 q -22 -16 -6 -40 q -14 -16 -12 -24" fill="none" stroke="#E0302A" stroke-width="4" stroke-linecap="round"/>
+        <rect x="540" y="400" width="160" height="88" fill="#fff" stroke="#1F3A5F" stroke-width="2.5"/>
+        <text x="552" y="428" font-family="JetBrains Mono" font-weight="600" font-size="15" fill="#1F3A5F">RCP · LEVEL 1</text>
+        <text x="552" y="474" font-family="Space Grotesk" font-weight="700" font-size="34" fill="#E0302A">Rev C</text>
+      </svg>
+    </div>
+    <div id="pbB" class="abs row" style="left:150px; top:730px; gap:16px;"><span class="kick" style="margin-right:10px;">Priced by</span><div class="bub">A</div><div class="bub">B</div><div class="bub">C</div></div>
+    <div id="pbC" class="abs row" style="left:1030px; top:730px; gap:16px;"><span class="kick" style="margin-right:10px;">Priced by</span><div class="bub">D</div><div class="bub">E</div><div class="bub">F</div></div>
+  </div>
+
+  <div id="s2b" class="fill">
+    <div id="w2b" data-qa-ignore class="win" style="left:250px; top:120px; width:1420px; height:620px;">
+      <div class="bar"><i></i><i></i><i></i><span class="url">app.qsme.build · Tenders</span></div>
+      <div class="body" style="background:#fff;">
+        <div class="muted-app" style="font:600 20px/1 Inter;">Create New Tender · Plasterboard &amp; ceilings</div>
+        <div class="h-app" style="margin-top:16px;">Point them at the right sheets</div>
+        <div class="muted-app" style="font:500 23px/1.4 Inter; margin-top:10px;">From your indexed plans — tick the sections this work is about.</div>
+        <div class="row" style="margin-top:20px; gap:12px;"><span class="pill-app p-grey" style="font-size:19px;">Drawing set · v1</span><span class="pill-app p-grey" style="font-size:19px;">Plan index</span></div>
+        <div class="box" style="margin-top:20px;">
+          <div class="row" style="padding:16px 26px; border-bottom:1px solid #E2E8F0;"><div class="cb"><div id="tkP1" class="tk"><svg width="20" height="16" viewBox="0 0 20 16"><path d="M2 8 L8 13 L18 2" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><span style="font:600 25px/1 Inter; flex:1;">Reflected ceiling plans</span><span class="mono" style="font-size:22px; color:#475569;">p.18–21</span></div>
+          <div class="row" style="padding:16px 26px; border-bottom:1px solid #E2E8F0;"><div class="cb"><div id="tkP2" class="tk"><svg width="20" height="16" viewBox="0 0 20 16"><path d="M2 8 L8 13 L18 2" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><span style="font:600 25px/1 Inter; flex:1;">Wall types &amp; linings</span><span class="mono" style="font-size:22px; color:#475569;">p.14–15</span></div>
+          <div class="row" style="padding:16px 26px; border-bottom:1px solid #E2E8F0;"><div class="cb"><div id="tkP3" class="tk"><svg width="20" height="16" viewBox="0 0 20 16"><path d="M2 8 L8 13 L18 2" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><span style="font:600 25px/1 Inter; flex:1;">Finishes schedule</span><span class="mono" style="font-size:22px; color:#475569;">p.32</span></div>
+          <div class="row" style="padding:16px 26px; border-bottom:1px solid #E2E8F0;"><div class="cb"></div><span style="font:600 25px/1 Inter; flex:1; color:#64748B;">Floor plans</span><span class="mono" style="font-size:22px; color:#94A3B8;">p.4–7</span></div>
+          <div class="row" style="padding:16px 26px;"><div class="cb"></div><span style="font:600 25px/1 Inter; flex:1; color:#64748B;">Drainage layout</span><span class="mono" style="font-size:22px; color:#94A3B8;">p.22–24</span></div>
+        </div>
+      </div>
+    </div>
+    <div id="fn2b" class="abs chipk" style="left:250px; top:842px; font-size:22px;">Sections come from ‘Read my plans’ · paid plan, uses AI credits</div>
+  </div>
+
+  <div id="s2c" class="fill">
+    <div id="w2c" data-qa-ignore class="win" style="left:250px; top:120px; width:1420px; height:660px;">
+      <div class="bar"><i></i><i></i><i></i><span class="url">app.qsme.build · Tenders</span></div>
+      <div class="body" style="background:#fff;">
+        <div class="row" style="justify-content:space-between;"><div class="h-app">Plasterboard &amp; ceilings</div><span class="pill-app p-grey">Invited · closes Fri 5:00 pm</span></div>
+        <div style="font:700 28px/1.2 Inter; margin-top:30px;">Referenced drawing pages</div>
+        <div id="ref1" class="box row" style="margin-top:18px; padding:18px 24px;">
+          <svg width="30" height="36" viewBox="0 0 30 36"><path d="M3 2 H20 L28 10 V34 H3 Z" fill="#F1F5F9" stroke="#64748B" stroke-width="2.5"/></svg>
+          <div style="flex:1;"><div style="font:600 25px/1.2 Inter;">Reflected ceiling plans</div><div class="muted-app" style="font:500 21px/1.3 Inter; margin-top:4px;">Drawing set (v1) · p.18–21</div></div>
+          <span id="pm1" class="pill-app p-amber">pages may have moved</span>
+        </div>
+        <div id="ref2" class="box row" style="margin-top:12px; padding:18px 24px;">
+          <svg width="30" height="36" viewBox="0 0 30 36"><path d="M3 2 H20 L28 10 V34 H3 Z" fill="#F1F5F9" stroke="#64748B" stroke-width="2.5"/></svg>
+          <div style="flex:1;"><div style="font:600 25px/1.2 Inter;">Wall types &amp; linings</div><div class="muted-app" style="font:500 21px/1.3 Inter; margin-top:4px;">Drawing set (v1) · p.14–15</div></div>
+          <span id="pm2" class="pill-app p-amber">pages may have moved</span>
+        </div>
+        <div id="ref3" class="box row" style="margin-top:12px; padding:18px 24px;">
+          <svg width="30" height="36" viewBox="0 0 30 36"><path d="M3 2 H20 L28 10 V34 H3 Z" fill="#F1F5F9" stroke="#64748B" stroke-width="2.5"/></svg>
+          <div style="flex:1;"><div style="font:600 25px/1.2 Inter;">Finishes schedule</div><div class="muted-app" style="font:500 21px/1.3 Inter; margin-top:4px;">Drawing set (v1) · p.32</div></div>
+          <span id="pm3" class="pill-app p-amber">pages may have moved</span>
+        </div>
+        <div id="pmNote" class="warn" style="margin-top:18px; padding:14px 22px; font:500 22px/1.35 Inter;">The pack has a newer version since this was referenced — check the pages still match.</div>
+      </div>
+    </div>
+    <div id="ev2c" class="abs chipk acc" style="left:250px; top:848px;">Tuesday · drawing set v2 uploaded</div>
+  </div>
+
+  <!-- =================== CH3: SCOPE CHANGE =================== -->
+  <div id="s3a" class="fill">
+    <div id="m3" class="abs box" style="left:250px; top:130px; width:1420px; height:330px; background:#FBFBFA; color:#1C1C1E; padding:28px 36px;">
+      <div class="row" style="justify-content:space-between;"><span style="font:600 18px/1 var(--mono); color:#8A8F95; letter-spacing:.1em;">SENT</span><span style="font:500 20px/1 Inter; color:#8A8F95;">Tue 3:12 pm</span></div>
+      <div style="font:500 24px/1.5 Inter; color:#55595F; margin-top:16px;">To: Bidder A; Bidder B; Bidder C; Bidder E; Bidder F</div>
+      <div style="font:700 26px/1.4 Inter; margin-top:4px;">Plasterboard &amp; ceilings — Addendum 2 (bulkheads added)</div>
+      <div style="height:2px; background:#ECEBE7; margin:18px 0;"></div>
+      <div style="font:500 26px/1.4 Inter;">Hi all, please allow for the new bulkheads on RCP Rev C. Thanks.</div>
+    </div>
+    <div id="b3" class="abs" style="left:250px; top:520px; width:1420px; height:300px;">
+      <div class="row" style="position:absolute; left:120px; top:40px; gap:110px;">
+        <div class="bub" id="u3a">A</div><div class="bub" id="u3b">B</div><div class="bub" id="u3c">C</div><div class="bub" id="u3d" style="opacity:.5;">D</div><div class="bub" id="u3e">E</div><div class="bub" id="u3f">F</div>
+      </div>
+      <svg class="abs" style="left:0; top:0;" width="1420" height="300">
+        <g id="ok3a" fill="none" stroke="#4BCD32" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><path d="M150 176 L166 192 L196 160"/></g>
+        <g id="ok3b" fill="none" stroke="#4BCD32" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><path d="M352 176 L368 192 L398 160"/></g>
+        <g id="ok3c" fill="none" stroke="#4BCD32" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><path d="M554 176 L570 192 L600 160"/></g>
+        <g id="ok3e" fill="none" stroke="#4BCD32" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><path d="M958 176 L974 192 L1004 160"/></g>
+        <g id="ok3f" fill="none" stroke="#4BCD32" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><path d="M1160 176 L1176 192 L1206 160"/></g>
+        <path id="ring3d" d="M790 30 C 860 22, 880 80, 872 118 C 862 168, 780 176, 736 146 C 694 116, 704 50, 760 32 C 790 22, 820 26, 840 36" fill="none" stroke="#F87171" stroke-width="6" stroke-linecap="round"/>
+      </svg>
+      <div id="note3" class="abs mk" style="left:640px; top:200px; font-size:46px; transform:rotate(-3deg); white-space:nowrap;">missed off the list</div>
+    </div>
+  </div>
+
+  <div id="s3b" class="fill">
+    <div id="w3b" data-qa-ignore class="win" style="left:250px; top:120px; width:1420px; height:676px;">
+      <div class="bar"><i></i><i></i><i></i><span class="url">app.qsme.build · Tenders</span></div>
+      <div class="body" style="background:#fff;">
+        <div class="row" style="justify-content:space-between;"><div class="h-app">Plasterboard &amp; ceilings</div><span class="pill-app p-green">Open · 2 bids in</span></div>
+        <div id="banner3" class="info row" style="margin-top:22px; padding:18px 22px; gap:16px; align-items:flex-start;">
+          <svg width="30" height="30" viewBox="0 0 30 30" style="flex:none; margin-top:2px;"><circle cx="15" cy="15" r="13" fill="none" stroke="#1E40AF" stroke-width="2.5"/><path d="M15 13 V22 M15 8 V9" stroke="#1E40AF" stroke-width="3" stroke-linecap="round"/></svg>
+          <div style="font:600 25px/1.4 Inter;">2 bid(s) are in on this scope. Change it and everyone still in the running is told what moved.</div>
+        </div>
+        <div style="font:700 26px/1.2 Inter; margin-top:24px;">SOQ jobs to include (optional)</div>
+        <div class="box" style="margin-top:14px;">
+          <div class="row" style="padding:13px 26px; border-bottom:1px solid #E2E8F0;"><div class="cb"><div class="tk" style="opacity:1;"><svg width="20" height="16" viewBox="0 0 20 16"><path d="M2 8 L8 13 L18 2" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><span style="font:500 23px/1 Inter; flex:1;">Boards supply &amp; fix</span><span class="muted-app" style="font:500 19px/1 Inter;">3 lines</span></div>
+          <div class="row" style="padding:13px 26px; border-bottom:1px solid #E2E8F0;"><div class="cb"><div class="tk" style="opacity:1;"><svg width="20" height="16" viewBox="0 0 20 16"><path d="M2 8 L8 13 L18 2" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><span style="font:500 23px/1 Inter; flex:1;">Ceilings</span><span class="muted-app" style="font:500 19px/1 Inter;">2 lines</span></div>
+          <div class="row" style="padding:13px 26px; border-bottom:1px solid #E2E8F0;"><div class="cb"><div class="tk" style="opacity:1;"><svg width="20" height="16" viewBox="0 0 20 16"><path d="M2 8 L8 13 L18 2" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><span style="font:500 23px/1 Inter; flex:1;">Jointing &amp; finishing</span><span class="muted-app" style="font:500 19px/1 Inter;">2 lines</span></div>
+          <div class="row" style="padding:13px 26px; border-bottom:1px solid #E2E8F0;"><div class="cb"><div class="tk" style="opacity:1;"><svg width="20" height="16" viewBox="0 0 20 16"><path d="M2 8 L8 13 L18 2" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><span style="font:500 23px/1 Inter; flex:1;">Access</span><span class="muted-app" style="font:500 19px/1 Inter;">1 line</span></div>
+          <div id="bulkRow" class="row" style="padding:13px 26px; border-radius:0 0 12px 12px;"><div class="cb"><div id="tkBulk" class="tk"><svg width="20" height="16" viewBox="0 0 20 16"><path d="M2 8 L8 13 L18 2" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><span style="font:600 23px/1 Inter; flex:1;">Bulkheads</span><span class="muted-app" style="font:500 19px/1 Inter;">2 lines</span></div>
+        </div>
+        <div class="row" style="margin-top:16px;"><span id="selCount3" class="muted-app" style="font:600 22px/1 Inter;">4 of 5 selected</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="s3c" class="fill">
+    <div id="node3" class="dcard" style="left:560px; top:150px; width:800px; height:150px; padding:26px 36px; border-color:#2C5B22;">
+      <div class="kick" style="color:var(--accent);">Tender · scope changed</div>
+      <div style="font:700 40px/1.2 var(--display); margin-top:16px;">Plasterboard &amp; ceilings <span class="g">+ Bulkheads</span></div>
+    </div>
+    <svg class="abs" style="left:0; top:0;" width="1920" height="1080">
+      <g fill="none" stroke="#2C5B22" stroke-width="3">
+        <path id="tl3a" d="M960 300 C 960 420, 330 460, 330 560"/><path id="tl3b" d="M960 300 C 960 420, 582 460, 582 560"/><path id="tl3c" d="M960 300 C 960 420, 834 460, 834 560"/>
+        <path id="tl3d" d="M960 300 C 960 420, 1086 460, 1086 560"/><path id="tl3e" d="M960 300 C 960 420, 1338 460, 1338 560"/><path id="tl3f" d="M960 300 C 960 420, 1590 460, 1590 560"/>
+      </g>
+    </svg>
+    <div class="abs row" style="left:284px; top:560px; gap:160px;">
+      <div class="bub" id="v3a">A</div><div class="bub" id="v3b">B</div><div class="bub" id="v3c">C</div><div class="bub" id="v3d">D</div><div class="bub" id="v3e">E</div><div class="bub" id="v3f">F</div>
+    </div>
+    <div id="told3" class="abs mono" style="left:0; right:0; top:700px; text-align:center; font-size:30px; color:var(--ink-70);">All six still in the running → <span class="g">told what moved</span></div>
+  </div>
+
+  <!-- =================== CH4: TAX =================== -->
+  <div id="s4a" class="fill">
+    <div id="ex4" class="abs chipk amb" style="left:160px; top:186px;">Example figures · VAT 20%</div>
+    <div id="basisAs" class="abs kick" style="left:162px; top:270px;">As written</div>
+    <div id="rowX" class="dcard" style="left:160px; top:310px; width:960px; height:190px;">
+      <div class="abs" style="left:44px; top:30px; font:700 36px/1 var(--display); color:var(--ink-70);">Bidder X</div>
+      <div class="abs row" style="left:44px; top:82px; gap:22px; align-items:baseline;"><span class="mono" style="font-size:96px; font-weight:600; line-height:1;">10,000</span><span style="font:600 40px/1 var(--body); color:var(--ink-70);">+ VAT</span></div>
+      <div id="looks" class="abs mk" style="left:620px; top:70px; font-size:44px; white-space:nowrap;">looks cheaper</div>
+      <svg class="abs" style="left:606px; top:72px;" width="320" height="80"><path id="strike4" d="M8 50 C 110 32, 210 46, 312 22" fill="none" stroke="#F87171" stroke-width="7" stroke-linecap="round"/></svg>
+    </div>
+    <div id="rowY" class="dcard" style="left:160px; top:530px; width:960px; height:190px;">
+      <div class="abs" style="left:44px; top:30px; font:700 36px/1 var(--display); color:var(--ink-70);">Bidder Y</div>
+      <div class="abs row" style="left:44px; top:82px; gap:22px; align-items:baseline;"><span class="mono" style="font-size:96px; font-weight:600; line-height:1;">11,500</span><span style="font:600 40px/1 var(--body); color:var(--ink-70);">incl. VAT</span></div>
+    </div>
+    <!-- our own maths on a pad: the product's toggle, "Lowest" tag and tax calc are never shown here -->
+    <div id="pad" class="abs" style="left:1170px; top:236px; width:630px; height:600px;">
+      <div class="abs" style="left:40px; top:30px; font:400 44px/1 'Permanent Marker', cursive; color:#2B2E33; white-space:nowrap;">our maths</div>
+      <div id="n1" class="abs hwl" style="left:42px; top:120px;">both incl. VAT</div>
+      <div id="nX1" class="abs hw" style="left:40px; top:160px;"><span class="hwk">X</span>10,000 + 20% = 12,000</div>
+      <div class="abs hw" style="left:40px; top:222px;"><span id="nY1k" class="hwk">Y</span><span class="rw" style="width:140px;"><span id="nY1" style="display:inline-block;">11,500</span><svg width="176" height="76" viewBox="0 0 176 76"><path id="rg1" d="M120 6 C 160 8, 174 30, 166 48 C 156 70, 90 74, 50 70 C 14 66, 2 46, 8 30 C 14 12, 60 4, 104 5 C 130 6, 150 12, 160 20" fill="none" stroke="#E0302A" stroke-width="5" stroke-linecap="round"/></svg></span></div>
+      <div class="abs" style="left:36px; right:36px; top:304px; border-top:3px dashed rgba(30,58,138,.32);"></div>
+      <div id="n2" class="abs hwl" style="left:42px; top:326px;">both excl. VAT</div>
+      <div id="nX2" class="abs hw" style="left:40px; top:366px;"><span class="hwk">X</span>10,000</div>
+      <div class="abs hw" style="left:40px; top:428px;"><span id="nY2k" class="hwk">Y</span><span id="nY2a" style="display:inline-block; padding-right:26px;">11,500 ÷ 1.2 =</span><span class="rw" style="width:126px;"><span id="nY2" style="display:inline-block;">9,583</span><svg width="162" height="76" viewBox="0 0 162 76"><path id="rg2" d="M108 6 C 146 8, 160 30, 152 48 C 143 70, 82 74, 46 70 C 12 66, 2 46, 7 30 C 12 12, 54 4, 94 5 C 118 6, 136 12, 146 20" fill="none" stroke="#E0302A" stroke-width="5" stroke-linecap="round"/></svg></span></div>
+      <div id="nEw" class="abs" style="left:40px; top:518px; font:400 38px/1 'Permanent Marker', cursive; color:#E0302A; white-space:nowrap;">Y is cheaper, either way.</div>
+    </div>
+  </div>
+
+  <div id="s4b" class="fill">
+    <div id="ch4b" class="abs chipk acc" style="left:260px; top:316px;"><span style="width:10px;height:10px;border-radius:50%;background:var(--accent);display:inline-block;"></span>Live page · qsme.build · captured 2 Oct 2026</div>
+    <!-- element crop of the live FAQ, cut after "…the basis you choose" (the rest of that answer is not shown) -->
+    <div id="w4b" class="win site" style="left:260px; top:380px; width:1400px; height:292px; background:#101A15;">
+      <div class="bar"><i></i><i></i><i></i><span class="url">qsme.build/platform/tendering</span></div>
+      <img src="clips/stills/faq-tax.png" style="width:2298px; clip-path:polygon(0 0, 1400px 0, 1400px 147px, 1295px 147px, 1295px 100%, 0 100%);">
+      <div id="hl4b" class="hl" style="left:200px; top:211px; width:1097px; height:62px;"></div>
+    </div>
+  </div>
+
+  <!-- =================== CH5: EMAIL =================== -->
+  <div id="s5a" class="fill">
+    <div id="inbox" class="abs box" style="left:120px; top:200px; width:880px; height:500px; background:#FBFBFA; color:#1C1C1E; overflow:hidden;">
+      <div style="padding:24px 32px; font:600 18px/1 var(--mono); color:#8A8F95; letter-spacing:.1em; border-bottom:2px solid #ECEBE7;">INBOX</div>
+      <div style="padding:24px 32px; border-bottom:2px solid #ECEBE7;"><div class="row" style="justify-content:space-between;"><span style="font:700 25px/1 Inter;">Site manager</span><span style="font:500 20px/1 Inter; color:#8A8F95;">2:14 pm</span></div><div style="font:500 22px/1.4 Inter; color:#55595F; margin-top:8px;">Tuesday’s pour — revised time</div></div>
+      <div id="mailA" style="padding:24px 32px; border-bottom:2px solid #ECEBE7; background:#EEF7EC;"><div class="row" style="justify-content:space-between;"><span style="font:700 25px/1 Inter;">Bidder A</span><span style="font:500 20px/1 Inter; color:#8A8F95;">4:59 pm</span></div><div style="font:500 22px/1.4 Inter; color:#55595F; margin-top:8px;">Quote – Plasterboard &amp; ceilings (see attached)</div>
+        <div class="row" style="margin-top:14px; gap:12px; display:inline-flex; padding:10px 16px; border:2px solid #DDD; border-radius:10px; background:#fff;"><svg width="22" height="26" viewBox="0 0 22 26"><path d="M2 1 H14 L20 7 V25 H2 Z" fill="#FDECEC" stroke="#C0392B" stroke-width="2"/></svg><span style="font:600 20px/1 var(--mono);">Quote_FINAL_v3_revised(2).pdf</span></div></div>
+      <div style="padding:24px 32px;"><div class="row" style="justify-content:space-between;"><span style="font:700 25px/1 Inter;">Accounts</span><span style="font:500 20px/1 Inter; color:#8A8F95;">11:02 am</span></div><div style="font:500 22px/1.4 Inter; color:#55595F; margin-top:8px;">Remittance advice</div></div>
+    </div>
+    <div id="cmp5" class="dcard" style="left:1080px; top:200px; width:720px; height:500px; padding:30px 36px;">
+      <div class="kick">Your comparison</div>
+      <div style="margin-top:22px; font:600 32px/1 var(--body);">
+        <div class="row" style="height:66px; border-bottom:2px solid var(--line);"><span class="mono g" style="width:60px;">B</span>in</div>
+        <div class="row" style="height:66px; border-bottom:2px solid var(--line);"><span class="mono g" style="width:60px;">C</span>in</div>
+        <div class="row" style="height:66px; border-bottom:2px solid var(--line);"><span class="mono g" style="width:60px;">D</span>in</div>
+        <div class="row" style="height:66px; border-bottom:2px solid var(--line);"><span class="mono g" style="width:60px;">E</span>in</div>
+        <div class="row" style="height:66px; border-bottom:2px solid var(--line);"><span class="mono g" style="width:60px;">F</span>in</div>
+        <div id="slotA" class="row" style="height:72px; margin-top:12px; border:3px dashed #5C3B3B; border-radius:12px; padding-left:20px; color:#F87171;"><span class="mono" style="width:60px;">A</span>not here</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="s5b" class="fill">
+    <div id="w5b" data-qa-ignore class="win" style="left:160px; top:160px; width:1600px; height:710px;">
+      <div class="bar"><i></i><i></i><i></i><span class="url">app.qsme.build · Tenders</span></div>
+      <div class="body" style="background:#fff;">
+        <div class="h-app">Add a bid you received</div>
+        <div id="st1" class="abs" style="left:44px; top:100px; right:44px;">
+          <div class="muted-app" style="font:500 25px/1.4 Inter;">Got a quote by email for “Plasterboard &amp; ceilings”? Drop it here and it goes in with the other bids.</div>
+          <div id="drop" style="margin-top:28px; height:380px; border:3px dashed #CBD5E1; border-radius:18px; background:#F8FAFC; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px;">
+            <div id="dropTxt" class="muted-app" style="font:500 24px/1.3 Inter;">PDF, saved email (.eml), photo or text file — up to 20 MB</div>
+            <div id="reading" class="row" style="gap:18px; font:600 28px/1 Inter; color:#0F172A;"><svg id="spin" width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="none" stroke="#E2E8F0" stroke-width="5"/><path d="M20 4 A16 16 0 0 1 36 20" fill="none" stroke="#16A34A" stroke-width="5" stroke-linecap="round"/></svg>Reading the quote…</div>
+          </div>
+        </div>
+        <div id="st2" class="abs" style="left:44px; top:96px; right:44px;">
+          <div class="warn row" style="padding:14px 20px; gap:14px; font:600 22px/1.35 Inter;"><svg width="28" height="26" viewBox="0 0 28 26" style="flex:none;"><path d="M14 2 L26 24 H2 Z" fill="none" stroke="#B45309" stroke-width="2.5" stroke-linejoin="round"/><path d="M14 10 V16 M14 20 V20.5" stroke="#B45309" stroke-width="3" stroke-linecap="round"/></svg>This was read automatically and can be wrong. Nothing is saved until you have checked it.</div>
+          <div class="row" style="margin-top:20px; gap:28px; align-items:flex-start;">
+            <div style="flex:1;">
+              <div class="steplbl">THE BID</div>
+              <div class="box" style="margin-top:12px; padding:18px 22px;">
+                <div class="row" style="justify-content:space-between;"><span class="muted-app" style="font:600 20px/1 Inter;">Bidder</span><span style="font:700 23px/1 Inter;">Bidder A</span></div>
+                <div class="muted-app" style="font:500 17px/1.35 Inter; margin-top:8px;">New to you. They will be saved to your contacts when you save.</div>
+                <table class="tbl" style="margin-top:12px;">
+                  <tr><td style="font-size:21px; padding:11px 4px;">Boards supply &amp; fix</td><td class="n" style="font-size:21px; padding:11px 4px;">48,360</td></tr>
+                  <tr><td style="font-size:21px; padding:11px 4px;">Ceilings</td><td class="n" style="font-size:21px; padding:11px 4px;">24,510</td></tr>
+                  <tr><td style="font-size:21px; padding:11px 4px;">Jointing &amp; finishing</td><td class="n" style="font-size:21px; padding:11px 4px;">incl.</td></tr>
+                  <tr><td style="font-size:21px; padding:11px 4px;">Access</td><td class="n" style="font-size:21px; padding:11px 4px;">1,980</td></tr>
+                  <tr><td style="font-size:22px; padding:11px 4px; font-weight:700; border-bottom:none;">Total</td><td class="n" style="font-size:22px; padding:11px 4px; font-weight:700; border-bottom:none;">74,850</td></tr>
+                </table>
+              </div>
+            </div>
+            <div style="width:560px;">
+              <div class="steplbl">THE ORIGINAL</div>
+              <div style="margin-top:12px; height:380px; background:#EDEBE6; border-radius:12px; padding:22px; position:relative; overflow:hidden;">
+                <div style="position:absolute; left:40px; top:16px; width:440px; height:348px; background:#FBFAF7; box-shadow:0 6px 20px rgba(0,0,0,.18); transform:rotate(-1deg); padding:26px 30px; color:#2C2E31; font-family:'Courier New', monospace;">
+                  <div style="font:700 20px/1 Inter;">BIDDER A — QUOTATION</div>
+                  <div style="font-size:16px; margin-top:8px; color:#666;">Plasterboard &amp; ceilings</div>
+                  <div style="font-size:17px; line-height:2; margin-top:16px;">Boards supply &amp; fix ..... 48,360<br>Ceilings ................. 24,510<br>Jointing &amp; finishing ..... incl<br>Access ................... 1,980</div>
+                  <div style="font:700 19px/1 'Courier New', monospace; margin-top:16px;">TOTAL (excl. tax) 74,850</div>
+                  <div style="font-size:14px; color:#888; margin-top:22px;">Quote_FINAL_v3_revised(2).pdf · p.1</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" style="margin-top:20px; gap:16px;"><div class="cb"><div id="tkChk" class="tk"><svg width="20" height="16" viewBox="0 0 20 16"><path d="M2 8 L8 13 L18 2" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><span id="chkTxt" style="font:600 24px/1 Inter;">I have checked this against the original and it is right.</span></div>
+        </div>
+      </div>
+    </div>
+    <div id="file5" class="abs row" style="left:300px; top:880px; gap:14px; padding:16px 22px; background:#fff; border-radius:12px; box-shadow:0 20px 50px rgba(0,0,0,.5);"><svg width="30" height="36" viewBox="0 0 22 26"><path d="M2 1 H14 L20 7 V25 H2 Z" fill="#FDECEC" stroke="#C0392B" stroke-width="2"/></svg><span style="font:600 22px/1 var(--mono); color:#1C1C1E;">Quote_FINAL_v3_revised(2).pdf</span></div>
+  </div>
+
+  <div id="s5c" class="fill">
+    <div id="w5c" data-qa-ignore class="win" style="left:250px; top:120px; width:1420px; height:600px;">
+      <div class="bar"><i></i><i></i><i></i><span class="url">app.qsme.build · Tenders</span></div>
+      <div class="body" style="background:#fff;">
+        <div class="row" style="justify-content:space-between;"><div class="h-app">Compare bids</div><span class="muted-app" style="font:500 21px/1 Inter;">Plasterboard &amp; ceilings · 6 bids</span></div>
+        <div style="margin-top:22px;">
+          <div id="rowA5" class="row" style="height:74px; border-bottom:1px solid #E2E8F0; padding:0 14px;"><span style="font:600 26px/1 Inter; width:190px;">Bidder A</span><span class="pill-app p-grey row" style="gap:10px;"><svg width="24" height="18" viewBox="0 0 24 18"><rect x="1.5" y="1.5" width="21" height="15" rx="2" fill="none" stroke="#475569" stroke-width="2.2"/><path d="M2 3 L12 10 L22 3" fill="none" stroke="#475569" stroke-width="2.2"/></svg>Received by you</span><span class="mono" style="margin-left:auto; font:700 28px/1 var(--mono);">74,850</span></div>
+          <div class="row" style="height:74px; border-bottom:1px solid #E2E8F0; padding:0 14px;"><span style="font:600 26px/1 Inter; width:190px;">Bidder B</span><span class="mono" style="margin-left:auto; font:700 28px/1 var(--mono);">76,200</span></div>
+          <div class="row" style="height:74px; border-bottom:1px solid #E2E8F0; padding:0 14px;"><span style="font:600 26px/1 Inter; width:190px;">Bidder C</span><span class="mono" style="margin-left:auto; font:700 28px/1 var(--mono);">72,000</span></div>
+          <div class="row" style="height:74px; border-bottom:1px solid #E2E8F0; padding:0 14px;"><span style="font:600 26px/1 Inter; width:190px;">Bidder D</span><span class="mono" style="margin-left:auto; font:700 28px/1 var(--mono);">73,480</span></div>
+          <div class="row" style="height:74px; border-bottom:1px solid #E2E8F0; padding:0 14px;"><span style="font:600 26px/1 Inter; width:190px;">Bidder E</span><span class="mono" style="margin-left:auto; font:700 28px/1 var(--mono);">71,940</span></div>
+          <div id="rowF5" class="row" style="height:74px; padding:0 14px;"><span style="font:600 26px/1 Inter; width:190px;">Bidder F</span><span class="pill-app p-grey row" style="gap:10px;"><svg width="24" height="18" viewBox="0 0 24 18"><rect x="1.5" y="1.5" width="21" height="15" rx="2" fill="none" stroke="#475569" stroke-width="2.2"/><path d="M2 3 L12 10 L22 3" fill="none" stroke="#475569" stroke-width="2.2"/></svg>Received by you</span><span class="pill-app p-green">Lowest</span><span class="mono" style="margin-left:auto; font:700 28px/1 var(--mono);">71,300</span></div>
+        </div>
+      </div>
+    </div>
+    <div id="tot5" class="abs chipk amb" style="left:150px; top:800px;">All totals excl. tax</div>
+    <div id="aside5" class="abs" style="left:1100px; top:806px; font:700 40px/1.1 Kalam, cursive; color:#F2C46D; transform:rotate(-2deg); white-space:nowrap;">Photos too. Yes, even the whiteboard.</div>
+  </div>
+
+  <!-- =================== THE HONEST BIT =================== -->
+  <div id="sH1" class="fill">
+    <div id="wH" data-qa-ignore class="win" style="left:120px; top:150px; width:1680px; height:660px;">
+      <div class="bar"><i></i><i></i><i></i><span class="url">app.qsme.build · Tenders</span></div>
+      <div class="body" style="background:#fff; padding:30px 36px;">
+        <div class="h-app">Compare bids</div>
+        <div style="position:absolute; left:36px; top:96px; width:720px;">
+          <div class="row" style="height:80px; border-bottom:1px solid #E2E8F0; padding:0 14px;"><span style="font:600 26px/1 Inter; width:160px;">Bidder A</span><svg width="24" height="18" viewBox="0 0 24 18"><rect x="1.5" y="1.5" width="21" height="15" rx="2" fill="none" stroke="#475569" stroke-width="2.2"/><path d="M2 3 L12 10 L22 3" fill="none" stroke="#475569" stroke-width="2.2"/></svg><span class="mono" style="margin-left:auto; font:700 28px/1 var(--mono);">74,850</span></div>
+          <div id="rowHB" class="row" style="height:80px; border-bottom:1px solid #E2E8F0; padding:0 14px; border-radius:10px;"><span style="font:600 26px/1 Inter; width:160px;">Bidder B</span><span class="mono" style="margin-left:auto; font:700 28px/1 var(--mono);">76,200</span></div>
+          <div class="row" style="height:80px; border-bottom:1px solid #E2E8F0; padding:0 14px;"><span style="font:600 26px/1 Inter; width:160px;">Bidder C</span><span class="mono" style="margin-left:auto; font:700 28px/1 var(--mono);">72,000</span></div>
+          <div class="row" style="height:80px; border-bottom:1px solid #E2E8F0; padding:0 14px;"><span style="font:600 26px/1 Inter; width:160px;">Bidder D</span><span class="mono" style="margin-left:auto; font:700 28px/1 var(--mono);">73,480</span></div>
+          <div class="row" style="height:80px; border-bottom:1px solid #E2E8F0; padding:0 14px;"><span style="font:600 26px/1 Inter; width:160px;">Bidder E</span><span class="mono" style="margin-left:auto; font:700 28px/1 var(--mono);">71,940</span></div>
+          <div class="row" style="height:80px; padding:0 14px;"><span style="font:600 26px/1 Inter; width:160px;">Bidder F</span><svg width="24" height="18" viewBox="0 0 24 18"><rect x="1.5" y="1.5" width="21" height="15" rx="2" fill="none" stroke="#475569" stroke-width="2.2"/><path d="M2 3 L12 10 L22 3" fill="none" stroke="#475569" stroke-width="2.2"/></svg><span class="pill-app p-green" style="margin-left:4px;">Lowest</span><span class="mono" style="margin-left:auto; font:700 28px/1 var(--mono);">71,300</span></div>
+        </div>
+        <div id="bd" class="box" style="position:absolute; left:800px; top:30px; width:808px; height:520px; padding:28px 30px; box-shadow:0 20px 50px rgba(15,23,42,.12);">
+          <div style="font:700 30px/1.2 Inter;">Detailed price breakdown</div>
+          <div class="muted-app" style="font:600 22px/1 Inter; margin-top:10px;">Bidder B · 76,200</div>
+          <table class="tbl" style="margin-top:22px;">
+            <tr><th>Item</th><th>Type</th><th class="n">Qty</th><th class="n">Rate</th><th class="n">Line total</th></tr>
+            <tr><td style="font-size:21px;">Boards supply &amp; fix</td><td style="font-size:21px;">Material</td><td class="n" style="font-size:20px;">1,240 m²</td><td class="n" style="font-size:20px;">23.00</td><td class="n" style="font-size:20px;">28,520</td></tr>
+            <tr><td style="font-size:21px;">Boards supply &amp; fix</td><td style="font-size:21px;">Labour</td><td class="n" style="font-size:20px;">1,240 m²</td><td class="n" style="font-size:20px;">16.00</td><td class="n" style="font-size:20px;">19,840</td></tr>
+            <tr><td style="font-size:21px;">Ceilings</td><td style="font-size:21px;">Labour</td><td class="n" style="font-size:20px;">380 m²</td><td class="n" style="font-size:20px;">66.00</td><td class="n" style="font-size:20px;">25,080</td></tr>
+            <tr><td style="font-size:21px;">Jointing &amp; finishing</td><td style="font-size:21px;">Labour</td><td class="n" style="font-size:20px;">1,240 m²</td><td class="n" style="font-size:20px;">1.75</td><td class="n" style="font-size:20px;">2,170</td></tr>
+            <tr><td style="font-size:21px; border-bottom:none;">Access</td><td style="font-size:21px; border-bottom:none;">Labour</td><td class="n" style="font-size:20px; border-bottom:none;">1 item</td><td class="n" style="font-size:20px; border-bottom:none;">590.00</td><td class="n" style="font-size:20px; border-bottom:none;">590</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div id="totH" class="abs chipk amb" style="left:120px; top:846px;">All totals excl. tax</div>
+  </div>
+
+  <div id="sH2" class="fill">
+    <div id="chH2" class="abs chipk acc" style="left:460px; top:266px;"><span style="width:10px;height:10px;border-radius:50%;background:var(--accent);display:inline-block;"></span>Live page · qsme.build · captured 2 Oct 2026</div>
+    <!-- element crop of the live card, cut after "…awards a tender." (owner rule 2026-10-03: the card's next sentence, about awarding to a firm "without an account", is never shown) -->
+    <div id="wH2" class="win site" style="left:460px; top:332px; width:1000px; height:368px;">
+      <div class="bar"><i></i><i></i><i></i><span class="url">qsme.build/platform/tendering</span></div>
+      <img src="clips/stills/card-award.png" style="width:1000px;">
+      <div style="position:absolute; left:289px; top:296px; width:650px; height:72px; background:#14211A;"></div>
+      <div id="hlH2a" class="hl" style="left:116px; top:241px; width:765px; height:52px;"></div>
+      <div id="hlH2b" class="hl" style="left:116px; top:307px; width:170px; height:52px;"></div>
+    </div>
+  </div>
+
+  <!-- "It's just a fair fight now.": the six part-1 bids get filed into six identical rows (kinetic callback, not product UI) -->
+  <div id="sH3" class="fill">
+    <div id="qA" class="prop paper" style="left:280px; top:160px; width:280px; height:340px;">
+      <div style="position:absolute; left:24px; top:30px; right:24px;" class="bars"><i style="width:30%"></i></div>
+      <div style="position:absolute; left:-118px; top:150px; width:340px; transform:rotate(-90deg); font:600 17px/1 var(--mono); color:#4A4D52;">Quote_FINAL_v3_revised(2).pdf</div>
+      <div style="position:absolute; left:84px; top:70px; width:150px; height:240px; display:flex; gap:12px;">
+        <i style="flex:1; background:#D9D6CE; border-radius:3px; height:80%"></i><i style="flex:1; background:#D9D6CE; border-radius:3px;"></i><i style="flex:1; background:#D9D6CE; border-radius:3px; height:60%"></i><i style="flex:1; background:#D9D6CE; border-radius:3px; height:92%"></i><i style="flex:1; background:#D9D6CE; border-radius:3px; height:70%"></i>
+      </div>
+      <div class="ptag">A</div>
+    </div>
+    <div id="qB" class="prop lap" style="left:790px; top:170px; width:380px; height:260px; background:#2A2E33; border-radius:14px;">
+      <div class="screen"><div class="cells"></div>
+        <div style="position:absolute; left:58px; top:48px; width:232px; height:72px; background:#fff; border:2px solid #9AA3AD; display:flex; align-items:center; justify-content:center; font:700 17px/1.2 Inter; color:#333; text-align:center;">PRICE AS PER<br>DRAWINGS</div>
+        <div style="position:absolute; left:58px; top:144px; width:116px; height:24px; background:#fff; font:600 15px/24px var(--mono); color:#C0392B; padding-left:6px;">#REF!</div>
+      </div>
+      <div style="position:absolute; left:-20px; right:-20px; bottom:-10px; height:20px; background:#3A3F45; border-radius:0 0 12px 12px;"></div>
+      <div class="ptag">B</div>
+    </div>
+    <div id="qC" class="prop paper" style="left:1360px; top:170px; width:280px; height:340px; padding:26px 24px;">
+      <div style="font:800 22px/1 Inter; letter-spacing:.02em; border-bottom:2px solid #333; padding-bottom:10px;">BIDDER C</div>
+      <div style="font:500 15px/1.4 Inter; margin-top:14px; color:#555;">Re: Plasterboard &amp; ceilings</div>
+      <div style="font:700 20px/1.3 Inter; margin-top:14px;">Total: 72,000 + tax</div>
+      <div style="font:600 26px/1.2 Inter; margin-top:22px;">As discussed.</div>
+      <div style="font:500 15px/1.4 Inter; margin-top:30px; color:#555;">Regards,</div>
+      <div class="ptag">C</div>
+    </div>
+    <div id="qD" class="prop" style="left:375px; top:520px; width:190px; height:360px; background:#15181B; border-radius:30px; padding:12px;">
+      <div style="position:absolute; inset:12px; background:#fff; border-radius:20px; padding:30px 16px; color:#222;">
+        <div style="font:700 15px/1.3 Inter;">Re: Tender</div>
+        <div style="font:500 15px/1.4 Inter; color:#555; margin-top:8px;">Price below.</div>
+        <div style="margin-top:150px; font:500 12px/1.3 Inter; color:#999;">Sent from my phone</div>
+      </div>
+      <div class="ptag">D</div>
+    </div>
+    <div id="qE" class="prop paper" style="left:860px; top:520px; width:280px; height:340px; padding:26px 24px;">
+      <div class="bars"><i style="width:90%"></i><i style="width:76%"></i><i style="width:84%"></i><i style="width:60%"></i></div>
+      <div style="font:700 17px/1.3 Inter; margin-top:12px; color:#222; display:inline-block; border-bottom:4px solid #E0302A;">Note 14: Excludes ceilings.</div>
+      <div class="bars" style="margin-top:22px;"><i style="width:80%"></i><i style="width:66%"></i></div>
+      <div style="position:absolute; bottom:18px; left:0; right:0; text-align:center; font:500 14px/1 Inter; color:#888;">7 of 9</div>
+      <div class="ptag">E</div>
+    </div>
+    <div id="qF" class="prop" style="left:1300px; top:575px; width:380px; height:250px; background:#F7F8F8; border:10px solid #C9CDD1; border-radius:6px; padding:16px 18px; font:400 18px/1.5 Kalam, cursive; color:#1E3A8A;">
+      <div>Boards supply &amp; fix – 1,240 m² @ 38.50</div>
+      <div>Ceilings – 380 m² @ 62.00 – INCL</div>
+      <div>Jointing &amp; finishing – incl</div>
+      <div style="font-weight:700; margin-top:6px;">TOTAL 71,300 + TAX</div>
+      <div class="ptag">F</div>
+    </div>
+    <div id="fr1" class="frow" style="top:170px;"><span class="ftag">A</span><span class="fname">Bidder A</span><span class="fchip">same lines</span><span class="fchip">Rev C sheets</span><span class="fchip">+ bulkheads</span><span class="fchip">excl. tax</span><span class="ftot">74,850</span></div>
+    <div id="fr2" class="frow" style="top:280px;"><span class="ftag">B</span><span class="fname">Bidder B</span><span class="fchip">same lines</span><span class="fchip">Rev C sheets</span><span class="fchip">+ bulkheads</span><span class="fchip">excl. tax</span><span class="ftot">76,200</span></div>
+    <div id="fr3" class="frow" style="top:390px;"><span class="ftag">C</span><span class="fname">Bidder C</span><span class="fchip">same lines</span><span class="fchip">Rev C sheets</span><span class="fchip">+ bulkheads</span><span class="fchip">excl. tax</span><span class="ftot">72,000</span></div>
+    <div id="fr4" class="frow" style="top:500px;"><span class="ftag">D</span><span class="fname">Bidder D</span><span class="fchip">same lines</span><span class="fchip">Rev C sheets</span><span class="fchip">+ bulkheads</span><span class="fchip">excl. tax</span><span class="ftot">73,480</span></div>
+    <div id="fr5" class="frow" style="top:610px;"><span class="ftag">E</span><span class="fname">Bidder E</span><span class="fchip">same lines</span><span class="fchip">Rev C sheets</span><span class="fchip">+ bulkheads</span><span class="fchip">excl. tax</span><span class="ftot">71,940</span></div>
+    <div id="fr6" class="frow" style="top:720px;"><span class="ftag">F</span><span class="fname">Bidder F</span><span class="fchip">same lines</span><span class="fchip">Rev C sheets</span><span class="fchip">+ bulkheads</span><span class="fchip">excl. tax</span><span class="ftot">71,300</span></div>
+  </div>
+
+  <!-- =================== RECAP + CTA =================== -->
+  <div id="sR" class="fill">
+    <div id="rSheet" class="abs" style="left:380px; top:84px; width:1160px; height:806px; background:#FBFAF7; border-radius:4px; box-shadow:0 40px 90px rgba(0,0,0,.65); color:#1E2023; font-family:Inter;">
+      <div style="position:absolute; left:56px; top:46px; font:700 22px/1 var(--mono); letter-spacing:.2em; color:#6B6F75;">TENDER</div>
+      <div style="position:absolute; left:56px; top:84px; font:800 54px/1.1 Inter; letter-spacing:-.01em;">Plasterboard &amp; ceilings</div>
+      <div id="oldLine" style="position:absolute; left:56px; top:170px; font:600 34px/1.3 Inter; color:#9A9CA0;">Drawings attached. Please price.</div>
+      <svg style="position:absolute; left:46px; top:170px;" width="600" height="44"><path id="strikeR" d="M4 24 C 180 15, 390 28, 592 17" fill="none" stroke="#E0302A" stroke-width="7" stroke-linecap="round"/></svg>
+      <div style="position:absolute; left:56px; right:56px; top:240px; height:2px; background:#E3E1DA;"></div>
+      <div style="position:absolute; left:56px; top:262px; right:48px; font:600 38px/1.2 Inter;">
+        <div id="rk1" class="row" style="height:104px; gap:26px;"><svg width="46" height="46" viewBox="0 0 40 40" style="flex:none;"><rect x="2" y="2" width="36" height="36" rx="8" fill="#16A34A"/><path d="M10 20 L17 27 L30 13" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Cut from the SOQ: same lines for every bidder</span></div>
+        <div id="rk2" class="row" style="height:104px; gap:26px;"><svg width="46" height="46" viewBox="0 0 40 40" style="flex:none;"><rect x="2" y="2" width="36" height="36" rx="8" fill="#16A34A"/><path d="M10 20 L17 27 L30 13" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>The right sheets, pinned to the version</span></div>
+        <div id="rk3" class="row" style="height:104px; gap:26px;"><svg width="46" height="46" viewBox="0 0 40 40" style="flex:none;"><rect x="2" y="2" width="36" height="36" rx="8" fill="#16A34A"/><path d="M10 20 L17 27 L30 13" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Scope changes reach everyone still in</span></div>
+        <div id="rk4" class="row" style="height:104px; gap:26px;"><svg width="46" height="46" viewBox="0 0 40 40" style="flex:none;"><rect x="2" y="2" width="36" height="36" rx="8" fill="#16A34A"/><path d="M10 20 L17 27 L30 13" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Tax basis stated before anyone quotes</span></div>
+        <div id="rk5" class="row" style="height:104px; gap:26px;"><svg width="46" height="46" viewBox="0 0 40 40" style="flex:none;"><rect x="2" y="2" width="36" height="36" rx="8" fill="#16A34A"/><path d="M10 20 L17 27 L30 13" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Emailed bids checked into the same table</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="sC" class="fill">
+    <div id="chC" class="abs chipk acc" style="left:210px; top:240px;"><span style="width:10px;height:10px;border-radius:50%;background:var(--accent);display:inline-block;"></span>Live page · qsme.build/platform/tendering · captured 2 Oct 2026</div>
+    <div id="wC" class="win site" style="left:210px; top:306px; width:1500px; height:458px;">
+      <div class="bar"><i></i><i></i><i></i><span class="url">qsme.build/platform/tendering</span></div>
+      <img src="clips/stills/cta-band.png" style="width:1500px;">
+      <div id="ulC" class="uline" style="left:86px; top:306px; width:343px;"></div>
+    </div>
+  </div>
+
+  <div id="sE" class="fill">
+    <img id="bg" class="abs" style="left:0; top:0; width:1920px; height:1080px; object-fit:cover;">
+    <div class="fill" style="background:linear-gradient(90deg, rgba(12,19,16,.96) 0%, rgba(12,19,16,.92) 40%, rgba(12,19,16,.70) 62%, rgba(12,19,16,.55) 100%);"></div>
+    <img id="logo" class="abs" src="qsme-logo.svg" style="left:96px; top:150px; width:460px; transform-origin:0 50%;">
+    <div id="eUrl" class="abs disp" style="left:156px; top:384px; font-size:96px;">qsme.build</div>
+    <div id="ePill" class="abs pill" style="left:156px; top:520px; font-size:40px; padding:20px 42px;">Book a 30-minute demo</div>
+    <div id="eAsk" class="abs" style="left:156px; top:686px; width:800px; padding:24px 34px; border:2px solid #2C5B22; border-radius:20px; background:rgba(16,36,15,.78); font:700 44px/1.2 var(--display); letter-spacing:-.01em;"><span class="g">Which of the five</span> gets you most?<div style="font:500 30px/1.3 var(--body); color:var(--ink-70); margin-top:8px;">Tell us in the comments.</div></div>
+  </div>
+
+  <!-- =================== CAPTIONS =================== -->
+  <div id="k1a" class="cap"><span>No lines to price, so six bidders wrote <b>six scopes</b>.</span></div>
+  <div id="k1b" class="cap"><span>Cut the tender from <b>your estimate</b>.</span></div>
+  <div id="k1c" class="cap"><span><b>Same lines</b> for every bidder.</span></div>
+  <div id="k1c2" class="cap"><span>Your rates and budget <b>never go with them</b>.</span></div>
+  <div id="k1d" class="cap"><span>So every total prices <b>the same scope</b>.</span></div>
+  <div id="k2a" class="cap"><span>Three priced <b>Rev B</b>. Three priced <b>Rev C</b>.</span></div>
+  <div id="k2b" class="cap"><span>Point every bidder at <b>the right sheets</b>.</span></div>
+  <div id="k2c" class="cap"><span><b>Pages pinned</b> to the version.</span></div>
+  <div id="k2c2" class="cap"><span>New set uploaded? <b>The bidder sees it.</b></span></div>
+  <div id="k3a" class="cap"><span>Addendum 2 went to five. <b>Bidder D</b> priced the old scope.</span></div>
+  <div id="k3b" class="cap"><span>Change it in the tender. It knows <b>2 bids are in</b>.</span></div>
+  <div id="k3c" class="cap"><span>Change it once. <b>Everyone still in is told.</b></span></div>
+  <div id="k4a" class="cap"><span>Which one’s <b>cheaper</b>?</span></div>
+  <div id="k4a2" class="cap"><span>Same basis: the cheaper-looking bid <b>isn’t cheaper</b>.</span></div>
+  <div id="k4a3" class="cap"><span><b>Same tax basis</b>, or it isn’t a comparison.</span></div>
+  <div id="k4b" class="cap"><span>QSME asks the tax question <b>before anyone quotes</b>. It sticks to every bid.</span></div>
+  <div id="k5a" class="cap"><span>A PDF in an inbox <b>isn’t in your comparison</b>.</span></div>
+  <div id="k5b" class="cap"><span>Drop it on the tender. It’s <b>read into a draft</b>.</span></div>
+  <div id="k5b2" class="cap"><span>A person <b>checks it</b> against the original.</span></div>
+  <div id="k5c" class="cap"><span>Emailed quotes, checked, in <b>the same table</b>.</span></div>
+  <div id="kH1" class="cap"><span><b>Totals</b> side by side.</span></div>
+  <div id="kH1b" class="cap"><span>Each bid’s <b>own lines</b>, one click away.</span></div>
+  <div id="kH2" class="cap"><span>It won’t pick the winner for you. <b>You decide.</b></span></div>
+  <div id="kH3" class="cap"><span>It’s just a <b>fair fight</b> now.</span></div>
+  <div id="kR" class="cap"><span>Fix the tender, and the bids <b>start to compare</b>.</span></div>
+  <div id="kC" class="cap"><span>Bring a real package to a <b>30-minute demo</b>.</span></div>
+
+  <!-- =================== CHROME =================== -->
+  <div id="tband" class="abs" style="left:0; top:0; width:1920px; height:140px; background:linear-gradient(180deg, rgb(12,19,16) 0, rgb(12,19,16) 108px, rgba(12,19,16,0) 140px);"></div>
+  <div id="topbar">
+    <div id="series">WHY BIDS NEVER COMPARE · PART 2</div>
+    <div style="position:absolute; left:0; right:0; top:4px; display:flex; justify-content:center;"><div id="tagIll" class="illustrative" style="position:static; font-size:26px; padding:5px 16px; color:var(--ink-70); border-color:var(--ink-50);">Recreated screen · demo data</div></div>
+    <div id="pips"><div id="pp1" class="pip">1</div><div id="pp2" class="pip">2</div><div id="pp3" class="pip">3</div><div id="pp4" class="pip">4</div><div id="pp5" class="pip">5</div></div>
+  </div>
+  <div id="ring"></div>
+  <svg id="cursor" viewBox="0 0 38 46"><path d="M3 2 L3 36 L12 28 L19 43 L26 40 L19 25 L31 25 Z" fill="#fff" stroke="#0B0F0D" stroke-width="3" stroke-linejoin="round"/></svg>
+  <div id="wipe"></div>
+</div>
+<script src="../../../tools/motion/kit.js"></script>
+<script>
+(function () {
+  const K = Kit;
+  const $ = s => document.querySelector(s);
+  const cap = (s, t0, t1) => { K.pop(s, t0, { dy: 14, dur: 0.22, fade: 0.14 }); K.out(s, t1 - 0.14, 0.14); };
+  const rise = (s, t, dy) => K.pop(s, t, { dy: dy == null ? 30 : dy, dur: 0.32, fade: 0.2 });
+  const tick = (s, t) => { K.add(s, 'opacity', [[t, 0], [t + 0.06, 1]]); K.add(s, 'scale', [[t, 0.3], [t + 0.2, 1, 'outBack']]); };
+  const draw = (s, t0, t1) => K.add(s, 'trim', [[t0, 0], [t1, 1, 'out']]);
+
+  // ---------------- scenes ----------------
+  // v2 timing (2026-10-02 review): title card held to 6.5s, six-scopes beat 5.5s, emailed-table beat +0.5s,
+  // "fair fight" callback 4s, recap 7s, end card 7.9s (YouTube end-screen zone on the right). 139.0s total.
+  const W = [12.8, 33.3, 51.3, 67.7, 87.7, 104.6, 120.0];      // chapter wipes (scene swaps happen at w + 0.27)
+  const C = W.map(w => +(w + 0.27).toFixed(2));
+  K.scene('#s0', 0, C[0]);
+  K.scene('#c1', C[0], 15.4).scene('#s1a', 15.4, 20.9).scene('#s1b', 20.9, 25.3).scene('#s1c', 25.3, 29.7).scene('#s1d', 29.7, C[1]);
+  K.scene('#c2', C[1], 35.9).scene('#s2a', 35.9, 39.5).scene('#s2b', 39.5, 44.1).scene('#s2c', 44.1, C[2]);
+  K.scene('#c3', C[2], 53.9).scene('#s3a', 53.9, 57.7).scene('#s3b', 57.7, 63.9).scene('#s3c', 63.9, C[3]);
+  K.scene('#c4', C[3], 70.3).scene('#s4a', 70.3, 81.5).scene('#s4b', 81.5, C[4]);
+  K.scene('#c5', C[4], 90.3).scene('#s5a', 90.3, 93.3).scene('#s5b', 93.3, 100.7).scene('#s5c', 100.7, C[5]);
+  K.scene('#cH', C[5], 106.8).scene('#sH1', 106.8, 112.2).scene('#sH2', 112.2, 116.0).scene('#sH3', 116.0, C[6]);
+  K.scene('#sR', C[6], 127.3).scene('#sC', 127.3, 131.1).scene('#sE', 131.1, 139.1);
+  K.scene('#topbar', C[0], C[6]).scene('#tband', C[0], C[6]);
+
+  // wipe: a dark panel with an accent edge crosses the frame on every chapter change
+  const wk = [[0, -1960]];
+  W.forEach(w => { wk.push([w - 0.01, -1960, 'hold'], [w + 0.25, 0, 'inOut'], [w + 0.31, 0], [w + 0.58, 1960, 'inOut']); });
+  K.add('#wipe', 'x', wk);
+
+  // chapter pips: active = filled accent, done = accent outline
+  const ACC = '#4bcd32', BG = '#0c1310', LINE = '#213128', INK50 = '#86958b', DARK = '#06130a';
+  for (let i = 1; i <= 5; i++) {
+    const on = C[i - 1], off = C[i];
+    K.add('#pp' + i, 'background', [[0, BG], [on, ACC, 'hold'], [off, BG, 'hold']]);
+    K.add('#pp' + i, 'color', [[0, INK50], [on, DARK, 'hold'], [off, ACC, 'hold']]);
+    K.add('#pp' + i, 'borderColor', [[0, LINE], [on, ACC, 'hold']]);
+  }
+
+  // chapter cards
+  ['#c1', '#c2', '#c3', '#c4', '#c5'].forEach((c, i) => {
+    const t = C[i];
+    K.add(c + ' .num', 'opacity', [[t + 0.05, 0], [t + 0.3, 1, 'out']]); K.add(c + ' .num', 'x', [[t + 0.05, -90], [t + 0.45, 0, 'out']]);
+    rise(c + ' .ck', t + 0.2, 20); rise(c + ' .ttl', t + 0.3, 36);
+    if ($(c + ' .sub')) rise(c + ' .sub', t + 0.9, 20);
+  });
+  rise('#cH .ck', C[5] + 0.15, 20); K.slam('#cH .ttl', C[5] + 0.3, { from: 1.12, dur: 0.22 });
+
+  // ---------------- HOOK (0 – 6.3) ----------------
+  // frame 0 already reads: chip + "6 bids." + "0 that compare." + six bids scattered
+  const P = { // native centre (from CSS) → pile centre, rotation from → to
+    pA: [[1240, 236], [1370, 470], -7, -13], pB: [[1620, 210], [1500, 430], 4, 6], pC: [[1250, 542], [1410, 560], 6, 9],
+    pD: [[1640, 560], [1540, 580], -5, -8], pE: [[1240, 840], [1360, 640], 3, 14], pF: [[1610, 875], [1470, 600], -3, -4] };
+  Object.keys(P).forEach((k, i) => {
+    const [c, f, r0, r1] = P[k], t0 = 0.45 + i * 0.13, t1 = t0 + 0.75;
+    K.add('#' + k, 'x', [[t0, 0], [t1, f[0] - c[0], 'swipe']]);
+    K.add('#' + k, 'y', [[t0, 0], [t1, f[1] - c[1], 'swipe']]);
+    K.add('#' + k, 'rotate', [[0, r0], [t0, r0], [t1, r1, 'swipe']]);
+    K.add('#' + k, 'scale', [[t0, 0.96], [t1, 1.0, 'swipe']]);
+  });
+  K.add('#tender', 'opacity', [[4.45, 0], [4.5, 1]]);
+  K.add('#tender', 'y', [[4.45, -760], [4.78, 0, 'slam']]);
+  K.add('#tender', 'rotate', [[4.45, -9], [4.78, -2, 'out']]);
+  K.add('#tender', 'scale', [[4.45, 1.12], [4.78, 1, 'slam']]);
+  draw('#tCircle', 5.05, 5.55);
+  rise('#h3', 2.7, 20);
+  K.slam('#h4', 4.75, { from: 1.18, dur: 0.16 });
+
+  // ---------------- TITLE CARD (6.3 – 12.8): the chapter list builds 0.5s apart, the subline holds 3s ----------------
+  ['#hChip', '#h1', '#h2', '#h3', '#h4'].forEach(s => K.out(s, 6.1, 0.2));
+  K.add('#pile', 'x', [[6.1, 0], [6.7, 70, 'inOut']]);
+  K.add('#pile', 'scale', [[6.1, 1], [6.7, 0.94, 'inOut'], [12.8, 0.97]]);
+  rise('#tKick', 6.4, 16); rise('#tTitle', 6.5, 30);
+  ['#tl1', '#tl2', '#tl3', '#tl4', '#tl5'].forEach((s, i) => rise(s, 7.0 + i * 0.5, 18));
+  rise('#tSub', 9.7, 14);
+
+  // ---------------- CH1 ----------------
+  // six scopes: the cards land A→F 0.35s apart; the caption enters after the third card
+  rise('#m1', 15.45, 24);
+  ['#l1a', '#l1b', '#l1c', '#l1d', '#l1e', '#l1f'].forEach((s, i) => draw(s, 15.8 + i * 0.35, 16.25 + i * 0.35));
+  ['#scA', '#scB', '#scC', '#scD', '#scE', '#scF'].forEach((s, i) => rise(s, 15.95 + i * 0.35, 22));
+  cap('#k1a', 16.75, 20.9);
+
+  rise('#w1b', 20.92, 26);
+  tick('#tkAll', 22.25); ['#tkJ1', '#tkJ2', '#tkJ3', '#tkJ4'].forEach((s, i) => tick(s, 22.35 + i * 0.08));
+  K.count('#selCount', [[0, 0], [22.3, 0], [22.7, 4, 'out']], v => Math.round(v) + ' of 4 selected');
+  cap('#k1b', 21.05, 25.3);
+
+  rise('#lab1L', 25.32, 12); rise('#w1cL', 25.32, 24); rise('#lab1R', 25.6, 12); rise('#w1cR', 25.6, 24);
+  ['#br1', '#br2', '#br3', '#br4'].forEach((s, i) => { K.add(s, 'opacity', [[25.8 + i * 0.12, 0], [26.0 + i * 0.12, 1, 'out']]); });
+  ['#r1', '#r2', '#r3', '#r4'].forEach(s => K.add(s, 'background', [[0, '#ffffff'], [27.7, '#ffffff'], [27.95, '#fef3c7', 'out'], [29.6, '#fef3c7']]));
+  // bidder tabs A→F: the active tab is green, the lines stay identical
+  for (let i = 1; i <= 6; i++) {
+    const on = 26.2 + (i - 1) * 0.55, off = i < 6 ? on + 0.55 : 40;
+    K.add('#bt' + i, 'background', [[0, '#f1f5f9'], [on, '#16a34a', 'hold'], [off, '#f1f5f9', 'hold']]);
+    K.add('#bt' + i, 'color', [[0, '#475569'], [on, '#ffffff', 'hold'], [off, '#475569', 'hold']]);
+    K.add('#bt' + i, 'borderColor', [[0, '#e2e8f0'], [on, '#16a34a', 'hold'], [off, '#e2e8f0', 'hold']]);
+    if (i > 1) K.add('#bTbl', 'opacity', [[on - 0.001, 1], [on, 0.55, 'hold'], [on + 0.18, 1, 'out']]);
+  }
+  cap('#k1c', 25.45, 27.3); cap('#k1c2', 27.3, 29.7);
+
+  rise('#ch1d', 29.75, 12); rise('#w1d', 29.8, 24);
+  K.add('#w1d', 'scale', [[29.8, 1], [33.5, 1.05, 'inOut']]);
+  K.add('#hl1d', 'clipX', [[30.3, 0], [31.3, 1, 'inOut']]);
+  cap('#k1d', 29.9, C[1]);
+
+  // ---------------- CH2 ----------------
+  rise('#dB', 35.92, 24); rise('#dC', 36.15, 24); rise('#pbB', 36.7, 16); rise('#pbC', 37.0, 16);
+  draw('#cloud', 37.4, 38.1);
+  cap('#k2a', 36.05, 39.5);
+
+  rise('#w2b', 39.52, 26);
+  tick('#tkP1', 40.65); tick('#tkP2', 41.3); tick('#tkP3', 41.95);
+  rise('#fn2b', 42.3, 10);
+  cap('#k2b', 39.65, 44.1);
+
+  rise('#w2c', 44.12, 26);
+  ['#ref1', '#ref2', '#ref3'].forEach((s, i) => { rise(s, 44.4 + i * 0.12, 14); K.add(s, 'borderColor', [[0, '#e2e8f0'], [48.0 + i * 0.1, '#e2e8f0'], [48.2 + i * 0.1, '#fcd34d', 'out']]); });
+  ['#pm1', '#pm2', '#pm3'].forEach((s, i) => K.pop(s, 48.05 + i * 0.1, { dy: 0 }).add(s, 'scale', [[48.05 + i * 0.1, 0.6], [48.3 + i * 0.1, 1, 'outBack']]));
+  rise('#pmNote', 48.5, 14);
+  K.pop('#ev2c', 47.6, { dy: 20 });
+  cap('#k2c', 44.25, 47.55); cap('#k2c2', 47.65, C[2]);
+
+  // ---------------- CH3 ----------------
+  rise('#m3', 53.92, 24); rise('#b3', 54.2, 20);
+  ['#ok3a', '#ok3b', '#ok3c', '#ok3e', '#ok3f'].forEach((s, i) => K.pop(s, 54.9 + i * 0.16, { dy: 10 }));
+  draw('#ring3d', 55.9, 56.4); K.pop('#note3', 56.45, { dy: 0 }).add('#note3', 'scale', [[56.45, 1.2], [56.65, 1, 'out']]).add('#note3', 'rotate', [[0, -3]]);
+  cap('#k3a', 54.05, 57.7);
+
+  rise('#w3b', 57.72, 26);
+  K.add('#banner3', 'background', [[58.3, '#eff6ff'], [58.6, '#dbeafe', 'out'], [59.3, '#eff6ff', 'inOut']]);
+  tick('#tkBulk', 60.7);
+  K.add('#bulkRow', 'background', [[0, '#ffffff'], [60.7, '#ffffff'], [60.9, '#dcfce7', 'out']]);
+  K.count('#selCount3', [[0, 4], [60.7, 4], [60.75, 5, 'hold']], v => Math.round(v) + ' of 5 selected');
+  cap('#k3b', 57.85, 63.9);
+
+  rise('#node3', 63.92, 20);
+  ['#tl3a', '#tl3b', '#tl3c', '#tl3d', '#tl3e', '#tl3f'].forEach((s, i) => { draw(s, 64.4 + i * 0.07, 65.1 + i * 0.07); K.add(s, 'stroke', [[0, '#2c5b22'], [65.0 + i * 0.07, '#2c5b22'], [65.2 + i * 0.07, '#4bcd32', 'out']]); });
+  ['#v3a', '#v3b', '#v3c', '#v3d', '#v3e', '#v3f'].forEach((s, i) => {
+    rise(s, 64.1 + i * 0.06, 16);
+    K.add(s, 'borderColor', [[0, '#213128'], [65.15 + i * 0.07, '#213128'], [65.35 + i * 0.07, '#4bcd32', 'out']]);
+    K.add(s, 'background', [[0, '#1a2a21'], [65.15 + i * 0.07, '#1a2a21'], [65.35 + i * 0.07, '#10240f', 'out']]);
+  });
+  rise('#told3', 65.8, 12);
+  cap('#k3c', 64.05, C[3]);
+
+  // ---------------- CH4 (labelled example; the maths is ours, written on a pad, never the product's toggle/tag) ----------------
+  rise('#ex4', 70.32, 10); K.show('#basisAs', 70.32); rise('#rowX', 70.4, 24); rise('#rowY', 70.6, 24);
+  K.pop('#looks', 71.4, { dy: 0 }).add('#looks', 'scale', [[71.4, 1.25], [71.6, 1, 'out']]).add('#looks', 'rotate', [[0, -4]]);
+  rise('#pad', 73.8, 30); K.add('#pad', 'rotate', [[0, -1.5]]);
+  K.add('#n1', 'clipX', [[74.0, 0], [74.3, 1, 'out']]);
+  K.add('#nX1', 'clipX', [[74.3, 0], [75.0, 1]]);
+  draw('#strike4', 75.05, 75.4);
+  K.add('#looks', 'opacity', [[75.45, 1], [75.85, 0.45]]);
+  K.show('#nY1k', 75.4); K.add('#nY1', 'clipX', [[75.45, 0], [75.75, 1]]);
+  draw('#rg1', 75.85, 76.35);
+  K.add('#n2', 'clipX', [[77.6, 0], [77.9, 1, 'out']]);
+  K.add('#nX2', 'clipX', [[77.9, 0], [78.2, 1]]);
+  K.show('#nY2k', 78.25); K.add('#nY2a', 'clipX', [[78.3, 0], [78.75, 1]]); K.add('#nY2', 'clipX', [[78.75, 0], [79.0, 1]]);
+  draw('#rg2', 79.1, 79.6);
+  K.pop('#nEw', 79.9, { dy: 0 }).add('#nEw', 'scale', [[79.9, 1.15], [80.1, 1, 'out']]).add('#nEw', 'rotate', [[0, -3]]);
+  cap('#k4a', 70.45, 73.75); cap('#k4a2', 73.75, 77.35); cap('#k4a3', 77.35, 81.5);
+
+  rise('#ch4b', 81.55, 12); rise('#w4b', 81.6, 24);
+  K.add('#w4b', 'scale', [[81.6, 1], [87.9, 1.05, 'inOut']]);
+  K.add('#hl4b', 'clipX', [[82.3, 0], [83.5, 1, 'inOut']]);
+  cap('#k4b', 81.7, C[4]);
+
+  // ---------------- CH5 ----------------
+  rise('#inbox', 90.32, 24); rise('#cmp5', 90.55, 24);
+  K.add('#slotA', 'scale', [[91.5, 1], [91.7, 1.04, 'out'], [91.95, 1, 'out']]);
+  cap('#k5a', 90.45, 93.3);
+
+  rise('#w5b', 93.32, 26);
+  K.show('#st1', 93.32, 95.4); K.show('#st2', 95.4);
+  K.add('#file5', 'opacity', [[93.55, 0], [93.7, 1], [94.35, 1], [94.5, 0]]);
+  K.add('#file5', 'x', [[93.55, -120], [94.3, 470, 'swipe']]);
+  K.add('#file5', 'y', [[93.55, 40], [94.3, -380, 'swipe']]);
+  K.add('#file5', 'scale', [[94.1, 1], [94.35, 0.8, 'in']]);
+  K.add('#drop', 'borderColor', [[0, '#cbd5e1'], [93.9, '#cbd5e1'], [94.05, '#16a34a', 'out'], [95.4, '#16a34a']]);
+  K.show('#dropTxt', 0, 94.4); K.show('#reading', 94.4);
+  K.add('#spin', 'rotate', [[94.4, 0], [95.4, 360]]);
+  tick('#tkChk', 98.65);
+  K.add('#chkTxt', 'color', [[0, '#0f172a'], [98.65, '#166534', 'hold']]);
+  cap('#k5b', 93.45, 97.45); cap('#k5b2', 97.45, 100.7);
+
+  rise('#w5c', 100.72, 26);
+  rise('#tot5', 101.0, 10);
+  K.add('#rowA5', 'background', [[101.0, '#ffffff'], [101.2, '#dcfce7', 'out'], [103.1, '#f0fdf4', 'inOut']]);
+  K.add('#rowF5', 'background', [[101.55, '#ffffff'], [101.75, '#dcfce7', 'out'], [103.6, '#f0fdf4', 'inOut']]);
+  K.pop('#aside5', 101.7, { dy: 0 }).add('#aside5', 'scale', [[101.7, 1.15], [101.95, 1, 'out']]).add('#aside5', 'rotate', [[0, -2]]);
+  cap('#k5c', 100.85, C[5]);
+
+  // ---------------- THE HONEST BIT ----------------
+  rise('#wH', 106.82, 26);
+  rise('#totH', 107.1, 10);
+  K.add('#bd', 'opacity', [[108.75, 0], [108.9, 1]]);
+  K.add('#bd', 'x', [[108.75, 120], [109.15, 0, 'out']]);
+  K.add('#rowHB', 'background', [[0, '#ffffff'], [108.65, '#ffffff'], [108.8, '#dcfce7', 'out']]);
+  cap('#kH1', 106.95, 109.2); cap('#kH1b', 109.2, 112.2);
+
+  rise('#chH2', 112.25, 12); rise('#wH2', 112.3, 24);
+  K.add('#wH2', 'scale', [[112.3, 1], [116.1, 1.04, 'inOut']]);
+  K.add('#hlH2a', 'clipX', [[112.9, 0], [113.8, 1, 'inOut']]);
+  K.add('#hlH2b', 'clipX', [[113.8, 0], [114.05, 1, 'out']]);
+  cap('#kH2', 112.4, 116.0);
+
+  // "It's just a fair fight now.": part 1's six bids fly into six identical rows
+  const Q = { // native centre → row centre, start rotation
+    qA: [[420, 330], -8], qB: [[980, 300], 6], qC: [[1500, 340], 7], qD: [[470, 700], -6], qE: [[1000, 690], 10], qF: [[1490, 700], -4] };
+  Object.keys(Q).forEach((k, i) => {
+    const [c, r0] = Q[k], s = '#' + k, a = 116.0 + i * 0.04, tf = 116.75 + i * 0.14, rowY = 216 + 110 * i;
+    K.add(s, 'opacity', [[a, 0], [a + 0.12, 1], [tf + 0.26, 1], [tf + 0.42, 0, 'in']]);
+    K.add(s, 'scale', [[a, 0.5], [a + 0.25, 0.62, 'out'], [tf, 0.62], [tf + 0.42, 0.32, 'swipe']]);
+    K.add(s, 'rotate', [[0, r0], [tf, r0], [tf + 0.42, 0, 'swipe']]);
+    K.add(s, 'x', [[tf, 0], [tf + 0.42, 960 - c[0], 'swipe']]);
+    K.add(s, 'y', [[tf, 0], [tf + 0.42, rowY - c[1], 'swipe']]);
+    const r = '#fr' + (i + 1);
+    K.add(r, 'opacity', [[tf + 0.28, 0], [tf + 0.42, 1, 'out']]);
+    K.add(r, 'scale', [[tf + 0.28, 0.9], [tf + 0.56, 1, 'outBack']]);
+  });
+  cap('#kH3', 116.15, C[6]);
+
+  // ---------------- RECAP + CTA ----------------
+  rise('#rSheet', C[6] + 0.02, 30);
+  K.add('#rSheet', 'scale', [[C[6] + 0.32, 1], [127.3, 1.025]]);
+  draw('#strikeR', C[6] + 0.45, C[6] + 0.8);
+  ['#rk1', '#rk2', '#rk3', '#rk4', '#rk5'].forEach((s, i) => rise(s, 121.3 + i * 0.6, 14));
+  cap('#kR', 120.5, 127.3);
+
+  rise('#chC', 127.32, 12); rise('#wC', 127.36, 24);
+  K.add('#wC', 'scale', [[127.36, 1], [131.2, 1.04, 'inOut']]);
+  K.add('#ulC', 'clipX', [[128.0, 0], [128.7, 1, 'inOut']]);
+  cap('#kC', 127.45, 131.1);
+
+  // end card (7.9s): logo, URL, demo pill and the comment prompt sit in the left half; the right half is the
+  // clear zone for YouTube end-screen elements (subscribe + part 1)
+  K.clip('#bg', { dir: 'clips/fitout-long', t0: 131.1, fps: 30, frames: 240, ext: '.jpg' });
+  K.fade('#bg', 131.1, 131.6);
+  K.fade('#logo', 131.25, 131.65).add('#logo', 'scale', [[131.25, 0.94], [131.8, 1, 'out']]);
+  rise('#eUrl', 131.6, 20); K.pop('#ePill', 132.0, { dy: 16 });
+  rise('#eAsk', 132.7, 20);
+
+  // ---------------- camera push-ins on the stand-ins (focus point stays put while zooming) ----------------
+  function cam(s, keys) {
+    $(s).style.transformOrigin = '0 0';
+    K.add(s, 'x', keys.map(k => [k[0], k[1] * (1 - k[3]), k[4]]));
+    K.add(s, 'y', keys.map(k => [k[0], k[2] * (1 - k[3]), k[4]]));
+    K.add(s, 'scale', keys.map(k => [k[0], k[3], k[4]]));
+  }
+  cam('#w1b', [[21.3, 820, 420, 1], [22.0, 820, 420, 1.16, 'inOut'], [25.3, 820, 420, 1.2]]);
+  cam('#w2b', [[39.9, 820, 480, 1], [40.5, 820, 480, 1.16, 'inOut'], [44.1, 820, 480, 1.2]]);
+  cam('#w2c', [[47.6, 820, 330, 1], [48.2, 820, 330, 1.12, 'inOut'], [51.6, 820, 330, 1.15]]);   // bottom edge stays above the "v2 uploaded" chip
+  cam('#w3b', [[58.1, 820, 185, 1], [58.8, 820, 185, 1.16, 'inOut'], [59.6, 820, 185, 1.16], [60.3, 820, 560, 1.16, 'inOut'], [63.9, 820, 560, 1.2]]);
+  cam('#w5b', [[95.4, 800, 0, 1], [96.0, 800, 0, 1.05, 'inOut'], [100.0, 800, 0, 1.05], [100.65, 800, 0, 1.0, 'inOut']]);   // top edge pinned below the top band
+  cam('#w5c', [[101.05, 820, 175, 1], [101.7, 820, 175, 1.12, 'inOut'], [104.8, 820, 175, 1.14]]);
+  cam('#wH', [[109.2, 837, 450, 1], [109.9, 837, 450, 1.04, 'inOut'], [112.2, 837, 450, 1.05]]);
+  // the "Recreated screen · demo data" label sits in the top bar (never zoomed out of frame) whenever a stand-in is on screen
+  K.add('#tagIll', 'opacity', [[0, 0], [20.9, 1, 'hold'], [29.7, 0, 'hold'], [39.5, 1, 'hold'], [C[2], 0, 'hold'], [57.7, 1, 'hold'], [63.9, 0, 'hold'], [93.3, 1, 'hold'], [C[5], 0, 'hold'], [106.8, 1, 'hold'], [112.2, 0, 'hold']]);
+
+  // ---------------- cursor (parks beside its target after each click, never on a label) ----------------
+  const paths = [
+    { t0: 21.2, t1: 23.3, pts: [[21.2, [1560, 840]], [22.05, { s: '#cbAll' }, 'swipe'], [23.3, { s: '#cbAll', dx: 40, dy: 70 }, 'out']], clicks: [22.2] },
+    { t0: 40.0, t1: 42.9, pts: [[40.0, [1500, 840]], [40.55, { s: '#tkP1' }, 'swipe'], [41.05, { s: '#tkP1' }], [41.2, { s: '#tkP2' }, 'swipe'], [41.7, { s: '#tkP2' }], [41.85, { s: '#tkP3' }, 'swipe'], [42.9, { s: '#tkP3', dx: -62, dy: -36 }, 'out']], clicks: [40.6, 41.25, 41.9] },
+    { t0: 59.6, t1: 61.9, pts: [[59.6, [1520, 820]], [60.55, { s: '#tkBulk' }, 'swipe'], [61.9, { s: '#tkBulk', dx: -62, dy: -36 }, 'out']], clicks: [60.65] },
+    { t0: 97.5, t1: 100.1, pts: [[97.5, [1400, 860]], [98.5, { s: '#tkChk' }, 'swipe'], [100.1, { s: '#tkChk', dx: 30, dy: -60 }, 'out']], clicks: [98.6] },
+    { t0: 107.6, t1: 112.1, pts: [[107.6, [1100, 820]], [108.5, { s: '#rowHB', dx: -150 }, 'swipe'], [112.1, { s: '#rowHB', dx: -120, dy: 20 }, 'out']], clicks: [108.6] },
+  ];
+  const cur = $('#cursor'), ring = $('#ring');
+  const ease = Kit.ease;
+  function at(p) { if (Array.isArray(p)) return { x: p[0], y: p[1] }; const b = $(p.s).getBoundingClientRect(); return { x: b.left + b.width / 2 + (p.dx || 0), y: b.top + b.height / 2 + (p.dy || 0) }; }
+  K.each(t => {
+    const seg = paths.find(s => t >= s.t0 && t < s.t1);
+    if (!seg) { cur.style.visibility = 'hidden'; ring.style.opacity = 0; return; }
+    cur.style.visibility = 'visible';
+    const pts = seg.pts; let i = 0; while (i + 1 < pts.length && pts[i + 1][0] <= t) i++;
+    let pos;
+    if (i + 1 >= pts.length) pos = at(pts[i][1]);
+    else { const a = at(pts[i][1]), b = at(pts[i + 1][1]), e = pts[i + 1][2] ? ease[pts[i + 1][2]] : ease.linear; const u = e((t - pts[i][0]) / (pts[i + 1][0] - pts[i][0])); pos = { x: a.x + (b.x - a.x) * u, y: a.y + (b.y - a.y) * u }; }
+    const press = seg.clicks.some(c => t >= c && t < c + 0.12);
+    cur.style.transform = 'translate(' + (pos.x - 4) + 'px,' + (pos.y - 3) + 'px) scale(' + (press ? 0.88 : 1) + ')';
+    const c = seg.clicks.find(c => t >= c && t < c + 0.4);
+    if (c != null) { const u = (t - c) / 0.4; ring.style.opacity = (1 - u) * 0.9; ring.style.transform = 'translate(' + pos.x + 'px,' + pos.y + 'px) scale(' + (0.4 + u * 0.9) + ')'; } else ring.style.opacity = 0;
+  });
+
+  K.ready({ duration: 139, fonts: ['700 60px "Space Grotesk"', '500 30px Inter', '600 30px Inter', '700 30px Inter', '800 30px Inter', '600 24px "JetBrains Mono"', '400 30px Kalam', '700 30px Kalam', '400 40px "Permanent Marker"'] });
+})();
+</script>
+</body>
+</html>

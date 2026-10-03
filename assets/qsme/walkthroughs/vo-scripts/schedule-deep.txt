@@ -1,0 +1,23 @@
+The Schedule deserves a closer look — because this is where the whole build lives. Let's go slowly, from an empty page to a plan you can use again and again.
+
+Start with Import jobs. Bring in the SOQ you priced, use the standard New Zealand build, or one of your own templates.
+
+Pick this project's SOQ. Every job you priced already knows its working days. Tick what you want on site — and leave "link them one after the other" on, so they chain themselves.
+
+Import — and the timeline builds itself. Each job lands after the one before, taking its own days, skipping weekends. The arrows show who waits for whom.
+
+Every job knows three things: when it starts, how long it takes, and when it finishes. You only ever choose the start — on a day, after another job, or alongside one. The finish is worked out for you.
+
+Need something in the middle? Click the day it should start. Scaffolding, two days, alongside the frame — in, without touching anything else.
+
+Open any job to see its order of work. What has to finish first — the one that sets your start date. What waits for it. And the gap to leave — four working days for the slab to cure.
+
+Move a job with nothing after it, and it just moves. Nothing else stirs.
+
+But when rain stops the roof — log a rain day. The roof moves, and everything waiting on it moves too. Anyone booked is asked first. Nothing changes until they say yes.
+
+And the plan can never tie itself in a knot. Try making the frame wait for the plumbing — Q S me stops you. That would make a loop: a job can't wait for something that waits for it.
+
+Happy with how this build runs? Save it as your template — your next project starts ready.
+
+That's the Schedule. Tenders and contracts all land here. One plan. Everyone on the same page. Q S me.

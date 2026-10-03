@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<title>Price it once (16:9 master)</title>
+<!-- QSME NZ · "Price it once: from the consent pack to one scope every trade prices" · 16:9 master.
+     Motion kit page (tools/motion). Signed-in screens are illustrative recreations (ui.js / ui.css) with verbatim
+     truth-sheet wording and demo data, labelled "Illustrative · demo data". The bench is a stand-in for the owner's
+     hands-only filmed shot. Live captures: the public qsme.co.nz homepage (no login). -->
+<link rel="stylesheet" href="../../../tools/motion/kit.css">
+<link rel="stylesheet" href="ui.css">
+<link rel="stylesheet" href="bench.css">
+<style>
+  #root { background: radial-gradient(1300px 760px at 50% 44%, #0C1B30 0%, #050B1C 55%, #020617 100%); }
+  .caption { left: 96px; right: 96px; top: auto; bottom: 58px; font-size: 50px; line-height: 1.16; z-index: 60; }
+  .caption.box > span { display: inline-block; max-width: 1700px; padding: 8px 22px; border-radius: 12px; box-shadow: 0 10px 30px rgba(2,6,23,.5), 0 0 0 1px rgba(2,6,23,.12); }
+  .caption.box span span { background: none; padding: 0; border-radius: 0; box-shadow: none; }
+  .caption .g { color: #15803D; } .caption .p { color: #6D28D9; } .caption .r { color: #B91C1C; }
+
+  /* HUD */
+  .chap { position: absolute; left: 160px; top: 54px; display: flex; align-items: center; gap: 14px; height: 46px; padding: 0 20px 0 8px; border-radius: 999px; z-index: 55;
+    background: rgba(255,255,255,.07); border: 1.5px solid rgba(255,255,255,.14); font: 700 25px/1 Manrope; color: #F8FAFC; letter-spacing: -0.01em; white-space: nowrap; }
+  .chap b { display: inline-flex; align-items: center; justify-content: center; height: 32px; min-width: 48px; padding: 0 8px; border-radius: 999px; background: #16A34A; color: #fff; font: 700 18px/1 "JetBrains Mono"; }
+  .lbl { position: absolute; right: 160px; top: 60px; padding: 6px 14px; border-radius: 8px; font: 500 20px/1.2 "JetBrains Mono"; white-space: nowrap; z-index: 55; }
+  .lbl.ill { border: 2px dashed rgba(248,250,252,.55); color: rgba(248,250,252,.75); background: rgba(2,6,23,.55); }
+  .lbl.live { border: 2px solid rgba(61,192,35,.75); color: #BBF7D0; background: rgba(2,6,23,.6); display: flex; align-items: center; gap: 10px; }
+  .lbl.live i { width: 10px; height: 10px; border-radius: 50%; background: #3DC023; box-shadow: 0 0 0 4px rgba(61,192,35,.25); }
+  .lbl.drm { border: 2px solid rgba(248,250,252,.35); color: rgba(248,250,252,.82); background: rgba(2,6,23,.5); }
+  .ftag { position: absolute; top: 884px; padding: 6px 14px; border-radius: 8px; font: 500 21px/1.2 "JetBrains Mono"; white-space: nowrap; z-index: 55; color: rgba(248,250,252,.78); background: rgba(255,255,255,.06); border: 1.5px solid rgba(255,255,255,.14); }
+  .ftag.l { left: 160px; } .ftag.r { right: 160px; }
+  .ftag b { color: #FCD34D; font-weight: 600; }
+
+  /* window frame for the app recreations */
+  .win { position: absolute; left: 160px; top: 118px; width: 1600px; height: 750px; border-radius: 18px; overflow: hidden; background: #F4F6F5; z-index: 20;
+    box-shadow: 0 36px 90px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.1); }
+  .wcam { position: absolute; left: 0; top: 0; width: 1600px; height: 750px; transform-origin: 0 0; --cx: 800; --cy: 375; --cs: 1;
+    transform: translate(calc(800px - var(--cs) * var(--cx) * 1px), calc(375px - var(--cs) * var(--cy) * 1px)) scale(var(--cs)); }
+
+  /* headlines over footage */
+  .hl { position: absolute; left: 96px; right: 96px; top: 74px; text-align: center; font: 800 112px/1.04 Manrope; letter-spacing: -0.035em; color: #F8FAFC; z-index: 50; text-shadow: 0 6px 30px rgba(2,6,23,.55); }
+  .hl .a { color: #3DC023; }
+
+  /* full-bleed footage */
+  .full { position: absolute; inset: 0; overflow: hidden; }
+  .full img.f { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+  .lcam { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; --cx: 960; --cy: 540; --cs: 1;
+    transform: translate(calc(960px - var(--cs) * var(--cx) * 1px), calc(540px - var(--cs) * var(--cy) * 1px)) scale(var(--cs)); }
+  .wl { position: absolute; left: 0; top: 0; width: 1600px; height: 900px; transform-origin: 0 0; --cx: 800; --cy: 450; --cs: 1;
+    transform: translate(calc(800px - var(--cs) * var(--cx) * 1px), calc(375px - var(--cs) * var(--cy) * 1px)) scale(var(--cs)); }
+  .veil { position: absolute; backdrop-filter: blur(9px) brightness(.55); -webkit-backdrop-filter: blur(9px) brightness(.55); border-radius: 10px; }
+  .shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(2,6,23,.75) 0%, rgba(2,6,23,.15) 32%, rgba(2,6,23,0) 60%, rgba(2,6,23,.45) 100%); }
+
+  /* title */
+  #title { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; z-index: 40; }
+  #title .l1 { font: 800 168px/1 Manrope; letter-spacing: -0.045em; color: #F8FAFC; }
+  #title .l2 { font: 800 56px/1.15 Manrope; letter-spacing: -0.025em; color: #3DC023; margin-top: 26px; }
+  #title .l3 { font: 500 24px/1.3 "JetBrains Mono"; color: rgba(248,250,252,.62); margin-top: 34px; }
+
+  /* chapter strip */
+  #strip { position: absolute; left: 96px; right: 96px; top: 60px; display: flex; justify-content: center; gap: 10px; z-index: 56; }
+  .sc { display: flex; align-items: center; gap: 10px; height: 52px; padding: 0 16px 0 8px; border-radius: 999px; background: rgba(2,6,23,.85); border: 1.5px solid rgba(255,255,255,.18); font: 700 23px/1 Manrope; color: #F8FAFC; white-space: nowrap; }
+  .sc b { display: inline-flex; align-items: center; justify-content: center; height: 34px; min-width: 44px; border-radius: 999px; background: #16A34A; color: #fff; font: 700 17px/1 "JetBrains Mono"; }
+
+  /* sticky on the window */
+  .wstk { position: absolute; z-index: 45; font-size: 40px; }
+</style>
+</head>
+<body class="nz r16x9">
+<div id="root"></div>
+<script src="../../../tools/motion/kit.js"></script>
+<script src="ui.js"></script>
+<script>
+(function () {
+  'use strict';
+  var R = document.getElementById('root'), H = '';
+  var M = UI.money;
+  function add(h) { H += h; }
+  var caps = [];
+  function cap(t0, t1, html) { caps.push([t0, t1, html]); }
+
+  /* ================= BENCH (stand-in for the filmed hands-only shot) ================= */
+  function bench(id, o) {
+    o = o || {};
+    var h = '<div id="' + id + '" class="bench"><div id="' + id + 'cam" class="cam" style="transform-origin:960px 540px"><div class="wood"></div>' +
+      '<div id="' + id + 'pw" class="abs" style="left:0;top:0;width:1920px;height:1080px;transform-origin:' + (o.px + 450) + 'px ' + (o.py + 318) + 'px">' + UI.pack(id + 'pack', o.px, o.py, o.rot || -3) + '</div>';
+    if (o.sticky) h += '<div id="' + id + 'stk" class="stk" style="left:' + o.sticky[0] + 'px;top:' + o.sticky[1] + 'px;transform:rotate(5deg)">' + o.sticky[2] + '</div>';
+    if (o.xls) h += '<div id="' + id + 'xw" class="abs" style="left:0;top:0;width:1920px;height:1080px">' + UI.xls(id + 'xls', o.xls[0], o.xls[1], 6, id + 'c24') + '</div>';
+    if (o.drain) h += '<div id="' + id + 'dw" class="abs" style="left:0;top:0;width:1920px;height:1080px;transform-origin:' + (o.drain[0] + 380) + 'px ' + (o.drain[1] + 268) + 'px">' +
+      UI.dsheet(id + 'd3', o.drain[0] + 16, o.drain[1] + 10, 2.5, 3) + UI.dsheet(id + 'd2', o.drain[0] + 8, o.drain[1] + 5, 1, 2) + UI.dsheet(id + 'd1', o.drain[0], o.drain[1], -1.5, 1) + '</div>';
+    if (o.extra) h += o.extra;
+    h += '</div><div class="light"></div>' + (o.top ? '<div class="topfade"></div>' : '') + '</div>';
+    return h;
+  }
+
+  /* ---------- COLD OPEN (0 – 5.0): pack thud, the notice, headline ---------- */
+  add(bench('b1', { px: 470, py: 236, rot: -3, top: true }));
+  add('<div id="n1" class="abs" style="left:400px;top:650px;z-index:30">' + UI.note('n1in', 'n1mk', 'big') + '</div>');
+  add('<div id="h1" class="hl">Found before the tender.</div>');
+  add('<div id="lb1" class="lbl drm" style="left:110px;right:auto;top:auto;bottom:62px">Dramatised · demo pack · illustrative screens</div>');
+
+  /* ---------- trench b-roll (5.0 – 7.3) ---------- */
+  add('<div id="tr" class="full"><div id="trcam" class="lcam"><img id="trimg" class="f" alt=""></div><div class="shade"></div>' +
+      '<div class="hl" style="top:74px">Not on site. <span class="a">In a trench.</span></div>' +
+      '<div class="lbl ill" style="top:auto;bottom:62px;right:110px">Illustrative b-roll</div></div>');
+
+  /* ---------- TITLE (7.3 – 10.9) ---------- */
+  add('<div id="title" class="fill"><div id="t1" class="l1">Price it once.</div><div id="t2" class="l2">From the consent pack to one scope every trade prices.</div>' +
+      '<div id="t3" class="l3">A QSME walkthrough · Dramatised · illustrative screens · demo data</div></div>');
+
+  /* ---------- SETUP (10.9 – 21.2) ---------- */
+  add(bench('b2', { px: 250, py: 250, rot: -3, sticky: [960, 196, 'CHCH build'], xls: [1250, 220], top: true,
+    extra: '<div id="b2q" class="mkr" style="left:1330px;top:760px;font-size:58px;transform:rotate(6deg)">drainage??</div>' }));
+  add('<div id="strip">' + ['Read the pack', 'Price it', 'Fill the gaps', 'Ask the plans', 'Tender it', 'What bidders see'].map(function (s, i) {
+    return '<div id="sc' + i + '" class="sc"><b>0' + (i + 1) + '</b>' + s + '</div>'; }).join('') + '</div>');
+
+  /* ---------- CH01 live capture (21.2 – 23.9) ---------- */
+  add('<div id="lv1" class="win" style="background:#0A0A0A"><div id="lv1cam" class="wl"><img src="clips/still-plans-read.jpg" alt="" style="position:absolute;left:0;top:0;width:1600px;height:900px">' +
+      '<div class="veil" style="left:812px;top:458px;width:456px;height:102px"></div></div></div>');
+
+  /* ---------- the app window ---------- */
+  add('<div id="win" class="win"><div id="wcam" class="wcam" data-qa-ignore>');
+
+  // ===== Plan index (Documents) =====
+  var chips = [['General notes', 'p.1'], ['Site plan', 'p.2–3'], ['Floor plans', 'p.4–7'], ['Elevations', 'p.8–11'], ['Wall sections', 'p.12–14'], ['Bracing', 'p.15–17'],
+               ['Foundations', 'p.18–20'], ['Roof framing', 'p.21–23'], ['Window schedule', 'p.24'], ['Door schedule', 'p.25'], ['Specification', 'p.26–48']];
+  add('<div id="sPlan" class="app"><div class="bar"><h1>Documents</h1><div class="sp"></div><span class="sk" style="width:180px"></span><span class="sk" style="width:120px"></span></div>' +
+      '<div class="card" style="left:34px;top:116px;width:1532px;height:604px">' +
+        '<h2 class="abs" style="left:30px;top:30px">Plan index</h2>' +
+        // [V] helper text for "Read a document"
+        '<div class="sub abs" style="left:30px;top:76px;width:1080px">Pick a PDF and QSME reads it into sections — floor plans, bracing, drainage, schedules — ready for pricing and questions. Uses AI credits: 1 per 10 pages.</div>' +
+        '<div id="pRead" class="btn g abs" style="left:1262px;top:28px">' + UI.I.doc.replace('#15803D', '#fff') + 'Read a document</div>' +
+        '<div id="pDoc" class="doc abs" style="left:30px;top:160px;width:1470px"><div class="ic">PDF</div>Demo pack.pdf<span class="m">48 pages</span></div>' +
+        '<div id="pFind" class="status abs" style="left:30px;top:252px"><span class="dot"></span>Finding the sections…</div>' +
+        '<div id="pCount" class="status abs" style="left:30px;top:252px"><span class="dot"></span><span id="pCountN">4 of 11 sections ready</span></div>' +
+        '<div class="prog abs" style="left:420px;top:262px;width:700px"><i id="pBar"></i></div>' +
+        '<div class="chips abs" style="left:30px;top:310px;width:1200px">' + chips.map(function (c, i) {
+          return '<div id="pc' + i + '" class="schip"><i></i>' + c[0] + ' <em>' + c[1] + '</em></div>'; }).join('') + '</div>' +
+      '</div>' +
+      // picker
+      '<div id="pMenu" class="menu" style="left:1060px;top:206px;width:500px"><div class="mi on"><div class="doc" style="border:0;padding:0;background:none"><div class="ic">PDF</div>Demo pack.pdf</div><span style="margin-left:auto;font:500 17px Inter;color:#64748B">48 pages</span></div>' +
+        '<div class="mi"><span class="sk" style="width:240px"></span></div><div class="mi"><span class="sk" style="width:190px"></span></div></div>' +
+      // section drawer
+      '<div id="pDrw" class="drawer"><div class="eyebrow">Demo pack · p.24</div><h2 style="font:800 30px/1.2 Inter;margin-top:10px">Window schedule</h2>' +
+        '<div style="display:flex;gap:10px;margin-top:16px"><span class="btn" style="height:40px;font-size:17px">Copy</span><span class="btn" style="height:40px;font-size:17px">Save these pages as a file</span></div>' +
+        '<table class="t" style="margin-top:22px"><tr><th>Ref</th><th>Location</th><th class="n">W × H</th><th>Type</th><th>Glazing</th></tr>' +
+        [['W01', 'Bedroom 1', '1200 × 1500', 'Awning', 'Double'], ['W02', 'Bedroom 2', '1200 × 1500', 'Awning', 'Double'], ['W03', 'Living', '2400 × 2100', 'Slider', 'Double, low-E'],
+         ['W04', 'Kitchen', '1800 × 1000', 'Awning', 'Double'], ['W05', 'Bathroom', '600 × 1000', 'Fixed', 'Obscure'], ['W06', 'Laundry', '600 × 1000', 'Awning', 'Obscure']].map(function (r) {
+          return '<tr><td><b>' + r[0] + '</b></td><td>' + r[1] + '</td><td class="n">' + r[2] + '</td><td>' + r[3] + '</td><td>' + r[4] + '</td></tr>'; }).join('') + '</table></div>' +
+      // the notification, in the app
+      '<div id="pNote" class="abs" style="left:880px;top:548px">' + UI.note('pNoteIn', 'pMk') + '</div>' +
+      UI.cursor('cur1') + UI.ripple('rp1a') + UI.ripple('rp1b') + UI.ripple('rp1c') +
+      '</div>');
+
+  add('</div></div>'); // wcam, win
+
+  // window-level overlays
+  add('<div id="stk1" class="stk wstk" style="left:1250px;top:610px;transform:rotate(-4deg)">ask designer:<br>drainage sheets!</div>');
+
+  /* ---------- HUD ---------- */
+  add('<div id="chap1" class="chap"><b>01</b>Read the pack</div>');
+  add('<div id="lbI" class="lbl ill">Illustrative · demo data</div>');
+  add('<div id="lbL" class="lbl live"><i></i>Live capture · qsme.co.nz · public page</div>');
+  add('<div id="tag1" class="ftag l"><b>Paid plans</b> · uses AI credits (1 per 10 pages)</div>');
+  add('<div id="tag2" class="ftag r">Reads what the drawings say. Doesn\'t measure them.</div>');
+
+  /* ---------- captions ---------- */
+  cap(11.3, 15.5, 'Christchurch owner-builder. Consent pack thick enough to prop a door open.');
+  cap(15.8, 18.95, 'And her brother-in-law\'s spreadsheet. From two years ago.');
+  cap(19.2, 21.1, 'Neither one mentions <span class="r">drainage</span>.');
+  cap(21.5, 23.85, 'Step 1: read the pack.');
+  cap(24.9, 29.5, 'It splits the pack into its real sections.');
+  cap(30.2, 32.6, 'Tables come out as tables.');
+  cap(33.3, 36.2, 'And it says what it didn\'t find.');
+  cap(36.5, 39.7, 'No drainage. Found before anyone priced it.');
+  cap(39.85, 42.35, 'She asks the designer for the drainage sheets.');
+
+  caps.forEach(function (c, i) { add('<div id="cap' + i + '" class="caption box"><span>' + c[2] + '</span></div>'); });
+  R.innerHTML = H;
+
+  /* ================= TIMELINE ================= */
+  var D = 42.4;
+  Kit.scene('#b1', 0, 5.0).scene('#n1', 0, 5.0).scene('#h1', 0, 5.0).scene('#lb1', 0, 7.3);
+  Kit.scene('#tr', 5.0, 7.3).scene('#title', 7.3, 10.9).scene('#b2', 10.9, 21.2).scene('#strip', 19.9, 21.2);
+  Kit.scene('#lv1', 21.2, 23.9).scene('#lbL', 21.2, 23.9);
+  Kit.scene('#win', 23.9, 42.4).scene('#sPlan', 23.9, 42.4).scene('#lbI', 23.9, 42.4);
+  Kit.scene('#chap1', 21.25, 42.4).scene('#tag1', 24.3, 42.4).scene('#tag2', 24.3, 42.4).scene('#stk1', 39.7, 42.4);
+
+  // cold open
+  Kit.add('#b1pw', 'scale', [[0.04, 1.2], [0.34, 1, 'in']]).add('#b1pw', 'opacity', [[0.04, 0], [0.1, 1]]).add('#b1pw', 'blur', [[0.04, 6], [0.3, 0]]);
+  Kit.add('#b1cam', 'x', [[0.34, 0], [0.38, -9], [0.43, 7], [0.49, -4], [0.56, 2], [0.64, 0]]).add('#b1cam', 'y', [[0.34, 0], [0.38, 8], [0.43, -5], [0.5, 3], [0.6, 0]]);
+  Kit.add('#b1cam', 'scale', [[0.64, 1], [5.0, 1.07, 'inOut']]);
+  Kit.add('#h1', 'scale', [[0, 1.05], [0.3, 1, 'out']]);
+  Kit.add('#n1', 'y', [[0.95, 120], [1.3, 0, 'out']]).add('#n1', 'opacity', [[0.95, 0], [1.12, 1]]);
+  Kit.add('#n1mk', 'trim', [[2.0, 0], [2.5, 1, 'out']]);
+  // trench
+  Kit.clip('#trimg', { dir: 'clips/trench', t0: 5.0, fps: 30, ext: '.jpg', frames: 120 });
+  Kit.add('#trcam', 'var:--cs', [[5.0, 1.03], [7.3, 1.1]]);
+  // title
+  Kit.pop('#t1', 7.4, { dy: 30 }).pop('#t2', 7.8, { dy: 24 }).fade('#t3', 8.3, 8.7);
+  Kit.add('#title', 'opacity', [[10.65, 1], [10.9, 0]]);
+  // setup
+  Kit.add('#b2cam', 'scale', [[10.9, 1.0], [21.2, 1.06, 'inOut']]);
+  Kit.add('#b2stk', 'opacity', [[11.55, 0], [11.6, 1]]).add('#b2stk', 'scale', [[11.55, 1.25], [11.72, 1, 'slam']]);
+  Kit.add('#b2xw', 'x', [[15.3, 900], [15.72, 0, 'out']]).add('#b2xw', 'opacity', [[15.3, 0], [15.4, 1]]);
+  Kit.add('#b2c24', 'trim', [[16.5, 0], [17.1, 1, 'out']]);
+  Kit.add('#b2q', 'clipX', [[19.3, 0], [19.95, 1]]).add('#b2q', 'opacity', [[19.28, 0], [19.3, 1]]);
+  for (var i = 0; i < 6; i++) Kit.pop('#sc' + i, 19.95 + i * 0.08, { dy: -20 });
+  Kit.add('#lv1', 'opacity', [[21.2, 0], [21.45, 1]]);
+  // live capture 1: push to the headline (body copy veiled: it repeats claims we don't make)
+  Kit.add('#lv1cam', 'var:--cx', [[21.2, 800], [23.9, 1030, 'inOut']]).add('#lv1cam', 'var:--cy', [[21.2, 450], [23.9, 405, 'inOut']]).add('#lv1cam', 'var:--cs', [[21.2, 1.0], [23.9, 1.95, 'inOut']]);
+
+  // ===== CH01 app =====
+  Kit.add('#win', 'opacity', [[23.9, 0], [24.15, 1]]).add('#win', 'scale', [[23.9, 0.97], [24.25, 1, 'out']]);
+  // cursor path (app coords)
+  Kit.add('#cur1', 'x', [[24.1, 760], [24.9, 1395, 'inOut'], [25.25, 1395], [25.55, 1262, 'inOut'], [29.2, 1262], [29.65, 862, 'inOut'], [32.5, 862], [33.2, 640, 'inOut']]);
+  Kit.add('#cur1', 'y', [[24.1, 560], [24.9, 168, 'inOut'], [25.25, 168], [25.55, 240, 'inOut'], [29.2, 240], [29.65, 548, 'inOut'], [32.5, 548], [33.2, 640, 'inOut']]);
+  Kit.add('#cur1', 'opacity', [[24.05, 0], [24.2, 1], [33.1, 1], [33.3, 0]]);
+  function ripple(sel, t, x, y) { var e = document.querySelector(sel); e.style.left = x + 'px'; e.style.top = y + 'px';
+    Kit.add(sel, 'opacity', [[t, 0], [t + 0.03, 0.9], [t + 0.4, 0]]).add(sel, 'scale', [[t, 0.3], [t + 0.4, 1.4, 'out']]); }
+  ripple('#rp1a', 25.0, 1398, 172); ripple('#rp1b', 25.6, 1266, 244); ripple('#rp1c', 29.7, 866, 552);
+  Kit.add('#pRead', 'scale', [[24.98, 1], [25.04, 0.95], [25.14, 1]]);
+  Kit.show('#pMenu', 25.1, 25.65); Kit.add('#pMenu', 'y', [[25.1, -10], [25.25, 0, 'out']]);
+  Kit.pop('#pDoc', 25.7, { dy: 14 });
+  Kit.show('#pFind', 25.85, 27.45); Kit.show('#pCount', 27.45);
+  Kit.add('#pBar', 'scaleX', [[25.85, 0], [27.45, 0.36, 'out'], [29.0, 1, 'inOut']]).add('#pBar', 'opacity', [[25.8, 0], [25.85, 1]]);
+  var chipT = [26.6, 26.88, 27.16, 27.44, 27.8, 27.98, 28.16, 28.34, 28.52, 28.7, 28.88];
+  chipT.forEach(function (t, i) { Kit.pop('#pc' + i, t, { dy: 16 }); });
+  Kit.count('#pCountN', [[27.44, 4], [27.8, 5, 'hold'], [27.98, 6, 'hold'], [28.16, 7, 'hold'], [28.34, 8, 'hold'], [28.52, 9, 'hold'], [28.7, 10, 'hold'], [28.88, 11, 'hold']], function (v) { return Math.round(v) + ' of 11 sections ready'; });
+  Kit.add('#pc8', 'background', [[29.6, '#F0FDF4'], [29.7, '#DCFCE7']]).add('#pc8', 'borderColor', [[29.6, '#D1FAE5'], [29.7, '#16A34A']]);
+  Kit.add('#pDrw', 'x', [[29.8, 720], [30.2, 0, 'out'], [32.55, 0], [32.85, 720, 'in']]);
+  Kit.add('#pNote', 'y', [[33.0, 240], [33.4, 0, 'out']]).add('#pNote', 'opacity', [[33.0, 0], [33.15, 1]]);
+  Kit.add('#pMk', 'trim', [[36.45, 0], [36.95, 1, 'out']]);
+  // camera
+  Kit.add('#wcam', 'var:--cs', [[26.4, 1], [27.6, 1.3, 'inOut'], [29.5, 1.3], [30.2, 1.22, 'inOut'], [32.6, 1.22], [33.0, 1, 'inOut'], [33.6, 1], [34.6, 1.62, 'inOut'], [39.6, 1.62], [40.3, 1.0, 'inOut']]);
+  Kit.add('#wcam', 'var:--cx', [[26.4, 800], [27.6, 660, 'inOut'], [29.5, 660], [30.2, 1180, 'inOut'], [32.6, 1180], [33.0, 800, 'inOut'], [33.6, 800], [34.6, 1220, 'inOut'], [39.6, 1220], [40.3, 800, 'inOut']]);
+  Kit.add('#wcam', 'var:--cy', [[26.4, 375], [27.6, 500, 'inOut'], [29.5, 500], [30.2, 335, 'inOut'], [32.6, 335], [33.0, 375, 'inOut'], [33.6, 375], [34.6, 620, 'inOut'], [39.6, 620], [40.3, 375, 'inOut']]);
+  Kit.add('#stk1', 'opacity', [[39.7, 0], [39.75, 1]]).add('#stk1', 'scale', [[39.7, 1.3], [39.86, 1, 'slam']]);
+
+  // captions
+  caps.forEach(function (c, i) { Kit.pop('#cap' + i, c[0], { dy: 18 }); Kit.out('#cap' + i, c[1] - 0.12, 0.12); });
+
+  Kit.ready({ duration: D, fonts: ['800 60px Manrope', '500 20px Inter', '700 20px Inter', '800 20px Inter', '400 40px Kalam', '400 40px "Permanent Marker"', '500 20px "JetBrains Mono"', '700 20px "JetBrains Mono"'] });
+})();
+</script>
+</body>
+</html>

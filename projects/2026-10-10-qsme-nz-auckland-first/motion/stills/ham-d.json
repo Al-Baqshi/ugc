@@ -1,0 +1,78 @@
+{
+ "url": "https://www.qsme.co.nz/",
+ "address_steps": "projects/2026-10-10-qsme-nz-auckland-first/motion/capture-ham-desktop.json",
+ "css_viewport": [
+  1920,
+  1080
+ ],
+ "dpr": 3,
+ "clip_y": 47,
+ "clip_h": 1080,
+ "sy_click": 47,
+ "sy_end": 47,
+ "rects": {
+  "input": [
+   416,
+   613.3,
+   940,
+   665.3
+  ],
+  "title": [
+   997,
+   649.5,
+   1487,
+   669.5
+  ],
+  "area": [
+   997,
+   673.5,
+   1045.5,
+   689.5
+  ],
+  "legal": [
+   1061.5,
+   673.5,
+   1153.1,
+   689.5
+  ],
+  "council": [
+   1169.1,
+   673.5,
+   1245.3,
+   689.5
+  ],
+  "zone": [
+   997,
+   691.5,
+   1285.7,
+   707.5
+  ],
+  "unavail": [
+   997,
+   719.5,
+   1487,
+   752.5
+  ],
+  "services": null,
+  "hazards": null,
+  "footer": null,
+  "create": [
+   997,
+   764.5,
+   1173.9,
+   796.5
+  ],
+  "map": [
+   981,
+   199.5,
+   1503,
+   619.5
+  ],
+  "card": [
+   980,
+   632.5,
+   1504,
+   813.5
+  ]
+ }
+}

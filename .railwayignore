@@ -1,0 +1,64 @@
+# What `railway up` uploads (gitignore syntax). An allowlist: only the studio,
+# the package files and the content folders go up. Anything else that lands in
+# this folder later (keys, credentials, notes) stays on this machine.
+
+# 1. Ignore everything at the top level...
+/*
+
+# 2. ...then let these back in.
+!/package.json
+!/package-lock.json
+!/railway.json
+!/learnings.md
+!/studio/
+!/ideas/
+!/ventures/
+!/projects/
+!/research/
+!/log/
+
+# From .claude, only the playbook (skills) is shown in the studio.
+!/.claude/
+/.claude/*
+!/.claude/skills/
+
+# 3. Never upload these, wherever they are (these lines come last so they win).
+.env
+.env.*
+*.pem
+*.key
+*.p12
+id_rsa*
+id_ed25519*
+.npmrc
+.netrc
+credentials*.json
+.DS_Store
+node_modules
+
+# Big work files never go to the Studio (sources, frame caches, Figma scripts).
+projects/*/motion/
+projects/*/motion-src/
+projects/*/figma/
+projects/*/figma-scripts/
+projects/*/clips/
+*.jpg.tmp
+
+# Media never goes up with the code: Railway refuses uploads over ~100 MB.
+# The Studio reads renders from its volume (MEDIA_DIR); `npm run publish` sends
+# previews, images and audio there with tools/motion/sync-media.mjs. Masters stay
+# on this Mac. outputs/ is left out whole, and media files anywhere else too (the
+# Studio only serves media from the volume or outputs/, so they'd be dead weight).
+# [xX] classes: the match is case-sensitive, so CLIP.MP4 must not slip through.
+projects/*/outputs/
+*.[mM][pP]4
+*.[mM][oO][vV]
+*.[wW][eE][bB][mM]
+*.[pP][nN][gG]
+*.[jJ][pP][gG]
+*.[jJ][pP][eE][gG]
+*.[wW][eE][bB][pP]
+*.[gG][iI][fF]
+*.[mM][pP]3
+*.[mM]4[aA]
+*.[wW][aA][vV]

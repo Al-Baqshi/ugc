@@ -1,0 +1,73 @@
+{
+ "url": "https://www.qsme.co.nz/",
+ "address_steps": "projects/2026-10-10-qsme-nz-auckland-first/motion/capture-dun-desktop.json",
+ "css_viewport": [
+  1920,
+  1080
+ ],
+ "dpr": 3,
+ "clip_y": 47,
+ "clip_h": 1080,
+ "sy_click": 47,
+ "sy_end": 47,
+ "rects": {
+  "input": [
+   416,
+   622.3,
+   940,
+   674.3
+  ],
+  "title": [
+   997,
+   658.5,
+   1487,
+   678.5
+  ],
+  "area": [
+   997,
+   682.5,
+   1040.7,
+   698.5
+  ],
+  "legal": [
+   1056.7,
+   682.5,
+   1166.5,
+   698.5
+  ],
+  "council": [
+   1182.5,
+   682.5,
+   1255.7,
+   698.5
+  ],
+  "zone": null,
+  "unavail": [
+   997,
+   710.5,
+   1487,
+   743.5
+  ],
+  "services": null,
+  "hazards": null,
+  "footer": null,
+  "create": [
+   997,
+   755.5,
+   1173.9,
+   787.5
+  ],
+  "map": [
+   981,
+   208.5,
+   1503,
+   628.5
+  ],
+  "card": [
+   980,
+   641.5,
+   1504,
+   804.5
+  ]
+ }
+}

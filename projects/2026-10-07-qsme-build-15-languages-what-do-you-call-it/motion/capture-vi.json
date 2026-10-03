@@ -1,0 +1,14 @@
+{
+ "_note": "Public page only (qsme.build/vi/platform/estimating). Logged-out capture of the public marketing page; nothing typed. Page zoom 2 (like browser zoom 200%) for legible type at 1920x1080. Footer (+64 phone, .co.nz email) is never reached: the capture stays at the top of the page.",
+ "url": "https://qsme.build/vi/platform/estimating",
+ "mobile": false,
+ "settle": 3,
+ "steps": [
+  {
+   "eval": "document.documentElement.style.zoom='2'"
+  },
+  {
+   "wait": 1.2
+  }
+ ]
+}

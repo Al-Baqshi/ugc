@@ -1,0 +1,17 @@
+{
+  "url": "https://www.qsme.co.nz/knowledge-hub/agreements",
+  "cssWidth": 430,
+  "cssHeight": 932,
+  "dpr": 3,
+  "mobile": true,
+  "settle": 5,
+  "evals": [
+    "(() => { const e = [...document.querySelectorAll('blockquote')].find(x => x.textContent.includes('AI never makes up an amount')); e.scrollIntoView({ block: 'start' }); window.scrollBy(0, -250); })()"
+  ],
+  "boxes": {
+    "quote": "[...document.querySelectorAll('blockquote')].find(x => x.textContent.includes('AI never makes up an amount'))",
+    "s1": "(() => { const q = [...document.querySelectorAll('blockquote')].find(x => x.textContent.includes('AI never makes up an amount')); const w = document.createTreeWalker(q, NodeFilter.SHOW_TEXT); let n; while ((n = w.nextNode())) { const i = n.textContent.indexOf('AI never makes up'); if (i >= 0) { const r = document.createRange(); r.setStart(n, i); r.setEnd(n, n.textContent.indexOf('name.') + 5); return r; } } })()",
+    "s2": "(() => { const q = [...document.querySelectorAll('blockquote')].find(x => x.textContent.includes('AI never makes up an amount')); const w = document.createTreeWalker(q, NodeFilter.SHOW_TEXT); let n; while ((n = w.nextNode())) { const i = n.textContent.indexOf('Anything it'); if (i >= 0) { const r = document.createRange(); r.setStart(n, i); r.setEnd(n, n.textContent.length); return r; } } })()",
+    "header": "document.querySelector('header') || document.querySelector('nav')"
+  }
+}

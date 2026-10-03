@@ -1,0 +1,229 @@
+{
+ "venture": "qsme-build",
+ "video": "outputs/15-languages-what-do-you-call-it-16x9.mp4",
+ "video_note": "16:9 master, 63.6 s, 1920x1080, 30 fps. The only cut so far; no 9:16 or 1:1 timeline exists.",
+ "character": "The QS: mid-career quantity surveyor (late 30s to 40s), general urban professional New Zealand accent, not broad, not Australian. Calm, dry, deadpan, amused. AI voice: never speaks as the founder.",
+ "casting_line": "Same document, five names. And every one of them wants to know if prelims are included. Q-S-me dot build.",
+ "settings": {
+  "model": "eleven_multilingual_v2",
+  "stability": 0.45,
+  "similarity_boost": 0.75,
+  "style": 0,
+  "speed": 1,
+  "use_speaker_boost": true
+ },
+ "continuous_read_v2": "Schedule of quantities.\n\nSame document. Five names.\n\nWhat do you call it?\n\nOne job. One email thread.\n\nFive names for it. And one question.\n\nConstruction is the same everywhere.\n\nAnd vocabulary is where trust starts.\n\nLeistungs...\n\n...we'll let a German say that one.\n\nEvery page uses its own word for it.\n\nHindi just says B-O-Q.\n\nSome words travel.\n\nFifteen words. One document.\n\nArabic reads right to left.\n\nSo does the site.\n\nThe sticky note doesn't.\n\nThe website speaks fifteen languages.\n\nThe app? English, Spanish and Arabic.\n\nSo far.\n\nWhat do you call it where you work?\n\nOh, and... prelims. In or out?\n\nBook a thirty-minute demo at Q-S-me dot build.",
+ "lines": [
+  {
+   "id": "01-word",
+   "start_s": 0.25,
+   "max_s": 1.1,
+   "on_screen": "English estimating page: 'schedule of quantities' boxed green (0.06-0.5) + ENGLISH tag (0.4); sticky slaps on 0.16; caption 'One tender document.' from 0.3; mirror flip to Arabic 1.21-1.30",
+   "text_v2": "Schedule of quantities.",
+   "text_v3": "Schedule of quantities.",
+   "delivery": "Matter-of-fact, almost bored, like reading a label off a folder. Falling end. Out by 1.35; the tail can ride the 1.30 flip whoosh."
+  },
+  {
+   "id": "02-same-document",
+   "start_s": 6.35,
+   "max_s": 1.5,
+   "on_screen": "'Same document.' slams 6.35 / 'Five names.' 6.75 / five word chips 6.95 / 'What do you call it?' slams 7.4 underneath (all stay on screen to 9.6)",
+   "text_v2": "Same document. Five names.",
+   "text_v3": "Same document. Five names.",
+   "delivery": "Dry, a real full stop between, small downstep on 'Five names'. Can run past the 7.4 slam because its words stay on screen. Out by 7.85."
+  },
+  {
+   "id": "03-call-it",
+   "start_s": 7.9,
+   "max_s": 1.8,
+   "on_screen": "'What do you call it?' slammed at 7.4, holds to the cut at 9.6",
+   "text_v2": "What do you call it?",
+   "text_v3": "[beat] What do you call it?",
+   "delivery": "Genuine question to the viewer, light lift. The only rising line in the hook. Out by 9.7."
+  },
+  {
+   "id": "04-thread",
+   "start_s": 9.8,
+   "max_s": 1.85,
+   "on_screen": "Chip '01 · One job, one thread' + email card with the first message, on at 9.7; replies pop 10.65 and 11.65",
+   "text_v2": "One job. One email thread.",
+   "text_v3": "One job. One email thread.",
+   "delivery": "Weary, knowing, 'email thread' like a medical condition. Can sit over the first reply pops. Out by 11.65; the 12.65 and 13.65 pops play alone."
+  },
+  {
+   "id": "05-question",
+   "start_s": 14.7,
+   "max_s": 2.5,
+   "on_screen": "'Five names.' 14.7 / 'One question.' slams yellow 15.7 + sticky wiggle; quote card cuts in 17.18",
+   "text_v2": "Five names for it. And one question.",
+   "text_v3": "Five names for it. [pause] And one question.",
+   "delivery": "Flat on 'Five names for it', tiny pause, drier 'And one question' landing near the 15.7 slam. Out by 17.2."
+  },
+  {
+   "id": "06-quote-a",
+   "start_s": 17.4,
+   "max_s": 2.3,
+   "on_screen": "Quote line 1 on at 17.3; line 2 types in from 18.3 (on screen only)",
+   "text_v2": "Construction is the same everywhere.",
+   "text_v3": "Construction is the same everywhere.",
+   "delivery": "Verbatim ('Construction is', no contraction). Calm and even. Out by 19.7, before line 3 at 20.0."
+  },
+  {
+   "id": "07-quote-c",
+   "start_s": 20.05,
+   "max_s": 2.7,
+   "on_screen": "Quote line 3 words in 20.0-20.3; lines 1-2 dim; attribution 20.45; card holds to 23.0",
+   "text_v2": "And vocabulary is where trust starts.",
+   "text_v3": "And vocabulary is where trust starts.",
+   "delivery": "A notch slower and quieter, the line that matters. No tagline lift. Out by 22.75."
+  },
+  {
+   "id": "08-leistungs",
+   "start_s": 23.45,
+   "max_s": 0.8,
+   "on_screen": "German page (23.1), 'Leistungsverzeichnis' boxed + GERMAN tag; caption types 'Leistungs…' 23.45-23.85",
+   "text_v2": "Leistungs...",
+   "text_v3": "Leistungs-",
+   "delivery": "Honest attempt at 'LYE-shtoongs' that runs out of road; stop dead. Same take as 09. Never mocking. Out by 24.25."
+  },
+  {
+   "id": "09-german",
+   "start_s": 24.3,
+   "max_s": 2.7,
+   "on_screen": "Caption types 'we'll let a German say that one.' 24.25-24.7; full line holds to 27.4",
+   "text_v2": "...we'll let a German say that one.",
+   "text_v3": "[exhales] ...we'll let a German say that one.",
+   "delivery": "Small exhale, then an easy self-amused shrug. Warm, not sarcastic. Out by 27.0, before the caption fades at 27.4."
+  },
+  {
+   "id": "10-own-word",
+   "start_s": 27.7,
+   "max_s": 3.0,
+   "on_screen": "Montage hard cuts: Chinese 27.6, Japanese 28.6, Korean 29.5, Russian 30.3 (then French 31.0, Portuguese 31.7, Vietnamese 32.3, Indonesian 32.9)",
+   "text_v2": "Every page uses its own word for it.",
+   "text_v3": "Every page uses its own word for it.",
+   "delivery": "Plain observation, light lean on 'own'. Falling end. Out by 30.7; the faster cuts after that run on ticks only."
+  },
+  {
+   "id": "11-hindi",
+   "start_s": 33.7,
+   "max_s": 1.5,
+   "on_screen": "Hindi page (33.5), 'BOQ' boxed + HINDI tag; caption 'The Hindi page just says BOQ.' 33.7",
+   "text_v2": "Hindi just says B-O-Q.",
+   "text_v3": "Hindi just says B-O-Q.",
+   "delivery": "Mild pleased surprise. Quick letters (bee-oh-cue), falling end. Out by 35.2, before the 35.25 slam."
+  },
+  {
+   "id": "12-travel",
+   "start_s": 35.3,
+   "max_s": 1.15,
+   "on_screen": "Green 'Some words travel.' slams 35.25; both captions out 36.35-36.55",
+   "text_v2": "Some words travel.",
+   "text_v3": "Some words travel.",
+   "delivery": "Warm and short, almost a smile. Out by 36.45."
+  },
+  {
+   "id": "13-wall",
+   "start_s": 36.6,
+   "max_s": 2.2,
+   "on_screen": "'Fifteen words.' 36.5 / 15 chips tick in 36.75-37.8 / 'One document.' 37.15; wall holds to 40.0",
+   "text_v2": "Fifteen words. One document.",
+   "text_v3": "Fifteen words. One document.",
+   "delivery": "Even, satisfied, full stop between. Out by 38.8, then let the wall sit."
+  },
+  {
+   "id": "14-rtl",
+   "start_s": 40.05,
+   "max_s": 1.8,
+   "on_screen": "Chip '04 · Right to left' + headline 'Arabic and Persian read right to left.' + English tile on at 40.0; Arabic tile flips in 40.28",
+   "text_v2": "Arabic reads right to left.",
+   "text_v3": "Arabic reads right to left.",
+   "delivery": "Informative, unhurried. Persian stays on screen only (the tile flips to Persian at 43.0). Out by 41.85."
+  },
+  {
+   "id": "15-site",
+   "start_s": 41.95,
+   "max_s": 1.5,
+   "on_screen": "'So does the site.' slams green 41.9; right tile flips Arabic to Persian at 43.0",
+   "text_v2": "So does the site.",
+   "text_v3": "So does the site.",
+   "delivery": "Small, quiet pride, nothing more. Out by 43.45 (a natural read ends about 42.8, clear of the flip whoosh)."
+  },
+  {
+   "id": "16-sticky",
+   "start_s": 44.4,
+   "max_s": 1.7,
+   "on_screen": "Kalam note 'The sticky note doesn't.' 44.3; sticky wiggles 44.35-44.92; chapter holds to 47.0",
+   "text_v2": "The sticky note doesn't.",
+   "text_v3": "[beat] The sticky note doesn't.",
+   "delivery": "Bone-dry aside, slightly lower. Out by 46.1."
+  },
+  {
+   "id": "17-website",
+   "start_s": 47.1,
+   "max_s": 1.95,
+   "on_screen": "Chip '05 · The honest bit' + 'The website speaks 15 languages.' + 15 switcher chips, on at 47.0",
+   "text_v2": "The website speaks fifteen languages.",
+   "text_v3": "The website speaks fifteen languages.",
+   "delivery": "Straight, honest, no sell. Out by 49.05."
+  },
+  {
+   "id": "18-app",
+   "start_s": 49.15,
+   "max_s": 2.25,
+   "on_screen": "'The app speaks English, Spanish and Arabic.' 49.1; 12 chips dim, English · Español · العربية light 49.2-49.5; legend 'In the app today' 49.4",
+   "text_v2": "The app? English, Spanish and Arabic.",
+   "text_v3": "The app? English, Spanish and Arabic.",
+   "delivery": "Same honesty: 'The app?' as a small shrug, then a plain list. No apology. Out by 51.4."
+  },
+  {
+   "id": "19-so-far",
+   "start_s": 51.5,
+   "max_s": 1.0,
+   "on_screen": "'So far.' slams green 51.4; card holds to 54.5",
+   "text_v2": "So far.",
+   "text_v3": "So far.",
+   "delivery": "Deadpan, the smallest smile, a beat after the slam. Out by 52.5."
+  },
+  {
+   "id": "20-prompt",
+   "start_s": 54.5,
+   "max_s": 2.9,
+   "on_screen": "End card: chip '06 · Your word' + 'What do you call it' 54.48 / 'where you work?' 54.95 / 'Tell us in the comments.' 55.6 / 'qsme.build now speaks 15 languages' 56.2 / 'Yours next — tell us' 56.6",
+   "text_v2": "What do you call it where you work?",
+   "text_v3": "[beat] What do you call it where you work?",
+   "delivery": "Callback to 03. A real question, asked like you want the answer. Out by 57.4."
+  },
+  {
+   "id": "21-prelims",
+   "start_s": 57.45,
+   "max_s": 2.35,
+   "on_screen": "Kalam 'Bonus points if you can settle the prelims question.' 57.3 + sticky wiggle 57.35-57.78; logo 58.3; CTA pill 58.65",
+   "text_v2": "Oh, and... prelims. In or out?",
+   "text_v3": "Oh, and... [beat] prelims. In or out?",
+   "delivery": "Throwaway, mischievous, quieter. The pause before 'prelims' is the joke. Out by 59.8."
+  },
+  {
+   "id": "22-cta",
+   "start_s": 59.9,
+   "max_s": 3.25,
+   "on_screen": "QSME logo + 'qsme.build' + 'Tendering and estimating software for construction organisations' (58.3) / CTA pill 'Book a 30-minute demo at qsme.build →' (58.65); holds to 63.6",
+   "text_v2": "Book a thirty-minute demo at Q-S-me dot build.",
+   "text_v3": "Book a thirty-minute demo at Q-S-me dot build.",
+   "delivery": "Friendly, low-key, no announcer lift; a clear 'thirty-minute', a small break, then a clear 'Q-S-me dot build' (kyoo-ess-mee). Out by 63.15, leaving the last half-second to the card."
+  }
+ ],
+ "male_alt_lines": [],
+ "post_processing": [
+  "Primary source: render continuous_read_v2 three times, slice, place at start_s. Lines 08 and 09 from one take.",
+  "Room tone bed 0.3-63.6 s at -48 to -45 dBFS; phone-memo EQ; 2:1-3:1 compression; no reverb.",
+  "Master -14 LUFS integrated, -1 dBTP; music 6-8 LU under VO."
+ ],
+ "total_characters": 615,
+ "changelog": [
+  "2026-10-02 first version, timed on the 78.0 s render.",
+  "2026-10-02 v2: retimed on the 63.6 s review cut. Thread now has five names ('Five names for it'); quote VO reads lines 1 and 3 only; the separate 'If yours isn't on the list' line is dropped (the 'Yours next — tell us' chip carries it); end card merged, so the prompt, prelims and CTA lines run 54.7-62.9.",
+  "2026-10-02 v3: fit pass against the 63.6 s master (frames pulled at every caption change). Every line now fits its window at about 2.5-2.8 words/s: windows widened only into real silence (03, 04, 05, 06, 07, 09, 10, 13, 15, 16, 20); words cut where the next caption was close (11 'Hindi just says B-O-Q.', 14 'Arabic reads right to left.', 18 'The app? English, Spanish and Arabic.', 20 drops 'So.', 21 'Oh, and... prelims. In or out?', 22 'Request a language or a demo. Q-S-me dot build.'). v3 text now matches v2 word for word (17 lost 'Honest bit.').",
+  "2026-10-03 v4: owner CTA rule (Global CTA is 'Book a 30-minute demo at qsme.build'; no pricing lines of any kind). Line 22 now 'Book a thirty-minute demo at Q-S-me dot build.' (8 words in 3.25 s, ~2.5 words/s) to match the new end-card pill; same start and window. No other line changed; nothing in the VO mentioned pricing."
+ ]
+}

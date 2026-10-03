@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<title>Column H (hidden, not deleted) — QSME Global, 4:5</title>
+<!-- Motion kit page. Render: node tools/motion/make.mjs projects/2026-10-08-qsme-build-column-h/motion/column-h.html projects/2026-10-08-qsme-build-column-h/outputs/column-h-4x5.mp4 --safe 60,60,1020,1290 -->
+<link rel="stylesheet" href="../../../tools/motion/kit.css">
+<style>
+  /* ---------- shared ---------- */
+  .top-chip { left: 60px; top: 70px; }
+  .tag { position: absolute; padding: 6px 14px; border: 2px dashed var(--ink-50); border-radius: 8px; color: var(--ink-50); font: 500 22px/1.2 var(--mono); }
+  .cap { position: absolute; left: 60px; right: 60px; text-align: center; font-family: var(--display); font-weight: 700; letter-spacing: -0.02em; font-size: 62px; line-height: 1.1; text-wrap: balance; color: var(--ink); }
+  .cap .g { color: var(--accent); }
+  .cap .m { color: var(--ink-70); }
+  .cursor { position: absolute; left: 0; top: 0; width: 44px; height: 56px; z-index: 50; }
+  .menu { position: absolute; width: 420px; background: #FFFFFF; border: 1px solid #DAD9D4; border-radius: 14px; box-shadow: 0 18px 50px rgba(0,0,0,.45), 0 2px 6px rgba(0,0,0,.2); padding: 6px; font: 500 30px/1 Inter, sans-serif; color: #1C1C1E; z-index: 40; transform-origin: 0 0; }
+  .menu .it { height: 56px; display: flex; align-items: center; padding: 0 20px; border-radius: 9px; position: relative; }
+  .menu .it.dis { color: #A9A9AE; }
+  .menu .sep { height: 1px; background: #E3E2DD; margin: 6px 10px; }
+  .menu .hov { position: absolute; top: 0; left: 6px; right: 6px; height: 56px; border-radius: 9px; background: #E6E6EA; }
+  .menu .it span { position: relative; }
+
+  /* ---------- S1 hook ---------- */
+  #h-title { left: 60px; top: 140px; font-size: 96px; }
+  #h-sub { left: 60px; top: 254px; font-size: 58px; color: var(--ink); }
+  #h-sub .g { color: var(--accent); }
+  #h-tag { right: 60px; top: 76px; }
+  #h-table { left: 60px; top: 372px; width: 960px; }
+  .h-head { display: flex; justify-content: space-between; font: 500 22px/1 var(--mono); color: var(--ink-50); letter-spacing: .06em; padding: 0 26px 14px; }
+  .h-head span:last-child { width: 200px; text-align: right; }
+  .h-row { position: relative; display: flex; align-items: center; height: 84px; margin-bottom: 10px; padding: 0 26px; border-radius: 14px; background: var(--bg-raised); border: 2px solid var(--line); }
+  .h-row .who { font: 600 34px/1 Inter, sans-serif; color: var(--ink); flex: 1; }
+  .h-row .amt { font: 600 42px/1 var(--mono); color: var(--ink); letter-spacing: -0.02em; }
+  .h-row .d { width: 200px; display: flex; justify-content: flex-end; }
+  .h-row .pct { font: 600 30px/1 var(--mono); color: var(--accent); background: var(--soft); border: 2px solid #1E4A1A; border-radius: 999px; padding: 9px 16px; }
+  .h-row .flash { position: absolute; inset: -2px; border-radius: 14px; border: 2px solid var(--accent); opacity: 0; }
+  #h-est { background: transparent; border: 2px dashed #3E5A48; height: 96px; margin-bottom: 18px; }
+  #h-est .who { color: var(--ink-70); }
+  #h-est .amt { font-size: 46px; }
+  #h-est .d span { font: 500 24px/1.15 var(--mono); color: var(--ink-50); text-align: right; }
+  #h-weird { top: 1150px; font-size: 66px; color: var(--ink-70); }
+
+  /* ---------- S2 spreadsheet (generic, unbranded) ---------- */
+  #stage { left: 60px; top: 140px; width: 960px; height: 870px; overflow: hidden; border-radius: 22px; }
+  #cam { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+  #win { position: relative; background: #FFFFFF; border-radius: 16px; overflow: hidden; color: #1C1C1E; font-family: Inter, sans-serif; box-shadow: 0 30px 80px rgba(0,0,0,.5); }
+  #win .bar { height: 60px; background: #EDEDEA; display: flex; align-items: center; padding: 0 22px; position: relative; border-bottom: 1px solid #DAD9D4; }
+  #win .dots { display: flex; gap: 10px; } #win .dots i { width: 16px; height: 16px; border-radius: 50%; background: #CFCFCA; display: block; }
+  #win .ttl { position: absolute; left: 0; right: 0; text-align: center; font: 500 22px/60px Inter, sans-serif; color: #3A3A3E; }
+  #win .fx { height: 50px; display: flex; align-items: center; gap: 14px; padding: 0 14px; border-bottom: 1px solid #E3E2DD; font: 400 21px/1 Inter, sans-serif; color: #6B6B70; }
+  #win .fx b { font: 600 20px/1 Inter; color: #3A3A3E; border: 1px solid #DAD9D4; border-radius: 6px; padding: 6px 10px; }
+  #win .fx i { font-style: italic; font-family: Georgia, serif; color: #8A8A90; }
+  .row { display: flex; height: 48px; }
+  .row.letters { height: 44px; background: #F3F3F1; }
+  .c { flex: none; height: 100%; border-right: 1px solid #E3E2DD; border-bottom: 1px solid #E3E2DD; display: flex; align-items: center; padding: 0 12px; font: 400 24px/1 Inter, sans-serif; white-space: nowrap; overflow: hidden; font-variant-numeric: tabular-nums; position: relative; }
+  .letters .c { justify-content: center; font: 600 24px/1 Inter, sans-serif; color: #6B6B70; background: #F3F3F1; padding: 0; }
+  .c.rh { justify-content: center; background: #F3F3F1; color: #8A8A90; font: 500 20px/1 Inter, sans-serif; padding: 0; }
+  .c.num { justify-content: flex-end; }
+  .c.lab { font: 700 21px/1 Inter, sans-serif; color: #3A3A3E; background: #FAFAF8; }
+  .c.inp { background: #FFFBE8; }
+  .c.lab.inp { background: #FFF6D6; }
+  .c.tot { font-weight: 700; }
+  .c.H { width: calc(var(--hw) * 1px); padding: 0; justify-content: flex-end; background: #FFF6F6; }
+  .c.H > span { padding: 0 14px; flex: none; }
+  .letters .c.H { justify-content: center; background: #F3F3F1; }
+  .c.H.lab { color: #C62828; background: #FDEAEA; justify-content: flex-start; }
+  .c.H.lab > span { font: 800 23px/1.05 Inter, sans-serif; white-space: normal; width: 320px; }
+  .c.H.tot > span { font-weight: 800; color: #1C1C1E; }
+  .sel { position: absolute; background: rgba(66, 133, 244, .14); border: 2px solid rgba(66,133,244,.55); pointer-events: none; }
+  #hidmark { position: absolute; width: 6px; border-left: 2px solid #8A8A90; border-right: 2px solid #8A8A90; }
+  #hq { left: 650px; top: 470px; font: 400 76px/1 var(--marker); color: #E0302A; transform: rotate(-6deg); }
+  #hq-arrow { left: 600px; top: 270px; width: 160px; height: 210px; }
+  #ring { left: 590px; top: 900px; width: 270px; height: 120px; }
+
+  /* ---------- S3 email (generic, unbranded) ---------- */
+  #mailvp { left: 70px; top: 190px; width: 940px; border-radius: 22px; overflow: hidden; background: #FFFFFF; box-shadow: 0 30px 80px rgba(0,0,0,.5); }
+  #mail { position: relative; width: 940px; }
+  #mail .mbar { height: 74px; background: #EDEDEA; display: flex; align-items: center; justify-content: space-between; padding: 0 28px; border-bottom: 1px solid #DAD9D4; font: 600 30px/1 Inter, sans-serif; color: #3A3A3E; }
+  #mail .mbar .sent { display: inline-flex; align-items: center; gap: 10px; }
+  #mail .mbar .when { font: 500 28px/1 var(--mono); color: #6B6B70; }
+  #mail .f { display: flex; gap: 16px; align-items: center; padding: 22px 30px; border-bottom: 1px solid #ECEBE7; font: 400 31px/1.2 Inter, sans-serif; color: #1C1C1E; }
+  #mail .f b { width: 124px; flex: none; font-weight: 500; color: #8A8A90; }
+  #mail .pill6 { display: inline-flex; align-items: center; gap: 8px; background: #F1F0EC; border-radius: 999px; padding: 6px 16px; font-weight: 600; }
+  #mail .body { padding: 32px 30px 28px; font: 400 38px/1.4 Inter, sans-serif; color: #1C1C1E; }
+  #mail .att { margin: 0 30px 32px; display: inline-flex; align-items: center; gap: 18px; border: 1px solid #DAD9D4; border-radius: 14px; padding: 18px 24px; font: 500 29px/1.2 Inter, sans-serif; color: #1C1C1E; }
+  #mail .att small { display: block; font: 400 22px/1.2 Inter; color: #8A8A90; margin-top: 4px; }
+  #mail .gridicon { width: 46px; height: 54px; border: 2px solid #9A9AA0; border-radius: 6px; background: linear-gradient(#9A9AA0, #9A9AA0) 0 16px / 100% 2px no-repeat, linear-gradient(#9A9AA0, #9A9AA0) 0 32px / 100% 2px no-repeat, linear-gradient(#9A9AA0, #9A9AA0) 20px 0 / 2px 100% no-repeat; }
+
+  /* ---------- S4 bidder's form (qsme.build website mock-up, captured live, labelled illustrative) ---------- */
+  #p-logo { left: 60px; top: 74px; width: 210px; }
+  #p-what { left: 292px; top: 96px; }
+  #p-head { left: 60px; top: 222px; font-size: 58px; }
+  #p-card { left: 60px; top: 318px; width: 960px; height: 283px; border-radius: 18px; overflow: hidden; border: 2px solid var(--line); background: #131c17; }
+  #p-img { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+  #p-fade { position: absolute; right: 0; top: 0; bottom: 0; width: 70px; background: linear-gradient(90deg, rgba(19,28,23,0), rgba(19,28,23,.9)); }
+  #p-ill { left: 60px; top: 616px; }
+  #p-own { position: absolute; top: 612px; padding: 6px 14px; border: 2px solid var(--accent); border-radius: 8px; background: var(--soft); color: var(--accent); font: 500 26px/1.2 var(--mono); white-space: nowrap; }
+  .hl { position: absolute; border: 4px solid var(--accent); border-radius: 14px; background: rgba(75, 205, 50, .10); }
+  .stack { position: absolute; left: 60px; right: 60px; text-align: center; font-family: var(--display); font-weight: 700; letter-spacing: -0.025em; font-size: 70px; line-height: 1.08; white-space: nowrap; }
+  #p-l1 { top: 818px; } #p-l2 { top: 904px; } #p-l3 { top: 990px; color: var(--accent); }
+  #p-never { top: 578px; font-size: 88px; }
+  #p-never .g { color: var(--accent); }
+
+  /* ---------- S5 live security page ---------- */
+  #s-chip { left: 60px; top: 70px; }
+  #browser { left: 60px; top: 140px; width: 960px; height: 870px; border-radius: 22px; overflow: hidden; border: 2px solid var(--line); background: #0d1310; }
+  #browser .url { position: absolute; left: 0; right: 0; top: 0; height: 76px; background: #18221d; border-bottom: 2px solid var(--line); display: flex; align-items: center; justify-content: center; }
+  #browser .url span { display: inline-flex; align-items: center; gap: 12px; background: #0d1310; border-radius: 999px; padding: 10px 30px; font: 500 26px/1 Inter, sans-serif; color: var(--ink-70); }
+  #vp { position: absolute; left: 0; top: 76px; width: 960px; height: 794px; overflow: hidden; }
+  #s-page { position: absolute; left: 0; top: 0; width: 960px; transform-origin: 0 0; }
+  #s-hdr { position: absolute; left: 0; top: 0; width: 960px; height: 160px; overflow: hidden; }
+  #s-hdr img { position: absolute; left: 0; top: 0; width: 960px; }
+  #spot { position: absolute; border-radius: 20px; box-shadow: 0 0 0 1600px rgba(5, 9, 7, .62); }
+  #menu2 { transform-origin: 100% 0; }
+  .mark { position: absolute; background: rgba(75, 205, 50, .26); border-bottom: 5px solid var(--accent); border-radius: 4px; }
+
+  /* ---------- S6 end card ---------- */
+  #end { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 34px; }
+  #e-logo { width: 500px; }
+  #e-line { font-size: 66px; text-align: center; }
+  #e-url { font-size: 64px; }
+  .pill { font-size: 40px; padding: 20px 40px; }
+</style>
+</head>
+<body class="build r4x5">
+<div id="root">
+
+  <!-- S1 HOOK: six bids land just under our estimate -->
+  <div id="s1" class="fill">
+    <div id="h-chip" class="abs chip top-chip">Joinery package · bids closed</div>
+    <div id="h-tag" class="tag">example figures</div>
+    <div id="h-title" class="abs display">Six joinery bids.</div>
+    <div id="h-sub" class="abs display">All <span class="g">1–2% under</span> our estimate.</div>
+    <div id="h-table" class="abs">
+      <div class="h-head"><span>BIDDER</span><span>TOTAL EXCL. TAX</span><span>VS ESTIMATE</span></div>
+      <div id="h-est" class="h-row"><div class="who">Our estimate</div><div class="amt">486,200</div><div class="d"><span>pre-tender</span></div></div>
+      <div id="h-rows"></div>
+    </div>
+    <div id="h-weird" class="cap">(Weird.)</div>
+  </div>
+
+  <!-- S2 THE SHEET WE SENT: F | G | I … Unhide -->
+  <div id="s2" class="fill">
+    <div id="sh-chip" class="abs chip top-chip">The BoQ we sent them</div>
+    <div id="sh-tag" class="tag" style="right:60px;top:76px">example figures</div>
+    <div id="stage" class="abs" data-qa-ignore>
+      <div id="cam"><div id="win"></div></div>
+    </div>
+    <svg id="hq-arrow" class="abs" viewBox="0 0 160 210"><path id="hq-path" d="M70 200 C 40 150, 60 70, 112 16 M112 16 L84 26 M112 16 L112 46" fill="none" stroke="#E0302A" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div id="hq" class="abs">H?</div>
+    <svg id="ring" class="abs" viewBox="0 0 270 120"><path id="ring-path" d="M200 14 C 120 0, 18 16, 14 60 C 10 104, 140 114, 220 100 C 268 90, 266 40, 214 22 C 196 16, 170 12, 150 14" fill="none" stroke="#E0302A" stroke-width="7" stroke-linecap="round"/></svg>
+    <div id="menu1" class="menu">
+      <div id="hov1" class="hov"></div>
+      <div class="it"><span>Cut</span></div><div class="it"><span>Copy</span></div><div class="it"><span>Paste</span></div>
+      <div class="sep"></div>
+      <div class="it"><span>Insert columns</span></div><div class="it"><span>Delete columns</span></div>
+      <div class="sep"></div>
+      <div class="it"><span>Hide columns</span></div><div class="it" id="unhide1"><span>Unhide columns</span></div>
+    </div>
+    <div id="c-market" class="cap" style="top:1066px">What a well-informed market.</div>
+    <div id="c-colh" class="cap" style="top:1066px">Column H. <span class="g">Hidden.</span><br>Not deleted.</div>
+  </div>
+
+  <!-- S3 THE EMAIL: two weeks earlier -->
+  <div id="s3" class="fill">
+    <div id="m-chip" class="abs chip top-chip">Two weeks earlier · Friday 4:40 pm</div>
+    <!-- clipped viewport: the push-in on "Have a good weekend." happens inside the card, like a camera move -->
+    <div id="mailvp" class="abs" data-qa-ignore>
+      <div id="mail" class="ui">
+        <div class="mbar"><span class="sent"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M3 11.5 21 3l-8.5 18-2-7.5z" fill="none" stroke="#3A3A3E" stroke-width="2" stroke-linejoin="round"/></svg>Sent</span><span class="when">Fri 4:40 pm</span></div>
+        <div class="f"><b>Bcc</b><span class="pill6">6 recipients</span><span style="color:#8A8A90">Bidders A–F</span></div>
+        <div class="f"><b>Subject</b><span style="font-weight:600">Joinery package – BoQ for pricing</span></div>
+        <div class="body">Hi all,<br><br>Please find attached BoQ for pricing.<br><br><span id="gw">Have a good weekend.</span></div>
+        <div class="att"><i class="gridicon"></i><span>Joinery_BoQ_FOR_PRICING.xlsx<small>1 attachment</small></span></div>
+      </div>
+    </div>
+    <div id="c-w1" class="cap" style="top:1066px">They did nothing wrong.</div>
+    <div id="c-w2" class="cap" style="top:1134px"><span class="g">We hit send.</span></div>
+  </div>
+
+  <!-- S4 PRODUCT: what an invited bidder prices (qsme.build mock-up, illustrative; title row cropped out) -->
+  <div id="s4" class="fill">
+    <img id="p-logo" class="abs" src="../../../tools/motion/qsme-logo.svg" alt="QSME">
+    <div id="p-what" class="abs chip">Tendering &amp; estimating software</div>
+    <div id="p-head" class="abs display">In a QSME tender:</div>
+    <div id="p-card" class="abs">
+      <img id="p-img" src="clips/tendering-hi.png" alt="">
+      <div id="p-fade"></div>
+      <div id="hl-line" class="hl"></div>
+      <div id="hl-qty" class="hl"></div>
+      <div id="hl-rate" class="hl"></div>
+    </div>
+    <div id="p-ill" class="illustrative">Illustrative · qsme.build mock-up</div>
+    <div id="p-own">↑ the bidder’s own</div>
+    <div id="p-l1" class="stack">Bidders get your lines.</div>
+    <div id="p-l2" class="stack">Your quantities.</div>
+    <div id="p-l3" class="stack">They price them.</div>
+    <div id="p-never" class="stack"><span class="g">Never</span> your rates.<br><span class="g">Never</span> your budget.</div>
+  </div>
+
+  <!-- S5 PROOF: the live security page, quoted exactly -->
+  <div id="s5" class="fill">
+    <div id="s-chip" class="abs chip">qsme.build/security · live page, 2 Oct 2026</div>
+    <div id="browser" class="abs">
+      <div class="url"><span><svg width="20" height="24" viewBox="0 0 20 24"><rect x="2" y="10" width="16" height="12" rx="3" fill="none" stroke="#A9B8AE" stroke-width="2.4"/><path d="M6 10V7a4 4 0 0 1 8 0v3" fill="none" stroke="#A9B8AE" stroke-width="2.4"/></svg>qsme.build/security</span></div>
+      <div id="vp">
+        <img id="s-page" src="clips/security-390-full.png" alt="">
+        <div id="s-hdr"><img src="clips/security-390-full.png" alt=""></div>
+        <div id="spot"></div>
+        <div id="mk1" class="mark"></div><div id="mk2" class="mark"></div><div id="mk3" class="mark"></div>
+      </div>
+    </div>
+    <div id="menu2" class="menu" style="width:380px">
+      <div class="it"><span>Copy</span></div>
+      <div class="sep"></div>
+      <div class="it dis"><span>Unhide columns</span></div>
+    </div>
+    <div id="c-strip" class="cap" style="top:1066px"><span class="g">Stripped.</span> Not hidden.</div>
+    <div id="c-none" class="cap" style="top:1066px">Nothing to unhide.</div>
+  </div>
+
+  <!-- S6 END CARD -->
+  <div id="end" class="fill">
+    <img id="e-logo" src="../../../tools/motion/qsme-logo.svg" alt="QSME">
+    <div id="e-line" class="display">Private tenders,<br>by invitation.</div>
+    <div id="e-cta" class="pill">Book a 30-minute demo</div>
+    <div id="e-url" class="display">qsme.build</div>
+  </div>
+
+  <!-- generic arrow cursor (screen space) -->
+  <svg id="cur" class="cursor" viewBox="0 0 44 56"><path d="M4 3 L4 44 L14 34 L21 51 L29 47.5 L22 31 L36 31 Z" fill="#FFFFFF" stroke="#111" stroke-width="3" stroke-linejoin="round"/></svg>
+</div>
+
+<script src="../../../tools/motion/kit.js"></script>
+<script>
+/* ===================== data (fictional example figures) ===================== */
+const EST = 486200;
+const BIDS = [['Bidder A', 479850], ['Bidder B', 478400], ['Bidder C', 481120], ['Bidder D', 477300], ['Bidder E', 480900], ['Bidder F', 476950]];
+const fmt = n => n.toLocaleString('en-NZ');
+const pct = n => '−' + (Math.round((EST - n) / EST * 1000) / 10).toFixed(1) + '%';
+BIDS.forEach(([who, amt], i) => {
+  if (!((EST - amt) / EST >= 0.01 && (EST - amt) / EST < 0.02)) throw new Error('bid outside 1–2%: ' + who);
+  document.getElementById('h-rows').insertAdjacentHTML('beforeend',
+    `<div class="h-row" id="hr${i}"><div class="flash" id="hf${i}"></div><div class="who">${who}</div><div class="amt" id="ha${i}">—</div><div class="d"><span class="pct" id="hp${i}">${pct(amt)}</span></div></div>`);
+});
+
+/* ===================== the spreadsheet (native px; the camera scales it) ===================== */
+const COLS = [['', 56, 'rh'], ['A', 80], ['B', 420], ['C', 104], ['D', 80], ['E', 124], ['F', 144], ['G', 130], ['H', 0], ['I', 136]];
+const HW = 340;          // column H width once unhidden
+const LINES = [
+  ['J01', 'Kitchen cabinetry, type K1', '24', 'nr', 164400],
+  ['J02', 'Vanity units, type V2', '36', 'nr', 69120],
+  ['J03', 'Wardrobe fit-out, type W1', '48', 'nr', 78720],
+  ['J04', 'Internal door sets, solid core', '112', 'nr', 96880],
+  ['J05', 'Reception desk, feature', '1', 'item', 38500],
+  ['J06', 'Skirting & architraves', '2,572', 'm', 38580],
+];
+if (LINES.reduce((s, l) => s + l[4], 0) !== EST) throw new Error('column H does not add up to the estimate');
+const win = document.getElementById('win');
+win.style.setProperty('--hw', 0);
+let html = '<div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="ttl">Joinery_BoQ_FOR_PRICING.xlsx</div></div>';
+html += '<div class="fx"><b>A1</b><i>fx</i><span>Ref</span></div>';
+html += '<div class="row letters">' + COLS.map(([l, w, k]) => `<div class="c ${k || ''} ${l === 'H' ? 'H' : ''}" style="${l === 'H' ? '' : 'width:' + w + 'px'}">${l === 'H' ? '<span>H</span>' : l}</div>`).join('') + '</div>';
+const cell = (l, w, txt, cls) => l === 'H' ? `<div class="c H ${cls || ''}"><span>${txt}</span></div>` : `<div class="c ${cls || ''}" style="width:${w}px">${txt}</div>`;
+const rows = [
+  { lab: true, v: { A: 'Ref', B: 'Description', C: 'Qty', D: 'Unit', E: 'Rate', F: 'Amount', G: 'Notes', H: 'OUR ESTIMATE<br>(DO NOT SEND)', I: 'Lead time' } },
+  ...LINES.map(l => ({ v: { A: l[0], B: l[1], C: l[2], D: l[3], E: '', F: '', G: '', H: fmt(l[4]), I: '' } })),
+  { tot: true, v: { A: '', B: 'TOTAL', C: '', D: '', E: '', F: '', G: '', H: fmt(EST), I: '' } },
+];
+rows.forEach((r, ri) => {
+  html += '<div class="row">' + COLS.map(([l, w, k]) => {
+    if (k === 'rh') return `<div class="c rh" style="width:${w}px">${ri + 1}</div>`;
+    let cls = r.lab ? 'lab' : r.tot ? 'tot' : '';
+    if ((l === 'E' || l === 'F') && !r.tot) cls += ' inp';
+    if (['C', 'E', 'F', 'H'].includes(l) && !r.lab) cls += ' num';
+    return cell(l, w, r.v[l] || '', cls);
+  }).join('') + '</div>';
+});
+win.innerHTML = html + '<div style="height:10px"></div>';
+// x positions of columns (collapsed)
+const X = {}; let acc = 0; COLS.forEach(([l, w]) => { X[l] = acc; acc += w; });
+const W_COLLAPSED = acc, W_OPEN = acc + HW;
+win.style.width = `calc(${W_COLLAPSED}px + var(--hw) * 1px)`;
+// hidden-column marker between G and I in the letters row, and a selection tint over G and I
+const LET_Y = 110, LET_H = 44, ROW_Y0 = 154, ROW_H = 48, NROWS = rows.length;
+win.insertAdjacentHTML('beforeend', `<div id="hidmark" style="left:${X.H - 4}px;top:${LET_Y + 6}px;height:${LET_H - 12}px"></div>`);
+win.insertAdjacentHTML('beforeend', `<div id="selG" class="sel" style="left:${X.G}px;top:${LET_Y}px;width:${COLS[7][1]}px;height:${LET_H + NROWS * ROW_H}px"></div>`);
+win.insertAdjacentHTML('beforeend', `<div id="selI" class="sel" style="left:${X.I}px;top:${LET_Y}px;width:${COLS[9][1]}px;height:${LET_H + NROWS * ROW_H}px"></div>`);
+
+/* camera: frame native rect (x0, y0) at scale s inside the 960x870 stage */
+const STAGE = { x: 60, y: 140, w: 960, h: 870 };
+const WIN_H = 60 + 50 + 44 + 8 * 48 + 10;
+const F1s = 960 / (X.G - X.B);
+const F1 = { s: F1s, x0: X.B, y0: -((870 - WIN_H * F1s) / 2) / F1s };                         // establishing: columns B–F (lines, empty Rate/Amount)
+const F2s = 960 / (X.I + 136 - X.F);
+const F2 = { s: F2s, x0: X.F, y0: 110 - 40 / F2s };                                            // F | G | I letters
+const F3 = { s: 960 / (130 + HW + 136), x0: X.G, y0: 100 };                                     // G | H | I with H open
+function cam(t0, A, B, t1, e) {
+  Kit.add('#cam', 'scale', [[t0, A.s], [t1, B.s, e]]);
+  Kit.add('#cam', 'x', [[t0, -A.x0 * A.s], [t1, -B.x0 * B.s, e]]);
+  Kit.add('#cam', 'y', [[t0, -A.y0 * A.s], [t1, -B.y0 * B.s, e]]);
+}
+const scr = (F, nx, ny) => [STAGE.x + (nx - F.x0) * F.s, STAGE.y + (ny - F.y0) * F.s];   // native → screen
+
+/* ===================== S4 crop geometry (tendering-hi.png, dpr 3) ===================== */
+// The mock-up's own title row ("Your bid — Structure package") is cropped out: header row (LINE / QTY / YOUR RATE) → third line.
+const CROP = { x: 97, y: 847, w: 1133, y1: 1181 };  // pane left edge → just past the 'Your rate' column
+const PK = 960 / CROP.w;
+const pimg = document.getElementById('p-img');
+pimg.style.width = (1620 * PK) + 'px';
+pimg.style.left = (-CROP.x * PK) + 'px'; pimg.style.top = (-CROP.y * PK) + 'px';
+document.getElementById('p-card').style.height = ((CROP.y1 - CROP.y) * PK) + 'px';
+const box = (id, x0, x1) => { const e = document.getElementById(id); Object.assign(e.style, { left: ((x0 - CROP.x) * PK) + 'px', width: ((x1 - x0) * PK) + 'px', top: ((847 - CROP.y) * PK + 4) + 'px', height: ((1181 - 847) * PK - 10) + 'px' }); };
+box('hl-line', 112, 660); box('hl-qty', 666, 924); box('hl-rate', 930, 1214);
+// "↑ the bidder's own" sits right under the YOUR RATE box (right edges aligned)
+document.getElementById('p-own').style.right = (1080 - (60 + (1214 - CROP.x) * PK)) + 'px';
+
+/* ===================== S5 security page geometry (security-390-full.png, 1170 px wide, dpr 3) ===================== */
+const SK = 960 / 1170, SCROLL = 3678;               // card 'Bidder visibility rules' centred under the sticky header
+const SCROLL_FROM = SCROLL - 140;                   // the beat opens already scrolled to just above the card (no hero, no other claims)
+const sAt = (r) => ({ left: (r[0] * SK) + 'px', top: ((r[1] - SCROLL) * SK) + 'px', width: (r[2] * SK) + 'px', height: (r[3] * SK) + 'px' });
+Object.assign(document.getElementById('spot').style, sAt([48, 3981, 1074, 540]));
+[[607, 4221, 349, 60], [123, 4298, 878, 60], [123, 4375, 895, 60]].forEach((r, i) => Object.assign(document.getElementById('mk' + (i + 1)).style, sAt([r[0] - 6, r[1] + 2, r[2] + 12, r[3]])));
+const AFTER_INTERFACE = [1036, 4405];               // just right of "interface." (end of line 3), so the cursor covers no word
+
+/* ===================== timeline ===================== */
+// Every scene change after the hook is a hard cut: the outgoing scene ends on the same frame the incoming one starts (no double exposures).
+const T = { s1: [0, 3.5], s2: [3.4, 10.0], s3: [10.0, 12.9], s4: [12.9, 18.2], s5: [18.2, 24.3], end: [24.3, 28.0] };
+Object.entries(T).forEach(([id, [a, b]]) => Kit.scene('#' + id, a, b));
+
+// S1 hook (0–3.5): title and subline are on screen from frame 1; bids land one by one
+Kit.add('#h-title', 'opacity', [[0, 1]]);
+BIDS.forEach(([, amt], i) => {
+  const t = 0.35 + i * 0.24;                       // six rows wait from frame 1; each total lands with a flash
+  Kit.add('#hr' + i, 'opacity', [[0, 0.4], [t, 0.4], [t + 0.1, 1, 'out']]);
+  Kit.count('#ha' + i, [[0, 0], [t, amt, 'hold']], v => v ? fmt(v) : '—');
+  Kit.add('#ha' + i, 'scale', [[t, 1.16], [t + 0.2, 1, 'out']]);
+  Kit.add('#hf' + i, 'opacity', [[t, 0], [t + 0.06, 1], [t + 0.5, 0, 'out']]);
+  Kit.add('#hp' + i, 'scale', [[t + 0.08, 0.6], [t + 0.3, 1, 'outBack']]);
+  Kit.add('#hp' + i, 'opacity', [[t + 0.08, 0], [t + 0.16, 1]]);
+});
+Kit.add('#h-est', 'borderColor', [[0, '#3E5A48'], [1.95, '#3E5A48'], [2.15, '#4BCD32', 'out'], [3.3, '#4BCD32']]);
+Kit.pop('#h-weird', 2.3, { dy: 18 });
+Kit.add('#s1', 'opacity', [[3.28, 1], [3.38, 0, 'in']]);
+
+// S2 the sheet (3.4–10.1)
+Kit.pop('#sh-chip', 3.45); Kit.fade('#sh-tag', 3.45, 3.6);
+Kit.add('#stage', 'opacity', [[3.4, 0], [3.52, 1, 'out']]);
+Kit.add('#stage', 'y', [[3.4, 50], [3.65, 0, 'out']]);
+cam(3.4, F1, F1, 4.35);
+cam(4.35, F1, F2, 5.0, 'inOut');
+cam(6.85, F2, F3, 7.5, 'inOut');
+Kit.add('#win', 'var:--hw', [[6.85, 0], [7.5, HW, 'inOut']]);
+Kit.add('#hidmark', 'opacity', [[0, 1], [6.85, 1], [6.95, 0]]);
+Kit.pop('#c-market', 3.65, { dy: 20 }); Kit.out('#c-market', 6.5, 0.2);
+// red marker: where's H?
+Kit.add('#hq-path', 'trim', [[5.05, 0], [5.4, 1, 'out']]);
+Kit.add('#hq-arrow', 'opacity', [[0, 1], [6.0, 1], [6.15, 0]]);
+Kit.pop('#hq', 5.25, { dy: 0, fade: 0.08 }); Kit.add('#hq', 'opacity', [[6.0, 1], [6.15, 0]]);
+// cursor: up to G, drag to I, right-click, Unhide
+const [gx, gy] = scr(F2, X.G + 65, LET_Y + 22), [ix, iy] = scr(F2, X.I + 68, LET_Y + 22);
+const [bx, by] = scr(F2, X.H, LET_Y + LET_H);
+Object.assign(document.getElementById('hq-arrow').style, { left: (bx - 112) + 'px', top: (by + 10 - 16) + 'px' });
+Object.assign(document.getElementById('hq').style, { left: (bx - 70) + 'px', top: (by + 196) + 'px' });
+const [rx, ry] = scr(F3, X.H + HW - 14 - 50, ROW_Y0 + 7 * ROW_H + 24);   // centre of the H total
+Object.assign(document.getElementById('ring').style, { left: (rx - 135) + 'px', top: (ry - 58) + 'px' });
+Kit.add('#cur', 'opacity', [[3.9, 0], [4.0, 1], [7.05, 1], [7.2, 0]]);
+Kit.add('#cur', 'x', [[3.9, 760], [4.35, 700], [5.15, gx - 4, 'inOut'], [5.6, gx - 4], [5.95, ix - 4, 'inOut'], [6.25, ix - 4], [6.6, 640, 'inOut'], [20.0, 640]]);
+const UNHIDE_Y = iy + 14 + 6 + 6 * 56 + 26 + 28;   // centre of 'Unhide columns'
+Kit.add('#cur', 'y', [[3.9, 760], [4.35, 700], [5.15, gy - 3, 'inOut'], [5.6, gy - 3], [5.95, iy - 3, 'inOut'], [6.25, iy - 3], [6.6, UNHIDE_Y - 3, 'inOut'], [20.0, UNHIDE_Y - 3]]);
+Kit.add('#cur', 'scale', [[5.55, 1], [5.6, 0.86], [5.95, 0.86], [6.0, 1], [6.24, 1], [6.27, 0.86], [6.33, 1], [6.74, 1], [6.77, 0.86], [6.84, 1]]);
+Kit.add('#selG', 'opacity', [[5.6, 0], [5.64, 1], [6.8, 1], [6.95, 0]]);
+Kit.add('#selI', 'opacity', [[5.85, 0], [5.9, 1], [6.8, 1], [6.95, 0]]);
+// context menu at the cursor
+const m1 = document.getElementById('menu1');
+Object.assign(m1.style, { left: (ix - 432) + 'px', top: (iy + 14) + 'px' });
+Kit.add('#menu1', 'opacity', [[6.28, 0], [6.32, 1], [6.8, 1], [6.86, 0]]);
+Kit.add('#menu1', 'scale', [[6.28, 0.96], [6.36, 1, 'out']]);
+const hov = document.getElementById('hov1');
+Kit.add('#hov1', 'opacity', [[6.4, 0], [6.42, 1]]);
+Kit.add('#hov1', 'y', [[6.4, 6 + 3 * 56 + 13], [6.58, 6 + 6 * 56 + 26, 'out']]);
+// column H opens: circle the total that matches 'our estimate'
+Kit.add('#ring-path', 'trim', [[7.75, 0], [8.2, 1, 'out']]);
+Kit.pop('#c-colh', 7.75, { dy: 20 });
+
+// S3 the email (hard cut at 10.0 → 12.9): the self-own. The bidders did nothing wrong; we hit send.
+// The chip and the email are on screen from the cut frame; only a small settle moves.
+Kit.add('#mailvp', 'y', [[10.0, 16], [10.22, 0, 'out']]);
+Kit.pop('#c-w1', 10.45, { dy: 20 });
+Kit.pop('#c-w2', 11.3, { dy: 20 });
+// the punch: a short push-in on "Have a good weekend." (Friday, 4:40 pm)
+const PUSH = { t0: 11.95, t1: 12.25, s: 1.5 };
+Kit.each(t => {
+  const g = document.getElementById('gw'), m = document.getElementById('mail'), vp = document.getElementById('mailvp');
+  const cx = g.offsetLeft + g.offsetWidth / 2, cy = g.offsetTop + g.offsetHeight / 2;        // the line, in card px
+  const p = Kit.ease.out(Math.max(0, Math.min(1, (t - PUSH.t0) / (PUSH.t1 - PUSH.t0))));
+  const sc = 1 + (PUSH.s - 1) * p, Y = cy + (vp.offsetHeight * 0.5 - cy) * p;   // left edge stays anchored (left-aligned text), the line rises to mid-card
+  m.style.transformOrigin = '0 0';
+  m.style.transform = `translate(0px, ${Y - sc * cy}px) scale(${sc})`;
+});
+
+// S4 bidder's form (hard cut at 12.9 → 18.2)
+Kit.add('#p-card', 'scale', [[12.9, 1], [16.15, 1.02]]);
+Kit.pop('#p-head', 12.93, { dy: 16 });
+const NEVER_T = 16.15;                              // hard cut to a clean background: no rates readable under the claim
+const beatsP = [['#hl-line', '#p-l1', 13.35], ['#hl-qty', '#p-l2', 14.45], ['#hl-rate', '#p-l3', 15.1]];
+beatsP.forEach(([h, l, t], i) => {
+  const tEnd = beatsP[i + 1] ? beatsP[i + 1][2] : NEVER_T;
+  Kit.add(h, 'opacity', [[t, 0], [t + 0.12, 1], [tEnd, 1], [tEnd + (i === 2 ? 0 : 0.12), 0, i === 2 ? 'hold' : 'linear']]);
+  Kit.pop(l, t, { dy: 26 });
+  Kit.add(l, 'opacity', [[NEVER_T, 0, 'hold']]);
+});
+Kit.pop('#p-own', 15.22, { dy: 12 }); Kit.add('#p-own', 'opacity', [[NEVER_T, 0, 'hold']]);
+['#p-card', '#p-ill'].forEach(s => Kit.show(s, 0, NEVER_T));
+Kit.add('#p-head', 'opacity', [[NEVER_T, 0, 'hold']]);
+Kit.slam('#p-never', NEVER_T, { from: 1.12, dur: 0.18 });
+
+// S5 the live security page (hard cut at 18.2 → 24.3), opening just above 'Bidder visibility rules'
+Kit.add('#s-page', 'y', [[18.2, -SCROLL_FROM * SK], [18.75, -SCROLL * SK, 'out']]);
+Kit.add('#spot', 'opacity', [[18.72, 0], [18.95, 1, 'out']]);
+Kit.add('#spot', 'y', [[0, 0]]);
+['#mk1', '#mk2', '#mk3'].forEach((m, i) => Kit.add(m, 'clipX', [[18.95 + i * 0.5, 0], [18.95 + (i + 1) * 0.5, 1, i === 2 ? 'out' : 'linear']]));
+['#mk1', '#mk2', '#mk3'].forEach(m => Kit.add(m, 'opacity', [[18.94, 0], [18.95, 1]]));
+Kit.pop('#c-strip', 20.55, { dy: 20 }); Kit.out('#c-strip', 21.85, 0.12);
+// callback: right-click just after "interface." — the menu flips below-left (screen edge), under the highlight, and Unhide is greyed out
+const nhx = 60 + AFTER_INTERFACE[0] * SK, nhy = 140 + 76 + (AFTER_INTERFACE[1] - SCROLL) * SK;
+Kit.add('#cur', 'opacity', [[21.0, 0], [21.08, 1], [24.3, 0, 'hold']]);
+Kit.add('#cur', 'x', [[21.0, 860], [21.6, nhx - 4, 'inOut']]);
+Kit.add('#cur', 'y', [[21.0, 1000], [21.6, nhy - 3, 'inOut']]);
+Kit.add('#cur', 'scale', [[21.78, 1], [21.81, 0.86], [21.87, 1]]);
+Object.assign(document.getElementById('menu2').style, { left: (nhx - 380) + 'px', top: (nhy + 30) + 'px' });
+Kit.add('#menu2', 'opacity', [[21.85, 0], [21.89, 1]]);
+Kit.add('#menu2', 'scale', [[21.85, 0.96], [21.93, 1, 'out']]);
+Kit.pop('#c-none', 22.1, { dy: 20 });
+
+// S6 end card (hard cut at 24.3 → 28.0): whole card in by ~24.7, qsme.build held 3.3 s
+Kit.add('#e-logo', 'scale', [[24.3, 0.96], [24.6, 1, 'out']]);
+Kit.pop('#e-line', 24.36);
+Kit.pop('#e-cta', 24.46);
+Kit.pop('#e-url', 24.56);
+
+Kit.ready({ duration: 28, fonts: ['700 60px "Space Grotesk"', '600 30px Inter', '800 21px Inter', '600 30px "JetBrains Mono"', '500 22px "JetBrains Mono"', '400 60px "Permanent Marker"'] });
+</script>
+</body>
+</html>

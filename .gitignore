@@ -1,0 +1,31 @@
+# Secrets — never commit (names only in .env.example)
+.env
+.env.*
+!.env.example
+
+# Dependencies / OS
+node_modules/
+.DS_Store
+
+# Compiled Swift tools (rebuild: see README → "New machine")
+tools/mux
+tools/motion/encode
+tools/motion/extract
+tools/motion/frames
+tools/motion/sheet
+tools/motion/preview
+
+# Videos are too big for git → backed up as GitHub Release assets (tools/backup.sh)
+*.mp4
+*.mov
+*.webm
+
+# Frame caches (rebuild with tools/motion/capture.mjs or tools/motion/extract)
+projects/*/motion/clips/**/*.jpg
+projects/*/motion/clips/**/*.jpeg
+projects/*/motion/clips/**/*.png
+projects/*/motion-src/frames/
+
+# Local-only
+.claude/settings.local.json
+studio/synced.txt

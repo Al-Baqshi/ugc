@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<title>One page for the planner (9:16 chapter cut)</title>
+<!-- 9:16 chapter cut-down of "From an address to a site report" (chapters 06 Pro view + 07 One pager + close). Motion kit page.
+     v2 (review 2026-10-02): "Illustrative · demo data" also on both desk beats; captions are one box below the frame (they no
+     longer stack or cover the rows); the frame is shorter so the Reels safe box holds picture + caption; the end card
+     cross-fades in and carries "Dramatised · demo sites". -->
+<link rel="stylesheet" href="../../../tools/motion/kit.css">
+<link rel="stylesheet" href="site-ui.css">
+<style>
+  #root { background: radial-gradient(900px 1300px at 50% 42%, #0C1B30 0%, #050B1C 55%, #020617 100%); }
+  .caption { left: 65px; right: 65px; top: auto; bottom: 670px; font-size: 46px; line-height: 1.2; z-index: 40; }
+  .caption.box > span { display: inline-block; max-width: 950px; padding: 10px 22px; border-radius: 14px; background: #0F172A; color: #F8FAFC; box-shadow: 0 0 0 2px rgba(255,255,255,.14), 0 10px 30px rgba(0,0,0,.4); }
+  .caption.box span span { background: none; padding: 0; border-radius: 0; box-shadow: none; }
+  .caption.box span span.g { color: #4ADE80; } .caption.box span span.am { color: #FBBF24; }
+  .head { position: absolute; left: 65px; right: 65px; top: 318px; text-align: center; font: 800 86px/1.02 Manrope; letter-spacing: -0.035em; color: #F8FAFC; z-index: 30; text-shadow: 0 6px 24px rgba(0,0,0,.5); }
+  .head .a { color: #3DC023; }
+  #frame { left: 65px; top: 462px; width: 950px; height: 638px; border-radius: 22px; overflow: hidden; background: #0B1226; box-shadow: 0 30px 80px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.08); }
+  .cam { position: absolute; left: 0; top: 0; transform-origin: 0 0; --cx: 475; --cy: 319; --cs: 1;
+    transform: translate(calc(475px - var(--cs) * var(--cx) * 1px), calc(319px - var(--cs) * var(--cy) * 1px)) scale(var(--cs)); }
+  #cam { width: 1500px; height: 760px; }
+  #dcam { width: 1080px; height: 1920px; --cx: 540; --cy: 960; transform: translate(calc(540px - var(--cs) * var(--cx) * 1px), calc(960px - var(--cs) * var(--cy) * 1px)) scale(var(--cs)); }
+  .itag { position: absolute; right: 65px; top: 418px; padding: 5px 12px; border-radius: 8px; font: 500 21px/1.2 "JetBrains Mono"; border: 2px dashed rgba(248,250,252,.6); color: rgba(248,250,252,.85); background: rgba(2,6,23,.72); z-index: 35; }
+  #dtag { top: 522px; background: rgba(2,6,23,.8); }
+  .hl { position: absolute; border: 3px solid #3DC023; border-radius: 10px; box-shadow: 0 0 0 5px rgba(61,192,35,.20); }
+  .hl.amber { border-color: #F59E0B; box-shadow: 0 0 0 5px rgba(245,158,11,.22); }
+  .mk { position: absolute; left: -6px; width: calc(100% + 12px); bottom: -9px; height: 14px; overflow: visible; }
+  #desk { background:
+      radial-gradient(900px 1400px at 50% 45%, rgba(0,0,0,0) 0%, rgba(0,0,0,.55) 100%),
+      repeating-linear-gradient(93deg, rgba(255,255,255,.028) 0 2px, rgba(0,0,0,0) 2px 11px),
+      repeating-linear-gradient(91deg, rgba(0,0,0,.07) 0 1px, rgba(0,0,0,0) 1px 37px),
+      linear-gradient(180deg, #4A3424 0%, #3A281B 100%); }
+  .mug { position: absolute; width: 250px; height: 250px; border-radius: 50%; background: radial-gradient(circle at 50% 50%, #2B1A10 0 52%, #F1F5F9 53% 63%, #CBD5E1 64% 68%, rgba(0,0,0,0) 69%); box-shadow: 0 18px 30px rgba(0,0,0,.45); }
+  .mug:after { content: ''; position: absolute; right: -58px; top: 92px; width: 80px; height: 64px; border: 16px solid #E2E8F0; border-left: none; border-radius: 0 40px 40px 0; }
+  .sticky { position: absolute; padding: 28px 30px 32px; background: linear-gradient(180deg, #FDE68A 0%, #FCD34D 100%); color: #1F2937; box-shadow: 0 22px 40px rgba(0,0,0,.45); border-radius: 3px; font: 400 35px/1.3 Kalam; }
+  .sticky .h { font: 700 40px/1.15 Kalam; }
+  .sticky .ln { margin-top: 10px; white-space: nowrap; }
+  #disc { position: absolute; left: 65px; top: 480px; width: 950px; background: #fff; border-radius: 22px; padding: 44px 46px 50px; box-shadow: 0 28px 70px rgba(0,0,0,.5); }
+  #disc .src { font: 600 22px/1.2 "JetBrains Mono"; color: #94A3B8; }
+  #disc .tx { font: 500 44px/1.45 Inter; color: #64748B; margin-top: 18px; }
+  #disc .tx b { color: #1E293B; font-weight: 700; display: inline-block; position: relative; }
+  #end { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 300px 65px 670px; z-index: 45;
+    background: radial-gradient(900px 1300px at 50% 42%, #0C1B30 0%, #050B1C 55%, #020617 100%); }
+  #end img { width: 300px; }
+  #end .h { font: 800 88px/1.06 Manrope; letter-spacing: -0.035em; color: #F8FAFC; margin-top: 40px; }
+  #end .s { font: 500 42px/1.35 Inter; color: rgba(248,250,252,.85); margin-top: 26px; }
+  #end .s b { color: #3DC023; font-weight: 700; }
+  #end .f { font: 500 27px/1.4 Inter; color: rgba(248,250,252,.58); margin-top: 22px; }
+  #end .pill { margin-top: 30px; font-size: 44px; padding: 18px 40px; }
+</style>
+</head>
+<body class="nz r9x16">
+<div id="root">
+  <div id="desk" class="fill">
+    <div id="dcam" class="cam">
+      <div class="mug" style="left:-40px;top:1420px"></div>
+      <div id="paperWrap" data-qa-ignore class="abs" style="left:120px;top:540px;width:620px;height:877px;transform-origin:50% 50%"></div>
+      <div id="sticky" class="sticky" style="left:432px;top:680px;width:560px">
+        <div class="h">Qs for Monday</div>
+        <div class="ln">1. Road widening — how much?</div>
+        <div class="ln">2. Viewshaft vs 21 m?</div>
+        <div class="ln">3. Pipe ~3 m — build-over?</div>
+      </div>
+    </div>
+  </div>
+  <div id="frame" class="abs" data-qa-ignore><div id="cam" class="cam"></div></div>
+  <div id="itag" class="itag">Illustrative · demo data</div>
+  <div id="dtag" class="itag">Illustrative · demo data</div>
+  <div class="head" id="h1">One page for<br><span class="a">the planner.</span></div>
+  <div class="head" id="h2">“Open Pro view.”</div>
+  <div class="head" id="h3">Four layers.</div>
+  <div class="head" id="h4">The Title tab.</div>
+  <div class="head" id="h5">“One pager.”</div>
+  <div class="head" id="h6">One page.<br><span class="a">Three questions.</span></div>
+  <div class="head" id="h7">The last word:</div>
+  <div id="disc"><div class="src">Quoted from the Site research page</div>
+    <div class="tx">Indicative only — a planning heuristic from public council data, not advice. Overlays, precincts, plan changes and site conditions change what's possible. <b>Confirm with a planner or the council.<svg class="mk" viewBox="0 0 700 14" preserveAspectRatio="none"><path id="discMk" d="M2 8 C 160 2, 420 13, 698 5" fill="none" stroke="#E0302A" stroke-width="7" stroke-linecap="round"/></svg></b></div></div>
+  <div id="end" class="fill">
+    <img id="elogo" src="qsme-logo.svg" alt="QSME">
+    <div class="h" id="eh">Start with your address.</div>
+    <div class="s" id="es">Site research: <b>sign up at qsme.co.nz</b></div>
+    <div class="f" id="ef">Full depth: Auckland · Rule-based public data, not AI · Not a LIM, valuation or advice · Dramatised · demo sites</div>
+    <div class="pill" id="ecta">qsme.co.nz</div>
+  </div>
+</div>
+<script src="../../../tools/motion/kit.js"></script>
+<script src="site-ui.js"></script>
+<script src="short-common.js"></script>
+<script>
+(function () {
+  var $ = Short.$, UI = window.SiteUI, camEl = $('cam'), DUR = 32;
+  camEl.innerHTML = UI.simplePage('s1', 'pg').html + UI.proPage('s1', 'pro').html +
+    '<div id="print" class="fill" style="background:rgba(32,33,36,.78)"><div id="opWrap" class="abs" style="left:230px;top:20px;width:509px;height:720px"><div style="position:absolute;left:0;top:0;width:620px;height:877px;transform:scale(.82);transform-origin:0 0">' + UI.onePager('s1', 'op', '11 Oct 2026') + '</div></div>' + UI.printDialog('pd') + '</div>';
+  $('op').style.left = '0px'; $('op').style.top = '0px'; $('pd').style.left = '1000px'; $('pd').style.top = '196px';
+  $('paperWrap').innerHTML = UI.onePager('s1', 'dop', '11 Oct 2026'); $('dop').style.left = '0px'; $('dop').style.top = '0px';
+  Short.hide('#pg-load'); Short.hide('#pg-bar');
+  // the simple page already has services on (as left after chapter 04 of the long version)
+  ['#pg-m-svc', '#pg-m-dist', '#pg-dlbl'].forEach(function (s) { Kit.add(s, 'opacity', [[0, 1]]); });
+  var C = Short.cursor(camEl);
+
+  Short.ranges('desk', [[0, 3.2], [21.2, 24.6]]); Short.ranges('dtag', [[0, 3.2], [21.2, 24.6]]);
+  Short.ranges('frame', [[3.2, 21.2]]); Short.ranges('itag', [[3.2, 21.2]]);
+  Short.ranges('pg', [[3.2, 4.35]]); Short.ranges('pro', [[4.35, 18.05]]); Short.ranges('print', [[18.05, 21.2]]);
+  Short.ranges('disc', [[24.6, 28.6]]); Short.ranges('end', [[28.2, DUR + 1]]);
+  Short.head('h1', 0, 3.2); Short.head('h2', 3.2, 6.6, true); Short.head('h3', 6.6, 10.6, true); Short.head('h4', 10.6, 17.4, true);
+  Short.head('h5', 17.4, 21.2, true); Short.head('h6', 21.2, 24.6, true); Short.head('h7', 24.6, 28.6);
+
+  // desk (hook: the result first)
+  Kit.add('#paperWrap', 'rotate', [[0, -3]]);
+  Kit.add('#sticky', 'opacity', [[0.55, 0], [0.6, 1]]); Kit.add('#sticky', 'scale', [[0.55, 1.25], [0.72, 1, 'slam']]); Kit.add('#sticky', 'rotate', [[0.55, 9], [0.72, 4, 'out']]);
+  Short.cam('#dcam', [[0, 540, 960, 1.0], [3.2, 560, 960, 1.05, 'linear'], [21.2, 560, 960, 1.05], [24.6, 640, 930, 1.18, 'linear']]);
+  Short.cap(1.2, 3.15, 'Here’s where it’s from.');
+
+  // simple page → Pro view (frame 950x638, so a 1.25 camera shows 760x510 of the 1500x760 desktop page)
+  Short.cam('#cam', [[3.2, 1120, 255, 1.25], [4.35, 1120, 255, 1.25], [4.36, 380, 255, 1.25, 'hold'], [6.6, 380, 270, 1.25], [7.0, 380, 300, 1.25, 'inOut'], [10.4, 380, 300, 1.25],
+    [10.9, 1120, 300, 1.25, 'inOut'], [12.2, 1120, 300, 1.25], [12.8, 1150, 405, 1.42, 'inOut'], [14.3, 1150, 405, 1.43], [14.8, 1135, 300, 1.3, 'inOut'], [17.2, 1135, 300, 1.31],
+    [17.5, 1135, 255, 1.25, 'inOut'], [18.0, 1135, 255, 1.25], [18.6, 484, 380, 1.25, 'inOut'], [19.0, 484, 300, 1.25], [19.8, 484, 470, 1.25, 'inOut'], [20.3, 1150, 380, 1.25, 'inOut'], [21.2, 1150, 380, 1.25]]);
+  C.show(3.3, 4.3); C.to(3.3, 3.95, 985, 36); C.click(4.0, 985, 36);
+  Kit.add('#pro', 'opacity', [[4.35, 0], [4.6, 1, 'out']]);
+  Short.cap(3.3, 6.55, 'Pro view. Same site. Much bigger map.');
+  // layers
+  C.show(6.7, 9.8);
+  [['lz', 60, 7.0], ['lb', 163, 7.8], ['ls', 271, 8.6], ['lf', 402, 9.4]].forEach(function (c) {
+    C.to(c[2] - 0.45, c[2] - 0.05, c[1], 110); C.click(c[2], c[1], 110);
+    Kit.add('#pro-' + c[0], 'background', [[c[2], '#FFFFFF'], [c[2] + 0.12, '#16A34A']]); Kit.add('#pro-' + c[0], 'color', [[c[2], '#475569'], [c[2] + 0.12, '#FFFFFF']]);
+  });
+  Kit.add('#pro-m-zone', 'opacity', [[7.05, 0], [7.35, 1, 'out']]); Kit.add('#pro-legend', 'opacity', [[7.2, 0], [7.5, 1, 'out']]);
+  Kit.add('#pro-m-bld', 'opacity', [[7.85, 0], [8.15, 1, 'out']]); Kit.add('#pro-m-svc', 'opacity', [[8.65, 0], [8.95, 1, 'out']]); Kit.add('#pro-m-flood', 'opacity', [[9.45, 0], [9.75, 1, 'out']]);
+  Short.cap(6.7, 10.55, 'Zoning. Buildings. Services. Flood. <span class="g">In Auckland.</span>');
+  // Title tab
+  C.show(10.6, 11.5); C.to(10.6, 11.05, 962, 108); C.click(11.1, 962, 108);
+  Kit.add('#pro-t0', 'background', [[11.1, '#DCFCE7'], [11.2, '#FFFFFF']]); Kit.add('#pro-t0', 'color', [[11.1, '#15803D'], [11.2, '#475569']]); Kit.add('#pro-t0', 'borderColor', [[11.1, '#86EFAC'], [11.2, '#E2E7EE']]);
+  Kit.add('#pro-t1', 'background', [[11.1, '#FFFFFF'], [11.2, '#DCFCE7']]); Kit.add('#pro-t1', 'color', [[11.1, '#475569'], [11.2, '#15803D']]); Kit.add('#pro-t1', 'borderColor', [[11.1, '#E2E7EE'], [11.2, '#86EFAC']]);
+  Kit.add('#pro-sum', 'opacity', [[11.15, 1], [11.25, 0]]); Kit.add('#pro-title', 'opacity', [[11.2, 0], [11.45, 1, 'out']]);
+  var hOwn = Short.hl(camEl, 'hl-own', [875, 445, 1180, 470]), hLic = Short.hl(camEl, 'hl-lic', [987, 483, 1209, 511], 'amber'), hCv = Short.hl(camEl, 'hl-cv', [1250, 92, 1352, 124], 'amber');
+  Kit.add(hOwn, 'opacity', [[12.0, 0], [12.2, 1], [14.2, 1], [14.4, 0]]);
+  Kit.add(hLic, 'opacity', [[14.9, 0], [15.1, 1], [17.2, 1], [17.4, 0]]); Kit.add(hCv, 'opacity', [[15.1, 0], [15.3, 1], [17.2, 1], [17.4, 0]]);
+  Short.cap(10.7, 14.35, 'Title facts from LINZ. How many owners. Not who.');
+  Short.cap(14.45, 17.35, 'The rest? “Available with a data licence.”');
+  // One pager
+  C.show(17.4, 18.2); C.to(17.4, 17.75, 1409, 39); C.click(17.8, 1409, 39);
+  Kit.add('#print', 'opacity', [[18.05, 0], [18.3, 1, 'out']]);
+  C.show(20.2, 21.1); C.to(20.2, 20.55, 1338, 461); C.click(20.6, 1338, 461);
+  C.done();
+  Short.cap(17.5, 21.15, 'Print it, or save a PDF.');
+  // back on the desk
+  Short.cap(21.3, 24.55, 'That’s the meeting sorted.');
+  // last word
+  Kit.pop('#disc', 24.65, { dy: 30 }); Kit.add('#discMk', 'trim', [[25.6, 0], [26.2, 1, 'out']]);
+  Short.cap(24.75, 27.2, 'It even tells you to ring the planner.');
+  Short.cap(27.3, 28.15, 'Fair enough.');
+  // end card cross-fades straight in over the quote (no dip to navy)
+  Kit.add('#end', 'opacity', [[28.2, 0], [28.6, 1, 'out']]); Kit.add('#elogo', 'scale', [[28.2, 0.94], [28.7, 1, 'out']]);
+  Kit.pop('#eh', 28.5, { dy: 24 }); Kit.pop('#es', 29.4, { dy: 18 }); Kit.pop('#ef', 29.9, { dy: 12 }); Kit.pop('#ecta', 30.3, { dy: 16 });
+  Kit.ready({ duration: DUR, fonts: ['800 40px Manrope', '500 20px Inter', '600 20px Inter', '700 20px Inter', '400 40px Kalam', '700 44px Kalam', '500 20px "JetBrains Mono"'] });
+})();
+</script>
+</body>
+</html>

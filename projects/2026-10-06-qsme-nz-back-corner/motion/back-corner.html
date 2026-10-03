@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<title>The back corner</title>
+<!-- QSME NZ · "The back corner" · 9:16 · 29.9 s · silent master with burned-in captions.
+     Render (from the studio root):
+       node tools/motion/make.mjs projects/2026-10-06-qsme-nz-back-corner/motion/back-corner.html projects/2026-10-06-qsme-nz-back-corner/outputs/back-corner-9x16.mp4 --safe 65,300,1015,1250
+     Footage (all real, captured from www.qsme.co.nz):
+       clips/search/  live screencast of www.qsme.co.nz "Search your address" on a phone-size browser (capture-hd.mjs + capture-search.json)
+       clips/plate/   one tall full-res still of the same result + the fixed nav bar (still-plate.mjs). The edit scrolls / punches into it.
+       clips/home/    first frame (t = 0, before its floating UI cards appear) of the stage-5-dusk b-roll (assets/qsme/broll, AI brand
+                      b-roll from qsme.co.nz, no people): a finished home with a front lawn, shown as an Illustrative flyer photo
+     Demo address: 474 Great North Road, Grey Lynn (Open Space – Community zone, public community land, not a home).
+     Edit graphics (marker circles, outlines, the boundary trace that follows the real LINZ parcel) only point at real UI; nothing in the UI is altered.
+     v2 (2026-10-02, review fixes): slower hook / setup / payoff reads, flyer photo = finished home, "Check" caption no longer covers
+     "Present — check", masked plate bottom, no grey map-loading frames, end card without the ® (registration unconfirmed).
+     v3 (2026-10-03, owner CTA rule: push sign-ups, never "free" / "no sign-up"): live-screen caption "On qsme.co.nz: / Sign up. /
+     “Search your address.”", end card "Search your address." + [Sign up at qsme.co.nz], DEMO pill "Auckland community site · try yours".
+     The homepage's own "Free to join." line (under Get started) is patched out with its own background (#fjC on the screencast,
+     per-frame boxes from OCR of clips/search; #fjP on the plate). Nothing else in the UI is touched. -->
+<link rel="stylesheet" href="../../../tools/motion/kit.css">
+<style>
+  body.nz #root { background: #020617; }
+  .scene { position: absolute; inset: 0; overflow: hidden; }
+
+  /* ---------- captions (burned in, sound-off) ---------- */
+  .cap { position: absolute; left: 65px; width: 950px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .cap > span { display: inline-block; background: #F8FAFC; color: #020617; font: 800 62px/1.08 Manrope; letter-spacing: -0.022em; padding: 14px 28px 18px; border-radius: 14px; text-align: center; box-shadow: 0 14px 40px rgba(0, 0, 0, .38); }
+  .cap > span.sm { font-size: 48px; padding: 12px 24px 15px; }
+  .cap > span.xl { font-size: 84px; padding: 14px 32px 20px; }
+  .cap em { font-style: normal; color: #15803D; }
+  .cap .q { color: #B45309; }
+
+  /* ---------- plate (tall real still) + camera ---------- */
+  #cam { position: absolute; left: 0; top: 0; width: 1080px; height: 3950px; transform-origin: 0 0; }
+  #cam > img { position: absolute; left: 0; top: 0; width: 1080px; height: 3950px; }
+  #cam svg { position: absolute; left: 0; top: 0; width: 1080px; height: 3950px; overflow: visible; }
+  /* feathered mask below the result card: hides the page's "SCROLL — WATCH IT GET BUILT" prompt and the plate's bottom edge */
+  #plateFoot { position: absolute; left: 0; top: 3590px; width: 1080px; height: 1600px; background: linear-gradient(180deg, rgba(9,13,14,0) 0, #090D0E 90px, #090D0E 360px, #020617 720px, #020617 100%); }
+  #nav { position: absolute; left: 0; top: 0; width: 1080px; height: 143px; }
+  .ol { fill: none; stroke: #F8FAFC; stroke-width: 4; }
+  .mk { fill: none; stroke: #E0302A; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* rewind overlay */
+  #rew { position: absolute; inset: 0; pointer-events: none; }
+  #scan { position: absolute; inset: 0; background: repeating-linear-gradient(180deg, rgba(255,255,255,0) 0 5px, rgba(255,255,255,.07) 5px 7px); }
+  .tear { position: absolute; left: 0; width: 1080px; height: 10px; background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.55) 30%, rgba(180,220,255,.35) 70%, rgba(255,255,255,0)); }
+  #rwGlyph { position: absolute; left: 390px; top: 860px; width: 300px; height: 200px; }
+  #flash { position: absolute; inset: 0; background: #F8FAFC; }
+
+  /* ---------- scene B: the open home (Illustrative) ---------- */
+  #siteBg { position: absolute; left: -1166px; top: 0; width: 3413px; height: 1920px; object-fit: cover; filter: blur(26px) brightness(.5) saturate(1.1); }
+  #flyer { position: absolute; left: 90px; top: 352px; width: 900px; background: #fff; border-radius: 18px; overflow: hidden; box-shadow: 0 34px 90px rgba(0, 0, 0, .6); transform-origin: 50% 40%; }
+  #flyerPhotoW { position: relative; width: 900px; height: 470px; overflow: hidden; }
+  #flyerPhoto { display: block; width: 900px; height: 470px; object-fit: cover; object-position: 50% 62%; transform-origin: 62% 60%; }
+  .fband { display: flex; justify-content: space-between; align-items: center; background: #141414; color: #fff; font: 700 30px/1 Inter; letter-spacing: .14em; padding: 20px 34px; }
+  .fhead { font: 700 88px/0.98 "Space Grotesk"; letter-spacing: -0.035em; color: #141414; padding: 30px 34px 36px; }
+  #flyerDim { position: absolute; inset: 0; background: #020617; }
+  .ill { position: absolute; padding: 7px 14px; border: 2px dashed rgba(248,250,252,.75); border-radius: 8px; color: rgba(248,250,252,.92); background: rgba(2,6,23,.62); font: 500 24px/1.2 "JetBrains Mono"; }
+
+  /* generic notes app (unbranded, neutral) */
+  .notes { position: absolute; left: 100px; width: 880px; background: #FBFAF6; border-radius: 40px; box-shadow: 0 30px 90px rgba(0, 0, 0, .55); color: #1C1C1E; font-family: Inter; overflow: hidden; }
+  .nbar { display: flex; justify-content: space-between; align-items: center; padding: 26px 40px 0; font: 500 30px/1 Inter; color: #8A8A8E; }
+  .ntitle { padding: 18px 40px 4px; font: 700 50px/1.1 Inter; letter-spacing: -0.01em; }
+  .ndate { padding: 0 40px 18px; font: 400 28px/1.2 Inter; color: #8A8A8E; }
+  .nrow { position: relative; display: flex; align-items: center; gap: 26px; height: 98px; padding: 0 40px; font: 500 52px/1 Inter; letter-spacing: -0.01em; }
+  .box { position: relative; flex: none; width: 56px; height: 56px; border-radius: 50%; border: 4px solid #C7C7CC; }
+  .fillc { position: absolute; inset: -4px; border-radius: 50%; background: #1F2937; }
+  .box svg { position: absolute; left: -4px; top: -4px; width: 56px; height: 56px; overflow: visible; }
+  .qm { position: absolute; font: 400 104px/1 "Permanent Marker"; color: #E0302A; }
+
+  /* ---------- scene C: live screencast ---------- */
+  #shot { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+  .tap { position: absolute; width: 130px; height: 130px; margin: -65px 0 0 -65px; border-radius: 50%; background: rgba(248, 250, 252, .28); border: 4px solid rgba(248, 250, 252, .85); }
+  .demo { position: absolute; display: inline-flex; align-items: center; gap: 14px; padding: 14px 26px; border-radius: 999px; background: rgba(2, 6, 23, .88); border: 2px solid rgba(61, 192, 35, .7); color: #F8FAFC; font: 600 34px/1.1 Inter; white-space: nowrap; }
+  .demo b { color: #3DC023; font: 700 28px/1 "JetBrains Mono"; letter-spacing: .06em; }
+  /* patch over the homepage's own "Free to join." line: a feathered copy of the page background 66 px below it (owner rule: never show "free") */
+  .fj { position: absolute; overflow: hidden;
+        -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%), linear-gradient(180deg, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
+        mask-image: linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%), linear-gradient(180deg, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
+        -webkit-mask-composite: source-in; mask-composite: intersect; }
+  .fj > img { position: absolute; }
+
+  /* ---------- end card ---------- */
+  #endScene { background: radial-gradient(900px 700px at 50% 42%, #0B2A1A 0%, #020617 70%); }
+  #endTrace { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: visible; }
+  #logo { position: absolute; top: 352px; height: 139px; overflow: hidden; }
+  #logo img { position: absolute; width: 543.2px; top: -59px; }
+  #eHead { position: absolute; left: 65px; width: 950px; top: 540px; text-align: center; font: 800 96px/1.08 Manrope; letter-spacing: -0.035em; color: #F8FAFC; }
+  #eHead .g { color: #3DC023; }
+  #eSub { position: absolute; left: 65px; width: 950px; top: 880px; text-align: center; font: 400 44px/1.25 Inter; color: rgba(248, 250, 252, .78); }
+  #eSub b { color: #F8FAFC; font-weight: 600; }
+  #ePillW { position: absolute; left: 65px; width: 950px; top: 1018px; text-align: center; }
+  #ePill { display: inline-block; background: #16A34A; color: #fff; font: 700 46px/1 Inter; padding: 22px 48px; border-radius: 12px; }
+  #eTagW { position: absolute; left: 65px; width: 950px; top: 1150px; text-align: center; }
+  #eTag { display: inline-block; border: 2px solid #1E293B; background: #0B1226; color: rgba(248, 250, 252, .82); font: 500 32px/1.2 "JetBrains Mono"; padding: 12px 24px; border-radius: 999px; }
+</style>
+</head>
+<body class="nz r9x16">
+<div id="root">
+
+  <!-- ================= C · live screencast (under the plate so the plate can crossfade over it) ================= -->
+  <div id="shotScene" class="scene">
+    <img id="shot" src="clips/search/f_00030.jpg" alt="">
+    <div id="fjC" class="fj" style="left:14px;width:254px;display:none"><img src="clips/search/f_00030.jpg" alt="" style="left:-14px;top:0;width:1080px;height:1920px"></div>
+    <div id="scrimTop" class="scene" style="background: linear-gradient(180deg, rgba(2,6,23,0) 110px, rgba(2,6,23,.95) 265px, rgba(2,6,23,.95) 655px, rgba(2,6,23,0) 810px)"></div>
+    <div id="scrimBot" class="scene" style="background: linear-gradient(180deg, rgba(2,6,23,0) 1080px, rgba(2,6,23,.9) 1150px, rgba(2,6,23,.9) 1920px)"></div>
+    <div id="tap1" class="tap" style="left:540px;top:960px"></div>
+    <div id="tap2" class="tap" style="left:540px;top:1083px"></div>
+  </div>
+
+  <!-- ================= A + D/E/F · the real result, as one tall still ================= -->
+  <div id="plateScene" class="scene">
+    <div id="cam">
+      <img src="clips/plate/plate.png" alt="">
+      <!-- "Free to join." sits at plate 36–238 × 895–940: covered with the background 66 px below it -->
+      <div id="fjP" class="fj" style="left:14px;top:877px;width:254px;height:81px"><img src="clips/plate/plate.png" alt="" style="left:-14px;top:-943px;width:1080px;height:3950px"></div>
+      <div id="plateFoot"></div>
+      <svg viewBox="0 0 1080 3950">
+        <!-- D: boundary trace (follows the real LINZ parcel outline drawn by the page) -->
+        <path id="trace" d="M829.4 1330 L871.4 1356.6 L876.6 1359.6 L881.9 1362.4 L887.4 1364.9 L893 1367.1 L890.3 1370.5 L887.3 1374.2 L887.1 1374.5 L873.8 1391.2 L824.3 1453.2 L834 1460.7 L814.4 1485.4 L775.6 1470.9 L669.2 1431.3 L482.3 1497 L189 1462.3 L222.4 1420.9 L333.3 1434 L359.4 1430.5 L447.2 1440.8 L448.8 1441.1 L476.4 1444.3 L564.2 1413.4 L593.6 1403 L598.3 1404.8 L631.9 1393.9 L752.3 1354.9 L821.1 1332.6 L829.4 1330" fill="none" stroke="#ECFDF3" stroke-width="7" stroke-linejoin="round" stroke-linecap="round" style="filter:drop-shadow(0 0 10px #4ADE80) drop-shadow(0 0 22px rgba(74,222,128,.7))"/>
+        <!-- D: field outlines -->
+        <rect id="olArea" class="ol" x="70" y="1920" width="152" height="46" rx="10"/>
+        <rect id="olCouncil" class="ol" x="70" y="2052" width="156" height="42" rx="10"/>
+        <rect id="olZone" class="ol" x="243" y="2052" width="471" height="42" rx="10"/>
+        <!-- E: the eye checking each chip (neutral outline; it never marks a chip as good or bad) -->
+        <rect id="scanBox" fill="none" stroke="#F8FAFC" stroke-width="6" rx="22"/>
+        <!-- A + E: red marker round the amber chip -->
+        <path id="ring1" class="mk" stroke-width="7"/>
+        <path id="ring2" class="mk" stroke-width="7"/>
+        <!-- F: underline the product's own disclaimer -->
+        <path id="ul1" class="mk" stroke-width="6"/>
+        <path id="ul2" class="mk" stroke-width="6"/>
+      </svg>
+    </div>
+    <div id="vig" class="scene" style="background: radial-gradient(600px 330px at 540px 872px, rgba(2,6,23,0) 0%, rgba(2,6,23,0) 62%, rgba(2,6,23,.66) 100%)"></div>
+    <!-- F: spotlight with two holes, the amber chip ("Present — check") and the footer ("Not a substitute for a LIM…") -->
+    <svg id="spotSvg" class="abs" style="left:0;top:0;width:1080px;height:1920px" viewBox="0 0 1080 1920"><path id="spotP" fill="#020617" fill-opacity=".62" fill-rule="evenodd"/></svg>
+    <div id="nav" style="overflow:hidden"><img src="clips/search/f_00420.jpg" alt="" style="position:absolute;left:0;top:0;width:1080px;height:1920px"></div>
+  </div>
+
+  <!-- rewind smear (A → B) -->
+  <div id="rew">
+    <div id="scan"></div>
+    <div id="tear1" class="tear" style="top:420px"></div>
+    <div id="tear2" class="tear" style="top:980px;height:16px"></div>
+    <div id="tear3" class="tear" style="top:1460px"></div>
+    <svg id="rwGlyph" viewBox="0 0 300 200"><g fill="#F8FAFC"><path d="M150 20 L150 180 L20 100 Z"/><path d="M280 20 L280 180 L150 100 Z"/></g></svg>
+  </div>
+
+  <!-- ================= B · the open home (fictional flyer + notes app, Illustrative) ================= -->
+  <div id="siteScene" class="scene">
+    <img id="siteBg" src="clips/home/home.jpg" alt="">
+    <div id="flyer">
+      <div id="flyerPhotoW"><img id="flyerPhoto" src="clips/home/home.jpg" alt=""></div>
+      <div class="fband"><span>OPEN HOME</span><span>SAT 10:00–10:30</span></div>
+      <div class="fhead">Sunny. Flat.<br>Easy-care.</div>
+      <div id="flyerDim"></div>
+      <div class="ill" style="left:24px;top:22px">Illustrative · not a real listing</div>
+    </div>
+    <div id="notesB" class="notes" style="top:640px;height:604px">
+      <div class="nbar"><span>‹ Notes</span><span>Done</span></div>
+      <div class="ntitle">Open home · Sat</div>
+      <div class="ndate">Saturday 10:00</div>
+      <div class="nrow" id="rB1"><div class="box"><div class="fillc" id="fB1"></div><svg viewBox="0 0 56 56"><path id="kB1" d="M16 29 L25 38 L41 19" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Sunny</span></div>
+      <div class="nrow" id="rB2"><div class="box"><div class="fillc" id="fB2"></div><svg viewBox="0 0 56 56"><path id="kB2" d="M16 29 L25 38 L41 19" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Dry</span></div>
+      <div class="nrow" id="rB3"><div class="box"><div class="fillc" id="fB3"></div><svg viewBox="0 0 56 56"><path id="kB3" d="M16 29 L25 38 L41 19" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Easy-care</span></div>
+      <div class="nrow" id="rB4"><div class="box"></div><span>Back corner</span><div id="qB" class="qm" style="left:462px;top:-14px">?</div></div>
+    </div>
+    <div class="cap" id="capB" style="top:322px"><span>Nobody walks out</span><span>past the shed.</span></div>
+  </div>
+
+  <!-- ================= captions over the product ================= -->
+  <div class="cap" id="capA" style="top:318px"><span class="sm">Before any Auckland open home,</span><span class="xl">check the bit</span><span class="xl">nobody walks to.</span></div>
+  <div class="cap" id="capC" style="top:322px"><span class="sm">On qsme.co.nz:</span><span><em>Sign up.</em></span><span>“Search your address.”</span></div>
+  <div class="cap" id="capD" style="top:304px;flex-direction:row;justify-content:center;gap:12px"><span id="w1" class="sm" style="font-size:46px;padding:12px 22px 15px">Boundary</span><span id="w2" class="sm" style="font-size:46px;padding:12px 22px 15px">Land area</span><span id="w3" class="sm" style="font-size:46px;padding:12px 22px 15px">Council</span><span id="w4" class="sm" style="font-size:46px;padding:12px 22px 15px">Zone</span></div>
+  <div class="cap" id="capE" style="top:318px"><span>Checked against</span><span>the <em>whole section,</em></span><span id="capE3">not just the front lawn.</span></div>
+  <div class="cap" id="capF" style="top:330px"><span style="font-size:74px;padding:16px 32px 20px"><span class="q">“Check”</span> means check.</span></div>
+  <div id="demoW" style="position:absolute;left:65px;width:950px;top:1162px;text-align:center"><span id="demo" class="demo" style="position:relative"><b>DEMO</b><span>Auckland community site · try yours</span></span></div>
+
+  <!-- F: the note gets its answer -->
+  <div id="notesF" class="notes" style="top:872px;height:372px">
+    <div class="ntitle" style="font-size:36px;padding-top:26px;padding-bottom:8px;color:#8A8A8E">Open home · Sat</div>
+    <div class="nrow" style="opacity:.45;font-size:46px;height:88px"><div class="box" style="border-color:#1F2937"><div class="fillc"></div><svg viewBox="0 0 56 56"><path d="M16 29 L25 38 L41 19" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Easy-care</span></div>
+    <div class="nrow" style="font-size:46px;height:88px"><div class="box"></div><span>Back corner<span id="tyF1">: ask the agent.</span></span><div id="qF" class="qm" style="left:418px;top:-10px;font-size:92px">?</div><svg id="scrF" style="position:absolute;left:398px;top:-4px;width:120px;height:110px;overflow:visible" viewBox="0 0 120 110"><path id="scrP" class="mk" stroke-width="9" d="M14 30 L104 22 L18 52 L106 46 L20 76 L100 72"/></svg></div>
+    <div class="nrow" id="rF3" style="font-size:46px;height:88px"><div class="box"></div><span id="tyF2">Order the LIM.</span></div>
+  </div>
+
+  <!-- ================= G · end card ================= -->
+  <div id="endScene" class="scene">
+    <svg id="endTrace" viewBox="0 0 1080 1920"><path id="eTr" d="M829.4 1330 L871.4 1356.6 L876.6 1359.6 L881.9 1362.4 L887.4 1364.9 L893 1367.1 L890.3 1370.5 L887.3 1374.2 L887.1 1374.5 L873.8 1391.2 L824.3 1453.2 L834 1460.7 L814.4 1485.4 L775.6 1470.9 L669.2 1431.3 L482.3 1497 L189 1462.3 L222.4 1420.9 L333.3 1434 L359.4 1430.5 L447.2 1440.8 L448.8 1441.1 L476.4 1444.3 L564.2 1413.4 L593.6 1403 L598.3 1404.8 L631.9 1393.9 L752.3 1354.9 L821.1 1332.6 L829.4 1330" transform="translate(-120 -12) scale(1.15 1.15)" fill="none" stroke="#3DC023" stroke-width="4" stroke-linejoin="round" opacity=".22"/></svg>
+    <!-- wordmark cropped just before the ® (registration status unconfirmed in the truth sheet; owner to confirm) -->
+    <div id="logo"><img src="qsme-logo.svg" alt="QSME"></div>
+    <div id="eHead">Check the<br><span class="g" id="eBC">back corner</span><br>before you bid.</div>
+    <svg id="eRingSvg" class="abs" style="left:0;top:0;width:1080px;height:1920px;overflow:visible" viewBox="0 0 1080 1920"><path id="eRing" class="mk" stroke-width="8"/></svg>
+    <div id="eSub" style="top:900px">Search your address.</div>
+    <div id="ePillW"><span id="ePill">Sign up at qsme.co.nz</span></div>
+    <div id="eTagW"><span id="eTag">Services &amp; hazards: Auckland first</span></div>
+  </div>
+
+  <div id="flash"></div>
+</div>
+<script src="clips/search/stamps.js"></script>
+<script src="../../../tools/motion/kit.js"></script>
+<script>
+(function () {
+  const E = Kit.ease, $ = s => document.querySelector(s);
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  function interp(keys, t) {            // keys: [[t, {field: number}, ease?]] → object
+    if (t <= keys[0][0]) return keys[0][1];
+    for (let i = 1; i < keys.length; i++) {
+      const [t1, v1, e] = keys[i], [t0, v0] = keys[i - 1];
+      if (t < t1) { const f = typeof e === 'string' ? E[e] : (e ? Kit.ease.linear : E.linear); const p = f((t - t0) / (t1 - t0)); const o = {}; for (const k in v1) o[k] = v0[k] + (v1[k] - v0[k]) * p; return o; }
+    }
+    return keys[keys.length - 1][1];
+  }
+  function lerpKeys(keys, t) {          // [[t, v]] → number (linear)
+    if (t <= keys[0][0]) return keys[0][1];
+    for (let i = 1; i < keys.length; i++) if (t < keys[i][0]) { const a = keys[i - 1], b = keys[i]; return a[1] + (b[1] - a[1]) * (t - a[0]) / (b[0] - a[0]); }
+    return keys[keys.length - 1][1];
+  }
+  // hand-drawn marker loop (deterministic)
+  function loop(cx, cy, rx, ry, rot, seed) {
+    const pts = [], N = 96, a0 = -2.35, turns = 1.13;
+    for (let i = 0; i <= N; i++) {
+      const u = i / N, a = a0 + u * turns * 2 * Math.PI;
+      const w = 1 + 0.035 * Math.sin(3 * a + seed) + 0.018 * Math.sin(7 * a + seed * 2) + 0.06 * u;
+      const x = rx * w * Math.cos(a), y = ry * w * Math.sin(a);
+      pts.push([cx + x * Math.cos(rot) - y * Math.sin(rot), cy + x * Math.sin(rot) + y * Math.cos(rot)]);
+    }
+    return 'M' + pts.map(p => p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' L');
+  }
+  function under(x0, x1, y, seed) {
+    const pts = [], N = 24;
+    for (let i = 0; i <= N; i++) { const u = i / N; pts.push([x0 + (x1 - x0) * u, y + 3.2 * Math.sin(u * 9 + seed) + 4 * u]); }
+    return 'M' + pts.map(p => p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' L');
+  }
+  function rr(x0, y0, x1, y1, r) {      // rounded rect as a path (for the spotlight holes)
+    const f = v => v.toFixed(1);
+    return `M${f(x0 + r)} ${f(y0)}H${f(x1 - r)}A${f(r)} ${f(r)} 0 0 1 ${f(x1)} ${f(y0 + r)}V${f(y1 - r)}A${f(r)} ${f(r)} 0 0 1 ${f(x1 - r)} ${f(y1)}H${f(x0 + r)}A${f(r)} ${f(r)} 0 0 1 ${f(x0)} ${f(y1 - r)}V${f(y0 + r)}A${f(r)} ${f(r)} 0 0 1 ${f(x0 + r)} ${f(y0)}Z`;
+  }
+
+  // ---------------- geometry from clips/plate/rects.json (plate px) ----------------
+  const CHIP = {
+    water: [82, 2179, 532, 2377], waste: [548, 2179, 998, 2377], storm: [82, 2392, 532, 2621], gas: [548, 2392, 998, 2621],
+    elec: [82, 2636, 532, 2865], flood: [82, 2951, 532, 3081], prone: [548, 2951, 998, 3081], overland: [82, 3096, 532, 3294], coastal: [548, 3096, 998, 3294]
+  };
+  const AMB = { cx: 307, cy: 3195 };
+  $('#ring1').setAttribute('d', loop(306, 3203, 256, 106, -0.04, 1.3));
+  $('#ring2').setAttribute('d', loop(309, 3204, 258, 107, -0.06, 2.1));
+  $('#ul1').setAttribute('d', under(590, 984, 3431, 0.4));
+  $('#ul2').setAttribute('d', under(80, 318, 3465, 1.7));
+
+  // ---------------- timeline ----------------
+  // rew: hook → rewind · B: flyer · notes: checklist · C: live screencast · X: screencast → still handover (before the map's grey tile load)
+  // D: boundary/land/council/zone · E: services & hazards scan · land: amber chip · F: the product's own honesty · G: end card
+  const T = { rew: 3.0, B: 3.45, notes: 5.25, C: 8.3, X: 12.2, D: 12.45, E: 14.45, land: 16.3, F: 20.5, G: 25.7, end: 29.9 };
+
+  // camera over the tall still: plate point (x, y) sits at screen (540, 960), scaled by s
+  const at = (cx, cyScreen, py, s) => ({ x: cx, y: py + (960 - cyScreen) / s, s });
+  const HOOK0 = at(AMB.cx, 900, AMB.cy, 1.85), HOOK1 = at(AMB.cx, 900, AMB.cy, 2.0);
+  const HAND = { x: 540, y: 52 + 960, s: 1 };                 // = screencast frames 272–279 (capture 8.01–8.25 s): the page sits 52 px higher than the plate
+  const D1 = { x: 540, y: 840 + 960, s: 1 };
+  const S1 = { x: 540, y: 1849 + 960, s: 1 };
+  const H1 = { x: 540, y: 2531 + 960, s: 1 };
+  const AMB0 = at(AMB.cx, 900, AMB.cy, 1.85), AMB1 = at(AMB.cx, 900, AMB.cy, 1.95);
+  const FOOT0 = at(540, 770, 3393, 1.1), FOOT1 = at(540, 770, 3393, 1.13);   // "Present — check" sits below the caption
+  const CAM = [
+    [0, HOOK0], [T.rew, HOOK1, 'linear'], [T.B, { x: 540, y: 980, s: 1.0 }, 'in'],
+    [T.B + 0.01, HAND], [T.X + 0.2, HAND],
+    [T.X + 0.7, D1, 'inOut'], [T.E, D1],
+    [T.E + 0.55, S1, 'inOut'], [T.E + 1.1, S1], [T.E + 1.55, H1, 'inOut'], [T.land, H1],
+    [T.land + 0.38, AMB0, 'swipe'], [T.F, AMB1, 'linear'],
+    [T.F + 0.65, FOOT0, 'inOut'], [T.G, FOOT1, 'linear']
+  ];
+  const cam = $('#cam'), nav = $('#nav'), plateScene = $('#plateScene');
+  Kit.each(t => {
+    const c = interp(CAM, t);
+    cam.style.transform = `translate(${(540 - c.x * c.s).toFixed(2)}px, ${(960 - c.y * c.s).toFixed(2)}px) scale(${c.s.toFixed(4)})`;
+    nav.style.opacity = clamp((1.06 - c.s) / 0.06, 0, 1);
+    plateScene.style.display = (t < T.B + 0.01 || (t >= T.X && t < T.G + 0.45)) ? '' : 'none';
+  });
+  Kit.add('#plateScene', 'opacity', [[0, 1], [T.B, 1], [T.B + 0.01, 0, 'hold'], [T.X, 0], [T.X + 0.2, 1, 'inOut']]);
+
+  // ---------------- A · HOOK (payoff first), held 3 s so the whole line reads ----------------
+  Kit.add('#capA', 'opacity', [[0, 1], [T.rew, 1], [T.rew + 0.22, 0, 'in']]);
+  Kit.add('#capA', 'scale', [[0, 1.035], [0.35, 1, 'out']]);
+  Kit.add('#capA', 'x', [[T.rew, 0], [T.rew + 0.22, -140, 'in']]);
+  Kit.add('#capA', 'blur', [[T.rew, 0], [T.rew + 0.22, 14, 'in']]);
+  Kit.add('#ring1', 'trim', [[0, 0.55], [0.3, 1, 'out']]);
+  Kit.add('#ring1', 'opacity', [[0, 1], [T.B, 1], [T.B + 0.01, 0, 'hold']]);
+  // rewind smear (0.45 s)
+  Kit.add('#cam', 'blur', [[0, 0], [T.rew, 0], [T.rew + 0.3, 16, 'in'], [T.B, 22], [T.B + 0.01, 0, 'hold']]);
+  Kit.add('#rew', 'opacity', [[0, 0], [T.rew, 0], [T.rew + 0.08, 1], [T.B, 1], [T.B + 0.01, 0, 'hold']]);
+  Kit.add('#rwGlyph', 'scale', [[T.rew, 0.7], [T.rew + 0.16, 1, 'outBack']]);
+  Kit.add('#rwGlyph', 'opacity', [[T.rew, 0], [T.rew + 0.09, 0.9], [T.rew + 0.22, 0.55], [T.rew + 0.27, 0.95], [T.B, 0.8]]);
+  [['#tear1', 0, 700], ['#tear2', 0.06, -520], ['#tear3', 0.11, 380]].forEach(([s, d, dy]) => Kit.add(s, 'y', [[T.rew + d, 0], [T.B, dy]]));
+  Kit.add('#flash', 'opacity', [[0, 0], [T.B - 0.05, 0], [T.B, 0.85], [T.B + 0.16, 0, 'out']]);
+
+  // ---------------- B · the open home ----------------
+  const N = T.notes;
+  Kit.scene('#siteScene', T.B, T.C + 0.4);
+  Kit.add('#siteBg', 'scale', [[T.B, 1.08], [T.C, 1.0]]);
+  Kit.add('#flyerPhoto', 'scale', [[T.B, 1.0], [T.C, 1.07]]);
+  Kit.add('#flyer', 'y', [[T.B, 120], [T.B + 0.42, 0, 'out'], [N, 0], [N + 0.4, 150, 'out']]);   // slides down under the notes so its "Illustrative" label stays clear of the caption
+  Kit.add('#flyer', 'opacity', [[T.B, 0], [T.B + 0.12, 1]]);
+  Kit.add('#flyer', 'rotate', [[T.B, -6], [T.B + 0.5, -2.2, 'outBack'], [N, -2.2], [N + 0.4, -2.8, 'out']]);
+  Kit.add('#flyer', 'scale', [[N, 1], [N + 0.4, 0.93, 'out']]);
+  Kit.add('#flyerDim', 'opacity', [[0, 0], [N, 0], [N + 0.4, 0.45, 'out']]);
+  Kit.add('#notesB', 'y', [[N, 1300], [N + 0.42, 0, 'swipe']]);
+  Kit.show('#notesB', N);
+  [['B1', N + 0.35], ['B2', N + 0.55], ['B3', N + 0.75]].forEach(([k, t]) => {
+    Kit.add('#f' + k, 'scale', [[t, 0], [t + 0.16, 1, 'outBack']]);
+    Kit.add('#k' + k, 'trim', [[t + 0.06, 0], [t + 0.22, 1, 'out']]);
+  });
+  Kit.pop('#rB4', N + 0.97, { dy: 24 });
+  Kit.add('#qB', 'opacity', [[0, 0], [N + 1.21, 0], [N + 1.25, 1]]);
+  Kit.add('#qB', 'scale', [[N + 1.21, 1.9], [N + 1.37, 1, 'slam']]);
+  Kit.add('#qB', 'rotate', [[N + 1.21, -18], [N + 1.37, 9, 'out']]);
+  Kit.pop('#capB', N + 0.55).out('#capB', T.C - 0.12, 0.12);              // 2.4 s on screen
+  // B → C: swipe up like switching apps
+  Kit.add('#siteScene', 'y', [[T.C - 0.05, 0], [T.C + 0.3, -1920, 'swipe']]);
+
+  // ---------------- C · live screencast ----------------
+  const C = T.C;
+  Kit.scene('#shotScene', C - 0.05, T.X + 0.25);
+  Kit.add('#shotScene', 'y', [[C - 0.05, 1920], [C + 0.3, 0, 'swipe']]);
+  const STAMPS = window.SEARCH_STAMPS;
+  // edit time → capture time. Typing at 2.2x, the loading line slowed, the scroll at real speed; the edit leaves the screencast
+  // at capture ≈ 8.1 s, while the map is still navy and before it repaints grey (8.27–9.1 s), and hands over to the still.
+  const CAPKEYS = [[C - 0.05, 1.30], [C + 0.3, 1.75], [C + 2.0, 5.6], [C + 2.6, 7.15], [C + 2.85, 7.52], [C + 3.45, 7.60], [C + 3.85, 8.02], [C + 4.3, 8.2]];
+  const shot = $('#shot');
+  // "Free to join." on the live homepage: [y0, y1] per capture frame (frames 0–303; x 33–240), from OCR of clips/search (2026-10-03).
+  // From frame 304 it is under the page's fixed nav. #fjC copies the same frame's background from 66 px below over it.
+  const FJ = [1460,1499,1460,1499,1460,1499,1460,1499,1460,1499,1460,1499,1460,1499,1460,1499,1460,1499,1460,1499,1460,1499,1460,1499,1460,1499,1460,1499,1460,1499,1460,1499,1460,1499,1460,1499,1460,1499,1460,1499,1460,1499,1460,1499,1460,1499,1460,1499,1460,1499,1459,1499,1459,1499,1459,1499,1459,1499,1459,1499,1459,1499,1460,1499,1460,1499,1460,1499,1460,1499,1460,1499,1460,1499,1460,1499,1460,1499,1460,1499,1460,1499,1460,1499,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1427,1387,1426,1387,1426,1387,1426,1387,1426,1387,1427,1387,1427,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1386,1427,1386,1427,1386,1427,1387,1426,1386,1427,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1427,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1427,1386,1427,1387,1426,1387,1426,1387,1426,1387,1427,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1387,1426,1233,1273,1230,1270,1233,1270,1139,1175,1080,1116,1080,1116,1021,1060,963,1002,963,1002,845,885,845,885,845,885,845,885,845,885,845,885,845,885,845,885,845,885,845,885,845,885,787,826,787,826,787,826,731,768,731,768,672,709,611,653,611,653,611,653,558,595,558,595,499,536,441,477,441,477,382,421,323,363,267,305,267,305,209,246,151,190,151,187];
+  const fjC = $('#fjC'), fjImg = fjC.querySelector('img');
+  Kit.each(t => {
+    if (t < C - 0.06 || t > T.X + 0.26) return;
+    const ct = lerpKeys(CAPKEYS, t);
+    let i = 0; while (i + 1 < STAMPS.length && STAMPS[i + 1] <= ct) i++;
+    const src = 'clips/search/f_' + String(i).padStart(5, '0') + '.jpg';
+    if (shot.getAttribute('src') !== src) shot.setAttribute('src', src);
+    if (2 * i + 1 < FJ.length) {
+      const top = FJ[2 * i] - 18, h = FJ[2 * i + 1] - FJ[2 * i] + 36;
+      fjC.style.display = ''; fjC.style.top = top + 'px'; fjC.style.height = h + 'px';
+      fjImg.style.top = -(top + 66) + 'px';
+      if (fjImg.getAttribute('src') !== src) fjImg.setAttribute('src', src);
+    } else fjC.style.display = 'none';
+  });
+  shot.setAttribute('src', 'clips/search/f_00030.jpg');
+  [['#tap1', C + 0.27], ['#tap2', C + 2.67]].forEach(([s, t]) => { Kit.add(s, 'scale', [[t, 0.55], [t + 0.42, 1.25, 'out']]); Kit.add(s, 'opacity', [[0, 0], [t, 0], [t + 0.03, 1], [t + 0.42, 0, 'in']]); });
+  Kit.pop('#capC', C + 0.25).out('#capC', C + 3.2, 0.18);
+  // demo label: lower third while typing, then (hidden during the handover) up into the empty map area for the boundary beat
+  Kit.add('#demoW', 'opacity', [[0, 0], [C + 0.7, 0], [C + 0.87, 1], [T.X, 1], [T.X + 0.15, 0], [T.D + 0.45, 0], [T.D + 0.6, 1], [T.E - 0.2, 1], [T.E, 0]]);
+  Kit.add('#demoW', 'y', [[C + 0.7, 30], [C + 0.95, 0, 'out'], [T.X + 0.15, 0], [T.X + 0.16, -360, 'hold']]);
+
+  // ---------------- D · boundary, land area, council, zone (2.0 s) ----------------
+  const D = T.D;
+  Kit.add('#trace', 'trim', [[D + 0.15, 0], [D + 0.8, 1, 'inOut']]);
+  Kit.add('#trace', 'opacity', [[0, 0], [D + 0.15, 0], [D + 0.16, 1], [T.E - 0.4, 1], [T.E, 0.0, 'inOut']]);
+  Kit.add('#capD', 'opacity', [[0, 0], [D + 0.29, 0], [D + 0.3, 1], [T.E - 0.1, 1], [T.E + 0.1, 0]]);
+  [['#w1', D + 0.3], ['#w2', D + 0.6], ['#w3', D + 0.9], ['#w4', D + 1.2]].forEach(([s, t]) => { Kit.add(s, 'opacity', [[0, 0], [t, 0], [t + 0.1, 1]]); Kit.add(s, 'scale', [[t, 1.3], [t + 0.16, 1, 'slam']]); });
+  [['#olArea', D + 0.6], ['#olCouncil', D + 0.9], ['#olZone', D + 1.2]].forEach(([s, t]) => {
+    Kit.add(s, 'opacity', [[0, 0], [t, 0], [t + 0.08, 1], [T.E + 0.2, 1], [T.E + 0.4, 0]]);
+  });
+
+  // ---------------- E · every chip, then the amber one (1.85 s) ----------------
+  const Es = T.E;
+  const hops = [[Es + 0.55, 'water'], [Es + 0.68, 'waste'], [Es + 0.81, 'storm'], [Es + 0.94, 'gas'], [Es + 1.07, 'elec'], [Es + 1.4, 'flood'], [Es + 1.52, 'prone'], [Es + 1.64, 'coastal'], [T.land - 0.08, 'overland']];
+  const scanBox = $('#scanBox');
+  Kit.each(t => {
+    if (t < hops[0][0] - 0.05 || t > T.land + 0.55) { scanBox.style.opacity = 0; return; }
+    let i = 0; while (i + 1 < hops.length && hops[i + 1][0] <= t) i++;
+    const cur = CHIP[hops[i][1]], prev = i ? CHIP[hops[i - 1][1]] : cur;
+    const p = i ? E.out(clamp((t - hops[i][0]) / 0.09, 0, 1)) : 1;
+    const r = cur.map((v, k) => prev[k] + (v - prev[k]) * p);
+    scanBox.setAttribute('x', r[0] - 6); scanBox.setAttribute('y', r[1] - 6);
+    scanBox.setAttribute('width', r[2] - r[0] + 12); scanBox.setAttribute('height', r[3] - r[1] + 12);
+    const landed = t >= T.land - 0.08;
+    scanBox.setAttribute('stroke', landed ? '#F59E0B' : '#F8FAFC');
+    scanBox.style.opacity = landed ? clamp(1 - (t - T.land - 0.25) / 0.25, 0, 1) : 1;
+  });
+  Kit.add('#ring2', 'trim', [[T.land + 0.42, 0], [T.land + 0.8, 1, 'out']]);
+  Kit.add('#ring2', 'opacity', [[0, 0], [T.land + 0.42, 0], [T.land + 0.43, 1], [T.F + 0.3, 1], [T.F + 0.6, 0]]);
+  // insight: two lines first, the third 0.5 s later; on screen for 3.85 s
+  Kit.pop('#capE', T.land + 0.45, { dy: 30 }).out('#capE', T.F + 0.1, 0.2);
+  Kit.pop('#capE3', T.land + 0.95, { dy: 24 });
+
+  // ---------------- F · the product's own honesty ----------------
+  const F = T.F;
+  Kit.add('#spotSvg', 'opacity', [[0, 0], [F + 0.55, 0], [F + 0.85, 1, 'out'], [T.G, 1]]);
+  const spotP = $('#spotP');
+  Kit.each(t => {  // spotlight holes follow the amber chip and the footer block on screen
+    if (t < F + 0.5 || t > T.G + 0.5) return;
+    const c = interp(CAM, t);
+    const S = (px, py) => [540 + (px - c.x) * c.s, 960 + (py - c.y) * c.s];
+    const hole = (x0, y0, x1, y1, r) => { const a = S(x0, y0), b = S(x1, y1); return rr(a[0], a[1], b[0], b[1], r * c.s); };
+    spotP.setAttribute('d', 'M-10 -10H1090V1930H-10Z' + hole(76, 3090, 538, 3299, 20) + hole(64, 3306, 1016, 3478, 18));
+  });
+  Kit.add('#ul1', 'trim', [[F + 0.95, 0], [F + 1.35, 1, 'inOut']]);
+  Kit.add('#ul2', 'trim', [[F + 1.35, 0], [F + 1.6, 1, 'out']]);
+  Kit.pop('#capF', F + 0.8, { dy: 0 }); Kit.add('#capF', 'scale', [[F + 0.8, 1.25], [F + 0.98, 1, 'slam']]);
+  Kit.add('#notesF', 'y', [[F + 1.3, 1100], [F + 1.75, 0, 'swipe']]);
+  Kit.show('#notesF', F + 1.3, T.G + 0.45);
+  Kit.add('#scrP', 'trim', [[F + 1.85, 0], [F + 2.1, 1, 'linear']]);
+  Kit.add('#qF', 'opacity', [[0, 1], [F + 2.15, 1], [F + 2.25, 0]]);
+  Kit.add('#scrF', 'opacity', [[0, 1], [F + 2.15, 1], [F + 2.25, 0]]);
+  Kit.type('#tyF1', F + 2.25, F + 2.75);
+  Kit.add('#rF3', 'opacity', [[0, 0], [F + 2.8, 0], [F + 2.85, 1]]);
+  Kit.type('#tyF2', F + 2.85, F + 3.2);                                   // both answers hold together 1.8 s before the end card
+  Kit.add('#capF', 'opacity', [[T.G + 0.1, 1], [T.G + 0.3, 0]]);
+
+  // focus: vignette on the amber chip (A, E); scrims behind captions on the live screencast (C)
+  Kit.add('#vig', 'opacity', [[0, 1], [T.rew, 1], [T.rew + 0.2, 0], [T.land + 0.25, 0], [T.land + 0.55, 1, 'out'], [T.F, 1], [T.F + 0.4, 0]]);
+  Kit.add('#scrimTop', 'opacity', [[0, 0], [C + 0.2, 0], [C + 0.4, 1], [C + 3.2, 1], [C + 3.4, 0]]);
+  Kit.add('#scrimBot', 'opacity', [[0, 0], [C + 0.65, 0], [C + 0.85, 1], [T.X + 0.26, 1]]);
+
+  // ---------------- G · end card ----------------
+  const G = T.G;
+  // logo: wordmark only, cropped before the ® (img is 543.2 px wide: Q starts at x ≈ 68, E and its underline end at 494.5, the ® starts at 500)
+  const LOGO = { from: 64, to: 497 }, lw = LOGO.to - LOGO.from;
+  const logo = $('#logo'); logo.style.width = lw + 'px'; logo.style.left = (540 - lw / 2) + 'px'; logo.querySelector('img').style.left = (-LOGO.from) + 'px';
+  Kit.scene('#endScene', G - 0.2, T.end + 1);
+  Kit.add('#endScene', 'y', [[G - 0.2, 1920], [G + 0.18, 0, 'swipe']]);
+  Kit.add('#eTr', 'trim', [[G + 0.1, 0], [G + 1.6, 1, 'inOut']]);
+  Kit.fade('#logo', G + 0.12, G + 0.4).add('#logo', 'scale', [[G + 0.12, 0.92], [G + 0.55, 1, 'out']]);
+  Kit.pop('#eHead', G + 0.28, { dy: 40 });
+  $('#eRing').setAttribute('d', loop(540, 697, 338, 60, -0.03, 0.8));
+  Kit.add('#eRing', 'trim', [[G + 0.85, 0], [G + 1.3, 1, 'out']]);
+  Kit.pop('#eSub', G + 1.05);
+  Kit.pop('#ePillW', G + 1.3);
+  Kit.pop('#eTagW', G + 1.5);
+
+  Kit.ready({ duration: T.end, fonts: ['800 60px Manrope', '400 40px Inter', '500 40px Inter', '600 40px Inter', '700 40px Inter', '400 60px "Permanent Marker"', '500 30px "JetBrains Mono"', '700 30px "JetBrains Mono"', '700 80px "Space Grotesk"'] });
+})();
+</script>
+</body>
+</html>

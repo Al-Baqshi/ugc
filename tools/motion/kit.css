@@ -1,0 +1,63 @@
+/* CreativeUGC motion kit: base styles + QSME brand tokens.
+   Page contract: <body class="nz|build r9x16|r4x5|r1x1|r16x9"><div id="root">…</div></body>
+   Sizes: 9:16 = 1080x1920 (Reels/TikTok/Shorts) · 4:5 = 1080x1350 (LinkedIn/IG feed) · 1:1 = 1080x1080 · 16:9 = 1920x1080 (YouTube long-form). */
+@import url("fonts/fonts.css");
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { overflow: hidden; background: #000; }
+body.r9x16, body.r9x16 #root { width: 1080px; height: 1920px; }
+body.r4x5, body.r4x5 #root { width: 1080px; height: 1350px; }
+body.r1x1, body.r1x1 #root { width: 1080px; height: 1080px; }
+body.r16x9, body.r16x9 #root { width: 1920px; height: 1080px; }
+#root { position: relative; overflow: hidden; -webkit-font-smoothing: antialiased; text-rendering: geometricPrecision; font-family: Inter, sans-serif; }
+.abs { position: absolute; }
+.fill { position: absolute; inset: 0; }
+svg { overflow: visible; }
+img { display: block; }
+
+/* ---- QSME NZ (qsme.co.nz): navy + Manrope ExtraBold + Inter ---- */
+body.nz {
+  --bg: #020617; --bg-raised: #0B1226; --line: #1E293B;
+  --ink: #F8FAFC; --ink-70: rgba(248, 250, 252, .7); --ink-50: rgba(248, 250, 252, .5);
+  --brand: #15803D; --btn: #16A34A; --accent: #3DC023; --on-accent: #04130A;
+  --display: Manrope, Inter, sans-serif; --display-weight: 800; --display-track: -0.025em;
+  --body: Inter, sans-serif; --mono: "JetBrains Mono", ui-monospace, monospace;
+  --marker: "Permanent Marker", cursive; --hand: Kalam, cursive; --red: #E0302A;
+  --radius: 10px;
+}
+/* ---- QSME Global (qsme.build): near-black green + Space Grotesk + Inter ---- */
+body.build {
+  --bg: #0C1310; --bg-raised: #14211A; --line: #213128;
+  --ink: #EEF4EF; --ink-70: #A9B8AE; --ink-50: #86958B;
+  --brand: #3DC023; --btn: #3DC023; --accent: #4BCD32; --on-accent: #06130A; --soft: #10240F;
+  --display: "Space Grotesk", Inter, sans-serif; --display-weight: 700; --display-track: -0.03em;
+  --body: Inter, sans-serif; --mono: "JetBrains Mono", ui-monospace, monospace;
+  --marker: "Permanent Marker", cursive; --hand: Kalam, cursive; --red: #F87171;
+  --radius: 16px;
+}
+body.nz #root, body.build #root { background: var(--bg); color: var(--ink); }
+
+.display { font-family: var(--display); font-weight: var(--display-weight); letter-spacing: var(--display-track); line-height: 1.02; }
+.mono { font-family: var(--mono); }
+.marker { font-family: var(--marker); color: var(--red); }
+.accent { color: var(--accent); }
+.muted { color: var(--ink-70); }
+
+/* Captions: burned-in, readable with sound off. Minimum 40px at 1080 wide. */
+.caption { position: absolute; left: 65px; right: 65px; text-align: center; font-family: var(--display); font-weight: var(--display-weight); letter-spacing: -0.015em; font-size: 54px; line-height: 1.16; text-wrap: balance; }
+.caption.box span { background: var(--ink); color: #0B0B0C; padding: 6px 18px; border-radius: 10px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+
+.pill { display: inline-flex; align-items: center; gap: 12px; padding: 14px 30px; border-radius: 999px; background: var(--btn); color: var(--on-accent); font: 700 38px/1 var(--body); }
+body.nz .pill { color: #fff; border-radius: 10px; }
+.chip { display: inline-flex; align-items: center; gap: 10px; padding: 8px 18px; border-radius: 999px; border: 2px solid var(--line); background: var(--bg-raised); font: 500 26px/1.2 var(--mono); color: var(--ink-70); }
+.card { background: var(--bg-raised); border: 2px solid var(--line); border-radius: var(--radius); }
+
+/* Placeholder for footage that must be real (screen recordings, filmed shots). Never fake product UI. */
+.replace { border: 3px dashed var(--accent); border-radius: 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; text-align: center; padding: 40px; color: var(--ink-70); font: 500 30px/1.35 var(--body); }
+.replace b { color: var(--accent); font: 700 28px/1.2 var(--mono); letter-spacing: .04em; text-transform: uppercase; }
+/* Corner label for designed stand-ins of product screens. */
+.illustrative { position: absolute; padding: 6px 14px; border: 2px dashed var(--ink-50); border-radius: 8px; color: var(--ink-50); font: 500 20px/1.2 var(--mono); }
+
+/* Generic (unbranded) app UI for skits: neutral greys, initials avatars, never a real platform's look. */
+.ui { --ui-bg: #FFFFFF; --ui-chrome: #F6F5F2; --ui-line: #E3E2DD; --ui-ink: #1C1C1E; --ui-ink2: #6B6B70; --ui-bubble: #F1F0EC; background: var(--ui-bg); color: var(--ui-ink); font-family: Inter, sans-serif; }
+.avatar { flex: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 600; }

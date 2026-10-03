@@ -1,0 +1,20 @@
+{
+  "url": "https://qsme.build/platform/tendering", "cssWidth": 540, "cssHeight": 675, "dpr": 3, "mobile": true, "settle": 3,
+  "evals": [
+    "document.querySelectorAll('[class*=cookie],[id*=cookie],[class*=consent]').forEach(e=>e.style.setProperty('display','none','important'))",
+    "(()=>{const h=[...document.querySelectorAll('.il__head')].find(e=>e.textContent.includes('Your bid')); h.closest('figure').scrollIntoView({block:'center'}); return 1})()"
+  ],
+  "boxes": {
+    "pane": "[...document.querySelectorAll('.il__head')].find(e=>e.textContent.includes('Your bid')).closest('.il__pane')",
+    "head": "[...document.querySelectorAll('.il__head')].find(e=>e.textContent.includes('Your bid'))",
+    "th": "[...document.querySelectorAll('.il__head')].find(e=>e.textContent.includes('Your bid')).nextElementSibling",
+    "thLine": "[...document.querySelectorAll('.il__head')].find(e=>e.textContent.includes('Your bid')).nextElementSibling.children[0]",
+    "thQty": "[...document.querySelectorAll('.il__head')].find(e=>e.textContent.includes('Your bid')).nextElementSibling.children[1]",
+    "thRate": "[...document.querySelectorAll('.il__head')].find(e=>e.textContent.includes('Your bid')).nextElementSibling.children[2]",
+    "thAmt": "[...document.querySelectorAll('.il__head')].find(e=>e.textContent.includes('Your bid')).nextElementSibling.children[3]",
+    "row3": "[...document.querySelectorAll('.il__head')].find(e=>e.textContent.includes('Your bid')).parentElement.querySelectorAll('.il__grid--bid')[3]",
+    "total": "[...document.querySelectorAll('.il__head')].find(e=>e.textContent.includes('Your bid')).parentElement.querySelector('.il__grid--total')",
+    "foot": "[...document.querySelectorAll('.il__head')].find(e=>e.textContent.includes('Your bid')).parentElement.querySelector('.il__foot')",
+    "rate1": "[...document.querySelectorAll('.il__head')].find(e=>e.textContent.includes('Your bid')).parentElement.querySelectorAll('.il__grid--bid')[1].children[2]"
+  }
+}

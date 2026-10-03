@@ -1,0 +1,25 @@
+{
+  "_retired": "2026-10-03 owner rule: no pricing lines in QSME content. Dropped from the video in v2; never reuse this capture.",
+  "url": "https://qsme.build/pricing",
+  "mobile": false,
+  "width": 1920,
+  "height": 1080,
+  "scale": 1.5,
+  "fps": 30,
+  "settle": 3,
+  "steps": [
+    {
+      "hide": "[class*=cookie],[id*=cookie],[class*=consent]"
+    },
+    {
+      "wait": 1.6
+    },
+    {
+      "scroll": 640,
+      "dur": 1.8
+    },
+    {
+      "wait": 2.2
+    }
+  ]
+}

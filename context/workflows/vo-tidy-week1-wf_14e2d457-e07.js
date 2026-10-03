@@ -1,0 +1,9 @@
+export const meta = {
+  name: 'vo-tidy-week1',
+  description: 'Bring the week-1 vo-scripts up to the voice-ready contract (timing fits, Auckland first gets its JSON)',
+  phases: [{ title: 'Tidy' }],
+}
+const U = '/Users/brave/CreativeUGC'
+const P = ['2026-10-06-qsme-nz-back-corner', '2026-10-10-qsme-nz-auckland-first', '2026-10-07-qsme-build-15-languages-what-do-you-call-it', '2026-10-08-qsme-build-column-h']
+const res = await parallel(P.map(p => () => agent(`Make the voiceover script for ${U}/projects/${p} meet the voice-ready contract in ${U}/tools/VO_SCRIPT.md. Read post.md, vo-script.md (and vo-script.json if present), and look at the rendered video's timeline (outputs/*-frames.png, and pull frames with ${U}/tools/motion/frames <mp4> <dir> 540 t1 t2 … to find exactly when each caption appears and leaves). Then write/repair vo-script.json (+ keep vo-script.md in sync): venture, video (the main master MP4 in outputs/, not a .preview.mp4), character, settings, lines with id/start_s/max_s/on_screen/text_v2/text_v3/delivery. Every line must FIT its window at a natural Kiwi pace (~2.5–2.8 words/s; python3 ${U}/tools/vo_status.py flags >3.2 w/s as too long): widen max_s only where the video really has silence before the next caption/line, otherwise cut words — keep the joke and the meaning, natural Kiwi phrasing, QSME written "Q-S-me". Lines may run over a caption change only if it reads naturally. If a project has several cuts (e.g. 16:9 and 9:16), set "video" to the main master and add a note in vo-script.md about which cut it targets; add a second file vo-script-9x16.json only if the 9:16 timeline differs. Run python3 ${U}/tools/vo_status.py until your project shows ok. Only touch ${U}/projects/${p}. No paid APIs. Return a two-line summary.`, { label: `tidy:${p.slice(11, 40)}`, phase: 'Tidy' })))
+return res

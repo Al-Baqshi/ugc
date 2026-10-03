@@ -1,0 +1,171 @@
+{
+  "venture": "qsme-build",
+  "character": "The QS: a mid-career quantity surveyor (late 30s to 40s) with a general, urban professional New Zealand accent (Auckland or Wellington office), not broad or rural and not Australian. Calm, dry and deadpan, amused rather than angry, quietly on the subbies' side. This is an AI voice, so it never speaks as the founder. Voice Design fallback, for when no library voice passes the casting line: \"New Zealander around 40, general NZ accent, urban and professional, not broad, low-mid register, dry and unhurried, slightly tired but amused, close-mic phone recording in a quiet office, conversational, not a narrator or announcer.\"",
+  "continuous_read_v2": "Six bids. Six formats.\n\nOne's a PDF. Sideways.\n\nOne's a spreadsheet. All merged.\n\nOne says \"as discussed.\"\n\nOne says \"price below\"... there's nothing below.\n\nOne's the cheapest, till page nine.\n\nAnd one... is a photo of a whiteboard.\n\nHonestly? Most complete one.\n\nIn fairness... here's what I sent.\n\nSame lines for every bidder.\n\nSix bids. One table.\n\nBook a demo at Q-S-me dot build.",
+  "lines": [
+    {
+      "id": "01-hook",
+      "start_s": 0.15,
+      "max_s": 2.2,
+      "on_screen": "6 bids. / 6 formats. (\"6 formats.\" lands at 0.43; chip 'Tender closed 5:00pm'; counter 0/6)",
+      "text_v2": "Six bids. Six formats.",
+      "text_v3": "Six bids. Six formats.",
+      "delivery": "Low, flat and already tired. A full stop after 'bids' and no lift on 'formats'. The six pings (0.95 to 1.86) sit under 'Six formats', ducked 10 to 12 dB."
+    },
+    {
+      "id": "02-bid-a-pdf",
+      "start_s": 2.4,
+      "max_s": 1.7,
+      "on_screen": "One's a PDF. (2.5) / Sideways. (3.07) - page tilt 3.25 to 3.65, counter 1/6",
+      "text_v2": "One's a PDF. Sideways.",
+      "text_v3": "One's a PDF. Sideways.",
+      "delivery": "Say 'One's a PDF.' as a plain fact, from about 2.4 to 3.4, then a beat of 0.15 to 0.2s. Put 'Sideways.' low and flat at about 3.55, on the page tilt, and finish by 4.1. If 'One's a PDF' runs past 3.45, regenerate rather than speed it up."
+    },
+    {
+      "id": "03-bid-b-merged",
+      "start_s": 4.3,
+      "max_s": 1.6,
+      "on_screen": "One's a spreadsheet. (4.3) / All merged. (5.0) - cursor click 4.75, alert 4.8 to 5.7, counter 2/6",
+      "text_v2": "One's a spreadsheet. All merged.",
+      "text_v3": "One's a spreadsheet. All merged.",
+      "delivery": "The same flat count. Say 'All merged.' a touch slower and falling, at about 5.25 while the alert is up, and finish by 5.9."
+    },
+    {
+      "id": "04-bid-c-as-discussed",
+      "start_s": 6.15,
+      "max_s": 1.45,
+      "on_screen": "One says \"as discussed\". (6.2) - red circle 6.75, ? 6.95, counter 3/6",
+      "text_v2": "One says \"as discussed.\"",
+      "text_v3": "One says \"as discussed.\"",
+      "delivery": "Quote 'as discussed' a shade drier, as if reading it off the page, with the stress on 'discussed', not 'says'. No sneer and no put-on quote voice. Finish by 7.6. If takes keep slipping into a quote voice, switch to a colon: One says: as discussed."
+    },
+    {
+      "id": "05-bid-d-price-below",
+      "start_s": 7.7,
+      "max_s": 2.55,
+      "on_screen": "One says \"price below\"... (7.7) / ...there's nothing below. (9.4) - scroll 8.35 to 9.25, counter 4/6",
+      "text_v2": "One says \"price below\"... there's nothing below.",
+      "text_v3": "One says \"price below\"... there's nothing below.",
+      "delivery": "Read 'price below' neutrally; it ends at about 8.8. Slice at the ellipsis so 8.8 to 9.33 (the back half of the scroll and the hold) is silent. Put 'there's nothing below.' at 9.33, quieter and even flatter, and finish by 10.25. If a take runs past 10.25, fall back to 'Nothing below.'"
+    },
+    {
+      "id": "06-bid-e-page-nine",
+      "start_s": 10.4,
+      "max_s": 2.35,
+      "on_screen": "One's the cheapest... (10.4) / till page nine. (11.7) - page flicks 11.1 to 11.65, highlighter 11.8 to 12.2, counter 5/6",
+      "text_v2": "One's the cheapest, till page nine.",
+      "text_v3": "One's the cheapest, till page nine.",
+      "delivery": "Give 'One's the cheapest,' a light continuation lift from the comma, with no breathy trail-off. Slice after 'cheapest' and place 'till page nine' at about 11.65, after the flicks. Dead flat, falling on 'nine', finished by 12.75."
+    },
+    {
+      "id": "07-bid-f-whiteboard",
+      "start_s": 12.85,
+      "max_s": 2.4,
+      "on_screen": "And one... (12.8) / is a photo of a whiteboard. (13.6) - board on screen from the cut at 12.8 (no fade from black), marker underline 14.25 to 14.68, counter 6/6; snap-zoom to 'Ceilings ... INCL' at 14.95",
+      "text_v2": "And one... is a photo of a whiteboard.",
+      "text_v3": "And one... is a photo of a whiteboard.",
+      "delivery": "Say 'And one...', then hold about 0.25s (shorten the hold rather than speed up). Place 'is a photo of a whiteboard' at 13.55 to 13.6 with its caption, read perfectly level and ending by about 15.1 (hard stop 15.25) as the snap-zoom lands (14.95 to 15.1). Then total silence until 15.85. (Now word for word with the caption, one word longer than the old 'And one's...', so max_s is 2.4; the old 'one's...' also risked a stretched 's' before the pause.)"
+    },
+    {
+      "id": "08-twist-honestly",
+      "start_s": 15.85,
+      "max_s": 1.5,
+      "on_screen": "Honestly? (15.97) / Most complete one. (16.37) - sticky note 'ceilings IN' with a tick 15.8, cut to email scene 17.5",
+      "text_v2": "Honestly? Most complete one.",
+      "text_v3": "Honestly? Most complete one.",
+      "delivery": "The only warmth in the piece. 'Honestly?' is a genuine small question with a hint of a smile and no put-on accent features. 'Most complete one.' is quiet and sincere, at about 16.6, finished by 17.35. Get the smile by choosing takes, not with a tag."
+    },
+    {
+      "id": "09-self-own",
+      "start_s": 17.6,
+      "max_s": 2.0,
+      "on_screen": "In fairness... (17.67) / here's what I sent. (18.4) - the email on screen: 'Drawings attached. Please price.' (from 17.5; window shake 19.1), cut 20.2",
+      "text_v2": "In fairness... here's what I sent.",
+      "text_v3": "In fairness... here's what I sent.",
+      "delivery": "A tiny wince on 'In fairness...' (17.6 to about 18.2), found by choosing takes rather than with a tag, then half a beat. 'here's what I sent.' at about 18.4 with its caption: flat, a touch quicker, a bit embarrassed, falling on 'sent'. Finish by 19.4, then leave the email on screen in silence until the 20.2 cut. The picture carries the punchline ('Drawings attached. Please price.'), so the line must not read it out."
+    },
+    {
+      "id": "10-product-same-lines",
+      "start_s": 20.95,
+      "max_s": 1.75,
+      "on_screen": "So we built QSME. (20.2, read on screen, not voiced) / Same lines for every bidder. (21.0) - six identical bidder sheets (tabs Bidder A to F, rate column blank) land every 0.13s from 20.17 to 20.82; 'Bidders never see your rates or budget.' 21.45 (on screen only; in the 9:16 also a small third caption line, 21.45 to 22.77); cut to the totals table 22.77",
+      "text_v2": "Same lines for every bidder.",
+      "text_v3": "Same lines for every bidder.",
+      "delivery": "Calm, plain and matter-of-fact, in the same register as the skit. You're telling a colleague how it works, not reading a tagline, so no product lift. It lands with its caption at 21.0 and finishes by 22.7, before the cut to the totals table at 22.77."
+    },
+    {
+      "id": "11-product-one-table",
+      "start_s": 22.85,
+      "max_s": 1.5,
+      "on_screen": "Six bids. One table. (22.85) - 'Compare bids' table of bid totals excl. tax, rows 22.95 to 23.35, lower-third 23.0, 'Lowest' on Bidder F 23.75",
+      "text_v2": "Six bids. One table.",
+      "text_v3": "Six bids. One table.",
+      "delivery": "A quiet callback to the opening 'Six bids. Six formats.': the same flat count on 'Six bids.', then 'One table.' a touch lower and settled, the one resolved fall in the product half. No product lift and no smile. Finish by 24.3, before the cursor comes in. Then silence through the click and award (24.3 to 27.2: row F click 24.75, 'Award bid' 25.35, 'Contract created' with milestones and retention 25.45)."
+    },
+    {
+      "id": "12-cta",
+      "start_s": 27.3,
+      "max_s": 2.3,
+      "on_screen": "End card: QSME logo, no registered-mark symbol on Global (27.2) / qsme.build (27.32) / Book a 30-minute demo (27.48). The 4:5 ends at 29.8; the 9:16 holds the end card to 30.3.",
+      "text_v2": "Book a demo at Q-S-me dot build.",
+      "text_v3": "Book a demo at Q-S-me dot build.",
+      "delivery": "One breath, low-key and falling, like telling a colleague where to find it: about 2.0s (27.3 to 29.3), hard stop 29.6. Say Q-S-me evenly as 'cue ess mee', with no smile and no rise on 'build'. Regenerate any take that says 'kiss me' or spells out four letters."
+    }
+  ],
+  "male_alt_lines": [],
+  "casting_line": "Six bids in by five. In fairness, the best one here is a whiteboard. Q-S-me dot build.",
+  "settings": {
+    "model": "eleven_multilingual_v2",
+    "stability": 0.45,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "speed": 1,
+    "use_speaker_boost": true
+  },
+  "post_processing": [
+    "Primary source: render continuous_read_v2 three times on the chosen voice, then slice it and place the pieces on the timeline. Use per-line renders only as patches, on eleven_multilingual_v2 with previous_text (the line before) and next_text (the line after) so the intonation carries over. From each set, keep the least polished take. Reject any take where every word gets equal stress or where the product or CTA line lifts into an announcer read. Also reject any edit where two consecutive 'One's…' lines have the same pitch onset and fall.",
+    "Room tone bed: record 60s of a real room on a phone (laptop fan, distant traffic, no music or voices). Run it under the whole video (29.8s on the 4:5, 30.3s on the 9:16) at about -50 to -55 dBFS, silences included, so the dead air sounds live and never drops to digital zero. Crossfade every VO cut 10 to 20 ms into the bed.",
+    "EQ: high-pass at 90 to 100 Hz (12 dB/oct). Cut 200 to 300 Hz by about 2 dB if it's boomy. Add a gentle +1 to 2 dB of presence at 3 to 4 kHz. A small -2 dB high-shelf above 10 kHz takes off the too-clean TTS 'air'.",
+    "Compression: light, 2:1 to 3:1 with 3 to 4 dB of gain reduction, about 15 ms attack and 100 ms release. Bring the VO to about -16 LUFS integrated, -1 dBTP. Don't push the limiter hard enough to pump.",
+    "No reverb and no telephone band-pass (that sounds like a phone call, not a phone recording). If it still sounds 'in the box', play the VO from a small speaker in a furnished room, re-record it on a phone about 40 cm away, and blend that 15 to 25% under the dry track.",
+    "Keep the breaths and tiny mouth sounds. Don't run noise reduction or Voice Isolator on TTS. Only fix obvious artefacts such as clipped word endings, a metallic 's', or a stretched 's' before an ellipsis.",
+    "Placement: start each line 0 to 4 frames before its first caption, and vary the offset by a frame or two so the sync doesn't look machine-quantised. Slice 02, 03, 05, 06, 07 and 09 at their internal pause and place the second half at the time in its delivery note. At natural pace a second half may trail its caption by up to about 0.5s, but it should never lead it by more than 3 frames. Never time-stretch to hit a mark; regenerate or shorten the gap instead.",
+    "Deadpan section (0 to 20.15s): the VO sits alone over room tone, with no music. SFX stay synced to picture and are ducked 10 to 12 dB under any word they overlap: the hook pings (0.95 to 1.86) under 'Six formats', the trackpad click (4.75) under 'spreadsheet', the highlighter squeak (11.8 to 12.2) under 'page nine', and the marker underline squeak (14.25 to 14.68) under 'of a whiteboard' (duck about 12 dB, or drop it). The page flicks (11.1 to 11.65) sit in the gap. Keep the snap-zoom hold (15.0 to 15.85) clean.",
+    "Music: first downbeat at 20.56, on the fourth bidder sheet landing (the sheets land every 0.13s from 20.17; a soft UI tick on each is optional), so the email's silent hold (about 19.4 to 20.56) stays clean. Sit it about 18 dB under 'Same lines for every bidder.' and 'Six bids. One table.', let it rise slightly through the silent click-and-award beat (24.3 to 27.2: row F click 24.75, 'Award bid' 25.35, 'Award → contract created' 25.45), duck it again under the CTA, and resolve on one chord after 'build' (about 29.3).",
+    "Ride levels by ear rather than normalising every line to the same peak. 'Honestly?' and 'there's nothing below' should sit 1 to 2 dB softer than the count lines.",
+    "Bounce a mono VO stem at 48 kHz/24-bit and lay it onto outputs/six-bids-linkedin-4x5.mp4 as a separate track, so music and SFX stay adjustable."
+  ],
+  "total_characters": 363,
+  "changelog": [
+    "2026-10-03 review fixes (same 29.8s timeline; no start time moved): captions and VO now match word for word. Line 02 stays 'One's a PDF. Sideways.' (the caption now reads 'Sideways.' instead of 'Scanned sideways.'). Line 07 is now 'And one... is a photo of a whiteboard.' (was 'And one's...'; one word longer, so max_s 2.15 → 2.4, ending by about 15.1, hard stop 15.25, still clear of the silent hold to 15.85). Line 08 stays 'Honestly? Most complete one.' (the caption dropped 'here', which would not fit before the 17.5 cut). Line 09 is now 'In fairness... here's what I sent.' (max_s 2.0): the self-own had 8 words over 3 caption lines with 1.8s to read them, so the email on screen ('Drawings attached. Please price.', now set larger) carries the punchline and the VO no longer reads it out. On screen: the 'Compare bids' table shows bid totals excl. tax only (no incl. column, no 'calc.', no Compare-on toggle: the live Global screen still says GST and works it out at 15 per cent), the bid popover reads '71,300 excl. tax', the agreement/e-sign line is gone, the corner label reads 'Illustrative · demo data', and the end-card wordmark has no registered-mark symbol. 'So we built QSME.' stays on screen only. The 9:16 now holds the end card to 30.3s (the 4:5 stays 29.8s); the VO times are the same on both. text_v2 now totals 363 characters.",
+    "2026-10-02 fact-check re-render (supersedes the 28.0s timings above from 12.8s and 20.2s): the video is now 29.8s. The product beat no longer shows a per-line grid of every bidder's rates (that matrix is branch-only, not live). It now shows what is live: six identical bidder sheets with the rate column blank (20.17 to 22.79), the 'Compare bids' table of totals excl. and incl. tax with a 'Lowest' tag (22.77), then Bidder F → 'Award bid' → contract with milestones and retention, and 'make the agreement → send for e-sign' as the next step (24.25 to 27.2). Line 10 'Same lines for every bidder.' is kept (true: bidders price identical lines cut from the SOQ); it now finishes by 22.7 (max_s 1.75). New line 11 'Six bids. One table.' at 22.85 (20 characters) calls back the opening line and matches the new burned-in caption word for word. The CTA is now line 12 at 27.3 (end card 27.2). Line 07's first caption moved from 12.9 to 12.8 because the whiteboard is now on screen from the first frame of the cut. Music downbeat 20.56; silent beat 24.3 to 27.2; room tone 29.8s. No copy claims a per-line comparison across bidders. text_v2 now totals 387 characters.",
+    "Must-fix, 08: removed [chuckles softly] from text_v3. A canned laugh is the most recognisable AI tell, and it pushed the line past the 17.5 cut. The smile now comes from choosing takes.",
+    "Must-fix, 09: removed [sighs]. Both texts now read: In fairness... mine said \"drawings attached, please price.\" There's no comma after 'said', and the quote marks make the model read the email as one remembered phrase rather than a three-item list. The line finishes by 20.15, ahead of the 20.2 cut, and max_s is now 2.55.",
+    "v3 tags: every text_v3 is now identical to its text_v2, with no tags. [dry] isn't a documented v3 tag and pushes v3 into a performed read. [short pause] stacked on the ellipses doubled the gaps, and the edit makes those pauses anyway. This knowingly departs from post.md's 'use v3 for [sighs]/[pause]' advice, because canned non-verbals are exactly the AI sound the user wants to avoid. v3 stays an alternate take only; if you use it, set stability to Natural.",
+    "Rendering: the continuous read is now the primary source (3 takes, sliced to the timeline). Per-line renders are patches only, sent on v2 with previous_text and next_text. This replaces post.md's 'render each line separately': six 'One's…' openers rendered on their own each start from the same pitch reset and sound like a list being read. v3 has no request stitching, which is another reason it stays the alternate.",
+    "Quoted bid text (04, 05, 09) now has quote marks, so 'as discussed' isn't read as an aside with the stress on 'says'. If 04 slips into a quote voice, the fallback is a colon.",
+    "Timing at natural pace: 02 now starts at 2.40 on the scene cut, with 'Sideways.' at about 3.55 (3.1 couldn't be hit without rushing); it's done by 4.1, max_s 1.7. 03 starts at 4.30 with 'All merged.' at about 5.25 while the alert is up; it's done by 5.9, max_s 1.6. The critic suggested 4.32, which I rounded to the caption frame so the placement rule still holds. 05 puts 'there's nothing below' at 9.33, done by 10.25, max_s 2.55; its note no longer claims the scroll plays in silence (only 8.8 to 9.33 is silent). 07 ends by 15.0, max_s 2.15. 08 puts 'Most complete one.' at about 16.6, done by 17.35, max_s 1.5, which leaves a breath before 'In fairness'.",
+    "08 delivery no longer asks for 'a soft Kiwi rise'. Coaching an accent feature invites a performed high-rising terminal, which is the caricature we're avoiding. 'Honestly?' is a real question, so it rises naturally.",
+    "05 restores 'there's'. That matches the caption '...there's nothing below.', and 'Nothing below.' on its own read like a stage direction. The newline is gone so v2 doesn't restart the second half with fresh energy. 'Nothing below.' is now only a fallback for takes that run past 10.25.",
+    "06 uses a comma instead of an ellipsis: 'One's the cheapest, till page nine.' It keeps the continuation lift without a breathy trail-off, and it breaks up the run of identical 'X... Y' melodies across 05, 06, 07 and 09.",
+    "07 text kept: 'And one's...' against the caption 'And one... / is a' is a natural spoken contraction. I added a note to reject takes with a stretched 'one'sss' hiss before the pause.",
+    "CTA reverted to post.md's 'Book a demo at Q-S-me dot build.'. It's one breath of about 2.0s, falling on 'build'. The two-fragment version had a tagline cadence and wasn't any faster. If 'kiss me' or four spelled-out letters keeps happening, add an alias rule in an ElevenLabs pronunciation dictionary (Q-S-me → 'Cue Ess Me', the venture file's own phonetic) instead of changing the spelling in the script.",
+    "Casting line partly accepted: 'Six bids in by five. In fairness, the best one here is a whiteboard. Q-S-me dot build.' (86 characters). It drops the ambiguous 'here's', tests the brand name, and covers KIT (six, bids, in, is, build), PRICE (by, five, whiteboard), SQUARE (fairness), NEAR (here) and DRESS (best). I didn't use the critic's 124-character version because the casting line is meant to be about 80 characters; to test the CTA cadence, also audition line 11 on the shortlisted voices. Reject voices where 'six' sounds like 'seeks' (drifting Australian), where it's a cartoon 'sux', or where Q-S-me comes out as 'kiss me' or four letters.",
+    "Character: the accent spec now says a general, urban professional New Zealand accent, not broad or rural and not Australian. Voices tagged NZ include broad 'Kiwi bloke' character voices and Australian voices mis-tagged as NZ. I also added a Voice Design fallback prompt for when no library voice passes the casting line.",
+    "Settings: similarity_boost is now 0.75, matching post.md's ~75; 0.8 amplified the library voice's source artefacts. Speed is 1.0 on every line instead of 0.96, because the tightest windows (02, 08, 09) can't afford slowed vowels; the unhurried feel comes from the gaps in the edit. Stability 0.45, style 0 and speaker boost are unchanged.",
+    "Post-processing: the rule 'SFX between lines, never under a word' was impossible with sounds synced to picture. It's now 'SFX synced to picture, ducked 10 to 12 dB under any word they overlap', with each overlap listed. The music's first downbeat moves from 20.2 to 20.55, on the first row snap, so 20.15 to 20.55 stays a clean beat after 'please price'.",
+    "Rejected (an optional item): the 'Next tender? Same lines for every bidder.' bridge for line 10. It's close to post.md's AI-voice product line, but in this MP4 'Next tender?' would play over the burned-in caption 'So we built QSME.'. That breaks post.md's rule that captions match the VO word for word, and it would use up the clean beat before the music. Line 10 now carries a note to say it like a colleague explaining how it works, not a tagline. If the caption at 20.3 is ever re-rendered as 'Next tender?', add the bridge (start at 20.6, about 13 more characters) and move the music downbeat to 20.2.",
+    "Timings, unchanged and confirmed: every start_s is on the real MP4 timeline. 04-motion.figma.js runs its keyframes through the warp W(t): +0.3s from 10.0, +0.5s from 12.3 and +0.8s from 16.7. stage.html rendered the MP4 with the same warp. The critic's frame scan of the 28.0s, 30 fps MP4 confirmed the captions and the cuts at 2.4, 4.2, 6.1, 7.6, 10.3, 12.8, 17.5, 20.2 and 25.4.",
+    "Hook, unchanged: the VO reads the on-screen '6 bids. 6 formats.' as 'Six bids. Six formats.'. The old 'Six subbies. Six quotes. Six formats.' didn't fit the 2.4s window or match the caption.",
+    "Integrity, unchanged: 'So we built QSME.' at 20.3 stays unvoiced, because an AI voice must not speak as the founder. The brand is spoken only in the CTA. If the founder's own consented clone does the voice, add 'So we built Q-S-me.' at 20.3 (max 0.65s).",
+    "Silent beats are kept silent and have no entries: the snap-zoom hold 15.0 to 15.85, the gap 20.15 to 20.56, and the click-and-award beat 24.3 to 27.2 (re-timed 2026-10-02).",
+    "Accent: Kiwi on both brands, as the user confirmed on 2026-10-02 (ventures/qsme-build.md, Voice). post.md's Voice section still says 'neutral international, no Kiwi accent' and recommends v3 tags and per-line renders. Update it and post.json when this is saved.",
+    "No 'eh', 'yeah' or 'mate'. The vowels carry the Kiwi feel: KIT in six, bids, till, bidder and build; DRESS in said, every and demo; SQUARE in fairness (line 09, with here and fairness both tested in the casting line); PRICE in nine, lines, price and whiteboard.",
+    "Pronunciation follows the venture file: 'Q-S-me' (Cue Ess Me) and 'Q-S-me dot build'. Check every take and regenerate on 'kiss me' or four spelled-out letters.",
+    "Model: eleven_multilingual_v2 is the main take because it keeps a library or designed voice's NZ accent most faithfully. v3 is an alternate only. It can drift toward a neutral or US accent, so A/B the two and keep v2 if the vowels flatten.",
+    "Budget: text_v2 totals 367 characters and the continuous read is 387. Planned use is 3 continuous takes (about 1,160), the casting line on 3 to 5 voices (about 260 to 430), line 11 on the shortlist (about 100), and patches (up to about 1,100). That's roughly 1,500 to 2,800 characters. Don't assume a free-tier allowance: read character_limit and character_count from GET /v1/user/subscription before generating.",
+    "Free-plan caveats: the free tier has no commercial licence, so ads or paid boosts need a paid plan (post.md flags this). Voice Library voices may be restricted via the API on free accounts; if an API call is refused, generate in the web app.",
+    "Sources: projects/2026-10-02-qsme-build-six-bids-six-formats/motion-src/04-motion.figma.js and motion-src/stage.html (the keyframes and the W() warp); post.md (Voice, Music, the Figma-fallback product line, the caption rule); post.json reel.beats; ventures/qsme-build.md (Voice, Pronunciation). Character counts were checked by script. No API was called and no files were written in this revision."
+  ],
+  "video": "outputs/six-bids-linkedin-4x5.mp4"
+}

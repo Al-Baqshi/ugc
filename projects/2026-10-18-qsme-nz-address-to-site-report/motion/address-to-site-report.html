@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<title>Three sections, one planner (16:9)</title>
+<!-- QSME NZ · From an address to a site report · 16:9 master, 145.5 s. Motion kit page (tools/motion).
+     v2 (review 2026-10-02): big-headline cold open; viewer label "Illustrative · demo data"; setup compressed to 7 s;
+     the homepage boundary is shown before the card; overlays chapter trimmed with a "to be fair, it said" beat;
+     quote board (verbatim lines only) instead of three invented verdict cards; explicit decision; pointer cards cut for
+     a lower third; captions = VO lines; 12 s end card with clear end-screen zones; no dip to navy before the end card.
+     2026-10-03 (owner CTA rule): no "free" / "no account" / pricing lines anywhere; step 1 = sign up + search your address,
+     step 2 = Site research in your account; Pro view line reframed; end card CTA "sign up at qsme.co.nz"; the live
+     homepage's own "Free to join." line is painted out of the capture (#hm-clip / #hm-still). -->
+<link rel="stylesheet" href="../../../tools/motion/kit.css">
+<link rel="stylesheet" href="site-ui.css">
+<style>
+  #root { background: radial-gradient(1300px 760px at 50% 44%, #0C1B30 0%, #050B1C 55%, #020617 100%); }
+  .caption { left: 96px; right: 96px; top: auto; bottom: 64px; font-size: 50px; line-height: 1.16; z-index: 40; }
+  .caption.box > span { display: inline-block; max-width: 1640px; padding: 7px 20px; border-radius: 12px; box-shadow: 0 8px 26px rgba(2,6,23,.45), 0 0 0 1px rgba(2,6,23,.12); }
+  .caption.box span span { background: none; padding: 0; border-radius: 0; box-shadow: none; }
+  .caption.box span span.g { color: #15803D; }
+  #sticky { z-index: 30; }
+  .sticky .ln { min-height: 45px; }
+  #chaps, .tagr, .dram, .btag, .ctag { z-index: 35; }
+  #chaps { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+
+  /* screen frame */
+  #frame { left: 210px; top: 116px; width: 1500px; height: 760px; border-radius: 16px; overflow: hidden; background: #0B1226;
+    box-shadow: 0 34px 90px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.08); }
+  .cam { position: absolute; left: 0; top: 0; transform-origin: 0 0; --cx: 750; --cy: 380; --cs: 1;
+    transform: translate(calc(750px - var(--cs) * var(--cx) * 1px), calc(380px - var(--cs) * var(--cy) * 1px)) scale(var(--cs)); }
+  #cam { width: 1500px; height: 760px; }
+  #hcam { width: 1920px; height: 1080px; }
+  #hcam img { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+  #fdim { background: #020617; }
+  /* paints the live homepage's "Free to join." line out of the capture (owner rule 2026-10-03); colour = the page background there */
+  .hmask { position: absolute; left: 406px; width: 98px; height: 27px; border-radius: 8px; filter: blur(2.5px); }
+  .hl { position: absolute; border: 3px solid #3DC023; border-radius: 10px; box-shadow: 0 0 0 5px rgba(61,192,35,.20); }
+  .hl.amber { border-color: #F59E0B; box-shadow: 0 0 0 5px rgba(245,158,11,.22); }
+  .orow .t { display: inline-block; position: relative; }
+  .mk { position: absolute; left: -6px; width: calc(100% + 12px); bottom: -9px; height: 14px; overflow: visible; }
+  .vsum .ind { display: inline-block; position: relative; }
+  .vchip { position: relative; }
+
+  /* cold open headline (same treatment as the 9:16 cut) */
+  .chead { position: absolute; left: 96px; right: 96px; top: 74px; text-align: center; font: 800 118px/1.04 Manrope; letter-spacing: -0.035em; color: #F8FAFC; z-index: 36; }
+  .chead .a { color: #3DC023; }
+  .ctag { position: absolute; left: 360px; top: 844px; font: 500 20px/1.2 "JetBrains Mono"; color: rgba(248,250,252,.62); white-space: nowrap; }
+
+  /* HUD */
+  .chap { position: absolute; left: 210px; top: 58px; display: flex; align-items: center; gap: 14px; height: 44px; padding: 0 18px 0 8px; border-radius: 999px;
+    background: rgba(255,255,255,.06); border: 1.5px solid rgba(255,255,255,.12); font: 700 24px/1 Manrope; color: #F8FAFC; letter-spacing: -0.01em; }
+  .chap b { display: inline-flex; align-items: center; justify-content: center; height: 30px; min-width: 46px; padding: 0 8px; border-radius: 999px; background: #16A34A; color: #fff; font: 700 18px/1 "JetBrains Mono"; }
+  .chap .ticks { display: flex; gap: 6px; margin-left: 6px; }
+  .chap .ticks i { width: 18px; height: 5px; border-radius: 3px; background: rgba(255,255,255,.18); }
+  .chap .ticks i.on { background: #3DC023; }
+  .tagr { position: absolute; right: 210px; top: 64px; padding: 6px 14px; border-radius: 8px; font: 500 20px/1.2 "JetBrains Mono"; white-space: nowrap; }
+  .illustrative.tagr { border: 2px dashed rgba(248,250,252,.55); color: rgba(248,250,252,.72); background: rgba(2,6,23,.5); }
+  .live { border: 2px solid rgba(61,192,35,.7); color: #BBF7D0; background: rgba(2,6,23,.5); display: flex; align-items: center; gap: 10px; }
+  .live i { width: 10px; height: 10px; border-radius: 50%; background: #3DC023; box-shadow: 0 0 0 4px rgba(61,192,35,.25); }
+  .dram { position: absolute; left: 210px; top: 62px; padding: 6px 14px; border-radius: 8px; border: 2px solid rgba(248,250,252,.35); color: rgba(248,250,252,.8); font: 500 20px/1.2 "JetBrains Mono"; }
+
+  /* title card */
+  #title { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+  #title .l1 { font: 800 112px/1.02 Manrope; letter-spacing: -0.035em; color: #F8FAFC; }
+  #title .l2 { font: 800 70px/1.1 Manrope; letter-spacing: -0.03em; color: #3DC023; margin-top: 22px; }
+  #title .l3 { font: 500 30px/1.3 Inter; color: rgba(248,250,252,.7); margin-top: 30px; }
+
+  /* b-roll: a tight crop of th-1-site (the bare section, the maunga, boundary pegs; no digger, no surveyor) as a photo card */
+  #bcard { position: absolute; left: 360px; top: 150px; width: 1200px; height: 675px; border-radius: 18px; overflow: hidden; background: #0B1226;
+    box-shadow: 0 34px 90px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.08); }
+  #bcard img { position: absolute; left: 0; top: -240px; width: 1920px; height: 1080px; transform-origin: 28% 46%; }
+  #bcard .shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(2,6,23,.18) 0%, rgba(2,6,23,0) 40%, rgba(2,6,23,.35) 100%); }
+  .btag { position: absolute; left: 380px; top: 170px; padding: 6px 14px; border-radius: 8px; border: 2px dashed rgba(248,250,252,.6); color: rgba(248,250,252,.85); font: 500 20px/1.2 "JetBrains Mono"; background: rgba(2,6,23,.55); }
+
+  /* laptop + sticky */
+  #laptop { left: 150px; top: 150px; width: 1620px; height: 1000px; border-radius: 34px; background: #1A1D22; box-shadow: 0 40px 90px rgba(0,0,0,.6), inset 0 0 0 2px #2A2E35; }
+  #laptop .cam-dot { position: absolute; left: 802px; top: 12px; width: 12px; height: 12px; border-radius: 50%; background: #0B0D10; box-shadow: inset 0 0 0 2px #2C3036; }
+  #laptop .scr { position: absolute; left: 30px; top: 34px; width: 1560px; height: 1000px; overflow: hidden; border-radius: 8px; background: #0B1226; }
+  #laptop .scr .sr { transform: scale(1.32); transform-origin: 0 0; filter: blur(5px) brightness(.55); }
+  .sticky { position: absolute; width: 520px; padding: 30px 34px 34px; background: linear-gradient(180deg, #FDE68A 0%, #FCD34D 100%); color: #1F2937;
+    box-shadow: 0 22px 40px rgba(0,0,0,.45), 0 2px 0 rgba(0,0,0,.05); border-radius: 3px; font: 400 36px/1.25 Kalam; }
+  .sticky:before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 34px; background: rgba(0,0,0,.04); }
+  .sticky .h { font: 700 38px/1.15 Kalam; }
+  .sticky .h2 { font: 400 30px/1.2 Kalam; color: #7C2D12; margin-top: 2px; }
+  .sticky .ln { position: relative; margin-top: 14px; white-space: nowrap; }
+  .sticky .ann { font: 400 27px/1.15 "Permanent Marker"; margin-top: 2px; height: 34px; white-space: nowrap; }
+  .sticky .ann.g { color: #15803D; } .sticky .ann.r { color: #B91C1C; }
+  .sticky svg.strike { position: absolute; left: -6px; top: 18px; width: 470px; height: 24px; overflow: visible; }
+  .sticky svg.circ { position: absolute; left: -22px; top: -12px; width: 500px; height: 120px; overflow: visible; }
+
+  /* chapter strip */
+  #strip { left: 96px; right: 96px; top: 64px; display: flex; justify-content: center; gap: 10px; }
+  .sc { display: flex; align-items: center; gap: 10px; height: 52px; padding: 0 16px 0 8px; border-radius: 999px; background: rgba(2,6,23,.82); border: 1.5px solid rgba(255,255,255,.16); font: 700 24px/1 Manrope; color: #F8FAFC; white-space: nowrap; }
+  .sc b { display: inline-flex; align-items: center; justify-content: center; height: 34px; min-width: 44px; border-radius: 999px; background: #16A34A; color: #fff; font: 700 17px/1 "JetBrains Mono"; }
+
+  /* quote board: three sites, one verbatim line each (no invented UI wording) */
+  #triSrc { position: absolute; left: 96px; right: 96px; top: 170px; text-align: center; font: 600 21px/1.2 "JetBrains Mono"; color: rgba(248,250,252,.62); }
+  .tri { position: absolute; top: 240px; width: 548px; height: 440px; background: #fff; border-radius: 18px; padding: 28px 30px; color: #0F172A; box-shadow: 0 24px 60px rgba(0,0,0,.45); font-family: Inter, sans-serif; }
+  .tri .top { display: flex; align-items: center; gap: 12px; }
+  .tri .st { height: 34px; padding: 0 14px; border-radius: 999px; background: #0F172A; color: #fff; font: 700 17px/34px Inter; }
+  .tri .vpill { height: 38px; font: 800 17px/38px Inter; padding: 0 18px; border-radius: 999px; letter-spacing: .08em; }
+  .tri .vpill.strong { background: #16A34A; color: #fff; } .tri .vpill.good { background: #DCFCE7; color: #15803D; border: 1px solid #86EFAC; } .tri .vpill.limited { background: #FEF3C7; color: #92400E; border: 1px solid #FCD34D; }
+  .tri .vh { font: 800 31px/1.15 Manrope; letter-spacing: -0.02em; margin-top: 20px; }
+  .tri .q { font: 500 26px/1.42 Inter; color: #334155; margin-top: 16px; }
+  .tri .qs { font: 600 16px/1.2 "JetBrains Mono"; color: #94A3B8; margin-top: 10px; }
+  .tri .tdisc { position: absolute; left: 30px; right: 30px; bottom: 26px; padding-top: 14px; border-top: 1px solid #E2E8F0; font: 500 21px/1.42 Inter; color: #64748B; }
+  .tri .tdisc .ind { display: inline-block; position: relative; color: #1E293B; font-weight: 700; }
+
+  /* lower third (replaces the old pointer cards) */
+  #lt { position: absolute; left: 96px; right: 96px; bottom: 64px; text-align: center; z-index: 41; }
+  #lt span { display: inline-block; padding: 10px 24px; border-radius: 12px; background: #0F172A; border: 2px solid #3DC023; color: #F8FAFC; font: 700 40px/1.2 Manrope; letter-spacing: -0.01em; }
+  #lt span i { font-style: normal; color: #4ADE80; }
+
+  /* desk */
+  #desk { background:
+      radial-gradient(1200px 700px at 50% 45%, rgba(0,0,0,0) 0%, rgba(0,0,0,.55) 100%),
+      repeating-linear-gradient(93deg, rgba(255,255,255,.028) 0 2px, rgba(0,0,0,0) 2px 11px),
+      repeating-linear-gradient(91deg, rgba(0,0,0,.07) 0 1px, rgba(0,0,0,0) 1px 37px),
+      linear-gradient(180deg, #4A3424 0%, #3A281B 100%); }
+  #dcam { width: 1920px; height: 1080px; --cx: 960; --cy: 540; transform: translate(calc(960px - var(--cs) * var(--cx) * 1px), calc(540px - var(--cs) * var(--cy) * 1px)) scale(var(--cs)); }
+  .mug { position: absolute; width: 250px; height: 250px; border-radius: 50%; background: radial-gradient(circle at 50% 50%, #2B1A10 0 52%, #F1F5F9 53% 63%, #CBD5E1 64% 68%, rgba(0,0,0,0) 69%); box-shadow: 0 18px 30px rgba(0,0,0,.45); }
+  .mug:after { content: ''; position: absolute; right: -58px; top: 92px; width: 80px; height: 64px; border: 16px solid #E2E8F0; border-left: none; border-radius: 0 40px 40px 0; }
+  .pen { position: absolute; width: 360px; height: 18px; border-radius: 9px; background: linear-gradient(180deg, #1E293B, #0F172A); box-shadow: 0 8px 14px rgba(0,0,0,.4); }
+  .pen:after { content: ''; position: absolute; right: -16px; top: 3px; border-left: 18px solid #CBD5E1; border-top: 6px solid transparent; border-bottom: 6px solid transparent; }
+  #illus2 { left: auto; right: 96px; top: auto; bottom: 136px; }   /* bottom-right: clear of the cup, the paper and the sticky, before and after the push-in */
+
+  /* close */
+  #discCard { position: absolute; left: 230px; top: 236px; width: 1460px; background: #fff; border-radius: 22px; padding: 46px 56px 50px; box-shadow: 0 28px 70px rgba(0,0,0,.5); }
+  #discCard .src { font: 600 20px/1.2 "JetBrains Mono"; color: #94A3B8; letter-spacing: .02em; }
+  #discCard .tx { font: 500 40px/1.5 Inter; color: #64748B; margin-top: 18px; }
+  #discCard .tx b { color: #1E293B; font-weight: 700; display: inline-block; position: relative; }
+
+  /* end card: copy in the top third, the middle left clear for YouTube end-screen tiles + subscribe, small print at the bottom */
+  #end { z-index: 46; background: radial-gradient(1300px 760px at 50% 44%, #0C1B30 0%, #050B1C 55%, #020617 100%); }
+  #end .top { position: absolute; left: 96px; right: 96px; top: 66px; text-align: center; }
+  #end img { width: 230px; display: block; margin: 0 auto; }
+  #end .h { font: 800 92px/1.05 Manrope; letter-spacing: -0.035em; color: #F8FAFC; margin-top: 22px; }
+  #end .s { font: 500 36px/1.35 Inter; color: rgba(248,250,252,.82); margin-top: 16px; }
+  #end .s b { color: #3DC023; font-weight: 700; }
+  #end .f { position: absolute; left: 96px; right: 96px; top: 952px; text-align: center; font: 500 24px/1.4 Inter; color: rgba(248,250,252,.55); }
+</style>
+</head>
+<body class="nz r16x9">
+<div id="root">
+
+  <!-- ===== screen frame (recreated app screens + live capture) ===== -->
+  <div id="frame" class="abs" data-qa-ignore>
+    <div id="cam" class="cam"></div>
+    <div id="hcam" class="cam">
+      <img id="hclip" alt="">
+      <div id="hm-clip" class="hmask"></div>
+      <div id="hstillw" style="position:absolute;left:0;top:0;width:1920px;height:1080px"><img id="hstill" src="clips/home-still.jpg" alt=""><div id="hm-still" class="hmask" style="top:618px;background:linear-gradient(to bottom right,rgb(26,25,21),rgb(27,26,24))"></div></div>
+      <div id="hl-parcel" class="hl" style="left:1163px;top:268px;width:112px;height:112px"></div>
+      <div id="hl-zone" class="hl" style="left:1230px;top:516px;width:180px;height:32px"></div>
+      <div id="hl-svc" class="hl" style="left:989px;top:546px;width:506px;height:208px"></div>
+      <div id="hl-hz" class="hl amber" style="left:989px;top:760px;width:506px;height:142px"></div>
+      <div id="hl-foot" class="hl" style="left:989px;top:903px;width:506px;height:54px"></div>
+    </div>
+    <div id="fdim" class="fill"></div>
+  </div>
+
+  <!-- ===== HUD ===== -->
+  <div id="ctag" class="ctag">Dramatised · illustrative screens · demo data</div>
+  <div id="dram" class="dram">Dramatised · demo sites</div>
+  <div id="illus" class="illustrative tagr" data-qa="label">Illustrative · demo data</div>
+  <div id="illus2" class="illustrative tagr" style="background:rgba(2,6,23,.86)">Illustrative · demo data</div>
+  <div id="live" class="tagr live"><i></i>Live capture · qsme.co.nz</div>
+  <div id="chaps"></div>
+
+  <!-- ===== cold-open headline ===== -->
+  <div class="chead" id="ch1">It said <span class="a">“Strong.”</span></div>
+  <div class="chead" id="ch2">Then I scrolled.</div>
+
+  <!-- ===== title ===== -->
+  <div id="title" class="fill">
+    <div class="l1" id="t1">Three sections.</div>
+    <div class="l1" id="t2">One planner.</div>
+    <div class="l2" id="t3">Which one gets the meeting?</div>
+    <div class="l3" id="t4">From an address to a site report · QSME Site research, Auckland</div>
+  </div>
+
+  <!-- ===== b-roll ===== -->
+  <div id="broll" class="fill"><div id="bcard"><img id="bclip" alt=""><div class="shade"></div></div><div class="btag">Illustrative b-roll</div></div>
+
+  <!-- ===== laptop + sticky ===== -->
+  <div id="lap" class="fill" data-qa-ignore>
+    <div id="laptop" class="abs"><div class="cam-dot"></div><div class="scr" id="lapscr"></div></div>
+  </div>
+  <div id="sticky" class="sticky" style="left:0;top:0">
+    <div class="h" id="sh1">Mon 10am · planner</div>
+    <div class="h2" id="sh2">(by the hour!!)</div>
+    <div class="ln" id="sl1"><span id="sl1t">1&nbsp; Harakeke Rd — main rd</span><svg class="circ" viewBox="0 0 500 120"><path id="circ1" d="M30 70 C 20 20, 160 4, 300 8 C 440 12, 492 40, 470 80 C 450 116, 250 120, 110 112 C 40 108, 14 90, 34 58" fill="none" stroke="#15803D" stroke-width="5" stroke-linecap="round"/></svg></div>
+    <div class="ann r" id="sa1">strong… but red + amber</div>
+    <div class="ln" id="sl2">2&nbsp; Ponga Cres — quiet st</div>
+    <div class="ann g" id="sa2">tidy · up to 3</div>
+    <div class="ln" id="sl3"><span id="sl3t">3&nbsp; Tawa Ave — the villa</span><svg class="strike" viewBox="0 0 470 24"><path id="strike3" d="M4 14 C 120 6, 300 18, 462 8" fill="none" stroke="#B91C1C" stroke-width="6" stroke-linecap="round"/></svg></div>
+    <div class="ann r" id="sa3">villa stays. off.</div>
+    <div class="ann g" id="sa4" style="position:absolute;right:30px;bottom:28px;font-size:34px">→ MONDAY: 1</div>
+  </div>
+  <div id="strip" class="abs"></div>
+
+  <!-- ===== quote board ===== -->
+  <div id="tri" class="fill"><div id="triSrc">Quoted from each site’s Site research page · demo sites</div></div>
+  <div id="lt"><span>Checklist + rough numbers: <i>Shorts linked below</i></span></div>
+
+  <!-- ===== desk ===== -->
+  <div id="desk" class="fill">
+    <div id="dcam" class="cam">
+      <div class="mug" style="left:1480px;top:70px"></div>
+      <div class="pen" style="left:210px;top:800px;transform:rotate(-24deg)"></div>
+      <div id="paperWrap" data-qa-ignore class="abs" style="left:560px;top:96px;width:620px;height:877px"></div>
+      <div id="sticky2" class="sticky" style="left:1150px;top:300px;width:560px">
+        <div class="h">Qs for Monday</div>
+        <div class="ln" id="q1">1. Road widening — how much?</div>
+        <div class="ln" id="q2">2. Viewshaft vs 21 m?</div>
+        <div class="ln" id="q3">3. Pipe ~3 m — build-over?</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== close ===== -->
+  <div id="close" class="fill">
+    <div id="discCard">
+      <div class="src">Quoted from the Site research page</div>
+      <div class="tx">Indicative only — a planning heuristic from public council data, not advice. Overlays, precincts, plan changes and site conditions change what's possible. <b id="discB">Confirm with a planner or the council.<svg class="mk" viewBox="0 0 700 14" preserveAspectRatio="none"><path id="discMk" d="M2 8 C 160 2, 420 13, 698 5" fill="none" stroke="#E0302A" stroke-width="7" stroke-linecap="round"/></svg></b></div>
+    </div>
+  </div>
+  <div id="end" class="fill">
+    <div class="top">
+      <img id="elogo" src="qsme-logo.svg" alt="QSME">
+      <div class="h" id="eh">Start with your address.</div>
+      <div class="s" id="es">Site research: <b>sign up at qsme.co.nz</b> · Full depth: <b>Auckland</b>.</div>
+    </div>
+    <div class="f" id="ef">Rule-based public data, not AI · Not a LIM, valuation or advice · Dramatised · demo sites</div>
+  </div>
+</div>
+
+<script src="../../../tools/motion/kit.js"></script>
+<script src="site-ui.js"></script>
+<script src="clips/home/stamps.js"></script>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var root = $('root'), camEl = $('cam');
+  var UI = window.SiteUI;
+  var DUR = 145.5;
+
+  /* ---------- build the recreated screens ---------- */
+  var P1 = UI.simplePage('s1', 'pg-s1'), P2 = UI.simplePage('s2', 'pg-s2'), P3 = UI.simplePage('s3', 'pg-s3'), PR = UI.proPage('s1', 'pro');
+  camEl.insertAdjacentHTML('beforeend', P1.html + P2.html + P3.html + PR.html);
+  camEl.insertAdjacentHTML('beforeend', '<div id="print" class="fill" style="background:rgba(32,33,36,.78)"><div id="opWrap" class="abs" style="left:230px;top:20px;width:509px;height:720px"><div style="position:absolute;left:0;top:0;width:620px;height:877px;transform:scale(.82);transform-origin:0 0">' + UI.onePager('s1', 'op', '11 Oct 2026') + '</div></div>' + UI.printDialog('pd') + '</div>');
+  $('op').style.left = '0px'; $('op').style.top = '0px';
+  $('pd').style.left = '1000px'; $('pd').style.top = '196px';
+  camEl.insertAdjacentHTML('beforeend', '<div id="cur" class="cur">' + UI.I.cursor + '</div>');
+  $('lapscr').innerHTML = UI.simplePage('s1', 'lap').html;   // laptop screen: blurred copy of site 1 (decor)
+  $('paperWrap').innerHTML = UI.onePager('s1', 'dop', '11 Oct 2026');
+  $('dop').style.left = '0px'; $('dop').style.top = '0px';
+
+  function marker(el, id, color) {
+    el.insertAdjacentHTML('beforeend', '<svg class="mk" viewBox="0 0 700 14" preserveAspectRatio="none"><path id="' + id + '" d="M2 8 C 160 2, 420 13, 698 5" fill="none" stroke="' + (color || '#E0302A') + '" stroke-width="6" stroke-linecap="round"/></svg>');
+    return $(id);
+  }
+  marker(document.querySelector('#pg-s1-o-r0 .t'), 'mk-r0');
+  marker(document.querySelector('#pg-s1-o-r1 .t'), 'mk-r1', '#D97706');
+  marker(document.querySelector('#pg-s1-o-r2 .t'), 'mk-r2', '#16A34A');
+  // "to be fair, it said": an amber ring drawn round the − Designation chip that was on the card from the first second
+  $('pg-s1-v-c2').insertAdjacentHTML('beforeend', '<svg viewBox="0 0 200 60" preserveAspectRatio="none" style="position:absolute;left:-18px;top:-13px;width:calc(100% + 36px);height:calc(100% + 26px);overflow:visible"><path id="fairC" d="M104 5 C 168 3, 197 16, 196 31 C 195 49, 142 57, 98 56 C 42 55, 5 46, 6 30 C 7 13, 52 5, 118 7" fill="none" stroke="#D97706" stroke-width="5" stroke-linecap="round"/></svg>');
+
+  function hl(id, box, cls) { camEl.insertAdjacentHTML('beforeend', '<div id="' + id + '" class="hl ' + (cls || '') + '" style="left:' + (box[0] - 8) + 'px;top:' + (box[1] - 8) + 'px;width:' + (box[2] - box[0] + 16) + 'px;height:' + (box[3] - box[1] + 16) + 'px;opacity:0"></div>'); return $(id); }
+
+  /* ---------- helpers ---------- */
+  var BOUNDS = { '#cam': [1500, 760, 1500, 760], '#hcam': [1920, 1080, 1500, 760], '#dcam': [1920, 1080, 1920, 1080] };
+  function cam(sel, keys) {   // keys: [t, cx, cy, scale, ease]; centre is clamped so the view never leaves the page
+    var B = BOUNDS[sel];
+    keys = keys.map(function (k) { var hw = B[2] / 2 / k[3], hh = B[3] / 2 / k[3], x = k[1], y = k[2];
+      if (B && k[3] >= 1) { x = Math.min(Math.max(x, hw), B[0] - hw); y = Math.min(Math.max(y, hh), B[1] - hh); }
+      return [k[0], x, y, k[3], k[4]]; });
+    Kit.add(sel, 'var:--cx', keys.map(function (k) { return [k[0], k[1], k[4]]; }));
+    Kit.add(sel, 'var:--cy', keys.map(function (k) { return [k[0], k[2], k[4]]; }));
+    Kit.add(sel, 'var:--cs', keys.map(function (k) { return [k[0], k[3], k[4]]; }));
+  }
+  var caps = [];
+  function cap(t0, t1, html) {
+    var d = document.createElement('div'); d.className = 'caption box'; d.innerHTML = '<span>' + html + '</span>'; root.appendChild(d);
+    if (t0 <= 0) Kit.add(d, 'opacity', [[0, 1]]); else Kit.pop(d, t0, { dy: 16 });
+    Kit.out(d, t1 - 0.14, 0.14); caps.push([t0, t1, html]);
+  }
+  var cx = [[0, 1300]], cy = [[0, 640]], co = [[0, 0]], rings = 0;
+  function curTo(t0, t1, x, y) { cx.push([t0, cx[cx.length - 1][1]], [t1, x, 'inOut']); cy.push([t0, cy[cy.length - 1][1]], [t1, y, 'inOut']); }
+  function curShow(t0, t1) { co.push([t0, 0], [t0 + 0.15, 1], [t1, 1], [t1 + 0.15, 0]); }
+  function click(t, x, y) {
+    var id = 'ring' + (rings++);
+    camEl.insertAdjacentHTML('beforeend', '<div class="ring" id="' + id + '" style="left:' + (x - 22) + 'px;top:' + (y - 22) + 'px;opacity:0"></div>');
+    Kit.add('#' + id, 'opacity', [[t, 0], [t + 0.02, 1], [t + 0.42, 0, 'out']]);
+    Kit.add('#' + id, 'scale', [[t, 0.4], [t + 0.42, 1.5, 'out']]);
+  }
+  function chip(n, label, t0, t1) {
+    var d = document.createElement('div'); d.className = 'chap';
+    d.innerHTML = '<b>0' + n + '</b>' + label + '<span class="ticks">' + [1, 2, 3, 4, 5, 6, 7].map(function (i) { return '<i' + (i <= n ? ' class="on"' : '') + '></i>'; }).join('') + '</span>';
+    $('chaps').appendChild(d); Kit.scene(d, t0, t1); Kit.pop(d, t0, { dy: -14 });
+  }
+  function hide(sel) { Kit.add(sel, 'opacity', [[0, 0]]); }
+
+  /* ---------- scene ranges ---------- */
+  var frameRanges = [[0, 11.0], [18.0, 83.8], [94.4, 119.8]];
+  Kit.each(function (t) { $('frame').style.display = frameRanges.some(function (r) { return t >= r[0] && t < r[1]; }) ? '' : 'none'; });
+  function ranges(id, rs) { Kit.each(function (t) { $(id).style.display = rs.some(function (r) { return t >= r[0] && t < r[1]; }) ? '' : 'none'; }); }
+  ranges('cam', [[0, 11.0], [31.0, 83.8], [94.4, 119.8]]);
+  ranges('hcam', [[18.0, 31.0]]);
+  ranges('pg-s1', [[0, 11.0], [52.55, 79.45], [94.4, 95.6]]);
+  ranges('pg-s2', [[31.0, 52.55], [79.45, 81.45]]);
+  ranges('pg-s3', [[81.45, 83.8]]);
+  ranges('pro', [[95.6, 113.35]]);
+  ranges('print', [[113.35, 119.8]]);
+  ranges('ch1', [[0, 2.6]]); ranges('ch2', [[2.62, 7.95]]); ranges('ctag', [[0, 7.95]]);
+  ranges('title', [[7.9, 11.0]]);
+  ranges('broll', [[11.0, 13.2]]);
+  ranges('lap', [[13.2, 18.0]]);
+  ranges('sticky', [[13.2, 18.0], [48.6, 52.2], [88.0, 94.4]]);
+  ranges('strip', [[15.9, 18.0]]);
+  ranges('tri', [[83.8, 94.4]]);
+  ranges('lt', [[92.5, 94.4]]);
+  ranges('desk', [[119.8, 127.4]]);
+  ranges('close', [[127.4, 133.6]]);
+  ranges('end', [[133.2, DUR + 1]]);
+  ranges('dram', [[13.2, 15.85]]);
+  ranges('illus', [[31.0, 119.8]]);
+  ranges('illus2', [[119.8, 127.4]]);
+  ranges('live', [[18.0, 31.0]]);
+
+  ['pg-s1', 'pg-s2', 'pg-s3'].forEach(function (p) { hide('#' + p + '-load'); Kit.add('#' + p + '-bar', 'opacity', [[0, 0]]); });
+  hide('#cur');
+
+  /* =====================================================================
+     A · COLD OPEN (0–7.9): big headline over the card, as in the 9:16 cut
+     ===================================================================== */
+  // the screen sits under the headline at 80% during the cold open, then returns to full size (hidden 11–18)
+  Kit.add('#frame', 'scale', [[0, 0.8], [11.0, 1, 'hold']]);
+  Kit.add('#frame', 'y', [[0, 28], [11.0, 0, 'hold']]);
+  cam('#cam', [[0, 1102, 250, 1.9], [2.5, 1102, 254, 1.92, 'linear'], [3.25, 1095, 420, 1.85, 'out'], [4.4, 1095, 380, 1.95, 'inOut'], [7.9, 1095, 384, 1.98, 'inOut'],
+    [11.0, 750, 380, 1, 'hold'], [31.0, 750, 380, 1, 'hold']]);
+  Kit.add('#pg-s1-v-pill', 'scale', [[0, 1.0], [0.08, 1.22, 'out'], [0.42, 1, 'outBack']]);
+  Kit.pop('#pg-s1-v-c0', 0.3, { dy: 10 }).pop('#pg-s1-v-c1', 0.45, { dy: 10 }).pop('#pg-s1-v-c2', 0.6, { dy: 10 });
+  Kit.slam('#ch2', 2.62, { from: 1.1 }); Kit.out('#ch2', 7.8, 0.15); Kit.out('#ctag', 7.8, 0.15);
+  // the scroll slam (and the column moves for chapters 03–05)
+  Kit.add('#pg-s1-col', 'y', [[2.5, 0], [3.1, -316, 'scroll'], [11.0, -316], [11.01, 0, 'hold'], [56.0, 0], [56.7, -316, 'inOut'], [64.0, -316], [64.9, -904, 'inOut'], [77.0, -904], [77.6, 0, 'inOut']]);
+  Kit.add('#pg-s1-col', 'blur', [[2.5, 0], [2.68, 6], [3.1, 0, 'out'], [3.2, 0]]);
+  Kit.add('#pg-s1-o-r0', 'background', [[3.1, '#FFF7F7'], [3.2, '#FECACA'], [3.9, '#FFF7F7', 'out']]);
+  Kit.add('#mk-r0', 'trim', [[3.45, 0], [3.95, 1, 'out']]);
+  // title card
+  Kit.add('#fdim', 'opacity', [[0, 0], [7.9, 0], [8.4, 0.82, 'out'], [11.0, 0.82], [11.01, 0, 'hold'], [48.6, 0], [48.9, 0.6, 'out'], [51.95, 0.6], [52.25, 0, 'in']]);
+  Kit.add('#cam', 'blur', [[7.9, 0], [8.4, 5, 'out'], [11.0, 5], [11.01, 0, 'hold']]);
+  Kit.slam('#t1', 8.05, { from: 1.12 }); Kit.slam('#t2', 8.5, { from: 1.12 }); Kit.pop('#t3', 9.2, { dy: 20 }); Kit.pop('#t4', 9.9, { dy: 12 });
+  cap(5.45, 7.85, 'Road widening. On the one I liked.');
+
+  /* =====================================================================
+     B · THE SHORTLIST (11–18): b-roll card, then the sticky + chapter strip together
+     ===================================================================== */
+  Kit.clip('#bclip', { dir: 'clips/site', t0: 11.0, t1: 13.2, fps: 30, ext: '.jpg', frames: 138 });
+  Kit.add('#bclip', 'scale', [[11.0, 1.0], [13.2, 1.05, 'linear']]);
+  Kit.add('#broll', 'opacity', [[11.0, 0], [11.25, 1, 'out']]);
+  cap(11.2, 13.1, 'Three sections. Shortlisted. Not bought.');
+  Kit.add('#laptop', 'y', [[13.2, 60], [13.8, 0, 'out']]); Kit.fade('#lap', 13.2, 13.5);
+  Kit.add('#sticky', 'x', [[13.2, 1420], [13.35, 1230, 'out'], [18.0, 1230], [48.6, 1380], [48.95, 1250, 'out'], [51.9, 1250], [52.2, 1980, 'in'], [88.0, 1980], [88.35, 700, 'out'], [94.0, 700], [94.3, -700, 'in']]);
+  Kit.add('#sticky', 'y', [[13.2, 240], [48.6, 200], [88.0, 212]]);
+  Kit.add('#sticky', 'rotate', [[13.2, -9], [13.35, -3, 'out'], [48.6, -6], [48.95, -2.5, 'out'], [88.0, -6], [88.35, -2, 'out']]);
+  Kit.add('#sticky', 'scale', [[13.2, 1.25], [13.35, 1, 'slam']]);
+  Kit.add('#sticky', 'opacity', [[13.2, 0], [13.25, 1]]);
+  Kit.type('#sh1', 13.45, 14.0); Kit.type('#sh2', 14.05, 14.4);
+  Kit.type('#sl1t', 14.5, 15.0); Kit.type('#sl2', 15.05, 15.55); Kit.type('#sl3t', 15.6, 16.1);
+  hide('#sa1'); hide('#sa2'); hide('#sa3'); hide('#sa4');
+  Kit.add('#sa2', 'opacity', [[49.3, 0], [49.31, 1, 'hold']]); Kit.type('#sa2', 49.3, 50.2);
+  hide('#strike3'); Kit.add('#strike3', 'opacity', [[88.5, 0], [88.51, 1, 'hold']]); Kit.add('#strike3', 'trim', [[88.5, 0], [88.9, 1, 'out']]);
+  Kit.add('#sa3', 'opacity', [[88.95, 0], [88.96, 1, 'hold']]); Kit.type('#sa3', 88.95, 89.5);
+  Kit.add('#sa1', 'opacity', [[90.0, 0], [90.01, 1, 'hold']]); Kit.type('#sa1', 90.0, 90.8);
+  hide('#circ1'); Kit.add('#circ1', 'opacity', [[90.9, 0], [90.91, 1, 'hold']]); Kit.add('#circ1', 'trim', [[90.9, 0], [91.35, 1, 'out']]);
+  Kit.add('#sa4', 'opacity', [[91.4, 0], [91.41, 1, 'hold']]); Kit.type('#sa4', 91.4, 91.85);
+  cap(13.35, 15.65, 'One planner. Monday. By the hour.');
+  cap(15.75, 17.95, 'So: one address. The right questions.');
+  var labels = ['Address', 'Zone', 'Overlays', 'Services', 'Verdict', 'Pro view', 'One pager'];
+  labels.forEach(function (l, i) {
+    $('strip').insertAdjacentHTML('beforeend', '<span class="sc" id="sc' + i + '"><b>0' + (i + 1) + '</b>' + l + '</span>');
+    Kit.pop('#sc' + i, 15.95 + i * 0.1, { dy: -18 });
+  });
+
+  /* =====================================================================
+     C · 01 ADDRESS — live capture of the qsme.co.nz homepage address search (18–31)
+     ===================================================================== */
+  chip(1, 'Address', 18.0, 31.0);
+  var H = window.__HOME;
+  Kit.clip('#hclip', { dir: 'clips/home', t0: 18.0, t1: 20.2, stamps: H, from: 43, speed: 1.47, ext: '.jpg' });
+  Kit.clip('#hclip', { dir: 'clips/home', t0: 20.2, t1: 21.8, stamps: H, from: 209, speed: 1.0, ext: '.jpg' });
+  Kit.add('#hstillw', 'opacity', [[21.4, 0], [21.8, 1, 'inOut']]);   // still + its mask fade in as one layer
+  // owner rule 2026-10-03: the real homepage prints "Free to join." under "Get started"; paint it out frame by frame.
+  // Text top per capture frame (measured from clips/home: button bottom + 30 px) and the page colour behind it.
+  var FTJ = [[0, 28, 758, 'rgb(14,16,13)', 'rgb(16,18,13)'], [29, 170, 711, 'rgb(14,16,13)', 'rgb(16,18,13)'], [207, 230, 758, 'rgb(13,15,13)', 'rgb(21,22,24)'],
+    [231, 248, 739, 'rgb(14,16,13)', 'rgb(20,22,21)'], [249, 9999, 624, 'rgb(25,24,21)', 'rgb(27,26,22)']];
+  Kit.each(function () {
+    var m = /f_(\d+)/.exec($('hclip').getAttribute('src') || ''), el = $('hm-clip'), hit = null;
+    if (m) { var i = +m[1]; FTJ.forEach(function (r) { if (i >= r[0] && i <= r[1]) hit = r; }); }
+    el.style.display = hit ? '' : 'none';
+    if (hit) { el.style.top = (hit[2] - 7) + 'px'; el.style.background = 'linear-gradient(to bottom right,' + hit[3] + ',' + hit[4] + ')'; }
+  });
+  // boundary first (the green parcel outline on the map), then the zone, services, hazards, footer column by column
+  cam('#hcam', [[18.0, 700, 480, 1.16], [20.1, 720, 500, 1.18, 'inOut'], [20.2, 960, 540, 0.80, 'hold'], [21.6, 960, 552, 0.82, 'inOut'], [21.85, 960, 552, 0.82],
+    [22.5, 1240, 262, 1.45, 'inOut'], [23.7, 1240, 264, 1.47], [24.3, 1242, 545, 1.5, 'inOut'], [25.1, 1242, 547, 1.5], [25.7, 1242, 650, 1.6, 'inOut'], [26.9, 1242, 652, 1.62],
+    [27.5, 1242, 845, 1.6, 'inOut'], [31.0, 1242, 845, 1.64]]);
+  ['#hl-parcel', '#hl-zone', '#hl-svc', '#hl-hz', '#hl-foot'].forEach(hide);
+  Kit.add('#hl-parcel', 'opacity', [[22.55, 0], [22.75, 1], [23.7, 1], [23.9, 0]]);
+  Kit.add('#hl-zone', 'opacity', [[24.35, 0], [24.55, 1], [25.3, 1], [25.5, 0]]);
+  Kit.add('#hl-svc', 'opacity', [[25.75, 0], [25.95, 1], [26.9, 1], [27.1, 0]]);
+  Kit.add('#hl-hz', 'opacity', [[27.45, 0], [27.65, 1], [28.5, 1], [28.7, 0]]);
+  Kit.add('#hl-foot', 'opacity', [[28.75, 0], [28.95, 1], [30.7, 1], [30.9, 0]]);
+  cap(18.2, 21.85, 'Step 1: sign up. Search your address.');
+  cap(21.95, 25.6, 'Boundary, zone, pipes, hazards. In seconds.');
+  cap(25.7, 28.6, 'Zoning: four councils. Pipes and hazards: <span class="g">Auckland</span>.');
+  cap(28.7, 30.9, 'That’s the council’s building. Mine stay blurred.');
+
+  /* =====================================================================
+     D · 02 ZONE — Site research on site 2 (31–52)
+     ===================================================================== */
+  chip(2, 'Zone', 31.0, 52.0);
+  Kit.add('#pg-s2-q', 'opacity', [[31.0, 0], [31.55, 0], [31.7, 1], [79.45, 1]]);
+  curShow(31.05, 32.0); curTo(31.0, 31.45, 470, 40); click(31.5, 470, 40);
+  Kit.add('#pg-s2-bar', 'opacity', [[31.6, 0], [31.62, 1], [34.3, 1], [34.6, 0]]);
+  Kit.add('#pg-s2-bar', 'scaleX', [[31.6, 0], [34.3, 1, 'inOut']]);
+  Kit.add('#pg-s2-load', 'opacity', [[31.6, 0], [31.8, 1], [34.3, 1], [34.45, 0]]);
+  Kit.add('#pg-s2-m-parcel', 'trim', [[32.6, 0], [33.5, 1, 'out']]);
+  Kit.add('#pg-s2-m-parcel', 'opacity', [[32.6, 0], [32.65, 1]]);
+  ['#pg-s2-v', '#pg-s2-z', '#pg-s2-o', '#pg-s2-s', '#pg-s2-p-req', '#pg-s2-p-fea', '#pg-s2-p-disc'].forEach(function (s, i) { Kit.add(s, 'opacity', [[31.0, 0], [34.35 + i * 0.12, 0], [34.6 + i * 0.12, 1, 'out']]); });
+  Kit.add('#pg-s2-col', 'y', [[34.6, 0], [35.4, -200, 'inOut'], [79.44, -200], [79.45, 0, 'hold']]);
+  // while the street fills with zone colours, the cropped column dims so no half-cut text reads
+  Kit.add('#pg-s2-col', 'opacity', [[44.3, 1], [44.7, 0.1, 'out'], [48.3, 0.1], [48.6, 1, 'in']]);
+  cam('#cam', [[31.0, 750, 380, 1.0], [34.55, 750, 380, 1.0], [35.5, 1102, 400, 1.45, 'inOut'], [39.3, 1102, 404, 1.47, 'linear'], [40.1, 1102, 560, 1.78, 'inOut'], [43.7, 1102, 562, 1.82, 'linear'],
+    [44.5, 545, 400, 1.4, 'inOut'], [45.6, 545, 400, 1.4], [47.6, 545, 470, 1.4, 'inOut'], [51.9, 545, 470, 1.42], [52.0, 750, 380, 1.0, 'hold']]);
+  curShow(44.0, 45.4); curTo(44.0, 44.55, 79, 173); click(44.6, 79, 173);
+  Kit.add('#pg-s2-lz', 'background', [[44.6, '#FFFFFF'], [44.75, '#16A34A']]); Kit.add('#pg-s2-lz', 'color', [[44.6, '#475569'], [44.75, '#FFFFFF']]);
+  Kit.add('#pg-s2-m-zone', 'opacity', [[44.7, 0], [44.72, 1]]); Kit.add('#pg-s2-m-zone', 'clipX', [[44.7, 0], [45.9, 1, 'inOut']]);
+  Kit.add('#pg-s2-legend', 'opacity', [[45.6, 0], [45.9, 1, 'out']]);
+  var hlWo = hl('hl-wo', [747, 552 - 200, 1094, 671 - 200], '');
+  Kit.add(hlWo, 'opacity', [[36.6, 0], [36.8, 1], [39.1, 1], [39.3, 0]]);
+  cap(31.2, 34.4, 'Step 2: Site research, in your account.');
+  cap(34.6, 39.35, 'What the zone allows. In plain words.');
+  cap(39.5, 43.85, 'Height. Coverage. Yards. One grid.');
+  cap(44.0, 48.5, 'The whole street, in zone colours. (Auckland, anyway.)');
+  cap(48.65, 51.95, 'Site 2: tidy. Up to three. Bit boring.');
+
+  /* =====================================================================
+     E · 03 OVERLAYS — back to site 1 (52–64): credit the chip, keep the red line, amber, green
+     ===================================================================== */
+  chip(3, 'Overlays', 52.0, 64.0);
+  curShow(52.0, 53.0); curTo(52.0, 52.45, 253, 99); click(52.5, 253, 99);
+  Kit.add('#pg-s1-bar', 'opacity', [[52.55, 0], [52.57, 1], [53.0, 1], [53.2, 0]]); Kit.add('#pg-s1-bar', 'scaleX', [[52.55, 0], [53.0, 1, 'out']]);
+  cam('#cam', [[52.8, 750, 380, 1.0], [53.6, 1102, 250, 1.75, 'inOut'], [55.9, 1102, 252, 1.77], [56.7, 1095, 456, 1.25, 'inOut'], [57.3, 1095, 456, 1.26],
+    [57.9, 1095, 372, 1.7, 'inOut'], [58.4, 1095, 372, 1.71], [58.9, 1095, 477, 1.7, 'inOut'], [60.9, 1095, 480, 1.72], [61.4, 1095, 525, 1.6, 'inOut'], [63.9, 1095, 525, 1.62],
+    [64.6, 750, 380, 1.0, 'inOut']]);
+  hide('#fairC'); Kit.add('#fairC', 'opacity', [[54.2, 0], [54.21, 1, 'hold'], [56.2, 1], [56.4, 0]]); Kit.add('#fairC', 'trim', [[54.2, 0], [54.8, 1, 'out']]);
+  hide('#mk-r1'); hide('#mk-r2');
+  Kit.add('#mk-r0', 'opacity', [[0, 1], [11.0, 1], [11.01, 0, 'hold'], [56.0, 0], [56.01, 1, 'hold']]);   // the cold-open underline is still there
+  Kit.add('#mk-r1', 'opacity', [[58.95, 0], [58.96, 1, 'hold']]); Kit.add('#mk-r1', 'trim', [[58.95, 0], [59.4, 1, 'out']]);
+  Kit.add('#mk-r2', 'opacity', [[61.45, 0], [61.46, 1, 'hold']]); Kit.add('#mk-r2', 'trim', [[61.45, 0], [61.9, 1, 'out']]);
+  cap(52.15, 53.85, 'Back to the “Strong” one.');
+  cap(53.95, 55.95, 'To be fair, it said. <span style="color:#B45309">In amber.</span>');
+  cap(56.05, 58.75, 'Auckland overlays, on the parcel. <span style="color:#B91C1C">Red</span>, we’ve met.');
+  cap(58.85, 61.25, '<span style="color:#B45309">Amber:</span> a viewshaft over the top.');
+  cap(61.35, 63.9, '<span class="g">Green</span> says 21 m. <span style="color:#B45309">Amber</span> says maybe not.');
+
+  /* =====================================================================
+     F · 04 SERVICES (64–77)
+     ===================================================================== */
+  chip(4, 'Services', 64.0, 77.0);
+  curShow(64.1, 65.2); curTo(64.1, 64.5, 180, 173); click(64.55, 180, 173);
+  Kit.add('#pg-s1-ls', 'background', [[64.55, '#FFFFFF'], [64.7, '#16A34A']]); Kit.add('#pg-s1-ls', 'color', [[64.55, '#475569'], [64.7, '#FFFFFF']]);
+  Kit.add('#pg-s1-m-svc', 'opacity', [[64.65, 0], [64.67, 1]]);
+  Kit.add('#pg-s1-m-pw', 'trim', [[64.7, 0], [65.6, 1, 'inOut']]);
+  Kit.add('#pg-s1-m-pss', 'trim', [[64.9, 0], [65.8, 1, 'inOut']]);
+  Kit.add('#pg-s1-m-pww', 'trim', [[65.1, 0], [66.0, 1, 'inOut']]);
+  Kit.add('#pg-s1-m-dist', 'opacity', [[66.1, 0], [66.3, 1]]);
+  Kit.add('#pg-s1-dlbl', 'opacity', [[66.3, 0], [66.5, 1, 'out']]);
+  // push-in on the dashed distance line, framed so the whole "Distance to boundary · ~3 m" label sits 40+ px inside the edge
+  var D = P1.map.dist, dX = Math.min(20 + D[0] + 95, 724 - 341 - 24), dY = 142 + D[1];   // view ends before the card column (no half-cut text)
+  cam('#cam', [[64.6, 750, 380, 1.0], [67.4, 760, 384, 1.02, 'linear'], [68.2, dX, dY, 2.2, 'inOut'], [71.3, dX, dY + 2, 2.25, 'linear'],
+    [72.0, 1102, 500, 1.6, 'inOut'], [76.9, 1102, 500, 1.62], [77.5, 900, 304, 1.25, 'inOut'], [83.8, 900, 304, 1.25]]);
+  var hlFoot = hl('hl-foot2', [747, 1531 - 904, 1457, 1551 - 904]);
+  var hlHz = hl('hl-hz2', [747, 1438 - 904, 1457, 1519 - 904], 'amber');
+  Kit.add(hlFoot, 'opacity', [[72.0, 0], [72.2, 1], [74.5, 1], [74.65, 0]]);
+  Kit.add(hlHz, 'opacity', [[74.7, 0], [74.9, 1], [76.8, 1], [76.95, 0]]);
+  cap(64.2, 67.8, 'Where the pipes run. Roughly.');
+  cap(67.9, 71.4, 'Pipe positions are approximate.');
+  cap(71.5, 74.6, 'It even tells you to lodge a beforeUdig.');
+  cap(74.7, 76.95, '“Clear” is a map, not a promise.');
+
+  /* =====================================================================
+     G · 05 VERDICT (77–94.4): flick the saved sites, the quote board, the decision
+     ===================================================================== */
+  chip(5, 'Verdict', 77.0, 94.4);
+  curShow(78.6, 82.4); curTo(78.6, 79.3, 475, 99); click(79.4, 475, 99); curTo(80.6, 81.3, 697, 99); click(81.4, 697, 99);
+  [['pg-s2', 79.45], ['pg-s3', 81.45]].forEach(function (a) {
+    var p = a[0], t = a[1];
+    Kit.add('#' + p + '-bar', 'opacity', [[t, 0], [t + 0.02, 1], [t + 0.5, 1], [t + 0.7, 0]]); Kit.add('#' + p + '-bar', 'scaleX', [[t, 0], [t + 0.5, 1, 'out']]);
+    Kit.add('#' + p + '-v', 'opacity', [[t - 0.01, 1], [t, 0, 'hold'], [t + 0.3, 0], [t + 0.5, 1, 'out']]);
+    Kit.add('#' + p + '-v-pill', 'scale', [[0, 1], [t + 0.39, 1], [t + 0.4, 0.6, 'hold'], [t + 0.7, 1, 'outBack']]);
+  });
+  cap(77.2, 79.35, 'Saved all three. Flick between them.');
+  cap(79.5, 81.3, 'Site 2: <span class="g">Good</span>.');
+  cap(81.45, 83.7, 'Site 3: <span style="color:#B45309">Limited</span>. The villa usually stays.');
+  // quote board: each card quotes only verbatim strings; the hedge on every page gets the marker
+  var QB = [
+    { v: 'strong', w: 'STRONG', h: 'Strong development potential', q: 'Business - Mixed Use Zone — indicatively 2–5 homes here; 2 things to design around.', src: 'Development potential' },
+    { v: 'good', w: 'GOOD', h: 'Good development potential', q: 'No overlays, precincts or designations touch this parcel.', src: 'Planning overlays & controls' },
+    { v: 'limited', w: 'LIMITED', h: 'Limited development potential', q: 'Special character rules usually mean keeping the existing house, which lowers the realistic yield.', src: 'Development potential' }
+  ];
+  QB.forEach(function (s, i) {
+    $('tri').insertAdjacentHTML('beforeend', '<div class="tri" id="tri' + i + '" style="left:' + (96 + i * 590) + 'px"><div class="top"><span class="st">Site ' + (i + 1) + '</span><span class="vpill ' + s.v + '">' + s.w + '</span></div>' +
+      '<div class="vh">' + s.h + '</div><div class="q">“' + s.q + '”</div><div class="qs">— ' + s.src.replace('&', '&amp;') + '</div>' +
+      '<div class="tdisc"><span class="ind" id="tind' + i + '">Indicative only</span> — a planning heuristic from public council data, not advice.</div></div>');
+    Kit.add('#tri' + i, 'y', [[83.8 + i * 0.12, 60], [84.2 + i * 0.12, 0, 'out']]); Kit.add('#tri' + i, 'opacity', [[83.8 + i * 0.12, 0], [84.05 + i * 0.12, 1, 'out']]);
+    var m = marker($('tind' + i), 'tmk' + i); Kit.add(m, 'trim', [[84.9 + i * 0.45, 0], [85.3 + i * 0.45, 1, 'out']]);
+  });
+  Kit.add('#triSrc', 'opacity', [[83.9, 0], [84.2, 1, 'out']]);
+  Kit.add('#tri', 'opacity', [[88.0, 1], [88.3, 0.22, 'out']]);
+  cap(84.2, 87.95, '“Indicative only.” It says that every time.');
+  // the decision, made explicit
+  cap(88.15, 89.45, 'Site 3’s off.');
+  cap(89.55, 92.45, 'Site 2 doesn’t need a planner. Site 1 does.');
+  Kit.pop('#lt', 92.55, { dy: 16 }); Kit.out('#lt', 94.2, 0.15);
+
+  /* =====================================================================
+     H · 06 PRO VIEW (94.4–112.4)
+     ===================================================================== */
+  chip(6, 'Pro view', 94.4, 112.4);
+  curShow(94.4, 95.5); curTo(94.4, 94.95, 985, 36); click(95.0, 985, 36);
+  Kit.add('#pro', 'opacity', [[95.6, 0], [95.85, 1, 'out']]); Kit.add('#pro', 'scale', [[95.6, 0.985], [95.9, 1, 'out']]);
+  cam('#cam', [[94.4, 750, 380, 1.0], [96.0, 750, 380, 1.0], [97.0, 419, 302, 1.79, 'inOut'], [101.2, 421, 304, 1.8], [102.2, 600, 380, 1.3, 'inOut'],
+    [102.4, 600, 380, 1.3], [103.0, 983, 350, 1.45, 'inOut'], [105.9, 983, 352, 1.47], [106.5, 1083, 300, 1.72, 'inOut'], [109.0, 1083, 302, 1.74],
+    [109.6, 1083, 470, 1.6, 'inOut'], [112.2, 1083, 472, 1.62], [112.7, 750, 380, 1.0, 'inOut'], [116.1, 750, 380, 1.0]]);
+  var chipsAt = [['lz', 60, 98.0], ['lb', 163, 98.95], ['ls', 271, 99.9], ['lf', 402, 100.85]];
+  curShow(97.5, 101.4);
+  chipsAt.forEach(function (c) {
+    curTo(c[2] - 0.5, c[2] - 0.05, c[1], 110); click(c[2], c[1], 110);
+    Kit.add('#pro-' + c[0], 'background', [[c[2], '#FFFFFF'], [c[2] + 0.12, '#16A34A']]); Kit.add('#pro-' + c[0], 'color', [[c[2], '#475569'], [c[2] + 0.12, '#FFFFFF']]);
+  });
+  Kit.add('#pro-m-zone', 'opacity', [[98.05, 0], [98.35, 1, 'out']]); Kit.add('#pro-legend', 'opacity', [[98.2, 0], [98.5, 1, 'out']]);
+  Kit.add('#pro-m-bld', 'opacity', [[99.0, 0], [99.3, 1, 'out']]);
+  Kit.add('#pro-m-svc', 'opacity', [[99.95, 0], [100.25, 1, 'out']]);
+  Kit.add('#pro-m-flood', 'opacity', [[100.9, 0], [101.2, 1, 'out']]);
+  curShow(102.4, 107.0); curTo(102.4, 102.95, 962, 108); click(103.0, 962, 108);
+  Kit.add('#pro-t0', 'background', [[103.0, '#DCFCE7'], [103.1, '#FFFFFF']]); Kit.add('#pro-t0', 'color', [[103.0, '#15803D'], [103.1, '#475569']]); Kit.add('#pro-t0', 'borderColor', [[103.0, '#86EFAC'], [103.1, '#E2E7EE']]);
+  Kit.add('#pro-t1', 'background', [[103.0, '#FFFFFF'], [103.1, '#DCFCE7']]); Kit.add('#pro-t1', 'color', [[103.0, '#475569'], [103.1, '#15803D']]); Kit.add('#pro-t1', 'borderColor', [[103.0, '#E2E7EE'], [103.1, '#86EFAC']]);
+  Kit.add('#pro-sum', 'opacity', [[103.05, 1], [103.15, 0]]); Kit.add('#pro-title', 'opacity', [[103.1, 0], [103.35, 1, 'out']]);
+  curTo(106.0, 106.6, 1301, 108);
+  var hlCv = hl('hl-cv', [1250, 92, 1352, 124], 'amber'), hlLic = hl('hl-lic', [987, 483, 1209, 511], 'amber'), hlOwn = hl('hl-own', [875, 445, 1180, 470]), hlFee = hl('hl-fee', [863, 567, 1479, 613]);
+  Kit.add(hlOwn, 'opacity', [[103.8, 0], [104.0, 1], [105.9, 1], [106.1, 0]]);
+  Kit.add(hlCv, 'opacity', [[106.7, 0], [106.9, 1], [108.9, 1], [109.1, 0]]);
+  Kit.add(hlLic, 'opacity', [[107.0, 0], [107.2, 1], [108.9, 1], [109.1, 0]]);
+  Kit.add(hlFee, 'opacity', [[109.7, 0], [109.9, 1], [112.1, 1], [112.3, 0]]);
+  cap(94.6, 97.8, 'Pro view. Same site. Much bigger map.');
+  cap(97.95, 102.3, 'Zoning. Buildings. Services. Flood. <span class="g">In Auckland.</span>');
+  cap(102.6, 106.0, 'Title facts from LINZ. How many owners. Not who.');
+  cap(106.1, 109.1, 'The rest? “Available with a data licence.”');
+  cap(109.2, 112.3, '“Reads as a freehold (fee simple) lot.” That’s something.');
+
+  /* =====================================================================
+     I · 07 ONE PAGER (112.4–127.4)
+     ===================================================================== */
+  chip(7, 'One pager', 112.4, 119.8);
+  curShow(112.4, 113.4); curTo(112.4, 112.85, 1409, 39); click(112.9, 1409, 39);
+  Kit.add('#print', 'opacity', [[113.35, 0], [113.65, 1, 'out']]);
+  Kit.add('#opWrap', 'y', [[113.35, 30], [113.75, 0, 'out']]);
+  cam('#cam', [[116.9, 484, 250, 1.85, 'inOut'], [118.5, 484, 470, 1.85, 'inOut'], [118.95, 750, 380, 1.0, 'inOut'], [119.8, 750, 380, 1.0]]);
+  curShow(118.9, 119.75); curTo(118.9, 119.25, 1338, 461); click(119.35, 1338, 461);
+  Kit.add('#cur', 'x', cx); Kit.add('#cur', 'y', cy); Kit.add('#cur', 'opacity', co);
+  // desk
+  Kit.add('#paperWrap', 'y', [[119.8, -1150], [120.55, 0, 'out']]);
+  Kit.add('#paperWrap', 'rotate', [[119.8, -14], [120.55, -2.5, 'out']]);
+  Kit.add('#paperWrap', 'scale', [[120.4, 1.02], [120.65, 1, 'out']]);
+  Kit.add('#sticky2', 'opacity', [[121.35, 0], [121.4, 1]]); Kit.add('#sticky2', 'scale', [[121.35, 1.25], [121.52, 1, 'slam']]); Kit.add('#sticky2', 'rotate', [[121.35, 8], [121.52, 4, 'out']]);
+  Kit.type('#q1', 123.5, 124.4); Kit.type('#q2', 124.5, 125.2); Kit.type('#q3', 125.3, 126.1);
+  cam('#dcam', [[119.8, 960, 540, 1.0], [123.0, 990, 540, 1.04, 'linear'], [123.8, 1420, 470, 1.42, 'inOut'], [127.4, 1420, 476, 1.46, 'linear']]);
+  cap(112.6, 116.2, '“One pager.” Print it, or save a PDF.');
+  cap(116.3, 119.7, 'Map, title, zone, overlays, services, hazards.');
+  cap(119.9, 123.15, 'One page. That’s what goes to the planner.');
+  cap(123.3, 127.25, 'And three questions worth paying for.');
+
+  /* =====================================================================
+     J · CLOSE (127.4–145.5): the tool's last word, then the end card cross-fades in
+     ===================================================================== */
+  Kit.pop('#discCard', 127.45, { dy: 30 });
+  Kit.add('#discMk', 'trim', [[129.0, 0], [129.65, 1, 'out']]);
+  Kit.add('#discCard', 'scale', [[127.45, 0.98], [133.6, 1.03, 'linear']]);
+  cap(127.8, 131.05, 'It even tells you to ring the planner.');
+  cap(131.2, 133.25, 'Fair enough.');
+  Kit.add('#end', 'opacity', [[133.2, 0], [133.6, 1, 'out']]);
+  Kit.add('#elogo', 'scale', [[133.2, 0.94], [133.8, 1, 'out']]);
+  Kit.pop('#eh', 133.7, { dy: 24 }); Kit.pop('#es', 135.9, { dy: 18 }); Kit.pop('#ef', 136.8, { dy: 10 });
+
+  window.__CAPS = caps;
+  Kit.ready({ duration: DUR, fonts: ['800 40px Manrope', '700 30px Manrope', '500 20px Inter', '600 20px Inter', '700 20px Inter', '400 36px Kalam', '700 36px Kalam', '400 27px "Permanent Marker"', '500 20px "JetBrains Mono"', '700 18px "JetBrains Mono"', '600 16px "JetBrains Mono"'] });
+})();
+</script>
+</body>
+</html>

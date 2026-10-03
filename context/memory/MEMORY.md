@@ -1,0 +1,5 @@
+- [UGC goals](user-ugc-goals.md) — idea-first, humor, multiple ventures, tools are secondary
+- [Save everything locally](feedback-save-everything-locally.md) — every idea/discussion goes to files automatically
+- [Studio, Figma, Railway](reference-studio-figma-railway.md) — live studio URL, Figma file key, deploy command
+- [QSME content programme](project-qsme-content-programme.md) — 2–3 videos/week per edition; product repos to read for features
+- [CTA: sign-ups, never free](feedback-cta-signups-not-free.md) — no free/no-sign-up/pricing generosity in QSME content

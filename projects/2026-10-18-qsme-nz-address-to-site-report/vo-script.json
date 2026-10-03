@@ -1,0 +1,631 @@
+{
+ "venture": "qsme-nz",
+ "video": "outputs/address-to-site-report-16x9.mp4",
+ "character": "Mel: everyday Kiwi woman, late 30s, a first-time small developer with three Auckland sections on her shortlist and one planner booked for Monday. Dramatised character voiced by AI; she is never presented as a real customer and never gives a testimonial. General NZ accent (not broad, not Australian), dry and under-played, talking a mate through how she picked. No announcer lift, no exclamation marks, no 'game-changer' energy. She is the straight man; the humour is in the situation (the screen says Strong, then shows a road-widening designation) and in the product being honest about its own limits.",
+ "casting_line": "It said strong development potential. Then I scrolled. Fair enough.",
+ "settings": {
+  "model": "eleven_multilingual_v2",
+  "stability": 0.45,
+  "similarity_boost": 0.75,
+  "style": 0,
+  "speed": 1,
+  "use_speaker_boost": true
+ },
+ "pronunciation": {
+  "QSME": "Q-S-me (Cue Ess Me)",
+  "qsme.co.nz": "Q-S-me dot co dot en zed",
+  "beforeUdig": "before you dig",
+  "indicatively": "in-DIK-a-tiv-lee",
+  "metres": "metres (21 m is said 'twenty-one metres')",
+  "licence": "LIE-sence",
+  "LINZ": "linz (one word, rhymes with 'pins')"
+ },
+ "lines": [
+  {
+   "id": "vo01-strong",
+   "start_s": 0.3,
+   "max_s": 2.1,
+   "on_screen": "Big headline 'It said “Strong.”' over the recreated Development potential card; green STRONG pill bounces (0.0–0.4)",
+   "text_v2": "It said strong development potential.",
+   "text_v3": "It said strong development potential.",
+   "delivery": "Flat, slightly pleased with herself, the way you'd read a good school report out loud. No emphasis on 'strong'. Out by 2.4, before the scroll whoosh."
+  },
+  {
+   "id": "vo02-scrolled",
+   "start_s": 2.75,
+   "max_s": 1.3,
+   "on_screen": "Headline slams to 'Then I scrolled.'; scroll slam 2.5–3.1 lands on the red Constraints row",
+   "text_v2": "Then I scrolled.",
+   "text_v3": "[beat] Then I scrolled.",
+   "delivery": "Bone dry, a notch lower, full stop. The joke is the drop in energy. Then silence on the red row until 5.5."
+  },
+  {
+   "id": "vo03-liked",
+   "start_s": 5.55,
+   "max_s": 2.4,
+   "on_screen": "Red marker under 'Designation · Road Widening (Auckland Transport)'; caption 'Road widening. On the one I liked.'",
+   "text_v2": "Road widening. On the one I liked.",
+   "text_v3": "Road widening. [sighs] On the one I liked.",
+   "delivery": "Small sigh in the voice, not a performance. 'On the one I liked' slightly faster, throwaway. Out by 7.85."
+  },
+  {
+   "id": "vo04-title",
+   "start_s": 8.2,
+   "max_s": 2.9,
+   "on_screen": "Title card: 'Three sections. / One planner. / Which one gets the meeting?'",
+   "text_v2": "Three sections. One planner. Which one gets the meeting?",
+   "text_v3": "Three sections. One planner. Which one gets the meeting?",
+   "delivery": "Even and unhurried, a real question at the end (light lift on 'meeting'). This is the premise, so no wink. Out by 10.9."
+  },
+  {
+   "id": "vo05-monday",
+   "start_s": 13.45,
+   "max_s": 2.1,
+   "on_screen": "Sticky note slaps onto the laptop bezel (13.2) and writes itself; caption 'One planner. Monday. By the hour.'",
+   "text_v2": "One planner. Monday. By the hour.",
+   "text_v3": "One planner. Monday. By the hour.",
+   "delivery": "Matter-of-fact. A tiny weight on 'by the hour', like a Kiwi who knows exactly what that costs and won't say it. Out by 15.6."
+  },
+  {
+   "id": "vo06-questions",
+   "start_s": 15.85,
+   "max_s": 2.3,
+   "on_screen": "Chapter strip drops in over the sticky (15.95); caption 'So: one address. The right questions.'",
+   "text_v2": "So. One address. The right questions.",
+   "text_v3": "So. One address. The right questions.",
+   "delivery": "'So.' as its own beat. Then practical, list-like. Out by 17.9 (cut to the live homepage at 18.0)."
+  },
+  {
+   "id": "vo07-step1",
+   "start_s": 18.4,
+   "max_s": 2.6,
+   "on_screen": "LIVE capture of qsme.co.nz: '135 Albert Street, Auckland' typed into 'Search your address' (the page's own pricing line under 'Get started' is painted out of the capture); caption 'Step 1: sign up. Search your address.'",
+   "text_v2": "Step one. Sign up. Search your address.",
+   "text_v3": "Step one. Sign up. Search your address.",
+   "delivery": "Plain and helpful, like telling a mate where the button is. 'Sign up' said plainly, not salesy. Out by 21.0."
+  },
+  {
+   "id": "vo08-seconds",
+   "start_s": 22.15,
+   "max_s": 2.9,
+   "on_screen": "Push-in on the map: green box on the parcel outline (22.55), then on the zone (24.35); caption 'Boundary, zone, pipes, hazards. In seconds.'",
+   "text_v2": "Boundary, zone, pipes, hazards. In seconds.",
+   "text_v3": "Boundary, zone, pipes, hazards. In seconds.",
+   "delivery": "Quick list rhythm on the four nouns ('boundary' as the box lands on the outline), then a flat 'In seconds.' Never 'instantly'. Out by 25.5."
+  },
+  {
+   "id": "vo09-auckland",
+   "start_s": 25.85,
+   "max_s": 2.6,
+   "on_screen": "Green box on services (25.75), amber box on hazards (27.45); caption 'Zoning: four councils. Pipes and hazards: Auckland.'",
+   "text_v2": "Zoning, four councils. Pipes and hazards, Auckland.",
+   "text_v3": "Zoning, four councils. Pipes and hazards, Auckland.",
+   "delivery": "Honest-limit line, said as a plain fact, no apology in the voice. Out by 28.5."
+  },
+  {
+   "id": "vo10-blurred",
+   "start_s": 28.8,
+   "max_s": 2.3,
+   "on_screen": "Box on the footer disclaimer; caption 'That's the council's building. Mine stay blurred.'",
+   "text_v2": "That's the council's building. Mine stay blurred.",
+   "text_v3": "That's the council's building. Mine stay blurred.",
+   "delivery": "Dry aside, a hint of a smile on 'Mine stay blurred'. Out by 30.9."
+  },
+  {
+   "id": "vo11-step2",
+   "start_s": 31.35,
+   "max_s": 2.6,
+   "on_screen": "Recreated Site research page loading: 'Researching the site — boundary, zoning, overlays, services, hazards & history…', parcel draws in cadastre yellow; caption 'Step 2: Site research, in your account.'",
+   "text_v2": "Step two. Site research, in your account.",
+   "text_v3": "Step two. Site research, in your account.",
+   "delivery": "Same helpful tone as step one. Out by 34.2."
+  },
+  {
+   "id": "vo12-plain",
+   "start_s": 34.8,
+   "max_s": 2.6,
+   "on_screen": "'What could go here' card for Site 2 (Mixed Housing Suburban), 'Without resource consent' boxed; caption 'What the zone allows. In plain words.'",
+   "text_v2": "What the zone allows. In plain words.",
+   "text_v3": "What the zone allows. In plain words.",
+   "delivery": "Mildly impressed, still deadpan. Lean very slightly on 'plain'. Out by 39.3."
+  },
+  {
+   "id": "vo13-grid",
+   "start_s": 39.7,
+   "max_s": 2.6,
+   "on_screen": "Push into the standards grid: 8 m + 1 m roof / 40% of the site / Front 3 m · side & rear 1 m; caption 'Height. Coverage. Yards. One grid.'",
+   "text_v2": "Height. Coverage. Yards. One grid.",
+   "text_v3": "Height. Coverage. Yards. One grid.",
+   "delivery": "Three separate words, each ticked off, falling pitch; 'One grid.' drier still. Out by 43.8."
+  },
+  {
+   "id": "vo14-colours",
+   "start_s": 44.7,
+   "max_s": 3.4,
+   "on_screen": "Cursor clicks the Zoning layer (44.6); the street washes in zone colours with a legend; caption 'The whole street, in zone colours. (Auckland, anyway.)'",
+   "text_v2": "The whole street, in zone colours. In Auckland, anyway.",
+   "text_v3": "The whole street, in zone colours. In Auckland, anyway.",
+   "delivery": "Easy, slightly amused. 'colours' NZ pronunciation. 'In Auckland, anyway.' as a dry afterthought. Out by 48.5."
+  },
+  {
+   "id": "vo15-boring",
+   "start_s": 48.85,
+   "max_s": 2.8,
+   "on_screen": "Sticky note returns; green marker writes 'tidy · up to 3' under line 2; caption 'Site 2: tidy. Up to three. Bit boring.'",
+   "text_v2": "Site two. Tidy. Up to three. Bit boring.",
+   "text_v3": "Site two. Tidy. Up to three. [beat] Bit boring.",
+   "delivery": "The deadpan laugh line of the middle: a fond, flat 'Bit boring.' after a beat. Never mocking. Out by 51.9."
+  },
+  {
+   "id": "vo16-back",
+   "start_s": 52.3,
+   "max_s": 1.7,
+   "on_screen": "Cursor clicks the Site 1 pill (52.5); caption 'Back to the “Strong” one.'",
+   "text_v2": "Back to the strong one.",
+   "text_v3": "Back to the strong one.",
+   "delivery": "A little wary, like returning to a text you haven't answered. Out by 53.8."
+  },
+  {
+   "id": "vo17-fair",
+   "start_s": 54.15,
+   "max_s": 1.9,
+   "on_screen": "Amber ring drawn round the '− Designation' chip on the verdict card; caption 'To be fair, it said. In amber.'",
+   "text_v2": "To be fair. It said.",
+   "text_v3": "To be fair. It said.",
+   "delivery": "Conceding, a little sheepish: the joke is on her skimming, not on the tool. Out by 55.9."
+  },
+  {
+   "id": "vo18-met",
+   "start_s": 56.2,
+   "max_s": 2.6,
+   "on_screen": "Scroll to 'Planning overlays & controls'; the cold-open red underline is still there; caption 'Auckland overlays, on the parcel. Red, we've met.'",
+   "text_v2": "Auckland overlays, on the parcel. Red, we've met.",
+   "text_v3": "Auckland overlays, on the parcel. Red, we've met.",
+   "delivery": "Measured on the first half; 'Red, we've met.' as a flat aside, like nodding at someone you'd rather avoid. Out by 58.8."
+  },
+  {
+   "id": "vo19-amber",
+   "start_s": 58.95,
+   "max_s": 2.2,
+   "on_screen": "Amber marker under 'Volcanic viewshaft · Mount Eden'; caption 'Amber: a viewshaft over the top.'",
+   "text_v2": "Amber. A viewshaft over the top.",
+   "text_v3": "Amber. A viewshaft over the top.",
+   "delivery": "Two beats: 'Amber.' then the rest, a fraction resigned. Out by 61.2."
+  },
+  {
+   "id": "vo20-green",
+   "start_s": 61.45,
+   "max_s": 2.7,
+   "on_screen": "Green marker under 'Height Variation Control · 21m'; caption 'Green says 21 m. Amber says maybe not.'",
+   "text_v2": "Green says twenty-one metres. Amber says, maybe not.",
+   "text_v3": "Green says twenty-one metres. [beat] Amber says, maybe not.",
+   "delivery": "The chapter's payoff. Even on the first half, then a tiny pause and a drier 'maybe not'. Say 'twenty-one metres', not 'twenty-one m'. Out by 63.9."
+  },
+  {
+   "id": "vo21-pipes",
+   "start_s": 64.7,
+   "max_s": 2.4,
+   "on_screen": "Services layer: blue water, green stormwater (at the front boundary), red wastewater lines draw on; caption 'Where the pipes run. Roughly.'",
+   "text_v2": "Where the pipes run. Roughly.",
+   "text_v3": "Where the pipes run. Roughly.",
+   "delivery": "'Roughly' as its own deadpan word. Out by 67.6."
+  },
+  {
+   "id": "vo22-approx",
+   "start_s": 68.1,
+   "max_s": 2.0,
+   "on_screen": "Push-in on the dashed 'Distance to boundary · ~3 m' line; caption 'Pipe positions are approximate.'",
+   "text_v2": "Pipe positions are approximate.",
+   "text_v3": "Pipe positions are approximate.",
+   "delivery": "Reading the fine print, neutral. Out by 71.3."
+  },
+  {
+   "id": "vo23-dig",
+   "start_s": 71.7,
+   "max_s": 2.9,
+   "on_screen": "Box on 'Mapped pipe positions are approximate — always lodge a beforeUdig request before any excavation.'; caption 'It even tells you to lodge a beforeUdig.'",
+   "text_v2": "It even tells you to lodge a before-you-dig.",
+   "text_v3": "It even tells you to lodge a before-you-dig.",
+   "delivery": "Say beforeUdig as 'before you dig'. Slight approval in the voice. Out by 74.5."
+  },
+  {
+   "id": "vo24-clear",
+   "start_s": 74.85,
+   "max_s": 2.2,
+   "on_screen": "Amber box on the four hazard chips reading 'Clear'; caption '“Clear” is a map, not a promise.'",
+   "text_v2": "Clear is a map. Not a promise.",
+   "text_v3": "Clear is a map. Not a promise.",
+   "delivery": "Quiet, firm, a little wise. Out by 76.9."
+  },
+  {
+   "id": "vo25-saved",
+   "start_s": 77.35,
+   "max_s": 2.0,
+   "on_screen": "Saved sites pills (addresses blurred); caption 'Saved all three. Flick between them.'",
+   "text_v2": "Saved all three. Flick between them.",
+   "text_v3": "Saved all three. Flick between them.",
+   "delivery": "Practical, slightly brisk. Out by 79.3."
+  },
+  {
+   "id": "vo26-good",
+   "start_s": 79.6,
+   "max_s": 1.5,
+   "on_screen": "Cursor clicks Site 2 (79.4); GOOD pill pops; caption 'Site 2: Good.'",
+   "text_v2": "Site two. Good.",
+   "text_v3": "Site two. Good.",
+   "delivery": "Clipped, matching the click. Out by 81.2."
+  },
+  {
+   "id": "vo27-villa",
+   "start_s": 81.6,
+   "max_s": 2.4,
+   "on_screen": "Cursor clicks Site 3 (81.4); LIMITED pill and 'Special character rules usually mean keeping the existing house…'; caption 'Site 3: Limited. The villa usually stays.'",
+   "text_v2": "Site three. Limited. The villa usually stays.",
+   "text_v3": "Site three. Limited. [sighs] The villa usually stays.",
+   "delivery": "Gentle resignation, almost fond of the villa. Keep 'usually': it's the screen's own hedge. Out by 83.7."
+  },
+  {
+   "id": "vo28-indicative",
+   "start_s": 84.35,
+   "max_s": 2.8,
+   "on_screen": "Quote board: three cards (Strong / Good / Limited), each quoting one line from its page; red marker under 'Indicative only' on every card (84.9 / 85.35 / 85.8); caption '“Indicative only.” It says that every time.'",
+   "text_v2": "Indicative only. It says that every time.",
+   "text_v3": "Indicative only. It says that every time.",
+   "delivery": "Say 'Indicative only' carefully, as if quoting. Then a dry, approving 'It says that every time.' Out by 87.9."
+  },
+  {
+   "id": "vo29-off",
+   "start_s": 88.3,
+   "max_s": 1.0,
+   "on_screen": "Sticky over the dimmed board: line 3 struck through (88.5), 'villa stays. off.'; caption 'Site 3's off.'",
+   "text_v2": "Three's off.",
+   "text_v3": "Three's off.",
+   "delivery": "Decision voice, two words, settled. Out by 89.4."
+  },
+  {
+   "id": "vo30-planner",
+   "start_s": 89.7,
+   "max_s": 2.5,
+   "on_screen": "'strong… but red + amber' under line 1, line 1 circled, '→ MONDAY: 1'; caption 'Site 2 doesn't need a planner. Site 1 does.'",
+   "text_v2": "Two doesn't need a planner. One does.",
+   "text_v3": "Two doesn't need a planner. One does.",
+   "delivery": "The film's logic in one line: calm, a hint of irony on 'One does.' Out by 92.4. Then silence under the lower third 'Checklist + rough numbers: Shorts linked below' (92.55–94.35)."
+  },
+  {
+   "id": "vo31-pro",
+   "start_s": 94.75,
+   "max_s": 3.0,
+   "on_screen": "Cursor clicks 'Open Pro view'; 'Site research — Pro' opens with the full-height map; caption 'Pro view. Same site. Much bigger map.'",
+   "text_v2": "Pro view. Same site. Much bigger map.",
+   "text_v3": "Pro view. Same site. Much bigger map.",
+   "delivery": "Deadpan, a little impressed. Lean on 'bigger'. Out by 97.8."
+  },
+  {
+   "id": "vo32-layers",
+   "start_s": 98.0,
+   "max_s": 3.8,
+   "on_screen": "Layer chips clicked at 98.0 / 98.95 / 99.9 / 100.85; caption 'Zoning. Buildings. Services. Flood. In Auckland.'",
+   "text_v2": "Zoning. Buildings. Services. Flood. In Auckland.",
+   "text_v3": "Zoning. Buildings. Services. Flood. In Auckland.",
+   "delivery": "One word per click, evenly spaced (about 0.95 s apart), then 'In Auckland.' as a plain footnote. Cut the take into five slices if needed. Out by 102.2."
+  },
+  {
+   "id": "vo33-owners",
+   "start_s": 102.75,
+   "max_s": 3.3,
+   "on_screen": "Title tab: '1 owner on the title' boxed (every title value blurred); caption 'Title facts from LINZ. How many owners. Not who.'",
+   "text_v2": "Title facts from LINZ. How many owners. Not who.",
+   "text_v3": "Title facts from LINZ. How many owners. Not who.",
+   "delivery": "Matter-of-fact, a little reassuring. LINZ is said 'linz' (one word, rhymes with 'pins'). Out by 106.0."
+  },
+  {
+   "id": "vo34-licence",
+   "start_s": 106.25,
+   "max_s": 2.7,
+   "on_screen": "Amber boxes on the locked 'CV & sales' tab and the 'Available with a data licence' pill; caption 'The rest? “Available with a data licence.”'",
+   "text_v2": "The rest? Available with a data licence.",
+   "text_v3": "The rest? Available with a data licence.",
+   "delivery": "Small question, plain answer quoting the pill. NZ spelling, said 'LIE-sence'. Out by 109.0."
+  },
+  {
+   "id": "vo35-freehold",
+   "start_s": 109.35,
+   "max_s": 2.7,
+   "on_screen": "Box on 'Reads as a freehold (fee simple) lot — the simplest title to develop.'; caption '“Reads as a freehold (fee simple) lot.” That's something.'",
+   "text_v2": "Reads as freehold. That's something.",
+   "text_v3": "Reads as freehold. [beat] That's something.",
+   "delivery": "Small, genuine relief, still deadpan. Keep 'Reads as': it's the screen's hedge. Out by 112.2."
+  },
+  {
+   "id": "vo36-onepager",
+   "start_s": 112.75,
+   "max_s": 2.8,
+   "on_screen": "Cursor clicks 'One pager'; print preview of 'QSME · Site report' with the browser dialog (Save as PDF); caption '“One pager.” Print it, or save a PDF.'",
+   "text_v2": "One pager. Print it, or save a PDF.",
+   "text_v3": "One pager. Print it, or save a PDF.",
+   "delivery": "Practical. Out by 115.9. Then silence over the slow pan down the page (116.3–119.7)."
+  },
+  {
+   "id": "vo37-planner",
+   "start_s": 120.0,
+   "max_s": 2.9,
+   "on_screen": "The printed page lands on a desk beside a coffee; caption 'One page. That's what goes to the planner.'",
+   "text_v2": "One page. That's what goes to the planner.",
+   "text_v3": "One page. That's what goes to the planner.",
+   "delivery": "Satisfied, quiet. Out by 123.1."
+  },
+  {
+   "id": "vo38-questions",
+   "start_s": 123.45,
+   "max_s": 2.6,
+   "on_screen": "Sticky 'Qs for Monday' types: 1. Road widening — how much? 2. Viewshaft vs 21 m? 3. Pipe ~3 m — build-over?; caption 'And three questions worth paying for.'",
+   "text_v2": "And three questions worth paying for.",
+   "text_v3": "And three questions worth paying for.",
+   "delivery": "The thesis of the film, said lightly. Out by 126.3."
+  },
+  {
+   "id": "vo39-ring",
+   "start_s": 127.95,
+   "max_s": 3.0,
+   "on_screen": "Quoted disclaimer card; red marker under 'Confirm with a planner or the council.'; caption 'It even tells you to ring the planner.'",
+   "text_v2": "It even tells you to ring the planner.",
+   "text_v3": "It even tells you to ring the planner.",
+   "delivery": "Amused respect. Out by 130.9."
+  },
+  {
+   "id": "vo40-fair",
+   "start_s": 131.35,
+   "max_s": 1.1,
+   "on_screen": "Caption 'Fair enough.'",
+   "text_v2": "Fair enough.",
+   "text_v3": "Fair enough.",
+   "delivery": "The button. Flat, warm, very Kiwi, falling. Out by 132.9."
+  },
+  {
+   "id": "vo41-start",
+   "start_s": 133.9,
+   "max_s": 1.8,
+   "on_screen": "End card cross-fades in (133.2–133.6): QSME logo, 'Start with your address.'",
+   "text_v2": "Start with your address.",
+   "text_v3": "Start with your address.",
+   "delivery": "Plain invitation, no announcer lift. Out by 135.7."
+  },
+  {
+   "id": "vo42-cta",
+   "start_s": 136.1,
+   "max_s": 4.8,
+   "on_screen": "'Site research: sign up at qsme.co.nz · Full depth: Auckland.' Small print: 'Rule-based public data, not AI · Not a LIM, valuation or advice · Dramatised · demo sites'",
+   "text_v2": "Sign up at Q-S-me dot co dot en zed.",
+   "text_v3": "Sign up at Q-S-me dot co dot en zed.",
+   "delivery": "Plain, friendly CTA, no announcer lift. Q-S-me = 'Cue Ess Me'. 'dot co dot en zed' at normal speed, not spelled slowly. Out by 140.5; the last 5 s stay silent under the YouTube end-screen tiles."
+  }
+ ],
+ "male_alt_lines": [],
+ "cutdowns": [
+  {
+   "video": "outputs/address-to-site-report-ch03-strong-then-scrolled-9x16.mp4",
+   "title": "Strong. Then I scrolled. (chapter 03 cut, 31 s, 9:16)",
+   "how_to_voice": "Reuse the master takes listed in 'from' (same words); voice only the lines with from = null. Then: tools/mux <video> <video-with-vo> <clip>@<start_s> …",
+   "lines": [
+    {
+     "id": "a01-strong",
+     "from": "vo01-strong",
+     "start_s": 0.3,
+     "max_s": 2.1,
+     "on_screen": "Headline 'It said “Strong.”' over the STRONG card (summary and chips legible from frame 1)",
+     "text_v2": "It said strong development potential.",
+     "text_v3": "It said strong development potential.",
+     "delivery": "Flat, slightly pleased with herself, the way you'd read a good school report out loud. No emphasis on 'strong'."
+    },
+    {
+     "id": "a02-scrolled",
+     "from": "vo02-scrolled",
+     "start_s": 2.75,
+     "max_s": 1.3,
+     "on_screen": "Headline 'Then I scrolled.'; scroll slam to the overlays card",
+     "text_v2": "Then I scrolled.",
+     "text_v3": "[beat] Then I scrolled.",
+     "delivery": "Bone dry, a notch lower, full stop. The joke is the drop in energy. Then silence on the red row until 5.5."
+    },
+    {
+     "id": "a03-red",
+     "from": null,
+     "start_s": 5.6,
+     "max_s": 2.3,
+     "on_screen": "Caption 'Red: a road-widening designation.'",
+     "text_v2": "Red. A road-widening designation.",
+     "text_v3": "Red. A road-widening designation.",
+     "delivery": "Two flat beats. 'Red.' then a pause, then the rest like naming a bill."
+    },
+    {
+     "id": "a04-amber",
+     "from": "vo19-amber",
+     "start_s": 8.45,
+     "max_s": 2.3,
+     "on_screen": "Caption 'Amber: a viewshaft over the top.'",
+     "text_v2": "Amber. A viewshaft over the top.",
+     "text_v3": "Amber. A viewshaft over the top.",
+     "delivery": "Two beats: 'Amber.' then the rest, a fraction resigned."
+    },
+    {
+     "id": "a05-green",
+     "from": "vo20-green",
+     "start_s": 11.25,
+     "max_s": 2.7,
+     "on_screen": "Caption 'Green says 21 m. Amber says maybe not.'",
+     "text_v2": "Green says twenty-one metres. Amber says, maybe not.",
+     "text_v3": "Green says twenty-one metres. [beat] Amber says, maybe not.",
+     "delivery": "The chapter's payoff. Even on the first half, then a tiny pause and a drier 'maybe not'. Say 'twenty-one metres', not 'twenty-one m'."
+    },
+    {
+     "id": "a06-indicatively",
+     "from": null,
+     "start_s": 14.45,
+     "max_s": 2.6,
+     "on_screen": "Back on the verdict card, red marker under 'indicatively'; caption '“Indicatively.” It says that every time.'",
+     "text_v2": "Indicatively. It says that every time.",
+     "text_v3": "Indicatively. It says that every time.",
+     "delivery": "Pronounce 'in-DIK-a-tiv-lee' carefully, as if quoting. Then a dry, approving 'It says that every time.'"
+    },
+    {
+     "id": "a07-questions",
+     "from": null,
+     "start_s": 17.5,
+     "max_s": 2.8,
+     "on_screen": "Headline 'Not a no.'; sticky 'Qs for Monday'; caption 'Three questions for the planner.'",
+     "text_v2": "Not a no. Three questions for the planner.",
+     "text_v3": "Not a no. Three questions for the planner.",
+     "delivery": "Calm turn from bad news to a plan. Out by 21.5."
+    },
+    {
+     "id": "a08-ring",
+     "from": "vo39-ring",
+     "start_s": 21.9,
+     "max_s": 2.4,
+     "on_screen": "Headline 'The last word:'; quoted disclaimer card; caption 'It even tells you to ring the planner.'",
+     "text_v2": "It even tells you to ring the planner.",
+     "text_v3": "It even tells you to ring the planner.",
+     "delivery": "Amused respect."
+    },
+    {
+     "id": "a09-fair",
+     "from": "vo40-fair",
+     "start_s": 24.5,
+     "max_s": 0.9,
+     "on_screen": "Caption 'Fair enough.'",
+     "text_v2": "Fair enough.",
+     "text_v3": "Fair enough.",
+     "delivery": "The button. Flat, warm, very Kiwi, falling."
+    },
+    {
+     "id": "a10-cta",
+     "from": null,
+     "start_s": 25.9,
+     "max_s": 4.4,
+     "on_screen": "End card cross-fades in: 'Run an Auckland site before you offer.' · 'Site research: sign up at qsme.co.nz' · small print incl. 'Dramatised · demo sites'",
+     "text_v2": "Before you offer, sign up at Q-S-me dot co dot en zed.",
+     "text_v3": "Before you offer, sign up at Q-S-me dot co dot en zed.",
+     "delivery": "Plain, friendly CTA, no lift; it finishes the headline on screen. Out by 30.3."
+    }
+   ]
+  },
+  {
+   "video": "outputs/address-to-site-report-ch06-07-one-page-for-the-planner-9x16.mp4",
+   "title": "One page for the planner (chapters 06-07 cut, 32 s, 9:16)",
+   "how_to_voice": "Reuse the master takes listed in 'from'; voice only the lines with from = null. Then: tools/mux <video> <video-with-vo> <clip>@<start_s> …",
+   "lines": [
+    {
+     "id": "b01-hook",
+     "from": null,
+     "start_s": 0.3,
+     "max_s": 2.9,
+     "on_screen": "Headline 'One page for the planner.' over the printed page and the 'Qs for Monday' sticky (tag 'Illustrative · demo data'); caption 'Here's where it's from.'",
+     "text_v2": "One page for the planner. Here's where it's from.",
+     "text_v3": "One page for the planner. Here's where it's from.",
+     "delivery": "Visual-promise hook, said like showing a mate the finished thing. Out by 3.2."
+    },
+    {
+     "id": "b02-pro",
+     "from": "vo31-pro",
+     "start_s": 3.45,
+     "max_s": 2.9,
+     "on_screen": "Headline '“Open Pro view.”'; caption 'Pro view. Same site. Much bigger map.'",
+     "text_v2": "Pro view. Same site. Much bigger map.",
+     "text_v3": "Pro view. Same site. Much bigger map.",
+     "delivery": "Deadpan, a little impressed. Lean on 'bigger'."
+    },
+    {
+     "id": "b03-layers",
+     "from": "vo32-layers",
+     "start_s": 6.95,
+     "max_s": 3.5,
+     "on_screen": "Headline 'Four layers.'; chips clicked at 7.0 / 7.8 / 8.6 / 9.4; caption 'Zoning. Buildings. Services. Flood. In Auckland.'",
+     "text_v2": "Zoning. Buildings. Services. Flood. In Auckland.",
+     "text_v3": "Zoning. Buildings. Services. Flood. In Auckland.",
+     "delivery": "Slice the master take: one word per click (0.8 s apart here), 'In Auckland.' at about 9.9."
+    },
+    {
+     "id": "b04-owners",
+     "from": "vo33-owners",
+     "start_s": 10.85,
+     "max_s": 3.4,
+     "on_screen": "Headline 'The Title tab.'; '1 owner on the title' boxed; caption 'Title facts from LINZ. How many owners. Not who.'",
+     "text_v2": "Title facts from LINZ. How many owners. Not who.",
+     "text_v3": "Title facts from LINZ. How many owners. Not who.",
+     "delivery": "Matter-of-fact, a little reassuring. LINZ is said 'linz' (one word, rhymes with 'pins')."
+    },
+    {
+     "id": "b05-licence",
+     "from": "vo34-licence",
+     "start_s": 14.6,
+     "max_s": 2.7,
+     "on_screen": "Amber boxes on 'CV & sales' and 'Available with a data licence'; caption 'The rest? “Available with a data licence.”'",
+     "text_v2": "The rest? Available with a data licence.",
+     "text_v3": "The rest? Available with a data licence.",
+     "delivery": "Small question, plain answer quoting the pill. NZ spelling, said 'LIE-sence'."
+    },
+    {
+     "id": "b06-onepager",
+     "from": "vo36-onepager",
+     "start_s": 17.65,
+     "max_s": 2.8,
+     "on_screen": "Headline '“One pager.”'; print preview and Save as PDF; caption 'Print it, or save a PDF.'",
+     "text_v2": "One pager. Print it, or save a PDF.",
+     "text_v3": "One pager. Print it, or save a PDF.",
+     "delivery": "Practical."
+    },
+    {
+     "id": "b07-meeting",
+     "from": null,
+     "start_s": 21.45,
+     "max_s": 3.0,
+     "on_screen": "Back on the desk (tag 'Illustrative · demo data'); headline 'One page. Three questions.'; caption 'That's the meeting sorted.'",
+     "text_v2": "One page. Three questions. That's the meeting sorted.",
+     "text_v3": "One page. Three questions. That's the meeting sorted.",
+     "delivery": "Quiet satisfaction. Out by 24.5."
+    },
+    {
+     "id": "b08-ring",
+     "from": "vo39-ring",
+     "start_s": 24.9,
+     "max_s": 2.3,
+     "on_screen": "Headline 'The last word:'; quoted disclaimer card; caption 'It even tells you to ring the planner.'",
+     "text_v2": "It even tells you to ring the planner.",
+     "text_v3": "It even tells you to ring the planner.",
+     "delivery": "Amused respect."
+    },
+    {
+     "id": "b09-fair",
+     "from": "vo40-fair",
+     "start_s": 27.4,
+     "max_s": 0.8,
+     "on_screen": "Caption 'Fair enough.'",
+     "text_v2": "Fair enough.",
+     "text_v3": "Fair enough.",
+     "delivery": "The button. Flat, warm, very Kiwi, falling."
+    },
+    {
+     "id": "b10-cta",
+     "from": "vo42-cta",
+     "start_s": 28.65,
+     "max_s": 3.1,
+     "on_screen": "End card cross-fades in: 'Start with your address.' · 'Site research: sign up at qsme.co.nz' · small print incl. 'Dramatised · demo sites'",
+     "text_v2": "Sign up at Q-S-me dot co dot en zed.",
+     "text_v3": "Sign up at Q-S-me dot co dot en zed.",
+     "delivery": "Plain invitation; the headline 'Start with your address.' stays on screen. Out by 31.8."
+    }
+   ]
+  }
+ ],
+ "post_processing": [
+  "Voice the master lines first (python3 tools/make_vo.py projects/2026-10-18-qsme-nz-address-to-site-report <Mel voice id>), then lay the cut-down lines with tools/mux using the take named in 'from'; only a03, a06, a07, a10, b01 and b07 need new takes (b10 reuses vo42).",
+  "Room tone bed under the whole film at -48 to -45 dBFS; light phone-memo EQ; 2:1-3:1 compression; no reverb.",
+  "Master -14 LUFS integrated, -1 dBTP; music 6-8 LU under the VO; duck music 3 dB more under vo18-vo20 (the red/amber/green run)."
+ ],
+ "changelog": [
+  "2026-10-02 first version, timed on the 151.0 s 16:9 render and the 31 s / 32 s 9:16 cut-downs.",
+  "2026-10-02 v2 after review: re-timed on the 145.5 s master (setup compressed, overlays trimmed, pointer cards cut, 12 s end card). Every caption now matches its VO line, hedges kept in both ('Auckland', 'usually', 'indicative', 'reads as'). vo28 keeps 'usually' (now vo27). New lines: vo17 'To be fair. It said.', vo30 'Two doesn't need a planner. One does.'. Dropped: 'Here's how I picked.' and the dated 'got their own shorts' line. Cut-downs re-timed; a03 and a06 are now new takes.",
+  "2026-10-03 owner CTA rule (sign-ups, never 'free' or 'no account'): vo07 'Step one. The homepage. No account.' → 'Step one. Sign up. Search your address.'; vo11 'Step two. Site research. Free account.' → 'Step two. Site research, in your account.'; vo31 + b02 'Pro view. It's a view, not a paid plan.' → 'Pro view. Same site. Much bigger map.'; vo42 'Site research is free with an account. Q-S-me dot co dot en zed.' → 'Sign up at Q-S-me dot co dot en zed.'; a10 → 'Before you offer, sign up at Q-S-me dot co dot en zed.'; b10 now reuses the vo42 take. End cards now read 'Site research: sign up at qsme.co.nz'. Timings unchanged; videos re-rendered."
+ ],
+ "total_characters": 1800
+}

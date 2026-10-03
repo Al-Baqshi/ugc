@@ -1,0 +1,1 @@
+Invoicing, done right. Build an invoice from your work — add line items, set G S T inclusive or exclusive, and it's a proper tax invoice. Send it in seconds. When payment lands, record it — full or partial — and the status flips to paid.

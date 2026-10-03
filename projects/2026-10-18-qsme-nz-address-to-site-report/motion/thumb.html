@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<title>Site report thumbnail</title>
+<!-- YouTube / Facebook thumbnail for "From an address to a site report". Render: make.mjs thumb.html outputs/x.mp4 --still 0.5 --still-only -->
+<link rel="stylesheet" href="../../../tools/motion/kit.css">
+<style>
+  #root { background: radial-gradient(1200px 800px at 30% 50%, #12233D 0%, #050B1C 60%, #020617 100%); }
+  #card { position: absolute; left: 100px; top: 196px; width: 930px; background: #fff; border-radius: 26px; padding: 44px 48px 40px; box-shadow: 0 40px 90px rgba(0,0,0,.6); transform: rotate(-2deg); font-family: Inter, sans-serif; color: #0F172A; }
+  .row1 { display: flex; align-items: center; gap: 22px; }
+  .row1 h3 { font: 800 46px/1.1 Manrope; letter-spacing: -0.02em; }
+  .pill { display: inline-block; height: 70px; padding: 0 30px; border-radius: 999px; background: #16A34A; color: #fff; font: 800 34px/70px Inter; letter-spacing: .08em; }
+  .sep { height: 2px; background: #E2E8F0; margin: 34px 0 26px; }
+  .gh { font: 800 26px/1 Inter; letter-spacing: .07em; color: #B91C1C; display: flex; align-items: center; gap: 12px; }
+  .gh i { width: 16px; height: 16px; border-radius: 50%; background: #DC2626; }
+  .red { margin-top: 18px; border-left: 10px solid #DC2626; background: #FFF1F1; border-radius: 14px; padding: 24px 26px; }
+  .red .t { font: 800 44px/1.2 Inter; letter-spacing: -0.01em; position: relative; display: inline-block; }
+  .red svg { position: absolute; left: -8px; width: calc(100% + 16px); bottom: -16px; height: 22px; overflow: visible; }
+  .amb { margin-top: 18px; border-left: 10px solid #D97706; background: #FFFBEB; border-radius: 14px; padding: 20px 26px; font: 700 36px/1.2 Inter; color: #0F172A; opacity: .85; }
+  #txt { position: absolute; left: 1090px; right: 96px; top: 190px; font-family: Manrope, sans-serif; font-weight: 800; letter-spacing: -0.04em; color: #F8FAFC; }
+  #txt .a { font-size: 104px; line-height: 1.0; }
+  #txt .b { font-size: 146px; line-height: .95; color: #3DC023; margin-top: 6px; }
+  #txt .c { font-size: 100px; line-height: 1.0; margin-top: 36px; }
+  #txt .c u { text-decoration: none; background: linear-gradient(transparent 70%, rgba(224,48,42,.85) 70% 88%, transparent 88%); }
+  .chip { position: absolute; left: 112px; top: 790px; display: inline-flex; gap: 12px; align-items: center; height: 58px; padding: 0 24px; border-radius: 999px; background: rgba(255,255,255,.08); border: 2px solid rgba(255,255,255,.18); font: 700 30px/1 Manrope; color: #F8FAFC; }
+  .chip i { width: 14px; height: 14px; border-radius: 50%; background: #3DC023; }
+  .lab { position: absolute; left: 96px; top: 960px; padding: 6px 14px; border-radius: 8px; border: 2px dashed rgba(248,250,252,.5); color: rgba(248,250,252,.7); font: 500 22px/1.2 "JetBrains Mono"; }
+  #logo { position: absolute; right: 96px; top: 944px; width: 190px; }
+</style>
+</head>
+<body class="nz r16x9">
+<div id="root">
+  <div id="card">
+    <div class="row1"><h3>Development potential</h3><span class="pill">STRONG</span></div>
+    <div class="sep"></div>
+    <div class="gh"><i></i>CONSTRAINTS</div>
+    <div class="red"><span class="t">Designation · Road Widening<svg viewBox="0 0 700 22" preserveAspectRatio="none"><path d="M3 13 C 160 4, 420 20, 697 7" fill="none" stroke="#E0302A" stroke-width="9" stroke-linecap="round"/></svg></span></div>
+    <div class="amb">Volcanic viewshaft · Mount Eden</div>
+  </div>
+  <div id="txt"><div class="a">It said</div><div class="b">STRONG.</div><div class="c">Then I <u>scrolled</u>.</div></div>
+  <div class="chip"><i></i>Site research · Auckland</div>
+  <div class="lab">Illustrative · demo data</div>
+  <img id="logo" src="qsme-logo.svg" alt="QSME">
+</div>
+<script src="../../../tools/motion/kit.js"></script>
+<script>Kit.ready({ duration: 1, fonts: ['800 40px Manrope', '800 40px Inter', '700 30px Inter', '500 20px "JetBrains Mono"'] });</script>
+</body>
+</html>

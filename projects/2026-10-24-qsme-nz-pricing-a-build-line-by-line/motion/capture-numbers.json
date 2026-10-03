@@ -1,0 +1,23 @@
+{
+ "url": "https://www.qsme.co.nz/",
+ "width": 3840,
+ "height": 2160,
+ "scale": 2,
+ "fps": 30,
+ "settle": 4,
+ "steps": [
+  {
+   "eval": "(()=>{const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode())){if(/Know your numbers before/i.test(n.textContent)){const e=n.parentElement;const b=e.getBoundingClientRect();window.scrollTo(0,window.scrollY+b.top+b.height/2-540-520);return \"ok\"}}return \"none\"})()"
+  },
+  {
+   "wait": 1.2
+  },
+  {
+   "scroll": 520,
+   "dur": 1.6
+  },
+  {
+   "wait": 2.2
+  }
+ ]
+}

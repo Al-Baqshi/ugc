@@ -1,0 +1,400 @@
+{
+ "venture": "qsme-nz",
+ "video": "outputs/auckland-first-16x9.mp4",
+ "also_video": [
+  "outputs/auckland-first-9x16.mp4"
+ ],
+ "cuts": {
+  "outputs/auckland-first-16x9.mp4": "this file (76.35 s master)",
+  "outputs/auckland-first-9x16.mp4": "same 76.35 s timeline as the master: lay the same VO track at the same times",
+  "outputs/auckland-first-9x16-short.mp4": "different timeline (40.6 s, hard cuts at 22.7 / 31.36 / 35.31): vo-script-9x16-short.json, same takes"
+ },
+ "character": "Mel: everyday Kiwi woman, late 30s, the straight-talking one in the group chat who actually reads the small print. Talking for Q-S-me, owning up with a half-smile: we started in Auckland, here's exactly what you get everywhere else. General NZ accent, never a caricature. Dry, warm, under-played, like explaining it to a mate over a Saturday coffee. Facts flat and plain; the two jokes ('They knew.' and 'We know.') thrown away, never pushed.",
+ "voice": "Mel casting in projects/2026-10-02-qsme-voice-casting: Jenna 7R9vnLAE0ZSpY0xWp0mv or Ellie BujbDaM2eT58IpdbIc8J (tools/voices.json qsme-nz). Same voice as the rest of the NZ series.",
+ "casting_line": "Straight answer for everyone outside Auckland. Yeah. We started in Auckland. We know.",
+ "settings": {
+  "model": "eleven_multilingual_v2",
+  "stability": 0.45,
+  "similarity_boost": 0.75,
+  "style": 0,
+  "speed": 1,
+  "use_speaker_boost": true
+ },
+ "pronunciation": {
+  "QSME": "Q-S-me (Cue Ess Me, kyoo-ess-mee), never 'kiss me', never four letters",
+  "qsme.co.nz": "Q-S-me dot co dot en zed",
+  "LIM": "one word, 'lim' (rhymes with 'him')",
+  "Dunedin": "duh-NEE-din",
+  "Christchurch": "KRAIS-church, two quick syllables, the t disappears",
+  "Hamilton": "HAM-il-tun",
+  "never said": "Octagon, Hereford, Anglesea, LINZ, PIM (on screen only)"
+ },
+ "continuous_read_v2": "Straight answer for everyone outside Auckland.\n\nFair test: we typed in each council's own address.\n\nAnywhere in the country: the boundary… land area, legal description and council.\n\nServices and hazards? Not here yet. It says so.\n\nWe told the council it's in Dunedin City. They knew.\n\nFour councils add the planning zone.\nChristchurch: Commercial Zone.\nHamilton: Central City Zone.\nWellington City: the zone too. Hazards? Not yet.\n\nAnd Auckland gets the whole card.\nThe zone, then pipes, power, flood and hazard checks.\nThat's another video: The back corner.\n\nSo. Everywhere: the basics. Three more councils: plus the zone. Auckland: the lot.\n\nWherever you are, it's not a LIM.\nStill order the LIM. Check the title. Ask council or a planner.\n\nYeah. We started in Auckland. We know. Card says so.\n\nSearch your address. Sign up at Q-S-me dot co dot en zed.",
+ "lines": [
+  {
+   "id": "vo01-hook",
+   "start_s": 0.3,
+   "max_s": 2.9,
+   "on_screen": "Hook: 'Not in Auckland?' / 'Here's exactly what site search shows you.' (kicker 'Council by council') (0.25). Pins + real result cards drop at 0.12 / 0.42 / 0.72; hook holds, fades 4.95-5.4",
+   "text_v2": "Straight answer for everyone outside Auckland.",
+   "text_v3": "Straight answer for everyone outside Auckland.",
+   "delivery": "Lands just after the first plink. Level and friendly, like answering a question someone just asked her. Slight lean on 'Straight', falling end on 'Auckland'. No smile-sell. Out by 3.2, then room tone under the cards."
+  },
+  {
+   "id": "vo02-fair-test",
+   "start_s": 5.95,
+   "max_s": 3.4,
+   "on_screen": "Caption 'Fair test: we typed in each council's own address.' (5.9-9.45); typing '50 The Octagon' into the real search box, cut to the result at 8.6",
+   "text_v2": "Fair test: we typed in each council's own address.",
+   "text_v3": "Fair test: we typed in each council's own address.",
+   "delivery": "Tiny pause after 'Fair test', then one easy phrase. Light lean on 'own', the faint amusement of someone who knows this gets funny later. Out by 9.35."
+  },
+  {
+   "id": "vo03-basics",
+   "start_s": 9.7,
+   "max_s": 5.7,
+   "on_screen": "Caption 'Every address on the register gets the basics.' (9.65-15.55). Parcel outline pulses 10.95; boxes on land area 12.55, legal description 13.15, council 13.75; ladder ticks with them",
+   "text_v2": "Anywhere in the country: the boundary… land area, legal description and council.",
+   "text_v3": "Anywhere in the country: the boundary… [short pause] land area, legal description and council.",
+   "delivery": "Ticking a list. 'Anywhere in the country' easy, then 'the boundary' lands with the parcel pulse (about 11.0), then a real beat while the camera drops to the card. 'land area' about 12.5, 'legal description' about 13.2, 'and council' about 13.9: with or just behind each box, never ahead. Even, no list-sing (pitch must not climb). Out by 15.4."
+  },
+  {
+   "id": "vo04-not-yet",
+   "start_s": 15.85,
+   "max_s": 3.4,
+   "on_screen": "Caption 'Services and hazards? Not here yet. It says so.' (15.75-19.35). Amber underline on the card's own line 16.25; ladder NOT YET 16.3 / 16.5 / 16.7",
+   "text_v2": "Services and hazards? Not here yet. It says so.",
+   "text_v3": "Services and hazards? Not here yet. It says so.",
+   "delivery": "A plain question, then a flat honest answer. 'Not here yet' neither sorry nor defensive; 'It says so' with a slight nod of approval. Same words as the caption. Out by 19.25."
+  },
+  {
+   "id": "vo05-they-knew",
+   "start_s": 19.4,
+   "max_s": 3.6,
+   "on_screen": "Caption 'We told Dunedin City Council it's in Dunedin City. They knew.' (19.55-22.8). Punch-in on the boxed 'Dunedin City' from 19.95 (frame holds 20.9-21.5); the Dunedin card leaves at 23.0. Music ducks hard 21.3-23.0",
+   "text_v2": "We told the council it's in Dunedin City. They knew.",
+   "text_v3": "We told the council it's in Dunedin City. [short pause] They knew.",
+   "delivery": "The joke, and we're the butt of it. 'We told the council' matter-of-fact, 'it's in Dunedin City' deadpan as if passing on news, landing on the boxed field. A real beat. 'They knew.' thrown away, quieter and lower, nearly under her breath. One request, never butt halves together. Reject any take that laughs or leans on 'knew'. Out by 23.0 here, but pick a take of 3.25s or less: the short cut hard-cuts at 22.7."
+  },
+  {
+   "id": "vo06-four-councils",
+   "start_s": 23.4,
+   "max_s": 2.6,
+   "on_screen": "Title 'Four councils' (23.2), caption 'They add the planning zone.' (23.4-26.95), footer 'Auckland · Wellington City · Christchurch · Hamilton'; typing 53 Hereford St at 1.6x",
+   "text_v2": "Four councils add the planning zone.",
+   "text_v3": "Four councils add the planning zone.",
+   "delivery": "Back to matter-of-fact. Light lean on 'zone'. Out by 26.0."
+  },
+  {
+   "id": "vo07-christchurch",
+   "start_s": 27.2,
+   "max_s": 2.0,
+   "on_screen": "Caption 'Christchurch: Commercial Zone.' (27.1-29.9); green box on 'Commercial Zone' 27.4",
+   "text_v2": "Christchurch: Commercial Zone.",
+   "text_v3": "Christchurch: Commercial Zone.",
+   "delivery": "Reads it off the card. Small gap after 'Christchurch' (said 'KRAIS-church', two quick syllables). Out by 29.2."
+  },
+  {
+   "id": "vo08-hamilton",
+   "start_s": 31.2,
+   "max_s": 2.2,
+   "on_screen": "Caption 'Hamilton: Central City Zone.' (30.15-34.05); result lands 31.2, box on 'Central City Zone - Precinct 1 - Downtown Precinct' 32.55",
+   "text_v2": "Hamilton: Central City Zone.",
+   "text_v3": "Hamilton: Central City Zone.",
+   "delivery": "Same shape as Christchurch, a touch quicker, so the pair feels like a rhythm. Out by 33.4."
+  },
+  {
+   "id": "vo09-wellington",
+   "start_s": 34.35,
+   "max_s": 3.0,
+   "on_screen": "Caption 'Wellington City: zone too. Hazards: not yet.' (34.2-37.5); amber underline on 'Auckland first, more councils to come.' 34.85; ladder NOT YET 34.9 / 35.1",
+   "text_v2": "Wellington City: the zone too. Hazards? Not yet.",
+   "text_v3": "Wellington City: the zone too. Hazards? Not yet.",
+   "delivery": "Two quick asides. 'Not yet' flat and plain, never sorry. Out by 37.35. If the 9 Oct re-check drops Wellington, cut this line and leave room tone."
+  },
+  {
+   "id": "vo10-auckland",
+   "start_s": 38.15,
+   "max_s": 2.5,
+   "on_screen": "Title 'Auckland' (37.9), caption 'Auckland gets the whole card.' (38.1-41.55); typing 135 Albert St, result at 40.05, pull back to the full card",
+   "text_v2": "And Auckland gets the whole card.",
+   "text_v3": "And Auckland gets the whole card.",
+   "delivery": "A little warmer: the reveal. Light lean on 'whole', landing about when the card arrives (40.0). No brag, just a fact. Out by 40.65."
+  },
+  {
+   "id": "vo11-zone-list",
+   "start_s": 41.7,
+   "max_s": 3.2,
+   "on_screen": "Caption 'The zone, then pipes, power, flood and hazard checks.' (41.7-44.8); box on 'Business - City Centre Zone' 42.25",
+   "text_v2": "The zone, then pipes, power, flood and hazard checks.",
+   "text_v3": "The zone, then pipes, power, flood and hazard checks.",
+   "delivery": "Brisk, like listing what's in the boot. One phrase after 'The zone,'. Same words as the caption. Out by 44.9."
+  },
+  {
+   "id": "vo12-back-corner",
+   "start_s": 45.05,
+   "max_s": 2.6,
+   "on_screen": "Caption 'Services and hazards in detail: see “The back corner”.' (44.95-47.9); wide shot of the services and hazards chips, boxed 45.15",
+   "text_v2": "That's another video: The back corner.",
+   "text_v3": "That's another video: The back corner.",
+   "delivery": "A pointer to a mate: go watch that one. 'The back corner' said like a title, a touch slower. Never a day or a week. Out by 47.65."
+  },
+  {
+   "id": "vo13-summary",
+   "start_s": 48.5,
+   "max_s": 6.0,
+   "on_screen": "'Screenshot this / What site search shows you' table (in 48.0-48.3). Columns tick 49.7 / 51.2 / 52.9, Auckland column glows 52.9, complete 53.45, held to 58.55",
+   "text_v2": "So. Everywhere: the basics. Three more councils: plus the zone. Auckland: the lot.",
+   "text_v3": "So. [short pause] Everywhere: the basics. Three more councils: plus the zone. Auckland: the lot.",
+   "delivery": "The recap. 'So.' on its own, then each pair timed to its column: 'Everywhere: the basics' by about 49.8, 'Three more councils: plus the zone' by about 51.3, 'Auckland: the lot' by about 53.0. 'the lot' is a Kiwi shrug: simply all of it. Out by 54.5, then the table holds in silence (music only)."
+  },
+  {
+   "id": "vo14-not-a-lim",
+   "start_s": 59.35,
+   "max_s": 2.6,
+   "on_screen": "Chip 'The small print', title 'What it's not' (59.0); caption '“Not a substitute for a LIM, PIM or engineering advice.”' (59.4-61.95) with the card's own footer boxed 59.35",
+   "text_v2": "Wherever you are, it's not a LIM.",
+   "text_v3": "Wherever you are, it's not a LIM.",
+   "delivery": "Serious but kind, a little slower. 'LIM' said as a word ('lim', rhymes with 'him'). Out by 61.95."
+  },
+  {
+   "id": "vo15-checklist",
+   "start_s": 62.25,
+   "max_s": 4.35,
+   "on_screen": "Checklist 'Still order the LIM.' / 'Check the title.' / 'Ask the council or a planner.' pops 62.25 / 63.2 / 64.15, ticks 62.6 / 63.55 / 64.5; list fades 66.55",
+   "text_v2": "Still order the LIM. Check the title. Ask council or a planner.",
+   "text_v3": "Still order the LIM. Check the title. Ask council or a planner.",
+   "delivery": "Three steady, practical instructions, each landing with its tick, like advice from a mate who's bought a section before. 'Ask council' is the everyday Kiwi way (no 'the'). Don't rush the last one. Out by 66.6."
+  },
+  {
+   "id": "vo16-started",
+   "start_s": 67.05,
+   "max_s": 1.85,
+   "on_screen": "Map returns 66.8 (Auckland pin glows, the rest grey); 'We started in Auckland.' pops 67.3. Music fully out 66.8-70.0",
+   "text_v2": "Yeah. We started in Auckland.",
+   "text_v3": "[exhales] Yeah. We started in Auckland.",
+   "delivery": "The self-own. A small out-breath on 'Yeah' over the map, then 'We started in Auckland' as the words pop: honest, a bit sheepish, falling end. Nearly a confession in the silence. Same request as vo17 and vo18. Out by 68.9."
+  },
+  {
+   "id": "vo17-we-know",
+   "start_s": 69.0,
+   "max_s": 0.8,
+   "on_screen": "'We know.' slams in at 68.95 (soft thud)",
+   "text_v2": "We know.",
+   "text_v3": "We know.",
+   "delivery": "Two words, flat, with a smile you can hear but never see. Short. Out by 69.8."
+  },
+  {
+   "id": "vo18-card-says-so",
+   "start_s": 69.85,
+   "max_s": 1.15,
+   "on_screen": "The card's own line '…Auckland first, more councils to come.' slides in under 'We know.' at 69.55, source 'On the card today, outside Auckland' 69.75; scene fades 70.95-71.25",
+   "text_v2": "Card says so.",
+   "text_v3": "Card says so.",
+   "delivery": "Quiet, almost an afterthought, a little nod at the card. No promise in the voice, no 'soon'. Out by 71.0 (the short cut hard-cuts at 71.05 full time)."
+  },
+  {
+   "id": "vo19-cta",
+   "start_s": 71.55,
+   "max_s": 4.5,
+   "on_screen": "End card: QSME logo 71.3, 'Search your address.' 71.5, search box 71.85, 'Sign up to see yours.' 72.1, qsme.co.nz pill 72.5, small line 'Your account unlocks Site research: full depth in Auckland.' 73.1; holds to 76.35",
+   "text_v2": "Search your address. Sign up at Q-S-me dot co dot en zed.",
+   "text_v3": "Search your address. Sign up at Q-S-me dot co dot en zed.",
+   "delivery": "A friendly nudge across the bench, not a sales pitch. 'Search your address' easy, landing with the title; 'Sign up' lands as the green line pops (72.1), then say the URL as the pill lands (72.5), clearly and naturally, the Kiwi way ('en zed'), no spelling-bee pauses. No rise at the end. Out by 76.05 (music resolves 75.9)."
+  }
+ ],
+ "male_alt_lines": [
+  {
+   "id": "vo01-hook_m",
+   "start_s": 0.3,
+   "max_s": 2.9,
+   "on_screen": "Hook: 'Not in Auckland?' / 'Here's exactly what site search shows you.' (kicker 'Council by council') (0.25). Pins + real result cards drop at 0.12 / 0.42 / 0.72; hook holds, fades 4.95-5.4",
+   "text_v2": "Straight answer for everyone outside Auckland.",
+   "text_v3": "Straight answer for everyone outside Auckland.",
+   "delivery": "A relaxed everyday Kiwi bloke, low and dry, as if he's been asked this at the pub twice already. Falling end. Out by 3.2."
+  },
+  {
+   "id": "vo02-fair-test_m",
+   "start_s": 5.95,
+   "max_s": 3.4,
+   "on_screen": "Caption 'Fair test: we typed in each council's own address.' (5.9-9.45); typing '50 The Octagon' into the real search box, cut to the result at 8.6",
+   "text_v2": "Fair test: we typed in each council's own address.",
+   "text_v3": "Fair test: we typed in each council's own address.",
+   "delivery": "Plain and a bit pleased with the method. Out by 9.35."
+  },
+  {
+   "id": "vo03-basics_m",
+   "start_s": 9.7,
+   "max_s": 5.7,
+   "on_screen": "Caption 'Every address on the register gets the basics.' (9.65-15.55). Parcel outline pulses 10.95; boxes on land area 12.55, legal description 13.15, council 13.75; ladder ticks with them",
+   "text_v2": "Anywhere in the country: the boundary… land area, legal description and council.",
+   "text_v3": "Anywhere in the country: the boundary… [short pause] land area, legal description and council.",
+   "delivery": "Ticking a list in Mel's rhythm: 'the boundary' about 11.0, then land area / legal description / council with the boxes (12.5 / 13.2 / 13.9). Out by 15.4."
+  },
+  {
+   "id": "vo04-not-yet_m",
+   "start_s": 15.85,
+   "max_s": 3.4,
+   "on_screen": "Caption 'Services and hazards? Not here yet. It says so.' (15.75-19.35). Amber underline on the card's own line 16.25; ladder NOT YET 16.3 / 16.5 / 16.7",
+   "text_v2": "Services and hazards? Not here yet. It says so.",
+   "text_v3": "Services and hazards? Not here yet. It says so.",
+   "delivery": "Flat and honest. Out by 19.25."
+  },
+  {
+   "id": "vo05-they-knew_m",
+   "start_s": 19.4,
+   "max_s": 3.6,
+   "on_screen": "Caption 'We told Dunedin City Council it's in Dunedin City. They knew.' (19.55-22.8). Punch-in on the boxed 'Dunedin City' from 19.95 (frame holds 20.9-21.5); the Dunedin card leaves at 23.0. Music ducks hard 21.3-23.0",
+   "text_v2": "We told the council it's in Dunedin City. They knew.",
+   "text_v3": "We told the council it's in Dunedin City. [short pause] They knew.",
+   "delivery": "Bone-dry, passing on the 'news'. 'They knew.' low, almost to himself. Take of 3.25s or less (short cut). Out by 23.0."
+  },
+  {
+   "id": "vo06-four-councils_m",
+   "start_s": 23.4,
+   "max_s": 2.6,
+   "on_screen": "Title 'Four councils' (23.2), caption 'They add the planning zone.' (23.4-26.95), footer 'Auckland · Wellington City · Christchurch · Hamilton'; typing 53 Hereford St at 1.6x",
+   "text_v2": "Four councils add the planning zone.",
+   "text_v3": "Four councils add the planning zone.",
+   "delivery": "Matter-of-fact. Out by 26.0."
+  },
+  {
+   "id": "vo07-christchurch_m",
+   "start_s": 27.2,
+   "max_s": 2.0,
+   "on_screen": "Caption 'Christchurch: Commercial Zone.' (27.1-29.9); green box on 'Commercial Zone' 27.4",
+   "text_v2": "Christchurch: Commercial Zone.",
+   "text_v3": "Christchurch: Commercial Zone.",
+   "delivery": "Read off the card. Out by 29.2."
+  },
+  {
+   "id": "vo08-hamilton_m",
+   "start_s": 31.2,
+   "max_s": 2.2,
+   "on_screen": "Caption 'Hamilton: Central City Zone.' (30.15-34.05); result lands 31.2, box on 'Central City Zone - Precinct 1 - Downtown Precinct' 32.55",
+   "text_v2": "Hamilton: Central City Zone.",
+   "text_v3": "Hamilton: Central City Zone.",
+   "delivery": "Same shape, a touch quicker. Out by 33.4."
+  },
+  {
+   "id": "vo09-wellington_m",
+   "start_s": 34.35,
+   "max_s": 3.0,
+   "on_screen": "Caption 'Wellington City: zone too. Hazards: not yet.' (34.2-37.5); amber underline on 'Auckland first, more councils to come.' 34.85; ladder NOT YET 34.9 / 35.1",
+   "text_v2": "Wellington City: the zone too. Hazards? Not yet.",
+   "text_v3": "Wellington City: the zone too. Hazards? Not yet.",
+   "delivery": "Two flat asides. Out by 37.35."
+  },
+  {
+   "id": "vo10-auckland_m",
+   "start_s": 38.15,
+   "max_s": 2.5,
+   "on_screen": "Title 'Auckland' (37.9), caption 'Auckland gets the whole card.' (38.1-41.55); typing 135 Albert St, result at 40.05, pull back to the full card",
+   "text_v2": "And Auckland gets the whole card.",
+   "text_v3": "And Auckland gets the whole card.",
+   "delivery": "'the whole card' a touch warmer. Out by 40.65."
+  },
+  {
+   "id": "vo11-zone-list_m",
+   "start_s": 41.7,
+   "max_s": 3.2,
+   "on_screen": "Caption 'The zone, then pipes, power, flood and hazard checks.' (41.7-44.8); box on 'Business - City Centre Zone' 42.25",
+   "text_v2": "The zone, then pipes, power, flood and hazard checks.",
+   "text_v3": "The zone, then pipes, power, flood and hazard checks.",
+   "delivery": "Brisk list. Out by 44.9."
+  },
+  {
+   "id": "vo12-back-corner_m",
+   "start_s": 45.05,
+   "max_s": 2.6,
+   "on_screen": "Caption 'Services and hazards in detail: see “The back corner”.' (44.95-47.9); wide shot of the services and hazards chips, boxed 45.15",
+   "text_v2": "That's another video: The back corner.",
+   "text_v3": "That's another video: The back corner.",
+   "delivery": "Like a tip to a mate. Out by 47.65."
+  },
+  {
+   "id": "vo13-summary_m",
+   "start_s": 48.5,
+   "max_s": 6.0,
+   "on_screen": "'Screenshot this / What site search shows you' table (in 48.0-48.3). Columns tick 49.7 / 51.2 / 52.9, Auckland column glows 52.9, complete 53.45, held to 58.55",
+   "text_v2": "So. Everywhere: the basics. Three more councils: plus the zone. Auckland: the lot.",
+   "text_v3": "So. [short pause] Everywhere: the basics. Three more councils: plus the zone. Auckland: the lot.",
+   "delivery": "A recap with a shrug on 'the lot'. Hits 49.8 / 51.3 / 53.0. Out by 54.5."
+  },
+  {
+   "id": "vo14-not-a-lim_m",
+   "start_s": 59.35,
+   "max_s": 2.6,
+   "on_screen": "Chip 'The small print', title 'What it's not' (59.0); caption '“Not a substitute for a LIM, PIM or engineering advice.”' (59.4-61.95) with the card's own footer boxed 59.35",
+   "text_v2": "Wherever you are, it's not a LIM.",
+   "text_v3": "Wherever you are, it's not a LIM.",
+   "delivery": "Practical, a little slower. Out by 61.95."
+  },
+  {
+   "id": "vo15-checklist_m",
+   "start_s": 62.25,
+   "max_s": 4.35,
+   "on_screen": "Checklist 'Still order the LIM.' / 'Check the title.' / 'Ask the council or a planner.' pops 62.25 / 63.2 / 64.15, ticks 62.6 / 63.55 / 64.5; list fades 66.55",
+   "text_v2": "Still order the LIM. Check the title. Ask council or a planner.",
+   "text_v3": "Still order the LIM. Check the title. Ask council or a planner.",
+   "delivery": "Like advice to a younger brother buying his first section. Out by 66.6."
+  },
+  {
+   "id": "vo16-started_m",
+   "start_s": 67.05,
+   "max_s": 1.85,
+   "on_screen": "Map returns 66.8 (Auckland pin glows, the rest grey); 'We started in Auckland.' pops 67.3. Music fully out 66.8-70.0",
+   "text_v2": "Yeah. We started in Auckland.",
+   "text_v3": "[exhales] Yeah. We started in Auckland.",
+   "delivery": "Sheepish half-laugh in the breath only. Out by 68.9."
+  },
+  {
+   "id": "vo17-we-know_m",
+   "start_s": 69.0,
+   "max_s": 0.8,
+   "on_screen": "'We know.' slams in at 68.95 (soft thud)",
+   "text_v2": "We know.",
+   "text_v3": "We know.",
+   "delivery": "Two flat words. Out by 69.8."
+  },
+  {
+   "id": "vo18-card-says-so_m",
+   "start_s": 69.85,
+   "max_s": 1.15,
+   "on_screen": "The card's own line '…Auckland first, more councils to come.' slides in under 'We know.' at 69.55, source 'On the card today, outside Auckland' 69.75; scene fades 70.95-71.25",
+   "text_v2": "Card says so.",
+   "text_v3": "Card says so.",
+   "delivery": "Quiet. Out by 71.0."
+  },
+  {
+   "id": "vo19-cta_m",
+   "start_s": 71.55,
+   "max_s": 4.5,
+   "on_screen": "End card: QSME logo 71.3, 'Search your address.' 71.5, search box 71.85, 'Sign up to see yours.' 72.1, qsme.co.nz pill 72.5, small line 'Your account unlocks Site research: full depth in Auckland.' 73.1; holds to 76.35",
+   "text_v2": "Search your address. Sign up at Q-S-me dot co dot en zed.",
+   "text_v3": "Search your address. Sign up at Q-S-me dot co dot en zed.",
+   "delivery": "Easy tip, no rise. Out by 76.05."
+  }
+ ],
+ "silent_beats": [
+  "3.2-5.95: hook cards and the cut into the typing (room tone)",
+  "23.0-23.4: one dry beat after 'They knew.' as the Christchurch section starts",
+  "54.5-59.35: the finished table holds (music only)",
+  "66.6-67.05: the checklist fades and the map returns (music drops out at 66.8)",
+  "76.05-76.35: end card tail"
+ ],
+ "post_processing": [
+  "v2 is the default: continuous read first as the pitch/accent reference, then each line as its own request with previous_text/next_text (make_vo.py does this). vo05 is one request; vo16-vo18 may be one request cut in the edit so 'We know.' starts on the slam at 69.0.",
+  "Fit to time by trimming head/tail silence and closing gaps over room tone; never time-stretch more than about 4%. If a take runs past max_s, use another take.",
+  "Room tone bed (60-90 s of a quiet kitchen on the same phone) under the whole VO at -48 to -45 dBFS, most important 66.8-70.0 where the music drops out.",
+  "Phone voice-memo EQ: HPF about 90 Hz, -2 to -3 dB shelf from 10 kHz, 1-2 dB dip at 6-8 kHz, light de-ess; 2:1-3:1 compression, 2-4 dB GR; no reverb.",
+  "Music about 14 dB under speech; ducks hard 21.3-23.0; thins 59.0-66.8; out 66.8-70.0; re-enters under vo18; resolves 75.9.",
+  "Mux: tools/mux outputs/auckland-first-16x9.mp4 outputs/auckland-first-16x9-with-vo.mp4 vo/<id>.mp3@<start_s> ... and the same for outputs/auckland-first-9x16.mp4. The short cut uses vo-script-9x16-short.json.",
+  "If any VO is AI-generated, switch on TikTok's 'AI-generated content' label and Meta's AI label."
+ ],
+ "changelog": [
+  "2026-10-02 first vo-script.json. Timed on the 76.35 s renders (caption in/out read from af.js W() and checked on extracted frames). Fitted every line to <= 2.8 words/s: vo03 drops two 'the's, vo04 now matches its caption ('It says so.'), vo05 'So we told Dunedin City Council…' became 'We told the council it's in Dunedin City. They knew.' (window 19.4-23.0), vo11 matches its caption, vo14 drops 'And', vo15 'Ask council', vo16 starts on the map at 67.05, vo18 'Says so on the card.' became 'Card says so.' (1.15 s window), vo19 trimmed to fit.",
+  "2026-10-03 owner CTA rule (every CTA pushes sign-ups; no pricing or no-account lines): vo19's old CTA became 'Search your address. Sign up at Q-S-me dot co dot en zed.' (same 12 words, same 71.55 start and 4.5 s window). On-screen notes updated for the new hook sub ('Here's exactly what site search shows you.'), table title ('What site search shows you') and end card ('Search your address.' / 'Sign up to see yours.' / qsme.co.nz / 'Your account unlocks Site research: full depth in Auckland.'). No timings changed."
+ ],
+ "total_characters": 826
+}

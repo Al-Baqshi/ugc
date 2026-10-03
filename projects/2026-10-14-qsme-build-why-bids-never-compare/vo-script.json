@@ -1,0 +1,391 @@
+{
+ "venture": "qsme-build",
+ "video": "outputs/why-bids-never-compare-16x9.mp4",
+ "character": "Best: the founder, a professional quantity surveyor, in his own voice, recorded on a decent USB or lapel mic in a quiet office. Fallback (AI): the same mid-career Kiwi QS voice as 'Six bids. Six formats.' and 'Column H' (late 30s to 40s, general urban New Zealand accent, Auckland or Wellington office, not broad, not Australian). Calm, dry, on the subcontractors' side, a colleague walking another QS through what went wrong with the tender. Explaining, never selling. An AI voice never speaks as the founder and is never captioned as him.",
+ "casting_line": "Six bids. Zero that compare. It's not the subcontractors. It's the tender. Q-S-me dot build.",
+ "series_rule": "The burned-in captions are the subtitles, so every voiced caption is read word for word ('2' and '30-minute' are read 'two' and 'thirty-minute'; 'Incl.' is read 'including'). Chapter numbers are spoken; titles, chips, labels and the whiteboard aside are not captions and stay unvoiced unless a line says so.",
+ "settings": {
+  "model": "eleven_multilingual_v2",
+  "stability": 0.45,
+  "similarity_boost": 0.75,
+  "style": 0,
+  "speed": 1,
+  "use_speaker_boost": true
+ },
+ "continuous_read_v2": "Six bids. Zero that compare.\n\nIt's not the subcontractors.\n\nIt's the tender.\n\nFive reasons.\n\nAnd the fix for each one.\n\nOne. Everyone read the scope differently.\n\nNo lines to price, so six bidders wrote six scopes.\n\nCut the tender from your estimate.\n\nSame lines for every bidder.\n\nYour rates and budget never go with them.\n\nSo every total prices the same scope.\n\nTwo. Two drawing revisions in circulation.\n\nThree priced Rev B. Three priced Rev C.\n\nPoint every bidder at the right sheets.\n\nPages pinned to the version.\n\nNew set uploaded? The bidder sees it.\n\nThree. The scope changed on Tuesday.\n\nAddendum two went to five. Bidder D priced the old scope.\n\nChange it in the tender. It knows two bids are in.\n\nChange it once. Everyone still in is told.\n\nFour. Plus tax. Including tax.\n\nWhich one's cheaper?\n\nSame basis: the cheaper-looking bid isn't cheaper.\n\nSame tax basis, or it isn't a comparison.\n\nQ-S-me asks the tax question before anyone quotes. It sticks to every bid.\n\nFive. It came by email.\n\nA PDF in an inbox isn't in your comparison.\n\nDrop it on the tender. It's read into a draft.\n\nA person checks it against the original.\n\nEmailed quotes, checked, in the same table.\n\nThe honest bit.\n\nTotals side by side.\n\nEach bid's own lines, one click away.\n\nIt won't pick the winner for you. You decide.\n\nIt's just a fair fight now.\n\nFix the tender, and the bids start to compare.\n\nBring a real package to a thirty-minute demo.\n\nQ-S-me dot build. Which of the five gets you most?",
+ "lines": [
+  {
+   "id": "01-hook",
+   "start_s": 0.3,
+   "max_s": 2.3,
+   "on_screen": "6 bids. / 0 that compare. (frame 1) · chip 'Plasterboard & ceilings · tender closed 5:00 pm' · the six bids from part 1 are pushed into a pile 0.45 to 1.9",
+   "text_v2": "Six bids. Zero that compare.",
+   "text_v3": "Six bids. Zero that compare.",
+   "delivery": "Flat and tired, the end of tender day. A real full stop after 'Six bids'. 'Zero that compare' falls away, no drama. Under the paper-slide SFX, ducked. Out by 2.6."
+  },
+  {
+   "id": "02-not-them",
+   "start_s": 2.8,
+   "max_s": 1.6,
+   "on_screen": "It's not the subcontractors. (2.7)",
+   "text_v2": "It's not the subcontractors.",
+   "text_v3": "It's not the subcontractors.",
+   "delivery": "Warm and certain, taking the subcontractors' side, like defending a mate. Brisk enough to fit: four words, no pause. Out by 4.4, before the tender sheet lands."
+  },
+  {
+   "id": "03-tender",
+   "start_s": 4.85,
+   "max_s": 1.2,
+   "on_screen": "It's the tender. (slams in at 4.75; the 'TENDER · Plasterboard & ceilings' sheet lands on the pile at 4.78; red ring around 'Drawings attached. Please price.' 5.05 to 5.55)",
+   "text_v2": "It's the tender.",
+   "text_v3": "It's the tender.",
+   "delivery": "Quiet and matter-of-fact, right after the pen click. A small lean on 'tender', falling. No punchline lift. Out by 6.1."
+  },
+  {
+   "id": "04a-five",
+   "start_s": 6.65,
+   "max_s": 1.3,
+   "on_screen": "Title 'Five reasons bids don't compare.' (6.5) · the five reasons build 0.5s apart (7.0 to 9.0)",
+   "text_v2": "Five reasons.",
+   "text_v3": "Five reasons.",
+   "delivery": "Settling in, like the start of a whiteboard session with a colleague. Voices the title's first words, even and unhurried. Then let the list build in silence. Out by 8.0."
+  },
+  {
+   "id": "04b-fix",
+   "start_s": 9.8,
+   "max_s": 2.2,
+   "on_screen": "Subline 'And the fix for each one.' (9.7, held to the wipe at 12.8)",
+   "text_v2": "And the fix for each one.",
+   "text_v3": "And the fix for each one.",
+   "delivery": "A small promise, warm. Matches the subline word for word. Out by 12.0 so the chapter wipe (12.8) is silent."
+  },
+  {
+   "id": "05-one",
+   "start_s": 13.2,
+   "max_s": 2.15,
+   "on_screen": "Chapter card '1 · Reason 1 of 5 · Everyone read the scope differently.'",
+   "text_v2": "One. Everyone read the scope differently.",
+   "text_v3": "One. Everyone read the scope differently.",
+   "delivery": "Chapter voice: say the number, small pause, then the title as plain fact. Same shape for all five chapter lines. Out by 15.35."
+  },
+  {
+   "id": "06-own",
+   "start_s": 16.95,
+   "max_s": 3.8,
+   "on_screen": "No lines to price, so six bidders wrote six scopes. (caption from 16.75) · the tender email 'Drawings attached. Please price.' branches to six scope cards, A to F landing 0.35s apart (15.95 to 17.7)",
+   "text_v2": "No lines to price, so six bidders wrote six scopes.",
+   "text_v3": "No lines to price, so six bidders wrote six scopes.",
+   "delivery": "Rueful, owning it: we sent that email. Start once the first three cards are in, light stress on the second 'six', then let the last cards ('Nothing below.', 'on a whiteboard') land under the end of the line. Out by 20.75."
+  },
+  {
+   "id": "07-cut",
+   "start_s": 21.1,
+   "max_s": 3.0,
+   "on_screen": "Cut the tender from your estimate. · 'Create New Tender' · 'STEP 3 OF 4' · 'SOQ jobs to include (optional)' · click 'Select whole pocket' at 22.2 · '4 of 4 selected'",
+   "text_v2": "Cut the tender from your estimate.",
+   "text_v3": "Cut the tender from your estimate.",
+   "delivery": "Practical, showing someone where to start. Then let the click on 'Select whole pocket' (22.2) and the ticks play without voice. Out by 24.1."
+  },
+  {
+   "id": "08a-same",
+   "start_s": 25.5,
+   "max_s": 1.75,
+   "on_screen": "Same lines for every bidder. (25.45 to 27.3) · split: your SOQ with rates | the bidder view 'Est Qty / Bid Qty / Rate / Total Cost' with the rate column empty; tabs Bidder A to F step across",
+   "text_v2": "Same lines for every bidder.",
+   "text_v3": "Same lines for every bidder.",
+   "delivery": "The core idea, so even weight on 'same lines'. Out by 27.25."
+  },
+  {
+   "id": "08b-rates",
+   "start_s": 27.35,
+   "max_s": 2.3,
+   "on_screen": "Your rates and budget never go with them. (27.3 to 29.7) · your rates highlight on the left; the bidder's rate boxes stay empty",
+   "text_v2": "Your rates and budget never go with them.",
+   "text_v3": "Your rates and budget never go with them.",
+   "delivery": "Reassuring, almost an aside, a little quicker than 08a. Out by 29.65."
+  },
+  {
+   "id": "09-scope",
+   "start_s": 30.0,
+   "max_s": 3.0,
+   "on_screen": "So every total prices the same scope. · live qsme.build/platform/tendering FAQ 'What is a private tender?', highlighted 'so the invited firms all price the same lines' (30.3)",
+   "text_v2": "So every total prices the same scope.",
+   "text_v3": "So every total prices the same scope.",
+   "delivery": "Dry, quietly pleased. Falling on 'same scope'. Never 'the totals mean the same thing' (bidders can still quote one total or their own quantities). Out by 33.0."
+  },
+  {
+   "id": "10-two",
+   "start_s": 33.7,
+   "max_s": 2.15,
+   "on_screen": "Chapter card '2 · Two drawing revisions in circulation.'",
+   "text_v2": "Two. Two drawing revisions in circulation.",
+   "text_v3": "Two. Two drawing revisions in circulation.",
+   "delivery": "Chapter voice, same shape as 05: number, small pause, title as plain fact. Out by 35.85."
+  },
+  {
+   "id": "11-revs",
+   "start_s": 36.15,
+   "max_s": 3.2,
+   "on_screen": "Three priced Rev B. Three priced Rev C. · two RCP sheets, Rev C clouded around a new bulkhead · 'Priced by A B C' / 'D E F'",
+   "text_v2": "Three priced Rev B. Three priced Rev C.",
+   "text_v3": "Three priced Rev B. Three priced Rev C.",
+   "delivery": "Say 'rev B', 'rev C' (short 'rev'). Deadpan, the two halves mirror each other. Out by 39.35."
+  },
+  {
+   "id": "12-point",
+   "start_s": 39.7,
+   "max_s": 4.2,
+   "on_screen": "Point every bidder at the right sheets. · 'Point them at the right sheets' · ticks 'Reflected ceiling plans p.18–21', 'Wall types & linings p.14–15', 'Finishes schedule p.32' (40.6, 41.25, 41.9) · chip 'Sections come from ‘Read my plans’ · paid plan, uses AI credits'",
+   "text_v2": "Point every bidder at the right sheets.",
+   "text_v3": "Point every bidder at the right sheets.",
+   "delivery": "Calm and practical, landing before the three ticks (40.6, 41.25, 41.9) so they play clean. Out by 43.9."
+  },
+  {
+   "id": "13-pinned",
+   "start_s": 44.3,
+   "max_s": 3.0,
+   "on_screen": "Pages pinned to the version. · bidder view 'Referenced drawing pages' rows 'Drawing set (v1) · p.18–21' etc.",
+   "text_v2": "Pages pinned to the version.",
+   "text_v3": "Pages pinned to the version.",
+   "delivery": "Light stress on 'version'. Out by 47.3."
+  },
+  {
+   "id": "14-moved",
+   "start_s": 47.7,
+   "max_s": 3.4,
+   "on_screen": "New set uploaded? The bidder sees it. · chip 'Tuesday · drawing set v2 uploaded' (47.6) · amber 'pages may have moved' on each row (48.05) and 'The pack has a newer version since this was referenced — check the pages still match.'",
+   "text_v2": "New set uploaded? The bidder sees it.",
+   "text_v3": "New set uploaded? The bidder sees it.",
+   "delivery": "A genuine little question, then the answer, satisfied. Out by 51.1 so the wipe (51.3) is clean."
+  },
+  {
+   "id": "15-three",
+   "start_s": 51.7,
+   "max_s": 2.15,
+   "on_screen": "Chapter card '3 · The scope changed on Tuesday. One bidder never heard.'",
+   "text_v2": "Three. The scope changed on Tuesday.",
+   "text_v3": "Three. The scope changed on Tuesday.",
+   "delivery": "Chapter voice. 'On Tuesday' like everyone remembers that Tuesday. The card's second sentence ('One bidder never heard.') is a title and stays unvoiced. Out by 53.85."
+  },
+  {
+   "id": "16-addendum",
+   "start_s": 54.15,
+   "max_s": 3.45,
+   "on_screen": "Addendum 2 went to five. Bidder D priced the old scope. · sent email 'To: Bidder A; Bidder B; Bidder C; Bidder E; Bidder F' · five ticks, D ringed in red, 'missed off the list' (56.45)",
+   "text_v2": "Addendum two went to five. Bidder D priced the old scope.",
+   "text_v3": "Addendum two went to five. Bidder D priced the old scope.",
+   "delivery": "Self-own: we missed them off the list, not their fault. A small wince on 'old scope'. Out by 57.6."
+  },
+  {
+   "id": "17-change",
+   "start_s": 58.1,
+   "max_s": 4.4,
+   "on_screen": "Change it in the tender. It knows 2 bids are in. · banner '2 bid(s) are in on this scope. Change it and everyone still in the running is told what moved.' · 'Bulkheads' ticked at 60.7 · '5 of 5 selected'",
+   "text_v2": "Change it in the tender. It knows two bids are in.",
+   "text_v3": "Change it in the tender. It knows two bids are in.",
+   "delivery": "Matter-of-fact, reading the banner to a colleague. Out by 62.5."
+  },
+  {
+   "id": "18-once",
+   "start_s": 64.15,
+   "max_s": 3.3,
+   "on_screen": "Change it once. Everyone still in is told. · the tender node 'Plasterboard & ceilings + Bulkheads' pulses to all six bidders · 'All six still in the running → told what moved'",
+   "text_v2": "Change it once. Everyone still in is told.",
+   "text_v3": "Change it once. Everyone still in is told.",
+   "delivery": "Two clean beats, settled. Out by 67.45."
+  },
+  {
+   "id": "19-four",
+   "start_s": 68.1,
+   "max_s": 2.0,
+   "on_screen": "Chapter card '4 · “Plus tax.” “Incl. tax.”' · 'Same job. Two different numbers.'",
+   "text_v2": "Four. Plus tax. Including tax.",
+   "text_v3": "Four. Plus tax. Including tax.",
+   "delivery": "Chapter voice, quoting two bidders in the same flat tone ('Incl. tax' on the card is read 'including tax'). Never say 'GST'. Out by 70.1."
+  },
+  {
+   "id": "20-which",
+   "start_s": 70.55,
+   "max_s": 1.6,
+   "on_screen": "Which one's cheaper? · 'Example figures · VAT 20%' · 'As written': Bidder X '10,000 + VAT', Bidder Y '11,500 incl. VAT' · marker 'looks cheaper' on X (71.4)",
+   "text_v2": "Which one's cheaper?",
+   "text_v3": "Which one's cheaper?",
+   "delivery": "Genuine question with a trap in it; let the two numbers on screen do the work. Small rise on 'cheaper'. Out by 72.2, then silence while the marker 'looks cheaper' lands."
+  },
+  {
+   "id": "21-same",
+   "start_s": 74.0,
+   "max_s": 3.2,
+   "on_screen": "Same basis: the cheaper-looking bid isn't cheaper. · a pad headed 'our maths' (73.8): 'both incl. VAT · X 10,000 + 20% = 12,000 · Y 11,500', 'looks cheaper' struck out (75.05), Y's 11,500 ringed in red (75.85). Our own napkin maths, not a QSME screen",
+   "text_v2": "Same basis: the cheaper-looking bid isn't cheaper.",
+   "text_v3": "Same basis: the cheaper-looking bid isn't cheaper.",
+   "delivery": "Deadpan reveal, the dry smile of the piece. A beat after 'Same basis'. Out by 77.2."
+  },
+  {
+   "id": "22-basis",
+   "start_s": 77.5,
+   "max_s": 3.8,
+   "on_screen": "Same tax basis, or it isn't a comparison. · the pad adds 'both excl. VAT · X 10,000 · Y 11,500 ÷ 1.2 = 9,583' (77.6 to 79.0), 9,583 ringed (79.1), 'Y is cheaper, either way.' (79.9)",
+   "text_v2": "Same tax basis, or it isn't a comparison.",
+   "text_v3": "Same tax basis, or it isn't a comparison.",
+   "delivery": "The rule of thumb, firm but friendly, like a senior QS's habit. Out by 81.3."
+  },
+  {
+   "id": "23-asks",
+   "start_s": 81.8,
+   "max_s": 5.6,
+   "on_screen": "QSME asks the tax question before anyone quotes. It sticks to every bid. · live qsme.build/platform/tendering FAQ 'Can we compare bids that include and exclude tax?', cropped after 'Yes. The comparison sorts on the basis you choose', which is highlighted (82.3)",
+   "text_v2": "Q-S-me asks the tax question before anyone quotes. It sticks to every bid.",
+   "text_v3": "Q-S-me asks the tax question before anyone quotes. It sticks to every bid.",
+   "delivery": "Q-S-me = 'cue ess mee', evenly. Plain explanation, no sell. Out by 87.4."
+  },
+  {
+   "id": "24-five",
+   "start_s": 88.15,
+   "max_s": 2.0,
+   "on_screen": "Chapter card '5 · It came by email.' · 'As a PDF. At 4:59 pm.'",
+   "text_v2": "Five. It came by email.",
+   "text_v3": "Five. It came by email.",
+   "delivery": "Chapter voice, a hint of weariness on 'email'. Out by 90.15."
+  },
+  {
+   "id": "25-inbox",
+   "start_s": 90.55,
+   "max_s": 2.7,
+   "on_screen": "A PDF in an inbox isn't in your comparison. · inbox row 'Bidder A · 4:59 pm · Quote_FINAL_v3_revised(2).pdf' · comparison card with 'A · not here'",
+   "text_v2": "A PDF in an inbox isn't in your comparison.",
+   "text_v3": "A PDF in an inbox isn't in your comparison.",
+   "delivery": "Flat, a touch weary. Out by 93.25."
+  },
+  {
+   "id": "26-drop",
+   "start_s": 93.5,
+   "max_s": 3.8,
+   "on_screen": "Drop it on the tender. It's read into a draft. · 'Add a bid you received' · the PDF drops in (94.3) · 'Reading the quote…' · the draft beside 'The original' with 'This was read automatically and can be wrong. Nothing is saved until you have checked it.' (95.4)",
+   "text_v2": "Drop it on the tender. It's read into a draft.",
+   "text_v3": "Drop it on the tender. It's read into a draft.",
+   "delivery": "Practical. Stress 'draft' lightly: it's not done yet. Out by 97.3."
+  },
+  {
+   "id": "27-check",
+   "start_s": 97.5,
+   "max_s": 3.0,
+   "on_screen": "A person checks it against the original. · tick 'I have checked this against the original and it is right.' (98.65)",
+   "text_v2": "A person checks it against the original.",
+   "text_v3": "A person checks it against the original.",
+   "delivery": "Firm on 'checks'. Lands just before the tick (98.65). Out by 100.5."
+  },
+  {
+   "id": "28-table",
+   "start_s": 100.9,
+   "max_s": 3.0,
+   "on_screen": "Emailed quotes, checked, in the same table. · 'Compare bids': rows 'Bidder A' and 'Bidder F' marked 'Received by you' · chip 'All totals excl. tax' · aside 'Photos too. Yes, even the whiteboard.' (101.7, an unvoiced visual gag)",
+   "text_v2": "Emailed quotes, checked, in the same table.",
+   "text_v3": "Emailed quotes, checked, in the same table.",
+   "delivery": "Plain and tidy, a list read off a checklist. Leave the whiteboard aside unvoiced: it's a read-it-yourself gag. Out by 103.9."
+  },
+  {
+   "id": "29-honest",
+   "start_s": 105.0,
+   "max_s": 1.6,
+   "on_screen": "Card 'What it won't do · The honest bit.'",
+   "text_v2": "The honest bit.",
+   "text_v3": "The honest bit.",
+   "delivery": "Lower, more personal, leaning in. Out by 106.6."
+  },
+  {
+   "id": "30a-totals",
+   "start_s": 107.1,
+   "max_s": 2.0,
+   "on_screen": "Totals side by side. (106.95 to 109.2) · 'Compare bids' totals A to F, 'Lowest' on F · chip 'All totals excl. tax'",
+   "text_v2": "Totals side by side.",
+   "text_v3": "Totals side by side.",
+   "delivery": "Careful and exact: this is the honest description, no flourish. Out by 109.1."
+  },
+  {
+   "id": "30b-lines",
+   "start_s": 109.35,
+   "max_s": 2.7,
+   "on_screen": "Each bid's own lines, one click away. (109.2 to 112.2) · Bidder B clicked (108.6) · 'Detailed price breakdown' Item / Type / Qty / Rate / Line total",
+   "text_v2": "Each bid's own lines, one click away.",
+   "text_v3": "Each bid's own lines, one click away.",
+   "delivery": "Same register. Never 'line by line'. Out by 112.05."
+  },
+  {
+   "id": "31-winner",
+   "start_s": 112.4,
+   "max_s": 3.4,
+   "on_screen": "It won't pick the winner for you. You decide. · live qsme.build card 'Award is a person's decision', highlighted 'No automation and no assistant awards a tender.'",
+   "text_v2": "It won't pick the winner for you. You decide.",
+   "text_v3": "It won't pick the winner for you. You decide.",
+   "delivery": "Straight, a little proud of saying it. 'You decide' is respect for the QS, not a disclaimer. Out by 115.8."
+  },
+  {
+   "id": "32-fair",
+   "start_s": 116.4,
+   "max_s": 3.2,
+   "on_screen": "It's just a fair fight now. · callback: part 1's six bids (the sideways PDF, the laptop, 'As discussed.', 'Price below.', 'Note 14', the whiteboard) fly into six identical rows, 'same lines · Rev C sheets · + bulkheads · excl. tax' (116.75 to 118.0)",
+   "text_v2": "It's just a fair fight now.",
+   "text_v3": "It's just a fair fight now.",
+   "delivery": "The emotional landing of the piece, warm and quiet. Slight weight on 'fair', landing as the last bids slot into their rows. Out by 119.6, before the wipe (120.0)."
+  },
+  {
+   "id": "33-fix",
+   "start_s": 121.0,
+   "max_s": 3.6,
+   "on_screen": "Fix the tender, and the bids start to compare. (caption 120.5 to 127.3) · the TENDER sheet again: 'Drawings attached. Please price.' struck out (120.72), five ticked lines 121.3 to 123.7",
+   "text_v2": "Fix the tender, and the bids start to compare.",
+   "text_v3": "Fix the tender, and the bids start to compare.",
+   "delivery": "Summing up, unhurried, riding the ticks. Then let the last ticks and the held sheet breathe. Out by 124.6."
+  },
+  {
+   "id": "34-bring",
+   "start_s": 127.5,
+   "max_s": 3.4,
+   "on_screen": "Bring a real package to a 30-minute demo. · live qsme.build/platform/tendering 'Run one of your packages through it — Bring a real package. We will cut the tender, invite two test bidders and walk through the comparison and award on the call.' ('Bring a real package.' underlined 128.0)",
+   "text_v2": "Bring a real package to a thirty-minute demo.",
+   "text_v3": "Bring a real package to a thirty-minute demo.",
+   "delivery": "An invitation between colleagues, not a pitch. Out by 130.9."
+  },
+  {
+   "id": "35-cta",
+   "start_s": 131.5,
+   "max_s": 4.2,
+   "on_screen": "End card, left half: QSME logo · qsme.build (131.6) · 'Book a 30-minute demo' (132.0) · 'Which of the five gets you most? Tell us in the comments.' (132.7, held to 139.0). Right half kept clear for YouTube end-screen elements",
+   "text_v2": "Q-S-me dot build. Which of the five gets you most?",
+   "text_v3": "Q-S-me dot build. Which of the five gets you most?",
+   "delivery": "Easy, low-key. 'Q-S-me dot build' evenly, no rise on 'build'. The question is genuinely curious, rising slightly. Regenerate any take that says 'kiss me' or spells four letters. Out by 135.7, then the end card holds in silence (music resolves)."
+  }
+ ],
+ "male_alt_lines": [],
+ "silent_beats": [
+  "8.0 to 9.8: the five reasons build in silence",
+  "12.0 to 13.2: chapter 1 wipe (12.8)",
+  "15.35 to 16.95: the six scope cards start landing",
+  "22.1 to 25.5: the 'Select whole pocket' click and ticks play without voice",
+  "33.0 to 33.7: chapter 2 wipe (33.3)",
+  "51.1 to 51.7: chapter 3 wipe (51.3)",
+  "67.45 to 68.1: chapter 4 wipe (67.7)",
+  "72.2 to 74.0: 'looks cheaper' lands in silence",
+  "87.4 to 88.15: chapter 5 wipe (87.7)",
+  "103.9 to 105.0: the whiteboard aside, then the honest-bit wipe (104.6)",
+  "119.6 to 121.0: the rows settle, then the recap wipe (120.0)",
+  "124.6 to 127.5: the last ticks land and the sheet holds",
+  "135.7 to 139.0: end card holds for YouTube end-screen elements"
+ ],
+ "post_processing": [
+  "If the founder records it: one continuous read of continuous_read_v2 in his natural voice, three takes, then slice at the blank lines and place each piece at its start_s. Keep breaths and small hesitations; never time-stretch more than about 4%.",
+  "If AI: render continuous_read_v2 three times on the cast QS voice, slice and place; use per-line renders only as patches, with previous_text/next_text so intonation carries. Keep the least polished take.",
+  "Room tone bed (a real quiet office on a phone) under the whole 139s at about -50 dBFS so silences never drop to digital zero.",
+  "EQ: high-pass 90 to 100 Hz; -2 dB high shelf above 10 kHz; light de-ess. Compression 2:1 to 3:1, 3 to 4 dB GR. VO at about -16 LUFS integrated, -1 dBTP. No reverb.",
+  "Music (see post.md): no music under the hook (0 to 6.3); a minimal pulse enters on the title card (6.3), sits about 20 dB under the VO, dips to near silence on every chapter wipe and returns, thins to a warm pad in the honest bit (104.6 to 120.0), lifts slightly on the recap tick-list (120.3 to 127.3), resolves on one held chord at about 138.5.",
+  "SFX synced to picture, ducked 10 to 12 dB under any word: paper slide 0.45 to 1.9; tender sheet landing 4.78; pen click 4.95; marker ring 5.05 to 5.55; soft whoosh on each wipe (12.8, 33.3, 51.3, 67.7, 87.7, 104.6, 120.0); trackpad clicks 22.2, 40.6, 41.25, 41.9, 60.65, 98.6, 108.6; file drop 94.3; marker squeak 55.9 and 75.05; soft pen-on-paper 74.3 to 79.0 (the pad); paper shuffle 116.75 to 118.0 (the six bids filed into rows); marker strike 120.72; five soft ticks 121.3 to 123.7. No OS- or app-branded sounds.",
+  "Bounce a mono VO stem and mux onto outputs/why-bids-never-compare-16x9.mp4 with tools/mux as a separate track, so music and SFX stay adjustable."
+ ],
+ "total_characters": 1407,
+ "changelog": [
+  "2026-10-02 first version, timed on the rendered 126.0s 16:9 master (outputs/why-bids-never-compare-16x9.mp4). No API was called.",
+  "2026-10-02 v2: every voiced line now matches its burned-in caption word for word (series rule, as in Column H); 08 and 30 split to follow their two captions; title subline shortened on screen to 'And the fix for each one.'. Timed on the re-rendered master. No API was called.",
+  "2026-10-02 v3 (review fixes): retimed to the re-rendered 139.0s master (title card held to 6.5s, six-scopes beat 5.5s, emailed-table beat +0.5s, 'fair fight' callback 4s, recap 7s, end card 7.9s). 04 split into 04a 'Five reasons.' and 04b 'And the fix for each one.' around the list build. 09 is now 'So every total prices the same scope.' (was 'So the totals mean the same thing.', which overstated: bidders can still quote one total or their own quantities). 32 now lands on the six part-1 bids filed into identical rows instead of the pricing page. Every caption still matches its line word for word. No API was called."
+ ]
+}

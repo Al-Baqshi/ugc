@@ -1,0 +1,10 @@
+{
+  "url": "https://qsme.build/platform/tendering",
+  "mobile": true,
+  "width": 1080, "height": 1350, "scale": 2, "fps": 20, "settle": 3,
+  "steps": [
+    { "eval": "document.querySelectorAll('[class*=cookie],[id*=cookie],[class*=consent]').forEach(e=>e.style.setProperty('display','none','important'))" },
+    { "eval": "(()=>{const h=[...document.querySelectorAll('.il__head')].find(e=>e.textContent.includes('Your bid')); h.closest('figure').scrollIntoView({block:'center'}); return 1})()" },
+    { "wait": 1.5 }
+  ]
+}

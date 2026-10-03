@@ -1,0 +1,21 @@
+{
+  "name": "ugc-studio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Private dashboard for the CreativeUGC folder: ideas, ventures, projects, research and logs.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node studio/server.mjs",
+    "dev": "STUDIO_DEV=1 node studio/server.mjs",
+    "check": "node studio/check.mjs",
+    "publish": "node tools/motion/previews.mjs && node -e \"require('fs').writeFileSync('studio/synced.txt', new Date().toISOString() + '\\n')\" && railway up --detach && node tools/motion/sync-media.mjs",
+    "sync-media": "node tools/motion/sync-media.mjs"
+  },
+  "dependencies": {
+    "marked": "^18.0.14",
+    "yaml": "^2.9.1"
+  }
+}

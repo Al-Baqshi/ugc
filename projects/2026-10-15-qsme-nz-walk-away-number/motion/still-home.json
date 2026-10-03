@@ -1,0 +1,12 @@
+{
+  "url": "https://www.qsme.co.nz/",
+  "cssWidth": 1920,
+  "cssHeight": 1080,
+  "dpr": 2,
+  "settle": 4,
+  "boxes": {
+    "label": "[...document.querySelectorAll('label,span,div,p')].find(e => e.textContent.trim() === 'Search your address')",
+    "input": "document.querySelector(\"input[placeholder^='e.g. 12 Queen']\")",
+    "cta": "[...document.querySelectorAll('a,button')].find(e => e.textContent.trim().startsWith('Get started'))"
+  }
+}

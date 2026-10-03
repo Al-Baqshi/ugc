@@ -1,0 +1,13 @@
+{
+  "url": "https://qsme.build/solutions/general-contractors",
+  "mobile": true,
+  "width": 1080,
+  "height": 1350,
+  "scale": 3,
+  "fps": 20,
+  "settle": 3,
+  "steps": [
+    { "eval": "(() => { const h = [...document.querySelectorAll('h1,h2,h3,h4,p,div,span')].find(e => e.children.length === 0 && e.textContent.trim() === 'Award becomes a contract, not a to-do'); if (!h) throw new Error('heading not found'); document.querySelectorAll('header, nav, [class*=cookie], [id*=cookie]').forEach(e => e.style.setProperty('visibility','hidden','important')); h.scrollIntoView({ block: 'center' }); return h.tagName; })()" },
+    { "wait": 1.5 }
+  ]
+}

@@ -1,0 +1,3 @@
+// RETIRED 2026-10-03 (owner rule: no pricing lines in QSME content). Not used by the video since v2; never reuse.
+// Timestamps of the live qsme.build/pricing screencast (clips/pricing, from capture-pricing.json)
+window.PRICING_STAMPS = [0, 0.013, 1.595, 1.642, 1.663, 1.706, 1.731, 1.773, 1.803, 1.838, 1.872, 1.924, 1.939, 1.991, 2.012, 2.054, 2.08, 2.121, 2.151, 2.189, 2.221, 2.273, 2.288, 2.338, 2.359, 2.405, 2.43, 2.479, 2.502, 2.538, 2.588, 2.654, 2.68, 2.723, 2.749, 2.805, 2.818, 2.856, 2.888, 2.938, 2.956, 3.002, 3.028, 3.068, 3.099, 3.137, 3.17, 3.205, 3.254, 3.276, 3.321, 3.345, 3.389, 3.42, 3.457];

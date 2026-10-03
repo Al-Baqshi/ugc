@@ -1,0 +1,23 @@
+{
+ "url": "https://www.qsme.co.nz/knowledge-hub/agreements",
+ "dpr": 3,
+ "cssWidth": 430,
+ "cssHeight": 932,
+ "boxes": {
+  "free": [
+   123,
+   1281,
+   1044,
+   234
+  ],
+  "s1": [
+   [
+    123,
+    1287,
+    731,
+    66
+   ]
+  ],
+  "docHeight": 72480
+ }
+}

@@ -1,0 +1,60 @@
+{
+ "url": "https://www.qsme.co.nz/",
+ "width": 1080,
+ "height": 1920,
+ "scale": 2.77,
+ "mobile": true,
+ "fps": 30,
+ "settle": 3,
+ "steps": [
+  {
+   "wait": 0.8
+  },
+  {
+   "click": "input[placeholder^='e.g. 12 Queen']"
+  },
+  {
+   "wait": 0.5
+  },
+  {
+   "type": "135 Albert Street, Auckland",
+   "cps": 12
+  },
+  {
+   "wait": 1.4
+  },
+  {
+   "press": "ArrowDown"
+  },
+  {
+   "wait": 0.25
+  },
+  {
+   "press": "Enter"
+  },
+  {
+   "wait": 3.5
+  },
+  {
+   "scroll": 440,
+   "dur": 1.1
+  },
+  {
+   "wait": 4
+  },
+  {
+   "scroll": 400,
+   "dur": 1.2
+  },
+  {
+   "wait": 2.5
+  },
+  {
+   "scroll": 330,
+   "dur": 1.0
+  },
+  {
+   "wait": 2.5
+  }
+ ]
+}

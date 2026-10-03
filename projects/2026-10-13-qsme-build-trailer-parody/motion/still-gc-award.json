@@ -1,0 +1,13 @@
+{
+  "url": "https://qsme.build/solutions/general-contractors", "cssWidth": 540, "cssHeight": 720, "dpr": 3, "mobile": true, "settle": 3,
+  "evals": [
+    "document.querySelectorAll('[class*=cookie],[id*=cookie],[class*=consent]').forEach(e=>e.style.setProperty('display','none','important'))",
+    "document.querySelectorAll('header').forEach(e=>e.style.setProperty('visibility','hidden','important'))",
+    "(()=>{const h=[...document.querySelectorAll('h1,h2,h3,h4')].find(e=>e.textContent.trim()==='Award becomes a contract, not a to-do'); h.scrollIntoView({block:'center'}); return 1})()"
+  ],
+  "boxes": {
+    "title": "[...document.querySelectorAll('h1,h2,h3,h4')].find(e=>e.textContent.trim()==='Award becomes a contract, not a to-do')",
+    "card": "[...document.querySelectorAll('h1,h2,h3,h4')].find(e=>e.textContent.trim()==='Award becomes a contract, not a to-do').parentElement",
+    "s1": "(()=>{const p=[...document.querySelectorAll('h1,h2,h3,h4')].find(e=>e.textContent.trim()==='Award becomes a contract, not a to-do').nextElementSibling; const t=p.firstChild; const r=document.createRange(); r.setStart(t,0); r.setEnd(t, t.textContent.indexOf('contract level.')+15); return r})()"
+  }
+}

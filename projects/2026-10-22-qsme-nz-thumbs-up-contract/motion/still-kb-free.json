@@ -1,0 +1,15 @@
+{
+  "url": "https://www.qsme.co.nz/knowledge-hub/agreements",
+  "cssWidth": 430,
+  "cssHeight": 932,
+  "dpr": 3,
+  "mobile": true,
+  "settle": 5,
+  "evals": [
+    "(() => { const e = [...document.querySelectorAll('p')].find(x => x.textContent.includes('Agreements is free on every plan')); e.scrollIntoView({ block: 'center' }); })()"
+  ],
+  "boxes": {
+    "free": "[...document.querySelectorAll('p')].find(x => x.textContent.includes('Agreements is free on every plan'))",
+    "s1": "(() => { const p = [...document.querySelectorAll('p')].find(x => x.textContent.includes('Agreements is free on every plan')); const w = document.createTreeWalker(p, NodeFilter.SHOW_TEXT); let n; while ((n = w.nextNode())) { const i = n.textContent.indexOf('Agreements is free'); if (i >= 0) { const r = document.createRange(); r.setStart(n, i); r.setEnd(n, n.textContent.indexOf('plan.') + 5); return r; } } })()"
+  }
+}

@@ -1,0 +1,67 @@
+{
+ "cssWidth": 1440,
+ "cssHeight": 900,
+ "dpr": 2,
+ "shots": [
+  {
+   "name": "faq-private",
+   "url": "https://qsme.build/platform/tendering",
+   "el": "[...document.querySelectorAll('.faq__item')].find(e=>e.textContent.includes('What is a private tender'))",
+   "pad": [
+    2,
+    28,
+    20,
+    28
+   ],
+   "hl": "so the invited firms all price the same lines"
+  },
+  {
+   "name": "faq-tax",
+   "url": "https://qsme.build/platform/tendering",
+   "el": "[...document.querySelectorAll('.faq__item')].find(e=>e.textContent.includes('include and exclude tax'))",
+   "pad": [
+    2,
+    28,
+    20,
+    28
+   ],
+   "hl": "The comparison sorts on the basis you choose"
+  },
+  {
+   "name": "card-emailed",
+   "url": "https://qsme.build/platform/tendering",
+   "el": "[...document.querySelectorAll('li.card')].find(e=>e.textContent.includes('Emailed quotes included'))",
+   "pad": [
+    20,
+    20,
+    20,
+    20
+   ],
+   "hl": "You check every figure against the original before it is kept"
+  },
+  {
+   "name": "card-award",
+   "url": "https://qsme.build/platform/tendering",
+   "el": "[...document.querySelectorAll('li.card')].find(e=>e.textContent.includes('Award is a person'))",
+   "pad": [
+    20,
+    20,
+    20,
+    20
+   ],
+   "hl": "No automation and no assistant awards a tender."
+  },
+  {
+   "name": "cta-band",
+   "url": "https://qsme.build/platform/tendering",
+   "el": "document.querySelector('.cta-band__inner > div')",
+   "pad": [
+    40,
+    40,
+    40,
+    40
+   ],
+   "hl": "Bring a real package."
+  }
+ ]
+}

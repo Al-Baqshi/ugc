@@ -1,0 +1,15 @@
+{
+  "url": "https://www.qsme.co.nz/knowledge-hub/agreements",
+  "cssWidth": 430,
+  "cssHeight": 932,
+  "dpr": 3,
+  "mobile": true,
+  "settle": 5,
+  "evals": [
+    "(() => { const e = [...document.querySelectorAll('p')].find(x => x.textContent.includes('Agreements is free on every plan')); if (e) e.scrollIntoView({ block: 'center' }); })()"
+  ],
+  "boxes": {
+    "free": "[...document.querySelectorAll('p')].find(x => x.textContent.includes('Agreements is free on every plan'))",
+    "nolink": "[...document.querySelectorAll('p')].find(x => x.textContent.includes('They do not need a QSME account'))"
+  }
+}

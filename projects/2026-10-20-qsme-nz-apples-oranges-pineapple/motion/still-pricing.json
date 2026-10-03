@@ -1,0 +1,18 @@
+{
+  "url": "https://www.qsme.co.nz/pricing",
+  "cssWidth": 430,
+  "cssHeight": 932,
+  "dpr": 3,
+  "mobile": true,
+  "settle": 4,
+  "evals": [
+    "(() => { const h = [...document.querySelectorAll('h2,h3,h4,p,div,span')].find(e => e.textContent.trim() === 'Building something'); const card = h.closest('div[class*=rounded], section, article') || h.parentElement; card.scrollIntoView({block: 'center'}); window.scrollBy(0, 40); return 1; })()"
+  ],
+  "boxes": {
+    "heading": "[...document.querySelectorAll('h2,h3,h4,p,div,span')].find(e => e.textContent.trim() === 'Building something')",
+    "card": "(() => { const h = [...document.querySelectorAll('h2,h3,h4,p,div,span')].find(e => e.textContent.trim() === 'Building something'); let c = h; for (let i = 0; i < 6 && c; i++) { c = c.parentElement; if (c && c.textContent.includes('Start free') && c.textContent.includes('Invite your own tradies')) return c; } return h.parentElement; })()",
+    "tenders": "[...document.querySelectorAll('li,p,span,div')].find(e => e.children.length <= 2 && e.textContent.trim().startsWith('Post tenders and take bids'))",
+    "first": "[...document.querySelectorAll('li,p,span,div')].find(e => e.children.length <= 2 && e.textContent.trim().startsWith('Your first project, free'))",
+    "start": "(() => { const h = [...document.querySelectorAll('h2,h3,h4,p,div,span')].find(e => e.textContent.trim() === 'Building something'); let c = h; for (let i = 0; i < 6 && c; i++) { c = c.parentElement; if (c && c.textContent.includes('Invite your own tradies')) break; } return [...c.querySelectorAll('a,button')].find(e => e.textContent.trim() === 'Start free'); })()"
+  }
+}

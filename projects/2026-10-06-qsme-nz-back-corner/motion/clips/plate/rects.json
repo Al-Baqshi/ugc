@@ -1,0 +1,287 @@
+{
+ "y0css": 180,
+ "dsf": 2.5,
+ "chips": {
+  "Water supply": {
+   "card": [
+    82,
+    2179,
+    532,
+    2377
+   ],
+   "status": [
+    104,
+    2246,
+    511,
+    2287
+   ],
+   "lines": [
+    "",
+    "",
+    "Water supply",
+    "Available · ~0 m",
+    "A 550 mm CI pipe crosses or borders the site"
+   ]
+  },
+  "Wastewater": {
+   "card": [
+    548,
+    2179,
+    998,
+    2377
+   ],
+   "status": [
+    570,
+    2246,
+    976,
+    2287
+   ],
+   "lines": [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Wastewater",
+    "Available · ~0 m",
+    "A 150 mm VC pipe crosses or borders the site"
+   ]
+  },
+  "Stormwater": {
+   "card": [
+    82,
+    2392,
+    532,
+    2621
+   ],
+   "status": [
+    104,
+    2459,
+    511,
+    2500
+   ],
+   "lines": [
+    "",
+    "",
+    "",
+    "",
+    "Stormwater",
+    "Available · ~0 m",
+    "A pipe crosses or borders the site"
+   ]
+  },
+  "Piped gas": {
+   "card": [
+    548,
+    2392,
+    998,
+    2621
+   ],
+   "status": [
+    570,
+    2459,
+    976,
+    2500
+   ],
+   "lines": [
+    "",
+    "Piped gas",
+    "In coverage area",
+    "Network covers this area — connection subject to the distributor"
+   ]
+  },
+  "Electricity": {
+   "card": [
+    82,
+    2636,
+    532,
+    2865
+   ],
+   "status": [
+    104,
+    2703,
+    511,
+    2744
+   ],
+   "lines": [
+    "",
+    "Electricity",
+    "In coverage area",
+    "Network covers this area — connection subject to the distributor"
+   ]
+  },
+  "Flood plain": {
+   "card": [
+    82,
+    2951,
+    532,
+    3081
+   ],
+   "status": [
+    104,
+    3018,
+    511,
+    3059
+   ],
+   "lines": [
+    "",
+    "",
+    "",
+    "Flood plain",
+    "Clear"
+   ]
+  },
+  "Flood-prone area": {
+   "card": [
+    548,
+    2951,
+    998,
+    3081
+   ],
+   "status": [
+    570,
+    3018,
+    976,
+    3059
+   ],
+   "lines": [
+    "",
+    "",
+    "",
+    "Flood-prone area",
+    "Clear"
+   ]
+  },
+  "Overland flow path": {
+   "card": [
+    82,
+    3096,
+    532,
+    3294
+   ],
+   "status": [
+    104,
+    3163,
+    511,
+    3205
+   ],
+   "lines": [
+    "",
+    "",
+    "",
+    "Overland flow path",
+    "Present — check",
+    "3 mapped flow paths on or beside this site"
+   ]
+  },
+  "Coastal inundation": {
+   "card": [
+    548,
+    3096,
+    998,
+    3294
+   ],
+   "status": [
+    570,
+    3163,
+    976,
+    3205
+   ],
+   "lines": [
+    "",
+    "",
+    "",
+    "",
+    "Coastal inundation",
+    "Clear"
+   ]
+  }
+ },
+ "text": {
+  "notLim": [
+   [
+    593,
+    3395,
+    982,
+    3425
+   ],
+   [
+    82,
+    3429,
+    315,
+    3459
+   ]
+  ],
+  "indicativeBlock": [
+   82,
+   3324,
+   998,
+   3462
+  ],
+  "indicativeFull": "Indicative only, from LINZ, Auckland Council, Watercare & Vector open data (CC BY 4.0). Mapped pipe positions are approximate — always lodge a beforeUdig request before any excavation. Not a substitute for a LIM, PIM or engineering advice.",
+  "address": [
+   [
+    82,
+    1867,
+    82,
+    1909
+   ]
+  ],
+  "area": null,
+  "legal": [
+   82,
+   1968,
+   998,
+   2048
+  ],
+  "zone": [
+   [
+    254,
+    2054,
+    702,
+    2090
+   ]
+  ],
+  "council": [
+   82,
+   2054,
+   214,
+   2090
+  ],
+  "services": [
+   [
+    82,
+    2126,
+    227,
+    2160
+   ]
+  ],
+  "hazards": [
+   [
+    82,
+    2898,
+    226,
+    2932
+   ]
+  ],
+  "input": [
+   40,
+   497,
+   1040,
+   627
+  ],
+  "create": [
+   82,
+   3492,
+   524,
+   3572
+  ]
+ },
+ "map": [
+  42,
+  1039,
+  1038,
+  1789
+ ]
+}

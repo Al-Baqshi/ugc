@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<title>Granny flat for Mum (Flat 2 gets a vote)</title>
+<!--
+  QSME NZ · 9:16 · 31.9 s · silent master with burned-in captions.
+  S1 0–3.0      hook: gf-3-placed b-roll (Illustrative) → REQUIRED stamp (2.15)
+  S2 3.0–15.75  "What this site would require" (recreated QSME screen, demo data): granny-flat row → Required filter → cross-lease row
+  S4 15.75–22.4 marker sketch: one section, two flats, the bins
+  S5 22.4–27.4  the LIM & Record of Title row (same recreation)
+  S6 27.4–31.9  end card: the live qsme.co.nz "Search your address" strip (captured 2 Oct 2026, nothing typed) + the sign-up path to Site research
+  v3 (owner CTA rule 2026-10-03): path line "Sign up → search your address → Site research", pill "Sign up at qsme.co.nz"; no free / no-sign-up wording.
+  The product card copies RequirementsCard (origin/main DevelopmentCards.tsx) in the app's light theme:
+  levels/colours/wording are the product's own; the site is fictional demo data (Auckland, Single House zone, cross-lease).
+  v2 (review fixes): relabelled stand-in, faster opening scroll, push-in right after the Required tap so the frame settles on the
+  cross-lease row, tighter + bigger sketch, bins label cut (arrow + caption carry it), path line on the end card, logo without ®.
+-->
+<link rel="stylesheet" href="../../../tools/motion/kit.css">
+<style>
+  :root { --cap-bottom: 680px; }
+  /* ---------- shared ---------- */
+  .cap { position: absolute; left: 65px; right: 65px; bottom: var(--cap-bottom); text-align: center;
+         font-family: Manrope, Inter, sans-serif; font-weight: 800; letter-spacing: -0.015em; font-size: 60px; line-height: 1.2; text-wrap: balance; }
+  .cap > span { background: rgba(2, 6, 23, .94); color: #F8FAFC; padding: 6px 22px 8px; border-radius: 14px;
+                box-decoration-break: clone; -webkit-box-decoration-break: clone; box-shadow: 0 0 0 2px rgba(248,250,252,.10); }
+  .cap .g { color: #4ADE80; }
+  .cap .r { color: #FF6B63; }
+  .small { position: absolute; left: 65px; right: 65px; text-align: center; font: 500 30px/1.25 Inter, sans-serif; color: rgba(248,250,252,.78); }
+  .illustrative { background: rgba(2,6,23,.72); color: rgba(248,250,252,.75); border-color: rgba(248,250,252,.45); }
+
+  /* ---------- S1 hook ---------- */
+  #bgclip { position: absolute; left: -80px; top: -80px; width: 1240px; height: 2080px; object-fit: cover; filter: blur(34px) brightness(.42) saturate(1.15); }
+  #win { position: absolute; left: 0; top: 380px; width: 1080px; height: 1080px; overflow: hidden;
+         -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 13%, #000 84%, transparent 100%); }
+  #clip { position: absolute; left: -560px; top: -20px; width: 2048px; height: 1152px; transform-origin: 1100px 420px; }
+  #dim { position: absolute; inset: 0; background: #020617; opacity: 0; }
+  #h1 { position: absolute; left: 65px; right: 65px; top: 328px; font-family: Manrope; font-weight: 800; font-size: 118px; line-height: .98; letter-spacing: -0.035em;
+        color: #F8FAFC; text-shadow: 0 6px 40px rgba(2,6,23,.65), 0 2px 6px rgba(2,6,23,.5); }
+  #h1 .g { color: #4ADE80; }
+  #bubble { position: absolute; left: 65px; right: 95px; top: 968px; }
+  #bubble .b { position: relative; display: inline-block; background: #FFFFFF; color: #111827; border-radius: 30px; padding: 20px 34px 22px;
+               font: 700 64px/1.1 Kalam, cursive; box-shadow: 0 18px 50px rgba(0,0,0,.35); }
+  #bubble .b::after { content: ""; position: absolute; left: 70px; bottom: -26px; border: 16px solid transparent; border-top: 22px solid #fff; border-left: 24px solid #fff; transform: skewX(-12deg); }
+  #attrib { position: absolute; left: 65px; right: 65px; top: 1172px; text-align: right; }
+  #attrib span { display: inline-block; background: rgba(2,6,23,.92); color: #F8FAFC; font: 600 42px/1.1 Inter; padding: 10px 24px 12px; border-radius: 999px;
+                 box-shadow: 0 0 0 2px rgba(248,250,252,.14), 0 10px 30px rgba(0,0,0,.35); }
+  #ill1 { right: 65px; top: 316px; left: auto; }
+  #stamp { position: absolute; left: 0; right: 0; top: 650px; display: flex; justify-content: center; }
+  #stamp .s { font: 800 148px/1 Inter; letter-spacing: .07em; text-transform: uppercase; color: #C10007; background: rgba(255, 240, 240, .94);
+              border: 12px solid #C10007; border-radius: 26px; padding: 26px 46px 22px 56px; transform: rotate(-7deg); box-shadow: 0 30px 80px rgba(0,0,0,.45); }
+
+  /* ---------- S2/S5 product card (app light theme, RequirementsCard) ---------- */
+  #s2 { background: radial-gradient(1200px 900px at 50% 38%, #0B1430 0%, #020617 70%); }
+  /* the top fade is set per frame (it follows the shot so it lands in a gap between rows / on a group header) */
+  #cardwrap { position: absolute; inset: 0; }
+  #cam { position: absolute; left: 0; top: 0; transform-origin: 0 0; will-change: transform; }
+  #card { position: relative; width: 400px; background: #FFFFFF; color: #020618; border: 1px solid #E2E8F0; border-radius: 14px;
+          box-shadow: 0 1px 2px rgba(0,0,0,.05), 0 30px 80px rgba(0,0,0,.45); padding: 24px 0; font-family: Inter, sans-serif;
+          -webkit-font-smoothing: antialiased; }
+  .hd { padding: 0 24px 12px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
+  .ttl { display: flex; align-items: center; gap: 8px; font-size: 16px; line-height: 1; font-weight: 600; }
+  .ttl svg { width: 20px; height: 20px; color: #15803D; flex: none; }
+  .pills { display: flex; gap: 4px; }
+  .pill-f { border: 1px solid #E2E8F0; border-radius: 999px; padding: 2px 10px; font-size: 11px; line-height: 16px; font-weight: 500; color: #62748E; background: #fff; }
+  .pill-f.on { border-color: #15803D; background: rgba(21,128,61,.10); color: #15803D; }
+  .ct { padding: 0 24px; margin-top: 24px; }
+  .grp { overflow: hidden; }
+  .grp + .grp { margin-top: 12px; }
+  .gh { margin-bottom: 6px; font-size: 11px; line-height: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; color: #62748E; }
+  ul { list-style: none; }
+  li.row { overflow: hidden; }
+  li.row .in { display: flex; align-items: flex-start; gap: 8px; padding-top: 8px; }
+  ul li.row:first-child .in { padding-top: 0; }
+  .bdg { margin-top: 2px; display: inline-flex; width: 68px; flex: none; justify-content: center; border: 1px solid; border-radius: 8px; padding: 1px 6px;
+         font-size: 10px; line-height: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; }
+  .lv-required { border-color: rgba(251,44,54,.30); background: rgba(251,44,54,.10); color: #C10007; }
+  .lv-likely   { border-color: rgba(254,154,0,.30); background: rgba(254,154,0,.10); color: #BB4D00; }
+  .lv-possible { border-color: rgba(0,166,244,.30); background: rgba(0,166,244,.10); color: #0069A8; }
+  .lv-check    { border-color: #E2E8F0; background: #F1F5F9; color: #62748E; }
+  .tx { min-width: 0; flex: 1; }
+  .t1 { font-size: 14px; line-height: 1.375; font-weight: 500; }
+  .t2 { font-size: 12px; line-height: 1.375; color: #62748E; }
+  .t3 { font-size: 11px; line-height: 1.375; color: rgba(98,116,142,.8); font-style: italic; }
+  .hl { background-image: linear-gradient(transparent 8%, rgba(253,224,71,.85) 8%, rgba(253,224,71,.85) 94%, transparent 94%);
+        background-repeat: no-repeat; background-size: calc(var(--hl, 0) * 100%) 100%; color: #1F2937; }
+  .circ { position: relative; display: inline-block; }
+  .circ svg { position: absolute; left: -9px; top: -6px; width: calc(100% + 18px); height: calc(100% + 12px); }
+  #ring-cl { position: absolute; border: 2px solid #FB2C36; border-radius: 10px; opacity: 0; pointer-events: none; }
+  #cursor { position: absolute; left: 0; top: 0; width: 54px; height: 54px; opacity: 0; transform-origin: 6px 4px; }
+  #chip2 { position: absolute; left: 65px; top: 302px; display: inline-flex; align-items: center; gap: 12px; padding: 9px 22px 9px 18px; border-radius: 999px;
+           background: rgba(11,18,38,.9); border: 2px solid #1E293B; font: 600 30px/1.2 Inter; color: #E2E8F0; }
+  #chip2 i { width: 14px; height: 14px; border-radius: 50%; background: #3DC023; display: block; }
+  #chip2 b { color: #4ADE80; font-weight: 800; font-family: Manrope; }
+  #ill2 { left: 65px; top: 366px; }
+  #cuppa { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+  #aside { position: absolute; left: 322px; top: 902px; font: 700 54px/1 Kalam; color: #4ADE80; transform: rotate(-4deg); transform-origin: 0 50%; }
+
+  /* ---------- S4 sketch ---------- */
+  #s4 { overflow: hidden; }
+  #paper { position: absolute; left: 0; top: 0; width: 1800px; height: 1920px; background-color: #FBF7EE; transform-origin: 0 0;
+           background-image: linear-gradient(rgba(70,130,190,.16) 2px, transparent 2px), linear-gradient(90deg, rgba(70,130,190,.16) 2px, transparent 2px),
+                             linear-gradient(rgba(70,130,190,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(70,130,190,.08) 1px, transparent 1px);
+           background-size: 200px 200px, 200px 200px, 40px 40px, 40px 40px; }
+  #paper-bg { position: absolute; inset: 0; background: #FBF7EE; }
+  #paper svg { position: absolute; left: 0; top: 0; }
+  .ink { fill: none; stroke: #1F2937; stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
+  .ink.thin { stroke-width: 4; }
+  .ink.g { stroke: #15803D; stroke-dasharray: 18 14; }
+  .ink.red { stroke: #E0302A; stroke-width: 6; }
+  .lab { position: absolute; color: #1F2937; white-space: nowrap; }
+  .pm { font: 400 46px/1 "Permanent Marker"; }
+  .ka { font: 700 42px/1.1 Kalam; }
+  .ka.g { color: #15803D; }
+  .ctr { transform: translateX(-50%); }
+
+  /* ---------- S6 end card ---------- */
+  #s6 { background: radial-gradient(1100px 800px at 50% 30%, #0B1430 0%, #020617 72%); }
+  /* wordmark cropped to "QSME" (the ® registration is unconfirmed: truth sheet, company facts) */
+  #e-logo { position: absolute; left: 50%; top: 322px; width: 251px; height: 84px; margin-left: -125px; overflow: hidden; }
+  #e-logo img { position: absolute; left: -38.85px; top: -33.6px; width: 316.9px; height: 144.5px; }
+  #e-h { position: absolute; left: 65px; right: 65px; top: 446px; text-align: center; font: 800 66px/1.08 Manrope; letter-spacing: -0.03em; color: #F8FAFC; text-wrap: balance; }
+  #e-h .g { color: #4ADE80; }
+  #e-strip { position: absolute; left: 90px; top: 630px; width: 900px; height: 226px; overflow: hidden; border-radius: 26px; border: 2px solid #1E293B; box-shadow: 0 24px 60px rgba(0,0,0,.5); }
+  #e-strip img { position: absolute; left: 0; top: -868px; width: 900px; height: 1600px; }
+  #e-ring { position: absolute; left: 121px; top: 701px; width: 842px; height: 138px; border: 5px solid #4ADE80; border-radius: 22px; opacity: 0; }
+  #e-src { position: absolute; left: 90px; top: 866px; font: 500 22px/1.2 "JetBrains Mono"; color: rgba(248,250,252,.55); }
+  #e-steps { position: absolute; left: 65px; right: 65px; top: 922px; display: flex; justify-content: center; align-items: center; gap: 14px;
+             font: 600 34px/1.2 Inter; color: rgba(248,250,252,.86); white-space: nowrap; }
+  #e-steps i { font-style: normal; color: #4ADE80; font-weight: 800; }
+  #e-steps b { color: #F8FAFC; font-weight: 800; }
+  #e-steps em { font-style: normal; color: #4ADE80; font-weight: 800; }
+  #e-pill { position: absolute; left: 0; right: 0; top: 1012px; display: flex; justify-content: center; }
+  #e-pill span { background: #16A34A; color: #fff; font: 800 56px/1 Manrope; letter-spacing: -0.02em; padding: 22px 46px 24px; border-radius: 14px; }
+  #e-fine { position: absolute; left: 65px; right: 65px; top: 1150px; text-align: center; font: 500 28px/1.2 Inter; color: rgba(248,250,252,.6); }
+</style>
+</head>
+<body class="nz r9x16">
+<div id="root">
+
+  <!-- ================= S2 + S5: the requirements card (recreated QSME screen, demo data) ================= -->
+  <div id="s2" class="fill">
+    <div id="cardwrap" data-qa-ignore>
+      <div id="cam"><div id="card">
+        <div class="hd">
+          <div class="ttl">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg>
+            What this site would require
+          </div>
+          <div class="pills"><span id="pf-all" class="pill-f on">All</span><span id="pf-req" class="pill-f">Required</span><span id="pf-lik" class="pill-f">Likely</span></div>
+        </div>
+        <div class="ct" id="ct"></div>
+        <div id="ring-cl"></div>
+      </div></div>
+    </div>
+    <svg id="cursor" viewBox="0 0 28 28"><path d="M5 3 L5 22 L10 17.5 L13.4 25 L16.6 23.6 L13.3 16.3 L20 16.3 Z" fill="#fff" stroke="#111" stroke-width="1.6" stroke-linejoin="round"/></svg>
+    <div id="chip2"><i></i><b>QSME</b> Site research</div>
+    <div id="ill2" class="illustrative">Recreated QSME screen · demo data</div>
+
+    <div id="capA" class="cap"><span>So we looked up our section first.</span></div>
+    <div id="capB" class="cap"><span>“Can often.” <span class="g" style="background:none;padding:0;box-shadow:none">Read the conditions.</span></span></div>
+    <div id="capC" class="cap"><span>Then we clicked “Required”.</span></div>
+    <div id="capD" class="cap" style="bottom: 750px"><span>Because we're on a <span class="r" style="background:none;padding:0;box-shadow:none">cross-lease.</span></span></div>
+    <div id="smD" class="small" style="top: 1192px">Read from the legal description: a clue, not a title search.</div>
+    <div id="capG" class="cap" style="bottom: 750px"><span>Next: the LIM, the title, and a cuppa with next door.</span></div>
+    <svg id="cuppa" viewBox="0 0 1080 1920">
+      <path id="cup1" class="ink" style="stroke:#F8FAFC;stroke-width:6" d="M150 905 L156 968 Q162 992 186 992 L218 992 Q242 992 246 968 L252 905 Z"/>
+      <path id="cup2" class="ink" style="stroke:#F8FAFC;stroke-width:6" d="M252 920 Q282 920 280 944 Q278 966 248 964"/>
+      <path id="cup3" class="ink" style="stroke:#F8FAFC;stroke-width:5" d="M180 890 Q168 872 182 856 Q196 840 184 822 M218 890 Q206 872 220 856 Q234 840 222 822"/>
+    </svg>
+    <div id="aside">(might bake something)</div>
+  </div>
+
+  <!-- ================= S1: hook ================= -->
+  <div id="s1" class="fill">
+    <img id="bgclip" alt="">
+    <div id="win"><img id="clip" alt=""><div id="dim"></div></div>
+    <div id="h1">Granny flat<br>for <span class="g">Mum.</span></div>
+    <div id="ill1" class="illustrative">Illustrative</div>
+    <div id="bubble"><div class="b">“Easy now.<br>The rules changed.”</div></div>
+    <div id="attrib"><span>— every barbecue since winter</span></div>
+    <div id="stamp"><div class="s">Required</div></div>
+  </div>
+
+  <!-- ================= S4: the sketch ================= -->
+  <div id="s4" class="fill">
+    <div id="paper-bg"></div>
+    <div id="paper">
+      <svg width="1800" height="1920" viewBox="0 0 1800 1920">
+        <!-- the section boundary (one lot, shared) -->
+        <path id="bnd" class="ink" d="M84 452 L1612 444 L1606 1072 L90 1066 Z"/>
+        <path id="gnd" class="ink thin" d="M104 882 L1592 878"/>
+        <!-- Flat 1 -->
+        <path id="f1" class="ink" d="M150 880 L150 650 L440 650 L440 880 M128 660 L295 532 L462 660 M262 880 L262 790 L322 790 L322 880 M180 690 L236 690 L236 744 L180 744 Z M362 690 L418 690 L418 744 L362 744 Z"/>
+        <!-- us: two stick figures -->
+        <path id="us1" class="ink" d="M512 744 m-22 0 a22 22 0 1 0 44 0 a22 22 0 1 0 -44 0 M512 766 L512 830 M512 830 L490 880 M512 830 L534 880 M512 786 L486 818 M512 786 L540 812"/>
+        <path id="us2" class="ink" d="M598 750 m-20 0 a20 20 0 1 0 40 0 a20 20 0 1 0 -40 0 M598 770 L598 832 M598 832 L578 880 M598 832 L618 880 M598 790 L574 820 M598 790 L650 768"/>
+        <!-- the granny flat (dashed) -->
+        <g transform="translate(-40 0)">
+          <path id="gf" class="ink g" d="M818 880 L818 776 L992 776 L992 880 M800 784 L905 706 L1010 784"/>
+          <path id="heart" class="ink red" style="stroke-width:5" d="M905 850 C 892 832, 874 844, 905 868 C 936 844, 918 832, 905 850 Z"/>
+        </g>
+        <!-- bins + Flat 2 -->
+        <g transform="translate(-80 0)">
+          <path id="bins" class="ink thin" d="M1094 872 L1100 818 L1150 818 L1156 872 Z M1112 834 L1138 834 M1182 872 L1188 818 L1238 818 L1244 872 Z M1200 834 L1226 834"/>
+          <path id="lid1" d="M1088 818 L1162 818 L1158 804 L1092 804 Z" fill="#E0302A" stroke="#1F2937" stroke-width="4" stroke-linejoin="round"/>
+          <path id="lid2" d="M1176 818 L1250 818 L1246 804 L1180 804 Z" fill="#F5C518" stroke="#1F2937" stroke-width="4" stroke-linejoin="round"/>
+          <path id="wheels" d="M1104 878 m-7 0 a7 7 0 1 0 14 0 a7 7 0 1 0 -14 0 M1192 878 m-7 0 a7 7 0 1 0 14 0 a7 7 0 1 0 -14 0" fill="#1F2937"/>
+          <path id="f2" class="ink" d="M1330 880 L1330 650 L1620 650 L1620 880 M1308 660 L1475 532 L1642 660 M1446 880 L1446 790 L1506 790 L1506 880 M1360 690 L1416 690 L1416 744 L1360 744 Z M1540 690 L1596 690 L1596 744 L1540 744 Z"/>
+        </g>
+        <!-- arrow from the caption up to the bins -->
+        <path id="arr" class="ink red" d="M1200 1036 C 1200 980, 1150 925, 1110 902 M1126 930 L1110 902 L1142 902"/>
+      </svg>
+      <div id="l-sec" class="lab pm" style="left:100px; top:336px">ONE SECTION, SHARED.</div>
+      <div id="l-xl" class="lab ka" style="left:104px; top:392px; font-size:40px; color:#475569">(that's a cross-lease)</div>
+      <div id="l-f1" class="lab pm ctr" style="left:295px; top:902px">FLAT 1</div>
+      <div id="l-us" class="lab ka ctr" style="left:556px; top:902px">(us)</div>
+      <div id="l-gf2" class="lab ka g ctr" style="left:865px; top:784px; font-size:34px">60 m²</div>
+      <div id="l-gf" class="lab ka g ctr" style="left:865px; top:900px; font-size:38px">granny flat?</div>
+      <div id="l-gf3" class="lab ka g ctr" style="left:865px; top:944px; font-size:38px">for Mum</div>
+      <div id="l-f2" class="lab pm ctr" style="left:1395px; top:902px">FLAT 2</div>
+    </div>
+    <div id="capE1" class="cap"><span>Flat 2 gets a say.</span></div>
+    <div id="capE2" class="cap"><span>We've only ever talked about bins.</span></div>
+  </div>
+
+  <!-- ================= S6: end card ================= -->
+  <div id="s6" class="fill">
+    <div id="e-logo"><img src="../../../tools/motion/qsme-logo.svg" alt="QSME"></div>
+    <div id="e-h">See what your <span class="g">Auckland section</span> would require.</div>
+    <div id="e-strip"><img src="clips/home-mobile/f_00000.jpg" alt=""></div>
+    <div id="e-ring"></div>
+    <div id="e-src">qsme.co.nz · live homepage, 2 Oct 2026</div>
+    <div id="e-steps"><b>Sign up</b><i>→</i><span>search your address</span><i>→</i><em>Site research</em></div>
+    <div id="e-pill"><span>Sign up at qsme.co.nz</span></div>
+    <div id="e-fine">Indicative only. Not a LIM, title search or planning advice.</div>
+  </div>
+</div>
+
+<script src="../../../tools/motion/kit.js"></script>
+<script>
+/* ---------------- card data: RequirementsCard rows for a fictional Auckland cross-lease site, Single House zone ---------------- */
+const ZONE = 'Residential - Single House Zone';
+const GROUPS = [
+  ['Consents', [
+    ['rc', 'possible', 'Resource consent', 'Needed only if the build infringes a zone standard (height, boundary rules, coverage) or goes beyond what the zone permits.', ZONE],
+    ['bc', 'required', 'Building consent', 'Every new dwelling, structural alteration and drainage change needs a building consent from the council before work starts.', ''],
+    ['sc', 'likely', 'Subdivision consent (to sell separately)', 'Selling homes on separate titles — fee simple or unit title — needs a subdivision consent, then a section 224(c) certificate and new titles from LINZ.', ''],
+    ['gf', 'possible', 'Granny flat without consent', 'Under the national granny-flat rules a detached minor unit up to 70 m² <span class="hl" id="hl-often">can often</span> be added without resource consent (and with a simplified building pathway) <span class="hl" id="hl-cond">where the site meets the conditions</span>.', ZONE],
+  ]],
+  ['Neighbours & approvals', [
+    ['na', 'possible', "Neighbours' written approval", "Infringing height-in-relation-to-boundary, yards or height usually means the affected neighbours' written approval, or a limited-notified consent (slower, contestable). A design that meets the standards avoids notification altogether.", ''],
+    ['cl', 'required', "Other cross-lease owners' consent", 'On a cross-lease the other flat owners <span class="hl" id="hl-fp">must consent to any change of footprint</span>, and the flats plan must be updated (or the title converted to fee simple first).', '<span class="circ" id="circ-cl">because: Cross-lease title<svg viewBox="0 0 100 40" preserveAspectRatio="none"><path id="circ-path" d="M54 3 C 82 2, 99 10, 98 21 C 97 33, 70 38, 46 37 C 20 36, 1 30, 2 19 C 3 8, 26 2, 60 5" fill="none" stroke="#E0302A" stroke-width="2.6" stroke-linecap="round" vector-effect="non-scaling-stroke"/></svg></span>'],
+    ['fa', 'possible', 'Boundary fence notice', 'A new boundary fence is shared under the Fencing Act — a fencing notice lets you split the cost with the neighbour.', ''],
+    ['vc', 'possible', 'Vehicle crossing permit', 'A new or widened driveway across the footpath needs a vehicle crossing permit from Auckland Transport.', ''],
+    ['sv', 'required', 'Service connection applications', 'New water and wastewater connections are applied for through Watercare; stormwater through the council. Engineering plan approval covers new public drainage.', ''],
+  ]],
+  ['Reports & design', [
+    ['gt', 'likely', 'Geotechnical report', 'Multi-unit builds, retaining walls and anything on fill or clay need a geotechnical report for foundation design.', ''],
+  ]],
+  ['Costs & checks', [
+    ['lim', 'check', 'LIM & Record of Title', '<span class="hl" id="hl-lim">Order a LIM and the title before committing</span>: consent notices, covenants, easements, contamination (HAIL) history and past consents change what is possible.', ''],
+  ]],
+];
+const LABEL = { required: 'Required', likely: 'Likely', possible: 'Possible', check: 'Check' };
+const ct = document.getElementById('ct');
+GROUPS.forEach(([title, rows], gi) => {
+  const g = document.createElement('div'); g.className = 'grp'; g.id = 'grp' + gi;
+  g.dataset.keep = rows.some(r => r[1] === 'required') ? '1' : '0';
+  g.innerHTML = '<p class="gh">' + title + '</p><ul>' + rows.map(([k, lv, t, d, why]) =>
+    '<li class="row" id="row-' + k + '" data-level="' + lv + '"><div class="in"><span class="bdg lv-' + lv + '" id="bdg-' + k + '">' + LABEL[lv] + '</span>' +
+    '<div class="tx"><p class="t1">' + t + '</p><p class="t2">' + d + '</p>' + (why ? '<p class="t3">' + (why.startsWith('<') ? why : 'because: ' + why) + '</p>' : '') + '</div></div></li>').join('') + '</ul>';
+  ct.appendChild(g);
+});
+
+/* ---------------- timeline ---------------- */
+const T = { stamp: 2.15, cut1: 3.0, tap: 10.05, xl: 11.45, sketch: 15.75, lim: 22.4, end: 27.4, dur: 31.9 };
+const E = Kit.ease;
+
+// S1 hook --------------------------------------------------------------------------------------
+Kit.scene('#s1', 0, T.cut1);
+Kit.clip('#clip', { dir: 'clips/gf3', t0: 0, t1: T.stamp - 0.1, fps: 30, ext: '.jpg' });
+Kit.clip('#bgclip', { dir: 'clips/gf3', t0: 0, t1: T.stamp - 0.1, fps: 30, ext: '.jpg' });
+Kit.add('#clip', 'scale', [[0, 1.0], [T.stamp - 0.1, 1.065, 'linear'], [T.stamp + 0.45, 1.10, 'out']]);
+Kit.add('#bubble', 'scale', [[0, 0.94], [0.45, 1, 'outBack']]);
+Kit.pop('#attrib', 0.5, { dy: 16 });
+Kit.add('#dim', 'opacity', [[T.stamp - 0.1, 0], [T.stamp, 0.6, 'out']]);
+Kit.slam('#stamp', T.stamp, { from: 1.9, dur: 0.16 });
+const sh = T.stamp + 0.14;
+Kit.add('#s1', 'x', [[sh, 0], [sh + 0.04, -16], [sh + 0.08, 12], [sh + 0.12, -7], [sh + 0.16, 3], [sh + 0.2, 0]]);
+Kit.add('#s1', 'y', [[sh, 0], [sh + 0.04, 8], [sh + 0.08, -6], [sh + 0.12, 3], [sh + 0.2, 0]]);
+
+// S2 card --------------------------------------------------------------------------------------
+Kit.scene('#s2', T.cut1, T.end + 0.35);
+Kit.add('#cardwrap', 'opacity', [[T.cut1, 0], [T.cut1 + 0.18, 1, 'out'], [T.end, 1], [T.end + 0.16, 0, 'in']]);
+Kit.add('#cardwrap', 'y', [[T.cut1, 70], [T.cut1 + 0.32, 0, 'out']]);
+Kit.pop('#chip2', T.cut1 + 0.1, { dy: 14 }).out('#chip2', T.end, 0.2);
+Kit.pop('#ill2', T.cut1 + 0.2, { dy: 0 }).out('#ill2', T.end, 0.2);
+
+Kit.pop('#capA', 3.15).out('#capA', 4.85, 0.12);
+Kit.pop('#capB', 5.0).out('#capB', 8.6, 0.12);
+Kit.add('#hl-often', 'var:--hl', [[4.45, 0], [4.85, 1, 'inOut']]);
+Kit.add('#hl-cond', 'var:--hl', [[5.15, 0], [5.95, 1, 'inOut']]);
+Kit.pop('#capC', 9.25).out('#capC', 10.95, 0.12);
+Kit.pop('#capD', T.xl + 0.05).out('#capD', T.sketch - 0.05, 0.1);
+Kit.pop('#smD', T.xl + 0.45, { dy: 0 }).out('#smD', T.sketch - 0.05, 0.1);
+Kit.add('#hl-fp', 'var:--hl', [[T.xl + 0.75, 0], [T.xl + 1.6, 1, 'inOut']]);
+Kit.add('#circ-path', 'trim', [[T.xl + 1.9, 0], [T.xl + 2.5, 1, 'out']]);
+Kit.add('#bdg-cl', 'scale', [[T.xl - 0.05, 1], [T.xl + 0.13, 1.22, 'out'], [T.xl + 0.35, 1, 'out']]);
+Kit.add('#ring-cl', 'opacity', [[T.xl - 0.05, 0], [T.xl + 0.05, 1], [T.xl + 0.65, 0, 'in']]);
+Kit.add('#ring-cl', 'scale', [[T.xl - 0.05, 1], [T.xl + 0.65, 1.5, 'out']]);
+// S5 (the LIM row)
+Kit.pop('#capG', T.lim + 0.35).out('#capG', T.end - 0.05, 0.1);
+Kit.add('#hl-lim', 'var:--hl', [[T.lim + 0.55, 0], [T.lim + 1.35, 1, 'inOut']]);
+Kit.add('#cup1', 'trim', [[T.lim + 2.25, 0], [T.lim + 2.6, 1, 'out']]).add('#cup2', 'trim', [[T.lim + 2.5, 0], [T.lim + 2.7, 1, 'out']]).add('#cup3', 'trim', [[T.lim + 2.65, 0], [T.lim + 3.0, 1, 'out']]);
+Kit.add('#cuppa', 'opacity', [[0, 0], [T.lim + 2.2, 1, 'hold'], [T.end, 1], [T.end + 0.15, 0]]);
+Kit.add('#aside', 'clipX', [[T.lim + 2.8, 0], [T.lim + 3.5, 1, 'linear']]).show('#aside', T.lim + 2.8).out('#aside', T.end, 0.15);
+
+// camera: [t, focusElement, fy (0 top .. 1 bottom of that element), screenY, scale, ease, topAnchor]
+// topAnchor: the element whose top edge the top fade lands on (a row or a group header), so no half-lines sit under the chip.
+const CAM = [
+  [3.00, '#card', 0, 478, 2.45, null, null],
+  [3.40, '#card', 0, 474, 2.45, 'inOut', null],
+  [4.25, '#row-gf', 0.5, 652, 2.62, 'inOut', '#row-gf'],
+  [8.55, '#row-gf', 0.5, 646, 2.74, 'inOut', '#row-gf'],
+  [9.15, '#card', 0, 432, 1.6, 'inOut', null],
+  [10.60, '#card', 0, 432, 1.6, null, null],
+  [T.xl, '#row-cl', 0.5, 660, 2.55, 'inOut', '#grp1'],
+  [T.sketch, '#row-cl', 0.5, 655, 2.70, 'inOut', '#grp1'],
+  [T.lim, '#row-lim', 0.5, 628, 2.55, 'hold', '#grp3'],
+  [T.end - 0.05, '#row-lim', 0.5, 622, 2.66, 'inOut', '#grp3'],
+  [T.end + 0.2, '#row-lim', 0.5, 680, 2.2, 'in', '#grp3'],
+];
+const card = document.getElementById('card'), cam = document.getElementById('cam'), wrap = document.getElementById('cardwrap');
+function rel(el) { let x = 0, y = 0, e = el; while (e && e !== card) { x += e.offsetLeft; y += e.offsetTop; e = e.offsetParent; } return { x, y, w: el.offsetWidth, h: el.offsetHeight }; }
+function focusY(k) { const b = k[1] === '#card' ? { y: 0, h: card.offsetHeight } : rel(document.querySelector(k[1])); return b.y + b.h * k[2]; }
+// top fade for a key: [transparent-until, opaque-from] in screen px
+function fadeOf(k) {
+  if (!k[6]) return [398, 462];
+  const el = document.querySelector(k[6]), txt = el.matches('li') ? el.querySelector('.tx') : el;   // first line of text of that row / group
+  const ay = rel(txt).y, top = k[3] - k[4] * focusY(k);
+  const y0 = top + k[4] * (ay - 7), y1 = top + k[4] * (ay - 1), lift = Math.max(0, 428 - y1);   // the gap above it is 8–12 card px
+  return [y0 + lift, y1 + lift];
+}
+function camAt(t) {
+  let i = 0; while (i + 1 < CAM.length && CAM[i + 1][0] <= t) i++;
+  const a = CAM[i], b = CAM[i + 1];
+  if (!b || t <= a[0] || b[5] === 'hold') return { fy: focusY(a), ay: a[3], s: a[4], fade: fadeOf(a) };
+  const p = E[b[5] || 'linear']((t - a[0]) / (b[0] - a[0]));
+  const fa = fadeOf(a), fb = fadeOf(b);
+  return { fy: focusY(a) + (focusY(b) - focusY(a)) * p, ay: a[3] + (b[3] - a[3]) * p, s: Math.exp(Math.log(a[4]) + (Math.log(b[4]) - Math.log(a[4])) * p),
+           fade: [fa[0] + (fb[0] - fa[0]) * p, fa[1] + (fb[1] - fa[1]) * p] };
+}
+function setCam(c) { cam.style.transform = 'translate(' + (540 - c.s * 200).toFixed(2) + 'px,' + (c.ay - c.s * c.fy).toFixed(2) + 'px) scale(' + c.s.toFixed(4) + ')'; }
+function setFade(f) {
+  const m = 'linear-gradient(to bottom, transparent ' + f[0].toFixed(1) + 'px, #000 ' + f[1].toFixed(1) + 'px, #000 1045px, rgba(0,0,0,.2) 1135px, rgba(0,0,0,.2) 1470px, transparent 1640px)';
+  wrap.style.webkitMaskImage = m; wrap.style.maskImage = m;
+}
+function toScreen(c, x, y) { return { x: 540 - c.s * 200 + c.s * x, y: c.ay - c.s * c.fy + c.s * y }; }
+
+// Required filter: collapse everything that isn't Required (the product re-renders instantly; we ease it over 0.4 s)
+const rows = [...document.querySelectorAll('li.row')], groups = [...document.querySelectorAll('.grp')];
+function kHide(t) { if (t < T.tap + 0.05 || t >= T.lim) return 1; return 1 - E.inOut(Math.min(1, (t - T.tap - 0.05) / 0.4)); }
+function applyFilter(t) {
+  const k = kHide(t), req = t >= T.tap && t < T.lim;
+  document.getElementById('pf-all').classList.toggle('on', !req);
+  document.getElementById('pf-req').classList.toggle('on', req);
+  rows.forEach(r => { r.style.height = ''; r.style.opacity = ''; });
+  groups.forEach(g => { g.style.height = ''; g.style.marginTop = ''; g.style.opacity = ''; });
+  rows.forEach(r => {
+    if (r.dataset.level === 'required') return;
+    const full = r.scrollHeight; r.style.height = (k * full).toFixed(2) + 'px'; r.style.opacity = Math.max(0, (k - 0.35) / 0.65).toFixed(3);
+  });
+  // padding above the first remaining row of each list
+  document.querySelectorAll('ul').forEach(ul => {
+    let prev = 0;
+    [...ul.children].forEach((li, i) => { const kk = li.dataset.level === 'required' ? 1 : k; const inn = li.firstChild; inn.style.paddingTop = i === 0 ? '0px' : (8 * Math.min(1, prev)).toFixed(2) + 'px'; prev = Math.max(prev, kk); });
+  });
+  groups.forEach((g, i) => {
+    if (g.dataset.keep === '1') return;
+    const full = g.scrollHeight; g.style.height = (k * full).toFixed(2) + 'px'; g.style.marginTop = (12 * k).toFixed(2) + 'px'; g.style.opacity = k.toFixed(3);
+  });
+}
+
+// cursor: enters, lands on "Required", clicks, leaves before the push-in
+const cursor = document.getElementById('cursor');
+function cursorAt(t, c) {
+  const pill = document.getElementById('pf-req'); const pb = rel(pill);
+  const target = toScreen(c, pb.x + pb.w * 0.55, pb.y + pb.h * 0.62);
+  const start = { x: 900, y: 1150 };
+  let x, y, op = 0, sc = 1;
+  const c0 = T.tap - 0.65;
+  if (t < c0 || t > T.tap + 0.9) return { op: 0, x: 0, y: 0, sc: 1 };
+  const p = E.inOut(Math.min(1, Math.max(0, (t - c0) / 0.55)));
+  x = start.x + (target.x - start.x) * p; y = start.y + (target.y - start.y) * p;
+  if (t > T.tap + 0.3) { const q = E.in(Math.min(1, (t - T.tap - 0.3) / 0.55)); x += 120 * q; y += 220 * q; }
+  op = Math.min(1, (t - c0) / 0.12) * (t > T.tap + 0.5 ? Math.max(0, 1 - (t - T.tap - 0.5) / 0.3) : 1);
+  sc = (t >= T.tap - 0.06 && t < T.tap + 0.1) ? 0.84 : 1;
+  return { op, x, y, sc };
+}
+
+const ring = document.getElementById('ring-cl');
+Kit.each(t => {
+  if (t < T.cut1 || t > T.end + 0.4) return;
+  applyFilter(t);
+  const c = camAt(t); setCam(c); setFade(c.fade);
+  const cu = cursorAt(t, c);
+  cursor.style.opacity = cu.op; cursor.style.visibility = cu.op > 0.001 ? 'visible' : 'hidden';
+  cursor.style.transform = 'translate(' + (cu.x - 6).toFixed(1) + 'px,' + (cu.y - 4).toFixed(1) + 'px) scale(' + cu.sc + ')';
+  // ring around the cross-lease badge (card coords)
+  const bb = rel(document.getElementById('bdg-cl'));
+  ring.style.left = (bb.x - 4) + 'px'; ring.style.top = (bb.y - 4) + 'px'; ring.style.width = (bb.w + 8) + 'px'; ring.style.height = (bb.h + 8) + 'px';
+});
+
+// S4 sketch (1.15x, two views: Flat 1 + us, then pan to the granny flat, bins and Flat 2) ---------
+const S = T.sketch, SC = 1.15, X0 = -35, X1 = -786, Y0 = -70;
+Kit.scene('#s4', S, T.lim);
+Kit.add('#paper-bg', 'y', [[S, 1920], [S + 0.32, 0, 'swipe']]);
+Kit.add('#paper', 'scale', [[0, SC]]);
+Kit.add('#paper', 'y', [[S, 1920 + Y0], [S + 0.32, Y0, 'swipe']]);
+Kit.add('#paper', 'x', [[S, X0], [S + 1.6, X0], [S + 2.4, X1, 'inOut'], [T.lim, X1 - 16, 'linear']]);
+Kit.add('#bnd', 'trim', [[S + 0.2, 0], [S + 0.7, 1, 'out']]);
+Kit.add('#gnd', 'trim', [[S + 0.3, 0], [S + 0.6, 1, 'out']]);
+Kit.add('#l-sec', 'clipX', [[S + 0.3, 0], [S + 0.7, 1, 'linear']]).show('#l-sec', S + 0.3);
+Kit.add('#f1', 'trim', [[S + 0.25, 0], [S + 0.75, 1, 'out']]);
+Kit.add('#l-xl', 'clipX', [[S + 0.65, 0], [S + 1.0, 1, 'linear']]).show('#l-xl', S + 0.65);
+Kit.add('#l-f1', 'clipX', [[S + 0.7, 0], [S + 0.9, 1, 'linear']]).show('#l-f1', S + 0.7);
+Kit.add('#us1', 'trim', [[S + 0.6, 0], [S + 0.9, 1, 'out']]).add('#us2', 'trim', [[S + 0.7, 0], [S + 1.0, 1, 'out']]);
+Kit.add('#l-us', 'clipX', [[S + 0.95, 0], [S + 1.1, 1, 'linear']]).show('#l-us', S + 0.95);
+Kit.add('#gf', 'trim', [[S + 1.1, 0], [S + 1.5, 1, 'out']]).add('#heart', 'trim', [[S + 1.4, 0], [S + 1.6, 1, 'out']]);
+Kit.add('#l-gf2', 'clipX', [[S + 1.65, 0], [S + 1.77, 1, 'linear']]).show('#l-gf2', S + 1.65);
+Kit.add('#l-gf', 'clipX', [[S + 1.7, 0], [S + 1.9, 1, 'linear']]).show('#l-gf', S + 1.7);
+Kit.add('#l-gf3', 'clipX', [[S + 1.85, 0], [S + 2.0, 1, 'linear']]).show('#l-gf3', S + 1.85);
+Kit.add('#bins', 'trim', [[S + 1.8, 0], [S + 2.2, 1, 'out']]);
+Kit.add('#lid1', 'opacity', [[S + 2.0, 0], [S + 2.1, 1]]).add('#lid1', 'y', [[S + 2.0, -30], [S + 2.18, 0, 'outBack']]);
+Kit.add('#lid2', 'opacity', [[S + 2.12, 0], [S + 2.22, 1]]).add('#lid2', 'y', [[S + 2.12, -30], [S + 2.3, 0, 'outBack']]);
+Kit.add('#wheels', 'opacity', [[S + 2.2, 0], [S + 2.3, 1]]);
+Kit.add('#f2', 'trim', [[S + 1.95, 0], [S + 2.5, 1, 'out']]);
+Kit.add('#l-f2', 'clipX', [[S + 2.35, 0], [S + 2.6, 1, 'linear']]).show('#l-f2', S + 2.35);
+Kit.pop('#capE1', S + 2.6).out('#capE1', S + 4.3, 0.1);
+// the punchline: caption + a red arrow up to the bins + both lids give a little hop
+const PB = S + 4.4;
+Kit.pop('#capE2', PB);
+Kit.add('#arr', 'trim', [[PB + 0.05, 0], [PB + 0.45, 1, 'out']]);
+Kit.add('#lid1', 'y', [[PB + 0.45, 0], [PB + 0.55, -14, 'out'], [PB + 0.7, 0, 'in']]);
+Kit.add('#lid2', 'y', [[PB + 0.55, 0], [PB + 0.65, -14, 'out'], [PB + 0.8, 0, 'in']]);
+
+// S6 end card ----------------------------------------------------------------------------------
+Kit.scene('#s6', T.end, T.dur + 1);
+Kit.add('#s6', 'opacity', [[T.end + 0.08, 0], [T.end + 0.3, 1, 'out']]);
+Kit.add('#e-logo', 'opacity', [[T.end + 0.1, 0], [T.end + 0.35, 1, 'out']]).add('#e-logo', 'scale', [[T.end + 0.1, 0.92], [T.end + 0.45, 1, 'out']]);
+Kit.pop('#e-h', T.end + 0.2);
+Kit.pop('#e-strip', T.end + 0.45, { dy: 30 }).pop('#e-src', T.end + 0.6, { dy: 0 });
+Kit.pop('#e-steps', T.end + 0.65, { dy: 20 });
+Kit.slam('#e-pill', T.end + 0.85, { from: 1.25, dur: 0.18 });
+Kit.add('#e-ring', 'opacity', [[T.end + 0.8, 0], [T.end + 1.0, 1, 'out'], [T.end + 2.2, 1], [T.end + 2.6, 0.55, 'inOut'], [T.end + 3.0, 1, 'inOut'], [T.end + 3.6, 1], [T.end + 4.0, 0.55, 'inOut']]);
+Kit.add('#e-ring', 'scale', [[T.end + 0.8, 1.06], [T.end + 1.05, 1, 'out']]);
+Kit.pop('#e-fine', T.end + 1.1, { dy: 0 });
+
+Kit.ready({ duration: T.dur, fonts: ['800 60px Manrope', '600 30px Inter', '700 58px Kalam', '400 46px "Permanent Marker"', '500 22px "JetBrains Mono"'] });
+</script>
+</body>
+</html>

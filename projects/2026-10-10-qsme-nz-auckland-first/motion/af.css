@@ -1,0 +1,97 @@
+/* Auckland first (we know): styles for the 16:9 master and the 9:16 version. Brand: body.nz (kit.css). */
+:root { --amber: #F5B544; --dim: #475569; --dim2: #334155; --glass: rgba(11, 18, 38, .86); }
+#root { background: radial-gradient(1200px 900px at 18% 8%, #0A1A2E 0%, #020617 62%); }
+.t { position: absolute; }
+.display { color: var(--ink); }
+.kicker { font: 600 26px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.mono { font-family: var(--mono); }
+.dimtext { color: var(--ink-70); }
+.green { color: var(--accent); }
+img.cover { position: absolute; display: block; }
+
+/* ---------- hook + self-own map ---------- */
+.nzmap { position: absolute; }
+.nzmap path.land { fill: #0B1529; stroke: #2B4A3A; stroke-width: 2.4; stroke-linejoin: round; }
+.pin { position: absolute; width: 0; height: 0; }
+.pin i { position: absolute; left: -13px; top: -13px; width: 26px; height: 26px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 6px rgba(61,192,35,.22), 0 0 26px rgba(61,192,35,.55); }
+.pin b { position: absolute; left: -40px; top: -40px; width: 80px; height: 80px; border-radius: 50%; border: 3px solid rgba(61,192,35,.7); }
+.pin.grey i { background: #64748B; box-shadow: 0 0 0 6px rgba(100,116,139,.18); }
+.hcard { position: absolute; }
+.hcard .lbl { position: absolute; left: 0; top: -40px; font: 700 24px/1 var(--mono); letter-spacing: .08em; color: var(--ink); text-transform: uppercase; white-space: nowrap; }
+.hcard .lbl em { font-style: normal; color: var(--ink-50); font-weight: 500; }
+.crop { position: absolute; overflow: hidden; border-radius: 12px; box-shadow: 0 0 0 2px #1E293B, 0 18px 50px rgba(0,0,0,.55); background: #111827; }
+.crop img { position: absolute; max-width: none; }
+.wire { position: absolute; height: 2px; background: rgba(61,192,35,.6); transform-origin: 0 50%; }
+
+/* ---------- section panel ---------- */
+.chip2 { display: inline-flex; align-items: center; gap: 12px; padding: 9px 18px; border-radius: 999px; border: 2px solid #1E3A2A; background: #0A1F14; font: 600 26px/1.15 var(--mono); letter-spacing: .06em; color: var(--accent); text-transform: uppercase; white-space: nowrap; }
+.title { font-family: var(--display); font-weight: 800; letter-spacing: -0.03em; line-height: 0.98; color: var(--ink); }
+.title sup { font-size: .5em; color: var(--accent); vertical-align: top; position: relative; top: .1em; }
+.cap { font-family: var(--display); font-weight: 700; letter-spacing: -0.015em; line-height: 1.14; color: var(--ink); text-wrap: balance; }
+.cap .g { color: var(--accent); }
+.cap .a { color: var(--amber); }
+.foot { font: 500 25px/1.32 var(--body); color: var(--ink-70); }
+.foot b { color: var(--accent); font-weight: 700; }
+
+/* ---------- ladder (what you get here) ---------- */
+.lad { position: absolute; }
+.lad .row { position: absolute; left: 0; right: 0; display: flex; align-items: center; }
+.lad .lab { font-family: var(--body); font-weight: 600; color: #64748B; white-space: nowrap; }
+.lad .st { position: absolute; display: flex; align-items: center; justify-content: center; }
+.lad .tick { border-radius: 50%; background: var(--accent); color: #04130A; font-weight: 800; font-family: var(--body); }
+.lad .no { font-family: var(--mono); font-weight: 600; color: var(--amber); letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; }
+.lad .off { border-radius: 50%; border: 3px solid #334155; }
+
+/* ---------- capture window ---------- */
+.win { position: absolute; overflow: hidden; background: #0B1226; }
+.win .grp { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: #0B1226; }
+.win .cam { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+.win .cam img { position: absolute; left: 0; max-width: none; }
+.hl { position: absolute; border: solid var(--accent); border-radius: 5px; box-shadow: 0 0 0 4px rgba(61,192,35,.18), 0 0 18px rgba(61,192,35,.45); transform-origin: 50% 50%; }
+.hl.amber { border-color: var(--amber); box-shadow: 0 0 0 4px rgba(245,181,68,.18), 0 0 18px rgba(245,181,68,.4); }
+.uline { position: absolute; background: var(--amber); border-radius: 2px; }
+.tag { position: absolute; display: inline-flex; gap: 10px; align-items: center; padding: 10px 16px; border-radius: 10px; background: rgba(2,6,23,.84); border: 2px solid #1E293B; font: 600 24px/1.1 var(--mono); color: var(--ink); white-space: nowrap; }
+.tag i { font-style: normal; color: var(--ink-50); font-weight: 500; }
+.wshade { position: absolute; left: 0; right: 0; pointer-events: none; }
+
+/* ---------- summary table ---------- */
+.tbl { position: absolute; }
+.tbl .hd { position: absolute; font: 700 30px/1.15 var(--display); color: var(--ink); text-align: center; }
+.tbl .hd small { display: block; font: 500 22px/1.25 var(--body); color: var(--ink-70); margin-top: 6px; }
+.tbl .rl { position: absolute; font: 600 38px/1 var(--body); color: var(--ink); white-space: nowrap; }
+.tbl .ln { position: absolute; height: 2px; background: #15233B; }
+.tbl .cell { position: absolute; display: flex; align-items: center; justify-content: center; }
+.tbl .y { border-radius: 50%; background: var(--accent); color: #04130A; font: 800 30px/1 var(--body); display: flex; align-items: center; justify-content: center; }
+.tbl .n { font-family: var(--mono); font-weight: 600; color: var(--amber); letter-spacing: .05em; text-transform: uppercase; white-space: nowrap; }
+.tbl .colhl { position: absolute; border-radius: 18px; background: rgba(61,192,35,.07); border: 2px solid rgba(61,192,35,.35); }
+
+/* ---------- small print + list ---------- */
+.lst { position: absolute; }
+.lst .it { position: absolute; left: 0; display: flex; align-items: center; gap: 22px; font-family: var(--display); font-weight: 800; letter-spacing: -0.02em; color: var(--ink); white-space: nowrap; }
+.lst .it .bx { flex: none; border-radius: 10px; border: 4px solid var(--accent); display: flex; align-items: center; justify-content: center; color: var(--accent); font-family: var(--body); font-weight: 800; }
+.quote { font-family: var(--display); font-weight: 800; letter-spacing: -0.02em; line-height: 1.12; color: var(--ink); text-wrap: balance; }
+.quote .q { color: var(--accent); }
+.src { font: 500 22px/1.3 var(--mono); color: var(--ink-50); letter-spacing: .04em; text-transform: uppercase; }
+
+/* ---------- CTA ---------- */
+.urlpill { display: inline-flex; align-items: center; justify-content: center; padding: 18px 40px; border-radius: 12px; background: var(--btn); color: #fff; font: 800 52px/1 var(--display); letter-spacing: -0.01em; }
+.small { font: 500 27px/1.35 var(--body); color: var(--ink-70); text-align: center; }
+.small b { color: var(--ink); font-weight: 600; }
+
+/* ---------- review fixes (2 Oct) ---------- */
+/* privacy: other people's addresses in the live autocomplete are blurred; only the council's own row stays sharp */
+.redact { position: absolute; display: none; border-radius: 0 0 8px 8px; background: rgba(15,23,42,.5);
+  -webkit-backdrop-filter: blur(7px) saturate(.5); backdrop-filter: blur(7px) saturate(.5); }
+/* still layer: the settled result + a spotlight that dims the hero around the map-and-card column */
+.win .sl { position: absolute; left: 0; top: 0; }
+.win .sl img { position: absolute; left: 0; max-width: none; }
+.spot { position: absolute; border-radius: 14px; box-shadow: 0 0 0 4000px rgba(2,6,23,.9); }
+/* the tag gets its own dark band at the window top */
+.wtop { position: absolute; left: 0; right: 0; top: 0; pointer-events: none; background: linear-gradient(180deg, #020617 0%, #020617 40%, rgba(2,6,23,.7) 62%, rgba(2,6,23,0) 100%); }
+.vig { position: absolute; left: 0; top: 0; pointer-events: none; }
+svg.parcel { position: absolute; left: 0; top: 0; overflow: visible; }
+svg.parcel polygon { fill: none; stroke-linejoin: round; }
+/* owner CTA rule (3 Oct): the homepage's small "Free to join." line under "Get started" is covered by a feathered patch
+   cloned from the empty hero background beside it (af-hush.js, made by hush-rows.swift; positions set in af.js). */
+.hush { position: absolute; display: none; overflow: hidden;
+  -webkit-mask-image: radial-gradient(farthest-side, #000 78%, transparent 100%); mask-image: radial-gradient(farthest-side, #000 78%, transparent 100%); }

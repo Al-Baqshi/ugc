@@ -1,0 +1,46 @@
+{
+ "url": "https://www.qsme.co.nz/",
+ "width": 1080,
+ "height": 1920,
+ "scale": 2.77,
+ "mobile": true,
+ "fps": 30,
+ "settle": 3,
+ "steps": [
+  {
+   "wait": 0.8
+  },
+  {
+   "click": "input[placeholder^='e.g. 12 Queen']"
+  },
+  {
+   "wait": 0.5
+  },
+  {
+   "type": "50 The Octagon, Dunedin",
+   "cps": 12
+  },
+  {
+   "wait": 1.4
+  },
+  {
+   "press": "ArrowDown"
+  },
+  {
+   "wait": 0.25
+  },
+  {
+   "press": "Enter"
+  },
+  {
+   "wait": 3.5
+  },
+  {
+   "scroll": 440,
+   "dur": 1.1
+  },
+  {
+   "wait": 4
+  }
+ ]
+}

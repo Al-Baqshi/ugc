@@ -1,0 +1,29 @@
+{
+ "cssWidth": 1440,
+ "cssHeight": 900,
+ "dpr": 2,
+ "_note": "Public qsme.build pages only, no login, nothing typed. Element crops so nothing else on the page is in frame (never the /platform AI module, which says 'summarise bids').",
+ "shots": [
+  {
+   "name": "card-award",
+   "url": "https://qsme.build/platform/tendering",
+   "el": "[...document.querySelectorAll('li.card')].find(e=>e.textContent.includes('Award is a person'))",
+   "pad": [20, 20, 20, 20],
+   "hl": "No automation and no assistant awards a tender."
+  },
+  {
+   "name": "card-draft-check",
+   "url": "https://qsme.build/platform/estimating",
+   "el": "[...document.querySelectorAll('li.card')].find(e=>e.textContent.includes('Draft with AI, then check'))",
+   "pad": [20, 20, 20, 20],
+   "hl": "Every draft is a suggestion for a person to check, not a figure to trust."
+  },
+  {
+   "name": "demo-what-happens",
+   "url": "https://qsme.build/contact",
+   "el": "(() => { const h = [...document.querySelectorAll('h2')].find(e=>e.textContent.includes('What happens on a demo')); if (!h) return null; const li = [...h.nextElementSibling.querySelectorAll('li')]; return [h, li[0], li[1]]; })()",
+   "pad": [28, 36, 10, 36],
+   "hl": "Thirty minutes on a working project that resembles yours."
+  }
+ ]
+}

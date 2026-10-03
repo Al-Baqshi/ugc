@@ -1,0 +1,78 @@
+{
+ "url": "https://www.qsme.co.nz/",
+ "address_steps": "projects/2026-10-10-qsme-nz-auckland-first/motion/capture-chc-mobile.json",
+ "css_viewport": [
+  390,
+  693
+ ],
+ "dpr": 4.155,
+ "clip_y": 0,
+ "clip_h": 1750,
+ "sy_click": 89,
+ "sy_end": 515,
+ "rects": {
+  "input": [
+   16,
+   409.6,
+   374,
+   461.6
+  ],
+  "title": [
+   33,
+   956.6,
+   357,
+   976.6
+  ],
+  "area": [
+   33,
+   980.6,
+   80.9,
+   996.6
+  ],
+  "legal": [
+   33,
+   998.6,
+   357,
+   1030.6
+  ],
+  "council": [
+   33,
+   1032.6,
+   131.8,
+   1048.6
+  ],
+  "zone": [
+   147.8,
+   1032.6,
+   247.7,
+   1048.6
+  ],
+  "unavail": [
+   33,
+   1060.6,
+   357,
+   1093.6
+  ],
+  "services": null,
+  "hazards": null,
+  "footer": null,
+  "create": [
+   33,
+   1105.6,
+   209.9,
+   1137.6
+  ],
+  "map": [
+   17,
+   626.6,
+   373,
+   926.6
+  ],
+  "card": [
+   16,
+   939.6,
+   374,
+   1154.6
+  ]
+ }
+}

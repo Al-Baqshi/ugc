@@ -1,0 +1,149 @@
+{
+  "venture": "qsme-build",
+  "video": "outputs/day-23-4x5.mp4",
+  "character": "The QS: the same mid-career Kiwi quantity surveyor as 'Six bids. Six formats.' and 'Column H' (late 30s to 40s), general urban professional New Zealand accent (Auckland or Wellington office), not broad, not Australian. Calm, dry, deadpan, fond of the subbies. He's the one doing the chasing, and he reads every excuse flat and fair: junk folders, toner and a scanner that skips a page happen to everyone, so there's no sarcasm in the reads and no side-eye at the subcontractor. The missing page is the scanner's fault and he says so. This is an AI voice, so it never speaks as the founder and never says 'we built' or 'we made'. The close ('Still can't fix junk folders. No printer needed, though.') has no 'we' in it, so caption and VO match word for word. The brand is said only in the CTA.",
+  "casting_line": "Day twenty-three of chasing one signature. Scanner skipped page seven. Q-S-me dot build.",
+  "settings": {
+    "model": "eleven_multilingual_v2",
+    "stability": 0.45,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "speed": 1,
+    "use_speaker_boost": true
+  },
+  "continuous_read_v2": "Day twenty-three of chasing one signature.\n\nWill sign tonight. Went to junk. Out of toner.\n\nScanner skipped page seven. Retention.\n\nBeen on site since day two.\n\nYour own subcontract, sent as it is.\n\nOne link. On their phone. Nothing to install.\n\nEvery page you sent. Page seven included.\n\nStill can't fix junk folders.\n\nNo printer needed, though.\n\nBook a thirty-minute demo at Q-S-me dot build.",
+  "lines": [
+    {
+      "id": "01-hook",
+      "start_s": 0.15,
+      "max_s": 1.95,
+      "on_screen": "Subcontract signature: / DAY 23 · amber pill 'Not signed' (both from frame 0; the pill pulses at 0.45) · counter rewinds 23 → 01 from 1.95",
+      "text_v2": "Day twenty-three of chasing one signature.",
+      "text_v3": "Day twenty-three of chasing one signature.",
+      "delivery": "Flat, tired-but-amused, like reading the number off a whiteboard. Slight lean on 'twenty-three', falling on 'signature'. No sigh tag: the weariness is in the pace. Hard out by 2.1 so the rewind whirr (1.95 to 2.42) plays clean. If a take runs long, fall back to 'Day twenty-three. One signature.'"
+    },
+    {
+      "id": "02-tonight",
+      "start_s": 3.6,
+      "max_s": 0.95,
+      "on_screen": "Bubble 'Will sign tonight 👍' (3.55) · stamp DAY 4 (3.74) · counter rolls 01 → 04",
+      "text_v2": "Will sign tonight.",
+      "text_v3": "Will sign tonight.",
+      "delivery": "Reading the message back, completely neutral, a fair report of what was said. Cut from the same take as 03 and 04 (one request: 'Will sign tonight. Went to junk. Out of toner.'). Out by 4.55."
+    },
+    {
+      "id": "03-junk",
+      "start_s": 4.65,
+      "max_s": 0.95,
+      "on_screen": "Bubble 'Can you resend? Went to junk' (4.6) · stamp DAY 9 · counter 04 → 09",
+      "text_v2": "Went to junk.",
+      "text_v3": "Went to junk.",
+      "delivery": "A touch lower than 02, same flat read. The natural downstep of a list. No emphasis on 'junk' (it comes back in the close). Out by 5.6."
+    },
+    {
+      "id": "04-toner",
+      "start_s": 5.7,
+      "max_s": 0.95,
+      "on_screen": "Bubble 'Printer’s out of toner' (5.65) · stamp DAY 15 · counter 09 → 15",
+      "text_v2": "Out of toner.",
+      "text_v3": "Out of toner.",
+      "delivery": "Lowest of the three, almost resigned, with a little fondness: it happens. Then silence: 'Signed and scanned!' (6.7) and the scan (7.75) land without a voice. Out by 6.65."
+    },
+    {
+      "id": "05-page7",
+      "start_s": 8.5,
+      "max_s": 2.6,
+      "on_screen": "Scan_0001.pdf, '11 pages' in amber, the page fed in sideways · strip 1 2 3 4 5 6 8 9 10 11 12 · red ring on the 6 | 8 seam (8.38) · caption 'The scanner skipped one page.' (8.45) · '7?' (8.72) · 'Page 7: retention.' (9.1)",
+      "text_v2": "Scanner skipped page seven. Retention.",
+      "text_v3": "Scanner skipped page seven. Retention.",
+      "delivery": "Two beats. 'Scanner skipped page seven' is a plain report that blames the machine, not the subbie; a small gap; 'Retention' dropped like a fact, with the tiniest smile found by choosing takes. Aimed at the universe, never at the subcontractor: no side-eye, no accusation, no 'naturally'. Out by 11.1."
+    },
+    {
+      "id": "06-site",
+      "start_s": 11.7,
+      "max_s": 2.4,
+      "on_screen": "Caption 'They’ve been on site since Day 2.' (11.62) · ON SITE · CEILINGS CREW bar fills Day 2 → 23; SUBCONTRACT · SIGNED row stays empty",
+      "text_v2": "Been on site since day two.",
+      "text_v3": "Been on site since day two.",
+      "delivery": "The deadpan peak. Dropped subject, very Kiwi. Even, slightly slower, letting the absurdity sit; a faint lean on 'two'. Never exasperated: they're doing good work. Out by 14.1."
+    },
+    {
+      "id": "07-own",
+      "start_s": 14.45,
+      "max_s": 2.25,
+      "on_screen": "QSME logo (14.27) · recreated Agreements dialog: Subcontract_Ceilings.pdf · 'Sign it as it is' ticked (14.79) · 'Send for signing' clicked (15.58) · list row 'Out for signing' (16.14) · caption 'Your own subcontract PDF. / Sent as it is.'",
+      "text_v2": "Your own subcontract, sent as it is.",
+      "text_v3": "Your own subcontract, sent as it is.",
+      "delivery": "Same voice, now matter-of-fact and a little relieved: a colleague showing you how it works, not a tagline. One phrase, falling on 'is'. Out by 16.7. If a take runs long, fall back to 'Your own subcontract, as it is.'"
+    },
+    {
+      "id": "08-link",
+      "start_s": 16.9,
+      "max_s": 2.45,
+      "on_screen": "Phone in its browser: tick (17.1), name typed (17.32), signature drawn (17.86), Sign (18.5), 'Signed.' (18.62) · right column 'One link.' (16.9) / 'On their phone.' (17.45, two lines) / 'Nothing to install.' (18.0)",
+      "text_v2": "One link. On their phone. Nothing to install.",
+      "text_v3": "One link. On their phone. Nothing to install.",
+      "delivery": "Slice at the full stops and place each phrase on its caption (16.9, 17.45, 18.0). Even, unhurried, no list-sell lift; 'On their phone' is plain and light, and 'Nothing to install' is the easiest of the three, almost a shrug. Never say 'no account', 'no login' or 'no sign-up' (owner rule 2026-10-03). Out by 19.35 so the 'Signed.' chime (18.7) can be heard under the tail or just after."
+    },
+    {
+      "id": "09-pages",
+      "start_s": 19.9,
+      "max_s": 2.25,
+      "on_screen": "List flips 'Out for signing' → 'Everyone has signed' (19.81) · caption 'Every page you sent.' (19.85) · certificate page slides in (20.3) · page strip 1–12 + certificate (20.6), green ring on 7 + 'Page 7 included.' (21.0)",
+      "text_v2": "Every page you sent. Page seven included.",
+      "text_v3": "Every page you sent. Page seven included.",
+      "delivery": "Quiet callback to 05, now settled. A light lean on 'seven', and 'included' falls. Out by 22.15. Do not say 'same PDF' unless the owner's recording confirms the pages come back unaltered (see post.md)."
+    },
+    {
+      "id": "10-junk-again",
+      "start_s": 22.35,
+      "max_s": 1.45,
+      "on_screen": "Caption 'Still can’t fix / junk folders.' (22.3)",
+      "text_v2": "Still can't fix junk folders.",
+      "text_v3": "Still can't fix junk folders.",
+      "delivery": "Honest, rueful, a half-smile at our own limit: the callback to Day 9. Falling. Out by 23.8."
+    },
+    {
+      "id": "11-printer",
+      "start_s": 23.85,
+      "max_s": 1.2,
+      "on_screen": "Caption 'No printer needed, / though.' (23.5, green)",
+      "text_v2": "No printer needed, though.",
+      "text_v3": "No printer needed, though.",
+      "delivery": "The one small upturn in the piece, still understated: the callback to Day 15. 'Though' trails off as an afterthought, Kiwi tag order, not a question. Out by 25.05."
+    },
+    {
+      "id": "12-cta",
+      "start_s": 25.3,
+      "max_s": 2.6,
+      "on_screen": "QSME logo / Your subcontract, signed from a link. / Book a 30-minute demo / qsme.build (all in by 25.3; qsme.build on screen 25.18 to 28.7)",
+      "text_v2": "Book a thirty-minute demo at Q-S-me dot build.",
+      "text_v3": "Book a thirty-minute demo at Q-S-me dot build.",
+      "delivery": "One easy breath, low-key, like telling a colleague where to book it: a plain invitation, not a sell. Light lean on 'book' and 'demo'. Say Q-S-me evenly as 'cue ess mee', with no rise on 'build'. Regenerate any take that says 'kiss me' or spells out four letters. Never add 'free' or any pricing (owner rule 2026-10-03). Out by 27.9 so the music resolves on its own at about 28.3."
+    }
+  ],
+  "male_alt_lines": [],
+  "silent_beats": [
+    "2.1 to 3.6: the rewind whirr and the first bubble ('Subcontract_Ceilings.pdf', stamped DAY 1) with its stamp thump",
+    "6.65 to 8.5: 'Signed and scanned!' lands (6.7), then the Day 23 phone buzz (7.75) and the scan opens sideways",
+    "14.1 to 14.45: the QSME pivot, music in at 14.25",
+    "19.35 to 19.9: 'Signed.' chime tail and the status flip to 'Everyone has signed' (status ding 19.84)",
+    "27.9 to 28.7: music tail on the end card"
+  ],
+  "post_processing": [
+    "Primary source: render continuous_read_v2 three times on the chosen voice, slice it and place each piece at its start_s. Lines 02 to 04 must come from one take (a natural downstep). Use per-line renders only as patches, with previous_text/next_text so intonation carries over. Keep the least polished take.",
+    "Room tone bed (60 s of a real quiet site office or ute cab, recorded on a phone) under the whole 28.7 s at about -50 dBFS so silences never drop to digital zero.",
+    "EQ: high-pass 90 to 100 Hz; -2 dB high shelf above 10 kHz; light de-ess. Compression 2:1 to 3:1, 3 to 4 dB GR. VO at about -16 LUFS integrated, -1 dBTP. No reverb, no telephone band-pass.",
+    "No music under the skit (0 to 14.25): the counter ticks, message pops and stamp thumps carry the rhythm. Music enters at 14.25 (the QSME logo), sits about 18 dB under the VO, lifts slightly through 18.7 to 20.45, ducks under 09 to 12 and resolves on one chord at about 28.3.",
+    "SFX synced to picture, ducked 10 to 12 dB under any word they overlap: soft mechanical odometer ticks on each day roll (3.25 to 3.55, 4.3 to 4.6, 5.35 to 5.65, 6.4 to 6.7, 7.45 to 7.75); a short tape-rewind whirr 1.95 to 2.42; a soft generic message pop at 2.5, 3.55, 4.6, 5.65, 6.7; a soft date-stamp thump at 2.69, 3.74, 4.79, 5.84, 6.89, 7.94; one phone buzz at 7.75 (the Day 23 attachment); a scanner-feed whirr under the viewer opening 8.02 to 8.3 (optional, it points the blame at the machine); marker squeak 8.38 to 8.78; a soft paper-flip ripple 11.5 to 12.1 (the bar filling); trackpad clicks 14.73 and 15.58; screen taps 17.08, 17.28, 18.5; light typing taps 17.32 to 17.82; a fingertip-on-glass scribble 17.86 to 18.4; a small generic success chime 18.7; a soft status ding 19.84; a paper slide 20.3 to 20.6. No Outlook, WhatsApp, iMessage, DocuSign or OS-branded sounds.",
+    "Never time-stretch more than about 4%; if a take runs past max_s, use another take.",
+    "Bounce a mono VO stem and mux it onto both outputs/day-23-4x5.mp4 and outputs/day-23-9x16.mp4 with tools/mux as a separate track so music and SFX stay adjustable. The two cuts share every timing."
+  ],
+  "total_characters": 374,
+  "changelog": [
+    "2026-10-02 first version, timed on the rendered 27.5 s 4:5 MP4 (outputs/day-23-4x5.mp4). No API was called.",
+    "2026-10-02 review pass: re-timed on the 28.7 s re-cut (4:5 and the new 9:16 share one timeline). 05 now blames the scanner ('Scanner skipped page seven. Retention.') and drops 'Naturally'. 09 is 'Every page you sent. Page seven included.' (no 'same PDF' until the owner's recording confirms unaltered pages). The close is 'Still can't fix junk folders. / No printer needed, though.', which matches the captions word for word. No API was called.",
+    "2026-10-03 owner CTA rule (push sign-ups/demos; never 'free', 'no sign-up', 'no login', 'without an account' or generous pricing): 08 'No account.' became 'On their phone.' ('One link. On their phone. Nothing to install.'), matching the re-rendered caption at 17.45. 12 is now the canonical Global CTA 'Book a thirty-minute demo at Q-S-me dot build.' (start 25.3, max 2.6, out by 27.9). Video timeline unchanged (28.7 s). No API was called."
+  ],
+  "video_alt": "outputs/day-23-9x16.mp4 (YouTube Shorts; same timeline, so the same VO stem lays onto both)"
+}

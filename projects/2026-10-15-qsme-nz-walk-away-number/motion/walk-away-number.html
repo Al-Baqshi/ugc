@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<title>The walk-away number</title>
+<!-- QSME NZ · "The walk-away number" · 9:16 · 36.6 s · silent master with burned-in captions (Mel VO script for later).
+     Render (from the studio root):
+       node tools/motion/make.mjs projects/2026-10-15-qsme-nz-walk-away-number/motion/walk-away-number.html projects/2026-10-15-qsme-nz-walk-away-number/outputs/walk-away-number-9x16.mp4 --safe 65,300,1015,1250
+     Footage:
+       clips/section/   th-1-site b-roll (assets/qsme/broll, AI brand b-roll already live on qsme.co.nz), cropped so no person is in frame
+       clips/home-hi.png  real qsme.co.nz homepage, hi-res still (still.mjs + still-home.json); the end card crops it just below
+                          the "Get started" button (hi-res y < 1500), so no pricing line under the button is ever in frame (owner CTA rule 2026-10-03)
+     Stand-in (labelled "Illustrative recreation · demo data"; ships as is, swap for the owner's Session A when recorded, see post.md "Owner recordings to swap in"):
+       #card = a faithful HTML recreation of the signed-in "Rough feasibility" card (FeasibilityCard.tsx, origin/main),
+       light theme, single-column layout (narrow desktop browser window). Its numbers come from the same arithmetic as
+       feasibility.ts (computeFeasibility / formatNZD), recomputed every frame from the typed values. Fictional inputs. -->
+<link rel="stylesheet" href="../../../tools/motion/kit.css">
+<style>
+  body.nz #root { background: #020617; }
+  .scene { position: absolute; inset: 0; overflow: hidden; }
+
+  /* ---------- captions (burned in, sound-off) ---------- */
+  .cap { position: absolute; left: 65px; width: 950px; bottom: 676px; display: flex; flex-direction: column; align-items: center; }
+  .cap > span { display: inline-block; max-width: 950px; background: #F8FAFC; color: #020617; font: 800 58px/1.08 Manrope; letter-spacing: -0.022em; padding: 13px 28px 17px; border-radius: 14px; text-align: center; box-shadow: 0 14px 40px rgba(0, 0, 0, .42); }
+  .cap em { font-style: normal; color: #15803D; }
+  .cap .r { color: #DC2626; }
+
+  /* ---------- tags / chips (always inside the safe box) ---------- */
+  .tag { position: absolute; top: 306px; right: 65px; padding: 7px 14px; border: 2px dashed rgba(255, 228, 92, .85); border-radius: 8px; background: rgba(2, 6, 23, .72); color: #FFE45C; font: 500 24px/1.2 "JetBrains Mono"; white-space: nowrap; }
+  .chipT { position: absolute; left: 65px; top: 304px; display: inline-flex; align-items: center; gap: 12px; padding: 8px 18px; border-radius: 999px; background: rgba(2, 6, 23, .72); border: 2px solid rgba(248, 250, 252, .22); color: rgba(248, 250, 252, .92); font: 500 26px/1.2 "JetBrains Mono"; white-space: nowrap; }
+  .chipT b { width: 12px; height: 12px; border-radius: 50%; background: #3DC023; }
+
+  /* ---------- sticky notes ---------- */
+  .note { position: absolute; background: linear-gradient(176deg, #FFF07A 0%, #FFE55A 60%, #F7D93F 100%); box-shadow: 0 26px 50px rgba(0, 0, 0, .55), 0 3px 0 rgba(0, 0, 0, .08); color: #161616; }
+  .note::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 18%; background: linear-gradient(180deg, rgba(0, 0, 0, .06), rgba(0, 0, 0, 0)); }
+  .note::after { content: ""; position: absolute; right: 0; bottom: 0; width: 46px; height: 46px; background: linear-gradient(135deg, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, .10) 50%, rgba(255, 255, 255, .35) 100%); }
+  .mk { font-family: "Permanent Marker"; line-height: 1; white-space: nowrap; }
+
+  /* ================= S1 · hook ================= */
+  #secImg { left: -800px; top: 0; width: 3413px; height: 1920px; filter: brightness(.56) saturate(.82) contrast(1.06) hue-rotate(-6deg); transform-origin: 1340px 900px; }
+  #s1shade { background: linear-gradient(180deg, rgba(2, 6, 23, .80) 0%, rgba(2, 6, 23, .35) 30%, rgba(2, 6, 23, .18) 50%, rgba(2, 6, 23, .28) 68%, rgba(2, 6, 23, .62) 88%, rgba(2, 6, 23, .82) 100%); }
+  #h1 { left: 65px; top: 384px; width: 950px; font: 800 120px/0.98 Manrope; letter-spacing: -0.04em; color: #F8FAFC; text-shadow: 0 6px 30px rgba(0, 0, 0, .5); }
+  #h2 { left: 65px; top: 652px; font: 800 84px/1 Manrope; letter-spacing: -0.03em; color: #F8FAFC; text-shadow: 0 6px 30px rgba(0, 0, 0, .5); }
+  #h3 { left: 74px; top: 728px; font-size: 172px; color: #FFE45C; transform-origin: 0 50%; text-shadow: 0 8px 30px rgba(0, 0, 0, .55); }
+  #h3u { left: 66px; top: 908px; width: 560px; height: 40px; }
+  #vibeNote { left: 602px; top: 930px; width: 372px; height: 290px; transform: rotate(6deg); }
+  #vibeNote .nv { position: absolute; left: 26px; top: 50px; font-size: 70px; }
+  #vibeNote .nh { position: absolute; left: 30px; top: 162px; width: 330px; font: 400 34px/1.15 Kalam; color: #2B2B2B; }
+
+  /* ================= S2 · the laptop, night before ================= */
+  #s2bg { background: radial-gradient(900px 700px at 8% 4%, rgba(255, 168, 76, .20), rgba(255, 168, 76, 0) 70%), radial-gradient(1100px 900px at 50% 40%, rgba(170, 255, 200, .09), rgba(0, 0, 0, 0) 70%), linear-gradient(180deg, #050B1D 0%, #020617 60%, #07090F 100%); }
+  #desk { left: -40px; top: 1300px; width: 1160px; height: 700px; background: radial-gradient(700px 260px at 30% 0%, rgba(255, 176, 96, .16), rgba(0, 0, 0, 0) 75%), repeating-linear-gradient(178deg, rgba(255, 220, 180, .025) 0 2px, rgba(0, 0, 0, 0) 2px 23px), linear-gradient(180deg, #2A1E14 0%, #17110C 55%, #0A0806 100%); border-top: 2px solid rgba(255, 190, 120, .18); }
+  #deskGlow { left: 140px; top: 1290px; width: 800px; height: 200px; background: radial-gradient(400px 90px at 50% 0%, rgba(210, 255, 225, .16), rgba(0, 0, 0, 0)); }
+  #wclock { left: 70px; top: 92px; width: 168px; height: 168px; }
+  #mug { left: 836px; top: 1318px; width: 150px; height: 170px; }
+
+  #win { left: 65px; top: 360px; width: 950px; height: 720px; border-radius: 22px; overflow: hidden; background: #E9EEF2; box-shadow: 0 0 0 2px rgba(255, 255, 255, .06), 0 40px 120px rgba(0, 0, 0, .7), 0 0 140px rgba(190, 255, 215, .10); transform-origin: 50% 45%; }
+  #wbar { position: absolute; left: 0; top: 0; right: 0; height: 46px; background: #E6EAEE; border-bottom: 1px solid #D5DBE1; display: flex; align-items: center; gap: 10px; padding: 0 18px; }
+  #wbar i { width: 16px; height: 16px; border-radius: 50%; background: #FF5F57; }
+  #wbar i:nth-child(2) { background: #FEBC2E; } #wbar i:nth-child(3) { background: #28C840; }
+  #wtab { margin-left: 18px; padding: 6px 18px 6px 14px; background: #FFFFFF; border-radius: 10px 10px 0 0; align-self: flex-end; height: 38px; display: flex; align-items: center; gap: 10px; font: 500 20px/1 Inter; color: #334155; }
+  #wtab svg { width: 20px; height: 20px; }
+  #vp { position: absolute; left: 0; top: 46px; width: 950px; height: 634px; overflow: hidden; background: #F6FBF7; }
+  #cam { position: absolute; left: 0; top: 0; width: 840px; transform-origin: 0 0; }
+  #wstat { position: absolute; left: 0; right: 0; bottom: 0; height: 40px; background: #0B1226; display: flex; align-items: center; justify-content: center; font: 500 24px/1 "JetBrains Mono"; color: rgba(248, 250, 252, .82); letter-spacing: .01em; }
+  #wstat span { border: 2px dashed rgba(248, 250, 252, .45); border-radius: 6px; padding: 2px 12px; }
+  #wdim { position: absolute; inset: 0; background: #020617; pointer-events: none; }
+
+  /* ---- the Rough feasibility card (2x of FeasibilityCard.tsx, light theme) ---- */
+  #card { position: relative; width: 840px; background: #FFFFFF; border: 2px solid #E2E8F0; border-radius: 28px; box-shadow: 0 2px 4px rgba(15, 23, 42, .05); padding: 48px 0; font-family: Inter; color: #020617; }
+  .chd { padding: 0 48px 24px; }
+  .ctt { display: flex; align-items: center; gap: 16px; font: 600 32px/1 Inter; }
+  .ctt svg { width: 40px; height: 40px; color: #15803D; }
+  .csub { margin-top: 12px; font: 400 24px/1.33 Inter; color: #64748B; }
+  .ccn { padding: 48px 48px 0; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 24px; row-gap: 20px; }
+  .f { display: block; min-width: 0; }
+  .fl { display: block; font: 500 22px/1.45 Inter; color: #64748B; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .fb { position: relative; display: block; margin-top: 2px; height: 64px; border: 2px solid #E2E8F0; border-radius: 16px; box-shadow: 0 2px 4px rgba(15, 23, 42, .05); font: 400 28px/60px Inter; padding: 0 72px 0 24px; white-space: nowrap; color: #020617; }
+  .fb.d { padding: 0 16px 0 40px; }
+  .fb .pre { position: absolute; left: 16px; top: 0; font: 400 24px/60px Inter; color: #64748B; }
+  .fb .unit { position: absolute; right: 16px; top: 0; font: 400 22px/60px Inter; color: #64748B; }
+  .fb .ph { color: #94A3B8; }
+  .fb.focus { border-color: #15803D; box-shadow: 0 0 0 6px rgba(21, 128, 61, .5); }
+  .fb .sel { background: #B4D7FF; }
+  .fb .caret { display: inline-block; width: 3px; height: 34px; background: #020617; vertical-align: -6px; margin-left: 1px; }
+  .fh { display: block; margin-top: 2px; font: 400 20px/1.25 Inter; color: rgba(100, 116, 139, .8); }
+  #res { margin-top: 32px; }
+  #res table { width: 100%; border-collapse: collapse; font-size: 28px; }
+  #res tr { border-bottom: 2px solid #E2E8F0; }
+  #res tr:last-child { border-bottom: 0; }
+  #res td.l { padding: 12px 16px 12px 0; font: 400 24px/40px Inter; color: #64748B; }
+  #res td.l.s { font-weight: 500; color: #020617; }
+  #res td.v { padding: 12px 0; text-align: right; font: 400 28px/40px Inter; font-variant-numeric: tabular-nums; color: #020617; }
+  #res td.v.s { font-weight: 600; }
+  #res td.v.good { color: #059669; } #res td.v.bad { color: #DC2626; }
+  .gbox { margin-top: 16px; border: 2px solid rgba(21, 128, 61, .3); background: rgba(21, 128, 61, .05); border-radius: 20px; padding: 16px; font: 400 24px/1.375 Inter; }
+  .gbox .gl { color: #64748B; }
+  .gbox .gv { font-weight: 600; font-variant-numeric: tabular-nums; color: #020617; }
+  #disc { width: 840px; margin-top: 32px; padding: 0 50px; font: 400 22px/1.375 Inter; color: #64748B; }   /* inset to the card's content edge */
+  #cursor { position: absolute; left: 0; top: 0; width: 34px; height: 50px; transform-origin: 3px 3px; }
+
+  /* edit graphics over the screen (root coordinates, follow the camera) */
+  #fx { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; pointer-events: none; }
+  #ouch { left: 0; top: 0; font-size: 76px; color: #DC2626; transform-origin: 50% 50%; text-shadow: 0 2px 0 rgba(255, 255, 255, .6); }
+
+  #vn2 { left: 92px; top: 700px; width: 330px; height: 270px; }
+  #vn2 .nv { position: absolute; left: 22px; top: 52px; font-size: 66px; }
+  #vn2 .nh { position: absolute; left: 26px; top: 150px; width: 290px; font: 400 30px/1.15 Kalam; color: #2B2B2B; }
+  #vn2 svg { position: absolute; left: 0; top: 0; width: 330px; height: 270px; }
+  #wn { left: 430px; top: 500px; width: 560px; height: 540px; }
+  #wn .w1, #wn .w2 { position: absolute; left: 38px; font-size: 70px; color: #161616; }
+  #wn .w1 { top: 52px; } #wn .w2 { top: 132px; }
+  #wn .w3 { position: absolute; left: 34px; top: 236px; font-size: 172px; color: #161616; letter-spacing: -0.01em; }
+  #wn svg { position: absolute; left: 0; top: 0; width: 560px; height: 540px; }
+
+  /* ================= S3 · next morning: car park → the room ================= */
+  #s3bg { background: radial-gradient(1200px 700px at 50% 0%, rgba(150, 190, 255, .16), rgba(0, 0, 0, 0) 70%), linear-gradient(180deg, #0A1220 0%, #06090F 45%, #050608 100%); }
+  #dash { left: 65px; top: 380px; width: 950px; height: 270px; border-radius: 40px; background: linear-gradient(180deg, #171C24 0%, #0B0E13 100%); box-shadow: inset 0 2px 0 rgba(255, 255, 255, .06), 0 30px 80px rgba(0, 0, 0, .6); }
+  #lcd { position: absolute; left: 245px; top: 40px; width: 460px; height: 190px; border-radius: 22px; background: linear-gradient(180deg, #0B0703 0%, #120B04 100%); box-shadow: inset 0 0 0 3px #22180C, inset 0 10px 30px rgba(0, 0, 0, .6); }
+  #clk { position: absolute; left: 34px; top: 22px; font: 600 146px/1 "JetBrains Mono"; letter-spacing: -0.04em; color: #FFB547; text-shadow: 0 0 18px rgba(255, 170, 60, .7); }
+  #ampm { position: absolute; right: 30px; top: 30px; font: 600 30px/1.1 "JetBrains Mono"; color: #FFB547; text-shadow: 0 0 10px rgba(255, 170, 60, .8); }
+  #dayl { position: absolute; right: 30px; bottom: 30px; font: 600 30px/1.1 "JetBrains Mono"; color: #FFB547; opacity: .8; text-shadow: 0 0 10px rgba(255, 170, 60, .6); }
+  .ind { position: absolute; top: 95px; width: 90px; height: 80px; }
+  #indL { left: 90px; } #indR { right: 90px; }
+  #seat { left: -60px; top: 700px; width: 1200px; height: 1400px; border-radius: 120px 120px 0 0; background: repeating-linear-gradient(45deg, rgba(255, 255, 255, .025) 0 3px, rgba(0, 0, 0, 0) 3px 9px), repeating-linear-gradient(-45deg, rgba(255, 255, 255, .02) 0 3px, rgba(0, 0, 0, 0) 3px 9px), linear-gradient(180deg, #2A2D33 0%, #1C1E22 50%, #121316 100%); box-shadow: inset 0 3px 0 rgba(255, 255, 255, .05); }
+  #seam { position: absolute; left: 140px; right: 140px; top: 120px; height: 0; border-top: 3px dashed rgba(255, 255, 255, .09); }
+  #room { background: radial-gradient(160px 160px at 15% 18%, rgba(255, 196, 120, .30), rgba(0, 0, 0, 0) 70%), radial-gradient(120px 120px at 82% 12%, rgba(255, 210, 150, .26), rgba(0, 0, 0, 0) 70%), radial-gradient(200px 200px at 70% 34%, rgba(255, 180, 110, .16), rgba(0, 0, 0, 0) 70%), radial-gradient(140px 140px at 30% 40%, rgba(255, 220, 170, .14), rgba(0, 0, 0, 0) 70%), radial-gradient(900px 700px at 50% 30%, rgba(90, 55, 25, .55), rgba(0, 0, 0, 0) 75%), linear-gradient(180deg, #120C08 0%, #0A0705 100%); }
+  #wscr { left: 0; top: 0; width: 1080px; height: 470px; }
+  #dashTop { left: 0; top: 400px; width: 1080px; height: 330px; background: linear-gradient(180deg, #1C2129 0%, #12151B 30%, #0B0D11 100%); box-shadow: inset 0 3px 0 rgba(255, 255, 255, .07), 0 -18px 40px rgba(0, 0, 0, .35); }
+  #bidL { left: 65px; width: 950px; top: 356px; text-align: center; font: 500 30px/1.2 "JetBrains Mono"; color: rgba(248, 250, 252, .78); letter-spacing: .06em; text-transform: uppercase; }
+  #bidV { left: 65px; width: 950px; top: 392px; text-align: center; font: 800 118px/1 Manrope; letter-spacing: -0.04em; color: #F8FAFC; text-shadow: 0 10px 40px rgba(0, 0, 0, .6); }
+  #paddle { left: 160px; top: 712px; width: 760px; height: 470px; transform-origin: 50% 70%; }
+  #pcard { position: absolute; left: 0; top: 40px; width: 470px; height: 330px; border-radius: 16px; background: linear-gradient(180deg, #FFFFFF, #ECEDEF); box-shadow: 0 30px 70px rgba(0, 0, 0, .65); transform: rotate(-7deg); display: flex; align-items: center; justify-content: center; font: 800 210px/1 Manrope; letter-spacing: -0.04em; color: #111317; }
+  #pnote { left: 360px; top: 70px; width: 330px; height: 300px; transform: rotate(5deg); }
+  #pnote .w1 { position: absolute; left: 24px; top: 34px; font-size: 44px; }
+  #pnote .w3 { position: absolute; left: 22px; top: 104px; font-size: 104px; }
+  #pnote svg { position: absolute; left: 0; top: 0; width: 330px; height: 300px; }
+
+  /* ================= S4 · small print ================= */
+  #s4 { background: radial-gradient(900px 600px at 50% 30%, #0B1A2E 0%, #020617 70%); }
+  #spT { left: 65px; width: 950px; top: 505px; font: 800 76px/1.02 Manrope; letter-spacing: -0.035em; color: #F8FAFC; }
+  #spT em { font-style: normal; color: #3DC023; }
+  .spL { position: absolute; left: 65px; width: 950px; display: flex; gap: 22px; font: 500 48px/1.22 Inter; color: rgba(248, 250, 252, .95); }
+  .spL::before { content: ""; flex: none; width: 16px; height: 16px; margin-top: 22px; border-radius: 4px; background: #3DC023; }
+
+  /* ================= S5 · end card ================= */
+  #s5 { background: radial-gradient(900px 760px at 50% 44%, #0B2A1A 0%, #020617 72%); }
+  #s5img { left: -800px; top: 260px; width: 3413px; height: 1920px; opacity: .42; filter: brightness(.62) saturate(.75) hue-rotate(-6deg); -webkit-mask-image: linear-gradient(180deg, transparent 0%, transparent 50%, #000 70%, #000 100%); mask-image: linear-gradient(180deg, transparent 0%, transparent 50%, #000 70%, #000 100%); }   /* the section from the hook, as a quiet floor under the CTA (below the safe box) */
+  /* wordmark cropped before the ® (registration unconfirmed: truth sheet, "Company and contact") */
+  #logo { position: absolute; left: 401px; top: 312px; width: 278px; height: 91px; overflow: hidden; }
+  #logo img { position: absolute; width: 354.3px; left: -45.1px; top: -38.5px; }
+  #eHead { left: 65px; width: 950px; top: 424px; text-align: center; font: 800 86px/1.0 Manrope; letter-spacing: -0.04em; color: #F8FAFC; }
+  #eHead .g { color: #3DC023; }
+  #eShot { left: 90px; top: 620px; width: 900px; height: 378px; border-radius: 22px; overflow: hidden; box-shadow: 0 0 0 2px rgba(248, 250, 252, .14), 0 30px 80px rgba(0, 0, 0, .6); }
+  #eShot img { position: absolute; left: -654.2px; top: -861.25px; width: 3180px; height: 1788.75px; transform-origin: 812px 1205px; }
+  #eLive { position: absolute; right: 16px; top: 14px; padding: 6px 12px; border-radius: 8px; background: rgba(2, 6, 23, .82); border: 2px solid rgba(61, 192, 35, .6); color: #F8FAFC; font: 500 21px/1.2 "JetBrains Mono"; }
+  #eRing { position: absolute; border: 4px solid #3DC023; border-radius: 16px; box-shadow: 0 0 24px rgba(61, 192, 35, .55); }
+  #eSub { left: 65px; width: 950px; top: 1018px; text-align: center; font: 500 40px/1.2 Inter; color: rgba(248, 250, 252, .86); }
+  #eSub b { color: #F8FAFC; font-weight: 700; }
+  #ePillW { left: 65px; width: 950px; top: 1132px; text-align: center; }
+  #ePill { display: inline-block; background: #16A34A; color: #fff; font: 700 52px/1 Inter; padding: 22px 54px; border-radius: 12px; letter-spacing: -0.01em; }
+</style>
+</head>
+<body class="nz r9x16">
+<div id="root">
+
+  <!-- ================= S1 · HOOK ================= -->
+  <div id="s1" class="scene">
+    <img id="secImg" class="abs" alt="">
+    <div id="s1shade" class="fill"></div>
+    <div id="s1chip" class="chipT"><b></b>Auckland · auction tomorrow, 10am</div>
+    <div id="h1" class="abs">Night before<br>the auction.</div>
+    <div id="h2" class="abs">Our budget:</div>
+    <div id="h3" class="abs mk">a vibe.</div>
+    <svg id="h3u" class="abs" viewBox="0 0 560 40"><path id="h3path" d="M6 26 C 70 8, 130 36, 200 20 S 330 6, 400 22 S 500 30, 552 12" fill="none" stroke="#FFE45C" stroke-width="9" stroke-linecap="round"/></svg>
+    <div id="vibeNote" class="note">
+      <div class="nv mk">$1.1m-ish?</div>
+      <div class="nh">(felt right in the car)</div>
+    </div>
+  </div>
+
+  <!-- ================= S2 · THE LAPTOP (night before) ================= -->
+  <div id="s2" class="scene">
+    <div id="s2bg" class="fill"></div>
+    <div id="desk" class="abs"></div>
+    <div id="deskGlow" class="abs"></div>
+    <!-- kitchen clock, 9:40 pm (decor, no text) -->
+    <svg id="wclock" class="abs" viewBox="0 0 168 168">
+      <circle cx="84" cy="84" r="78" fill="#0E1424" stroke="#2B3446" stroke-width="6"/>
+      <g stroke="#55607A" stroke-width="5" stroke-linecap="round">
+        <line x1="84" y1="16" x2="84" y2="30"/><line x1="84" y1="138" x2="84" y2="152"/><line x1="16" y1="84" x2="30" y2="84"/><line x1="138" y1="84" x2="152" y2="84"/>
+      </g>
+      <line id="hHour" x1="84" y1="84" x2="84" y2="44" stroke="#C9D2E3" stroke-width="8" stroke-linecap="round"/>
+      <line id="hMin" x1="84" y1="84" x2="84" y2="26" stroke="#C9D2E3" stroke-width="5" stroke-linecap="round"/>
+      <line id="hSec" x1="84" y1="96" x2="84" y2="22" stroke="#E0302A" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="84" cy="84" r="6" fill="#E0302A"/>
+    </svg>
+    <!-- a cold cuppa (decor) -->
+    <svg id="mug" class="abs" viewBox="0 0 150 170"><path d="M20 40 h92 v86 a26 26 0 0 1 -26 26 h-40 a26 26 0 0 1 -26 -26 z" fill="#1F2733"/><path d="M112 62 h12 a20 20 0 0 1 0 40 h-12" fill="none" stroke="#1F2733" stroke-width="12"/><ellipse cx="66" cy="42" rx="46" ry="9" fill="#2A1A10"/></svg>
+
+    <div id="win" class="abs" data-qa-ignore>
+      <div id="wbar"><i></i><i></i><i></i>
+        <span id="wtab"><svg viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>Site research</span>
+      </div>
+      <div id="vp">
+        <div id="cam">
+          <div id="card">
+            <div class="chd">
+              <div class="ctt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg><span id="cttT">Rough feasibility</span></div>
+              <p class="csub">Your numbers, our arithmetic.</p>
+            </div>
+            <div class="ccn">
+              <div class="grid">
+                <label class="f" id="f-land"><span class="fl">Land price</span><span class="fb d" id="b-land"><span class="pre">$</span><span class="val" id="v-land"></span></span></label>
+                <label class="f" id="f-homes"><span class="fl">Homes</span><span class="fb" id="b-homes"><span class="val">3</span><span class="unit">homes</span></span><span class="fh">prefilled from the report</span></label>
+                <label class="f" id="f-size"><span class="fl">Average home size</span><span class="fb"><span class="val">110</span><span class="unit">m²</span></span></label>
+                <label class="f" id="f-build"><span class="fl">Build cost per m²</span><span class="fb d" id="b-build"><span class="pre">$</span><span class="val" id="v-build"></span></span><span class="fh">edit to your builder's rate</span></label>
+                <label class="f" id="f-contrib"><span class="fl">Contributions per extra home</span><span class="fb d"><span class="pre">$</span><span class="val">30000</span></span><span class="fh">council development contributions + Watercare growth charge</span></label>
+                <label class="f" id="f-soft"><span class="fl">Soft costs</span><span class="fb"><span class="val">15</span><span class="unit">%</span></span><span class="fh">design, consents, engineering, legal, marketing</span></label>
+                <label class="f" id="f-fin"><span class="fl">Finance</span><span class="fb"><span class="val">8</span><span class="unit">%</span></span><span class="fh">interest on total cost</span></label>
+                <label class="f" id="f-sale"><span class="fl">Sale price per home</span><span class="fb d" id="b-sale"><span class="pre">$</span><span class="val" id="v-sale"></span></span></label>
+              </div>
+              <div id="res">
+                <table><tbody>
+                  <tr><td class="l">Build cost</td><td class="v" id="r-build"></td></tr>
+                  <tr><td class="l">Contributions</td><td class="v" id="r-contrib"></td></tr>
+                  <tr><td class="l">Soft costs</td><td class="v" id="r-soft"></td></tr>
+                  <tr><td class="l">Finance</td><td class="v" id="r-fin"></td></tr>
+                  <tr id="row-total"><td class="l s">Total cost</td><td class="v s" id="r-total"></td></tr>
+                  <tr><td class="l s">Revenue</td><td class="v s" id="r-rev"></td></tr>
+                  <tr id="row-profit"><td class="l s">Profit</td><td class="v s" id="r-profit"></td></tr>
+                  <tr id="row-margin"><td class="l">Margin on cost</td><td class="v" id="r-margin"></td></tr>
+                </tbody></table>
+                <p class="gbox" id="gbox"><span class="gl">What you could pay for the land to keep a 20% margin:</span> <span class="gv" id="r-res"></span></p>
+              </div>
+            </div>
+          </div>
+          <p id="disc">Indicative only — a planning heuristic from public council data, not advice. Overlays, precincts, plan changes and site conditions change what's possible. Confirm with a planner or the council.</p>
+          <svg id="cursor" viewBox="0 0 34 50"><path d="M3 3 L3 39 L12 31 L18.5 45.5 L25 42.5 L18.8 28.6 L30.5 28.2 Z" fill="#111" stroke="#fff" stroke-width="3" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+      <div id="wstat"><span>Illustrative recreation · demo data</span></div>
+      <div id="wdim"></div>
+    </div>
+
+    <!-- edit graphics that point at the screen -->
+    <svg id="fx" viewBox="0 0 1080 1920">
+      <path id="ttlU" fill="none" stroke="#16A34A" stroke-width="8" stroke-linecap="round"/>
+      <rect id="ring24" fill="none" stroke="#16A34A" stroke-width="6" rx="14"/>
+      <path id="redRing" fill="none" stroke="#DC2626" stroke-width="7" stroke-linecap="round"/>
+      <rect id="gRing" fill="none" stroke="#16A34A" stroke-width="6" rx="14" style="filter:drop-shadow(0 0 12px rgba(61,192,35,.7))"/>
+    </svg>
+    <div id="ouch" class="abs mk">Ouch.</div>
+
+    <!-- the walk-away notes -->
+    <div id="vn2" class="note abs" style="transform:rotate(-6deg)">
+      <div class="nv mk">$1.1m-ish?</div>
+      <div class="nh">(felt right in the car)</div>
+      <svg viewBox="0 0 330 270"><path id="strike" d="M14 98 C 90 86, 200 108, 316 84" fill="none" stroke="#E0302A" stroke-width="10" stroke-linecap="round"/></svg>
+    </div>
+    <div id="wn" class="note abs">
+      <div class="w1 mk" id="wnL1">WALK-AWAY</div>
+      <div class="w2 mk" id="wnL2">NUMBER</div>
+      <div class="w3 mk" id="wnL3">$917k</div>
+      <svg viewBox="0 0 560 540"><path id="wnU" d="M40 430 C 170 412, 330 440, 500 418" fill="none" stroke="#161616" stroke-width="10" stroke-linecap="round"/></svg>
+    </div>
+
+    <div id="capA" class="cap"><span>So we ran the numbers.</span></div>
+    <div id="capB" class="cap"><span>Sale price: <em>$1.2m</em> a home.</span></div>
+    <div id="capC" class="cap"><span>Land price: the vibe. <em>$1.1m.</em></span></div>
+    <div id="capD" class="cap"><span><em>24%</em> margin. Sweet as.</span></div>
+    <div id="capE" class="cap"><span>Then the builder's real rate.</span></div>
+    <div id="capF" class="cap"><span>Margin goes <span class="r">red.</span></span></div>
+    <div id="capG" class="cap"><span>Most we can pay: <em>$917k.</em></span></div>
+    <div id="capH" class="cap"><span>That's the paddle limit.</span></div>
+  </div>
+
+  <!-- ================= S3 · NEXT MORNING ================= -->
+  <div id="s3" class="scene">
+    <div id="s3bg" class="fill"></div>
+    <div id="room" class="fill"></div>
+    <!-- windscreen: morning sky over an empty car park, A-pillars, rear-view mirror (decor, no text) -->
+    <svg id="wscr" class="abs" viewBox="0 0 1080 470">
+      <defs>
+        <linearGradient id="skyG" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#4E6F9A"/><stop offset=".42" stop-color="#8FA9C6"/><stop offset=".72" stop-color="#D2B79A"/><stop offset="1" stop-color="#E6A574"/>
+        </linearGradient>
+        <radialGradient id="sunG" cx="250" cy="330" r="300" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#FFE7BD" stop-opacity=".75"/><stop offset="1" stop-color="#FFE7BD" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="glassG" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#FFFFFF" stop-opacity="0"/><stop offset=".46" stop-color="#FFFFFF" stop-opacity="0"/><stop offset=".5" stop-color="#FFFFFF" stop-opacity=".10"/><stop offset=".56" stop-color="#FFFFFF" stop-opacity="0"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="mirG" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#3A4658"/><stop offset="1" stop-color="#1A2029"/>
+        </linearGradient>
+      </defs>
+      <rect x="0" y="0" width="1080" height="470" fill="url(#skyG)"/>
+      <rect x="0" y="0" width="1080" height="470" fill="url(#sunG)"/>
+      <!-- far tree line and the car park edge -->
+      <path d="M0 330 C 60 300, 110 318, 170 296 S 290 312, 350 300 S 470 286, 540 304 S 690 290, 760 306 S 900 282, 980 300 S 1060 296, 1080 302 L 1080 470 L 0 470 Z" fill="#2B3240"/>
+      <rect x="0" y="352" width="1080" height="118" fill="#353B45"/>
+      <g fill="#1B2028"><rect x="250" y="336" width="190" height="44" rx="18"/><rect x="470" y="342" width="150" height="38" rx="16"/><rect x="660" y="334" width="200" height="46" rx="18"/></g>
+      <g stroke="#1B2028" stroke-width="7" stroke-linecap="round"><line x1="880" y1="160" x2="880" y2="352"/><line x1="880" y1="164" x2="930" y2="164"/></g>
+      <rect x="0" y="0" width="1080" height="470" fill="#0A1428" opacity=".22"/>
+      <rect x="0" y="0" width="1080" height="470" fill="url(#glassG)"/>
+      <!-- roof liner + A-pillars -->
+      <path d="M0 0 H1080 V46 C 760 62, 320 62, 0 46 Z" fill="#0C0F14"/>
+      <path d="M0 0 H200 L 70 470 H0 Z" fill="#0B0E13"/>
+      <path d="M1080 0 H880 L 1010 470 H1080 Z" fill="#0B0E13"/>
+      <!-- rear-view mirror -->
+      <rect x="531" y="40" width="18" height="52" rx="6" fill="#0C0F14"/>
+      <rect x="392" y="86" width="296" height="84" rx="34" fill="#0C0F14"/>
+      <rect x="404" y="96" width="272" height="64" rx="28" fill="url(#mirG)"/>
+    </svg>
+    <div id="dashTop" class="abs"></div>
+    <div id="seat" class="abs"><div id="seam"></div></div>
+    <div id="dash" class="abs">
+      <svg class="ind" id="indL" viewBox="0 0 90 80"><path id="arL" d="M8 40 L44 8 L44 26 L82 26 L82 54 L44 54 L44 72 Z" fill="#1F2A1F"/></svg>
+      <div id="lcd"><div id="clk">9<span id="colon">:</span>40</div><div id="ampm">AM</div><div id="dayl">SAT</div></div>
+      <svg class="ind" id="indR" viewBox="0 0 90 80"><path d="M82 40 L46 8 L46 26 L8 26 L8 54 L46 54 L46 72 Z" fill="#1F2A1F"/></svg>
+    </div>
+    <div id="bidL" class="abs">Bid in the room</div>
+    <div id="bidV" class="abs">$925,000</div>
+    <!-- vertical motion blur for the FOMO twitch -->
+    <svg width="0" height="0" style="position:absolute"><filter id="vblur" x="-10%" y="-40%" width="120%" height="180%"><feGaussianBlur id="vblurG" stdDeviation="0 0"/></filter></svg>
+    <div id="paddle" class="abs">
+      <div id="pcard">27</div>
+      <div id="pnote" class="note abs">
+        <div class="w1 mk">WALK-AWAY</div>
+        <div class="w3 mk">$917k</div>
+        <svg viewBox="0 0 330 300"><path d="M24 236 C 110 224, 210 246, 300 226" fill="none" stroke="#161616" stroke-width="8" stroke-linecap="round"/></svg>
+      </div>
+    </div>
+    <div id="capI" class="cap"><span>Next morning.<br>Note's on the paddle.</span></div>
+    <div id="capJ" class="cap"><span>Going once…</span></div>
+    <div id="capP" class="cap"><span>Paddle stays down.</span></div>
+    <div id="capQ" class="cap"><span>Lost the auction.<br>Kept the <em>margin.</em></span></div>
+    <div id="capK" class="cap"><span>Bid with a number, <em>not a feeling.</em></span></div>
+  </div>
+
+  <!-- persistent honesty tag on every money frame (S1–S3) -->
+  <div id="tagNum" class="tag">Illustrative numbers</div>
+
+  <!-- ================= S4 · SMALL PRINT ================= -->
+  <div id="s4" class="scene">
+    <div id="spT" class="abs">Small print,<br><em>big letters:</em></div>
+    <div id="sp1" class="spL" style="top:725px">Rough maths: no GST, tax, holding period or agent fees.</div>
+    <div id="sp2" class="spL" style="top:885px">Not financial advice.</div>
+    <div id="sp3" class="spL" style="top:985px">Run it past your builder, QS and bank.</div>
+  </div>
+
+  <!-- ================= S5 · END CARD ================= -->
+  <div id="s5" class="scene">
+    <img id="s5img" class="abs" src="clips/section/f_00105.jpg" alt="">
+    <div id="logo"><img src="qsme-logo.svg" alt="QSME"></div>
+    <div id="eHead" class="abs">Run your numbers<br><span class="g">before the room does.</span></div>
+    <div id="eShot" class="abs">
+      <img src="clips/home-hi.png" alt="">
+      <div id="eRing"></div>
+      <div id="eLive">qsme.co.nz · live site</div>
+    </div>
+    <div id="eSub" class="abs"><b>Site research</b> comes with your account.<br>Auckland first.</div>
+    <div id="ePillW" class="abs"><span id="ePill">Sign up at qsme.co.nz</span></div>
+  </div>
+</div>
+
+<script src="../../../tools/motion/kit.js"></script>
+<script>
+(function () {
+  'use strict';
+  const $ = s => document.querySelector(s);
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const E = Kit.ease;
+
+  /* ---------- the app's own arithmetic (feasibility.ts on origin/main, copied verbatim in logic) ---------- */
+  const DEF = { avgHomeM2: 110, contributionsPerHome: 30000, softCostPct: 15, financePct: 8, targetMargin: 0.2 };
+  function compute(i) {
+    const landPrice = Math.max(i.landPrice, 0), homes = Math.max(i.homes, 0);
+    const buildCost = homes * Math.max(i.avgHomeM2, 0) * Math.max(i.buildCostPerM2, 0);
+    const contributions = Math.max(homes - 1, 0) * Math.max(i.contributionsPerHome, 0);
+    const softCosts = (buildCost + contributions) * (i.softCostPct / 100);
+    const r = i.financePct / 100;
+    const finance = (landPrice + buildCost + contributions + softCosts) * r;
+    const totalCost = landPrice + buildCost + contributions + softCosts + finance;
+    const revenue = homes * Math.max(i.salePricePerHome, 0);
+    const profit = revenue - totalCost;
+    const marginOnCost = totalCost > 0 ? profit / totalCost : 0;
+    // the app leaves finance on the land out of the green box on purpose ("finance-ex-land")
+    const financeExLand = (buildCost + contributions + softCosts) * r;
+    const residualLandAt20 = revenue / (1 + DEF.targetMargin) - (buildCost + contributions + softCosts + financeExLand);
+    return { buildCost, contributions, softCosts, finance, totalCost, revenue, profit, marginOnCost, residualLandAt20 };
+  }
+  function nzd(v) { const r = Math.round(v / 1000) * 1000; return (r < 0 ? '−' : '') + '$' + Math.abs(r).toLocaleString('en-NZ', { maximumFractionDigits: 0 }); }
+
+  /* ---------- what gets typed, and when (fictional inputs; ~0.45 s per 7-digit entry) ---------- */
+  const TY = {
+    sale:  { full: '1200000', t0: 5.64, t1: 6.09 },
+    land:  { full: '1100000', t0: 7.38, t1: 7.83 },
+    build: { full: '4900', sel: 11.27, t0: 11.46, t1: 11.76 }
+  };
+  function typed(o, t) { if (t < o.t0) return ''; const dt = (o.t1 - o.t0) / o.full.length; return o.full.slice(0, clamp(Math.floor((t - o.t0) / dt + 1e-6) + 1, 0, o.full.length)); }
+  const FOCUS = [['sale', 5.30, 7.18], ['land', 7.18, 11.22], ['build', 11.22, 99]];
+
+  /* ---------- camera over the card (card px; viewport 950 x 634) ---------- */
+  const VW = 950, VH = 634, GS = 1.10;
+  let P = null;   // measured card-local boxes
+  function measure() {
+    const cam = $('#cam'); const keep = cam.style.transform; cam.style.transform = 'none';
+    const c = $('#card').getBoundingClientRect();
+    const box = s => { const b = $(s).getBoundingClientRect(); return { x: b.left - c.left, y: b.top - c.top, w: b.width, h: b.height, cx: b.left - c.left + b.width / 2, cy: b.top - c.top + b.height / 2 }; };
+    P = { card: box('#card'), land: box('#f-land'), sale: box('#f-sale'), build: box('#f-build'), bLand: box('#b-land'), bSale: box('#b-sale'), bBuild: box('#b-build'),
+          total: box('#row-total'), profit: box('#row-profit'), margin: box('#row-margin'), mval: box('#r-margin'), gbox: box('#gbox'), gl: box('#gbox .gl'), soft: box('#r-soft'), disc: box('#disc') };
+    cam.style.transform = keep;
+  }
+  const TARGET = {
+    top:   () => ({ x: 420, y: 300 }),
+    sale:  () => ({ x: P.sale.cx, y: P.sale.cy + 6 }),
+    land:  () => ({ x: P.land.cx, y: P.land.cy + 6 }),
+    build: () => ({ x: P.build.cx, y: P.build.cy }),
+    res:   () => ({ x: 420, y: (P.soft.y + P.gbox.y + P.gbox.h) / 2 + 6 }),
+    // green box: Total cost row at the top, the whole grey disclaimer (all its lines) inside the frame
+    gbox:  () => { const half = VH / (2 * GS), top = P.total.y - 8, need = P.disc.y + P.disc.h + 14; return { x: 420, y: Math.max(top + half, need - half) }; }
+  };
+  const CAM = [
+    [3.20, 'top', 1.00, 'out'], [4.60, 'top', 1.10, 'out'], [5.30, 'top', 1.10],
+    [5.68, 'sale', 1.75, 'inOut'], [6.84, 'sale', 1.75],
+    [7.22, 'land', 1.75, 'inOut'], [8.84, 'land', 1.75],
+    [9.26, 'res', 1.20, 'inOut'], [10.74, 'res', 1.20],
+    [11.16, 'build', 1.75, 'inOut'], [12.08, 'build', 1.75],
+    [12.48, 'res', 1.20, 'inOut'], [14.28, 'res', 1.20],
+    [14.72, 'gbox', GS, 'inOut'], [99, 'gbox', GS]
+  ];
+  function camAt(t) {
+    let i = 0; while (i + 1 < CAM.length && CAM[i + 1][0] <= t) i++;
+    const a = CAM[i], b = CAM[Math.min(i + 1, CAM.length - 1)];
+    const ta = TARGET[a[1]](), tb = TARGET[b[1]]();
+    let p = b[0] > a[0] ? clamp((t - a[0]) / (b[0] - a[0]), 0, 1) : 1;
+    if (t < CAM[0][0]) p = 0;
+    const e = b[3] ? E[b[3]](p) : (a[1] === b[1] && a[2] === b[2] ? 1 : E.inOut(p));
+    return { x: ta.x + (tb.x - ta.x) * e, y: ta.y + (tb.y - ta.y) * e, s: a[2] + (b[2] - a[2]) * e };
+  }
+
+  /* ---------- the mouse pointer (card px), hidden while typing like macOS ---------- */
+  function cursorAt(t) {
+    const L = { x: P.bLand.x + 250, y: P.bLand.y + 40 }, S = { x: P.bSale.x + 250, y: P.bSale.y + 40 }, B = { x: P.bBuild.x + 120, y: P.bBuild.y + 38 };
+    const start = { x: 640, y: 540 };
+    const seg = (a, b, t0, t1) => { const p = E.inOut(clamp((t - t0) / (t1 - t0), 0, 1)); return { x: a.x + (b.x - a.x) * p, y: a.y + (b.y - a.y) * p }; };
+    let pos, vis = 0, click = 0;
+    if (t < 5.36) { pos = seg(start, S, 4.92, 5.24); vis = 1; click = t > 5.26 && t < 5.34 ? 1 : 0; }
+    else if (t < 6.74) { pos = S; vis = 0; }
+    else if (t < 7.24) { pos = seg(S, L, 6.74, 7.10); vis = 1; click = t > 7.13 && t < 7.21 ? 1 : 0; }
+    else if (t < 10.74) { pos = L; vis = 0; }
+    else if (t < 11.40) { pos = seg(L, B, 10.74, 11.10); vis = 1; click = (t > 11.15 && t < 11.21) || (t > 11.25 && t < 11.31) ? 1 : 0; }
+    else { pos = B; vis = 0; }
+    return { pos, vis, click };
+  }
+
+  /* ---------- per-frame: card state + camera + pointer + edit graphics ---------- */
+  function field(id, str, focused, t, selected, placeholder) {
+    const v = $('#v-' + id), b = $('#b-' + id);
+    b.classList.toggle('focus', !!focused);
+    let html = '';
+    if (selected) html = '<span class="sel">' + str + '</span>';
+    else if (!str && placeholder) html = (focused ? '<span class="caret"></span>' : '') + '<span class="ph">enter</span>';
+    else html = str + (focused ? '<span class="caret"></span>' : '');
+    if (v.innerHTML !== html) v.innerHTML = html;
+    const c = v.querySelector('.caret'); if (c) c.style.opacity = focused && focused.blink ? (Math.floor(focused.blink / 0.53) % 2 ? 0 : 1) : 1;
+  }
+  const s2 = $('#s2');
+  Kit.each(function (t) {
+    if (s2.style.display === 'none') return;
+    if (!P) measure();
+    // values
+    const saleS = typed(TY.sale, t), landS = typed(TY.land, t);
+    const sel = t >= TY.build.sel && t < TY.build.t0;
+    const buildS = t < TY.build.t0 ? '4000' : typed(TY.build, t);
+    const inp = { landPrice: +landS || 0, homes: 3, avgHomeM2: 110, buildCostPerM2: +buildS || 0, contributionsPerHome: 30000, softCostPct: 15, financePct: 8, salePricePerHome: +saleS || 0 };
+    const o = compute(inp);
+    const ready = inp.landPrice > 0 && inp.salePricePerHome > 0, m = o.marginOnCost * 100;
+    // focus + caret blink (solid while typing)
+    const fo = {}; FOCUS.forEach(f => { if (t >= f[1] && t < f[2]) { const typing = TY[f[0]] && t >= TY[f[0]].t0 - 0.05 && t <= TY[f[0]].t1 + 0.25; fo[f[0]] = { blink: typing ? 0 : Math.max(0, t - Math.max(f[1], TY[f[0]].t1 || f[1]) - 0.25) }; } });
+    field('sale', saleS, fo.sale, t, false, true);
+    field('land', landS, fo.land, t, false, true);
+    field('build', buildS, fo.build, t, sel, false);
+    const set = (id, txt, cls) => { const n = $(id); if (n.textContent !== txt) n.textContent = txt; if (cls !== undefined) { n.classList.toggle('good', cls === 'good'); n.classList.toggle('bad', cls === 'bad'); } };
+    set('#r-build', nzd(o.buildCost)); set('#r-contrib', nzd(o.contributions)); set('#r-soft', nzd(o.softCosts)); set('#r-fin', nzd(o.finance));
+    set('#r-total', nzd(o.totalCost)); set('#r-rev', nzd(o.revenue));
+    set('#r-profit', ready ? nzd(o.profit) : '—', ready ? (o.profit >= 0 ? 'good' : 'bad') : '');
+    set('#r-margin', ready ? m.toLocaleString('en-NZ', { maximumFractionDigits: 1 }) + '%' : '—', ready ? (m >= 20 ? 'good' : 'bad') : '');
+    set('#r-res', inp.salePricePerHome > 0 ? nzd(o.residualLandAt20) : 'enter a sale price');
+    // camera
+    const c = camAt(t), tx = VW / 2 - c.x * c.s, ty = VH / 2 - c.y * c.s;
+    $('#cam').style.transform = 'translate(' + tx.toFixed(2) + 'px,' + ty.toFixed(2) + 'px) scale(' + c.s.toFixed(4) + ')';
+    // pointer
+    const cu = cursorAt(t), cn = $('#cursor');
+    cn.style.transform = 'translate(' + cu.pos.x.toFixed(1) + 'px,' + cu.pos.y.toFixed(1) + 'px) scale(' + (cu.click ? 0.86 : 1) + ')';
+    cn.style.opacity = cu.vis; cn.style.visibility = cu.vis ? 'visible' : 'hidden';
+    // edit graphics follow the live element boxes (root coords)
+    const R = $('#root').getBoundingClientRect();
+    const rel = el => { const b = $(el).getBoundingClientRect(); return { x: b.left - R.left, y: b.top - R.top, w: b.width, h: b.height }; };
+    // green marker underline under the "Rough feasibility" title
+    const tt = rel('#cttT'), uy = tt.y + tt.h + 10;
+    $('#ttlU').setAttribute('d', 'M' + (tt.x - 4) + ' ' + (uy + 2) + ' C ' + (tt.x + tt.w * 0.3) + ' ' + (uy - 6) + ', ' + (tt.x + tt.w * 0.62) + ' ' + (uy + 8) + ', ' + (tt.x + tt.w + 10) + ' ' + (uy - 2));
+    const mv = rel('#r-margin'), mr = rel('#row-margin'), gb = rel('#r-res');
+    const r24 = $('#ring24'); const padX = 22, padY = 8;
+    r24.setAttribute('x', mr.x + mr.w - 250 - padX); r24.setAttribute('y', mv.y - padY); r24.setAttribute('width', 250 + padX * 2); r24.setAttribute('height', mv.h + padY * 2);
+    // red marker loop around the margin value (hand-drawn ellipse); its right-most point and tail stay at x <= 1000 (inside the window)
+    const rx = 100, ry = 42, ex = Math.min(mr.x + mr.w - 86, 1000 - rx - 6), ey = mv.y + mv.h / 2;
+    $('#redRing').setAttribute('d', 'M' + (ex + rx) + ' ' + (ey - 8) + ' C ' + (ex + rx + 4) + ' ' + (ey + ry) + ', ' + (ex - rx - 20) + ' ' + (ey + ry + 8) + ', ' + (ex - rx) + ' ' + (ey) + ' S ' + (ex + rx - 14) + ' ' + (ey - ry - 14) + ', ' + (ex + rx + 6) + ' ' + (ey + 10));
+    $('#ouch').style.left = (mr.x + mr.w * 0.36) + 'px'; $('#ouch').style.top = (mv.y - 30) + 'px';
+    const g = $('#gRing'); g.setAttribute('x', gb.x - 14); g.setAttribute('y', gb.y - 2); g.setAttribute('width', gb.w + 28); g.setAttribute('height', gb.h + 6);
+  });
+
+  /* ---------- kitchen clock: 9:40 pm, second hand ticking ---------- */
+  Kit.each(function (t) {
+    if (s2.style.display === 'none') return;
+    const sec = 12 + Math.floor(t);           // ticks once a second
+    const min = 40 + sec / 60, hr = 9 + min / 60;
+    $('#hSec').setAttribute('transform', 'rotate(' + (sec * 6) + ' 84 84)');
+    $('#hMin').setAttribute('transform', 'rotate(' + (min * 6) + ' 84 84)');
+    $('#hHour').setAttribute('transform', 'rotate(' + (hr * 30) + ' 84 84)');
+  });
+
+  /* ---------- S3 timing (car → room → twitch) ---------- */
+  const TW = { up0: 23.00, up1: 23.12, down0: 23.42, down1: 24.02 };   // lift 0.12 s, freeze 0.30 s, slow drop 0.60 s
+  const s3 = $('#s3');
+  Kit.each(function (t) {
+    if (s3.style.display === 'none') return;
+    // indicator ticks (0.75 s cycle), then stops once she's parked
+    const on = t < 21.80 && Math.floor((t - 19.7) / 0.375) % 2 === 0;
+    $('#arL').setAttribute('fill', on ? '#3BE36A' : '#1F2A1F');
+    $('#arL').style.filter = on ? 'drop-shadow(0 0 12px rgba(59,227,106,.9))' : 'none';
+    $('#colon').style.opacity = Math.floor(t * 1) % 2 ? .35 : 1;
+    // vertical motion blur on the lift (strong) and the slow drop (light)
+    let vb = 0;
+    if (t >= TW.up0 && t < TW.up1 + 0.04) vb = 11 * Math.sin(Math.PI * clamp((t - TW.up0) / (TW.up1 + 0.04 - TW.up0), 0, 1));
+    else if (t >= TW.down0 && t < TW.down1) vb = 2.4 * Math.sin(Math.PI * clamp((t - TW.down0) / (TW.down1 - TW.down0), 0, 1));
+    $('#vblurG').setAttribute('stdDeviation', '0 ' + vb.toFixed(2));
+    $('#paddle').style.filter = vb > 0.25 ? 'url(#vblur)' : 'none';
+  });
+
+  /* ================= TIMELINE (36.6 s) ================= */
+  // scenes
+  Kit.scene('#s1', 0, 3.50).scene('#s2', 3.15, 19.90).scene('#s3', 19.55, 29.42).scene('#s4', 29.40, 32.85).scene('#s5', 32.82, 36.6);
+
+  // ---- S1 hook (0–3.2): frame 0 already reads
+  Kit.clip('#secImg', { dir: 'clips/section', t0: 0, fps: 30, frames: 120, ext: '.jpg' });
+  Kit.add('#secImg', 'scale', [[0, 1.0], [3.5, 1.075]]);
+  Kit.pop('#h2', 0.42, { dy: 26 });
+  Kit.slam('#h3', 0.70, { from: 1.35, dur: 0.16 });
+  Kit.add('#h3', 'rotate', [[0, -3]]);
+  Kit.add('#h3path', 'trim', [[0.86, 0], [1.10, 1, 'out']]);
+  Kit.add('#vibeNote', 'opacity', [[0, 0], [1.10, 0, 'hold'], [1.14, 1]]);
+  Kit.add('#vibeNote', 'scale', [[1.10, 1.32], [1.27, 1, 'slam']]);
+  Kit.add('#vibeNote', 'rotate', [[1.10, 12], [1.27, 6, 'out']]);
+  // whip up into the laptop
+  Kit.add('#s1', 'y', [[3.20, 0], [3.48, -1920, 'swipe']]);
+  Kit.add('#s1', 'blur', [[3.20, 0], [3.36, 14], [3.48, 20]]);
+
+  // ---- S2 the laptop (3.2–19.86)
+  Kit.add('#s2', 'y', [[3.20, 1920], [3.48, 0, 'swipe']]);
+  Kit.add('#win', 'blur', [[3.20, 10], [3.52, 0, 'out']]);
+  // captions
+  Kit.pop('#capA', 3.52).out('#capA', 5.30, 0.1);
+  Kit.pop('#capB', 5.38).out('#capB', 7.26, 0.1);
+  Kit.pop('#capC', 7.34).out('#capC', 9.26, 0.1);
+  Kit.pop('#capD', 9.34).out('#capD', 10.78, 0.1);
+  Kit.pop('#capE', 10.86).out('#capE', 12.46, 0.1);
+  Kit.pop('#capF', 12.54).out('#capF', 14.30, 0.1);
+  Kit.pop('#capG', 14.76).out('#capG', 16.54, 0.12);
+  Kit.pop('#capH', 18.10).out('#capH', 19.56, 0.1);
+  // the feature's name gets a green marker underline before the pointer moves
+  Kit.add('#ttlU', 'trim', [[3.95, 0], [4.32, 1, 'out']]);
+  Kit.add('#ttlU', 'opacity', [[0, 1], [5.16, 1], [5.32, 0]]);
+  // "24%" ring, then the red marker + Ouch.
+  Kit.add('#ring24', 'opacity', [[0, 0], [9.40, 0, 'hold'], [9.55, 1], [10.70, 1], [10.80, 0]]);
+  Kit.add('#redRing', 'trim', [[12.60, 0], [13.00, 1, 'out']]);
+  Kit.add('#redRing', 'opacity', [[0, 1], [14.24, 1], [14.38, 0]]);
+  Kit.add('#ouch', 'opacity', [[0, 0], [13.08, 0, 'hold'], [13.12, 1], [14.24, 1], [14.36, 0]]);
+  Kit.add('#ouch', 'scale', [[13.08, 1.4], [13.25, 1, 'slam']]);
+  Kit.add('#ouch', 'rotate', [[0, -9]]);
+  // green box spotlight
+  Kit.add('#gRing', 'opacity', [[0, 0], [14.86, 0, 'hold'], [15.00, 1], [16.30, 1], [16.52, 0]]);
+  // window steps back for the sticky notes
+  Kit.add('#win', 'scale', [[16.40, 1], [16.80, 0.94, 'inOut']]);
+  Kit.add('#wdim', 'opacity', [[0, 0], [16.40, 0], [16.80, 0.55, 'inOut']]);
+  // the old vibe note slides in (after "Most we can pay" has gone) and gets crossed out
+  Kit.add('#vn2', 'x', [[16.64, -520], [16.94, 0, 'out']]);
+  Kit.add('#vn2', 'rotate', [[16.64, -14], [16.94, -6, 'out']]);
+  Kit.add('#strike', 'trim', [[16.98, 0], [17.18, 1, 'out']]);
+  // the walk-away note slaps on, marker writes; "That's the paddle limit." lands on the $917k stroke
+  Kit.add('#wn', 'opacity', [[0, 0], [17.22, 0, 'hold'], [17.26, 1]]);
+  Kit.add('#wn', 'scale', [[17.22, 1.3], [17.37, 1, 'slam']]);
+  Kit.add('#wn', 'rotate', [[17.22, 9], [17.37, 3, 'out']]);
+  Kit.add('#wnL1', 'clipX', [[17.40, 0], [17.76, 1]]);
+  Kit.add('#wnL2', 'clipX', [[17.78, 0], [18.04, 1]]);
+  Kit.add('#wnL3', 'clipX', [[18.06, 0], [18.42, 1]]);
+  Kit.add('#wnU', 'trim', [[18.42, 0], [18.60, 1, 'out']]);
+  // whip out
+  Kit.add('#s2', 'x', [[19.58, 0], [19.86, -1080, 'swipe']]);
+
+  // ---- S3 next morning (19.58–29.42)
+  Kit.add('#s3', 'x', [[19.58, 1080], [19.86, 0, 'swipe']]);
+  Kit.pop('#capI', 19.90).out('#capI', 22.30, 0.1);
+  // car → the room
+  Kit.add('#dash', 'opacity', [[22.28, 1], [22.58, 0, 'in']]);
+  Kit.add('#dash', 'y', [[22.28, 0], [22.58, -60, 'in']]);
+  Kit.add('#wscr', 'opacity', [[22.28, 1], [22.62, 0, 'in']]);
+  Kit.add('#dashTop', 'opacity', [[22.28, 1], [22.62, 0, 'in']]);
+  Kit.add('#room', 'opacity', [[0, 0], [22.28, 0], [22.68, 1, 'out']]);
+  Kit.add('#seat', 'opacity', [[22.28, 1], [22.68, 0.0, 'out']]);
+  Kit.add('#s3bg', 'opacity', [[22.28, 1], [22.68, 0.0]]);
+  Kit.pop('#bidL', 22.54, { dy: 20 });
+  Kit.slam('#bidV', 22.62, { from: 1.25 });
+  Kit.pop('#capJ', 22.76).out('#capJ', 23.48, 0.1);
+  // the paddle: settles on the seat, rides into the room, then the FOMO twitch:
+  // a fast blurred lift (~170 px), a 0.3 s freeze, a slow drop
+  Kit.add('#paddle', 'y', [[19.62, -4], [20.18, -44, 'out'], [22.28, -44], [22.72, -20, 'out'],
+                           [TW.up0, -20], [TW.up1, -172, 'out'], [TW.down0, -172], [TW.down1, -20, 'inOut']]);
+  Kit.add('#paddle', 'x', [[22.28, 0], [22.72, -20, 'out']]);
+  Kit.add('#paddle', 'scale', [[22.28, 1], [22.72, 1.06, 'out'], [TW.up0, 1.06], [TW.up1, 1.09, 'out'], [TW.down0, 1.09], [TW.down1, 1.06, 'inOut']]);
+  Kit.add('#paddle', 'rotate', [[TW.up0, 0], [TW.up1, -6, 'out'], [TW.down0, -6], [TW.down1, 0, 'inOut']]);
+  Kit.pop('#capP', 23.56).out('#capP', 24.50, 0.1);
+  Kit.pop('#capQ', 24.58).out('#capQ', 26.42, 0.1);
+  // the bid fades back once we've let it go
+  Kit.add('#bidV', 'opacity', [[24.58, 1], [24.95, 0.38, 'out']]);
+  Kit.add('#bidL', 'opacity', [[24.58, 1], [24.95, 0.38, 'out']]);
+  Kit.pop('#capK', 26.50).out('#capK', 29.32, 0.1);
+
+  // ---- S4 small print (29.40–32.85)
+  Kit.pop('#spT', 29.44).pop('#sp1', 29.64).pop('#sp2', 29.86).pop('#sp3', 30.06);
+
+  // ---- S5 end card (32.82–36.6)
+  Kit.fade('#logo', 32.86, 33.10).add('#logo', 'scale', [[32.86, 0.94], [33.20, 1, 'out']]);
+  Kit.pop('#eHead', 32.94);
+  Kit.pop('#eShot', 33.12, { dy: 40, dur: 0.32 });
+  Kit.add('#eShot img', 'scale', [[33.12, 1.0], [36.6, 1.03]]);
+  Kit.add('#eRing', 'opacity', [[0, 0], [33.85, 0, 'hold'], [34.05, 1]]);
+  Kit.pop('#eSub', 33.52).pop('#ePillW', 33.70, { dy: 24 });
+
+  // honesty tag on every money frame: hook note → laptop → paddle
+  Kit.add('#tagNum', 'opacity', [[0, 0], [1.18, 0, 'hold'], [1.28, 1], [29.30, 1], [29.40, 0]]);
+
+  // ring around the "Get started" button on the live homepage still (hi-res px → inset px); the shot is cropped above the line under it
+  (function () { const k = 3180 / 3840, ox = 790, oy = 1040; const ring = $('#eRing'); const x0 = 832, y0 = 1363, x1 = 1130, y1 = 1459; Object.assign(ring.style, { left: ((x0 - ox) * k - 12) + 'px', top: ((y0 - oy) * k - 12) + 'px', width: ((x1 - x0) * k + 24) + 'px', height: ((y1 - y0) * k + 24) + 'px' }); })();
+
+  Kit.ready({ duration: 36.6, fonts: ['800 60px Manrope', '400 28px Inter', '500 22px Inter', '600 32px Inter', '700 52px Inter', '400 60px "Permanent Marker"', '400 34px Kalam', '500 24px "JetBrains Mono"', '600 30px "JetBrains Mono"'] });
+})();
+</script>
+</body>
+</html>
