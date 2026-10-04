@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<title>The QS Alphabet: YouTube thumbnail (16:9)</title>
+<!-- Still: node tools/motion/make.mjs projects/2026-11-04-qsme-build-qs-alphabet/motion/thumb.html <scratch>/thumb.mp4 --still 0.5 --still-only
+     then copy the PNG to outputs/qs-alphabet-16x9-thumb.png. The shuffled row with A's big '7th' and 'Finally.' (concept packaging). -->
+<link rel="stylesheet" href="../../../tools/motion/kit.css">
+<link rel="stylesheet" href="qsa.css">
+</head>
+<body class="build r16x9">
+<div id="root">
+  <div class="fill bgGrid"></div>
+  <div class="fill bgGlow"></div>
+  <div class="fill vign"></div>
+  <div class="abs disp" style="left:120px;top:96px;font-size:176px;letter-spacing:-0.045em">A to Z.</div>
+  <div class="abs disp" style="left:126px;top:286px;font-size:96px;color:var(--accent);letter-spacing:-0.035em">Never in that order.</div>
+  <div id="sh" class="abs" style="left:132px;top:500px"></div>
+  <div class="abs disp" style="left:104px;top:620px;font-size:250px;color:var(--accent);white-space:nowrap">7<span style="font-size:124px;vertical-align:top;line-height:1.5">th</span></div>
+  <div class="stamp" style="left:560px;top:720px;font-size:150px;border-width:9px;transform:rotate(-7deg);background:rgba(12,19,16,.6)">Finally.</div>
+  <div id="wm" class="fill"></div>
+</div>
+<script src="../../../tools/motion/kit.js"></script>
+<script src="qsa.js"></script>
+<script>
+  var S = QSA.strip(document.getElementById('sh'));
+  QSA.LETTERS.forEach(function (L) {
+    var t = S.tiles[L], k = QSA.ORDER.indexOf(L);
+    if (k >= 0) { t.style.background = '#3DC023'; t.style.borderColor = '#3DC023'; t.style.color = '#06130A'; }
+    else { t.style.color = '#33433A'; t.style.borderColor = '#18241D'; }
+  });
+  S.tiles.A.style.boxShadow = '0 0 0 5px #0C1310, 0 0 0 9px #EEF4EF';
+  S.nums.A.style.opacity = 0;
+  QSA.wordmark(document.getElementById('wm'), { x: 1450, y: 760, w: 400 });
+  Kit.ready({ duration: 1, fonts: ['700 50px "Space Grotesk"', '500 20px "JetBrains Mono"'] });
+</script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<title>The QS Alphabet (QSME Global, 4:5 LinkedIn cut, 33 s)</title>
+<!-- Motion-kit page. Render from the studio root:
+     node tools/motion/make.mjs projects/2026-11-04-qsme-build-qs-alphabet/motion/qs-alphabet-4x5.html \
+          projects/2026-11-04-qsme-build-qs-alphabet/outputs/qs-alphabet-4x5.mp4 --safe 60,60,1020,1290
+     Same builders as the hero (qsa.js) + the nine-letter block (qsa-cut.js). Product screens are designed stand-ins,
+     labelled "Illustrative screen · demo data". B-roll (end only): clips/dusk, dimmed, tagged "Illustrative footage". -->
+<link rel="stylesheet" href="../../../tools/motion/kit.css">
+<link rel="stylesheet" href="qsa.css">
+<style>
+  .cap { left: 60px; right: 60px; bottom: 74px; }
+  .cap span { font-size: 46px; padding: 9px 24px 11px; }
+  .acro { position: absolute; left: 0; right: 0; text-align: center; font: 700 140px/1 var(--display); letter-spacing: -0.04em; white-space: nowrap; }
+  .acro .L { color: var(--accent); }
+  .good { position: absolute; left: 0; right: 0; text-align: center; font: 700 132px/1 var(--display); letter-spacing: -0.045em; }
+  .lab { position: absolute; font: 700 52px/1 var(--display); letter-spacing: -0.03em; white-space: nowrap; }
+  .bcard { position: absolute; width: 420px; height: 250px; background: #FBFAF6; border-radius: 10px; box-shadow: 0 30px 70px rgba(0,0,0,.6); color: #1B1E1C; }
+</style>
+</head>
+<body class="build r4x5">
+<div id="root">
+  <div id="brollLayer" class="fill"></div>
+  <div class="fill bgGrid"></div>
+  <div class="fill bgGlow"></div>
+  <div class="fill vign"></div>
+
+  <div id="sHook" class="fill"><div id="stripA" class="abs" style="left:87px;top:400px"></div></div>
+  <div id="big7" class="disp abs" style="left:76px;top:236px;font-size:150px;color:var(--accent);white-space:nowrap;transform-origin:40px 100%">7<span style="font-size:76px;vertical-align:top;line-height:1.35">th</span></div>
+
+  <div id="sName" class="fill">
+    <div class="acro" style="top:300px"><span class="L">Q</span><span id="rQ">uantity</span></div>
+    <div class="acro" style="top:470px"><span class="L">S</span><span id="rS">urveying</span></div>
+    <div id="wmHost" class="fill"></div>
+  </div>
+
+  <div id="sGood" class="fill">
+    <div id="good1" class="good" style="top:330px">Good <span class="g">QS.</span></div>
+    <div id="good2" class="good" style="top:490px">Good project.</div>
+    <div id="goodAside" class="aside" style="left:150px;top:690px;font-size:50px;transform-origin:0 50%">(We’re biased. It’s in our name.)</div>
+  </div>
+
+  <div id="sWho" class="fill">
+    <div id="whoL" class="abs" style="left:60px;top:260px;width:470px;height:520px">
+      <div class="lab" style="left:0;top:0">QS by title,</div>
+      <div class="bcard" style="left:20px;top:150px;transform:rotate(-4deg)">
+        <div style="position:absolute;left:34px;top:94px;font:600 30px/1 Inter;letter-spacing:.07em;text-transform:uppercase">Quantity Surveyor</div>
+        <div style="position:absolute;left:36px;top:142px;width:120px;height:3px;background:#3DC023"></div>
+      </div>
+    </div>
+    <div id="whoR" class="abs" style="left:548px;top:260px;width:470px;height:520px">
+      <div class="lab" style="left:0;top:0">or QS by <span class="g">default?</span></div>
+      <svg class="abs" style="left:10px;top:150px" width="440" height="260" viewBox="0 0 620 360">
+        <defs><linearGradient id="hat" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFD54A"/><stop offset="1" stop-color="#E9A800"/></linearGradient></defs>
+        <ellipse cx="310" cy="300" rx="290" ry="40" fill="#0A0F0C" opacity=".55"/>
+        <path d="M40 262 C 40 232, 110 228, 120 226 L 500 226 C 520 228, 590 236, 590 262 C 590 286, 40 290, 40 262 Z" fill="#D99A00"/>
+        <path d="M110 232 C 110 110, 200 40, 310 40 C 420 40, 510 110, 510 232 Z" fill="url(#hat)"/>
+        <path d="M282 44 C 286 110, 286 170, 284 232 L 336 232 C 334 170, 334 110, 338 44 Z" fill="#F2BB10" opacity=".9"/>
+      </svg>
+      <div class="abs" style="left:40px;top:248px;width:380px;height:84px;background:#E9DFC4;transform:rotate(-5deg);box-shadow:0 6px 14px rgba(0,0,0,.25);clip-path:polygon(0 6%,3% 0,97% 4%,100% 0,99% 52%,100% 100%,96% 95%,4% 100%,0 96%,1% 48%);display:flex;align-items:center;justify-content:center;font:400 26px/1.05 'Permanent Marker',cursive;color:#1A1A1A;text-align:center;padding:0 16px">Developer, doing the QS bit tonight</div>
+    </div>
+    <div id="whoRow" class="abs kick" style="left:60px;right:60px;top:860px;text-align:center;font-size:21px;line-height:1.6;white-space:normal;color:var(--ink-70)">QS &amp; PM practices · Main contractors · Developers &amp; owners</div>
+  </div>
+
+  <div id="letters" class="fill"></div>
+
+  <div id="sZ" class="fill">
+    <div id="gz" class="giant" style="left:0;right:0;text-align:center;top:180px;font-size:300px">Z</div>
+    <div id="wmHost2" class="fill"></div>
+    <div id="built" class="abs" style="left:0;right:0;top:860px;text-align:center;font:500 44px/1.2 var(--body);color:var(--ink-70)">Built by a <span style="color:var(--ink);font-weight:700">quantity surveyor.</span></div>
+  </div>
+
+  <div id="sEnd" class="fill">
+    <div id="wmHost3" class="fill"></div>
+    <div id="endPill" class="abs" style="left:0;right:0;top:600px;display:flex;justify-content:center"><span class="endpill" style="font-size:44px">Book a 30-minute demo</span></div>
+    <div id="endUrl" class="abs disp g" style="left:0;right:0;top:730px;text-align:center;font-size:118px">qsme.build</div>
+    <div id="endSub" class="abs" style="left:0;right:0;top:900px;text-align:center;font:500 46px/1 var(--body);color:var(--ink-70)">Bring your spreadsheet.</div>
+  </div>
+
+  <div id="tagFoot" class="ftag" style="left:60px;top:66px">Illustrative footage</div>
+  <div id="caps" class="fill"></div>
+</div>
+<script src="../../../tools/motion/kit.js"></script>
+<script src="qsa.js"></script>
+<script src="qsa-cut.js"></script>
+<script>
+(function () {
+  var mk = QSA.mk; function $(id) { return document.getElementById(id); }
+  var DUR = 33.0;
+  // o.hardIn / o.hardOut: a hard caption swap (no fade), used where a caption is split so it never reads ahead of its punchline
+  function cap(t0, t1, html, o) {
+    o = o || {}; var c = mk($('caps'), '<div class="cap"><span>' + html + '</span></div>');
+    var k = t0 <= 0 ? [[0, 1]] : o.hardIn ? [[0, 0], [t0, 1, 'hold']] : [[t0, 0], [t0 + 0.1, 1]];
+    if (o.hardOut) k.push([t1, 0, 'hold']); else k.push([t1 - 0.1, 1], [t1, 0]);
+    Kit.add(c, 'opacity', k); if (t0 > 0 && !o.hardIn) Kit.add(c, 'y', [[t0, 12], [t0 + 0.18, 0, 'out']]); return c;
+  }
+  cap(0.0, 2.16, 'Every project runs from A to Z.');
+  cap(2.24, 3.96, 'Just never in that order.');
+  cap(4.04, 6.34, 'Sorting that out? That’s the <b>QS</b>.');
+  cap(6.44, 8.14, '<b>QS.</b> Quantity surveying.');
+  cap(26.04, 28.34, '<b>Z.</b> One record. Built by a <b>QS</b>.');
+
+  /* ---------- 0 – 6.4: the alphabet in two rows of 13 ---------- */
+  Kit.scene('#sHook', 0, 6.6);
+  var A = QSA.strip($('stripA'), { cols: 13, rowGap: 150, bigNums: true });
+  A.el.style.transformOrigin = '0 0'; Kit.add(A.el, 'scale', [[0, 1.1]]);
+  var typeT = {};
+  QSA.LETTERS.forEach(function (L, i) { typeT[L] = i < 3 ? 0 : 0.05 + (i - 3) * 0.05; if (i >= 3) Kit.show(A.tiles[L], typeT[L]); });
+  var spans = QSA.flicker(A, QSA.LETTERS, 2.2, 0.34, 0.012, 7);
+  spans.forEach(function (s) {
+    var t = A.tiles[s.L], k = QSA.ORDER.indexOf(s.L);
+    if (k >= 0) {
+      Kit.add(t, 'background', [[0, '#121C17'], [s.b, '#3DC023', 'hold'], [4.05, '#3DC023'], [4.4, '#16301A']]);
+      Kit.add(t, 'borderColor', [[0, '#213128'], [s.b, '#3DC023', 'hold'], [4.05, '#3DC023'], [4.4, '#1F4A1A']]);
+      Kit.add(t, 'color', [[0, '#EEF4EF'], [s.b, '#06130A', 'hold'], [4.05, '#06130A'], [4.4, '#3E7A30']]);
+      var n = A.nums[s.L], tn = 2.75 + k * 0.07;
+      Kit.add(n, 'opacity', [[tn, 0], [tn + 0.06, 1], [4.0, 1], [4.2, 0]]); Kit.add(n, 'scale', [[tn, 0.4], [tn + 0.18, 1, 'outBack']]);
+    } else if (s.L === 'Q' || s.L === 'S') {
+      Kit.add(t, 'color', [[0, '#EEF4EF'], [s.b, '#33433A', 'hold'], [4.05, '#33433A'], [4.3, '#4BCD32']]);
+      Kit.add(t, 'borderColor', [[0, '#213128'], [4.05, '#213128'], [4.3, '#3DC023']]);
+      Kit.add(t, 'background', [[0, '#121C17'], [4.05, '#121C17'], [4.3, '#10240F']]);
+      Kit.add(t, 'y', [[4.08, 0], [4.45, -40, 'outBack']]);
+      Kit.add(t, 'scale', [[4.08, 1], [4.45, 1.18, 'outBack']]);
+    } else {
+      Kit.add(t, 'color', [[0, '#EEF4EF'], [s.b, '#33433A', 'hold']]);
+      Kit.add(t, 'borderColor', [[0, '#213128'], [s.b, '#18241D', 'hold']]);
+      Kit.add(t, 'opacity', [[4.05, 1], [4.4, 0.5]]);
+    }
+  });
+  ['Q', 'S'].forEach(function (L) {
+    var p = A.pos[L];
+    var g = mk(A.el, '<div style="position:absolute;left:' + (p[0] - 34) + 'px;top:' + (p[1] - 60) + 'px;width:124px;height:190px;border-radius:50%;background:radial-gradient(closest-side, rgba(75,205,50,.55), rgba(75,205,50,0));"></div>');
+    A.el.insertBefore(g, A.el.firstChild);
+    Kit.add(g, 'opacity', [[4.15, 0], [4.6, 1, 'out']]); Kit.add(g, 'y', [[4.08, 0], [4.45, -40, 'outBack']]);
+  });
+  Kit.add('#big7', 'opacity', [[3.45, 0], [3.55, 1], [4.0, 1], [4.2, 0]]); Kit.add('#big7', 'scale', [[3.45, 0.2], [3.8, 1, 'outBack']]);
+  Kit.add(A.tiles.A, 'scale', [[3.45, 1], [3.6, 1.2, 'out'], [3.85, 1, 'out']]);
+  Kit.add(A.nums.A, 'scale', [[3.45, 1], [3.6, 1.6, 'out']]);
+  Kit.add('#stripA', 'opacity', [[6.25, 1], [6.5, 0]]);
+
+  /* ---------- 6.4 – 8.2: QS = quantity surveying → wordmark ---------- */
+  Kit.scene('#sName', 6.4, 8.3);
+  Kit.add('#sName', 'opacity', [[6.4, 0], [6.55, 1], [8.05, 1], [8.25, 0]]);
+  Kit.type('#rQ', 6.5, 6.75); Kit.type('#rS', 6.7, 6.95);   // 'Quantity / Surveying' complete by 6.95, held to 8.05
+  var W1 = QSA.wordmark($('wmHost'), { x: 190, y: 600, w: 700 });
+  Kit.add(W1.Q, 'opacity', [[7.2, 0], [7.35, 1]]); Kit.add(W1.S, 'opacity', [[7.28, 0], [7.43, 1]]);
+  Kit.add(W1.Q, 'y', [[7.2, -40], [7.45, 0, 'out']]); Kit.add(W1.S, 'y', [[7.28, -40], [7.53, 0, 'out']]);
+  Kit.add(W1.M, 'opacity', [[7.5, 0], [7.7, 0.92]]); Kit.add(W1.E, 'opacity', [[7.6, 0], [7.8, 0.92]]);
+  Kit.add(W1.Uw, 'width', [[7.45, W1.UwFrom], [7.95, W1.UwTo, 'inOut']]);
+
+  /* ---------- 8.2 – 11.0: Good QS. Good project. ---------- */
+  Kit.scene('#sGood', 8.2, 11.05);
+  Kit.slam('#good1', 8.28, { from: 1.35, dur: 0.15 }); Kit.add('#good1', 'rotate', [[8.28, -3], [8.45, -1.2, 'out']]);
+  Kit.slam('#good2', 8.95, { from: 1.35, dur: 0.15 }); Kit.add('#good2', 'rotate', [[8.95, 2.5], [9.1, 0.8, 'out']]);
+  Kit.add('#goodAside', 'opacity', [[9.75, 0], [9.88, 1]]); Kit.add('#goodAside', 'x', [[9.75, 40], [10.0, 0, 'out']]); Kit.add('#goodAside', 'rotate', [[9.75, -6], [10.0, -3, 'out']]);
+  Kit.add('#sGood', 'opacity', [[10.85, 1], [11.05, 0]]);
+
+  /* ---------- 11.0 – 13.4: QS by title, or QS by default? ---------- */
+  Kit.scene('#sWho', 11.0, 13.45);
+  Kit.add('#whoL', 'x', [[11.0, -80], [11.35, 0, 'out']]); Kit.add('#whoL', 'opacity', [[11.0, 0], [11.2, 1], [13.15, 1], [13.4, 0]]);
+  Kit.add('#whoR', 'x', [[11.45, 80], [11.8, 0, 'out']]); Kit.add('#whoR', 'opacity', [[11.45, 0], [11.65, 1], [13.15, 1], [13.4, 0]]);
+  Kit.add('#whoRow', 'opacity', [[12.0, 0], [12.2, 1], [13.15, 1], [13.35, 0]]);
+
+  /* ---------- 13.4 – 26.0: nine letters ---------- */
+  var CUT = QSA.cutLetters({
+    root: $('letters'), L0: 13.4, zAt: 26.0,
+    dock: { x: 60, y: 70, s: 960 / 1656 },
+    eye: { x: 60, y: 168, fs: 22 },
+    giant: { x: 64, y: 200, fs: 330 },
+    desc: { x: 390, y: 250, w: 630, fs: 52 },
+    aside: { x: 300, y: 380, fs: 40 },
+    seven: { x: 392, y: 330, fs: 100 },
+    stamp: { x: 640, y: 380, fs: 66 },
+    mom: { x: 60, y: 520, s: 960 / 780 },
+    note: { right: 60, y: 466, fs: 22 },   // B's 'All totals excl. tax': above the window, never inside it
+    cap: cap
+  });
+
+  /* ---------- 26.0 – 28.4: Z, one record, built by a QS ---------- */
+  Kit.scene('#sZ', 26.0, 28.45);
+  Kit.slam('#gz', 26.05, { from: 1.5, dur: 0.14 });
+  Kit.add('#gz', 'y', [[26.6, 0], [26.9, -40, 'inOut']]); Kit.add('#gz', 'opacity', [[26.75, 1], [26.95, 0]]);
+  var W2 = QSA.wordmark($('wmHost2'), { x: 170, y: 300, w: 740 });
+  Kit.add(W2.Q, 'opacity', [[26.8, 0], [26.95, 1]]); Kit.add(W2.S, 'opacity', [[26.86, 0], [27.0, 1]]);
+  Kit.add(W2.Q, 'scale', [[26.8, 0.7], [27.05, 1, 'outBack']]); Kit.add(W2.S, 'scale', [[26.86, 0.7], [27.1, 1, 'outBack']]);
+  Kit.add(W2.M, 'opacity', [[27.0, 0], [27.2, 1]]); Kit.add(W2.E, 'opacity', [[27.08, 0], [27.28, 1]]);
+  Kit.add(W2.Uw, 'width', [[27.0, W2.UwFrom], [27.4, W2.UwTo, 'inOut']]);
+  Kit.pop('#built', 27.3);
+  Kit.add('#sZ', 'opacity', [[28.25, 1], [28.45, 0]]);
+  // dusk b-roll under Z and the end card
+  var br = mk($('brollLayer'), '<div class="broll"><img><div class="shade" style="background:rgba(12,19,16,.55)"></div></div>');
+  var bi = br.querySelector('img'); bi.style.filter = 'saturate(.5) brightness(.9) blur(5px)';
+  Kit.scene(br, 26.95, 33.0); Kit.clip(bi, { dir: 'clips/dusk', t0: 26.95, fps: 30, ext: '.jpg', frames: 151, speed: 0.8 });
+  Kit.add(br, 'opacity', [[26.95, 0], [27.35, 0.32, 'out']]);
+  Kit.add('#tagFoot', 'opacity', [[0, 0], [27.0, 0, 'hold'], [27.15, 1]]);   // after the docked strip has faded (26.8–27.0)
+
+  /* ---------- 28.4 – 32.0: end card ---------- */
+  Kit.scene('#sEnd', 28.4, 33.1);
+  var W3 = QSA.wordmark($('wmHost3'), { x: 290, y: 250, w: 500 });
+  Kit.add(W3.el, 'opacity', [[28.45, 0], [28.7, 1]]);
+  Kit.add('#endPill', 'opacity', [[28.55, 0], [28.7, 1]]); Kit.add('#endPill', 'scale', [[28.55, 0.85], [28.8, 1, 'outBack']]);
+  Kit.pop('#endUrl', 28.85); Kit.pop('#endSub', 29.5);
+
+  Kit.ready({ duration: DUR, fonts: ['700 50px "Space Grotesk"', '500 20px Inter', '700 20px Inter', '500 20px "JetBrains Mono"', '700 40px Kalam', '400 30px "Permanent Marker"'] });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "cssWidth": 1280,
+  "cssHeight": 900,
+  "dpr": 2,
+  "shots": [
+    {
+      "name": "about-founder-card",
+      "url": "https://qsme.build/about",
+      "el": "(()=>{const h=[...document.querySelectorAll('h3')].find(e=>e.textContent.trim()==='Founder and chief executive'); return h.closest('.card')})()",
+      "pad": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "hl": "A professional quantity surveyor and software architect."
+    }
+  ],
+  "note": "The founder card on qsme.build/about captured exactly as the live page shows it: no 'prep', no DOM or style edits (2026-10-04 review: the earlier capture trimmed the card's second sentence and was wrongly chipped 'Live page'). The film crops only the card's empty lower padding."
+}

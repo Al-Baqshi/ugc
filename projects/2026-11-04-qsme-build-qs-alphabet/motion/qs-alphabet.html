@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<title>The QS Alphabet (QSME Global, 16:9 hero, 90 s)</title>
+<!-- Motion-kit page. Render from the studio root:
+     node tools/motion/make.mjs projects/2026-11-04-qsme-build-qs-alphabet/motion/qs-alphabet.html \
+          projects/2026-11-04-qsme-build-qs-alphabet/outputs/qs-alphabet-16x9.mp4 --safe 96,54,1824,1026
+     Product screens are designed stand-ins (qsa.js), labelled "Illustrative screen · demo data" in each window bar.
+     Public capture: clips/stills/about-founder-card.png (qsme.build/about, the founder card captured as it is, no DOM edits; motion/stills.json).
+     B-roll: AI brand footage from assets/qsme/broll (clips/th1…th5, th7, s2–s4, dusk), always dimmed, tagged "Illustrative footage",
+     and always cropped (zoom + origin) to a region with NO people in it; the crops were checked frame by frame (post.md → Footage). -->
+<link rel="stylesheet" href="../../../tools/motion/kit.css">
+<link rel="stylesheet" href="qsa.css">
+<style>
+  .cap { left: 140px; right: 140px; bottom: 70px; }
+  .cap span { max-width: 1640px; }
+  #stripA { left: 132px; top: 452px; }
+  #stripB { left: 132px; top: 380px; }
+  .qrow { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+  .qnum { position: absolute; width: 70px; text-align: center; font: 700 40px/1 var(--mono); color: var(--accent); letter-spacing: -0.04em; }
+  .acro { position: absolute; left: 500px; display: flex; align-items: baseline; font: 700 200px/1 var(--display); letter-spacing: -0.04em; white-space: nowrap; }
+  .acro .L { display: inline-block; color: var(--accent); transform-origin: 50% 62%; }
+  .acro .rest { color: var(--ink); }
+  .good { position: absolute; left: 0; right: 0; text-align: center; font: 700 160px/1 var(--display); letter-spacing: -0.045em; }
+  .ledger { position: absolute; left: 470px; display: flex; align-items: center; gap: 34px; }
+  .ledger .ic { width: 104px; height: 104px; border-radius: 22px; background: #1C2B23; border: 2px solid #2A3B31; display: flex; align-items: center; justify-content: center; flex: none; box-shadow: 0 14px 30px rgba(0,0,0,.35); }
+  .ledger .ic img { width: 84px; height: 84px; }
+  .ledger .tx { font: 700 64px/1 var(--display); letter-spacing: -0.03em; white-space: nowrap; }
+  .card { position: absolute; }
+  .bcard { position: absolute; width: 560px; height: 320px; background: #FBFAF6; border-radius: 10px; box-shadow: 0 40px 90px rgba(0,0,0,.6); color: #1B1E1C; }
+  .lab { position: absolute; font: 700 72px/1 var(--display); letter-spacing: -0.03em; white-space: nowrap; }
+  .lane { position: absolute; left: 120px; top: 196px; }
+  .rest5 { position: absolute; top: 300px; width: 200px; height: 220px; border-radius: 22px; background: #121C17; border: 3px solid #213128; display: flex; align-items: center; justify-content: center; font: 700 170px/1 var(--display); letter-spacing: -0.04em; color: #3A4A40; }
+  .rl { position: absolute; top: 560px; width: 300px; text-align: center; }
+  .mini { position: absolute; width: 330px; height: 76px; border-radius: 14px; background: #F4F6F5; color: #0F172A; display: flex; align-items: center; gap: 16px; padding: 0 20px; box-shadow: 0 18px 40px rgba(0,0,0,.45); font: 700 25px/1 Inter; white-space: nowrap; }
+  .mini b { width: 46px; height: 46px; border-radius: 10px; background: #3DC023; color: #06130A; display: flex; align-items: center; justify-content: center; font: 700 30px/1 var(--display); flex: none; }
+  .here { position: absolute; top: 132px; width: 56px; height: 6px; border-radius: 3px; background: var(--accent); }
+</style>
+</head>
+<body class="build r16x9">
+<div id="root">
+  <div id="brollLayer" class="fill"></div>
+  <div class="fill bgGrid" id="grid"></div>
+  <div class="fill bgGlow"></div>
+  <div class="fill vign"></div>
+
+  <!-- ===== 0 – 8.6: the alphabet, the shuffle, the QS ===== -->
+  <div id="sHook" class="fill"><div id="stripA" class="strip"></div><div id="typeCur" class="abs" style="left:0;top:452px;width:6px;height:78px;border-radius:3px;background:var(--accent)"></div></div>
+
+  <!-- ===== 8.4 – 11.6: QS = quantity surveying → the wordmark ===== -->
+  <div id="sName" class="fill">
+    <div id="acQ" class="acro" style="top:250px"><span class="L" id="bigQ">Q</span><span class="rest" id="restQ">uantity</span></div>
+    <div id="acS" class="acro" style="top:470px"><span class="L" id="bigS">S</span><span class="rest" id="restS">urveying</span></div>
+    <div id="wmHost" class="fill"></div>
+  </div>
+
+  <!-- ===== 11.6 – 15.4: Good QS. Good project. ===== -->
+  <div id="sGood" class="fill">
+    <div id="good1" class="good" style="top:250px">Good <span class="g">QS.</span></div>
+    <div id="good2" class="good" style="top:440px">Good project.</div>
+    <svg id="goodArrow" class="abs" style="left:1290px;top:290px" width="340" height="430" viewBox="0 0 340 430"><path id="goodArrowP" d="M196 404 C 330 330, 330 110, 40 50 M40 50 l 34 -12 M40 50 l 22 28" fill="none" stroke="#F2C46D" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div id="goodAside" class="aside" style="left:590px;top:690px;font-size:60px;transform-origin:0 50%">(We’re biased. It’s in our name.)</div>
+  </div>
+
+  <!-- ===== 15.4 – 22.0: every trade ===== -->
+  <div id="sTrades" class="fill">
+    <div id="lg1" class="ledger" style="top:196px"><div class="ic"><img src="../../../assets/qsme/trade-icons/architect.png"></div><div class="tx">Architects design it.</div></div>
+    <div id="lg2" class="ledger" style="top:336px"><div class="ic"><img src="../../../assets/qsme/trade-icons/structural_engineer.png"></div><div class="tx">Engineers keep it standing.</div></div>
+    <div id="lg3" class="ledger" style="top:476px"><div class="ic"><img src="../../../assets/qsme/trade-icons/general_contractor.png"></div><div class="tx">Builders build it.</div></div>
+    <svg id="totalLine" class="abs" style="left:450px;top:612px" width="1040" height="40" viewBox="0 0 1040 40"><path id="tl1" d="M6 10 C 300 4, 700 14, 1034 7" fill="none" stroke="#F87171" stroke-width="5" stroke-linecap="round"/><path id="tl2" d="M10 28 C 320 22, 690 32, 1030 24" fill="none" stroke="#F87171" stroke-width="5" stroke-linecap="round"/></svg>
+    <div id="lg4" class="ledger" style="top:672px"><div class="ic" style="box-shadow:0 0 0 5px #3DC023, 0 14px 30px rgba(0,0,0,.35)"><img src="../../../assets/qsme/trade-icons/quantity_surveyor.png"></div><div class="tx">The <span class="g">QS</span> makes it all add up.</div></div>
+  </div>
+
+  <!-- ===== 22.0 – 27.4: QS by title / QS by default ===== -->
+  <div id="sWho" class="fill">
+    <div id="whoL" class="abs" style="left:150px;top:170px;width:760px;height:620px">
+      <div class="lab" style="left:20px;top:0">QS by title.</div>
+      <div class="bcard" style="left:40px;top:150px;transform:rotate(-4deg)">
+        <div style="position:absolute;left:44px;top:120px;font:600 40px/1 Inter;letter-spacing:.08em;text-transform:uppercase;color:#1B1E1C">Quantity Surveyor</div>
+        <div style="position:absolute;left:46px;top:180px;width:150px;height:3px;background:#3DC023"></div>
+      </div>
+    </div>
+    <div id="whoR" class="abs" style="left:1010px;top:170px;width:760px;height:620px">
+      <div class="lab" style="left:20px;top:0">QS by <span class="g">default.</span></div>
+      <svg class="abs" style="left:60px;top:170px" width="620" height="360" viewBox="0 0 620 360">
+        <defs><linearGradient id="hat" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFD54A"/><stop offset="1" stop-color="#E9A800"/></linearGradient></defs>
+        <ellipse cx="310" cy="300" rx="290" ry="40" fill="#0A0F0C" opacity=".55"/>
+        <path d="M40 262 C 40 232, 110 228, 120 226 L 500 226 C 520 228, 590 236, 590 262 C 590 286, 40 290, 40 262 Z" fill="#D99A00"/>
+        <path d="M110 232 C 110 110, 200 40, 310 40 C 420 40, 510 110, 510 232 Z" fill="url(#hat)"/>
+        <path d="M282 44 C 286 110, 286 170, 284 232 L 336 232 C 334 170, 334 110, 338 44 Z" fill="#F2BB10" opacity=".9"/>
+      </svg>
+      <div class="abs" style="left:116px;top:286px;width:500px;height:86px;background:#E9DFC4;transform:rotate(-5deg);box-shadow:0 6px 14px rgba(0,0,0,.25);clip-path:polygon(0 6%,3% 0,97% 4%,100% 0,99% 52%,100% 100%,96% 95%,4% 100%,0 96%,1% 48%);display:flex;align-items:center;justify-content:center;font:400 30px/1.05 'Permanent Marker',cursive;color:#1A1A1A;text-align:center;padding:0 20px">Developer, doing the QS bit tonight</div>
+    </div>
+    <div id="whoRow" class="abs kick" style="left:0;right:0;top:820px;text-align:center;font-size:28px;color:var(--ink-70)">QS &amp; PM practices · Main contractors · Developers &amp; owners</div>
+  </div>
+
+  <!-- ===== 27.4 – 69.4: ten letters ===== -->
+  <div id="stops" class="fill"></div>
+
+  <!-- ===== 69.4 – 73.6: and the rest ===== -->
+  <div id="sRest" class="fill"></div>
+
+  <!-- ===== 73.6 – 77.4: Z ===== -->
+  <div id="sZ" class="fill"></div>
+
+  <!-- ===== 77.4 – 82.2: built by a QS ===== -->
+  <div id="sBuilt" class="fill">
+    <div id="wmHost2" class="fill"></div>
+    <!-- the founder card exactly as qsme.build/about shows it (no text removed); only the card's empty lower padding is cropped -->
+    <div id="founder" class="abs" style="left:600px;top:626px;width:720px">
+      <div class="chipk acc" style="position:absolute;left:0;top:-52px;font-size:19px"><span style="width:9px;height:9px;border-radius:50%;background:var(--accent);display:inline-block"></span>Live page · qsme.build/about · captured 4 Oct 2026</div>
+      <div style="width:720px;height:196px;overflow:hidden;border-radius:14px 14px 0 0;box-shadow:0 26px 60px rgba(0,0,0,.55)"><img src="clips/stills/about-founder-card.png" style="width:720px"></div>
+      <div id="fhl" class="abs" style="left:34px;top:72px;width:571px;height:30px;border-bottom:4px solid var(--accent)"></div>
+    </div>
+  </div>
+
+  <!-- ===== 82.2 – 88.0: end card ===== -->
+  <div id="sEnd" class="fill">
+    <div id="wmHost3" class="fill"></div>
+    <div id="endPill" class="abs" style="left:0;right:0;top:490px;display:flex;justify-content:center"><span class="endpill">Book a 30-minute demo</span></div>
+    <div id="endUrl" class="abs disp g" style="left:0;right:0;top:610px;text-align:center;font-size:110px">qsme.build</div>
+    <div id="endSub" class="abs" style="left:0;right:0;top:770px;text-align:center;font:500 46px/1 var(--body);color:var(--ink-70)">Bring your spreadsheet.</div>
+  </div>
+
+  <div id="dock" class="fill"><div id="stripB" class="strip"></div><div id="qrow" class="fill"></div><div id="hereBar" class="here"></div></div>
+  <div id="tagFoot" class="ftag" style="left:100px;top:64px">Illustrative footage</div>
+  <div id="caps" class="fill"></div>
+</div>
+<script src="../../../tools/motion/kit.js"></script>
+<script src="qsa.js"></script>
+<script>
+(function () {
+  var mk = QSA.mk, q = QSA.q, R = document.getElementById('root');
+  var DUR = 90.0;
+  function $(id) { return document.getElementById(id); }
+
+  /* ---------- captions (word for word with vo-script.json; standard spelling on screen) ---------- */
+  // t0 <= 0: on screen from frame 1. o.hardIn / o.hardOut: a hard swap with no fade (split captions, and the hand-over into D)
+  function cap(t0, t1, html, o) {
+    o = o || {}; var c = mk($('caps'), '<div class="cap"><span>' + html + '</span></div>');
+    var k = t0 <= 0 ? [[0, 1]] : o.hardIn ? [[0, 0], [t0, 1, 'hold']] : [[t0, 0], [t0 + 0.12, 1]];
+    if (o.hardOut) k.push([t1, 0, 'hold']); else k.push([t1 - 0.12, 1], [t1, 0]);
+    Kit.add(c, 'opacity', k); if (t0 > 0 && !o.hardIn) Kit.add(c, 'y', [[t0, 14], [t0 + 0.2, 0, 'out']]); return c;
+  }
+  cap(0.0, 2.74, 'Every project runs from A to Z.');            // frame 1
+  cap(2.86, 5.3, 'Just… never in that order.');
+  cap(5.45, 8.3, 'Someone keeps it in order. That’s the <b>QS</b>.');
+  cap(8.45, 11.65, '<b>QS.</b> Quantity surveying. The <b>QS</b> in QSME.');
+  cap(22.05, 24.7, 'QS by title, or QS by default.');
+  cap(24.75, 27.46, 'Here’s your alphabet. In QS order.', { hardOut: true });   // held until D's caption replaces it
+  cap(69.45, 73.5, 'And the rest? Alphabetical, for once.');
+  cap(73.65, 77.3, '<b>Z.</b> One record. First estimate to last payment.');
+  cap(77.45, 82.1, 'QSME. Built by a <b>QS</b>, for whoever’s the <b>QS</b>.');
+
+  /* ---------- b-roll (always dimmed, behind type) ---------- */
+  function broll(dir, t0, t1, o) {
+    o = o || {};
+    var n = Number(o.frames || 241);
+    var b = mk($('brollLayer'), '<div class="broll"><img><div class="shade"></div></div>');
+    var img = b.querySelector('img'), sh = b.querySelector('.shade');
+    if (o.zoom) { img.style.transformOrigin = o.origin || '50% 50%'; img.style.transform = 'scale(' + o.zoom + ')'; }
+    if (o.blur) img.style.filter = 'saturate(.5) brightness(.9) blur(' + o.blur + 'px)';
+    sh.style.background = o.shade || 'linear-gradient(90deg, rgba(12,19,16,.92) 0%, rgba(12,19,16,.72) 38%, rgba(12,19,16,.55) 100%)';
+    Kit.scene(b, t0, t1);
+    Kit.clip(img, { dir: 'clips/' + dir, t0: t0, fps: 30, ext: '.jpg', frames: n, from: o.from || 0, speed: o.speed || 1 });
+    var op = o.op || 0.26;
+    Kit.add(b, 'opacity', [[t0, 0], [t0 + 0.3, op, 'out'], [t1 - 0.25, op], [t1, 0]]);
+    return b;
+  }
+
+  /* =============================== HOOK 0 – 8.6 =============================== */
+  // frame 1: A B C + the caption. The row types to Z by 1.05 s; the split-flap clatter breaks the pattern on 'Z' (1.9 s).
+  Kit.scene('#sHook', 0, 8.75);
+  var A = QSA.strip($('stripA'), { bigNums: true });
+  var typeT = {};
+  QSA.LETTERS.forEach(function (L, i) { typeT[L] = i < 3 ? 0 : 0.04 + (i - 3) * 0.046; if (i >= 3) Kit.show(A.tiles[L], typeT[L]); });
+  var tc = $('typeCur');
+  Kit.each(function (t) {
+    var n = 3; QSA.LETTERS.forEach(function (L, i) { if (i >= 3 && t >= typeT[L]) n = i + 1; });
+    tc.style.left = (132 + n * 64 - 2) + 'px';
+    tc.style.opacity = t > 1.88 ? 0 : (Math.floor(t * 2.6) % 2 === 0 || n < 26 ? 1 : 0.15);
+  });
+  // split-flap shuffle 1.9 →
+  var spans = QSA.flicker(A, QSA.LETTERS, 1.9, 0.36, 0.012, 7);
+  spans.forEach(function (s) {
+    var t = A.tiles[s.L], k = QSA.ORDER.indexOf(s.L);
+    if (k >= 0) {
+      Kit.add(t, 'background', [[0, '#121C17'], [s.b, '#3DC023', 'hold'], [5.45, '#3DC023'], [5.85, '#16301A']]);
+      Kit.add(t, 'borderColor', [[0, '#213128'], [s.b, '#3DC023', 'hold'], [5.45, '#3DC023'], [5.85, '#1F4A1A']]);
+      Kit.add(t, 'color', [[0, '#EEF4EF'], [s.b, '#06130A', 'hold'], [5.45, '#06130A'], [5.85, '#3E7A30']]);
+    } else if (s.L === 'Q' || s.L === 'S') {
+      Kit.add(t, 'color', [[0, '#EEF4EF'], [s.b, '#33433A', 'hold'], [5.45, '#33433A'], [5.75, '#4BCD32']]);
+      Kit.add(t, 'borderColor', [[0, '#213128'], [5.45, '#213128'], [5.75, '#3DC023']]);
+      Kit.add(t, 'background', [[0, '#121C17'], [5.45, '#121C17'], [5.75, '#10240F']]);
+      Kit.add(t, 'y', [[5.5, 0], [5.95, -34, 'outBack']]);
+    } else {
+      Kit.add(t, 'color', [[0, '#EEF4EF'], [s.b, '#33433A', 'hold']]);
+      Kit.add(t, 'borderColor', [[0, '#213128'], [s.b, '#18241D', 'hold']]);
+      Kit.add(t, 'opacity', [[5.45, 1], [5.85, 0.55]]);
+    }
+  });
+  // glow behind Q and S
+  ['Q', 'S'].forEach(function (L) {
+    var g = mk($('stripA'), '<div style="position:absolute;left:' + (QSA.LETTERS.indexOf(L) * 64 - 30) + 'px;top:-60px;width:116px;height:180px;border-radius:50%;background:radial-gradient(closest-side, rgba(75,205,50,.55), rgba(75,205,50,0));"></div>');
+    A.el.insertBefore(g, A.el.firstChild);
+    Kit.add(g, 'opacity', [[5.6, 0], [6.1, 1, 'out']]); Kit.add(g, 'y', [[5.5, 0], [5.95, -34, 'outBack']]);
+  });
+  // route arcs, ONE AT A TIME in the order a job happens: D → R → X → G → T → B → A → I → O → P.
+  // Each arc draws in 0.2 s and its letter's number (36 px) pops as it lands; earlier arcs drop to 30 %.
+  var svgNS = 'http://www.w3.org/2000/svg';
+  var arcs = document.createElementNS(svgNS, 'svg'); arcs.setAttribute('class', 'arcs'); arcs.setAttribute('width', '1656'); arcs.setAttribute('height', '10'); A.el.appendChild(arcs);
+  var arcT0 = 2.55, arcStep = 0.2;
+  for (var k = 0; k < 9; k++) {
+    var xa = A.x(QSA.ORDER[k]), xb = A.x(QSA.ORDER[k + 1]), dx = Math.abs(xb - xa), h = 26 + 0.3 * dx;
+    var p = document.createElementNS(svgNS, 'path');
+    p.setAttribute('d', 'M' + xa + ' -8 C ' + xa + ' ' + (-8 - h) + ', ' + xb + ' ' + (-8 - h) + ', ' + xb + ' -8');
+    arcs.appendChild(p);
+    var ta = arcT0 + k * arcStep, tb = ta + arcStep;
+    Kit.add(p, 'trim', [[ta, 0], [tb, 1, 'inOut']]);
+    if (k < 8) Kit.add(p, 'opacity', [[tb, 1], [tb + 0.15, 0.3], [5.4, 0.3], [5.7, 0]]);
+    else Kit.add(p, 'opacity', [[4.55, 1], [4.7, 0.3], [5.4, 0.3], [5.7, 0]]);
+  }
+  QSA.ORDER.forEach(function (L, k) {
+    var n = A.nums[L], tt = k === 0 ? arcT0 - 0.1 : arcT0 + k * arcStep;   // D's 1 pops just before the first arc; then each number as its arc lands
+    if (L === 'A') Kit.add(n, 'opacity', [[tt, 0], [tt + 0.06, 1], [4.5, 1], [4.56, 0]]);
+    else Kit.add(n, 'opacity', [[tt, 0], [tt + 0.06, 1], [5.4, 1], [5.6, 0]]);
+    Kit.add(n, 'scale', [[tt, 0.4], [tt + 0.2, L === 'A' ? 1.25 : 1, 'outBack']]);
+  });
+  // A's number swells into "7th"
+  var big7 = mk(A.el, '<div class="disp" style="position:absolute;left:-4px;top:114px;font-size:132px;color:var(--accent);transform-origin:30px 0;white-space:nowrap">7<span style="font-size:70px;vertical-align:top;line-height:1.3">th</span></div>');
+  Kit.add(big7, 'opacity', [[4.55, 0], [4.65, 1], [5.4, 1], [5.6, 0]]); Kit.add(big7, 'scale', [[4.55, 0.18], [4.9, 1, 'outBack']]);
+  Kit.add(A.tiles.A, 'scale', [[4.55, 1], [4.7, 1.18, 'out'], [4.95, 1, 'out']]);
+  // push in on Q and S
+  A.el.style.transformOrigin = '1116px 39px';
+  Kit.add(A.el, 'scale', [[5.5, 1], [8.3, 1.18, 'inOut']]); Kit.add(A.el, 'x', [[5.5, 0], [8.3, -288, 'inOut']]);
+  Kit.add('#stripA', 'opacity', [[8.35, 1], [8.6, 0]]);
+
+  /* =============================== NAME 8.4 – 11.65 =============================== */
+  Kit.scene('#sName', 8.35, 11.72);
+  // Q and S fly from their tiles into the acrostic (8.4–8.75)
+  Kit.add('#bigQ', 'x', [[8.4, 305], [8.75, 0, 'out']]); Kit.add('#bigQ', 'y', [[8.4, 96], [8.75, 0, 'out']]); Kit.add('#bigQ', 'scale', [[8.4, 0.3], [8.75, 1, 'out']]);
+  Kit.add('#bigS', 'x', [[8.4, 455], [8.75, 0, 'out']]); Kit.add('#bigS', 'y', [[8.4, -124], [8.75, 0, 'out']]); Kit.add('#bigS', 'scale', [[8.4, 0.3], [8.75, 1, 'out']]);
+  // 'Quantity / Surveying' types 8.72–9.35, then the complete words HOLD 9.35–10.7 (1.35 s: the owner's brief, read with the sound off)
+  Kit.type('#restQ', 8.72, 9.02); Kit.type('#restS', 8.98, 9.35);
+  // 10.7–10.92: 'uantity' and 'urveying' pull back into Q and S
+  Kit.add('#restQ', 'clipX', [[10.7, 1], [10.92, 0, 'in']]); Kit.add('#restS', 'clipX', [[10.74, 1], [10.96, 0, 'in']]);
+  var WMa = QSA.wordmark($('wmHost'), { x: 405, y: 230, w: 1100 });
+  // 10.9–11.22: the Space Grotesk Q and S slide and grow onto the logo's Q and S (centres and cap heights matched: measured in
+  // headless Chrome, scale 1.58), then a hard CUT to the real wordmark pieces: never both on screen, no cross-fade
+  Kit.add('#bigQ', 'x', [[10.9, 0], [11.22, 39, 'inOut']]); Kit.add('#bigQ', 'y', [[10.9, 0], [11.22, 145, 'inOut']]); Kit.add('#bigQ', 'scale', [[10.9, 1], [11.22, 1.58, 'inOut']]);
+  Kit.add('#bigS', 'x', [[10.9, 0], [11.22, 279, 'inOut']]); Kit.add('#bigS', 'y', [[10.9, 0], [11.22, -70, 'inOut']]); Kit.add('#bigS', 'scale', [[10.9, 1], [11.22, 1.58, 'inOut']]);
+  Kit.add('#bigQ', 'opacity', [[8.38, 0], [8.42, 1], [11.22, 0, 'hold']]); Kit.add('#bigS', 'opacity', [[8.38, 0], [8.42, 1], [11.22, 0, 'hold']]);
+  Kit.add(WMa.Q, 'opacity', [[0, 0], [11.22, 1, 'hold']]); Kit.add(WMa.S, 'opacity', [[0, 0], [11.22, 1, 'hold']]);
+  Kit.add(WMa.Q, 'scale', [[11.22, 0.96], [11.36, 1, 'outBack']]); Kit.add(WMa.S, 'scale', [[11.22, 0.96], [11.36, 1, 'outBack']]);
+  // M and E join, unlabelled, 11.2–11.6; the underline draws from Q's tail; the wordmark holds to the 'Good QS.' stamp (11.72)
+  Kit.add(WMa.M, 'opacity', [[11.2, 0], [11.42, 0.92]]); Kit.add(WMa.M, 'x', [[11.2, 26], [11.45, 0, 'out']]);
+  Kit.add(WMa.E, 'opacity', [[11.3, 0], [11.55, 0.92]]); Kit.add(WMa.E, 'x', [[11.3, 26], [11.58, 0, 'out']]);
+  Kit.add(WMa.Uw, 'width', [[11.22, WMa.UwFrom], [11.62, WMa.UwTo, 'inOut']]);
+
+  /* =============================== GOOD QS 11.6 – 15.4 =============================== */
+  Kit.scene('#sGood', 11.6, 15.45);
+  Kit.slam('#good1', 11.72, { from: 1.35, dur: 0.16 }); Kit.add('#good1', 'rotate', [[11.72, -3], [11.9, -1.2, 'out']]);
+  Kit.slam('#good2', 12.62, { from: 1.35, dur: 0.16 }); Kit.add('#good2', 'rotate', [[12.62, 2.5], [12.8, 0.8, 'out']]);
+  Kit.add('#good1', 'y', [[11.9, 0], [15.4, -10]]); Kit.add('#good2', 'y', [[12.8, 0], [15.4, -8]]);
+  Kit.add('#goodAside', 'opacity', [[13.55, 0], [13.68, 1]]); Kit.add('#goodAside', 'x', [[13.55, 40], [13.85, 0, 'out']]); Kit.add('#goodAside', 'rotate', [[13.55, -6], [13.85, -3, 'out']]);
+  Kit.add('#goodArrowP', 'trim', [[13.75, 0], [14.1, 1, 'out']]);
+  Kit.add('#sGood', 'opacity', [[15.2, 1], [15.45, 0]]);
+
+  /* =============================== TRADES 15.4 – 22.0 =============================== */
+  Kit.scene('#sTrades', 15.4, 22.05);
+  broll('s2', 15.4, 17.65, { frames: 151, from: 87, zoom: 1.7, origin: '90% 95%', op: 0.3, shade: 'rgba(12,19,16,.55)' });
+  broll('s3', 17.6, 19.85, { frames: 151, from: 20, zoom: 1.75, origin: '85% 0%', op: 0.3, shade: 'rgba(12,19,16,.55)' });
+  broll('s4', 19.8, 22.05, { frames: 151, from: 0, op: 0.3, shade: 'rgba(12,19,16,.55)' });
+  [['#lg1', 15.5], ['#lg2', 16.9], ['#lg3', 18.35]].forEach(function (a) { Kit.add(a[0], 'opacity', [[a[1], 0], [a[1] + 0.18, 1]]); Kit.add(a[0], 'x', [[a[1], 60], [a[1] + 0.35, 0, 'out']]); });
+  Kit.add('#tl1', 'trim', [[19.6, 0], [19.9, 1, 'inOut']]); Kit.add('#tl2', 'trim', [[19.82, 0], [20.1, 1, 'inOut']]);
+  Kit.slam('#lg4', 19.95, { from: 1.12, dur: 0.18 });
+  Kit.add('#sTrades', 'opacity', [[21.8, 1], [22.05, 0]]);
+
+  /* =============================== WHO 22.0 – 27.4 =============================== */
+  Kit.scene('#sWho', 22.0, 25.6);
+  Kit.add('#whoL', 'x', [[22.0, -120], [22.45, 0, 'out'], [24.75, 0], [25.05, -160, 'in']]); Kit.add('#whoL', 'opacity', [[22.0, 0], [22.25, 1], [24.75, 1], [25.0, 0]]);
+  Kit.add('#whoR', 'x', [[22.15, 120], [22.6, 0, 'out'], [24.75, 0], [25.05, 160, 'in']]); Kit.add('#whoR', 'opacity', [[22.15, 0], [22.4, 1], [24.75, 1], [25.0, 0]]);
+  Kit.add('#whoRow', 'opacity', [[23.1, 0], [23.35, 1], [24.75, 1], [24.95, 0]]);
+
+  /* =============================== THE DOCKED STRIP 25.0 – 77.5 =============================== */
+  // 25.0 the alphabet re-forms mid-frame · 25.35–26.6 'In QS order': the ten letters drop out, one by one, into a second row
+  // D R X G T B A I O P with 1–10 under it · 26.85–27.1 the row drops away as the strip docks (26.9–27.35) · 27.4 D, on the downbeat.
+  var B = QSA.strip($('stripB'), { bigNums: true });
+  Kit.scene('#dock', 25.0, 77.75);
+  var DOCK = { s: 0.62, x: (1920 - 1656 * 0.62) / 2, y: 60 }, SY = 380, D0 = 26.9, D1 = 27.35;
+  var sb = B.el; sb.style.transformOrigin = '0 0';
+  Kit.add(sb, 'opacity', [[24.95, 0], [25.25, 1]]); Kit.add(sb, 'y', [[24.95, 24], [25.3, 0, 'out'], [D0, 0], [D1, DOCK.y - SY, 'inOut']]);
+  Kit.add(sb, 'scale', [[D0, 1], [D1, DOCK.s, 'inOut']]);
+  Kit.add(sb, 'x', [[D0, 0], [D1, DOCK.x - 132, 'inOut']]);
+  QSA.LETTERS.forEach(function (L) { if (B.nums[L]) Kit.add(B.nums[L], 'opacity', [[0, 0], [D1 - 0.15, 0], [D1, 1]]); });   // the strip's own numbers only once docked
+  var QR = { x: (1920 - (9 * 84 + 70)) / 2, y: 540, s: 1.25, pitch: 84 };
+  QSA.ORDER.forEach(function (L, k) {
+    var idx = QSA.LETTERS.indexOf(L), sx = 132 + idx * 64, rx = QR.x + k * QR.pitch, t0 = 25.35 + k * 0.1, t1 = t0 + 0.32;
+    var g = mk($('qrow'), '<div class="tile qrow" style="background:#3DC023;border-color:#3DC023;color:#06130A"><span style="display:inline-block">' + L + '</span></div>');
+    var n = mk($('qrow'), '<div class="qnum" style="left:' + rx + 'px;top:' + (QR.y + 78 * QR.s + 14) + 'px">' + (k + 1) + '</div>');
+    Kit.add(g, 'opacity', [[0, 0], [t0, 1, 'hold'], [D0 - 0.05, 1], [D0 + 0.2, 0]]);
+    Kit.add(g, 'x', [[t0, sx], [t1, rx, 'inOut']]);
+    Kit.add(g, 'y', [[t0, SY], [t1, QR.y, 'inOut'], [D0 - 0.05, QR.y], [D0 + 0.2, QR.y + 40, 'in']]);
+    Kit.add(g, 'scale', [[t0, 1], [t1, QR.s, 'inOut']]);
+    Kit.add(n, 'opacity', [[t1 - 0.04, 0], [t1 + 0.04, 1], [D0 - 0.05, 1], [D0 + 0.15, 0]]); Kit.add(n, 'scale', [[t1 - 0.04, 0.4], [t1 + 0.16, 1, 'outBack']]);
+  });
+  var STOP0 = 27.4, STEP = 4.2;
+  QSA.LETTERS.forEach(function (L, i) {
+    var t = B.tiles[L], k = QSA.ORDER.indexOf(L), rk = QSA.REST.indexOf(L);
+    if (k >= 0) {
+      var tv = STOP0 + k * STEP;
+      Kit.add(t, 'background', [[0, '#10240F'], [tv, '#3DC023', 'hold']]);
+      Kit.add(t, 'borderColor', [[0, '#2C5B22'], [tv, '#3DC023', 'hold']]);
+      Kit.add(t, 'color', [[0, '#4C8A3E'], [tv, '#06130A', 'hold']]);
+      Kit.add(t, 'scaleY', [[tv, 1], [tv + 0.07, 0.15, 'in'], [tv + 0.16, 1, 'out']]);
+      B.nums[L].style.color = '#4C8A3E';
+      Kit.add(B.nums[L], 'color', [[0, '#4C8A3E'], [tv, '#4BCD32', 'hold']]);
+    } else if (L === 'Q' || L === 'S') {
+      Kit.add(t, 'color', [[0, '#4BCD32']]); Kit.add(t, 'borderColor', [[0, '#3DC023']]); Kit.add(t, 'background', [[0, '#0C1310']]);
+    } else if (rk >= 0) {
+      var tr = 69.8 + rk * 0.6;   // C lights at 69.8, W at 72.2 (same rhythm as the five tiles below)
+      Kit.add(t, 'color', [[0, '#33433A'], [tr, '#06130A', 'hold']]); Kit.add(t, 'background', [[0, '#121C17'], [tr, '#3DC023', 'hold']]); Kit.add(t, 'borderColor', [[0, '#18241D'], [tr, '#3DC023', 'hold']]);
+      Kit.add(t, 'scaleY', [[tr, 1], [tr + 0.07, 0.15, 'in'], [tr + 0.16, 1, 'out']]);
+    } else {
+      Kit.add(t, 'color', [[0, '#33433A'], [73.7, '#06130A', 'hold']]); Kit.add(t, 'background', [[0, '#121C17'], [73.7, '#3DC023', 'hold']]); Kit.add(t, 'borderColor', [[0, '#18241D'], [73.7, '#3DC023', 'hold']]);
+      Kit.add(t, 'scaleY', [[73.7 + i * 0.012, 1], [73.77 + i * 0.012, 0.15, 'in'], [73.86 + i * 0.012, 1, 'out']]);
+    }
+  });
+  // "you are here" bar under the current letter
+  var here = $('hereBar');
+  Kit.each(function (t) {
+    var k = Math.floor((t - STOP0) / STEP);
+    if (t < STOP0 || k > 9) { here.style.opacity = 0; return; }
+    var L = QSA.ORDER[k], x = DOCK.x + (QSA.LETTERS.indexOf(L) * 64) * DOCK.s;
+    here.style.opacity = 1; here.style.left = x + 'px'; here.style.width = (56 * DOCK.s) + 'px'; here.style.top = (DOCK.y + 130 * DOCK.s + 5) + 'px';   // under the 22 px number
+  });
+  // Q and S leave the strip for the wordmark at 77.4; everything else fades
+  Kit.add(sb, 'opacity', [[77.35, 1], [77.7, 0]]);
+
+  /* =============================== TEN STOPS 27.4 – 69.4 =============================== */
+  var STOPS = [
+    { L: 'D', eb: 'Drawings', kw: 'Drawings.', sub: 'Read my plans · Plan index', cap: '<b>D.</b> Drawings. The whole set, split into sections.', P: 'D', broll: 'th1' },
+    { L: 'R', eb: 'Estimating &amp; quantities', kw: 'Rates.', sub: 'Schedule of quantities · Draft SOQ with AI', cap: '<b>R.</b> Rates. Your rates, one schedule. AI drafts. You check.', P: 'R' },
+    { L: 'X', eb: 'Excel in, Excel out', kw: 'Excel.', sub: 'Import a schedule · Export', cap: '<b>X.</b> Excel.', cap2: [1.15, 'Close enough. In, and back out.'], P: 'X', aside: '(close enough)', broll: 'th2' },
+    { L: 'G', eb: 'Planning', kw: 'Gantt.', sub: 'Import jobs from SOQ · Construction programme', cap: '<b>G.</b> Gantt. Your priced jobs, no retyping.', P: 'G' },
+    { L: 'T', eb: 'Tendering', kw: 'Tender.', sub: 'Private tender, cut from your SOQ', cap: '<b>T.</b> Tender. Same lines, every bidder. Your rates stay home.', P: 'T', broll: 'th3' },
+    { L: 'B', eb: 'Tendering', kw: 'Bids.', sub: 'Compare bids · Add a bid you received', cap: '<b>B.</b> Bids. One table, even the emailed one. You choose.', P: 'B', chip: 'All totals excl. tax' },
+    { L: 'A', eb: 'Award &amp; contract', kw: 'Award.', sub: 'The award becomes the contract', cap: '<b>A.</b> Award.', cap2: [1.4, 'Finally. And it’s a contract.'], P: 'A', broll: 'th4' },
+    { L: 'I', eb: 'Contracts', kw: 'Ink.', sub: 'Agreements, signed from a link', cap: '<b>I.</b> Ink.', cap2: [1.15, 'Well… a finger, on a phone.'], P: 'I', aside: '(well… a finger)' },
+    { L: 'O', eb: 'Work on site', kw: 'On site.', sub: 'QR site sign-in · Daily log', cap: '<b>O.</b> On site. One QR poster. One daily log.', P: 'O', broll: 'th5' },
+    { L: 'P', eb: 'Deliverables &amp; payments', kw: 'Paid.', sub: 'Milestones · paid outside QSME, confirmed', cap: '<b>P.</b> Paid. Your usual way, confirmed by whoever got paid.', P: 'Pp' }
+  ];
+  var ORDN = ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th', '10th'];
+  // b-roll per pair of letters (the site progresses as the alphabet does). Every clip is cropped (zoom + origin) to sky, trees and
+  // structure with NO people in frame for its whole used range (checked on the source frames); th3 plays its people-free first 4 s
+  // at 0.48x; th5 also blurred so no wrap branding reads.
+  broll('th1', 27.4, 35.8, { zoom: 1.6, origin: '0% 0%' });
+  broll('th2', 35.8, 44.2, { zoom: 1.7, origin: '0% 0%' });
+  broll('th3', 44.2, 52.6, { zoom: 2.25, origin: '32% 0%', speed: 0.476 });
+  broll('th4', 52.6, 61.0, { zoom: 1.9, origin: '0% 0%' });
+  broll('th5', 61.0, 69.4, { zoom: 1.8, origin: '0% 0%', blur: 6 });
+  STOPS.forEach(function (s, k) {
+    var T0 = STOP0 + k * STEP, T1 = T0 + STEP;
+    var sc = mk($('stops'), '<div class="fill"></div>');
+    Kit.scene(sc, T0, T1);
+    var eb = mk(sc, '<div class="kick lane" style="top:196px"><b>' + ORDN[k] + '</b> · ' + s.eb + '</div>');
+    var gl = mk(sc, '<div class="giant" style="left:104px;top:250px">' + s.L + '</div>');
+    var kw = mk(sc, '<div class="kw" style="left:116px;top:600px">' + s.kw + '</div>');
+    var sub = mk(sc, '<div class="sub" style="left:120px;top:704px;width:560px">' + s.sub + '</div>');
+    // split-flap in / out for the giant letter
+    // split-flap: the outgoing letter folds shut on the cut, the incoming one opens; no blank frame between letters
+    Kit.add(gl, 'scaleY', [[T0, 0.3], [T0 + 0.14, 1, 'out'], [T1 - 0.12, 1], [T1, 0.3, 'in']]);
+    Kit.add(eb, 'opacity', [[T0, 0.4], [T0 + 0.1, 1]]);
+    Kit.add(kw, 'opacity', [[T0 + 0.04, 0], [T0 + 0.18, 1]]); Kit.add(kw, 'y', [[T0 + 0.04, 22], [T0 + 0.3, 0, 'out']]);
+    Kit.add(sub, 'opacity', [[T0 + 0.2, 0], [T0 + 0.4, 1]]);
+    if (s.aside) { var as = mk(sc, '<div class="aside" style="left:' + (s.L === 'X' ? 360 : 300) + 'px;top:' + (s.L === 'X' ? 470 : 480) + 'px;transform-origin:0 50%">' + s.aside + '</div>'); Kit.add(as, 'opacity', [[T0 + 1.05, 0], [T0 + 1.15, 1]]); Kit.add(as, 'rotate', [[T0 + 1.05, -14], [T0 + 1.3, -7, 'out']]); Kit.add(as, 'scale', [[T0 + 1.05, 0.7], [T0 + 1.3, 1, 'outBack']]); }
+    if (s.chip) { var ch = mk(sc, '<div class="chipk amb" style="position:absolute;left:120px;top:800px">' + s.chip + '</div>'); Kit.add(ch, 'opacity', [[T0 + 0.6, 0], [T0 + 0.8, 1]]); }
+    // product screen
+    var host = mk(sc, '<div class="abs" style="left:720px;top:190px;width:1080px;height:670px"></div>');
+    QSA.P[s.P](host, T0);
+    Kit.add(host, 'opacity', [[T0, 0.3], [T0 + 0.12, 1]]);
+    Kit.add(host, 'x', [[T0, 70], [T0 + 0.35, 0, 'out'], [T1 - 0.15, 0], [T1, -40, 'in']]);
+    Kit.add(host, 'scale', [[T0, 0.985], [T1, 1.015]]);
+    // split captions: the second half appears with its punchline (the scrawl, the stamp), never before it
+    if (s.cap2) { cap(T0 + 0.06, T0 + s.cap2[0], s.cap, { hardIn: k === 0, hardOut: true }); cap(T0 + s.cap2[0], T1 - 0.08, s.cap2[1], { hardIn: true }); }
+    else cap(T0 + 0.06, T1 - 0.08, s.cap, { hardIn: k === 0 });
+  });
+  // T: the kinetic note outside the window
+  (function () {
+    var T0 = STOP0 + 4 * STEP, sc = $('stops').children[4];
+    var n = mk(sc, '<div class="note" style="left:1528px;top:116px;transform-origin:0 50%">rate: never shown</div>');
+    var ar = mk(sc, '<svg class="abs" style="left:1756px;top:156px" width="80" height="300" viewBox="0 0 80 300"><path d="M40 4 C 74 60, 76 200, 18 262 M18 262 l 24 -4 M18 262 l 2 -24" fill="none" stroke="#F2C46D" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    Kit.add(n, 'opacity', [[T0 + 1.75, 0], [T0 + 1.85, 1]]); Kit.add(n, 'rotate', [[T0 + 1.75, -8], [T0 + 2.0, -3, 'out']]);
+    Kit.add(ar.firstElementChild, 'trim', [[T0 + 1.85, 0], [T0 + 2.2, 1, 'out']]);
+  })();
+  // A: the big 7th + "Finally." stamp (after 0.4 s of nothing)
+  (function () {
+    var T0 = STOP0 + 6 * STEP, sc = $('stops').children[6];
+    var seven = mk(sc, '<div class="disp" style="position:absolute;left:420px;top:262px;font-size:150px;color:var(--ink);opacity:.9;white-space:nowrap">7<span style="font-size:76px;vertical-align:top;line-height:1.4">th</span></div>');
+    Kit.add(seven, 'opacity', [[T0 + 0.25, 0], [T0 + 0.35, 1], [T0 + 4.0, 1], [T0 + 4.15, 0]]); Kit.add(seven, 'scale', [[T0 + 0.25, 0.4], [T0 + 0.55, 1, 'outBack']]);
+    var st = mk(sc, '<div class="stamp" style="left:118px;top:792px">Finally.</div>');
+    Kit.slam(st, T0 + 1.4, { from: 1.6, dur: 0.14 }); Kit.add(st, 'rotate', [[T0 + 1.4, -12], [T0 + 1.54, -6, 'slam']]);
+    Kit.add(st, 'opacity', [[T0 + 4.0, 1], [T0 + 4.15, 0]]);
+  })();
+
+  /* =============================== THE REST 69.4 – 73.6 =============================== */
+  Kit.scene('#sRest', 69.4, 73.65);
+  // th-6-fitout (two workers in frame) is out; stage-4 exterior from frame 67, cropped right of the excavator: no people
+  broll('s4', 69.4, 73.65, { frames: 151, from: 67, speed: 0.66, zoom: 1.15, origin: '100% 50%', op: 0.24, shade: 'rgba(12,19,16,.6)' });
+  var RESTL = [['C', 'Copy link'], ['K', 'Keep every word'], ['U', 'Undo'], ['V', 'Version history'], ['W', 'Waiting for OK']];
+  RESTL.forEach(function (r, i) {
+    var x = 160 + i * 330, tr = 69.8 + i * 0.6;   // C 69.8 … W 72.2, then all five hold
+    var tile = mk($('sRest'), '<div class="rest5" style="left:' + (x + 50) + 'px">' + r[0] + '</div>');
+    var lab = mk($('sRest'), '<div class="rl" style="left:' + x + 'px"><span class="chipa" style="font-size:24px;padding:14px 20px">' + r[1] + '</span></div>');
+    Kit.add(tile, 'opacity', [[69.5 + i * 0.06, 0], [69.7 + i * 0.06, 1]]); Kit.add(tile, 'y', [[69.5 + i * 0.06, 30], [69.8 + i * 0.06, 0, 'out']]);
+    Kit.add(tile, 'background', [[0, '#121C17'], [tr, '#3DC023', 'hold']]); Kit.add(tile, 'color', [[0, '#3A4A40'], [tr, '#06130A', 'hold']]); Kit.add(tile, 'borderColor', [[0, '#213128'], [tr, '#3DC023', 'hold']]);
+    Kit.add(tile, 'scaleY', [[tr, 1], [tr + 0.07, 0.12, 'in'], [tr + 0.17, 1, 'out']]);
+    Kit.add(lab, 'opacity', [[tr + 0.05, 0], [tr + 0.15, 1]]); Kit.add(lab, 'scale', [[tr + 0.05, 0.8], [tr + 0.25, 1, 'outBack']]);
+  });
+  mk($('sRest'), '<div class="illustrative" style="left:830px;top:680px">' + QSA.ILL + '</div>');
+  Kit.add('#sRest', 'opacity', [[73.45, 1], [73.65, 0]]);
+
+  /* =============================== Z 73.6 – 77.4 =============================== */
+  Kit.scene('#sZ', 73.6, 77.5);
+  broll('th7', 73.6, 77.5, { frames: 150, op: 0.3, zoom: 2.2, origin: '100% 36%' });   // right-hand house only: the lit windows on the left have figures in them
+  var z = $('sZ');
+  mk(z, '<div class="kick lane" style="top:196px"><b>Z</b> · Project management</div>');
+  var gz = mk(z, '<div class="giant" style="left:104px;top:250px">Z</div>');
+  Kit.slam(gz, 73.75, { from: 1.5, dur: 0.16 });
+  var kwz = mk(z, '<div class="kw" style="left:116px;top:600px">One record.</div>'); Kit.pop(kwz, 74.0);
+  var subz = mk(z, '<div class="sub" style="left:120px;top:704px;width:560px">First estimate to last payment</div>'); Kit.pop(subz, 74.2);
+  var MINI = [['D', 'Drawings'], ['R', 'Rates'], ['X', 'Excel'], ['G', 'Gantt'], ['T', 'Tender'], ['B', 'Bids'], ['A', 'Award'], ['I', 'Ink'], ['O', 'On site'], ['P', 'Paid']];
+  var DECK = { x: 980, y: 420 };
+  MINI.forEach(function (m, i) {
+    var col = i % 2, row = Math.floor(i / 2);
+    var gx = 860 + col * 400, gy = 210 + row * 112;            // spread out, two columns
+    var fx = DECK.x + 40, fy = DECK.y + 40 - i * 5;             // collapse into one deck
+    var c = mk(z, '<div class="mini" style="left:0;top:0"><b>' + m[0] + '</b>' + m[1] + '</div>');
+    Kit.add(c, 'opacity', [[73.8 + i * 0.05, 0], [73.95 + i * 0.05, 1]]);
+    Kit.add(c, 'x', [[73.8 + i * 0.05, gx + (col ? 160 : -160)], [74.15 + i * 0.05, gx, 'out'], [75.0 + i * 0.03, gx], [75.5 + i * 0.03, fx, 'inOut']]);
+    Kit.add(c, 'y', [[73.8 + i * 0.05, gy], [75.0 + i * 0.03, gy], [75.5 + i * 0.03, fy, 'inOut']]);
+    Kit.add(c, 'rotate', [[75.0, 0], [75.5 + i * 0.03, (i % 2 ? 1.6 : -1.6) * (9 - i) / 9, 'inOut']]);
+  });
+  var rec = mk(z, '<div class="mini" style="left:' + DECK.x + 'px;top:' + DECK.y + 'px;width:600px;height:196px;flex-direction:column;align-items:flex-start;justify-content:center;gap:14px;padding:0 30px"><div style="font:600 18px/1 var(--mono);letter-spacing:.1em;color:#64748B">ONE RECORD</div><div style="font:700 34px/1 Inter">Riverside Terraces (demo)</div><div class="lets" style="display:flex;gap:7px"></div></div>');
+  var lets = rec.querySelector('.lets');
+  QSA.ORDER.forEach(function (L, k) { var e = mk(lets, '<span style="width:42px;height:42px;border-radius:9px;background:#3DC023;color:#06130A;display:flex;align-items:center;justify-content:center;font:700 24px/1 var(--display)">' + L + '</span>'); Kit.add(e, 'opacity', [[75.95 + k * 0.05, 0], [76.05 + k * 0.05, 1]]); Kit.add(e, 'scale', [[75.95 + k * 0.05, 0.5], [76.15 + k * 0.05, 1, 'outBack']]); });
+  Kit.add(rec, 'opacity', [[75.65, 0], [75.8, 1]]); Kit.add(rec, 'scale', [[75.65, 0.9], [75.95, 1, 'outBack']]);
+  Kit.add('#sZ', 'opacity', [[77.25, 1], [77.5, 0]]);
+
+  /* =============================== BUILT BY A QS 77.4 – 82.2 =============================== */
+  Kit.scene('#sBuilt', 77.4, 82.25);
+  broll('dusk', 77.4, 90.0, { frames: 151, speed: 0.45, blur: 5, op: 0.32, shade: 'rgba(12,19,16,.55)' });
+  var WMb = QSA.wordmark($('wmHost2'), { x: 485, y: 150, w: 950 });
+  // Q and S arrive first (from where they sat in the strip), M and E join without labels
+  var qx = DOCK.x + 16 * 64 * DOCK.s + 17, sx = DOCK.x + 18 * 64 * DOCK.s + 17, sy = DOCK.y + 24;
+  Kit.add(WMb.Q, 'x', [[77.45, qx - WMb.Qc[0]], [78.0, 0, 'inOut']]); Kit.add(WMb.Q, 'y', [[77.45, sy - WMb.Qc[1]], [78.0, 0, 'inOut']]); Kit.add(WMb.Q, 'scale', [[77.45, 0.2], [78.0, 1, 'inOut']]);
+  Kit.add(WMb.S, 'x', [[77.45, sx - WMb.Sc[0]], [78.0, 0, 'inOut']]); Kit.add(WMb.S, 'y', [[77.45, sy - WMb.Sc[1]], [78.0, 0, 'inOut']]); Kit.add(WMb.S, 'scale', [[77.45, 0.2], [78.0, 1, 'inOut']]);
+  Kit.add(WMb.Q, 'opacity', [[77.4, 0], [77.5, 1]]); Kit.add(WMb.S, 'opacity', [[77.4, 0], [77.5, 1]]);
+  Kit.add(WMb.M, 'opacity', [[78.05, 0], [78.35, 1]]); Kit.add(WMb.E, 'opacity', [[78.2, 0], [78.5, 1]]);
+  Kit.add(WMb.Uw, 'width', [[78.05, WMb.UwFrom], [78.6, WMb.UwTo, 'inOut']]);
+  Kit.add('#founder', 'opacity', [[78.9, 0], [79.1, 1]]); Kit.add('#founder', 'y', [[78.9, 40], [79.25, 0, 'out']]);
+  Kit.add('#fhl', 'clipX', [[79.4, 0], [79.9, 1, 'inOut']]);
+  Kit.add('#sBuilt', 'opacity', [[82.0, 1], [82.25, 0]]);
+
+  /* =============================== END CARD 82.2 – 88.0 =============================== */
+  Kit.scene('#sEnd', 82.2, 90.1);
+  var WMc = QSA.wordmark($('wmHost3'), { x: 710, y: 200, w: 500 });
+  Kit.add(WMc.el, 'opacity', [[82.25, 0], [82.5, 1]]);
+  Kit.add('#endPill', 'opacity', [[82.35, 0], [82.5, 1]]); Kit.add('#endPill', 'scale', [[82.35, 0.85], [82.6, 1, 'outBack']]);
+  Kit.pop('#endUrl', 82.65); Kit.pop('#endSub', 83.4);
+
+  /* footage tag: on whenever b-roll plays near full-frame */
+  var ft = $('tagFoot');
+  Kit.add(ft, 'opacity', [[0, 0], [15.45, 0, 'hold'], [15.6, 1], [21.9, 1], [22.0, 0], [27.45, 0, 'hold'], [27.6, 1]]);
+
+  Kit.ready({ duration: DUR, fonts: ['700 50px "Space Grotesk"', '500 20px Inter', '700 20px Inter', '500 20px "JetBrains Mono"', '700 40px Kalam', '400 30px "Permanent Marker"'] });
+})();
+</script>
+</body>
+</html>
