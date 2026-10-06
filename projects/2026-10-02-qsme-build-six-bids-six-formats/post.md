@@ -1,4 +1,5 @@
 ---
+vid: G01
 title: "Six bids. Six formats."
 venture: qsme-build
 idea: qsme-build-six-quotes-six-formats

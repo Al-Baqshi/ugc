@@ -1,4 +1,5 @@
 ---
+vid: N05
 title: "Granny flat for Mum (Flat 2 gets a vote)"
 venture: qsme-nz
 idea: nz-granny-flat-for-mum

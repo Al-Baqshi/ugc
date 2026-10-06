@@ -66,6 +66,8 @@ for name in sorted(os.listdir(P)):
     if not vids and not stills:
         continue
     fm = frontmatter(os.path.join(d, "post.md"))
+    if "killed" in fm.get("status", ""):
+        continue
     vo = None
     if os.path.exists(os.path.join(d, "vo-script.json")):
         try:
@@ -81,6 +83,7 @@ for p in projects:
     name, fm, vo = p["name"], p["fm"], p["vo"]
     rel = lambda f, n=name: f"projects/{n}/outputs/{f}"
     title = fm.get("title") or name
+    vid = fm.get("vid", "")
     venture = fm.get("venture") or ("qsme-nz" if "qsme-nz" in name else "qsme-build")
     date = fm.get("publish_date") or name[:10]
     nz = venture == "qsme-nz"
@@ -96,7 +99,7 @@ for p in projects:
     vers = []
     for f in ([main] if main else []) + [x for x in p["voiced"] + p["vids"] if x != main]:
         mb = os.path.getsize(os.path.join(p["out"], f)) / 1e6
-        label = ("🔊 with voice · " if "-vo" in f else "") + aspect_of(f).replace("x", ":") + (" · master" if f == p["master"] else "")
+        label = (vid + "·" if vid else "") + aspect_of(f).replace("x", ":") + ("·vo" + (" " + f.split("-with-vo-")[1].replace(".mp4", "") if "-with-vo-" in f else "") if "-vo" in f else "") + (" · master" if f == p["master"] else "")
         vers.append(f'<li><button class="play" data-src="{e(rel(f))}" data-v="{e(vid_id)}" title="Play this version">▶</button>'
                     f'<span class="vname" title="{e(f)}">{e(label)}<small>{e(f)}</small></span>'
                     f'<a class="dl" href="{e(rel(f))}" download>⬇ {mb:.0f} MB</a></li>')
@@ -132,9 +135,9 @@ for p in projects:
     caption = section(os.path.join(p["d"], "post.md"), ["Caption", "Captions"])
     cap = (f'<details class="caption"><summary>Post caption &amp; hashtags</summary><button class="copy" data-copy="{e(caption[:4000])}">Copy caption</button>'
            f'<pre>{e(caption[:4000])}</pre></details>') if caption else ""
-    nav.append(f'<a href="#{e(name)}" class="{e(venture)}"><b>{e(date[5:])}</b> {e(title)}</a>')
+    nav.append(f'<a href="#{e(name)}" class="{e(venture)}"><b>{e(vid or date[5:])}</b> {e(title)}</a>')
     cards.append(f'''<section class="card {e(venture)}" id="{e(name)}">
-  <header><span class="tag">{e(tag)}</span><span class="pill">{e(date)}</span>{f'<span class="pill">{e(fm.get("status", ""))}</span>' if fm.get("status") else ""}<h2>{e(title)}</h2></header>
+  <header><span class="tag">{e(tag)}</span><span class="pill">{e(date)}</span>{f'<span class="pill">{e(fm.get("status", ""))}</span>' if fm.get("status") else ""}<h2>{f'<span class="vid">{e(vid)}</span> ' if vid else ''}{e(title)}</h2></header>
   <div class="grid"><div class="left">{player}{versions}</div>{script}</div>{cap}
 </section>''')
 
@@ -151,7 +154,7 @@ body{{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system
 .navlist a{{white-space:nowrap;font-size:12px;color:var(--muted);text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:3px 8px}}.navlist a:hover{{color:var(--ink);border-color:var(--green)}}.navlist b{{color:var(--ink);font-weight:600;margin-right:4px}}
 main{{max-width:1240px;margin:0 auto;padding:18px 18px 80px}}.lede{{color:var(--muted);margin:6px 0 4px}}
 .card{{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 20px 16px;margin:20px 0}}
-.card header h2{{margin:8px 0 12px;font-size:22px;line-height:1.25}}.tag,.pill{{display:inline-block;font-size:12px;margin-right:6px;padding:2px 9px;border-radius:99px;border:1px solid var(--line);color:var(--muted)}}.tag{{color:var(--ink)}}
+.card header h2{{margin:8px 0 12px;font-size:22px;line-height:1.25}}.tag,.pill{{display:inline-block;font-size:12px;margin-right:6px;padding:2px 9px;border-radius:99px;border:1px solid var(--line);color:var(--muted)}}.tag{{color:var(--ink)}}.vid{{display:inline-block;background:var(--green);color:#06130a;font:700 14px ui-monospace,Menlo,monospace;padding:2px 8px;border-radius:7px;vertical-align:middle;margin-right:6px}}
 .grid{{display:grid;grid-template-columns:minmax(260px,400px) 1fr;gap:22px;align-items:start}}
 .left{{position:sticky;top:66px}}.player{{background:#000;border-radius:12px;overflow:hidden;border:1px solid var(--line)}}
 .player video,.player img{{display:block;width:100%;max-height:70vh;background:#000;object-fit:contain}}.player.a9x16 video{{aspect-ratio:9/16}}.player.a4x5 video{{aspect-ratio:4/5}}.player.a16x9 video{{aspect-ratio:16/9}}

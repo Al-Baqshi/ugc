@@ -1,4 +1,5 @@
 ---
+vid: G07
 title: "Action: chase painter (week 6)"
 venture: qsme-build
 idea: gl-chase-the-painter

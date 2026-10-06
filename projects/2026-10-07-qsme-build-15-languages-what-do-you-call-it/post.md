@@ -1,4 +1,5 @@
 ---
+vid: G02
 title: "One tender document, fifteen languages: what do you call it?"
 venture: qsme-build
 idea: gl-15-languages-what-do-you-call-it

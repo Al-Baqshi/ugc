@@ -1,297 +1,291 @@
 {
- "venture": "qsme-build",
- "video": "outputs/qs-alphabet-16x9.mp4",
- "video_4x5": "outputs/qs-alphabet-4x5.mp4 (timeline: vo-script-4x5.json)",
- "video_9x16": "outputs/qs-alphabet-9x16.mp4 (timeline: vo-script-9x16.json)",
- "character": "The QS: the series narrator (same voice as 'Six bids. Six formats.', 'Day 23', 'Remittance attached'). A mid-career quantity surveyor, late 30s to 40s, general urban New Zealand accent (Auckland or Wellington office), not broad, not rural, not Australian. Dry, unhurried, amused by his own trade, never an announcer. In this film he is openly biased about QS work and says so; he respects every other trade. PREFERRED READ: the founder himself (a professional quantity surveyor), recorded on a decent mic in a quiet room, using founder_alt_lines for the 'Built by' line. FALLBACK: the venture's 'The QS' voice (Arnold bISW1PJRBPT7aRbtPJlB or James QlZn2MPaf2jDn0461bnj, see projects/2026-10-02-qsme-voice-casting). An AI voice never speaks as the founder and never says 'I built'. Voice Design fallback prompt: \"New Zealander around 40, general NZ accent, urban and professional, not broad, low-mid register, dry and unhurried, faintly amused, close-mic in a quiet site office, conversational, not a narrator or announcer.\"",
- "casting_line": "Every project runs from A to Z. Just… never in that order. Good Q-S, good project. We're biased.",
- "rules": "Pronunciation: 'Q-S' is two letters (kyoo-ess); QSME is 'Q-S-me' (kyoo-ess-mee), never 'kiss me', never four letters; qsme.build is 'Q-S-me dot build'. Letters are said as letters: 'D.' 'R.' 'X.' etc. with a real full stop after each. Natural Kiwi rhythm, contractions, no exclamation marks, no announcer lift. Owner CTA rule (2026-10-03): no 'free', no pricing line, no 'sign up at qsme.build' in any take. Never say 'critical path', 'line by line', 'measure', 'takeoff', 'escrow', 'verified'. No line ever ends on a 'me' pun.",
- "settings": {
-  "model": "eleven_multilingual_v2",
-  "stability": 0.45,
-  "similarity_boost": 0.75,
-  "style": 0,
-  "speed": 1,
-  "use_speaker_boost": true
- },
- "continuous_read_v2": "Every project runs from A to Z.\n\nJust… never in that order.\n\nSomeone keeps it in order. That's the Q-S.\n\nQ-S. Quantity surveying. The Q-S in Q-S-me.\n\nGood Q-S, good project. We're biased. It's in our name.\n\nArchitects design it.\n\nEngineers keep it standing.\n\nBuilders build it.\n\nThe Q-S makes it all add up.\n\nQ-S by title, or Q-S by default. Here's your alphabet. In Q-S order.\n\nD. Drawings. The whole set, split into sections.\n\nR. Rates. Your rates, one schedule. AI drafts. You check.\n\nX. Excel. Close enough. In, and back out.\n\nG. Gantt. Your priced jobs, no retyping.\n\nT. Tender. Same lines, every bidder. Your rates stay home.\n\nB. Bids. One table, even the emailed one. You choose.\n\nA. Award.\n\nFinally. And it's a contract.\n\nI. Ink. Well… a finger, on a phone.\n\nO. On site. One QR poster. One daily log.\n\nP. Paid. Your usual way, confirmed by whoever got paid.\n\nAnd the rest? Alphabetical, for once.\n\nZ. One record. First estimate to last payment.\n\nQ-S-me. Built by a Q-S, for whoever's the Q-S.\n\nBook a thirty-minute demo at Q-S-me dot build. Bring your spreadsheet.",
- "lines": [
-  {
-   "id": "vo01-hook",
-   "start_s": 0.15,
-   "max_s": 2.5,
-   "on_screen": "A B C on near-black green WITH the caption from frame 1; the row types to Z by 1.05 s; the split-flap clatter breaks the pattern on 'Z' (1.9 s) · caption 'Every project runs from A to Z.'",
-   "text_v2": "Every project runs from A to Z.",
-   "text_v3": "Every project runs from A to Z.",
-   "delivery": "Plain and warm, like stating the obvious at the start of a site meeting. A slight lift on 'A', settle on 'Z'. Out by 2.65."
+  "venture": "qsme-build",
+  "video": "outputs/qs-alphabet-16x9.mp4",
+  "video_4x5": "outputs/qs-alphabet-4x5.mp4 (timeline: vo-script-4x5.json)",
+  "video_9x16": "outputs/qs-alphabet-9x16.mp4 (timeline: vo-script-9x16.json)",
+  "character": "The QSME voice: an energetic, confident Kiwi who loves this job. Bright, quick, warm — a presenter with drive, not a calm narrator. Natural NZ accent.",
+  "casting_line": "Every project runs from A to Z. Just… never in that order. Good Q-S, good project. We're biased.",
+  "rules": "Pronunciation: 'Q-S' is two letters (kyoo-ess); QSME is 'Q-S-me' (kyoo-ess-mee), never 'kiss me', never four letters; qsme.build is 'Q-S-me dot build'. Letters are said as letters: 'D.' 'R.' 'X.' etc. with a real full stop after each. Natural Kiwi rhythm, contractions, no exclamation marks, no announcer lift. Owner CTA rule (2026-10-03): no 'free', no pricing line, no 'sign up at qsme.build' in any take. Never say 'critical path', 'line by line', 'measure', 'takeoff', 'escrow', 'verified'. No line ever ends on a 'me' pun.",
+  "settings": {
+    "model": "eleven_multilingual_v2",
+    "stability": 0.3,
+    "similarity_boost": 0.8,
+    "style": 0.6,
+    "speed": 1.03,
+    "use_speaker_boost": true
   },
-  {
-   "id": "vo02-twist",
-   "start_s": 2.9,
-   "max_s": 1.8,
-   "on_screen": "ten letters flip green; route arcs draw ONE AT A TIME D→R→X→G→T→B→A→I→O→P (2.55–4.35, 0.2 s each), each letter's order number (36 px) pops as its arc lands, earlier arcs drop to 30 %; A's 7 lands at 3.75; A swells to a big '7th' (4.55) · caption 'Just… never in that order.'",
-   "text_v2": "Just… never in that order.",
-   "text_v3": "[deadpan] Just… never in that order.",
-   "delivery": "The dry turn. A real hesitation after 'Just', then flat. Out by 4.7 at the latest: 0.4 s of silence follows (the 7th lands in it)."
-  },
-  {
-   "id": "vo03-qs",
-   "start_s": 5.5,
-   "max_s": 2.75,
-   "on_screen": "Q and S rise out of the dimmed letters and glow green; push-in · caption 'Someone keeps it in order. That's the QS.'",
-   "text_v2": "Someone keeps it in order. That's the Q-S.",
-   "text_v3": "Someone keeps it in order. That's the Q-S.",
-   "delivery": "Matter-of-fact, a touch of pride. Small pause before 'That's'. 'Q-S' as two letters. Out by 8.2."
-  },
-  {
-   "id": "vo04-name",
-   "start_s": 8.5,
-   "max_s": 2.9,
-   "on_screen": "Q and S fly in; 'Quantity / Surveying' types 8.72–9.35 (Q and S in green) and HOLDS complete to 10.7; the words pull back into Q and S, which slide and grow onto the logo's Q and S and CUT (11.22, no cross-fade) to the QSME wordmark; M and E join with no label 11.2–11.6 · caption 'QS. Quantity surveying. The QS in QSME.' (8.45–11.65)",
-   "text_v2": "Q-S. Quantity surveying. The Q-S in Q-S-me.",
-   "text_v3": "Q-S. Quantity surveying. The Q-S in Q-S-me.",
-   "delivery": "Spelling it out for a mate: 'Q-S.' (beat) 'Quantity surveying.' (beat) then a small smile on 'The Q-S in Q-S-me'. Never expand the ME. Out by 11.4."
-  },
-  {
-   "id": "vo05-good",
-   "start_s": 11.7,
-   "max_s": 3.6,
-   "on_screen": "'Good QS.' stamps (11.72), 'Good project.' stamps (12.62), then the handwritten aside '(We're biased. It's in our name.)' (13.55) with an arrow at 'QS.'",
-   "text_v2": "Good Q-S, good project. We're biased. It's in our name.",
-   "text_v3": "Good Q-S, good project. We're biased. It's in our name.",
-   "delivery": "The conviction first, said plainly on the two stamps. Then the aside drops half a step, self-aware, the joke on us. Out by 15.3."
-  },
-  {
-   "id": "vo06-architects",
-   "start_s": 15.5,
-   "max_s": 1.3,
-   "on_screen": "ledger row 1: architect icon + 'Architects design it.' (15.5) over dimmed foundation b-roll",
-   "text_v2": "Architects design it.",
-   "text_v3": "Architects design it.",
-   "delivery": "Warm, respectful, unhurried. This beat is not a joke. Out by 16.8."
-  },
-  {
-   "id": "vo07-engineers",
-   "start_s": 16.9,
-   "max_s": 1.4,
-   "on_screen": "ledger row 2: structural engineer icon + 'Engineers keep it standing.' (16.9)",
-   "text_v2": "Engineers keep it standing.",
-   "text_v3": "Engineers keep it standing.",
-   "delivery": "Same warmth, same level. Out by 18.3."
-  },
-  {
-   "id": "vo08-builders",
-   "start_s": 18.35,
-   "max_s": 1.25,
-   "on_screen": "ledger row 3: general contractor icon + 'Builders build it.' (18.35)",
-   "text_v2": "Builders build it.",
-   "text_v3": "Builders build it.",
-   "delivery": "Same, with a hint of a smile at the plainness of it. Out by 19.6."
-  },
-  {
-   "id": "vo09-adds-up",
-   "start_s": 19.9,
-   "max_s": 2.1,
-   "on_screen": "red-biro double underline draws under the three rows (19.6–20.1), then the QS row lands: 'The QS makes it all add up.' (19.95)",
-   "text_v2": "The Q-S makes it all add up.",
-   "text_v3": "The Q-S makes it all add up.",
-   "delivery": "The total line. Quiet confidence, a light lean on 'all'. Not a boast. Out by 22.0."
-  },
-  {
-   "id": "vo10-who",
-   "start_s": 22.1,
-   "max_s": 5.1,
-   "on_screen": "split: business card 'Quantity Surveyor' (no name) / hard hat taped 'Developer, doing the QS bit tonight'; row 'QS & PM practices · Main contractors · Developers & owners'; the split clears 24.75–25.0; the alphabet re-forms mid-frame (25.0) and the ten letters drop out one by one into a second row D R X G T B A I O P numbered 1–10 (25.35–26.6); the row drops away as the strip docks at the top (26.9–27.35) · captions 'QS by title, or QS by default.' / 'Here's your alphabet. In QS order.' (held to 27.46, replaced directly by D's caption)",
-   "text_v2": "Q-S by title, or Q-S by default. Here's your alphabet. In Q-S order.",
-   "text_v3": "Q-S by title, or Q-S by default. Here's your alphabet. In Q-S order.",
-   "delivery": "Two halves. 'Q-S by title, or Q-S by default' with a knowing nod to the developer pricing at night (never mocking). Beat. Then 'Here's your alphabet.' as the music picks up, 'In Q-S order.' landing as the QS-order row completes (26.6). Out by 27.2."
-  },
-  {
-   "id": "vo11-D",
-   "start_s": 27.5,
-   "max_s": 3.9,
-   "on_screen": "D · 1st · DRAWINGS · Plan index: 'Read a document' → 'Finding the sections…' → chips Site plan p.2 / Floor plans p.4–7 / Elevations p.8–11 / Drainage layout p.22–24 → '4 of 11 sections ready' (30.0)",
-   "text_v2": "D. Drawings. The whole set, split into sections.",
-   "text_v3": "D. Drawings. The whole set, split into sections.",
-   "delivery": "Letter, beat, word, beat, then the line read straight. Every letter stop uses this rhythm. Out by 31.4."
-  },
-  {
-   "id": "vo12-R",
-   "start_s": 31.7,
-   "max_s": 3.9,
-   "on_screen": "R · 2nd · ESTIMATING & QUANTITIES · SOQ 'Plasterboard & ceilings': rate 64.00 typed, totals tick; 'Insulation · AI draft' → Keep → 'Pocket kept — it's now part of your SOQ'",
-   "text_v2": "R. Rates. Your rates, one schedule. AI drafts. You check.",
-   "text_v3": "R. Rates. Your rates, one schedule. AI drafts. You check.",
-   "delivery": "'AI drafts.' (beat) 'You check.' — the second is the point: firm, friendly. Out by 35.6."
-  },
-  {
-   "id": "vo13-X",
-   "start_s": 35.9,
-   "max_s": 3.9,
-   "on_screen": "X · 3rd · EXCEL IN, EXCEL OUT · captions 'X. Excel.' then 'Close enough. In, and back out.' (36.95, the moment the scrawl '(close enough)' lands) · qsme-example-soq.xlsx dropped in → 'We also found these columns' → 'Imported 3 pockets and 11 lines as drafts' → Export menu",
-   "text_v2": "X. Excel. Close enough. In, and back out.",
-   "text_v3": "X. Excel. [deadpan] Close enough. In, and back out.",
-   "delivery": "Deadpan half-beat after 'Excel.' then 'Close enough.' as a mutter. 'In, and back out.' brisk. Out by 39.8."
-  },
-  {
-   "id": "vo14-G",
-   "start_s": 40.1,
-   "max_s": 3.9,
-   "on_screen": "G · 4th · PLANNING · 'Import jobs from SOQ' → 'Import 23 tasks' → bars chain with dates in words → 'What drives the finish date' rings the chain in purple → the A4 'Construction programme' slides in",
-   "text_v2": "G. Gantt. Your priced jobs, no retyping.",
-   "text_v3": "G. Gantt. Your priced jobs, no retyping.",
-   "delivery": "Easy and practical. Lean on 'no retyping' like someone who has retyped plenty. Out by 44.0."
-  },
-  {
-   "id": "vo15-T",
-   "start_s": 44.3,
-   "max_s": 3.9,
-   "on_screen": "T · 5th · TENDERING · 'Create New Tender · Plasterboard & ceilings' · 'Select whole pocket 4 of 4 selected' · YOUR LINES (rates) vs WHAT BIDDERS SEE (rate boxes empty), every line typed Material / Labour · note 'rate: never shown' · 'Copy link', invites Invited → Viewed",
-   "text_v2": "T. Tender. Same lines, every bidder. Your rates stay home.",
-   "text_v3": "T. Tender. Same lines, every bidder. Your rates stay home.",
-   "delivery": "'Same lines, every bidder' even and clear; 'Your rates stay home' with a little warmth, like tucking something away. Out by 48.2."
-  },
-  {
-   "id": "vo16-B",
-   "start_s": 48.5,
-   "max_s": 3.9,
-   "on_screen": "B · 6th · TENDERING · 'Compare bids': six totals, Bidder D 'Received by you', Bidder F 'Lowest' 71,300 · chip 'All totals excl. tax' · F opens 'Detailed price breakdown'",
-   "text_v2": "B. Bids. One table, even the emailed one. You choose.",
-   "text_v3": "B. Bids. One table, even the emailed one. You choose.",
-   "delivery": "'Even the emailed one' with a knowing nod; 'You choose.' short and firm (QSME never picks the winner). Out by 52.4."
-  },
-  {
-   "id": "vo17-A",
-   "start_s": 52.75,
-   "max_s": 1.0,
-   "on_screen": "A · 7th · AWARD & CONTRACT · big '7th' beside the A · 'Award this bid?' dialog (Bidder F, 71,300) · caption 'A. Award.' only (52.66–54.0)",
-   "text_v2": "A. Award.",
-   "text_v3": "A. Award.",
-   "delivery": "Same letter rhythm, then STOP. Out by 53.75; 0.25 s of silence before the stamp."
-  },
-  {
-   "id": "vo18-finally",
-   "start_s": 54.0,
-   "max_s": 2.3,
-   "on_screen": "'Finally.' stamps on (54.0) and the caption 'Finally. And it's a contract.' appears with it, never before · 'Award bid' pressed (54.6) → Active Work: Contract value 71,300 · Retention 5% · Milestones 0 / 3 confirmed · Stage 1 of 3 — Mobilisation",
-   "text_v2": "Finally. And it's a contract.",
-   "text_v3": "[sighs] Finally. And it's a contract.",
-   "delivery": "'Finally.' is the laugh: weary relief, an exhale, landing exactly on the stamp. Then 'And it's a contract.' straight and pleased. Out by 56.3."
-  },
-  {
-   "id": "vo19-I",
-   "start_s": 56.9,
-   "max_s": 3.9,
-   "on_screen": "I · 8th · CONTRACTS · captions 'I. Ink.' then 'Well… a finger, on a phone.' (57.95, as the scrawl '(well… a finger)' lands) · Agreements: 'Subcontract — Plasterboard & ceilings (demo)', 'Sign it as it is', 'Out for signing' · phone BROWSER: tick, 'Sam Rivera' typed, signature drawn, 'Sign' → 'Signed. Download a copy below and keep it.' · 'Everyone has signed'",
-   "text_v2": "I. Ink. Well… a finger, on a phone.",
-   "text_v3": "I. Ink. Well… a finger, on a phone.",
-   "delivery": "'Ink.' confident, then catch yourself: 'Well…' (beat) 'a finger, on a phone.' Self-correcting, amused. Out by 60.8."
-  },
-  {
-   "id": "vo20-O",
-   "start_s": 61.1,
-   "max_s": 3.9,
-   "on_screen": "O · 9th · WORK ON SITE · laminated 'Site sign-in' poster (illustrative) on a fence · phone browser 'Who are you with?' → 'Tick every line to sign in.' → 'Sign in for today' → 'You're signed in, Sam' · 'Daily log': 'Site photo', 'Proof of work'",
-   "text_v2": "O. On site. One QR poster. One daily log.",
-   "text_v3": "O. On site. One QR poster. One daily log.",
-   "delivery": "Two even halves: 'One QR poster.' 'One daily log.' QR as letters. Out by 65.0."
-  },
-  {
-   "id": "vo21-P",
-   "start_s": 65.3,
-   "max_s": 3.9,
-   "on_screen": "P · 10th · DELIVERABLES & PAYMENTS · WHOEVER PAID: 'I paid outside QSME', reference STG1-0417, 'I have sent the money.' → 'Mark as paid' · WHOEVER GOT PAID: 'The money has cleared in my account.' → 'Confirm payment received' · from 67.0 the receiver's window pushes in (1.25x) and the payer's dims to 40 % → both: 'Settled outside QSME and confirmed by both sides.' (last thing read)",
-   "text_v2": "P. Paid. Your usual way, confirmed by whoever got paid.",
-   "text_v3": "P. Paid. Your usual way, confirmed by whoever got paid.",
-   "delivery": "Plain and precise. Lean lightly on 'whoever got paid'. Never 'release', never 'secure'. Out by 69.2."
-  },
-  {
-   "id": "vo22-rest",
-   "start_s": 69.5,
-   "max_s": 2.1,
-   "on_screen": "caption 'And the rest? Alphabetical, for once.' · C K U V W light in order every 0.6 s (C 69.8 … W 72.2, then all hold) with 'Copy link' · 'Keep every word' · 'Undo' · 'Version history' · 'Waiting for OK'",
-   "text_v2": "And the rest? Alphabetical, for once.",
-   "text_v3": "And the rest? Alphabetical, for once.",
-   "delivery": "Light, wry, quick. The labels pop on 16th-note ticks under and after the line. Out by 71.6."
-  },
-  {
-   "id": "vo23-Z",
-   "start_s": 73.7,
-   "max_s": 3.5,
-   "on_screen": "every letter lights · Z stamps · PROJECT MANAGEMENT · ten cards collapse into one: 'ONE RECORD · Riverside Terraces (demo)' with D R X G T B A I O P",
-   "text_v2": "Z. One record. First estimate to last payment.",
-   "text_v3": "Z. One record. First estimate to last payment.",
-   "delivery": "Music drops to piano. Slower, warmer: 'Z.' (beat) 'One record.' (beat) 'First estimate to last payment.' Out by 77.2."
-  },
-  {
-   "id": "vo24-built",
-   "start_s": 77.5,
-   "max_s": 4.4,
-   "on_screen": "Q and S fly from the strip into the QSME wordmark; M and E join with no label · real capture of qsme.build/about, the founder card exactly as the live page shows it (nothing removed): 'Founder and chief executive — A professional quantity surveyor and software architect. QSME is the product of pricing and tendering real projects and then building the tool those projects needed.' (first sentence underlined)",
-   "text_v2": "Q-S-me. Built by a Q-S, for whoever's the Q-S.",
-   "text_v3": "Q-S-me. Built by a Q-S, for whoever's the Q-S.",
-   "delivery": "The brand line, said simply. 'Q-S-me.' (beat) then the rest with a small smile on 'whoever's'. If the founder reads, use founder_alt_lines instead. Out by 81.9."
-  },
-  {
-   "id": "vo25-cta",
-   "start_s": 82.3,
-   "max_s": 4.5,
-   "on_screen": "End card: QSME wordmark (no ®) · pill 'Book a 30-minute demo' · 'qsme.build' · 'Bring your spreadsheet.' (83.4); holds to 90.0",
-   "text_v2": "Book a thirty-minute demo at Q-S-me dot build. Bring your spreadsheet.",
-   "text_v3": "Book a thirty-minute demo at Q-S-me dot build. Bring your spreadsheet.",
-   "delivery": "Friendly nudge, no announcer lift. 'Bring your spreadsheet.' as a dry afterthought with half a smile. Out by 86.8, leaving the end card to hold for 3+ s."
-  }
- ],
- "founder_alt_lines": [
-  {
-   "id": "vo24-built-founder",
-   "start_s": 77.5,
-   "max_s": 4.4,
-   "on_screen": "same as vo24",
-   "text_v2": "I'm a quantity surveyor. I built Q-S-me for whoever's the Q-S.",
-   "text_v3": "I'm a quantity surveyor. I built Q-S-me for whoever's the Q-S.",
-   "delivery": "FOUNDER ONLY (his own voice, never an AI clone). Plain and proud, no sell. Out by 81.9."
-  }
- ],
- "silent_beats": [
-  [
-   2.65,
-   2.9,
-   "after the hook line; the clatter (from 1.9 s, on 'Z') settles"
+  "continuous_read_v2": "Every project runs from A to Z.\n\nJust… never in that order.\n\nSomeone keeps it in order. That's the Q-S.\n\nQ-S. Quantity surveying. The Q-S in Q-S-me.\n\nGood Q-S, good project. We're biased. It's in our name.\n\nArchitects design it.\n\nEngineers keep it standing.\n\nBuilders build it.\n\nThe Q-S makes it all add up.\n\nQ-S by title, or Q-S by default. Here's your alphabet. In Q-S order.\n\nD. Drawings. The whole set, split into sections.\n\nR. Rates. Your rates, one schedule. AI drafts. You check.\n\nX. Excel. Close enough. In, and back out.\n\nG. Gantt. Your priced jobs, no retyping.\n\nT. Tender. Same lines, every bidder. Your rates stay home.\n\nB. Bids. One table, even the emailed one. You choose.\n\nA. Award.\n\nFinally. And it's a contract.\n\nI. Ink. Well… a finger, on a phone.\n\nO. On site. One QR poster. One daily log.\n\nP. Paid. Your usual way, confirmed by whoever got paid.\n\nAnd the rest? Alphabetical, for once.\n\nZ. One record. First estimate to last payment.\n\nQ-S-me. Built by a Q-S, for whoever's the Q-S.\n\nBook a thirty-minute demo at Q-S-me dot build. Bring your spreadsheet.",
+  "lines": [
+    {
+      "id": "vo01-hook",
+      "start_s": 0.15,
+      "max_s": 5.0,
+      "on_screen": "A B C on near-black green WITH the caption from frame 1; the row types to Z by 1.05 s; the split-flap clatter breaks the pattern on 'Z' (1.9 s) · caption 'Every project runs from A to Z.'",
+      "text_v2": "Every build has a hundred moving parts. And they never happen in order.",
+      "text_v3": "Every build has a hundred moving parts. And they never happen in order.",
+      "delivery": "Energetic, bright, confident Kiwi — selling, not reading. Lift at the start of each line, land the last word."
+    },
+    {
+      "id": "vo02-someone",
+      "start_s": 5.5,
+      "max_s": 2.75,
+      "on_screen": "Q and S rise out of the dimmed letters and glow green; push-in · caption 'Someone keeps it in order. That's the QS.'",
+      "text_v2": "Someone has to keep it all in order. That's the Q-S.",
+      "text_v3": "Someone has to keep it all in order. That's the Q-S.",
+      "delivery": "Energetic, bright, confident Kiwi — selling, not reading. Lift at the start of each line, land the last word."
+    },
+    {
+      "id": "vo03-name",
+      "start_s": 8.5,
+      "max_s": 2.9,
+      "on_screen": "Q and S fly in; 'Quantity / Surveying' types 8.72–9.35 (Q and S in green) and HOLDS complete to 10.7; the words pull back into Q and S, which slide and grow onto the logo's Q and S and CUT (11.22, no cross-fade) to the QSME wordmark; M and E join with no label 11.2–11.6 · caption 'QS. Quantity surveying. The QS in QSME.' (8.45–11.65)",
+      "text_v2": "Q-S. Quantity surveying. It's right there in our name.",
+      "text_v3": "Q-S. Quantity surveying. It's right there in our name.",
+      "delivery": "Energetic, bright, confident Kiwi — selling, not reading. Lift at the start of each line, land the last word."
+    },
+    {
+      "id": "vo04-belief",
+      "start_s": 11.7,
+      "max_s": 3.6,
+      "on_screen": "'Good QS.' stamps (11.72), 'Good project.' stamps (12.62), then the handwritten aside '(We're biased. It's in our name.)' (13.55) with an arrow at 'QS.'",
+      "text_v2": "Good Q-S, good project. Yes, we're biased. It's in our name.",
+      "text_v3": "Good Q-S, good project. Yes, we're biased. It's in our name.",
+      "delivery": "Energetic, bright, confident Kiwi — selling, not reading. Lift at the start of each line, land the last word."
+    },
+    {
+      "id": "vo05-architects",
+      "start_s": 15.5,
+      "max_s": 1.3,
+      "on_screen": "ledger row 1: architect icon + 'Architects design it.' (15.5) over dimmed foundation b-roll",
+      "text_v2": "Architects design it.",
+      "text_v3": "Architects design it.",
+      "delivery": "Energetic, bright, confident Kiwi — selling, not reading. Lift at the start of each line, land the last word."
+    },
+    {
+      "id": "vo06-engineers",
+      "start_s": 16.9,
+      "max_s": 1.4,
+      "on_screen": "ledger row 2: structural engineer icon + 'Engineers keep it standing.' (16.9)",
+      "text_v2": "Engineers keep it standing.",
+      "text_v3": "Engineers keep it standing.",
+      "delivery": "Energetic, bright, confident Kiwi — selling, not reading. Lift at the start of each line, land the last word."
+    },
+    {
+      "id": "vo07-builders",
+      "start_s": 18.35,
+      "max_s": 1.25,
+      "on_screen": "ledger row 3: general contractor icon + 'Builders build it.' (18.35)",
+      "text_v2": "Builders build it.",
+      "text_v3": "Builders build it.",
+      "delivery": "Energetic, bright, confident Kiwi — selling, not reading. Lift at the start of each line, land the last word."
+    },
+    {
+      "id": "vo08-adds-up",
+      "start_s": 19.9,
+      "max_s": 2.1,
+      "on_screen": "red-biro double underline draws under the three rows (19.6–20.1), then the QS row lands: 'The QS makes it all add up.' (19.95)",
+      "text_v2": "The Q-S makes it all add up.",
+      "text_v3": "The Q-S makes it all add up.",
+      "delivery": "Energetic, bright, confident Kiwi — selling, not reading. Lift at the start of each line, land the last word."
+    },
+    {
+      "id": "vo09-for-you",
+      "start_s": 22.1,
+      "max_s": 5.1,
+      "on_screen": "split: business card 'Quantity Surveyor' (no name) / hard hat taped 'Developer, doing the QS bit tonight'; row 'QS & PM practices · Main contractors · Developers & owners'; the split clears 24.75–25.0; the alphabet re-forms mid-frame (25.0) and the ten letters drop out one by one into a second row D R X G T B A I O P numbered 1–10 (25.35–26.6); the row drops away as the strip docks at the top (26.9–27.35) · captions 'QS by title, or QS by default.' / 'Here's your alphabet. In QS order.' (held to 27.46, replaced directly by D's caption)",
+      "text_v2": "Q-S on your business card, or you just ended up with the spreadsheet? This is for you. Here's how a job really runs.",
+      "text_v3": "Q-S on your business card, or you just ended up with the spreadsheet? This is for you. Here's how a job really runs.",
+      "delivery": "Energetic, bright, confident Kiwi — selling, not reading. Lift at the start of each line, land the last word."
+    },
+    {
+      "id": "vo10-drawings",
+      "start_s": 27.5,
+      "max_s": 3.9,
+      "on_screen": "D · 1st · DRAWINGS · Plan index: 'Read a document' → 'Finding the sections…' → chips Site plan p.2 / Floor plans p.4–7 / Elevations p.8–11 / Drainage layout p.22–24 → '4 of 11 sections ready' (30.0)",
+      "text_v2": "Start with the drawings. The whole set, read and split into sections.",
+      "text_v3": "Start with the drawings. The whole set, read and split into sections.",
+      "delivery": "Energetic, bright, confident Kiwi — selling, not reading. Lift at the start of each line, land the last word."
+    },
+    {
+      "id": "vo11-rates",
+      "start_s": 31.7,
+      "max_s": 3.9,
+      "on_screen": "R · 2nd · ESTIMATING & QUANTITIES · SOQ 'Plasterboard & ceilings': rate 64.00 typed, totals tick; 'Insulation · AI draft' → Keep → 'Pocket kept — it's now part of your SOQ'",
+      "text_v2": "Then the rates. Your rates, one schedule. AI drafts the lines. You check them.",
+      "text_v3": "Then the rates. Your rates, one schedule. AI drafts the lines. You check them.",
+      "delivery": "Energetic, bright, confident Kiwi — selling, not reading. Lift at the start of each line, land the last word."
+    },
+    {
+      "id": "vo12-excel",
+      "start_s": 35.9,
+      "max_s": 3.9,
+      "on_screen": "X · 3rd · EXCEL IN, EXCEL OUT · captions 'X. Excel.' then 'Close enough. In, and back out.' (36.95, the moment the scrawl '(close enough)' lands) · qsme-example-soq.xlsx dropped in → 'We also found these columns' → 'Imported 3 pockets and 11 lines as drafts' → Export menu",
+      "text_v2": "Got it all in Excel? Close enough. In, and back out.",
+      "text_v3": "Got it all in Excel? Close enough. In, and back out.",
+      "delivery": "Energetic, bright, confident Kiwi — selling, not reading. Lift at the start of each line, land the last word."
+    },
+    {
+      "id": "vo13-programme",
+      "start_s": 40.1,
+      "max_s": 3.9,
+      "on_screen": "G · 4th · PLANNING · 'Import jobs from SOQ' → 'Import 23 tasks' → bars chain with dates in words → 'What drives the finish date' rings the chain in purple → the A4 'Construction programme' slides in",
+      "text_v2": "Your programme. Priced jobs straight onto the Gantt. No retyping.",
+      "text_v3": "Your programme. Priced jobs straight onto the Gantt. No retyping.",
+      "delivery": "Energetic, bright, confident Kiwi — selling, not reading. Lift at the start of each line, land the last word."
+    },
+    {
+      "id": "vo14-tender",
+      "start_s": 44.3,
+      "max_s": 3.9,
+      "on_screen": "T · 5th · TENDERING · 'Create New Tender · Plasterboard & ceilings' · 'Select whole pocket 4 of 4 selected' · YOUR LINES (rates) vs WHAT BIDDERS SEE (rate boxes empty), every line typed Material / Labour · note 'rate: never shown' · 'Copy link', invites Invited → Viewed",
+      "text_v2": "Tender it. Same lines for every bidder. Your rates stay home.",
+      "text_v3": "Tender it. Same lines for every bidder. Your rates stay home.",
+      "delivery": "Energetic, bright, confident Kiwi — selling, not reading. Lift at the start of each line, land the last word."
+    },
+    {
+      "id": "vo15-bids",
+      "start_s": 48.5,
+      "max_s": 3.9,
+      "on_screen": "B · 6th · TENDERING · 'Compare bids': six totals, Bidder D 'Received by you', Bidder F 'Lowest' 71,300 · chip 'All totals excl. tax' · F opens 'Detailed price breakdown'",
+      "text_v2": "Bids land in one table, even the emailed ones. You choose.",
+      "text_v3": "Bids land in one table, even the emailed ones. You choose.",
+      "delivery": "Energetic, bright, confident Kiwi — selling, not reading. Lift at the start of each line, land the last word."
+    },
+    {
+      "id": "vo16-award",
+      "start_s": 52.75,
+      "max_s": 1.0,
+      "on_screen": "A · 7th · AWARD & CONTRACT · big '7th' beside the A · 'Award this bid?' dialog (Bidder F, 71,300) · caption 'A. Award.' only (52.66–54.0)",
+      "text_v2": "Award.",
+      "text_v3": "Award.",
+      "delivery": "Energetic, bright, confident Kiwi — selling, not reading. Lift at the start of each line, land the last word."
+    },
+    {
+      "id": "vo17-contract",
+      "start_s": 54.0,
+      "max_s": 2.3,
+      "on_screen": "'Finally.' stamps on (54.0) and the caption 'Finally. And it's a contract.' appears with it, never before · 'Award bid' pressed (54.6) → Active Work: Contract value 71,300 · Retention 5% · Milestones 0 / 3 confirmed · Stage 1 of 3 — Mobilisation",
+      "text_v2": "And it's a contract. Finally.",
+      "text_v3": "And it's a contract. Finally.",
+      "delivery": "Energetic, bright, confident Kiwi — selling, not reading. Lift at the start of each line, land the last word."
+    },
+    {
+      "id": "vo18-sign",
+      "start_s": 56.9,
+      "max_s": 3.9,
+      "on_screen": "I · 8th · CONTRACTS · captions 'I. Ink.' then 'Well… a finger, on a phone.' (57.95, as the scrawl '(well… a finger)' lands) · Agreements: 'Subcontract — Plasterboard & ceilings (demo)', 'Sign it as it is', 'Out for signing' · phone BROWSER: tick, 'Sam Rivera' typed, signature drawn, 'Sign' → 'Signed. Download a copy below and keep it.' · 'Everyone has signed'",
+      "text_v2": "Sign it. With a finger, on a phone.",
+      "text_v3": "Sign it. With a finger, on a phone.",
+      "delivery": "Energetic, bright, confident Kiwi — selling, not reading. Lift at the start of each line, land the last word."
+    },
+    {
+      "id": "vo19-site",
+      "start_s": 61.1,
+      "max_s": 3.9,
+      "on_screen": "O · 9th · WORK ON SITE · laminated 'Site sign-in' poster (illustrative) on a fence · phone browser 'Who are you with?' → 'Tick every line to sign in.' → 'Sign in for today' → 'You're signed in, Sam' · 'Daily log': 'Site photo', 'Proof of work'",
+      "text_v2": "On site: one QR poster, one daily log.",
+      "text_v3": "On site: one QR poster, one daily log.",
+      "delivery": "Energetic, bright, confident Kiwi — selling, not reading. Lift at the start of each line, land the last word."
+    },
+    {
+      "id": "vo20-paid",
+      "start_s": 65.3,
+      "max_s": 3.9,
+      "on_screen": "P · 10th · DELIVERABLES & PAYMENTS · WHOEVER PAID: 'I paid outside QSME', reference STG1-0417, 'I have sent the money.' → 'Mark as paid' · WHOEVER GOT PAID: 'The money has cleared in my account.' → 'Confirm payment received' · from 67.0 the receiver's window pushes in (1.25x) and the payer's dims to 40 % → both: 'Settled outside QSME and confirmed by both sides.' (last thing read)",
+      "text_v2": "Paid. Your usual way, confirmed by whoever got paid.",
+      "text_v3": "Paid. Your usual way, confirmed by whoever got paid.",
+      "delivery": "Energetic, bright, confident Kiwi — selling, not reading. Lift at the start of each line, land the last word."
+    },
+    {
+      "id": "vo21-rest",
+      "start_s": 69.5,
+      "max_s": 2.1,
+      "on_screen": "caption 'And the rest? Alphabetical, for once.' · C K U V W light in order every 0.6 s (C 69.8 … W 72.2, then all hold) with 'Copy link' · 'Keep every word' · 'Undo' · 'Version history' · 'Waiting for OK'",
+      "text_v2": "And the rest? All in order. For once.",
+      "text_v3": "And the rest? All in order. For once.",
+      "delivery": "Energetic, bright, confident Kiwi — selling, not reading. Lift at the start of each line, land the last word."
+    },
+    {
+      "id": "vo22-record",
+      "start_s": 73.7,
+      "max_s": 3.5,
+      "on_screen": "every letter lights · Z stamps · PROJECT MANAGEMENT · ten cards collapse into one: 'ONE RECORD · Riverside Terraces (demo)' with D R X G T B A I O P",
+      "text_v2": "One record. First estimate to last payment.",
+      "text_v3": "One record. First estimate to last payment.",
+      "delivery": "Energetic, bright, confident Kiwi — selling, not reading. Lift at the start of each line, land the last word."
+    },
+    {
+      "id": "vo23-built",
+      "start_s": 77.5,
+      "max_s": 4.4,
+      "on_screen": "Q and S fly from the strip into the QSME wordmark; M and E join with no label · real capture of qsme.build/about, the founder card exactly as the live page shows it (nothing removed): 'Founder and chief executive — A professional quantity surveyor and software architect. QSME is the product of pricing and tendering real projects and then building the tool those projects needed.' (first sentence underlined)",
+      "text_v2": "Q-S-me. Built by a Q-S, for whoever's the Q-S.",
+      "text_v3": "Q-S-me. Built by a Q-S, for whoever's the Q-S.",
+      "delivery": "Energetic, bright, confident Kiwi — selling, not reading. Lift at the start of each line, land the last word."
+    },
+    {
+      "id": "vo24-cta",
+      "start_s": 82.3,
+      "max_s": 4.5,
+      "on_screen": "End card: QSME wordmark (no ®) · pill 'Book a 30-minute demo' · 'qsme.build' · 'Bring your spreadsheet.' (83.4); holds to 90.0",
+      "text_v2": "Book a thirty-minute demo at Q-S-me dot build. And bring your spreadsheet.",
+      "text_v3": "Book a thirty-minute demo at Q-S-me dot build. And bring your spreadsheet.",
+      "delivery": "Energetic, bright, confident Kiwi — selling, not reading. Lift at the start of each line, land the last word."
+    }
   ],
-  [
-   4.7,
-   5.5,
-   "0.4 s of dead silence after 'order' (the 7th lands), then the music returns"
+  "founder_alt_lines": [
+    {
+      "id": "vo24-built-founder",
+      "start_s": 77.5,
+      "max_s": 4.4,
+      "on_screen": "same as vo24",
+      "text_v2": "I'm a quantity surveyor. I built Q-S-me for whoever's the Q-S.",
+      "text_v3": "I'm a quantity surveyor. I built Q-S-me for whoever's the Q-S.",
+      "delivery": "FOUNDER ONLY (his own voice, never an AI clone). Plain and proud, no sell. Out by 81.9."
+    }
   ],
-  [
-   53.75,
-   54.0,
-   "freeze before 'Finally.'"
+  "silent_beats": [
+    [
+      2.65,
+      2.9,
+      "after the hook line; the clatter (from 1.9 s, on 'Z') settles"
+    ],
+    [
+      4.7,
+      5.5,
+      "0.4 s of dead silence after 'order' (the 7th lands), then the music returns"
+    ],
+    [
+      53.75,
+      54.0,
+      "freeze before 'Finally.'"
+    ],
+    [
+      71.6,
+      73.6,
+      "the last labels pop on calculator ticks (W lands 72.2), all five hold"
+    ],
+    [
+      86.8,
+      90.0,
+      "end card holds 3.2 s, music tail"
+    ]
   ],
-  [
-   71.6,
-   73.6,
-   "the last labels pop on calculator ticks (W lands 72.2), all five hold"
+  "sfx": [
+    "typewriter tick per letter 0.0–1.05",
+    "split-flap clatter 1.9–2.65 (starts on 'Z')",
+    "one soft tick per route arc as each order number lands, 2.45–4.35 (ten ticks; A is the 7th)",
+    "one soft tick per letter as the QS-order row forms, 25.35–26.6",
+    "no whoosh on the wordmark cut (11.22): a dry key click",
+    "soft rubber stamp 11.72, 12.62, 54.0 (Finally.), 73.75 (Z)",
+    "per letter, under the music: D page turn · R calculator key · X dry boop · G pencil line · T envelope slide · B paper slap · A stamp · I pen scratch · O gate latch · P quiet tick",
+    "16th-note calculator ticks 69.8–72.4",
+    "NO tape-measure zips, laser beeps or cash-register sounds"
   ],
-  [
-   86.8,
-   90.0,
-   "end card holds 3.2 s, music tail"
+  "post_processing": "Duck the music 10–12 dB under the VO. Mux with tools/mux: one stem per line at start_s. Loudness -14 LUFS (YouTube/LinkedIn).",
+  "total_words": 188,
+  "total_characters": 1024,
+  "changelog": [
+    "2026-10-06: v2 narrative read (owner: the alphabet gimmick is confusing; explain QS and how a job moves on, with energy). Old alphabet script kept as vo-script-v1-alphabet.json."
   ]
- ],
- "sfx": [
-  "typewriter tick per letter 0.0–1.05",
-  "split-flap clatter 1.9–2.65 (starts on 'Z')",
-  "one soft tick per route arc as each order number lands, 2.45–4.35 (ten ticks; A is the 7th)",
-  "one soft tick per letter as the QS-order row forms, 25.35–26.6",
-  "no whoosh on the wordmark cut (11.22): a dry key click",
-  "soft rubber stamp 11.72, 12.62, 54.0 (Finally.), 73.75 (Z)",
-  "per letter, under the music: D page turn · R calculator key · X dry boop · G pencil line · T envelope slide · B paper slap · A stamp · I pen scratch · O gate latch · P quiet tick",
-  "16th-note calculator ticks 69.8–72.4",
-  "NO tape-measure zips, laser beeps or cash-register sounds"
- ],
- "post_processing": "Duck the music 10–12 dB under the VO. Mux with tools/mux: one stem per line at start_s. Loudness -14 LUFS (YouTube/LinkedIn).",
- "total_words": 188,
- "total_characters": 1024
 }

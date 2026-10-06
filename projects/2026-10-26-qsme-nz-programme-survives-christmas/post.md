@@ -1,4 +1,5 @@
 ---
+vid: N11
 title: "How a programme survives Christmas"
 venture: qsme-nz
 idea: nz-programme-survives-christmas

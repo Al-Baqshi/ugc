@@ -1,4 +1,5 @@
 ---
+vid: G08
 title: "What your AI assistant can do in QSME, and the four things it never will"
 venture: qsme-build
 idea: qsme-build-claude-writes-my-tender

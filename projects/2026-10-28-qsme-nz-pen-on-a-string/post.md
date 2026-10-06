@@ -1,4 +1,5 @@
 ---
+vid: N12
 title: "The pen on a string"
 venture: qsme-nz
 idea: nz-pen-on-a-string

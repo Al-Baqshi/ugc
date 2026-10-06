@@ -1,4 +1,5 @@
 ---
+vid: N09
 title: "Our whole contract is a thumbs-up"
 venture: qsme-nz
 idea: nz-thumbs-up-contract

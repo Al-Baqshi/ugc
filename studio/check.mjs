@@ -122,6 +122,7 @@ function childEnv(port, env, { host = '127.0.0.1' } = {}) {
   // upload API. They stay in this list on purpose: a stale setting in the shell
   // must never reach the server under test.
   for (const k of ['HOST', 'STUDIO_PASSWORD', 'STUDIO_API_TOKEN', 'STUDIO_DEV', 'STUDIO_CONTENT_ROOT', 'STUDIO_MEDIA_TOKEN', 'MEDIA_DIR', 'MEDIA_MAX_BYTES']) delete e[k];
+  e.STUDIO_PUBLIC_VIDEOS = '0'; // the existing suite checks the locked-down behaviour; public mode has its own test
   for (const k of Object.keys(e)) if (k.startsWith('RAILWAY_') || k.startsWith('BUCKET_')) delete e[k];
   if (host) e.HOST = host;
   return Object.assign(e, env);
@@ -881,6 +882,21 @@ async function phaseThrottle() {
   const bad = (extra) => ({ Authorization: WRONG, ...extra });
 
   // Off Railway the socket address is the client: rotating headers changes nothing.
+  // Public videos: /videos, /media and /assets open without a login; everything else still locked.
+  {
+    const pub = await startServer('public-videos', { STUDIO_PASSWORD: PASSWORD, STUDIO_PUBLIC_VIDEOS: '1' });
+    let r = await request(pub.port, '/videos');
+    check('public mode: /videos 200 without auth', r.status === 200 && r.body.includes('<section class="vcard'), String(r.status));
+    r = await request(pub.port, '/assets/videos.js');
+    check('public mode: assets served without auth', r.status === 200, String(r.status));
+    for (const p of ['/', '/ideas', '/research', '/api/ideas', '/ventures']) {
+      r = await request(pub.port, p);
+      check(`public mode: ${p} still needs a login`, r.status === 401, String(r.status));
+    }
+    r = await request(pub.port, '/media/..%2f.env');
+    check('public mode: traversal on /media still refused', r.status === 400 || r.status === 404, String(r.status));
+    await stop(pub);
+  }
   let s = await startServer('throttle', { STUDIO_PASSWORD: PASSWORD });
   try {
     const statuses = [];

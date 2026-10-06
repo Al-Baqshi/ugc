@@ -26,6 +26,10 @@ const ON_RAILWAY = Object.keys(process.env).some((k) => k.startsWith('RAILWAY_')
 const DEV_REQUESTED = process.env.STUDIO_DEV === '1';
 const DEV = DEV_REQUESTED && !ON_RAILWAY; // dev mode can never switch on in a deploy
 const PASSWORD = process.env.STUDIO_PASSWORD || '';
+// The Videos page (and the media it plays) can be shared without a login: anyone with the link
+// can watch and download. Everything else (ideas, research, ventures, API) stays behind the password.
+const PUBLIC_VIDEOS = (process.env.STUDIO_PUBLIC_VIDEOS ?? '1') !== '0';
+const isPublicPath = (p) => PUBLIC_VIDEOS && (p === '/videos' || p.startsWith('/media/') || p.startsWith('/assets/') || p === '/favicon.ico');
 const API_TOKEN = process.env.STUDIO_API_TOKEN || '';
 const HOST = process.env.HOST || (DEV ? '127.0.0.1' : '0.0.0.0'); // dev mode stays on this machine
 const LOOPBACK = new Set(['127.0.0.1', '::1', 'localhost']);
@@ -513,7 +517,7 @@ async function handle(req, res) {
   if (!PASSWORD && !DEV) return text(req, res, 503, 'STUDIO_PASSWORD not set\n');
 
   const isApi = rawPath === '/api' || rawPath.startsWith('/api/');
-  if (PASSWORD) {
+  if (PASSWORD && !isPublicPath(rawPath)) {
     const ip = clientIp(req);
     if (throttle.isLockedOut(ip)) return text(req, res, 429, 'Too many attempts. Try again later.\n', { 'Retry-After': '900' });
     const result = authorize(req, isApi);

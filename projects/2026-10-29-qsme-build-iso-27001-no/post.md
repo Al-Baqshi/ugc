@@ -1,4 +1,5 @@
 ---
+vid: G12
 title: "Is QSME ISO 27001 certified? No."
 venture: qsme-build
 idea: gl-iso-27001-no

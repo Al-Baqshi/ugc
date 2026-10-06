@@ -1,4 +1,5 @@
 ---
+vid: G06
 title: "Day 23 of one signature"
 venture: qsme-build
 idea: gl-day-23

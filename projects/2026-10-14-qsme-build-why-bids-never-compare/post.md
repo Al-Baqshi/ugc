@@ -1,4 +1,5 @@
 ---
+vid: G05
 title: "Why six bids never compare (it's the tender, not the subcontractors)"
 venture: qsme-build
 idea: gl-why-bids-never-compare

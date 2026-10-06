@@ -1,4 +1,5 @@
 ---
+vid: N10
 title: "Price it once: from the consent pack to one scope every trade prices"
 venture: qsme-nz
 idea: nz-pricing-a-build-line-by-line

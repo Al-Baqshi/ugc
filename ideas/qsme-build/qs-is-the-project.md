@@ -6,7 +6,7 @@ project: 2026-11-04-qsme-build-qs-alphabet
 publish_date: 2026-11-04
 score: 18
 score_breakdown: R4 S4 O5 Sh5
-status: in production
+status: killed
 job: organic (brand film, pin on LinkedIn/YouTube)
 platform: LinkedIn, YouTube, Instagram, TikTok
 format: brand film · long 60–90s 16:9 + 30s 4:5 and 9:16 cutdowns
@@ -24,3 +24,4 @@ created: 2026-10-04
 ## Discussion history
 - 2026-10-04: Owner asked for this concept. Workflow wf_e434bc33-d8b: 3 concepts (manifesto / A-to-Z / "what does QSME stand for?"), 2 judges, synthesis, then hero + cutdowns produced and reviewed.
 - 2026-10-04: Winner = 'The QS Alphabet' (creative judge 8.5; grafts from 'What does QSME stand for?' and 'Every project has a QS'). Rendered 90s 16:9 hero + 4:5 + 9:16, reviewed and fixed. 'ME' not expanded — waiting on the owner. NZ cut suggested later as a 30s short once the Global film proves out.
+- 2026-10-06: KILLED by the owner: the letters device is confusing and the voiced versions had no energy. Do not reuse this concept.

@@ -1,4 +1,5 @@
 ---
+vid: N06
 title: "The walk-away number"
 venture: qsme-nz
 idea: nz-walk-away-number

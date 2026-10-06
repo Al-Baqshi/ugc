@@ -1,8 +1,9 @@
 ---
+vid: G13
 title: "The QS Alphabet (A to Z, never in that order)"
 venture: qsme-build
 idea: gl-qs-is-the-project
-status: "rendered — awaiting approval"
+status: "killed — owner rejected the alphabet concept (2026-10-06)"
 publish_date: 2026-11-04
 publish_time: "20:30 NZDT Wed 4 Nov (07:30 London GMT, 11:30 Dubai, 10:30 Riyadh)"
 created: 2026-10-04
@@ -283,3 +284,4 @@ After a swap, drop the "Illustrative screen" label but keep a small "demo data" 
 4. **(d)** qsme.build still says "compared line by line", "critical path", "mark up the drawings" and "pricing and bidding are free". Fix before this film sends traffic there.
 5. **(e)** Approve the Session A add-on shots O1–O11 and stills (a)–(c).
 6. ~~The hero's founder card is a crop with the second sentence trimmed.~~ Resolved 4 Oct: the card is now captured and shown whole, unedited. Re-capture in publish week if the About page changes.
+- 2026-10-06: KILLED by the owner: the letters device is confusing and the voiced versions had no energy. Do not reuse this concept.

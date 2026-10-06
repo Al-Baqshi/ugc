@@ -58,6 +58,6 @@ Score = idea test (Recognizable / Specific / Ownable / Shareable, 1–5 each, /2
 | 2026-10-02 | qsme-build | [One record from estimate to contract](qsme-build/one-record-estimate-to-contract.md) | 16 | scored (bench) |
 | 2026-10-02 | qsme-build | [Same rules as my first year](qsme-build/first-year-rules.md) | 16 | scored (bench) |
 | 2026-10-02 | qsme-build | [Same document. Five names.](qsme-build/five-names-one-argument.md) | 15 | scored (bench) |
-| 2026-10-04 | qsme-build | [The QS Alphabet (what QSME stands for)](qsme-build/qs-is-the-project.md) | 18 | in production (4 Nov) |
+| 2026-10-04 | qsme-build | [The QS Alphabet (what QSME stands for)](qsme-build/qs-is-the-project.md) | 18 | killed (owner: confusing) |
 
 Status: `raw` → `scored` → `agreed` → `in production` → `posted` → `killed`

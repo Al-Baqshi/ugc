@@ -1,4 +1,5 @@
 ---
+vid: N08
 title: "Which one's cheapest?"
 venture: qsme-nz
 idea: qsme-nz-apples-oranges-pineapple

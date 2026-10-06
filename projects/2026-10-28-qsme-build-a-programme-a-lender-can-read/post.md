@@ -1,4 +1,5 @@
 ---
+vid: G11
 title: "A programme a lender can read"
 venture: qsme-build
 idea: gl-a-programme-a-lender-can-read

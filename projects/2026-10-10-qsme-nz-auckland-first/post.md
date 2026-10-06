@@ -1,4 +1,5 @@
 ---
+vid: N04
 title: "Auckland first (we know)"
 venture: qsme-nz
 idea: nz-auckland-first

@@ -1,4 +1,5 @@
 ---
+vid: G10
 title: "Remittance attached. (It wasn't.)"
 venture: qsme-build
 idea: gl-remittance-attached

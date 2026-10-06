@@ -61,3 +61,6 @@ tools/mux(.swift)         lay audio clips onto a silent MP4 at given times (AVFo
 - Real UGC looks unpolished on purpose: phone framing, natural light, real speech rhythm. Don't over-produce.
 - AI-generated people must not imitate real, identifiable people or claim fake testimonials as real customers.
 - Never print or echo API keys.
+
+## Video IDs (user 2026-10-06)
+Every video idea has one ID in its `post.md` frontmatter (`vid:`): `N01…` for QSME NZ, `G01…` for QSME Global, numbered by publish date (index: `projects/ids.json`). Versions of the same idea share the ID and add the cut: `G01·4:5`, `G01·9:16`, `G01·16:9`; voiced = `G01·4:5·vo`. The user refers to videos by ID — always show IDs on videos.html and the Studio, and quote them back.
