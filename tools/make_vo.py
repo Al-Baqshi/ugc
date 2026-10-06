@@ -4,6 +4,7 @@ speech-to-text, and lay take 1 onto the project's silent video.
 
 usage:
   python3 tools/make_vo.py projects/<folder> <voice_id> [--alt <voice_id>] [--takes N] [--v3] [--dry]
+                           [--script vo-script-9x16.json] [--bed assets/music/brand-bed-A.mp3@0.22]
   python3 tools/make_vo.py --all [--takes N] [--force]       # every project with a vo-script.json (voices from tools/voices.json)
   python3 tools/make_vo.py projects/<folder> --files <dir>     # use MP3s you made yourself (ElevenLabs website,
                                                               # a phone voice memo…) named <line id>.mp3, skip the API
@@ -19,10 +20,20 @@ import el  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MUX = os.path.join(ROOT, "tools", "mux")
+# How the written script is spoken. Tested 2026-10-06 on Arnold (NZ): "Queue Ess Mee" is heard back as "QSME";
+# "Q-S-me" / "Q S me" were not. Scripts keep writing "Q-S-me" (readable); a line can override with "text_tts".
+PRON = [("Q-S-me", "Queue Ess Mee"), ("QSME", "Queue Ess Mee"), ("qsme.build", "Queue Ess Mee dot build"), ("qsme.co.nz", "Queue Ess Mee dot co dot en zed")]
+
+
+def spoken(line, v3=False):
+    t = line.get("text_tts") or line["text_v3" if v3 else "text_v2"]
+    for a, b in PRON:
+        t = t.replace(a, b)
+    return t
 
 
 def norm(s):
-    s = s.lower().replace("q-s-me", "qsme").replace("q s me", "qsme").replace("qs me", "qsme").replace("cue ess me", "qsme")
+    s = s.lower().replace("q-s-me", "qsme").replace("q s me", "qsme").replace("qs me", "qsme").replace("cue ess me", "qsme").replace("queue ess mee", "qsme")
     return re.sub(r"[^a-z0-9 ]+", " ", s).split()
 
 
@@ -46,11 +57,11 @@ def stt(path):
     return buf.getvalue().strip()
 
 
-def run(project, voice, alt=None, takes=2, v3=False, dry=False):
-    spec = json.load(open(os.path.join(project, "vo-script.json")))
+def run(project, voice, alt=None, takes=2, v3=False, dry=False, script="vo-script.json", bed=None):
+    spec = json.load(open(os.path.join(project, script)))
     settings = spec["settings"]
     model = "eleven_v3" if v3 else settings["model"]
-    outdir = os.path.join(project, "outputs", "vo")
+    outdir = os.path.join(project, "outputs", "vo" if script == "vo-script.json" else "vo-" + script.replace("vo-script-", "").replace(".json", ""))
     os.makedirs(outdir, exist_ok=True)
     sets = [("", voice, spec["lines"])]
     if alt and spec.get("male_alt_lines"):
@@ -63,20 +74,20 @@ def run(project, voice, alt=None, takes=2, v3=False, dry=False):
     placed = {}
     for suffix, vid, lines in sets:
         for i, l in enumerate(lines):
-            text = l["text_v3" if v3 else "text_v2"]
-            prev = lines[i - 1]["text_v2"] if i else None
-            nxt = lines[i + 1]["text_v2"] if i + 1 < len(lines) else None
+            text = spoken(l, v3)
+            prev = spoken(lines[i - 1]) if i else None
+            nxt = spoken(lines[i + 1]) if i + 1 < len(lines) else None
             for t in range(1, takes + 1):
                 out = os.path.join(outdir, f"{l['id']}{suffix}_t{t}.mp3")
                 tts(vid, text, out, settings, model, prev, nxt)
                 # mp3_44100_128 is constant bitrate: seconds ≈ bytes*8/128000. Too long for its slot → retry a touch faster.
                 fast = dict(settings)
-                while os.path.getsize(out) * 8 / 128000 > l.get("max_s", 99) + 0.35 and fast["speed"] < 1.15 and model != "eleven_v3":
-                    fast["speed"] = round(fast["speed"] + 0.07, 2)
+                while os.path.getsize(out) * 8 / 128000 > l.get("max_s", 99) + 0.35 and fast["speed"] < 1.2 and model != "eleven_v3":
+                    fast["speed"] = round(min(1.2, fast["speed"] + 0.07), 2)
                     print(f"   {l['id']} ran {os.path.getsize(out) * 8 / 128000:.2f}s > {l['max_s']}s, retrying at speed {fast['speed']}")
                     tts(vid, text, out, fast, model, prev, nxt)
                 heard = stt(out)
-                want, got = norm(re.sub(r"\[[^\]]+\]", "", text)), norm(heard)
+                want, got = norm(re.sub(r"\[[^\]]+\]", "", l["text_v2"])), norm(heard)
                 ok = "✅" if want == got else ("≈" if set(want) <= set(got) else "⚠️")
                 report.append(f"| `{os.path.basename(out)}` | {text} | {heard} | {ok} |")
                 print(ok, os.path.basename(out), "→", heard)
@@ -88,7 +99,7 @@ def run(project, voice, alt=None, takes=2, v3=False, dry=False):
         subprocess.run(["swiftc", "-O", MUX + ".swift", "-o", MUX], check=True)
     for suffix, clips in placed.items():
         out = video.replace(".mp4", "-with-vo.mp4" if not suffix else "-alt-vo.mp4")
-        subprocess.run([MUX, video, out, *clips], check=True)
+        subprocess.run([MUX, video, out, *clips, *(["--bed", bed] if bed else [])], check=True)
 
 
 def from_files(project, d):
@@ -135,4 +146,4 @@ if __name__ == "__main__":
     if len(a) < 2:
         sys.exit(__doc__)
     opt = lambda k, d=None: a[a.index(k) + 1] if k in a else d
-    run(a[0], a[1], alt=opt("--alt"), takes=int(opt("--takes", 2)), v3="--v3" in a, dry="--dry" in a)
+    run(a[0], a[1], alt=opt("--alt"), takes=int(opt("--takes", 2)), v3="--v3" in a, dry="--dry" in a, script=opt("--script", "vo-script.json"), bed=opt("--bed"))

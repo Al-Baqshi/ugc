@@ -8,6 +8,7 @@ usage:
   python3 tools/el.py remove <voice_id>
   python3 tools/el.py tts <voice_id> <out.mp3> <text|@file> [model] [stability] [similarity] [style] [speed]
   python3 tools/el.py stt <audio.mp3>              # transcript (pronunciation check)
+  python3 tools/el.py music <out.mp3> <prompt|@file> [length_s=30] [--instrumental]   # Eleven Music
   python3 tools/el.py design <outDir> <description|@file> <sample text|@file>   # Voice Design: 3 previews (free plan OK)
   python3 tools/el.py create <generated_voice_id> <name> <description|@file>    # save a designed preview as a voice
 """
@@ -85,6 +86,26 @@ def main(a):
                  open(path, "rb").read(), f"\r\n--{b}--\r\n".encode()]
         d = call("POST", "/v1/speech-to-text", data=b"".join(parts), headers={"Content-Type": f"multipart/form-data; boundary={b}"})
         print(d.get("text"))
+    elif cmd == "music":
+        out, prompt = a[1], a[2]
+        if prompt.startswith("@"): prompt = open(prompt[1:]).read().strip()
+        length = int(float(a[3]) * 1000) if len(a) > 3 and not a[3].startswith("--") else 30000
+        body = {"prompt": prompt, "music_length_ms": length, "model_id": "music_v1"}
+        if "--instrumental" in a: body["force_instrumental"] = True
+        audio = None
+        for path in ("/v1/music?output_format=mp3_44100_128", "/v1/music/compose?output_format=mp3_44100_128"):
+            h = {"xi-api-key": key(), "Content-Type": "application/json"}
+            req = urllib.request.Request(API + path, data=json.dumps(body).encode(), method="POST", headers=h)
+            try:
+                audio = urllib.request.urlopen(req, timeout=300).read(); break
+            except urllib.error.HTTPError as e:
+                msg = e.read().decode(errors="replace")[:400]
+                if e.code in (404, 405): continue
+                sys.exit(f"HTTP {e.code} on {path}: {msg}")
+        if not audio: sys.exit("music endpoint not found")
+        os.makedirs(os.path.dirname(os.path.abspath(out)), exist_ok=True)
+        open(out, "wb").write(audio)
+        print(f"wrote {out} ({len(audio)} bytes, {length/1000:.0f}s)")
     elif cmd == "design":
         import base64
         out, desc, text = a[1], a[2], a[3]

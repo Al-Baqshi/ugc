@@ -1,175 +1,178 @@
 {
- "venture": "qsme-build",
- "video": "outputs/qs-alphabet-9x16.mp4",
- "note": "9:16 YouTube Shorts cut, 30 s, Hook A. Same character and settings as vo-script.json (hero).",
- "character": "The QS: the series narrator (same voice as 'Six bids. Six formats.', 'Day 23', 'Remittance attached'). A mid-career quantity surveyor, late 30s to 40s, general urban New Zealand accent (Auckland or Wellington office), not broad, not rural, not Australian. Dry, unhurried, amused by his own trade, never an announcer. In this film he is openly biased about QS work and says so; he respects every other trade. PREFERRED READ: the founder himself (a professional quantity surveyor), recorded on a decent mic in a quiet room, using founder_alt_lines for the 'Built by' line. FALLBACK: the venture's 'The QS' voice (Arnold bISW1PJRBPT7aRbtPJlB or James QlZn2MPaf2jDn0461bnj, see projects/2026-10-02-qsme-voice-casting). An AI voice never speaks as the founder and never says 'I built'. Voice Design fallback prompt: \"New Zealander around 40, general NZ accent, urban and professional, not broad, low-mid register, dry and unhurried, faintly amused, close-mic in a quiet site office, conversational, not a narrator or announcer.\"",
- "casting_line": "Every project runs from A to Z. Just… never in that order. Good Q-S, good project. We're biased.",
- "rules": "Pronunciation: 'Q-S' is two letters (kyoo-ess); QSME is 'Q-S-me' (kyoo-ess-mee), never 'kiss me', never four letters; qsme.build is 'Q-S-me dot build'. Letters are said as letters: 'D.' 'R.' 'X.' etc. with a real full stop after each. Natural Kiwi rhythm, contractions, no exclamation marks, no announcer lift. Owner CTA rule (2026-10-03): no 'free', no pricing line, no 'sign up at qsme.build' in any take. Never say 'critical path', 'line by line', 'measure', 'takeoff', 'escrow', 'verified'. No line ever ends on a 'me' pun.",
- "settings": {
-  "model": "eleven_multilingual_v2",
-  "stability": 0.45,
-  "similarity_boost": 0.75,
-  "style": 0,
-  "speed": 1,
-  "use_speaker_boost": true
- },
- "continuous_read_v2": "What's the Q-S in Q-S-me?\n\nQuantity surveying.\n\nGood Q-S, good project. We're biased.\n\nA to Z. Never in that order.\n\nD, drawings.\n\nR, rates.\n\nX, Excel. Close enough.\n\nG, Gantt.\n\nT, tender.\n\nB, bids.\n\nA… finally. Award.\n\nO, on site.\n\nP, paid.\n\nZ. One record. Built by a Q-S.\n\nBook a thirty-minute demo at Q-S-me dot build.",
- "lines": [
-  {
-   "id": "s01-hook",
-   "start_s": 0.2,
-   "max_s": 2.1,
-   "on_screen": "'What's the QS / in QSME?' over the QSME wordmark in white, a green caret blinking under Q, S, M, E in turn",
-   "text_v2": "What's the Q-S in Q-S-me?",
-   "text_v3": "What's the Q-S in Q-S-me?",
-   "delivery": "A real question, conversational, small lift at the end. Out by 2.35."
+  "venture": "qsme-build",
+  "video": "outputs/qs-alphabet-9x16.mp4",
+  "note": "9:16 YouTube Shorts cut, 30 s, Hook A. Same character and settings as vo-script.json (hero).",
+  "character": "The QS: the series narrator (same voice as 'Six bids. Six formats.', 'Day 23', 'Remittance attached'). A mid-career quantity surveyor, late 30s to 40s, general urban New Zealand accent (Auckland or Wellington office), not broad, not rural, not Australian. Dry, unhurried, amused by his own trade, never an announcer. In this film he is openly biased about QS work and says so; he respects every other trade. PREFERRED READ: the founder himself (a professional quantity surveyor), recorded on a decent mic in a quiet room, using founder_alt_lines for the 'Built by' line. FALLBACK: the venture's 'The QS' voice (Arnold bISW1PJRBPT7aRbtPJlB or James QlZn2MPaf2jDn0461bnj, see projects/2026-10-02-qsme-voice-casting). An AI voice never speaks as the founder and never says 'I built'. Voice Design fallback prompt: \"New Zealander around 40, general NZ accent, urban and professional, not broad, low-mid register, dry and unhurried, faintly amused, close-mic in a quiet site office, conversational, not a narrator or announcer.\"",
+  "casting_line": "Every project runs from A to Z. Just… never in that order. Good Q-S, good project. We're biased.",
+  "rules": "Pronunciation: 'Q-S' is two letters (kyoo-ess); QSME is 'Q-S-me' (kyoo-ess-mee), never 'kiss me', never four letters; qsme.build is 'Q-S-me dot build'. Letters are said as letters: 'D.' 'R.' 'X.' etc. with a real full stop after each. Natural Kiwi rhythm, contractions, no exclamation marks, no announcer lift. Owner CTA rule (2026-10-03): no 'free', no pricing line, no 'sign up at qsme.build' in any take. Never say 'critical path', 'line by line', 'measure', 'takeoff', 'escrow', 'verified'. No line ever ends on a 'me' pun.",
+  "settings": {
+    "model": "eleven_multilingual_v2",
+    "stability": 0.45,
+    "similarity_boost": 0.75,
+    "style": 0,
+    "speed": 1,
+    "use_speaker_boost": true
   },
-  {
-   "id": "s02-name",
-   "start_s": 2.5,
-   "max_s": 1.6,
-   "on_screen": "Q and S turn green and lift out (2.3); 'Quantity' / 'Surveying' type after them, complete by 3.0 and held to 4.1; M and E stay dim and unlabelled",
-   "text_v2": "Quantity surveying.",
-   "text_v3": "Quantity surveying.",
-   "delivery": "The answer, plain, a tiny smile. Out by 4.1."
-  },
-  {
-   "id": "s03-good",
-   "start_s": 4.3,
-   "max_s": 2.4,
-   "on_screen": "'Good QS.' (4.28) / 'Good project.' (4.95) stamps + '(We're biased.)' (5.75)",
-   "text_v2": "Good Q-S, good project. We're biased.",
-   "text_v3": "Good Q-S, good project. We're biased.",
-   "delivery": "Conviction, then the aside. Out by 6.7."
-  },
-  {
-   "id": "s04-order",
-   "start_s": 6.9,
-   "max_s": 3.0,
-   "on_screen": "A–Z types in two rows of 13, shuffles, ten letters flip green with order numbers, A swells to '7th' (8.9) · caption 'A to Z. Never in that order.'",
-   "text_v2": "A to Z. Never in that order.",
-   "text_v3": "A to Z. Never in that order.",
-   "delivery": "Dry. A beat after 'A to Z.' Out by 9.9."
-  },
-  {
-   "id": "s05-D",
-   "start_s": 10.05,
-   "max_s": 1.28,
-   "on_screen": "D giant letter + descriptor; one UI moment: '4 of 11 sections ready' (Plan index, enlarged to 38 px)",
-   "text_v2": "D, drawings.",
-   "text_v3": "D, drawings.",
-   "delivery": "Quick and even, on the beat; letter, comma, word. Out by 11.35."
-  },
-  {
-   "id": "s05-R",
-   "start_s": 11.45,
-   "max_s": 1.28,
-   "on_screen": "R giant letter + descriptor; one UI moment: 'AI draft · Keep' → 'Pocket kept — it's now part of your SOQ'",
-   "text_v2": "R, rates.",
-   "text_v3": "R, rates.",
-   "delivery": "Quick and even, on the beat; letter, comma, word. Out by 12.75."
-  },
-  {
-   "id": "s05-X",
-   "start_s": 12.85,
-   "max_s": 1.28,
-   "on_screen": "X giant letter + descriptor; one UI moment: 'qsme-example-soq.xlsx' → 'Imported 3 pockets and 11 lines as drafts' · caption 'X, Excel.' then 'X, Excel. Close enough.' as the scrawl lands (+0.5)",
-   "text_v2": "X, Excel. Close enough.",
-   "text_v3": "X, Excel. Close enough.",
-   "delivery": "Quick aside after 'Excel.': 'Close enough.' muttered. Fast but unhurried-sounding. Out by 14.15."
-  },
-  {
-   "id": "s05-G",
-   "start_s": 14.25,
-   "max_s": 1.28,
-   "on_screen": "G giant letter + descriptor; one UI moment: 'What drives the finish date' rings the chain in purple",
-   "text_v2": "G, Gantt.",
-   "text_v3": "G, Gantt.",
-   "delivery": "Quick and even, on the beat; letter, comma, word. Out by 15.55."
-  },
-  {
-   "id": "s05-T",
-   "start_s": 15.65,
-   "max_s": 1.28,
-   "on_screen": "T giant letter + descriptor; one UI moment: YOUR LINES (rates) vs WHAT BIDDERS SEE (empty rate boxes), 'rate: never shown'",
-   "text_v2": "T, tender.",
-   "text_v3": "T, tender.",
-   "delivery": "Quick and even, on the beat; letter, comma, word. Out by 16.95."
-  },
-  {
-   "id": "s05-B",
-   "start_s": 17.05,
-   "max_s": 1.28,
-   "on_screen": "B giant letter + descriptor; one UI moment: 'Compare bids', Bidder F 'Lowest' (enlarged) · amber note 'All totals excl. tax' ABOVE the window, outside the app",
-   "text_v2": "B, bids.",
-   "text_v3": "B, bids.",
-   "delivery": "Quick and even, on the beat; letter, comma, word. Out by 18.35."
-  },
-  {
-   "id": "s05-A",
-   "start_s": 18.45,
-   "max_s": 1.48,
-   "on_screen": "A giant letter + descriptor; one UI moment: big '7th', 'Finally.' stamp (+0.5), 'Award this bid?' → 'Award bid' (enlarged) → Active Work · caption 'A…' then 'A… finally. Award.' with the stamp",
-   "text_v2": "A… finally. Award.",
-   "text_v3": "A… finally. Award.",
-   "delivery": "'A…' hangs, then 'finally.' as the weary laugh on the stamp, then 'Award.' crisp. Out by 19.95."
-  },
-  {
-   "id": "s05-O",
-   "start_s": 20.05,
-   "max_s": 1.18,
-   "on_screen": "O giant letter + descriptor; one UI moment: poster + phone browser 'Sign in for today' → 'You're signed in, Sam'",
-   "text_v2": "O, on site.",
-   "text_v3": "O, on site.",
-   "delivery": "Quick and even, on the beat; letter, comma, word. Out by 21.25."
-  },
-  {
-   "id": "s05-P",
-   "start_s": 21.35,
-   "max_s": 1.18,
-   "on_screen": "P giant letter + descriptor; one UI moment: 'Confirm payment received' (enlarged) → 'Settled outside QSME and confirmed by both sides.'",
-   "text_v2": "P, paid.",
-   "text_v3": "P, paid.",
-   "delivery": "Quick and even, on the beat; letter, comma, word. Out by 22.55."
-  },
-  {
-   "id": "s06-Z",
-   "start_s": 22.65,
-   "max_s": 2.8,
-   "on_screen": "every letter lights, Z stamps, wordmark builds, 'Built by a quantity surveyor.' · dusk b-roll and its 'Illustrative footage' tag from 23.6 (after the docked strip has gone) · caption 'Z. One record. Built by a QS.'",
-   "text_v2": "Z. One record. Built by a Q-S.",
-   "text_v3": "Z. One record. Built by a Q-S.",
-   "delivery": "Slower, warmer. Out by 25.45."
-  },
-  {
-   "id": "s07-cta",
-   "start_s": 25.8,
-   "max_s": 3.4,
-   "on_screen": "end card: wordmark · 'Book a 30-minute demo' · 'qsme.build' · 'Bring your spreadsheet.' holds to 30.0",
-   "text_v2": "Book a thirty-minute demo at Q-S-me dot build.",
-   "text_v3": "Book a thirty-minute demo at Q-S-me dot build.",
-   "delivery": "Friendly nudge. Out by 29.2."
-  }
- ],
- "hook_b_test_lines": [
-  {
-   "id": "b01-chat",
-   "start_s": 0.2,
-   "max_s": 1.6,
-   "on_screen": "Generic chat tagged 'Fictional chat': 'Brother-in-law' asks 'So what does a QS actually do?'; 'QS is typing…' grows until the bubble fills the phone",
-   "text_v2": "How long've you got?",
-   "text_v3": "How long've you got?",
-   "delivery": "Amused, unhurried, a mate settling in. Out by 1.9. (Hook B is a test: swap only 0–4.2 s; not rendered yet.)"
-  },
-  {
-   "id": "b02-cut",
-   "start_s": 2.7,
-   "max_s": 1.4,
-   "on_screen": "hard cut to 'QS. Quantity surveying.'",
-   "text_v2": "Q-S. Quantity surveying.",
-   "text_v3": "Q-S. Quantity surveying.",
-   "delivery": "Plain. Out by 4.1."
-  }
- ],
- "total_words": 57
+  "continuous_read_v2": "What's the Q-S in Q-S-me?\n\nQuantity surveying.\n\nGood Q-S, good project. We're biased.\n\nA to Z. Never in that order.\n\nD, drawings.\n\nR, rates.\n\nX, Excel. Close enough.\n\nG, Gantt.\n\nT, tender.\n\nB, bids.\n\nA… finally. Award.\n\nO, on site.\n\nP, paid.\n\nZ. One record. Built by a Q-S.\n\nBook a thirty-minute demo at Q-S-me dot build.",
+  "lines": [
+    {
+      "id": "s01-hook",
+      "start_s": 0.2,
+      "max_s": 2.1,
+      "on_screen": "'What's the QS / in QSME?' over the QSME wordmark in white, a green caret blinking under Q, S, M, E in turn",
+      "text_v2": "What's the Q-S in Q-S-me?",
+      "text_v3": "What's the Q-S in Q-S-me?",
+      "delivery": "A real question, conversational, small lift at the end. Out by 2.35."
+    },
+    {
+      "id": "s02-name",
+      "start_s": 2.5,
+      "max_s": 1.6,
+      "on_screen": "Q and S turn green and lift out (2.3); 'Quantity' / 'Surveying' type after them, complete by 3.0 and held to 4.1; M and E stay dim and unlabelled",
+      "text_v2": "Quantity surveying.",
+      "text_v3": "Quantity surveying.",
+      "delivery": "The answer, plain, a tiny smile. Out by 4.1."
+    },
+    {
+      "id": "s03-good",
+      "start_s": 4.3,
+      "max_s": 2.4,
+      "on_screen": "'Good QS.' (4.28) / 'Good project.' (4.95) stamps + '(We're biased.)' (5.75)",
+      "text_v2": "Good Q-S, good project. We're biased.",
+      "text_v3": "Good Q-S, good project. We're biased.",
+      "delivery": "Conviction, then the aside. Out by 6.7."
+    },
+    {
+      "id": "s04-order",
+      "start_s": 6.9,
+      "max_s": 3.0,
+      "on_screen": "A–Z types in two rows of 13, shuffles, ten letters flip green with order numbers, A swells to '7th' (8.9) · caption 'A to Z. Never in that order.'",
+      "text_v2": "A to Z. Never in that order.",
+      "text_v3": "A to Z. Never in that order.",
+      "delivery": "Dry. A beat after 'A to Z.' Out by 9.9."
+    },
+    {
+      "id": "s05-D",
+      "start_s": 10.05,
+      "max_s": 1.28,
+      "on_screen": "D giant letter + descriptor; one UI moment: '4 of 11 sections ready' (Plan index, enlarged to 38 px)",
+      "text_v2": "D, drawings.",
+      "text_v3": "D, drawings.",
+      "delivery": "Quick and even, on the beat; letter, comma, word. Out by 11.35."
+    },
+    {
+      "id": "s05-R",
+      "start_s": 11.45,
+      "max_s": 1.28,
+      "on_screen": "R giant letter + descriptor; one UI moment: 'AI draft · Keep' → 'Pocket kept — it's now part of your SOQ'",
+      "text_v2": "R, rates.",
+      "text_v3": "R, rates.",
+      "delivery": "Quick and even, on the beat; letter, comma, word. Out by 12.75."
+    },
+    {
+      "id": "s05-X",
+      "start_s": 12.85,
+      "max_s": 1.28,
+      "on_screen": "X giant letter + descriptor; one UI moment: 'qsme-example-soq.xlsx' → 'Imported 3 pockets and 11 lines as drafts' · caption 'X, Excel.' then 'X, Excel. Close enough.' as the scrawl lands (+0.5)",
+      "text_v2": "X, Excel. Close enough.",
+      "text_v3": "X, Excel. Close enough.",
+      "delivery": "Quick aside after 'Excel.': 'Close enough.' muttered. Fast but unhurried-sounding. Out by 14.15."
+    },
+    {
+      "id": "s05-G",
+      "start_s": 14.25,
+      "max_s": 1.28,
+      "on_screen": "G giant letter + descriptor; one UI moment: 'What drives the finish date' rings the chain in purple",
+      "text_v2": "G, Gantt.",
+      "text_v3": "G, Gantt.",
+      "delivery": "Quick and even, on the beat; letter, comma, word. Out by 15.55."
+    },
+    {
+      "id": "s05-T",
+      "start_s": 15.65,
+      "max_s": 1.28,
+      "on_screen": "T giant letter + descriptor; one UI moment: YOUR LINES (rates) vs WHAT BIDDERS SEE (empty rate boxes), 'rate: never shown'",
+      "text_v2": "T, tender.",
+      "text_v3": "T, tender.",
+      "delivery": "Quick and even, on the beat; letter, comma, word. Out by 16.95.",
+      "text_tts": "Tee. Tender."
+    },
+    {
+      "id": "s05-B",
+      "start_s": 17.05,
+      "max_s": 1.28,
+      "on_screen": "B giant letter + descriptor; one UI moment: 'Compare bids', Bidder F 'Lowest' (enlarged) · amber note 'All totals excl. tax' ABOVE the window, outside the app",
+      "text_v2": "B, bids.",
+      "text_v3": "B, bids.",
+      "delivery": "Quick and even, on the beat; letter, comma, word. Out by 18.35.",
+      "text_tts": "Bee. Bids."
+    },
+    {
+      "id": "s05-A",
+      "start_s": 18.45,
+      "max_s": 1.48,
+      "on_screen": "A giant letter + descriptor; one UI moment: big '7th', 'Finally.' stamp (+0.5), 'Award this bid?' → 'Award bid' (enlarged) → Active Work · caption 'A…' then 'A… finally. Award.' with the stamp",
+      "text_v2": "A… finally. Award.",
+      "text_v3": "A… finally. Award.",
+      "delivery": "'A…' hangs, then 'finally.' as the weary laugh on the stamp, then 'Award.' crisp. Out by 19.95.",
+      "text_tts": "A. Finally. Award."
+    },
+    {
+      "id": "s05-O",
+      "start_s": 20.05,
+      "max_s": 1.18,
+      "on_screen": "O giant letter + descriptor; one UI moment: poster + phone browser 'Sign in for today' → 'You're signed in, Sam'",
+      "text_v2": "O, on site.",
+      "text_v3": "O, on site.",
+      "delivery": "Quick and even, on the beat; letter, comma, word. Out by 21.25."
+    },
+    {
+      "id": "s05-P",
+      "start_s": 21.35,
+      "max_s": 1.18,
+      "on_screen": "P giant letter + descriptor; one UI moment: 'Confirm payment received' (enlarged) → 'Settled outside QSME and confirmed by both sides.'",
+      "text_v2": "P, paid.",
+      "text_v3": "P, paid.",
+      "delivery": "Quick and even, on the beat; letter, comma, word. Out by 22.55."
+    },
+    {
+      "id": "s06-Z",
+      "start_s": 22.65,
+      "max_s": 2.8,
+      "on_screen": "every letter lights, Z stamps, wordmark builds, 'Built by a quantity surveyor.' · dusk b-roll and its 'Illustrative footage' tag from 23.6 (after the docked strip has gone) · caption 'Z. One record. Built by a QS.'",
+      "text_v2": "Z. One record. Built by a Q-S.",
+      "text_v3": "Z. One record. Built by a Q-S.",
+      "delivery": "Slower, warmer. Out by 25.45."
+    },
+    {
+      "id": "s07-cta",
+      "start_s": 25.8,
+      "max_s": 3.4,
+      "on_screen": "end card: wordmark · 'Book a 30-minute demo' · 'qsme.build' · 'Bring your spreadsheet.' holds to 30.0",
+      "text_v2": "Book a thirty-minute demo at Q-S-me dot build.",
+      "text_v3": "Book a thirty-minute demo at Q-S-me dot build.",
+      "delivery": "Friendly nudge. Out by 29.2."
+    }
+  ],
+  "hook_b_test_lines": [
+    {
+      "id": "b01-chat",
+      "start_s": 0.2,
+      "max_s": 1.6,
+      "on_screen": "Generic chat tagged 'Fictional chat': 'Brother-in-law' asks 'So what does a QS actually do?'; 'QS is typing…' grows until the bubble fills the phone",
+      "text_v2": "How long've you got?",
+      "text_v3": "How long've you got?",
+      "delivery": "Amused, unhurried, a mate settling in. Out by 1.9. (Hook B is a test: swap only 0–4.2 s; not rendered yet.)"
+    },
+    {
+      "id": "b02-cut",
+      "start_s": 2.7,
+      "max_s": 1.4,
+      "on_screen": "hard cut to 'QS. Quantity surveying.'",
+      "text_v2": "Q-S. Quantity surveying.",
+      "text_v3": "Q-S. Quantity surveying.",
+      "delivery": "Plain. Out by 4.1."
+    }
+  ],
+  "total_words": 57
 }
