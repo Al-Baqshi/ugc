@@ -3,16 +3,18 @@ vid: N03
 title: "The back corner"
 venture: qsme-nz
 idea: nz-back-corner
-status: "rendered v3 (owner CTA rule: push sign-ups) — awaiting approval"
+status: "audio-first remake v5 (Cam S, eleven_v3, one take, CTA dot koh) — awaiting review"
 publish_date: 2026-10-06
 publish_time_nzt: "19:30"
 created: 2026-10-02
 format: short
 kind: situation-demo (relatable)
-length_s: 29.9
+length_s: 35.9
 aspect: "9:16"
 platforms: [Instagram Reels, TikTok, Facebook Reels, YouTube Shorts]
 video: outputs/back-corner-9x16.mp4
+video_with_vo: outputs/back-corner-9x16-with-vo.mp4
+vo_take: outputs/vo-take-cam-v3/take.m4a
 demo_address: "474 Great North Road, Grey Lynn, Auckland (Open Space – Community zone, public community land, not a home)"
 owner_recordings_needed: []
 ---
@@ -24,6 +26,46 @@ owner_recordings_needed: []
 **The joke:** The flyer says "Sunny. Flat. Easy-care." and the checklist agrees: tick, tick, tick, "Back corner ?". The product's reply is the dry Kiwi answer: "check". The humour is aimed at the open-home gloss. It never targets the agent, the vendor or the buyer.
 
 **Job:** Organic first. Week 1 opens with the biggest new feature, site search, shown on the real qsme.co.nz screen, and every CTA pushes sign-ups (owner rule 2026-10-03). Go-to-paid bar: 15 s+ average watch AND 10+ shares and saves per 1,000 views on any platform. Only with the owner's budget yes, boost Friday evening to Saturday 9 am, targeting Auckland, before open homes.
+
+## Audio-first remake (2026-10-06) — the current master
+
+**Why:** the owner's standard from the N01 "Which Dave?" pilot (approved 2026-10-06): no gaps or breath cuts in the voice, a real spoken hook, scripts as continuous speech, ONE unbroken eleven_v3 take (Cam S), and the picture re-timed to the words. The design is unchanged; the captions are now phrases lifted from the narration.
+
+**Hook (0–2.8 s, spoken):** "The bit that costs you is the bit nobody walks to." — on screen: the real amber chip with the red-marker ring snapping closed, "The bit that costs you" from frame 1, "is the bit" slamming on "is" (1.25), "nobody walks to." on "nobody" (1.75).
+
+**The script as spoken (one take, regenerated 2026-10-10 for the "dot koh" CTA: 34.48 s, 93 words, 2.70 words/s, longest heard silence 0.75 s / 0.16 s by alignment word boundaries; one v3 tag):**
+
+```
+[amused] The bit that costs you is the bit nobody walks to. Flyer says sunny, flat, easy-care. Back corner? Nobody walks out past the shed.
+Sign up at Queue Ess Mee and search your address. Boundary, land area, council, zone. Then services and hazards. One comes up amber. Overland flow path. Present. Check.
+Checked against the whole section, not just the front lawn.
+Check means check. It's not a lim. Ask the agent. Order the lim.
+Check the back corner before you bid. Sign up at Queue Ess Mee dot Co dot N Z.
+```
+
+Times are heard word onsets on the 35.9 s master: the alignment start, moved past any silence (≥ 0.15 s under -40 dB) the aligner folded into the word, so a caption never lands before its word is heard.
+
+| Said (start) | Picture (re-timed to the words) | Caption on screen |
+|---|---|---|
+| 0.07 "The bit that costs you is the bit nobody walks to." | real amber chip punched in 1.85→2.0×, ring snaps closed 0–0.35; lines slam on "is" (1.25) and "nobody" (1.75); rewind smear 2.86–3.31 | The bit that costs you / is the bit / nobody walks to. |
+| 3.56 "Flyer says sunny, flat, easy-care." | flyer drops in 3.31–3.73 and is read while the words are said; notes card slides up 4.66, ticks 4.98 / 5.18 / 5.38 | (the flyer: Sunny. Flat. Easy-care. · Illustrative) |
+| 6.05 "Back corner?" | "Back corner" row pops 5.80; red "?" slams on "corner?" 6.10–6.26 | (notes: ○ Back corner ?) |
+| 7.14 "Nobody walks out past the shed." | caption on "Nobody" (7.18), held to 8.59; swipe to the live screen 8.66–9.01 | Nobody walks out / past the shed. |
+| 9.31 "Sign up at QSME and search your address." | live qsme.co.nz screencast lands just before "Sign up"; tap 8.98, address types at ~3.2× (9.0–10.2), tap on "search" 10.66, the real loading line, scroll; handover to the still 11.46–11.66 | Sign up at qsme.co.nz / Search your address. |
+| 11.96 "Boundary, land area, council, zone." | pills on their words 11.96 / 12.46 / 13.18 / 13.74; parcel trace 11.86–12.51; outlines on 6,552 m² (12.51), Auckland (13.22), Open Space - Community Zone (13.78) | Boundary · Land area · Council · Zone |
+| 14.38 "Then services and hazards." | scroll to Services 14.31–14.70; outline hops the five service chips on "services" (14.71–15.23); scroll 15.26–15.66; hops Flood plain / Flood-prone / Coastal on "hazards" (15.70–16.00) | (the UI is the text) |
+| 16.44 "One comes up amber. Overland flow path. Present. Check." | outline lands on Overland flow path 16.74, turns amber on "amber." (16.96); punch-in 17.04–17.42; red ring redraws on "Present." (19.79–20.29) | (the real chip: Overland flow path · Present — check) |
+| 21.54 "Checked against the whole section, not just the front lawn." | caption on "Checked" (21.56), third line on "not" (22.78), held to 24.11 and gone by 24.29 | Checked against / the whole section, / not just the front lawn. |
+| 24.32 "Check means check. It's not a lim." | camera to chip + footer 24.17–24.67; caption slams on "Check" (24.35); spotlight 24.72–25.02; red underline under the page's own "Not a substitute for a LIM, PIM or engineering advice." on "It's not a lim." (25.71–26.45) | "Check" means check. |
+| 26.77 "Ask the agent. Order the lim." | notes card slides in on "Ask" (26.62–27.07); "?" scribbled out 26.87–27.12; ": ask the agent." types 27.22–27.72; "Order the LIM." types on "Order" (28.09–28.49) | Back corner: ask the agent. / Order the LIM. |
+| 29.28 "Check the back corner before you bid." | end card 28.78–29.16; headline pops on "Check" (29.31); red ring round "back corner" on the words (29.51–29.91); "Search your address." on "bid." (30.52) | Check the / back corner / before you bid. · Search your address. |
+| 31.50 "Sign up at QSME dot Co dot N Z." | green button pops on "Sign up" (31.46), pulses on "Queue" (31.97) and "zed" (33.96); tag 32.00; last word ends 34.48; page ends 35.9 | Sign up at qsme.co.nz · Services & hazards: Auckland first |
+
+**Script changes vs v3 (and why):** the hook is now a spoken claim rather than the instruction "Before any Auckland open home, check the bit nobody walks to." (the caption is lifted from the new line); "On qsme.co.nz: / Sign up. / “Search your address.”" became "Sign up at qsme.co.nz / Search your address." (the words as said); "It's what you ask at the open home" was cut for length (the notes card still answers it: ask the agent, order the LIM); "Services… hazards." became "Then services and hazards. One comes up amber. Overland flow path. Present. Check." so the product payoff is said in words, not only shown. "Auckland" is no longer in the hook line; the end-card tag "Services & hazards: Auckland first", the DEMO pill and every platform caption keep the Auckland scope. Three takes were generated: attempt 1 (108 words, 42.8 s) and attempt 2 (41.9 s, slow read) each had a >1 s gap at the mid-script [amused] tag, so the tag moved to the start and the script lost a line; attempt 3 was the 2026-10-06 take. 2026-10-10: the CTA was changed to "dot Co dot N Z" (owner rule 2026-10-08, never C-O) and the whole take regenerated with the script otherwise unchanged; attempt 1 of that run (43.7 s, 2.1 words/s, 1.5–1.6 s silences before both "Sign up"s) was rejected and attempt 2 is the take. STT check (`outputs/vo-take-cam-v3/stt.txt`): every word heard, CTA heard as "qsme.co.nz", "lim" as the homophone "limb".
+
+**Files:** master `outputs/back-corner-9x16.mp4` (35.9 s, silent, QA passed on safe 65,300,1015,1250; the 29.9 s v3 master archived as `outputs/archive/back-corner-9x16-v1.mp4`, the 40.5 s "dot co" v4 master as `outputs/archive/back-corner-9x16-v2.mp4`); voiced `outputs/back-corner-9x16-with-vo.mp4` (the take at 0.0 s, gain 1.15, no bed, one audio track); take + alignment + words + STT + the exact text sent in `outputs/vo-take-cam-v3/`; every superseded or rejected take in `outputs/archive/vo-attempts/`; cover re-exported from the new hook at 2.4 s; contract `vo-script.json` / `vo-script.md`. Music and SFX: none in this cut (clean voice, per the standard).
+
+**What's below:** the Hook, Beat-by-beat, Music and Production status sections describe the 2026-10-03 silent 29.9 s cut (Mel as the voice, per-line plan). They are kept as the design record; the timeline above is the one that ships.
 
 ## Hook (0–3.0 s, payoff first)
 
@@ -50,7 +92,7 @@ Why it works: the product's real result is the first thing on screen. "The bit n
 | 14.45–16.30 | value (the check) | (none, the UI is the text) | Services… hazards. | Smooth scroll to Services. A neutral white outline hops chip to chip: Water supply, Wastewater, Stormwater, Piped gas, Electricity (15.0–15.52), then (camera slides to Hazards) Flood plain, Flood-prone area, Coastal inundation… and lands on **Overland flow path · Present — check**, which turns amber at 16.22. The area below the result card fades to dark (no "scroll" prompt, no plate edge) | Eight quick soft ticks, then one low muted **thunk** at 16.22; music drops out for 0.6 s |
 | 16.30–20.50 | insight (callback to hook) | "Checked against / the **whole section,**" (16.75) + "not just the front lawn." (17.25), held to 20.6 | Checked against the whole section, not just the front lawn. | Punch-in back to the hook framing (1.85→1.95×, 16.3–16.68); the red-marker circle redraws (16.72–17.1); vignette | Marker squeak; music returns softly |
 | 20.50–25.70 | payoff (the honesty) | "**“Check”** means check." (21.3) sits above the chip, so its real "Present — check" stays visible · Notes return: Back corner ~~?~~ → "Back corner: ask the agent." / "Order the LIM." (both on screen 23.7–25.5) | It's not a lim. … It's what you ask at the open home. | Camera to the amber chip + the page's own grey footer (20.5–21.15); a spotlight with two holes isolates the chip and the footer; red-marker underline under "Not a substitute for a LIM, PIM or engineering advice." (21.45–22.1). The notes card slides up into the lower half (21.8–22.25); the "?" is scribbled out (22.35) and the answers type in (22.75–23.7) | Marker squeak on the underline, scribble scratch, soft notes-app typing |
-| 25.50–29.90 | CTA | QSME wordmark / **Check the / back corner / before you bid.** (red circle round "back corner") / Search your address. / [Sign up at qsme.co.nz] (green button) / Services & hazards: Auckland first | Sign up at Q-S-me dot co dot en zed. | Navy NZ end card slides up; a faint green trace of the parcel outline draws in the lower background. The wordmark is shown without the ® (registration unconfirmed, see open questions) | Swipe whoosh; the music resolves on a held chord, no logo sting |
+| 25.50–29.90 | CTA | QSME wordmark / **Check the / back corner / before you bid.** (red circle round "back corner") / Search your address. / [Sign up at qsme.co.nz] (green button) / Services & hazards: Auckland first | Sign up at Q-S-me dot Co dot N Z. | Navy NZ end card slides up; a faint green trace of the parcel outline draws in the lower background. The wordmark is shown without the ® (registration unconfirmed, see open questions) | Swipe whoosh; the music resolves on a held chord, no logo sting |
 
 Read-aloud check: 62 words of VO across 29.9 s, with silences on the rewind, the scan ticks, the thunk and the end-card hold. Every on-screen line also works with no VO.
 
@@ -81,7 +123,7 @@ Read-aloud check: 62 words of VO across 29.9 s, with silences on the rewind, the
 - Title: *Check the back corner before any Auckland open home*
 - Description: Search your address — sign up at qsme.co.nz. You get the boundary, land area and council anywhere in NZ, the zone in Auckland, Wellington City, Christchurch and Hamilton, and in Auckland, services and hazard flags checked against the whole section. "Present — check" means check: ask the agent, order the LIM. (Overland flow path = the route stormwater takes over the ground in heavy rain.) Indicative only, not a LIM, PIM or engineering advice. #Shorts #AucklandProperty #FirstHomeBuyerNZ
 
-**CTA (all):** Search your address — sign up at qsme.co.nz. (End card: "Search your address." + [Sign up at qsme.co.nz]; VO: "Sign up at Q-S-me dot co dot en zed.")
+**CTA (all):** Search your address — sign up at qsme.co.nz. (End card: "Search your address." + [Sign up at qsme.co.nz]; VO: "Sign up at Q-S-me dot Co dot N Z.")
 
 **Pinned reply for the "does this work in Tauranga?" comments** (true as of 2026-10-02):
 > Boundary, land area and council work anywhere in NZ. The zone shows in Auckland, Wellington City, Christchurch and Hamilton. Services and hazard flags are Auckland only for now, and the check says so on screen ("Auckland first, more councils to come"). It's always indicative, never a LIM. Sign up at qsme.co.nz to search yours.
@@ -136,7 +178,7 @@ Source: `research/2026-10-02-qsme-platform-truth.md` (feature IDs in brackets).
 | Claim on screen / in VO | Rests on | Status |
 |---|---|---|
 | Search your address on qsme.co.nz, with the sign-up push: caption "On qsme.co.nz: / Sign up. / “Search your address.”", VO "Q-S-me. Sign up. Type the address." | Owner CTA rule 2026-10-03 (`ventures/qsme-nz.md`): site search is presented as what you get when you sign up; an account unlocks Site research (truth sheet (a) and 1.1). The screen shown is the real homepage search from our capture 2026-10-02 | ✅ live · owner rule |
-| End card "Search your address." + [Sign up at qsme.co.nz]; VO "Sign up at Q-S-me dot co dot en zed." | Owner CTA rule 2026-10-03: NZ CTA "Search your address — sign up at qsme.co.nz" | ✅ owner rule |
+| End card "Search your address." + [Sign up at qsme.co.nz]; VO "Sign up at Q-S-me dot Co dot N Z." | Owner CTA rule 2026-10-03: NZ CTA "Search your address — sign up at qsme.co.nz" | ✅ owner rule |
 | Lower third "DEMO · Auckland community site · try yours" | The demo address is public community land (Open Space – Community zone), not a home; "not a home" is kept in the reply below and in this log | ✅ honest |
 | Boundary · Land area · Council · Zone | 1.1: LINZ boundary, land area, legal description and council NZ-wide; zone in 4 councils. The demo is Auckland | ✅ live |
 | Services and hazard chips; "Present — check" | 1.7 Services & hazards snapshot `services-hazards`: 9 chips, Auckland only. Exact on-screen wording from the real result | ✅ live (Auckland) |
@@ -169,3 +211,6 @@ Source: `research/2026-10-02-qsme-platform-truth.md` (feature IDs in brackets).
 - 2026-10-02: Calendar slot approved (Tue 6 Oct, 19:30 NZT, week 1). Built and rendered from a live public capture of qsme.co.nz plus a full-res still, b-roll and kinetic type; no owner recording needed. Tested about 20 public/commercial Auckland address queries through the public lookup to find one with a single amber hazard chip; 474 Great North Road, Grey Lynn returned exactly one (Overland flow path — Present — check).
 - 2026-10-02 (v2, review fixes): the review found the cut honest but said three story beats went by too fast to read. Fixes: hook held 3.0 s (was 1.95) and rewind cut to 0.45 s; "Nobody walks out past the shed." now on screen 2.4 s (was 1.0) and lands with the ticks; the insight caption is held 3.9 s with its third line 0.5 s later; both note answers hold 1.8 s before the end card (was 0.3). "“Check” means check." no longer covers the chip's "Present — check" (reframed 120 px lower, with a spotlight on both the chip and the footer). The flyer photo is now a finished home with a lawn (stage-5-dusk, first frame, no UI cards). The flyer's "Illustrative" label stays readable during the notes beat. The plate's bottom edge and the "SCROLL — WATCH IT GET BUILT" prompt are masked, and the grey Google-map loading frames are cut (handover at capture 8.1 s). Other changes: the pills beat is trimmed to 2.0 s and the scan to 1.85 s; a deeper scrim sits behind the live-screen caption; the lower third now reads "DEMO · public Auckland site · try yours"; the end card reads "Search your address free. No sign-up." + [qsme.co.nz] with no ®. Facebook and YouTube copy is Auckland/4-council scoped, and every platform caption now explains what an overland flow path is. Master 29.9 s (the idea card's 30 s). VO retimed, words unchanged.
 - 2026-10-03: owner CTA rule — removed free/no-sign-up, CTA now "Search your address — sign up at qsme.co.nz" (end card "Search your address." + green [Sign up at qsme.co.nz] button; VO "Sign up at Q-S-me dot co dot en zed."). Live-screen caption "On qsme.co.nz: / Sign up. / “Search your address.”" (VO "Q-S-me. Sign up. Type the address."); DEMO pill now "Auckland community site · try yours" (no "public" next to the website). The real homepage's own "Free to join." line, visible under "Get started" in the v2 footage (8.5–12.8 s), is patched out with the page's own background. Insight, job line, all four platform captions, the YouTube description, CTA line, both comment replies and the integrity notes rewritten to push sign-ups. Re-rendered the 9:16 master + contact sheet + preview, re-exported the cover; picture timings unchanged, VO windows unchanged, vo_status ok.
+- 2026-10-06 (v4, audio-first remake): the owner approved the N01 pilot standard, so this cut was remade around ONE unbroken Cam S eleven_v3 take (38.96 s, longest silence 0.34 s, STT clean): continuous narration with a spoken hook ("The bit that costs you is the bit nobody walks to."), 13 caption phrases lifted from the take, every beat in motion/back-corner.html placed on its word from alignment.json, page 29.9 → 40.5 s. Re-rendered (QA ok, contact sheet + spot frames checked), old master archived as outputs/archive/back-corner-9x16-v1.mp4, voiced master outputs/back-corner-9x16-with-vo.mp4 (take at 0.0 s, gain 1.15, no bed), cover re-exported from the new hook. Mel's per-line VO plan and the male A/B lines are retired: one narrator. Not done: publish/backup (producer run, no deploys).
+- 2026-10-10 (v5, CTA pronunciation fix): the owner's 2026-10-08 rule says "co" is said like "koh", never spelled C-O, so the CTA now reads "Sign up at Queue Ess Mee dot Co dot N Z." The rest of the script and its single [amused] tag are unchanged. The WHOLE take was regenerated as one unbroken Cam S eleven_v3 request. Attempt 1 (43.7 s, 2.1 words/s, 1.5–1.6 s silences before both "Sign up"s) was rejected. Attempt 2 is the take: 34.48 s, 2.70 words/s, longest heard silence 0.75 s, STT clean, CTA heard as "qsme.co.nz". Every beat in motion/back-corner.html was re-timed to heard word onsets (v5), and the page went from 40.5 to 35.9 s (tail 1.42 s). The caption handover at "Check means check" was tightened so the two captions never overlap. Re-rendered (QA ok, contact sheet + 27 spot frames checked), re-muxed (1 audio track at 0.0 s, 35.9 s = video), preview refreshed, cover re-exported at 2.4 s. The 40.5 s master is archived as outputs/archive/back-corner-9x16-v2.mp4. All earlier and rejected takes are in outputs/archive/vo-attempts/. Not done: publish/backup (producer run, no deploys).
+- 2026-10-10 CTA swap: owner said "koh" sounded wrong; only the final "Sign up at qsme.co.nz" line was replaced (spoken "dot Co dot N Z", tools/fix_cta.py), rest of the take and picture untouched. Old take in outputs/archive/vo-koh-2026-10-10/.

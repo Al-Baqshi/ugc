@@ -64,3 +64,10 @@ tools/mux(.swift)         lay audio clips onto a silent MP4 at given times (AVFo
 
 ## Video IDs (user 2026-10-06)
 Every video idea has one ID in its `post.md` frontmatter (`vid:`): `N01…` for QSME NZ, `G01…` for QSME Global, numbered by publish date (index: `projects/ids.json`). Versions of the same idea share the ID and add the cut: `G01·4:5`, `G01·9:16`, `G01·16:9`; voiced = `G01·4:5·vo`. The user refers to videos by ID — always show IDs on videos.html and the Studio, and quote them back.
+
+## Audio-first standard (owner, 2026-10-06) — applies to every video from now on
+1. **Script = continuous speech.** A real hook in the first 2 s (bold claim, stinging number, unanswerable question, or the funniest line first), then natural talk for the whole video; no silence longer than 1 s. Captions are phrases lifted from the narration.
+2. **One unbroken take** on ElevenLabs `eleven_v3` (with-timestamps; forced alignment `/v1/forced-alignment` if needed). Never slice a take into lines; never generate line by line.
+3. **Picture follows audio:** re-time the motion page's beats to the word timestamps, then render. Voice ≈ 1.15 gain; any music bed ≈ 0.09 ducked to 0.03.
+NZ CTA is spoken "Sign up at Queue Ess Mee dot Co dot N Z" — "co" is the normal word (as in "co.nz"), never spelled C-O and never a drawn-out "KOH" (owner 2026-10-08, 2026-10-10). Fix only the CTA with tools/fix_cta.py.
+Rejected for good: deadpan/low-energy reads, per-line generation with gaps, caption-fragment scripts, letter/alphabet gimmicks on screen.

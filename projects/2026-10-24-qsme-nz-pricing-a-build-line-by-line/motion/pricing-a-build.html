@@ -77,6 +77,7 @@
 <script src="../../../tools/motion/kit.js"></script>
 <script src="ui.js"></script>
 <script src="story.js"></script>
+<script src="warp.js"></script>
 <script>
 (function () {
   'use strict';
@@ -139,26 +140,105 @@
   add('<div id="tg3" class="ftag l"><b>Paid plans</b> · uses AI credits</div>');
   add('<div id="tg4" class="ftag r">AI rates are indicative, not quotes. QSME doesn\'t supply rates.</div>');
   add('<div id="tg5" class="ftag l"><b>Paid plans</b> · uses AI credits (1 per 10 pages)</div>');
-  add('<div id="tg6" class="ftag r" style="right:150px">They can itemise or quote one total.</div>');
 
   /* ---------- captions ---------- */
   var ARR = '<svg viewBox="0 0 24 24" style="width:.62em;height:.62em;margin-left:.12em;vertical-align:-.02em" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 L17 7 M9 7 H17 V15"/></svg>';
-  cap(TS + 0.4, TS + 4.6, 'Christchurch owner-builder. Consent pack thick enough to prop a door open.');
-  cap(TS + 4.9, TS + 8.05, 'And her brother-in-law\'s spreadsheet. From two years ago.');
-  cap(TS + 8.3, TS + 10.2, 'Neither one mentions <span class="r">drainage</span>.');
-  cap(W1 + 0.2, T1 + 0.95, 'Step 1: read the pack.');
-  capsFrom(Story.ch1, T1);
-  cap(TB3 + 0.3, TB3 + 3.9, 'Days later: the drainage sheets, as their own PDF.');
-  capsFrom(Story.ch5a, T5a);
-  cap(W2 + 0.15, T2 + 0.15, 'Step 2: price it.');
-  capsFrom(Story.ch2, T2);
-  capsFrom(Story.ch3, T3);
-  capsFrom(Story.ch5b, T5b);
-  cap(T6 + 0.4, T6 + 5.2, 'Same lines for every bidder. Her rates never shown.');
-  cap(T6 + 5.4, T6 + 9.0, 'Rates and budget are stripped before a bidder sees it.');
-  cap(T6 + 9.2, T6 + 13.5, 'Comparing the totals on the same GST basis?<br>That video\'s linked here' + ARR);
+  /* captions: phrases lifted from the narration, in OUTPUT time (seconds on the Cam S take, alignment.json word starts) */
+  [[11.21, 15.70, 'Christchurch owner-builder. Consent pack thick enough to prop a door open.'],   // "Christchurch"
+   [15.88, 19.33, 'And her brother-in-law\'s spreadsheet. From two years ago.'],                    // "And her"
+   [19.51, 21.40, 'Neither one mentions <span class="r">drainage</span>.'],                         // "Neither"
+   [21.63, 23.45, 'Step 1: read the pack.'],                                                       // "Step one"
+   [23.57, 26.50, 'QSME splits it into its real sections.'],                                       // "Queue Ess Mee splits"
+   [26.67, 29.75, 'Floor plans, bracing, foundations, schedules.'],                                // "Floor"
+   [32.92, 35.55, 'It takes a few minutes, so this bit\'s sped up.'],                              // "And it takes"
+   [35.71, 37.72, 'Tables come out as tables.'],                                                   // "Tables"
+   [37.87, 39.42, 'And it says what it didn\'t find.'],                                            // "And it says"
+   [39.56, 44.30, 'Heads up: no drainage. Found before anyone priced it.'],                         // "Heads up"
+   [44.45, 46.20, 'So she asks the designer.'],                                                    // "So she asks"
+   [46.35, 49.80, 'Days later, the drainage sheets turn up. Their own PDF.'],                      // "Days later"
+   [49.94, 52.50, 'Read in. Drainage: found.'],                                                    // "Read in"
+   [52.67, 54.50, 'Step 2: price it.'],                                                            // "Step two"
+   [54.64, 57.58, 'A pocket per trade.'],                                                          // "A pocket"
+   [57.71, 60.75, 'It starts as a Draft. She makes it Active.'],                                   // "It starts"
+   [60.88, 66.45, 'Line, job, pocket and Grand total tick up together.'],                          // "A quantity"
+   [66.62, 70.65, 'Her own columns too. Waste %, then a formula.'],                                // "Her own columns"
+   [70.80, 73.65, 'And the brother-in-law\'s spreadsheet? Import it.'],                            // "And the brother-in-law's"
+   [73.79, 77.70, 'In it comes as drafts. 2024 rates, mind.'],                                     // "In it comes"
+   [77.89, 80.10, 'Step 3: fill the gaps.'],                                                       // "Step three"
+   [80.25, 84.50, 'Draft with AI adds the pockets she hasn\'t got.'],                              // "Draft with AI"
+   [84.67, 86.80, 'Keep one. Bin the other.'],                                                     // "Keep one"
+   [86.96, 90.32, 'Estimate with AI prices only the empty lines.'],                                // "Then Estimate"
+   [90.48, 92.22, 'Indicative, not quotes.'],                                                      // "Indicative"
+   [92.39, 95.88, 'Every AI number stays marked&nbsp;✦ until a person edits it.'],                 // "Every AI number"
+   [96.04, 99.60, 'She swaps one for her supplier\'s figure. Its mark goes.'],                      // "She swaps"
+   [99.76, 102.98, 'The other two stay marked. She still has to check them.'],                     // "The other two"
+   [103.14, 107.56, 'Step 4: make it a tender. Private: only who she invites.'],                   // "Step four"
+   [107.73, 112.82, 'Select the whole pocket: its jobs and lines are the scope.'],                 // "Select"
+   [112.99, 116.55, 'Point them at the drainage pages. The ones that exist now.'],                 // "Point them"
+   [116.71, 120.08, '30-30-40, with 5% retention.'],                                               // "Thirty, thirty, forty"
+   [120.24, 122.60, 'Then invite the trades she picks.'],                                          // "Then invite"
+   [122.76, 125.02, 'Step 5: what the drainlayer sees.'],                                          // "Step five"
+   [125.18, 127.26, 'The same lines, for every bidder.'],                                          // "The same lines"
+   [127.42, 130.08, 'They can itemise, or quote one total.'],                                      // "They can itemise"
+   [130.23, 132.94, 'Her rates and budget are stripped before they see it.'],                      // "Her rates"
+   [133.09, 137.88, 'Comparing the totals on the same GST basis?<br>That video\'s linked here' + ARR] // "Comparing"
+  ].forEach(function (c) { cap(c[0], c[1], c[2]); });
   caps.forEach(function (c, i) { add('<div id="cap' + i + '" class="caption box"><span>' + c[2] + '</span></div>'); });
   R.innerHTML = H;
+
+  /* ================= AUDIO-FIRST RE-TIMING (2026-10-08, the N01 standard) =================
+     The Cam S eleven_v3 take outputs/vo-take-cam-v3/take.mp3 (144.96 s, ONE unbroken request laid at 0.0) is the clock.
+     Everything below is still authored on the 2026-10-04 clock and mapped through Warp (warp.js): [authored_s, output_s],
+     each output time pinned to the word it belongs to in alignment.json. Page = take + 1.5 s tail = 146.5 s. */
+  var DOUT = 146.5;
+  Warp.install([
+    [0, 0], [0.3, 0.3],                       // the notice is in by 0.3 s
+    [1.0, 3.91], [1.5, 4.41],                 // red underline on "drainage." (not one of them is drainage)
+    [TT, 7.06],                               // cut to the trench on "...not in a trench"
+    [TTi, 8.37],                              // title: "Price it once." pops on "Price"
+    [TS, 10.85], [TS + 0.4, 11.21],           // setup on "Christchurch"
+    [TS + 4.4, 15.80],                        // the spreadsheet slides in on "And her brother-in-law's spreadsheet"
+    [TS + 5.6, 18.46],                        // "2024" circled on "two years ago"
+    [TS + 8.4, 20.28], [TS + 9.05, 20.95],    // marker "drainage??" on "mentions drainage"; chapter strip after it
+    [W1, 21.45], [T1, 22.55],                 // the app on "Step one. Read the pack."
+    [T1 + 1.0, 23.57],                        // "Queue Ess Mee splits it..."
+    [T1 + 2.7, 25.90], [T1 + 4.98, 29.60],    // the 11 chips pop through "sections. Floor plans, bracing, foundations, schedules."
+    [T1 + 5.45, 35.35], [T1 + 5.9, 35.55],    // "sped up" label held to "...so this bit's sped up"; drawer on "Tables"
+    [T1 + 9.1, 37.60], [T1 + 9.4, 37.87],     // the notice on "And it says what it didn't find"
+    [T1 + 12.55, 40.59],                      // red underline on "no drainage"
+    [T1 + 15.8, 44.45],                       // sticky "ask designer" on "So she asks the designer"
+    [TB3, 46.20], [TB3 + 0.3, 46.40],         // drainage sheets on "Days later"
+    [TB3 + 1.6, 47.98],                       // green tick on "turn up"
+    [T5a, 49.75], [T5a + 2.2, 51.60],         // "Read in." ... chips on "Drainage, found."
+    [W2, 52.45],                              // lead-in on "Step two. Price it."
+    [T2 + 0.2, 54.64], [T2 + 1.3, 56.30], [T2 + 2.15, 57.40],   // "A pocket per trade." / types "Plumbing & drainage" as said
+    [T2 + 2.75, 57.75], [T2 + 3.45, 60.05],   // pocket on "It starts as a Draft"; badge flips on "Active"
+    [T2 + 4.45, 61.10], [T2 + 5.25, 62.00], [T2 + 5.95, 62.98],  // "quantity", "rate", totals tick on "the line"
+    [T2 + 6.9, 65.90], [T2 + 8.0, 66.45],     // the rest fill (sped up) after "tick up together"
+    [T2 + 8.5, 66.70], [T2 + 9.45, 68.90],    // "Her own columns too." / Percent on "Waste percent"
+    [T2 + 11.05, 69.30], [T2 + 13.0, 70.50],  // formula column on "then a formula"
+    [T2 + 14.1, 71.20], [T2 + 16.25, 73.00],  // import on "And the brother-in-law's spreadsheet? Import it."
+    [T2 + 16.5, 73.75], [T2 + 16.95, 74.60],  // toast on "In it comes"; draft pockets on "as drafts"
+    [T3, 77.70], [T3 + 0.1, 77.89],           // "Step three. Fill the gaps."
+    [T3 + 0.9, 80.25], [T3 + 3.15, 83.09],    // AI menu on "Draft with AI"; draft pockets on "as AI drafts"
+    [T3 + 4.7, 84.67], [T3 + 5.8, 85.79],     // "Keep one." / "Bin the other."
+    [T3 + 7.5, 87.25], [T3 + 11.0, 89.40],    // "Estimate with AI" / the three ✦ rates fill on "the empty lines"
+    [T3 + 12.1, 92.30],                       // the ✦ banner on "Every AI number stays marked"
+    [T3 + 14.5, 96.45], [T3 + 14.8, 97.30], [T3 + 15.7, 98.75],   // "swaps" / types on "supplier's figure" / ✦ goes on "mark goes"
+    [T3 + 18.4, 99.76],                       // "The other two stay marked."
+    [T5b, 103.00], [T5b + 2.1, 105.30], [T5b + 3.6, 107.30],      // "Step four. Make it a tender." / Private / Next
+    [T5b + 3.9, 107.73], [T5b + 4.7, 108.55], // "Select the whole pocket"
+    [T5b + 4.9, 109.58], [T5b + 5.26, 111.55],// the counter steps through "its jobs and lines" to "Three of three"
+    [T5b + 7.9, 112.60], [T5b + 8.3, 112.99], // Next / "Point them at the drainage pages"
+    [T5b + 9.02, 113.73], [T5b + 9.52, 115.00],                   // ticks on "drainage pages" / "The ones that exist now"
+    [T5b + 12.7, 116.30], [T5b + 13.65, 116.75], [T5b + 14.3, 118.75], [T5b + 15.4, 119.60],   // 30-30-40 / retention / GST
+    [T5b + 17.6, 120.24], [T5b + 18.12, 121.10], [T5b + 18.72, 121.70], [T5b + 19.9, 122.20],  // invite ticks on "the trades she picks"; send
+    [T6, 122.60], [T6 + 0.6, 123.40], [T6 + 0.7, 127.00], [T6 + 1.5, 127.95],   // split; Itemize clicked on "itemise"
+    [T6 + 1.8, 130.10], [T6 + 3.6, 131.95], [T6 + 4.8, 132.90],   // rows travel, rates blur on "Her rates and her budget are stripped"
+    [T6 + 9.2, 133.09],                       // "Comparing the totals..."
+    [TE, 137.60], [TE + 0.6, 138.04], [TE + 1.0, 139.66], [TE + 1.6, 141.20],   // end card: "Price it once." / "Tender the same lines." / "Sign up"
+    [D, DOUT]
+  ]);
 
   /* ================= TIMELINE ================= */
   Kit.scene('#b1', 0, TT).scene('#n1', 0, TT).scene('#h1', 0, TT).scene('#lb1', 0, TTi);
@@ -178,7 +258,7 @@
   Kit.add('#lbI', 'opacity', [[0, 0], [W1, 1, 'hold'], [TB3, 0, 'hold'], [T5a, 1, 'hold'], [TE, 0, 'hold']]);
   Kit.scene('#lbD', TB3, T5a);
   Kit.scene('#tg1', T1 + 0.4, TB3).scene('#tg2', T1 + 0.4, TB3);
-  Kit.scene('#tg3', T3 + 1.5, T5b).scene('#tg4', T3 + 7.4, T5b).scene('#tg5', T5a + 0.3, W2).scene('#tg6', T6 + 2.0, T6 + 9.1);   // off before the two-line caption
+  Kit.scene('#tg3', T3 + 1.5, T5b).scene('#tg4', T3 + 7.4, T5b).scene('#tg5', T5a + 0.3, W2);   // (tg6 'They can itemise…' is now a caption on the words)
   Kit.scene('#stk1', T1 + 15.8, TB3);
   Kit.add('#stk1', 'opacity', [[T1 + 15.8, 0], [T1 + 15.85, 1]]).add('#stk1', 'scale', [[T1 + 15.8, 1.3], [T1 + 15.96, 1, 'slam']]);
 
@@ -212,10 +292,11 @@
   Kit.pop('#elogo', TE + 0.3, { dy: 20 }).pop('#e1', TE + 0.6, { dy: 30 }).pop('#e2', TE + 1.0, { dy: 30 }).pop('#ebtn', TE + 1.6, { dy: 24 }).fade('#efn', TE + 1.9, TE + 2.3);
   Kit.add('#ebtn', 'scale', [[TE + 3.2, 1], [TE + 3.4, 1.04, 'out'], [TE + 3.7, 1, 'inOut']]);
 
-  // captions
+  // captions (output time)
+  Warp.restore();
   caps.forEach(function (c, i) { Kit.pop('#cap' + i, c[0], { dy: 18 }); Kit.out('#cap' + i, c[1] - 0.12, 0.12); });
 
-  Kit.ready({ duration: D, fonts: ['800 60px Manrope', '500 20px Inter', '600 20px Inter', '700 20px Inter', '800 20px Inter', '400 40px Kalam', '400 40px "Permanent Marker"', '500 20px "JetBrains Mono"', '600 16px "JetBrains Mono"', '700 20px "JetBrains Mono"'] });
+  Kit.ready({ duration: DOUT, fonts: ['800 60px Manrope', '500 20px Inter', '600 20px Inter', '700 20px Inter', '800 20px Inter', '400 40px Kalam', '400 40px "Permanent Marker"', '500 20px "JetBrains Mono"', '600 16px "JetBrains Mono"', '700 20px "JetBrains Mono"'] });
 })();
 </script>
 </body>

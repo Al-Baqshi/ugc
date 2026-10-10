@@ -1,157 +1,86 @@
-# VO script: Kiwi performance
+# Voice script: What your AI assistant can do in QSME, and the four things it never will (G08)
 
-**Character:** The PM in first person: a Kiwi project manager, late 30s, on the couch at 9:40 pm with the week's typing still to do. General urban New Zealand accent (Auckland or Wellington office), not broad, not Australian, never a caricature. Dry, under-played, a bit tired, amused at her own rules for the AI. The script is written gender-neutral, so it suits (best) the founder in his own voice, (default AI read) the cast Global QS voice in tools/voices.json (qsme-build: Arnold, alt James), or a female Kiwi voice (e.g. Jenna, run make_vo.py with that voice id). An AI voice never speaks as the founder and is never captioned as him.
+**Audio-first remake (2026-10-06).** One voice (Cam S, ElevenLabs eleven_v3, stability 0.5), ONE unbroken take of the whole script: `outputs/vo-take-cam-v3/take.mp3` (120.57 s, 344 words, 2.85 words/s, longest silence 0.84 s). The exact text sent is `outputs/vo-take-cam-v3/take-text.txt`; word timestamps in `outputs/vo-take-cam-v3/alignment.json` / `words.json`. The take is laid onto the silent master at 0.0 s (gain 1.15, no music) with `tools/mux` → `outputs/claude-writes-my-tender-16x9-with-vo.mp4`. The picture follows the audio: every caption, chapter card, type-on, stamp, click and the end card is placed on its word (see the page header in `motion/claude-writes-my-tender.html`).
 
-**Model & settings:** `eleven_multilingual_v2` · stability 0.45 · similarity 0.75 · style 0 · speed 1 · speaker boost on
+**Character:** One dry Kiwi storyteller in first person: a project manager at 9:40 pm telling you what the AI could and couldn't do (Cam S, ElevenLabs voice 53CG2aO2HU48thT3QnMl). General NZ accent, never a caricature, no announcer lift, no exclamation marks; the never-list flat and certain, the product lines plain, the CTA clear. Continuous speech: the narration never stops for more than 1 s. An AI voice never speaks as the founder and is never captioned as him.
 
-**Video:** `outputs/claude-writes-my-tender-16x9.mp4` (times below are seconds on this file, 130.2s, 16:9)
+**Rules:** QSME is written "Queue Ess Mee" in the text sent to ElevenLabs (shown as QSME); the CTA is spoken "Book a thirty-minute demo at Queue Ess Mee dot build" (shown: qsme.build). v3 audio tags used: [dry], [short pause], [confident]. Captions on screen are phrases lifted from the narration.
 
-**Casting line:** “Asked my AI to push the programme a week. It can't. On purpose. Book a thirty-minute demo at Q-S-me dot build.”
-
-**Series rule:** The burned-in captions are the subtitles, so every voiced line matches its on-screen text word for word ('30-minute' is read 'thirty-minute'; QSME is read 'Q-S-me'). Where the hero text IS the line (hook headline, 'It can't.', 'On purpose.', the two typed asks in the chat bubbles, 'It sees what your login sees. Nothing more.', the four never-list lines, the quote card, the small-print line, 'The assistant drafts; you decide.'), there is no separate caption box. Chapter numbers are spoken; labels, chips, chat replies and the 'Illustrative' tag stay unvoiced.
-
-## Lines
-
-| # | Start | Max | Line (v2) | On screen | Delivery |
-|---|---|---|---|---|---|
-| 01-hook | 0.2s | 3.0s | **Asked my AI to push the programme a week.** | Headline 'Asked my AI to push the programme a week.' (frame 1) · chat: 'Push the programme back a week.' already sent · chip '9:40 pm · Tuesday' | First person, tired, 9:40 at night on the couch. A real Kiwi PM telling a mate, not an announcer. Flat and a bit sheepish, a light lean on 'push', falling at 'a week'. Out by 3.2, before 'It can't.' slams. |
-| 02-cant | 3.3s | 0.9s | **It can't.** | 'It can't.' slams in red under the headline (3.25); the assistant's reply 'I can't change the schedule.' is on screen | Dry, almost amused. Two syllables, a small gap before it. Kiwi 'can't' (broad 'ah', never the American 'can't'). Out by 4.2 (the hard cut). |
-| 03-purpose | 4.65s | 1.3s | **On purpose.** | Hard cut (4.2) to the QSME schedule, untouched · 'It can't.' (red) 'On purpose.' (green, slams 4.6) | The turn. Warm, quietly pleased, like it was your idea all along. No punchline lift. Out by 5.95 so the cut to the title breathes. |
-| 04-title | 8.5s | 4.6s | **It gets the typing. Not the dates, the money or the subcontractors.** | Title card 'What your AI assistant can do in QSME, and the four things it never will.' (no chapter list) · caption 'It gets the typing. Not the dates, the money or the subcontractors.' (8.3 to 14.2) | Matter-of-fact, the house rule. A small beat after 'typing'. The list is three even steps, the last one falling. Out by 13.1 (wipe 14.0). |
-| 05-ch1 | 14.4s | 1.7s | **One. What it can see.** | Chapter card '1 · What it can see' / 'Anything your login can see. Nothing else.' (2.2s card) | Chapter marker, unhurried, lower energy than the lines either side. Out by 16.1. |
-| 06-ask-schedule | 16.45s | 3.6s | **What's on my schedule this week, and who's turning up?** | Chat bubble: 'What's on my schedule this week, and who's turning up?' (no separate caption box: the bubble is the line) | Read as the question she actually types, conversational, a slight rise on 'turning up?' only. Out by 20.05. |
-| 07-answers | 20.3s | 3.0s | **It answers from the project's own schedule.** | The answer: four crews with dates and names (demo data) · caption 'It answers from the project's own schedule.' | Plain, a touch impressed despite herself. Lean on 'own'. Out by 23.3. |
-| 08-same | 24.9s | 2.0s | **Same crews. Same dates.** | Split: the answer beside the QSME schedule; the four bars ring green one by one (25.5 to 27.3) · caption 'Same crews. Same dates.' | Two short statements, the second a hair lower. Ticking boxes. Out by 26.9; the rings finish in silence. |
-| 09-login | 29.3s | 3.4s | **It sees what your login sees. Nothing more.** | 'It sees what your login sees.' then 'Nothing more.' (green, 30.5) · chips 'read' 'write' + 'Two separate permissions. Read alone can never change anything.' (unvoiced) | Reassuring, firm, not salesy. Full stop after 'sees'. 'Nothing more' quieter and final. Out by 32.7. |
-| 10-ch2 | 34.6s | 1.7s | **Two. What it can type.** | Chapter card '2 · What it can type' / 'Drafts and sheets. Never the send button.' (2.2s card) | Chapter marker, same shape as 05. Out by 36.3. |
-| 11-ask-tender | 36.65s | 4.0s | **Draft a tender for the façade package, private, closing next Friday.** | Chat bubble: 'Draft a tender for the façade package, private, closing next Friday.' (no separate caption box: the bubble is the line) | Instruction voice, a PM rattling off a job: brisk, clipped commas, 'façade' said fuh-SAHD. Out by 40.65. |
-| 12-stops | 41.0s | 1.9s | **It drafts it. Then it stops.** | The reply: 'Done. "Façade package" is saved as a draft…' and, bold with a green highlighter (40.25), 'It isn't published and nobody has been invited.' · caption 'It drafts it. Then it stops.' | Dry observation, a tiny smile on 'stops'. Out by 42.9. |
-| 13-send | 43.7s | 3.0s | **It drafts. A person presses send.** | QSME tender draft (Draft · Private · Closes Fri 30 Oct); the cursor reaches 'Send Tender Invitations' (hover, hand), pulls back, comes back and waits; it never clicks · caption 'It drafts. A person presses send.' | The thesis line, but said like common sense. Even weight, lean on 'person'. Out by 46.7; the cursor waits in silence after. |
-| 14-defects | 48.6s | 4.3s | **Paste in a defects list. It comes back as a sheet.** | Chat: a pasted defects list (six lines) + 'Put it in QSME as a sheet.' · caption 'Paste in a defects list. It comes back as a sheet.' | Light, practical, the tiny win of the evening. Out by 52.9. |
-| 15-sheet | 53.4s | 3.5s | **Your own spreadsheet, inside the project.** | QSME sheet 'Defects, level 3' fills row by row · caption 'Your own spreadsheet, inside the project.' | Satisfied, unhurried. Out by 56.9, before the wipe at 57.9. |
-| 16-ch3 | 58.3s | 2.0s | **Three. What it can never do.** | Chapter card '3 · What it can never do' (red numeral) / 'QSME's own list, word for word.' (2.2s card) | Slightly slower and lower than the other chapter markers: this is the one that matters. It may run a beat into the list heading. Out by 60.3. |
-| 17-never-money | 60.7s | 2.2s | **Move money or record a payment.** | 'What it can never do' + line 1 types: 'Move money or record a payment' · red ✕ stamps at 62.5 | Reading a rule off the wall. Flat, deliberate, a full stop. Out by 62.45 so the stamp lands clean. |
-| 18-never-tender | 63.1s | 3.1s | **Send or publish a tender, or accept a bid.** | Line 2: 'Send or publish a tender, or accept a bid' · stamp 65.8 | Same flat delivery, no list-sing (don't rise on 'tender'). Out by 65.75. |
-| 19-never-contract | 66.4s | 2.2s | **Issue, sign or cancel a contract.** | Line 3: 'Issue, sign or cancel a contract' · stamp 68.25 | Same. Each verb distinct but quick. Out by 68.2. |
-| 20-never-schedule | 68.8s | 3.0s | **Change the schedule or delete a project.** | Line 4: 'Change the schedule or delete a project' · stamp 71.2 | Last of four, the faintest knowing lean on 'schedule' (the hook). Falling end. Out by 71.15. |
-| 21-not-wired | 72.4s | 3.8s | **Not a setting. Those doors just aren't wired up.** | The list dims · caption 'Not a setting. Those doors just aren't wired up.' | Conversational, explaining to a sceptical commercial manager. 'Not a setting' quick, then a beat, then the rest relaxed. Out by 76.2. |
-| 22-award | 76.8s | 3.8s | **No automation and no assistant awards a tender.** | Live qsme.build/platform/tendering card 'Award is a person's decision', 'No automation and no assistant awards a tender.' highlighted (text goes near-white) · caption the same | Quoting their own website, deadpan, almost reading it aloud. Out by 80.6. |
-| 23-programme | 81.2s | 3.5s | **So the programme stays where a person put it.** | Callback: the same untouched schedule + the hook's reply bubble 'I can't change the schedule.' · caption 'So the programme stays where a person put it.' | Callback, a small smile in the voice. Out by 84.7 (wipe 84.7). |
-| 24-ch4 | 85.1s | 1.7s | **Four. Who did what.** | Chapter card '4 · Who did what' / 'A list of what it did. And an off switch.' (2.2s card) | Chapter marker. Out by 86.8. |
-| 25-activity | 87.2s | 3.5s | **Settings. Connected apps. What it did, newest first.** | QSME Settings → Connected apps → 'Recent activity — What your connected apps have done, newest first.' (three rows) · caption 'Settings. Connected apps. What it did, newest first.' | Two quick signposts like reading a menu path, then the payoff. Out by 90.7. |
-| 26-disconnect | 91.2s | 3.5s | **Disconnect, and it loses access immediately.** | Click Disconnect (90.8) → dialog 'It will lose access immediately.' · caption 'Disconnect, and it loses access immediately.' | Calm, final. No drama. Out by 94.7. |
-| 27-ch5 | 95.7s | 1.7s | **Five. The small print.** | Chapter card '5 · The small print' / 'Not hidden in a footer.' (2.2s card) | Chapter marker, a little wry. Out by 97.4. |
-| 28-has-not | 97.7s | 4.8s | **If an assistant tells you it has sent, paid or awarded something, it has not.** | Quote card: 'If an assistant tells you it has sent, paid or awarded something, it has not.' · chip 'QSME guide · AI assistants (MCP)' | Small print said out loud: steady, a beat before 'it has not', which lands flat and certain. Out by 102.5. |
-| 29-suggestion | 102.9s | 3.6s | **Every draft is a suggestion for a person to check.** | Live qsme.build/platform/estimating card 'Draft with AI, then check', highlighted (text goes near-white) · caption 'Every draft is a suggestion for a person to check.' | Even, sensible. Out by 106.5. |
-| 30-paid-plan | 107.3s | 3.2s | **ChatGPT needs a paid plan with developer mode.** | Small-print card (6s): 'Works with Claude, ChatGPT, Claude Code, Codex or Cursor.' · 'ChatGPT needs a paid plan with developer mode.' · 'Your own assistant, on your own account. No partnership implied.' (from 108.1) | Terms-and-conditions voice, slightly faster and lower, a wink of 'I know, I know'. Say 'Chat G-P-T'. Out by 110.5. |
-| 31-decide | 113.3s | 2.4s | **The assistant drafts. You decide.** | 'The assistant drafts; you decide.' (slams 113.1) · then chips IT DRAFTS / YOU DECIDE build in silence (114.7, 116.0) | The line of the video, said simply. Lean on 'you'. Then silence while the chips land. Out by 115.7. |
-| 32-thirty | 119.0s | 3.6s | **Thirty minutes, on a working project like yours.** | Live qsme.build/contact 'What happens on a demo? Thirty minutes on a working project that resembles yours.' highlighted · caption 'Thirty minutes, on a working project like yours.' | Plain and friendly, like describing the visit to a mate. Kiwi 'thirty' (soft t). Small comma pause after 'minutes'. Out by 122.6. |
-| 33-cta | 123.3s | 5.9s | **Book a thirty-minute demo at Q-S-me dot build. What would you let it type first?** | End card: QSME logo · 'Book a 30-minute demo' / 'at qsme.build' · 'What would you let it type first? Tell us in the comments.' | The CTA as an invitation, not a pitch: say 'Q-S-me dot build' clearly (kyoo-ess-mee dot build). Breath, then the question, genuinely curious with a light rise. Out by 129.2; the card holds a beat for YouTube end-screen elements. |
-
-`text_v3` is the same words (01 adds one `[sighs]`); use v3 only as one continuous request, never per line.
-
-## One continuous read (for the most natural take; slice in the edit)
+## The script as spoken (one take)
 
 ```
-Asked my AI to push the programme a week.
+Asked my AI to push the programme back a week. [dry] It can't. On purpose.
 
-It can't.
+Nine-forty on a Tuesday. Here's what your AI assistant can do in Queue Ess Mee, and the four things it never will. It gets the typing. Not the dates, the money or the subcontractors.
 
-On purpose.
+One. What it can see. What's on my schedule this week, and who's turning up? It answers from the project's own schedule. Next to the real thing: same crews, same dates. It sees what your login sees. Nothing more. Read alone can never change anything.
 
-It gets the typing. Not the dates, the money or the subcontractors.
+Two. What it can type. Draft a tender for the façade package, private, closing next Friday. It creates the draft, and says it isn't published and nobody has been invited. It drafts it. Then it stops. Here's the draft. That green button? [short pause] It drafts. A person presses send. Paste in a defects list, and it comes back as a sheet. Your own spreadsheet, inside the project.
 
-One. What it can see.
+Three. What it can never do. Queue Ess Mee's own list, word for word. Move money or record a payment. Send or publish a tender, or accept a bid. Issue, sign or cancel a contract. Change the schedule or delete a project. Not a setting. Those doors just aren't wired up. On the public page: no automation and no assistant awards a tender. So, back at nine-forty, the programme stays where a person put it.
 
-What's on my schedule this week, and who's turning up?
+Four. Who did what. Settings. Connected apps. What it did, newest first. Disconnect, and it loses access immediately.
 
-It answers from the project's own schedule.
+Five. The small print. Not hidden in a footer. If an assistant tells you it has sent, paid or awarded something, it has not. Every draft is a suggestion for a person to check. Works with Claude, ChatGPT, Claude Code, Codex or Cursor. ChatGPT needs a paid plan with developer mode.
 
-Same crews. Same dates.
-
-It sees what your login sees. Nothing more.
-
-Two. What it can type.
-
-Draft a tender for the façade package, private, closing next Friday.
-
-It drafts it. Then it stops.
-
-It drafts. A person presses send.
-
-Paste in a defects list. It comes back as a sheet.
-
-Your own spreadsheet, inside the project.
-
-Three. What it can never do.
-
-Move money or record a payment.
-
-Send or publish a tender, or accept a bid.
-
-Issue, sign or cancel a contract.
-
-Change the schedule or delete a project.
-
-Not a setting. Those doors just aren't wired up.
-
-No automation and no assistant awards a tender.
-
-So the programme stays where a person put it.
-
-Four. Who did what.
-
-Settings. Connected apps. What it did, newest first.
-
-Disconnect, and it loses access immediately.
-
-Five. The small print.
-
-If an assistant tells you it has sent, paid or awarded something, it has not.
-
-Every draft is a suggestion for a person to check.
-
-ChatGPT needs a paid plan with developer mode.
-
-The assistant drafts. You decide.
-
-Thirty minutes, on a working project like yours.
-
-Book a thirty-minute demo at Q-S-me dot build. What would you let it type first?
+[confident] The assistant drafts; you decide. It drafts; you send, award, sign, pay, and move the dates. Thirty minutes, on a working project like yours. Book a thirty-minute demo at Queue Ess Mee dot build. What would you let it type first?
 ```
 
-## Silent beats (leave them empty on purpose)
+## Timing (from the alignment)
 
-- 1.0 to 3.2 under 01: the reply types (no keyboard clatter, just a soft UI tick at 1.6)
-- 5.95 to 8.5: the cut to the title card (wipe 7.0)
-- 13.1 to 14.4: chapter 1 wipe (14.0)
-- 26.9 to 29.3: the four schedule rings finish, then the cut to 'It sees what your login sees.'
-- 46.7 to 48.6: the cursor waits by 'Send Tender Invitations' after its hesitation and never clicks (hold the silence: this is the joke)
-- 56.9 to 58.3: chapter 3 wipe (57.9)
-- 62.45 to 63.1, 65.75 to 66.4, 68.2 to 68.8, 71.15 to 72.4: each red ✕ stamp lands in silence
-- 94.7 to 95.7: chapter 5 wipe (95.3)
-- 115.7 to 119.0: the IT DRAFTS / YOU DECIDE chips land in silence
-- 129.2 to 130.2: end card holds for YouTube end-screen elements
+| Start | End | Said | Picture | Delivery |
+|---|---|---|---|---|
+| 0.00 | 2.72 | Asked my AI to push the programme back a week. | Hook 0–4.12: chip '9:40 pm · Tuesday', headline 'Asked my AI to push the programme a week.', the ask already sent in the chat; dots 0.4–1.15, tool chip 1.3, the reply types 1.5–3.1 | Flat, a bit tired, like telling a mate what happened. No lift. |
+| 3.34 | 3.92 | It can't. | 'It can't.' slams red on 'can't' (3.42) | Dry, short. The joke is that it failed. |
+| 4.16 | 5.28 | On purpose. | Hard cut to the untouched Gantt on 'On' (4.12); 'On purpose.' slams green on 'purpose.' (4.66) | Land it; the failure is the feature. |
+| 5.49 | 7.44 | Nine-forty on a Tuesday. | Said over the untouched Gantt (camera drift only); the wipe to the title starts on 'Here's' (7.22) | A scene-setter, easy. |
+| 7.49 | 11.92 | Here's what your AI assistant can do in Q-S-me, and the four things it never will. | Title card 7.49: kicker '9:40 pm · the week's typing still to do' + the title (the words) | The title read straight, 'never will' as a promise. |
+| 12.05 | 15.76 | It gets the typing. Not the dates, the money or the subcontractors. | Caption kT 12.0 → 16.12: 'It gets the typing. Not the dates, the money or the subcontractors.' | Even; a small lean on 'typing'. |
+| 16.18 | 17.68 | One. What it can see. | Chapter 1 card on 'One.' (wipe 15.9, card 16.17–17.75); the sub-line 'Anything your login can see. Nothing else.' is on screen, unvoiced | Chapter number plain. |
+| 17.78 | 20.32 | What's on my schedule this week, and who's turning up? | Chat 1 17.75; the bubble is the line (rises 17.78); dots, 'QSME · read the schedule' 19.3, answer rows 20.3–21.35 | The question as typed, slightly hopeful. |
+| 20.48 | 22.56 | It answers from the project's own schedule. | Caption k1b 20.45 → 22.65 while the four rows and 'Four crews. Lee hasn't confirmed yet.' (21.9) land | Matter-of-fact. |
+| 22.69 | 26.00 | Next to the real thing: same crews, same dates. | Split screen 22.65 (THE ANSWER / THE PROJECT'S OWN SCHEDULE); rings on 24.1 / 24.52 / 24.94 / 25.36 (the last on 'dates'); caption k1c 'Same crews. Same dates.' 24.05 → 26.02 | 'same … same' as a tick-tick. |
+| 26.08 | 28.56 | It sees what your login sees. Nothing more. | Big type 26.02: 'It sees what your login sees.' rises 26.05, 'Nothing more.' slams 27.67 | Lean on 'your'; 'Nothing more.' as a full stop. |
+| 28.69 | 30.72 | Read alone can never change anything. | read · write chips + 'Two separate permissions. Read alone can never change anything.' rise 28.66 | Plain. |
+| 30.98 | 32.80 | Two. What it can type. | Chapter 2 card on 'Two.' (wipe 30.72, card 30.99–32.9); sub-line 'Drafts and sheets. Never the send button.' unvoiced | Chapter number plain. |
+| 32.93 | 36.56 | Draft a tender for the façade package, private, closing next Friday. | Chat 2 32.9; the bubble is the line (32.93); dots, 'created a tender draft' 34.6, 'added 4 SOQ jobs to it' 35.1 | The ask as typed, brisk. |
+| 36.72 | 40.48 | It creates the draft, and says it isn't published and nobody has been invited. | Reply a2a pops 37.05, a2b 38.2; the green highlighter rides 'It isn't published and nobody has been invited.' 38.5–40.3 | The proof sentence a touch slower, like reading it off the screen. |
+| 40.64 | 42.56 | It drafts it. Then it stops. | Caption k2b 40.6 → 42.62 | Two short sentences; the second one lands. |
+| 42.67 | 44.80 | Here's the draft. That green button? | The tender draft 42.62 ('Façade package' · Draft · Private · nobody invited yet); the cursor heads for 'Send Tender Invitations' and reaches it on 'button?' (44.4), pulls back (45.0), comes back (45.55) | A beat after 'button?' (0.84 s): the hesitation is the joke. |
+| 45.64 | 47.85 | It drafts. A person presses send. | Caption k2c 45.6 → 47.9 while the hand waits by Send and never clicks | Deadpan. |
+| 47.96 | 50.81 | Paste in a defects list, and it comes back as a sheet. | Chat 3 47.9: the pasted list (47.96) + 'Put it in QSME as a sheet.' (48.7), 'created a sheet' 49.8, reply 50.3; caption k2d 'Paste in a defects list. It comes back as a sheet.' 48.0 → 50.88 | Easy, a bit pleased. |
+| 50.91 | 53.25 | Your own spreadsheet, inside the project. | The sheet 'Defects, level 3' 50.88, six rows fill 51.3–52.45; caption k2e 51.0 → 53.42 | Plain. |
+| 53.41 | 55.45 | Three. What it can never do. | Chapter 3 card (red numeral) on 'Three.' (wipe 53.15, card 53.42–55.55) | A shade lower: this is the point. |
+| 55.57 | 58.01 | Q-S-me's own list, word for word. | 'What it can never do' + chip 'QSME's own list · word for word' rise 55.58 / 55.75 | Plain. |
+| 58.12 | 59.93 | Move money or record a payment. | Line 1 types 58.1–59.6 as it is said; red ✕ slams on 'payment.' (59.95) | Each never-line flat and certain. |
+| 60.04 | 62.41 | Send or publish a tender, or accept a bid. | Line 2 types 60.0–62.0; ✕ on 'bid.' (62.45) | Flat and certain. |
+| 62.54 | 64.81 | Issue, sign or cancel a contract. | Line 3 types 62.5–64.4; ✕ on 'contract.' (64.85) | Flat and certain. |
+| 64.91 | 67.13 | Change the schedule or delete a project. | Line 4 types 64.9–66.8; ✕ on 'project.' (67.15) | The last one a touch slower: the hook's answer. |
+| 67.27 | 70.09 | Not a setting. Those doors just aren't wired up. | The list dims 67.25; caption k3b 67.25 → 70.2 | Dry; 'wired up' as the full stop. |
+| 70.25 | 74.33 | On the public page: no automation and no assistant awards a tender. | Live qsme.build/platform/tendering card 70.2 (chip 'Live page · excerpt · captured 4 Oct 2026'); the sentence highlights 71.6–73.3 on the words; caption k3c 71.6 → 74.48 | Reading the page back, even. |
+| 74.52 | 78.25 | So, back at nine-forty, the programme stays where a person put it. | The callback Gantt 74.48 (untouched, drift only); the pinned reply 'I can't change the schedule. · 9:40 pm, from the top of this video' lands on 'nine-forty' (75.45); caption k3d 'The programme stays where a person put it.' 76.4 → 78.47 | A small smile on 'nine-forty'. |
+| 78.47 | 80.17 | Four. Who did what. | Chapter 4 card on 'Four.' (wipe 78.2, card 78.47–80.25); sub-line 'A list of what it did. And an off switch.' unvoiced | Chapter number plain. |
+| 80.28 | 84.41 | Settings. Connected apps. What it did, newest first. | Settings → Connected apps 80.25; the three activity rows land on 'What it did, newest first.' (82.45–82.95); caption k4a 80.3 → 84.45 | Three stops, like clicking through. |
+| 84.50 | 87.13 | Disconnect, and it loses access immediately. | The hand clicks Disconnect on the word (84.5); dialog 'It will lose access immediately.' 84.75; caption k4b 84.5 → 87.41 | 'immediately' said plainly, no drama. |
+| 87.40 | 90.65 | Five. The small print. Not hidden in a footer. | Chapter 5 card on 'Five.' (wipe 87.14, card 87.41–90.8): the sub-line 'Not hidden in a footer.' rises 87.96 and is said at 89.47 | Light. |
+| 90.84 | 95.21 | If an assistant tells you it has sent, paid or awarded something, it has not. | Quote card 90.8 (the words; chip 'QSME guide · AI assistants (MCP)' 91.6) | The guide's line, read like a rule you agree with; 'it has not' final. |
+| 95.30 | 98.25 | Every draft is a suggestion for a person to check. | Live qsme.build/platform/estimating card 95.27; highlights 96.3–97.9 on 'a suggestion for a person to check'; caption k5b 95.4 → 98.3 | Even. |
+| 98.34 | 103.29 | Works with Claude, ChatGPT, Claude Code, Codex or Cursor. | Small-print card 98.3; line 'Works with Claude, ChatGPT, Claude Code, Codex or Cursor.' rises 98.5; 'Your own assistant, on your own account. No partnership implied.' rises 101.5 (unvoiced, 4.6 s on screen) | A list, no favourites. |
+| 103.37 | 106.01 | ChatGPT needs a paid plan with developer mode. | 'ChatGPT needs a paid plan with developer mode.' rises on the words (103.35) | Plain, helpful. |
+| 106.43 | 108.49 | The assistant drafts; you decide. | Wipe 106.1; 'The assistant drafts; you decide.' slams 106.47 | The thesis; a touch more weight. |
+| 108.60 | 113.05 | It drafts; you send, award, sign, pay, and move the dates. | Chip rows: IT DRAFTS Tenders · Contracts · SOQ lines · Sheets on 'It drafts;' (108.6); YOU DECIDE Send · Award · Sign · Pay · The dates on 'you send' (109.55) | List rhythm; 'move the dates' closes the hook. |
+| 113.15 | 115.85 | Thirty minutes, on a working project like yours. | Live qsme.build/contact card 113.1; highlight 114.3–115.4; caption k6b 113.3 → 115.9 | An offer, not a pitch. |
+| 115.96 | 119.21 | Book a thirty-minute demo at Q-S-me dot build. | End card 115.9: logo, 'Book a 30-minute demo' rises on 'Book' (116.0), 'at qsme.build' on 'at' (117.3), green rule 118.2 | The exact Global CTA, clear. |
+| 119.23 | 120.57 | What would you let it type first? | 'What would you let it type first? Tell us in the comments.' rises on 'What' (119.2); the card holds to 122.1 | A real question, then out. |
 
-## Optional founder kicker
+## STT check
 
-Only if the founder approves (render with <html data-kicker="on">): a handwritten caption 'Same rules I had in my first year as a QS.' pops at 73.9 under the never list. It stays unvoiced in this script because line 21 is speaking then; if the founder reads the VO himself, he can swap line 21 for 'Same rules I had in my first year as a QS.' (10 words, max 3.8) and the caption k3b then needs the same text.
+Asked my AI to push the program back a week. It can't, on purpose. Nine forty on a Tuesday. Here's what your AI assistant can do in QS Me and the four things it never will. It gets the typing, not the dates, the money, or the subcontractors. One, what it can see. What's on my schedule this week and who's turning up? It answers from the project's own schedule. Next to the real thing, same crews, same dates. It sees what your login sees, nothing more. Read-alone can never change anything. Two, what it can type. Draft a tender for the facade package, private, closing next Friday. It creates the draft and says it isn't published and nobody has been invited. It drafts it, then it stops. Here's the draft. That green button, it drafts. A person presses Send. Paste in a defects list and it comes back as a sheet, your own spreadsheet inside the project. Three, what it can never do. QS Me's own list, word for word, move money or record a payment, send or publish a tender or accept a bid, issue, sign, or cancel a contract, change the schedule or delete a project, not a setting. Those doors just aren't wired up. On the public page, no automation and no assistant awards a tender. So back at nine forty, the program stays where a person put it. Four, who did what? Settings, connected apps. What it did, newest first. Disconnect, and it loses access immediately. Five, the small print, not hidden in a footer. If an assistant tells you it has sent, paid, or awarded something, it has not. Every draft is a suggestion for a person to check. Works with Claude, ChatGPT, Claude Code, Codex, or Cursor. ChatGPT needs a paid plan with developer mode. The assistant drafts, you decide. It drafts, you send, award, sign, pay, and move the dates. Thirty minutes on a working project like yours. Book a thirty-minute demo at qsme.build. What would you let it type first?
 
-## Make it sound recorded, not synthesised
-
-- Pronunciation: QSME is “Q-S-me” (kyoo-ess-mee), qsme.build is “Q-S-me dot build”. Never “kiss me”, never four spelled-out letters. ‘façade’ is fuh-SAHD. ‘ChatGPT’ is ‘Chat G-P-T’. Kiwi ‘can’t’ and ‘thirty’ (soft t).
-- Kiwi, not Australian, not American: watch the KIT vowel in ‘it’, ‘list’, ‘sign’ and ‘drafts it’, and keep sentence ends falling (no upspeak except the two real questions, 06 and 33).
-- Place lines by eye and ear, not on a grid: treat start_s as a target and nudge a frame or two so the gaps between lines don’t come out identical. Never stretch a take more than about 4%; if it runs past max_s, use another take.
-- If the founder records it: one continuous read of continuous_read_v2, three takes, natural pace, then slice at the blank lines and place each piece at its start_s. Keep breaths and small hesitations; never time-stretch more than about 4%.
-- If AI (after the ElevenLabs upgrade): python3 tools/make_vo.py projects/2026-10-21-qsme-build-claude-writes-my-tender <voice_id> --takes 3, or render continuous_read_v2 three times and slice. Use request stitching (previous_text/next_text). Pick the least polished take.
-- Room tone bed (a real quiet lounge at night on a phone: fridge hum, faint traffic) under the whole 130.2s at about -48 to -50 dBFS so silences never drop to digital zero.
-- EQ: high-pass 90 to 100 Hz; -2 dB high shelf above 10 kHz; light de-ess. Compression 2:1 to 3:1, 3 to 4 dB GR. VO about -16 LUFS integrated, -1 dBTP. No reverb.
-- Music (see post.md): none under the hook (0 to 7.0); a sparse late-night pulse enters on the title card, sits ~20 dB under the VO, dips on every wipe, drops to almost nothing for the never list (60.1 to 76.5) so the stamps carry it, returns for chapter 4, resolves on one held chord at ~131.5.
-- SFX, ducked 10 to 12 dB under any word: soft message-send tick 0.0; three faint 'thinking' pulses 0.4 to 1.15; a dull thud on 'It can't.' 3.25; a hard cut with a tiny room-tone drop at 4.2; whoosh on each wipe (7.0, 14.0, 34.2, 57.9, 84.7, 95.3, 112.7); chat pops 16.45, 36.65, 48.5; a soft marker squeak 40.25 (the highlighter in the chat); trackpad click 90.8; four rubber-stamp thunks 62.5, 65.8, 68.25, 71.2; highlighter swipes 77.1, 103.2, 119.3. No OS- or app-branded sounds.
-- Bounce a mono VO stem and mux onto outputs/claude-writes-my-tender-16x9.mp4 with tools/mux as a separate track, so music and SFX stay adjustable.
+Every word heard (QSME → "QS Me" / "qsme.build"; programme → "program", homophone).
 
 ## Changelog
 
-- 2026-10-02 first version, timed on the rendered 132.5s 16:9 master (outputs/claude-writes-my-tender-16x9.mp4). Captions and VO match word for word. No API was called.
-- 2026-10-04 resume pass: owner CTA rule (2026-10-03) applied. The end card and line 33 now carry the exact Global CTA 'Book a 30-minute demo at qsme.build' ('Book a thirty-minute demo at Q-S-me dot build.'); line 32 over the live /contact crop becomes 'Thirty minutes, on a working project like yours.' so the CTA isn't said twice. The tendering card crop no longer shows its second sentence ('without an account'). Re-rendered the 132.5s master; all other timings unchanged. No API was called.
-- 2026-10-04 review pass (130.2s): caption and line 25 now use the product's own wording ('What it did, newest first', not 'Everything it did'); chapter cards trimmed to 2.2s (lines 05/10/16/24/27 retimed), the split screen -1.6s, the Send-button beat -1.7s, title +0.6s (caption from 8.3, line 04 from 8.5), small-print card +2.0s; every later line moved with its beat. Lines 06 and 11 lose their caption boxes (the chat bubble is the line). Hook chip '9:40 pm · Tuesday'. No API was called.
+- 2026-10-02 first version, 33 caption-timed lines on the 132.5 s master (silent-first). No API was called.
+- 2026-10-04 resume + review passes: owner CTA rule applied, 'What it did, newest first', 130.2 s. No API was called.
+- 2026-10-06 AUDIO-FIRST REMAKE (owner standard from the N01 pilot): the script is continuous speech with the hook in the first 2 s ('Asked my AI to push the programme back a week. It can't. On purpose.'), 344 words at 2.85 w/s, longest silence 0.84 s; ONE unbroken Cam S eleven_v3 take with timestamps (120.57 s); the picture re-timed to the words (page 122.1 s); captions become phrases from the narration ('So the programme stays…' → 'The programme stays where a person put it.'); the old 130.2 s silent master archived as outputs/archive/claude-writes-my-tender-16x9-v1.mp4.

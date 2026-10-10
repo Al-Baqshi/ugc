@@ -1,82 +1,38 @@
-# VO script: Kiwi performance, "The back corner"
+# The back corner — voice script (N03, audio-first remake 2026-10-06, CTA pronunciation fix 2026-10-10)
 
-**Character:** Mel, an everyday Kiwi woman in her late 30s who has been to a lot of open homes. She's dry and amused, talking to a mate who is about to go to one on Saturday. General NZ accent, never a caricature. Every line is **advice in the second person** ("check this", "type the address"). She never says "I", "my" or "I use it", so an AI voice can never read as a customer testimonial. The flyer line is affectionate, not snide: the joke is the open-home gloss, never the agent or the vendor. The product lines sound like the same person telling a mate a useful trick: no announcer lift, no tagline cadence. The payoff ("It's not a lim…") is the warmest line in the piece: honest and a bit pleased with itself.
+**Voice:** Cam S (ElevenLabs, eleven_v3, stability 0.5). **Take:** `outputs/vo-take-cam-v3/take.m4a`, one unbroken 34.48 s request (2026-10-10), laid at 0.0 s on `outputs/back-corner-9x16.mp4` (35.9 s) → `outputs/back-corner-9x16-with-vo.mp4`. 2.70 words/s; longest heard silence 0.75 s (0.16 s by alignment word boundaries). QSME is said "Queue Ess Mee"; the CTA is said "dot Co dot N Z" (owner 2026-10-08: never C-O).
 
-**Model & settings:** `eleven_multilingual_v2` · stability 0.45 · similarity 0.75 · style 0 · speed 1 · speaker boost on
-
-**Video:** `outputs/back-corner-9x16.mp4`. This is the only cut (9:16, full 29.9 s master, no 16:9 version), so there's one script and no offset: every time below is seconds on this file. Windows were checked on 2026-10-02 against frames pulled from the master and the timing table in `motion/back-corner.html`. vo08–vo10 were trimmed to fit and five lines were widened into real silence (see the changelog in `vo-script.json`). 2026-10-03: vo04 and vo10 rewritten for the owner's sign-up CTA rule (same windows).
-
-**Casting line:** "Flyer says sunny, flat, easy-care. Lovely. Nobody's walked out past the shed, eh."
-
-**Pronunciation:** QSME = **Q-S-me** (kyoo-ess-mee), never "kiss me", never four letters. qsme.co.nz = "Q-S-me dot co dot en zed". **LIM** is said as one word, *lim* (rhymes with "him"), the way Kiwis say it, never L-I-M. The VO text writes it lowercase ("lim") so the voice doesn't spell it out. "Section" means the land (NZ usage). "Auckland" with a Kiwi "Awk-lund".
-
-## Lines
-
-Pace: every line fits its window at about 2.5–2.9 words/s (a natural Kiwi read). "Out by" = start + max.
-
-| Start | Max | Line (v2) | v3 alt | On screen | Delivery |
-|---|---|---|---|---|---|
-| 0.10s | 2.75s | **Before any Auckland open home… check this.** | Before any Auckland open home… check this. | Real amber chip 'Overland flow path · Present — check', red-marker circle; caption 'Before any Auckland open home, / check the bit / nobody walks to.' (held to 3.0) | A tip over the fence, not a warning. Small lean on 'Auckland', a real beat at the ellipsis, 'check this' low and dry, falling. Unhurried: there's room. Out by 2.85 (rewind whoosh at 3.0). |
-| 3.60s | 1.95s | **Flyer says sunny, flat, easy-care.** | Flyer says sunny, flat, easy-care. | Flyer drops in after the 3.45 flash (paper slap 3.5): OPEN HOME · SAT 10:00–10:30 / 'Sunny. Flat. Easy-care.' over a finished home with a front lawn (Illustrative · not a real listing) | Reading the flyer back with a tiny audible smile, no sarcasm; slightly listy, 'easy-care' a touch drier. Starts just after the paper slap. Out by 5.55. |
-| 6.05s | 2.10s | **Nobody walks out past the shed.** | Nobody walks out past the shed. | Notes: Sunny / Dry / Easy-care ticked (5.60 / 5.80 / 6.00), 'Back corner' row (6.22), red '?' (6.46); caption 'Nobody walks out / past the shed.' (5.80–8.18) | Deadpan observation a beat after the last tick; light weight on 'nobody', 'past the shed' falling away. Out by 8.15, before the caption leaves (8.18) and the swipe to the live screen (8.3). |
-| 8.60s | 2.55s | **Q-S-me. Sign up. Type the address.** | Q-S-me. Sign up. Type the address. | Live qsme.co.nz screencast: tap on the search box (8.57), address types in (8.6–10.3), tap (10.97); caption 'On qsme.co.nz: / Sign up. / “Search your address.”' (8.55–11.68) | Three practical beats like directions, starting with the tap; 'Q-S-me' clear (kyoo-ess-mee); 'Sign up' plain and matter-of-fact, like the obvious next step, never salesy. Out by 11.15, so the real 'Looking up the property…' line (11.15) plays in quiet. |
-| 12.70s | 1.80s | **Boundary… land area, council, zone.** | Boundary… land area, council, zone. | Boundary trace 12.60–13.25; pills Boundary 12.75 / Land area 13.05 / Council 13.35 / Zone 13.65; outlines land on the real values | Calm but brisk roll call landing each word near its pill: 'Boundary' with the trace, a short breath, then the other three, natural downstep. Out by 14.5 (scroll to Services starts 14.45). |
-| 14.60s | 1.15s | **Services… hazards.** | Services… hazards. | Camera to Services; white outline hops chip to chip (15.00–16.09), amber thunk 16.22 | Two words almost under the breath, as if reading along, with a real gap between. Out by 15.75 (the scan ticks and the 16.22 thunk play in silence). |
-| 16.75s | 3.60s | **Checked against the whole section, not just the front lawn.** | Checked against the whole section, not just the front lawn. | Punch-in on the amber chip, red circle redraws (16.72–17.1); caption 'Checked against / the whole section,' (16.75) + 'not just the front lawn.' (17.25), held to 20.6 | Unhurried, starts with the caption; light lean on 'whole'; hint of a smile on 'front lawn'. No pause before 'not'. Out by 20.35, while the caption is still up. |
-| 21.30s | 1.30s | **It's not a lim.** | It's not a lim. | Spotlit amber chip 'Present — check' + the page's own footer; caption '“Check” means check.' slams in (21.3); red underline under 'Not a substitute for a LIM, PIM or engineering advice.' (21.45–22.1) | Plain, honest, almost a shrug, on the caption slam; 'lim' lands as the underline runs under 'a LIM'. Said as one word (lim, rhymes with him), spelt lowercase so the voice never spells it out. Full stop, then breathe. Out by 22.6. |
-| 22.65s | 2.80s | **It's what you ask at the open home.** | It's what you ask at the open home. | Notes card up (21.8–22.25); '?' scribbled out (22.35–22.75); 'Back corner: ask the agent.' types 22.75–23.25, 'Order the LIM.' 23.35–23.7; both held to 25.5 (end-card swipe 25.5) | The warm turn, like good advice from a mate; 'ask' lands as 'ask the agent' types in; small lean on 'open home', falling end. Out by 25.45, before the end-card swipe (25.5). |
-| 26.20s | 3.20s | **Sign up at Q-S-me dot co dot en zed.** | Sign up at Q-S-me dot co dot en zed. | End card (swipe 25.5–25.88): QSME / 'Check the back corner before you bid.' (25.98, red ring 26.55–27.0) / 'Search your address.' (26.75) / [Sign up at qsme.co.nz] (27.0) / 'Services & hazards: Auckland first' (27.2); holds to 29.9 | One easy line, reading the button back to a mate: 'Sign up at' as the card settles, a tiny beat, then 'Q-S-me dot co dot en zed' the Kiwi way, landing with the button (27.0). Friendly, low-key, no rise, no announcer lift. Out by 29.4 so the held chord resolves. |
-
-Total: 10 lines, 62 words / 339 characters.
-
-## Male alternative read (A/B)
-
-The same ten lines, read by a relaxed everyday Kiwi bloke (casting: Kiwi Mikey `dwQyeacJ1LCJv0kQomJE` / Max / Nelson Dun, see `projects/2026-10-02-qsme-voice-casting`). He's a mate who builds, giving a first-home buyer the one tip that matters. Lower and drier than Mel, with the same timings and the same "out by" limits. Keep the warmth on "It's what you ask at the open home." He must never sound like a tradie selling himself.
-
-## One continuous read (for the most natural take; slice in the edit)
+## As spoken (one take)
 
 ```
-Before any Auckland open home… check this.
-
-Flyer says sunny, flat, easy-care.
-Nobody walks out past the shed.
-
-Q-S-me. Sign up. Type the address.
-
-Boundary… land area, council, zone.
-
-Services… hazards.
-
+[amused] The bit that costs you is the bit nobody walks to. Flyer says sunny, flat, easy-care. Back corner? Nobody walks out past the shed.
+Sign up at Queue Ess Mee and search your address. Boundary, land area, council, zone. Then services and hazards. One comes up amber. Overland flow path. Present. Check.
 Checked against the whole section, not just the front lawn.
-
-It's not a lim.
-It's what you ask at the open home.
-
-Sign up at Q-S-me dot co dot en zed.
+Check means check. It's not a lim. Ask the agent. Order the lim.
+Check the back corner before you bid. Sign up at Queue Ess Mee dot Co dot N Z.
 ```
 
-## Make it sound recorded, not synthesised
+## Lines (caption phrases; start = heard onset of the first word)
 
-- **Time base:** every time here is in seconds on `outputs/back-corner-9x16.mp4`. Lay each picked take at its start time with `tools/mux` (e.g. `vo04.mp3@8.60`).
-- **Generation (v2 default):** one request per line with request stitching. Set `previous_text` to the line before and `next_text` to the line after, except vo06 ("Services… hazards."), which gets no `next_text` because the scan ticks and thunk follow, not speech. Lines vo02+vo03 and vo08+vo09 can also come from one request each and be sliced, which gives the most natural pairs. Use a fixed seed per take and log it; make 3 takes per request and pick by ear. Use Eleven v3 only as a fallback, as ONE continuous request (the casting line as a throwaway warm-up, then the continuous read), sliced. Never generate v3 line by line.
-- **Never time-stretch more than ~4%.** If a take runs past its max, pick another take. The windows above already include natural pauses.
-- **Breaths:** keep a quiet inhale at the head of vo01, vo04, vo07 and vo09 (after silences), pulled down 6–10 dB. Cut clicks and mid-phrase breaths.
-- **Room tone:** one unbroken bed of a quiet lounge (fridge hum, a car outside), recorded on the same phone, from 0.0 to the end at about −48 to −45 dBFS. Keep it running through the scan-tick silence (15.75–16.75) and under the amber thunk (16.22). Digital-zero gaps are the biggest AI tell.
-- **Phone-memo EQ:** high-pass ~90 Hz (12 dB/oct), −2 to −3 dB high shelf from ~10 kHz, a 1–2 dB dip at 6–8 kHz plus a light de-esser. No presence boost, no reverb. If it still sounds too clean, re-record it through a small speaker on a second phone ~50 cm away and blend in 20–40% of that.
-- **Compression:** 2:1–3:1, attack ~15 ms, release ~100 ms, 2–4 dB of gain reduction.
-- **Disclosure:** if an ElevenLabs voice ships, turn on TikTok's "AI-generated content" setting and Meta's AI label. A real Kiwi voice memo (the founder or a friend reading these ten lines) needs no label and is the better option for trust.
+| # | Start | Max | Said | On screen | Delivery |
+|---|---|---|---|---|---|
+| vo00-hook | 0.07 | 2.74 | The bit that costs you is the bit nobody walks to. | Hook 0–2.86 on the real amber chip (punched in 1.85→2.0×, red-marker ring snaps closed 0–0.35): 'The bit that costs you' from frame 1, 'is the bit' slams on 'is' (1.25), 'nobody walks to.' on 'nobody' (1.75); rewind smear 2.86–3.31 | A bold claim said like a secret, energy up, no announcer lift; 'nobody walks to' falls away. Out by 2.81. |
+| vo01-flyer | 3.56 | 2.04 | Flyer says sunny, flat, easy-care. | Flyer drops in 3.31–3.73 (OPEN HOME · SAT 10:00–10:30 / 'Sunny. Flat. Easy-care.' · Illustrative label) and is read while the words are said; notes card slides up 4.66, ticks 4.98 / 5.18 / 5.38 | Reading the flyer back with a tiny audible smile, slightly listy. Out by 5.60. |
+| vo02-corner | 6.05 | 0.51 | Back corner? | 'Back corner' row pops just before 'Back' (5.80); the red-marker '?' slams on 'corner?' (6.10–6.26) | A short lift, the question left hanging. Out by 6.56. |
+| vo03-shed | 7.14 | 1.55 | Nobody walks out past the shed. | Caption 'Nobody walks out / past the shed.' pops on 'Nobody' (7.18) and holds to 8.59; swipe to the live screen 8.66–9.01 | Deadpan observation; 'past the shed' falling away. Out by 8.69. |
+| vo04-signup | 9.31 | 2.17 | Sign up at Q-S-me and search your address. | Live qsme.co.nz screencast lands just before 'Sign up'; caption 'Sign up at qsme.co.nz / Search your address.' (8.96–11.31); tap 8.98, the address types at ~3.2× (9.0–10.2), tap on the dropdown 10.66 on 'search', the real loading line, scroll; handover to the still 11.46–11.66 | Three practical beats like directions to a mate; 'Queue Ess Mee' easy, no spelling-out feel. Out by 11.48. |
+| vo05-fields | 11.96 | 2.19 | Boundary, land area, council, zone. | Pills pop on their words: Boundary 11.96 · Land area 12.46 · Council 13.18 · Zone 13.74; glowing trace round the real parcel 11.86–12.51; white outlines on '6,552 m²' (12.51), 'Auckland' (13.22), 'Open Space - Community Zone' (13.78); DEMO pill in the map area | A plain list, each item a touch lower. Out by 14.15. |
+| vo06-scan | 14.38 | 1.54 | Then services and hazards. | Scroll to Services 14.31–14.70; the neutral outline hops Water → Wastewater → Stormwater → Piped gas → Electricity on 'services' (14.71–15.23); scroll to Hazards 15.26–15.66; hops Flood plain → Flood-prone → Coastal on 'hazards' (15.70–16.00) | Even, a little quicker, the list of a thorough person. Out by 15.92. |
+| vo07-amber | 16.44 | 4.37 | One comes up amber. Overland flow path. Present. Check. | The outline lands on Overland flow path (16.74) and turns amber on 'amber.' (16.96); punch-in to the chip 17.04–17.42 so 'Overland flow path · Present — check' fills the frame for the words; the red-marker ring redraws on 'Present.' (19.79–20.29); vignette | The turn: 'amber' lands like a small thunk; 'Overland flow path' read off the screen; 'Present.' then 'Check.' as two dry full stops. Out by 20.81. |
+| vo08-insight | 21.54 | 2.27 | Checked against the whole section, not just the front lawn. | Caption 'Checked against / the whole section,' pops on 'Checked' (21.56) above the chip; 'not just the front lawn.' on 'not' (22.78); held to 24.11, gone by 24.29 (before the next slam) | The callback to the hook, a bit satisfied; lean on 'whole'. Out by 23.81. |
+| vo09-check | 24.32 | 2.05 | Check means check. It's not a LIM. | Camera to the chip + the page's own footer 24.17–24.67; '“Check” means check.' slams in on 'Check' (24.35); spotlight isolates the chip and the footer (24.72–25.02); red-marker underline under 'Not a substitute for a LIM, PIM or engineering advice.' on 'It's not a lim.' (25.71–26.45) | 'Check' means check: flat, no joke in the voice, the joke is the honesty. 'It's not a lim' matter-of-fact. Out by 26.37. |
+| vo10-ask | 26.77 | 1.89 | Ask the agent. Order the LIM. | Notes card slides in on 'Ask' (26.62–27.07); the '?' is scribbled out (26.87–27.12) and ': ask the agent.' types (27.22–27.72); 'Order the LIM.' types on 'Order' (28.09–28.49); both hold to the end card | Two bits of advice, like a mate would. Out by 28.66. |
+| vo11-title | 29.28 | 1.52 | Check the back corner before you bid. | End card slides up 28.78–29.16; QSME wordmark 29.10; headline 'Check the / back corner / before you bid.' pops on 'Check' (29.31); red ring round 'back corner' draws on the words (29.51–29.91); 'Search your address.' pops on 'bid.' (30.52) | The title, said plainly. Out by 30.80. |
+| vo12-cta | 31.50 | 2.83 | Sign up at Q-S-me dot Co dot N Z. | Green button 'Sign up at qsme.co.nz' pops on 'Sign up' (31.46), pulses on 'Queue' (31.97) and 'zed' (33.96); tag 'Services & hazards: Auckland first' 32.00; page ends 35.9 | A friendly nudge, the URL the Kiwi way ('en zed'), no rise at the end. Out by 34.33. |
 
-## Integrity
+## Notes
 
-- The lines claim only what the video shows: searching your address on qsme.co.nz, boundary / land area / council / zone, services and hazards checked against the whole section, and that it's not a LIM. Every one traces to `post.md` → Integrity notes.
-- **Owner CTA rule (2026-10-03):** the VO pushes sign-ups ("Sign up", "Sign up at Q-S-me dot co dot en zed"). Never say "free", "no sign-up", "no login", "without an account" or any pricing line, and never describe what you get without signing up.
-- No "instant" (say "in seconds" if a pick-up needs a speed word), no "any NZ address", no "flood-free", no "it'll flood", no "verified", no numbers.
-- No first person anywhere. Mel is giving advice, not reviewing a product.
-
-## Generate (after the ElevenLabs upgrade)
-
-```bash
-python3 tools/make_vo.py projects/2026-10-06-qsme-nz-back-corner <mel_voice_id> --alt <male_voice_id> --takes 3
-# or, with a phone voice memo sliced into vo01.mp3 … vo10.mp3:
-python3 tools/make_vo.py projects/2026-10-06-qsme-nz-back-corner --files <dir>
-```
+- Time base: every start_s is reel time on outputs/back-corner-9x16.mp4 (35.9 s) and is the HEARD onset of the line's first word (the alignment start, moved past any silence >= 0.15 s under -40 dB that the aligner folded into the word); aligned_start_s keeps the raw alignment value. The page was re-timed to this take (motion/back-corner.html v5, 2026-10-10), so picture follows audio: do not re-time the voice to the picture.
+- Mix: the whole take as ONE clip at 0.0 s, gain 1.15, no music bed (tools/mux). Output outputs/back-corner-9x16-with-vo.mp4 (one audio track, 35.9 s).
+- If the script changes, regenerate the whole take (python3 tools/el.py is the key reader; see outputs/vo-take-cam-v3/take-text.txt for the exact text and tags), STT-check it, then re-derive every beat in motion/back-corner.html (the W table) from the new alignment and re-render.
+- Never 'free' or any pricing line (owner CTA rule 2026-10-03). CTA shown as qsme.co.nz, spoken 'Queue Ess Mee dot Co dot N Z' (owner 2026-10-08: 'co' is said like KO, never spelled C-O). 'Clear' is never called safe; 'Present — check' is read as data, never 'this floods'.

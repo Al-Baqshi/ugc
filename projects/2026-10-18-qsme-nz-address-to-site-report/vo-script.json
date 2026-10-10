@@ -1,631 +1,811 @@
 {
- "venture": "qsme-nz",
- "video": "outputs/address-to-site-report-16x9.mp4",
- "character": "Mel: everyday Kiwi woman, late 30s, a first-time small developer with three Auckland sections on her shortlist and one planner booked for Monday. Dramatised character voiced by AI; she is never presented as a real customer and never gives a testimonial. General NZ accent (not broad, not Australian), dry and under-played, talking a mate through how she picked. No announcer lift, no exclamation marks, no 'game-changer' energy. She is the straight man; the humour is in the situation (the screen says Strong, then shows a road-widening designation) and in the product being honest about its own limits.",
- "casting_line": "It said strong development potential. Then I scrolled. Fair enough.",
- "settings": {
-  "model": "eleven_multilingual_v2",
-  "stability": 0.45,
-  "similarity_boost": 0.75,
-  "style": 0,
-  "speed": 1,
-  "use_speaker_boost": true
- },
- "pronunciation": {
-  "QSME": "Q-S-me (Cue Ess Me)",
-  "qsme.co.nz": "Q-S-me dot co dot en zed",
-  "beforeUdig": "before you dig",
-  "indicatively": "in-DIK-a-tiv-lee",
-  "metres": "metres (21 m is said 'twenty-one metres')",
-  "licence": "LIE-sence",
-  "LINZ": "linz (one word, rhymes with 'pins')"
- },
- "lines": [
-  {
-   "id": "vo01-strong",
-   "start_s": 0.3,
-   "max_s": 2.1,
-   "on_screen": "Big headline 'It said “Strong.”' over the recreated Development potential card; green STRONG pill bounces (0.0–0.4)",
-   "text_v2": "It said strong development potential.",
-   "text_v3": "It said strong development potential.",
-   "delivery": "Flat, slightly pleased with herself, the way you'd read a good school report out loud. No emphasis on 'strong'. Out by 2.4, before the scroll whoosh."
+  "venture": "qsme-nz",
+  "vid": "N07",
+  "video": "outputs/address-to-site-report-16x9.mp4",
+  "character": "One dry Kiwi bloke (Cam S) telling his own shortlist story in first person: three Auckland sections, one planner booked for Monday by the hour. Dramatised, never a testimonial. General NZ accent, under-played, no announcer lift, no exclamation marks. Continuous speech: the narration never stops for more than 1 s; the humour is in the situation (the screen said Strong, then showed a road-widening designation; he skimmed past the amber chip) and in the product being honest about its limits. (The 2026-10-02 'Mel' per-line script is superseded; design unchanged.)",
+  "settings": {
+    "model": "eleven_v3",
+    "stability": 0.5,
+    "note": "v3 only accepts stability 0.0 / 0.5 / 1.0; no style/speed/similarity. QSME is written \"Queue Ess Mee\" in the text sent."
   },
-  {
-   "id": "vo02-scrolled",
-   "start_s": 2.75,
-   "max_s": 1.3,
-   "on_screen": "Headline slams to 'Then I scrolled.'; scroll slam 2.5–3.1 lands on the red Constraints row",
-   "text_v2": "Then I scrolled.",
-   "text_v3": "[beat] Then I scrolled.",
-   "delivery": "Bone dry, a notch lower, full stop. The joke is the drop in energy. Then silence on the red row until 5.5."
+  "pronunciation": {
+    "QSME": "Queue Ess Mee (heard back as \"QSME\" / \"qsme.co.nz\")",
+    "qsme.co.nz": "Queue Ess Mee dot Co dot N Z (owner 2026-10-08: 'co' said like KO, never spelled C-O)",
+    "beforeUdig": "before-you-dig",
+    "LINZ": "written \"Linz\" (one word; STT hears LINZ)",
+    "metres": "twenty-one metres",
+    "licence": "LIE-sence",
+    "LIM": "lim"
   },
-  {
-   "id": "vo03-liked",
-   "start_s": 5.55,
-   "max_s": 2.4,
-   "on_screen": "Red marker under 'Designation · Road Widening (Auckland Transport)'; caption 'Road widening. On the one I liked.'",
-   "text_v2": "Road widening. On the one I liked.",
-   "text_v3": "Road widening. [sighs] On the one I liked.",
-   "delivery": "Small sigh in the voice, not a performance. 'On the one I liked' slightly faster, throwaway. Out by 7.85."
+  "take": {
+    "model": "eleven_v3",
+    "voice": "Cam S (53CG2aO2HU48thT3QnMl)",
+    "file": "outputs/vo-take-cam-v3/take.m4a",
+    "alignment": "outputs/vo-take-cam-v3/alignment.json",
+    "words": "outputs/vo-take-cam-v3/words.json",
+    "text_sent": "outputs/vo-take-cam-v3/take-text.txt",
+    "duration_s": 152.48,
+    "max_gap_s": 0.78,
+    "words_per_s": 2.52,
+    "tags": [
+      "[dry]"
+    ],
+    "stability": 0.5,
+    "method": "ONE unbroken request to /v1/text-to-speech/53CG2aO2HU48thT3QnMl/with-timestamps (eleven_v3, stability 0.5); never sliced; laid at 0.0 s at gain 1.15 with tools/mux, no music bed.",
+    "note": "Attempt 1 (179 s, 2.23 w/s, [short pause] tags opened 1.5 s holes) kept as take-attempt1.*; attempt 2 is the take. 2026-10-10 CTA fix (owner 2026-10-08: \"dot Co dot N Z\"): the whole take was regenerated in one call with only the CTA changed (1st attempt, STT clean, heard 'qsme.co.nz'); the dot-co take is kept as *-attempt-co.* (it was 152.48 s, longest silence 0.86 s)."
   },
-  {
-   "id": "vo04-title",
-   "start_s": 8.2,
-   "max_s": 2.9,
-   "on_screen": "Title card: 'Three sections. / One planner. / Which one gets the meeting?'",
-   "text_v2": "Three sections. One planner. Which one gets the meeting?",
-   "text_v3": "Three sections. One planner. Which one gets the meeting?",
-   "delivery": "Even and unhurried, a real question at the end (light lift on 'meeting'). This is the premise, so no wink. Out by 10.9."
-  },
-  {
-   "id": "vo05-monday",
-   "start_s": 13.45,
-   "max_s": 2.1,
-   "on_screen": "Sticky note slaps onto the laptop bezel (13.2) and writes itself; caption 'One planner. Monday. By the hour.'",
-   "text_v2": "One planner. Monday. By the hour.",
-   "text_v3": "One planner. Monday. By the hour.",
-   "delivery": "Matter-of-fact. A tiny weight on 'by the hour', like a Kiwi who knows exactly what that costs and won't say it. Out by 15.6."
-  },
-  {
-   "id": "vo06-questions",
-   "start_s": 15.85,
-   "max_s": 2.3,
-   "on_screen": "Chapter strip drops in over the sticky (15.95); caption 'So: one address. The right questions.'",
-   "text_v2": "So. One address. The right questions.",
-   "text_v3": "So. One address. The right questions.",
-   "delivery": "'So.' as its own beat. Then practical, list-like. Out by 17.9 (cut to the live homepage at 18.0)."
-  },
-  {
-   "id": "vo07-step1",
-   "start_s": 18.4,
-   "max_s": 2.6,
-   "on_screen": "LIVE capture of qsme.co.nz: '135 Albert Street, Auckland' typed into 'Search your address' (the page's own pricing line under 'Get started' is painted out of the capture); caption 'Step 1: sign up. Search your address.'",
-   "text_v2": "Step one. Sign up. Search your address.",
-   "text_v3": "Step one. Sign up. Search your address.",
-   "delivery": "Plain and helpful, like telling a mate where the button is. 'Sign up' said plainly, not salesy. Out by 21.0."
-  },
-  {
-   "id": "vo08-seconds",
-   "start_s": 22.15,
-   "max_s": 2.9,
-   "on_screen": "Push-in on the map: green box on the parcel outline (22.55), then on the zone (24.35); caption 'Boundary, zone, pipes, hazards. In seconds.'",
-   "text_v2": "Boundary, zone, pipes, hazards. In seconds.",
-   "text_v3": "Boundary, zone, pipes, hazards. In seconds.",
-   "delivery": "Quick list rhythm on the four nouns ('boundary' as the box lands on the outline), then a flat 'In seconds.' Never 'instantly'. Out by 25.5."
-  },
-  {
-   "id": "vo09-auckland",
-   "start_s": 25.85,
-   "max_s": 2.6,
-   "on_screen": "Green box on services (25.75), amber box on hazards (27.45); caption 'Zoning: four councils. Pipes and hazards: Auckland.'",
-   "text_v2": "Zoning, four councils. Pipes and hazards, Auckland.",
-   "text_v3": "Zoning, four councils. Pipes and hazards, Auckland.",
-   "delivery": "Honest-limit line, said as a plain fact, no apology in the voice. Out by 28.5."
-  },
-  {
-   "id": "vo10-blurred",
-   "start_s": 28.8,
-   "max_s": 2.3,
-   "on_screen": "Box on the footer disclaimer; caption 'That's the council's building. Mine stay blurred.'",
-   "text_v2": "That's the council's building. Mine stay blurred.",
-   "text_v3": "That's the council's building. Mine stay blurred.",
-   "delivery": "Dry aside, a hint of a smile on 'Mine stay blurred'. Out by 30.9."
-  },
-  {
-   "id": "vo11-step2",
-   "start_s": 31.35,
-   "max_s": 2.6,
-   "on_screen": "Recreated Site research page loading: 'Researching the site — boundary, zoning, overlays, services, hazards & history…', parcel draws in cadastre yellow; caption 'Step 2: Site research, in your account.'",
-   "text_v2": "Step two. Site research, in your account.",
-   "text_v3": "Step two. Site research, in your account.",
-   "delivery": "Same helpful tone as step one. Out by 34.2."
-  },
-  {
-   "id": "vo12-plain",
-   "start_s": 34.8,
-   "max_s": 2.6,
-   "on_screen": "'What could go here' card for Site 2 (Mixed Housing Suburban), 'Without resource consent' boxed; caption 'What the zone allows. In plain words.'",
-   "text_v2": "What the zone allows. In plain words.",
-   "text_v3": "What the zone allows. In plain words.",
-   "delivery": "Mildly impressed, still deadpan. Lean very slightly on 'plain'. Out by 39.3."
-  },
-  {
-   "id": "vo13-grid",
-   "start_s": 39.7,
-   "max_s": 2.6,
-   "on_screen": "Push into the standards grid: 8 m + 1 m roof / 40% of the site / Front 3 m · side & rear 1 m; caption 'Height. Coverage. Yards. One grid.'",
-   "text_v2": "Height. Coverage. Yards. One grid.",
-   "text_v3": "Height. Coverage. Yards. One grid.",
-   "delivery": "Three separate words, each ticked off, falling pitch; 'One grid.' drier still. Out by 43.8."
-  },
-  {
-   "id": "vo14-colours",
-   "start_s": 44.7,
-   "max_s": 3.4,
-   "on_screen": "Cursor clicks the Zoning layer (44.6); the street washes in zone colours with a legend; caption 'The whole street, in zone colours. (Auckland, anyway.)'",
-   "text_v2": "The whole street, in zone colours. In Auckland, anyway.",
-   "text_v3": "The whole street, in zone colours. In Auckland, anyway.",
-   "delivery": "Easy, slightly amused. 'colours' NZ pronunciation. 'In Auckland, anyway.' as a dry afterthought. Out by 48.5."
-  },
-  {
-   "id": "vo15-boring",
-   "start_s": 48.85,
-   "max_s": 2.8,
-   "on_screen": "Sticky note returns; green marker writes 'tidy · up to 3' under line 2; caption 'Site 2: tidy. Up to three. Bit boring.'",
-   "text_v2": "Site two. Tidy. Up to three. Bit boring.",
-   "text_v3": "Site two. Tidy. Up to three. [beat] Bit boring.",
-   "delivery": "The deadpan laugh line of the middle: a fond, flat 'Bit boring.' after a beat. Never mocking. Out by 51.9."
-  },
-  {
-   "id": "vo16-back",
-   "start_s": 52.3,
-   "max_s": 1.7,
-   "on_screen": "Cursor clicks the Site 1 pill (52.5); caption 'Back to the “Strong” one.'",
-   "text_v2": "Back to the strong one.",
-   "text_v3": "Back to the strong one.",
-   "delivery": "A little wary, like returning to a text you haven't answered. Out by 53.8."
-  },
-  {
-   "id": "vo17-fair",
-   "start_s": 54.15,
-   "max_s": 1.9,
-   "on_screen": "Amber ring drawn round the '− Designation' chip on the verdict card; caption 'To be fair, it said. In amber.'",
-   "text_v2": "To be fair. It said.",
-   "text_v3": "To be fair. It said.",
-   "delivery": "Conceding, a little sheepish: the joke is on her skimming, not on the tool. Out by 55.9."
-  },
-  {
-   "id": "vo18-met",
-   "start_s": 56.2,
-   "max_s": 2.6,
-   "on_screen": "Scroll to 'Planning overlays & controls'; the cold-open red underline is still there; caption 'Auckland overlays, on the parcel. Red, we've met.'",
-   "text_v2": "Auckland overlays, on the parcel. Red, we've met.",
-   "text_v3": "Auckland overlays, on the parcel. Red, we've met.",
-   "delivery": "Measured on the first half; 'Red, we've met.' as a flat aside, like nodding at someone you'd rather avoid. Out by 58.8."
-  },
-  {
-   "id": "vo19-amber",
-   "start_s": 58.95,
-   "max_s": 2.2,
-   "on_screen": "Amber marker under 'Volcanic viewshaft · Mount Eden'; caption 'Amber: a viewshaft over the top.'",
-   "text_v2": "Amber. A viewshaft over the top.",
-   "text_v3": "Amber. A viewshaft over the top.",
-   "delivery": "Two beats: 'Amber.' then the rest, a fraction resigned. Out by 61.2."
-  },
-  {
-   "id": "vo20-green",
-   "start_s": 61.45,
-   "max_s": 2.7,
-   "on_screen": "Green marker under 'Height Variation Control · 21m'; caption 'Green says 21 m. Amber says maybe not.'",
-   "text_v2": "Green says twenty-one metres. Amber says, maybe not.",
-   "text_v3": "Green says twenty-one metres. [beat] Amber says, maybe not.",
-   "delivery": "The chapter's payoff. Even on the first half, then a tiny pause and a drier 'maybe not'. Say 'twenty-one metres', not 'twenty-one m'. Out by 63.9."
-  },
-  {
-   "id": "vo21-pipes",
-   "start_s": 64.7,
-   "max_s": 2.4,
-   "on_screen": "Services layer: blue water, green stormwater (at the front boundary), red wastewater lines draw on; caption 'Where the pipes run. Roughly.'",
-   "text_v2": "Where the pipes run. Roughly.",
-   "text_v3": "Where the pipes run. Roughly.",
-   "delivery": "'Roughly' as its own deadpan word. Out by 67.6."
-  },
-  {
-   "id": "vo22-approx",
-   "start_s": 68.1,
-   "max_s": 2.0,
-   "on_screen": "Push-in on the dashed 'Distance to boundary · ~3 m' line; caption 'Pipe positions are approximate.'",
-   "text_v2": "Pipe positions are approximate.",
-   "text_v3": "Pipe positions are approximate.",
-   "delivery": "Reading the fine print, neutral. Out by 71.3."
-  },
-  {
-   "id": "vo23-dig",
-   "start_s": 71.7,
-   "max_s": 2.9,
-   "on_screen": "Box on 'Mapped pipe positions are approximate — always lodge a beforeUdig request before any excavation.'; caption 'It even tells you to lodge a beforeUdig.'",
-   "text_v2": "It even tells you to lodge a before-you-dig.",
-   "text_v3": "It even tells you to lodge a before-you-dig.",
-   "delivery": "Say beforeUdig as 'before you dig'. Slight approval in the voice. Out by 74.5."
-  },
-  {
-   "id": "vo24-clear",
-   "start_s": 74.85,
-   "max_s": 2.2,
-   "on_screen": "Amber box on the four hazard chips reading 'Clear'; caption '“Clear” is a map, not a promise.'",
-   "text_v2": "Clear is a map. Not a promise.",
-   "text_v3": "Clear is a map. Not a promise.",
-   "delivery": "Quiet, firm, a little wise. Out by 76.9."
-  },
-  {
-   "id": "vo25-saved",
-   "start_s": 77.35,
-   "max_s": 2.0,
-   "on_screen": "Saved sites pills (addresses blurred); caption 'Saved all three. Flick between them.'",
-   "text_v2": "Saved all three. Flick between them.",
-   "text_v3": "Saved all three. Flick between them.",
-   "delivery": "Practical, slightly brisk. Out by 79.3."
-  },
-  {
-   "id": "vo26-good",
-   "start_s": 79.6,
-   "max_s": 1.5,
-   "on_screen": "Cursor clicks Site 2 (79.4); GOOD pill pops; caption 'Site 2: Good.'",
-   "text_v2": "Site two. Good.",
-   "text_v3": "Site two. Good.",
-   "delivery": "Clipped, matching the click. Out by 81.2."
-  },
-  {
-   "id": "vo27-villa",
-   "start_s": 81.6,
-   "max_s": 2.4,
-   "on_screen": "Cursor clicks Site 3 (81.4); LIMITED pill and 'Special character rules usually mean keeping the existing house…'; caption 'Site 3: Limited. The villa usually stays.'",
-   "text_v2": "Site three. Limited. The villa usually stays.",
-   "text_v3": "Site three. Limited. [sighs] The villa usually stays.",
-   "delivery": "Gentle resignation, almost fond of the villa. Keep 'usually': it's the screen's own hedge. Out by 83.7."
-  },
-  {
-   "id": "vo28-indicative",
-   "start_s": 84.35,
-   "max_s": 2.8,
-   "on_screen": "Quote board: three cards (Strong / Good / Limited), each quoting one line from its page; red marker under 'Indicative only' on every card (84.9 / 85.35 / 85.8); caption '“Indicative only.” It says that every time.'",
-   "text_v2": "Indicative only. It says that every time.",
-   "text_v3": "Indicative only. It says that every time.",
-   "delivery": "Say 'Indicative only' carefully, as if quoting. Then a dry, approving 'It says that every time.' Out by 87.9."
-  },
-  {
-   "id": "vo29-off",
-   "start_s": 88.3,
-   "max_s": 1.0,
-   "on_screen": "Sticky over the dimmed board: line 3 struck through (88.5), 'villa stays. off.'; caption 'Site 3's off.'",
-   "text_v2": "Three's off.",
-   "text_v3": "Three's off.",
-   "delivery": "Decision voice, two words, settled. Out by 89.4."
-  },
-  {
-   "id": "vo30-planner",
-   "start_s": 89.7,
-   "max_s": 2.5,
-   "on_screen": "'strong… but red + amber' under line 1, line 1 circled, '→ MONDAY: 1'; caption 'Site 2 doesn't need a planner. Site 1 does.'",
-   "text_v2": "Two doesn't need a planner. One does.",
-   "text_v3": "Two doesn't need a planner. One does.",
-   "delivery": "The film's logic in one line: calm, a hint of irony on 'One does.' Out by 92.4. Then silence under the lower third 'Checklist + rough numbers: Shorts linked below' (92.55–94.35)."
-  },
-  {
-   "id": "vo31-pro",
-   "start_s": 94.75,
-   "max_s": 3.0,
-   "on_screen": "Cursor clicks 'Open Pro view'; 'Site research — Pro' opens with the full-height map; caption 'Pro view. Same site. Much bigger map.'",
-   "text_v2": "Pro view. Same site. Much bigger map.",
-   "text_v3": "Pro view. Same site. Much bigger map.",
-   "delivery": "Deadpan, a little impressed. Lean on 'bigger'. Out by 97.8."
-  },
-  {
-   "id": "vo32-layers",
-   "start_s": 98.0,
-   "max_s": 3.8,
-   "on_screen": "Layer chips clicked at 98.0 / 98.95 / 99.9 / 100.85; caption 'Zoning. Buildings. Services. Flood. In Auckland.'",
-   "text_v2": "Zoning. Buildings. Services. Flood. In Auckland.",
-   "text_v3": "Zoning. Buildings. Services. Flood. In Auckland.",
-   "delivery": "One word per click, evenly spaced (about 0.95 s apart), then 'In Auckland.' as a plain footnote. Cut the take into five slices if needed. Out by 102.2."
-  },
-  {
-   "id": "vo33-owners",
-   "start_s": 102.75,
-   "max_s": 3.3,
-   "on_screen": "Title tab: '1 owner on the title' boxed (every title value blurred); caption 'Title facts from LINZ. How many owners. Not who.'",
-   "text_v2": "Title facts from LINZ. How many owners. Not who.",
-   "text_v3": "Title facts from LINZ. How many owners. Not who.",
-   "delivery": "Matter-of-fact, a little reassuring. LINZ is said 'linz' (one word, rhymes with 'pins'). Out by 106.0."
-  },
-  {
-   "id": "vo34-licence",
-   "start_s": 106.25,
-   "max_s": 2.7,
-   "on_screen": "Amber boxes on the locked 'CV & sales' tab and the 'Available with a data licence' pill; caption 'The rest? “Available with a data licence.”'",
-   "text_v2": "The rest? Available with a data licence.",
-   "text_v3": "The rest? Available with a data licence.",
-   "delivery": "Small question, plain answer quoting the pill. NZ spelling, said 'LIE-sence'. Out by 109.0."
-  },
-  {
-   "id": "vo35-freehold",
-   "start_s": 109.35,
-   "max_s": 2.7,
-   "on_screen": "Box on 'Reads as a freehold (fee simple) lot — the simplest title to develop.'; caption '“Reads as a freehold (fee simple) lot.” That's something.'",
-   "text_v2": "Reads as freehold. That's something.",
-   "text_v3": "Reads as freehold. [beat] That's something.",
-   "delivery": "Small, genuine relief, still deadpan. Keep 'Reads as': it's the screen's hedge. Out by 112.2."
-  },
-  {
-   "id": "vo36-onepager",
-   "start_s": 112.75,
-   "max_s": 2.8,
-   "on_screen": "Cursor clicks 'One pager'; print preview of 'QSME · Site report' with the browser dialog (Save as PDF); caption '“One pager.” Print it, or save a PDF.'",
-   "text_v2": "One pager. Print it, or save a PDF.",
-   "text_v3": "One pager. Print it, or save a PDF.",
-   "delivery": "Practical. Out by 115.9. Then silence over the slow pan down the page (116.3–119.7)."
-  },
-  {
-   "id": "vo37-planner",
-   "start_s": 120.0,
-   "max_s": 2.9,
-   "on_screen": "The printed page lands on a desk beside a coffee; caption 'One page. That's what goes to the planner.'",
-   "text_v2": "One page. That's what goes to the planner.",
-   "text_v3": "One page. That's what goes to the planner.",
-   "delivery": "Satisfied, quiet. Out by 123.1."
-  },
-  {
-   "id": "vo38-questions",
-   "start_s": 123.45,
-   "max_s": 2.6,
-   "on_screen": "Sticky 'Qs for Monday' types: 1. Road widening — how much? 2. Viewshaft vs 21 m? 3. Pipe ~3 m — build-over?; caption 'And three questions worth paying for.'",
-   "text_v2": "And three questions worth paying for.",
-   "text_v3": "And three questions worth paying for.",
-   "delivery": "The thesis of the film, said lightly. Out by 126.3."
-  },
-  {
-   "id": "vo39-ring",
-   "start_s": 127.95,
-   "max_s": 3.0,
-   "on_screen": "Quoted disclaimer card; red marker under 'Confirm with a planner or the council.'; caption 'It even tells you to ring the planner.'",
-   "text_v2": "It even tells you to ring the planner.",
-   "text_v3": "It even tells you to ring the planner.",
-   "delivery": "Amused respect. Out by 130.9."
-  },
-  {
-   "id": "vo40-fair",
-   "start_s": 131.35,
-   "max_s": 1.1,
-   "on_screen": "Caption 'Fair enough.'",
-   "text_v2": "Fair enough.",
-   "text_v3": "Fair enough.",
-   "delivery": "The button. Flat, warm, very Kiwi, falling. Out by 132.9."
-  },
-  {
-   "id": "vo41-start",
-   "start_s": 133.9,
-   "max_s": 1.8,
-   "on_screen": "End card cross-fades in (133.2–133.6): QSME logo, 'Start with your address.'",
-   "text_v2": "Start with your address.",
-   "text_v3": "Start with your address.",
-   "delivery": "Plain invitation, no announcer lift. Out by 135.7."
-  },
-  {
-   "id": "vo42-cta",
-   "start_s": 136.1,
-   "max_s": 4.8,
-   "on_screen": "'Site research: sign up at qsme.co.nz · Full depth: Auckland.' Small print: 'Rule-based public data, not AI · Not a LIM, valuation or advice · Dramatised · demo sites'",
-   "text_v2": "Sign up at Q-S-me dot co dot en zed.",
-   "text_v3": "Sign up at Q-S-me dot co dot en zed.",
-   "delivery": "Plain, friendly CTA, no announcer lift. Q-S-me = 'Cue Ess Me'. 'dot co dot en zed' at normal speed, not spelled slowly. Out by 140.5; the last 5 s stay silent under the YouTube end-screen tiles."
-  }
- ],
- "male_alt_lines": [],
- "cutdowns": [
-  {
-   "video": "outputs/address-to-site-report-ch03-strong-then-scrolled-9x16.mp4",
-   "title": "Strong. Then I scrolled. (chapter 03 cut, 31 s, 9:16)",
-   "how_to_voice": "Reuse the master takes listed in 'from' (same words); voice only the lines with from = null. Then: tools/mux <video> <video-with-vo> <clip>@<start_s> …",
-   "lines": [
+  "continuous_read_v3": "It said strong development potential. Then I scrolled. Road widening, on the one I liked. Three sections, one planner. Which one gets the meeting? Three sections on the shortlist, none of them bought, and one planner on Monday morning, by the hour. So: one address, and the right questions before I pay for any. Step one: sign up and search your address. Boundary, zone, pipes, hazards, in seconds. Zoning works in four councils; pipes and hazards, Auckland. That's the council's building. Mine stay blurred. Step two: Site research, in your account. What the zone allows, in plain words: up to three dwellings without a resource consent, if they meet the standards. Height, coverage, yards, one grid. Click the zoning layer and the whole street comes up in zone colours. In Auckland, anyway. So site two: tidy, up to three, bit boring. Back to the strong one. And to be fair, it did say. In amber. I skimmed. Auckland overlays, on the actual parcel. Red, we've met. Amber: a volcanic viewshaft over the top. Green says twenty-one metres. Amber says, maybe not. Where the pipes run, roughly: about three metres to the boundary, and it tells you the positions are approximate. It even tells you to lodge a before-you-dig. And clear, on the hazards, is a map, not a promise. Saved all three, so I can flick between them. Site two, good. Site three, limited: the villa usually stays. And every page says indicative only. Every single time. So, three's off. Two doesn't need a planner. One does. Pro view: same site, much bigger map. Zoning, buildings, services, flood. In Auckland. The title tab: title facts from Linz. How many owners, not who. The rest? Available with a data licence. Reads as a freehold lot. That's something. One pager: print it, or save a PDF. Map, title, zone, overlays, services, hazards, on one page. And that's what goes to the planner. One page, and three questions worth paying for. Road widening: how much? Viewshaft versus twenty-one metres? Pipe at three metres: can I build over it? [dry] It even tells you to ring the planner. Fair enough. Start with your address. Full depth in Auckland, public council data, not AI, and not a LIM or advice. Sign up at Queue Ess Mee dot Co dot N Z.",
+  "lines": [
     {
-     "id": "a01-strong",
-     "from": "vo01-strong",
-     "start_s": 0.3,
-     "max_s": 2.1,
-     "on_screen": "Headline 'It said “Strong.”' over the STRONG card (summary and chips legible from frame 1)",
-     "text_v2": "It said strong development potential.",
-     "text_v3": "It said strong development potential.",
-     "delivery": "Flat, slightly pleased with herself, the way you'd read a good school report out loud. No emphasis on 'strong'."
+      "id": "vo01-hook",
+      "start_s": 0.0,
+      "max_s": 2.16,
+      "end_s": 2.16,
+      "on_screen": "Headline 'It said “Strong.”' over the Development potential card at 80%; STRONG pill bounces 0.0–0.4",
+      "text_v2": "It said strong development potential.",
+      "text_v3": "It said strong development potential.",
+      "delivery": "The hook: read like a good school report, flat and pleased. No lift on strong."
     },
     {
-     "id": "a02-scrolled",
-     "from": "vo02-scrolled",
-     "start_s": 2.75,
-     "max_s": 1.3,
-     "on_screen": "Headline 'Then I scrolled.'; scroll slam to the overlays card",
-     "text_v2": "Then I scrolled.",
-     "text_v3": "[beat] Then I scrolled.",
-     "delivery": "Bone dry, a notch lower, full stop. The joke is the drop in energy. Then silence on the red row until 5.5."
+      "id": "vo02-scrolled",
+      "start_s": 2.32,
+      "max_s": 1.36,
+      "end_s": 3.68,
+      "on_screen": "Headline slams to 'Then I scrolled.' at 2.32; scroll slam 2.23–2.89 lands on the red Constraints row; red marker 3.04–3.58",
+      "text_v2": "Then I scrolled.",
+      "text_v3": "Then I scrolled.",
+      "delivery": "Bone dry, a notch lower. The joke is the drop."
     },
     {
-     "id": "a03-red",
-     "from": null,
-     "start_s": 5.6,
-     "max_s": 2.3,
-     "on_screen": "Caption 'Red: a road-widening designation.'",
-     "text_v2": "Red. A road-widening designation.",
-     "text_v3": "Red. A road-widening designation.",
-     "delivery": "Two flat beats. 'Red.' then a pause, then the rest like naming a bill."
+      "id": "vo03-liked",
+      "start_s": 3.86,
+      "max_s": 2.54,
+      "end_s": 6.4,
+      "on_screen": "Caption 'Road widening. On the one I liked.' 3.86–6.4; hold on the red row, amber viewshaft underneath",
+      "text_v2": "Road widening, on the one I liked.",
+      "text_v3": "Road widening, on the one I liked.",
+      "delivery": "Naming a bill."
     },
     {
-     "id": "a04-amber",
-     "from": "vo19-amber",
-     "start_s": 8.45,
-     "max_s": 2.3,
-     "on_screen": "Caption 'Amber: a viewshaft over the top.'",
-     "text_v2": "Amber. A viewshaft over the top.",
-     "text_v3": "Amber. A viewshaft over the top.",
-     "delivery": "Two beats: 'Amber.' then the rest, a fraction resigned."
+      "id": "vo04-title",
+      "start_s": 6.45,
+      "max_s": 3.07,
+      "end_s": 9.52,
+      "on_screen": "Title card: 'Three sections.' 6.45 / 'One planner.' 7.48 / 'Which one gets the meeting?' 8.41 (screen dims and blurs)",
+      "text_v2": "Three sections, one planner. Which one gets the meeting?",
+      "text_v3": "Three sections, one planner. Which one gets the meeting?",
+      "delivery": "Set-up, even, a real question at the end."
     },
     {
-     "id": "a05-green",
-     "from": "vo20-green",
-     "start_s": 11.25,
-     "max_s": 2.7,
-     "on_screen": "Caption 'Green says 21 m. Amber says maybe not.'",
-     "text_v2": "Green says twenty-one metres. Amber says, maybe not.",
-     "text_v3": "Green says twenty-one metres. [beat] Amber says, maybe not.",
-     "delivery": "The chapter's payoff. Even on the first half, then a tiny pause and a drier 'maybe not'. Say 'twenty-one metres', not 'twenty-one m'."
+      "id": "vo05-shortlist",
+      "start_s": 9.71,
+      "max_s": 3.41,
+      "end_s": 13.12,
+      "on_screen": "B-roll photo card (bare section, maunga) 9.71–13.16; caption 'Three sections. Shortlisted. Not bought.' 9.88–13.06",
+      "text_v2": "Three sections on the shortlist, none of them bought,",
+      "text_v3": "Three sections on the shortlist, none of them bought,",
+      "delivery": "Plain."
     },
     {
-     "id": "a06-indicatively",
-     "from": null,
-     "start_s": 14.45,
-     "max_s": 2.6,
-     "on_screen": "Back on the verdict card, red marker under 'indicatively'; caption '“Indicatively.” It says that every time.'",
-     "text_v2": "Indicatively. It says that every time.",
-     "text_v3": "Indicatively. It says that every time.",
-     "delivery": "Pronounce 'in-DIK-a-tiv-lee' carefully, as if quoting. Then a dry, approving 'It says that every time.'"
+      "id": "vo06-monday",
+      "start_s": 13.16,
+      "max_s": 2.6,
+      "end_s": 15.76,
+      "on_screen": "Laptop + sticky slaps on 13.16, writes 'Mon 10am · planner (by the hour!!)' 13.54–14.98 and the three streets; caption 'One planner. Monday. By the hour.' 13.34–15.93",
+      "text_v2": "and one planner on Monday morning, by the hour.",
+      "text_v3": "and one planner on Monday morning, by the hour.",
+      "delivery": "By the hour said like it costs."
     },
     {
-     "id": "a07-questions",
-     "from": null,
-     "start_s": 17.5,
-     "max_s": 2.8,
-     "on_screen": "Headline 'Not a no.'; sticky 'Qs for Monday'; caption 'Three questions for the planner.'",
-     "text_v2": "Not a no. Three questions for the planner.",
-     "text_v3": "Not a no. Three questions for the planner.",
-     "delivery": "Calm turn from bad news to a plan. Out by 21.5."
+      "id": "vo07-questions",
+      "start_s": 16.05,
+      "max_s": 4.11,
+      "end_s": 20.16,
+      "on_screen": "Caption 'So: one address. The right questions.' 16.05–20.24; chapter strip 01–07 drops in 16.31",
+      "text_v2": "So: one address, and the right questions before I pay for any.",
+      "text_v3": "So: one address, and the right questions before I pay for any.",
+      "delivery": "Calm turn to a plan."
     },
     {
-     "id": "a08-ring",
-     "from": "vo39-ring",
-     "start_s": 21.9,
-     "max_s": 2.4,
-     "on_screen": "Headline 'The last word:'; quoted disclaimer card; caption 'It even tells you to ring the planner.'",
-     "text_v2": "It even tells you to ring the planner.",
-     "text_v3": "It even tells you to ring the planner.",
-     "delivery": "Amused respect."
+      "id": "vo08-step1",
+      "start_s": 20.35,
+      "max_s": 3.17,
+      "end_s": 23.52,
+      "on_screen": "LIVE capture of qsme.co.nz: '135 Albert Street, Auckland' typed 20.35–22.22 (page pricing line painted out); caption 'Step 1: sign up. Search your address.' 20.54–23.52; tag 'Live capture · qsme.co.nz'",
+      "text_v2": "Step one: sign up and search your address.",
+      "text_v3": "Step one: sign up and search your address.",
+      "delivery": "Practical, friendly."
     },
     {
-     "id": "a09-fair",
-     "from": "vo40-fair",
-     "start_s": 24.5,
-     "max_s": 0.9,
-     "on_screen": "Caption 'Fair enough.'",
-     "text_v2": "Fair enough.",
-     "text_v3": "Fair enough.",
-     "delivery": "The button. Flat, warm, very Kiwi, falling."
+      "id": "vo09-seconds",
+      "start_s": 23.57,
+      "max_s": 3.23,
+      "end_s": 26.8,
+      "on_screen": "Push to the map, green box on the parcel outline 23.89–24.89 on 'Boundary'; medium view of the result column 25.37–26.91; caption 'Boundary, zone, pipes, hazards. In seconds.' 23.57–26.91",
+      "text_v2": "Boundary, zone, pipes, hazards, in seconds.",
+      "text_v3": "Boundary, zone, pipes, hazards, in seconds.",
+      "delivery": "A quick list, in seconds as a plain fact (never instant)."
     },
     {
-     "id": "a10-cta",
-     "from": null,
-     "start_s": 25.9,
-     "max_s": 4.4,
-     "on_screen": "End card cross-fades in: 'Run an Auckland site before you offer.' · 'Site research: sign up at qsme.co.nz' · small print incl. 'Dramatised · demo sites'",
-     "text_v2": "Before you offer, sign up at Q-S-me dot co dot en zed.",
-     "text_v3": "Before you offer, sign up at Q-S-me dot co dot en zed.",
-     "delivery": "Plain, friendly CTA, no lift; it finishes the headline on screen. Out by 30.3."
+      "id": "vo10-councils",
+      "start_s": 27.0,
+      "max_s": 3.4,
+      "end_s": 30.4,
+      "on_screen": "Green box on the zone 27.15–28.45 on 'Zoning works'; services box 28.84–30.3 and amber hazards box 29.56–30.63 on 'pipes and hazards, Auckland'; caption 'Zoning: four councils. Pipes and hazards: Auckland.' 27.0–30.4",
+      "text_v2": "Zoning works in four councils; pipes and hazards, Auckland.",
+      "text_v3": "Zoning works in four councils; pipes and hazards, Auckland.",
+      "delivery": "Honest limits as facts, not apologies."
+    },
+    {
+      "id": "vo11-blurred",
+      "start_s": 30.53,
+      "max_s": 2.91,
+      "end_s": 33.44,
+      "on_screen": "Box on the footer disclaimer 30.74–33.44; caption 'That's the council's building. Mine stay blurred.' 30.53–33.53",
+      "text_v2": "That's the council's building. Mine stay blurred.",
+      "text_v3": "That's the council's building. Mine stay blurred.",
+      "delivery": "Dry aside."
+    },
+    {
+      "id": "vo12-step2",
+      "start_s": 33.63,
+      "max_s": 3.33,
+      "end_s": 36.96,
+      "on_screen": "Recreated Site research page for site 2 loads 33.63–36.65 ('Researching the site — boundary, zoning, overlays, services, hazards & history…', parcel draws in cadastre yellow); caption 'Step 2: Site research, in your account.' 33.78–36.93",
+      "text_v2": "Step two: Site research, in your account.",
+      "text_v3": "Step two: Site research, in your account.",
+      "delivery": "Plain."
+    },
+    {
+      "id": "vo13-plain",
+      "start_s": 37.08,
+      "max_s": 2.28,
+      "end_s": 39.36,
+      "on_screen": "'What could go here' card (Mixed Housing Suburban); caption 'What the zone allows. In plain words.' 37.08–39.36",
+      "text_v2": "What the zone allows, in plain words:",
+      "text_v3": "What the zone allows, in plain words:",
+      "delivery": "Even."
+    },
+    {
+      "id": "vo14-three",
+      "start_s": 39.57,
+      "max_s": 3.95,
+      "end_s": 43.52,
+      "on_screen": "Green box on 'Without resource consent: Up to three dwellings per site that meet the zone standards…' 39.57–43.45; caption 'Up to three dwellings, if they meet the standards.' 39.57–43.49",
+      "text_v2": "up to three dwellings without a resource consent, if they meet the standards.",
+      "text_v3": "up to three dwellings without a resource consent, if they meet the standards.",
+      "delivery": "Quoting the screen; keep the hedge."
+    },
+    {
+      "id": "vo15-grid",
+      "start_s": 43.61,
+      "max_s": 3.03,
+      "end_s": 46.64,
+      "on_screen": "Push into the standards grid (8 m + 1 m roof / 40% of the site / Front 3 m · side & rear 1 m) 44.04–46.64; caption 'Height. Coverage. Yards. One grid.' 43.61–46.64",
+      "text_v2": "Height, coverage, yards, one grid.",
+      "text_v3": "Height, coverage, yards, one grid.",
+      "delivery": "Four beats."
+    },
+    {
+      "id": "vo16-colours",
+      "start_s": 46.72,
+      "max_s": 4.4,
+      "end_s": 51.12,
+      "on_screen": "Cursor clicks the Zoning layer 47.14; the street washes in zone colours 47.24–48.68, legend 48.37; caption 'The whole street, in zone colours. (Auckland, anyway.)' 46.72–51.3",
+      "text_v2": "Click the zoning layer and the whole street comes up in zone colours. In Auckland, anyway.",
+      "text_v3": "Click the zoning layer and the whole street comes up in zone colours. In Auckland, anyway.",
+      "delivery": "Anyway said with a shrug."
+    },
+    {
+      "id": "vo17-boring",
+      "start_s": 51.36,
+      "max_s": 3.68,
+      "end_s": 55.04,
+      "on_screen": "Sticky returns over the dimmed screen 51.36; green marker writes 'tidy · up to 3' 52.53–53.91 on 'tidy'; caption 'Site 2: tidy. Up to three. Bit boring.' 51.39–55.03",
+      "text_v2": "So site two: tidy, up to three, bit boring.",
+      "text_v3": "So site two: tidy, up to three, bit boring.",
+      "delivery": "Fond, flat."
+    },
+    {
+      "id": "vo18-back",
+      "start_s": 55.19,
+      "max_s": 1.77,
+      "end_s": 56.96,
+      "on_screen": "Cursor clicks the Site 1 pill 55.88; caption 'Back to the “Strong” one.' 55.25–57.02",
+      "text_v2": "Back to the strong one.",
+      "text_v3": "Back to the strong one.",
+      "delivery": "Set-up."
+    },
+    {
+      "id": "vo19-fair",
+      "start_s": 57.06,
+      "max_s": 3.74,
+      "end_s": 60.8,
+      "on_screen": "Push to the verdict card 57.07; amber ring draws round the '− Designation' chip 58.12–58.79 on 'it did say'; caption 'To be fair, it did say. In amber. I skimmed.' 57.07–60.75",
+      "text_v2": "And to be fair, it did say. In amber. I skimmed.",
+      "text_v3": "And to be fair, it did say. In amber. I skimmed.",
+      "delivery": "The joke turns on the narrator: own it."
+    },
+    {
+      "id": "vo20-met",
+      "start_s": 60.89,
+      "max_s": 4.07,
+      "end_s": 64.96,
+      "on_screen": "Scroll to 'Planning overlays & controls' 60.89–61.46 (the cold-open red underline is still there); push to the red row 63.28–63.8 on 'Red'; caption 'Auckland overlays, on the parcel. Red, we've met.' 60.92–64.98",
+      "text_v2": "Auckland overlays, on the actual parcel. Red, we've met.",
+      "text_v3": "Auckland overlays, on the actual parcel. Red, we've met.",
+      "delivery": "Red, we have met: like greeting someone you owe money."
+    },
+    {
+      "id": "vo21-amber",
+      "start_s": 65.08,
+      "max_s": 2.92,
+      "end_s": 68.0,
+      "on_screen": "Amber marker under 'Volcanic viewshaft · Mount Eden' 65.2–65.72; caption 'Amber: a volcanic viewshaft over the top.' 65.08–68.05',",
+      "text_v2": "Amber: a volcanic viewshaft over the top.",
+      "text_v3": "Amber: a volcanic viewshaft over the top.",
+      "delivery": "A fraction resigned."
+    },
+    {
+      "id": "vo22-green",
+      "start_s": 68.16,
+      "max_s": 4.12,
+      "end_s": 72.28,
+      "on_screen": "Green marker under 'Height Variation Control · 21m' 68.27–68.87; caption 'Green says 21 m. Amber says maybe not.' 68.16–72.3",
+      "text_v2": "Green says twenty-one metres. Amber says, maybe not.",
+      "text_v3": "Green says twenty-one metres. Amber says, maybe not.",
+      "delivery": "Twenty-one metres, never twenty-one m. 'maybe not' drier."
+    },
+    {
+      "id": "vo23-pipes",
+      "start_s": 72.34,
+      "max_s": 3.42,
+      "end_s": 75.76,
+      "on_screen": "Services layer clicked 72.7; water / stormwater / wastewater lines draw 72.8–74.19; dashed 'Distance to boundary · ~3 m' 74.19; caption 'Where the pipes run. Roughly.' 72.38–75.69",
+      "text_v2": "Where the pipes run, roughly: about three metres to the boundary,",
+      "text_v3": "Where the pipes run, roughly: about three metres to the boundary,",
+      "delivery": "Roughly carries the hedge."
+    },
+    {
+      "id": "vo24-approx",
+      "start_s": 75.78,
+      "max_s": 1.9,
+      "end_s": 77.68,
+      "on_screen": "Push-in on the dashed distance line 76.08–77.77; caption 'Pipe positions are approximate.' 75.78–77.83",
+      "text_v2": "and it tells you the positions are approximate.",
+      "text_v3": "and it tells you the positions are approximate.",
+      "delivery": "Plain."
+    },
+    {
+      "id": "vo25-dig",
+      "start_s": 77.92,
+      "max_s": 2.56,
+      "end_s": 80.48,
+      "on_screen": "Box on 'Mapped pipe positions are approximate — always lodge a beforeUdig request…' 78.43–80.54; caption 'It even tells you to lodge a beforeUdig.' 77.92–80.57",
+      "text_v2": "It even tells you to lodge a before-you-dig.",
+      "text_v3": "It even tells you to lodge a before-you-dig.",
+      "delivery": "Amused respect."
+    },
+    {
+      "id": "vo26-clear",
+      "start_s": 80.6,
+      "max_s": 3.32,
+      "end_s": 83.92,
+      "on_screen": "Amber box on the four 'Clear' hazard chips 80.61–83.97; caption '“Clear” is a map, not a promise.' 80.61–83.97",
+      "text_v2": "And clear, on the hazards, is a map, not a promise.",
+      "text_v3": "And clear, on the hazards, is a map, not a promise.",
+      "delivery": "The guardrail, said kindly."
+    },
+    {
+      "id": "vo27-saved",
+      "start_s": 84.07,
+      "max_s": 2.41,
+      "end_s": 86.48,
+      "on_screen": "Saved sites pills (addresses blurred) 84.07; caption 'Saved all three. Flick between them.' 84.22–86.51",
+      "text_v2": "Saved all three, so I can flick between them.",
+      "text_v3": "Saved all three, so I can flick between them.",
+      "delivery": "Plain."
+    },
+    {
+      "id": "vo28-good",
+      "start_s": 86.61,
+      "max_s": 1.47,
+      "end_s": 88.08,
+      "on_screen": "Cursor clicks Site 2 at 86.59; GOOD pill pops; caption 'Site 2: Good.' 86.67–88.07",
+      "text_v2": "Site two, good.",
+      "text_v3": "Site two, good.",
+      "delivery": "Quick."
+    },
+    {
+      "id": "vo29-villa",
+      "start_s": 88.21,
+      "max_s": 3.23,
+      "end_s": 91.44,
+      "on_screen": "Cursor clicks Site 3 at 88.17; LIMITED pill, 'Special character rules usually mean keeping the existing house…'; caption 'Site 3: Limited. The villa usually stays.' 88.22–91.41",
+      "text_v2": "Site three, limited: the villa usually stays.",
+      "text_v3": "Site three, limited: the villa usually stays.",
+      "delivery": "Keep usually."
+    },
+    {
+      "id": "vo30-indicative",
+      "start_s": 91.58,
+      "max_s": 3.78,
+      "end_s": 95.36,
+      "on_screen": "Quote board (three cards, one verbatim line each) 91.58; red marker under 'Indicative only' on each card 93.04–94.24 on 'indicative only'; caption '“Indicative only.” Every single time.' 92.43–95.52",
+      "text_v2": "And every page says indicative only. Every single time.",
+      "text_v3": "And every page says indicative only. Every single time.",
+      "delivery": "Approving."
+    },
+    {
+      "id": "vo31-off",
+      "start_s": 95.58,
+      "max_s": 1.54,
+      "end_s": 97.12,
+      "on_screen": "Sticky over the dimmed board 95.58; line 3 struck through 96.15 on 'three's'; 'villa stays. off.' 96.83; caption 'Site 3's off.' 95.66–97.2",
+      "text_v2": "So, three's off.",
+      "text_v3": "So, three's off.",
+      "delivery": "Decision."
+    },
+    {
+      "id": "vo32-planner",
+      "start_s": 97.34,
+      "max_s": 2.74,
+      "end_s": 100.08,
+      "on_screen": "'strong… but red + amber' 97.8, line 1 circled 99.28 on 'One does', '→ MONDAY: 1' 99.61; caption 'Site 2 doesn't need a planner. Site 1 does.' 97.34–100.03",
+      "text_v2": "Two doesn't need a planner. One does.",
+      "text_v3": "Two doesn't need a planner. One does.",
+      "delivery": "Clear, no fuss."
+    },
+    {
+      "id": "vo33-pro",
+      "start_s": 100.24,
+      "max_s": 2.8,
+      "end_s": 103.04,
+      "on_screen": "Cursor clicks 'Open Pro view' 100.87; 'Site research — Pro' opens 101.54; map framing 102.7; caption 'Pro view. Same site. Much bigger map.' 100.35–103.2",
+      "text_v2": "Pro view: same site, much bigger map.",
+      "text_v3": "Pro view: same site, much bigger map.",
+      "delivery": "A little impressed, lean on bigger."
+    },
+    {
+      "id": "vo34-layers",
+      "start_s": 103.32,
+      "max_s": 3.48,
+      "end_s": 106.8,
+      "on_screen": "Layer chips clicked on the words: Zoning 103.32, Buildings 104.05, Services 104.77, Flood 105.35; caption 'Zoning. Buildings. Services. Flood. In Auckland.' 103.3–106.91",
+      "text_v2": "Zoning, buildings, services, flood. In Auckland.",
+      "text_v3": "Zoning, buildings, services, flood. In Auckland.",
+      "delivery": "One word per click."
+    },
+    {
+      "id": "vo35-owners",
+      "start_s": 106.96,
+      "max_s": 4.88,
+      "end_s": 111.84,
+      "on_screen": "Cursor clicks the Title tab 107.84; '1 owner on the title' boxed 109.98–111.75 on 'How many owners'; caption 'Title facts from LINZ. How many owners. Not who.' 107.07–111.81",
+      "text_v2": "The title tab: title facts from Linz. How many owners, not who.",
+      "text_v3": "The title tab: title facts from Linz. How many owners, not who.",
+      "delivery": "LINZ said 'linz' (one word)."
+    },
+    {
+      "id": "vo36-licence",
+      "start_s": 111.98,
+      "max_s": 2.9,
+      "end_s": 114.88,
+      "on_screen": "Amber boxes on the locked 'CV & sales' tab 112.56 and the 'Available with a data licence' pill 113.17–114.91; caption 'The rest? “Available with a data licence.”' 111.98–114.91",
+      "text_v2": "The rest? Available with a data licence.",
+      "text_v3": "The rest? Available with a data licence.",
+      "delivery": "NZ 'LIE-sence'."
+    },
+    {
+      "id": "vo37-freehold",
+      "start_s": 114.99,
+      "max_s": 2.61,
+      "end_s": 117.6,
+      "on_screen": "Box on 'Reads as a freehold (fee simple) lot — the simplest title to develop.' 115.36–117.69; caption '“Reads as a freehold (fee simple) lot.” That's something.' 114.99–117.69",
+      "text_v2": "Reads as a freehold lot. That's something.",
+      "text_v3": "Reads as a freehold lot. That's something.",
+      "delivery": "Dry satisfaction."
+    },
+    {
+      "id": "vo38-onepager",
+      "start_s": 117.8,
+      "max_s": 2.92,
+      "end_s": 120.72,
+      "on_screen": "Cursor clicks 'One pager' 118.32; print preview 'QSME · Site report' + Save as PDF dialog 118.65; caption '“One pager.” Print it, or save a PDF.' 117.9–120.74",
+      "text_v2": "One pager: print it, or save a PDF.",
+      "text_v3": "One pager: print it, or save a PDF.",
+      "delivery": "Practical."
+    },
+    {
+      "id": "vo39-onepage",
+      "start_s": 120.92,
+      "max_s": 4.68,
+      "end_s": 125.6,
+      "on_screen": "Slow pan down the page 121.46–124.36; click Save 124.88; caption 'Map, title, zone, overlays, services, hazards. One page.' 120.92–125.6",
+      "text_v2": "Map, title, zone, overlays, services, hazards, on one page.",
+      "text_v3": "Map, title, zone, overlays, services, hazards, on one page.",
+      "delivery": "A list, then land on one page."
+    },
+    {
+      "id": "vo40-planner",
+      "start_s": 125.76,
+      "max_s": 1.84,
+      "end_s": 127.6,
+      "on_screen": "The printed page lands on the desk 125.76–126.58 beside the flat white; caption 'That's what goes to the planner.' 125.83–128.15",
+      "text_v2": "And that's what goes to the planner.",
+      "text_v3": "And that's what goes to the planner.",
+      "delivery": "Quiet."
+    },
+    {
+      "id": "vo41-worth",
+      "start_s": 127.74,
+      "max_s": 2.82,
+      "end_s": 130.56,
+      "on_screen": "Sticky 'Qs for Monday' slaps on 127.7 on 'One page'; caption 'And three questions worth paying for.' 128.26–130.6",
+      "text_v2": "One page, and three questions worth paying for.",
+      "text_v3": "One page, and three questions worth paying for.",
+      "delivery": "Worth paying for: the point of the whole film."
+    },
+    {
+      "id": "vo42-three-qs",
+      "start_s": 130.72,
+      "max_s": 7.2,
+      "end_s": 137.92,
+      "on_screen": "The sticky types each question as it is said: '1. Road widening — how much?' 130.69–132.72, '2. Viewshaft vs 21 m?' 132.87–135.18, '3. Pipe ~3 m — build-over?' 135.33–137.87; desk camera pushes in 130–139",
+      "text_v2": "Road widening: how much? Viewshaft versus twenty-one metres? Pipe at three metres: can I build over it?",
+      "text_v3": "Road widening: how much? Viewshaft versus twenty-one metres? Pipe at three metres: can I build over it?",
+      "delivery": "Three real questions, read off the note."
+    },
+    {
+      "id": "vo43-ring",
+      "start_s": 138.7,
+      "max_s": 1.38,
+      "end_s": 140.08,
+      "on_screen": "Quoted disclaimer card pops 138.34; red marker under 'Confirm with a planner or the council.' 139.27–139.86 on 'ring the planner'; caption 'It even tells you to ring the planner.' 138.7–140.04",
+      "text_v2": "It even tells you to ring the planner.",
+      "text_v3": "[dry] It even tells you to ring the planner.",
+      "delivery": "Amused respect."
+    },
+    {
+      "id": "vo44-fair",
+      "start_s": 140.17,
+      "max_s": 0.79,
+      "end_s": 140.96,
+      "on_screen": "Caption 'Fair enough.' 140.17–141.01",
+      "text_v2": "Fair enough.",
+      "text_v3": "Fair enough.",
+      "delivery": "The button. Flat, warm, falling."
+    },
+    {
+      "id": "vo45-start",
+      "start_s": 141.07,
+      "max_s": 1.69,
+      "end_s": 142.76,
+      "on_screen": "End card cross-fades in 141.01–141.28: QSME logo, 'Start with your address.' pops 141.35",
+      "text_v2": "Start with your address.",
+      "text_v3": "Start with your address.",
+      "delivery": "Plain invitation."
+    },
+    {
+      "id": "vo46-depth",
+      "start_s": 142.83,
+      "max_s": 5.17,
+      "end_s": 148.0,
+      "on_screen": "Subline 'Site research: sign up at qsme.co.nz · Full depth: Auckland.' pops 142.82 on 'Full depth'; small print 'Rule-based public data, not AI · Not a LIM, valuation or advice · Dramatised · demo sites' pops 144.14 on 'public council data'",
+      "text_v2": "Full depth in Auckland, public council data, not AI, and not a LIM or advice.",
+      "text_v3": "Full depth in Auckland, public council data, not AI, and not a LIM or advice.",
+      "delivery": "Honest limits as facts; LIM said lim."
+    },
+    {
+      "id": "vo47-cta",
+      "start_s": 148.14,
+      "max_s": 4.34,
+      "end_s": 152.48,
+      "on_screen": "The sign-up line pulses 148.06–148.93 on 'Sign up'; end card holds to 154.0 (the middle band stays clear for YouTube end-screen tiles)",
+      "text_v2": "Sign up at Queue Ess Mee dot Co dot N Z.",
+      "text_v3": "Sign up at Queue Ess Mee dot Co dot N Z.",
+      "delivery": "No lift, just the address."
     }
-   ]
-  },
-  {
-   "video": "outputs/address-to-site-report-ch06-07-one-page-for-the-planner-9x16.mp4",
-   "title": "One page for the planner (chapters 06-07 cut, 32 s, 9:16)",
-   "how_to_voice": "Reuse the master takes listed in 'from'; voice only the lines with from = null. Then: tools/mux <video> <video-with-vo> <clip>@<start_s> …",
-   "lines": [
+  ],
+  "cutdowns": [
     {
-     "id": "b01-hook",
-     "from": null,
-     "start_s": 0.3,
-     "max_s": 2.9,
-     "on_screen": "Headline 'One page for the planner.' over the printed page and the 'Qs for Monday' sticky (tag 'Illustrative · demo data'); caption 'Here's where it's from.'",
-     "text_v2": "One page for the planner. Here's where it's from.",
-     "text_v3": "One page for the planner. Here's where it's from.",
-     "delivery": "Visual-promise hook, said like showing a mate the finished thing. Out by 3.2."
+      "video": "outputs/address-to-site-report-ch03-strong-then-scrolled-9x16.mp4",
+      "title": "Strong. Then I scrolled. (chapter 03 cut, 9:16, 36.0 s)",
+      "take": {
+        "model": "eleven_v3",
+        "voice": "Cam S (53CG2aO2HU48thT3QnMl)",
+        "file": "outputs/vo-take-cam-v3-ch03/take.m4a",
+        "alignment": "outputs/vo-take-cam-v3-ch03/alignment.json",
+        "words": "outputs/vo-take-cam-v3-ch03/words.json",
+        "text_sent": "outputs/vo-take-cam-v3-ch03/take-text.txt",
+        "duration_s": 34.48,
+        "max_gap_s": 0.94,
+        "words_per_s": 2.52,
+        "tags": [
+          "[dry]"
+        ],
+        "stability": 0.5,
+        "method": "ONE unbroken request to /v1/text-to-speech/53CG2aO2HU48thT3QnMl/with-timestamps (eleven_v3, stability 0.5); never sliced; laid at 0.0 s at gain 1.15 with tools/mux, no music bed.",
+        "note": "Attempts 1 (39.7 s, a 2.3 s hole on [short pause]) and 2 (40.5 s, 2.15 w/s, colons read as long stops) kept as *-attempt1/2; attempt 3 (commas) is the take. 2026-10-10 CTA fix (owner 2026-10-08: \"dot Co dot N Z\"): the whole take was regenerated in one call with only the CTA changed (1st attempt, STT clean, heard 'qsme.co.nz'); the dot-co take is kept as *-attempt-co.* (it was 36.0 s, longest silence 1.02 s)."
+      },
+      "continuous_read_v3": "It said strong development potential. Then I scrolled. Red, a road-widening designation, on the one I liked. Amber, a volcanic viewshaft over the top. Green says twenty-one metres. Amber says maybe not. And it says indicatively, every single time. So it's not a no. It's three questions for the planner. Road widening, how much? Viewshaft versus twenty-one metres? Two to five homes, really? [dry] It even tells you to ring the planner. Fair enough. Before you offer, sign up at Queue Ess Mee dot Co dot N Z.",
+      "lines": [
+        {
+          "id": "a01-hook",
+          "start_s": 0.0,
+          "max_s": 2.08,
+          "end_s": 2.08,
+          "on_screen": "Headline 'It said “Strong.”' over the STRONG card at panel width (summary + chips legible)",
+          "text_v2": "It said strong development potential.",
+          "text_v3": "It said strong development potential.",
+          "delivery": "The hook, flat and pleased."
+        },
+        {
+          "id": "a02-scrolled",
+          "start_s": 2.21,
+          "max_s": 1.23,
+          "end_s": 3.44,
+          "on_screen": "Headline slams 2.21; scroll slam 2.15–2.9 lands on the red row; red marker 3.13–3.44",
+          "text_v2": "Then I scrolled.",
+          "text_v3": "Then I scrolled.",
+          "delivery": "Bone dry."
+        },
+        {
+          "id": "a03-red",
+          "start_s": 3.64,
+          "max_s": 3.48,
+          "end_s": 7.12,
+          "on_screen": "Caption 'Red: a road-widening designation. On the one I liked.' 3.64–7.11",
+          "text_v2": "Red, a road-widening designation, on the one I liked.",
+          "text_v3": "Red, a road-widening designation, on the one I liked.",
+          "delivery": "Naming a bill."
+        },
+        {
+          "id": "a04-amber",
+          "start_s": 7.24,
+          "max_s": 2.6,
+          "end_s": 9.84,
+          "on_screen": "Scroll to the amber row 7.17–7.97; amber marker 8.06–8.52 on 'volcanic'; caption 'Amber: a volcanic viewshaft over the top.' 7.24–9.89",
+          "text_v2": "Amber, a volcanic viewshaft over the top.",
+          "text_v3": "Amber, a volcanic viewshaft over the top.",
+          "delivery": "Resigned."
+        },
+        {
+          "id": "a05-green",
+          "start_s": 10.0,
+          "max_s": 3.84,
+          "end_s": 13.84,
+          "on_screen": "Green marker 10.24–10.64; caption 'Green says 21 m. Amber says maybe not.' 10.0–13.88",
+          "text_v2": "Green says twenty-one metres. Amber says maybe not.",
+          "text_v3": "Green says twenty-one metres. Amber says maybe not.",
+          "delivery": "The chapter payoff."
+        },
+        {
+          "id": "a06-indicatively",
+          "start_s": 13.94,
+          "max_s": 2.86,
+          "end_s": 16.8,
+          "on_screen": "Scroll back to the verdict card 13.75–14.2; red marker under 'indicatively' 14.79–15.44; caption '“Indicatively.” Every single time.' 13.94–16.89",
+          "text_v2": "And it says indicatively, every single time.",
+          "text_v3": "And it says indicatively, every single time.",
+          "delivery": "in-DIK-a-tiv-lee, like quoting."
+        },
+        {
+          "id": "a07-no",
+          "start_s": 17.02,
+          "max_s": 1.3,
+          "end_s": 18.32,
+          "on_screen": "Headline 'Not a no.' slams 17.02; screen dims; sticky 'Qs for Monday' slaps on 17.12",
+          "text_v2": "So it's not a no.",
+          "text_v3": "So it's not a no.",
+          "delivery": "Turn."
+        },
+        {
+          "id": "a08-three",
+          "start_s": 18.45,
+          "max_s": 1.79,
+          "end_s": 20.24,
+          "on_screen": "Caption 'Three questions for the planner.' 18.45–27.41",
+          "text_v2": "It's three questions for the planner.",
+          "text_v3": "It's three questions for the planner.",
+          "delivery": "Plan."
+        },
+        {
+          "id": "a09-qs",
+          "start_s": 20.4,
+          "max_s": 6.24,
+          "end_s": 26.64,
+          "on_screen": "The sticky types each question as it is said: 20.4–22.35, 22.57–24.82, 25.02–26.86",
+          "text_v2": "Road widening, how much? Viewshaft versus twenty-one metres? Two to five homes, really?",
+          "text_v3": "Road widening, how much? Viewshaft versus twenty-one metres? Two to five homes, really?",
+          "delivery": "Read off the note."
+        },
+        {
+          "id": "a10-ring",
+          "start_s": 27.58,
+          "max_s": 1.46,
+          "end_s": 29.04,
+          "on_screen": "Headline 'The last word:' 27.51; quoted disclaimer card; red marker 28.29–28.92 on 'ring'; caption 'It even tells you to ring the planner.' 27.58–29.1",
+          "text_v2": "It even tells you to ring the planner.",
+          "text_v3": "[dry] It even tells you to ring the planner.",
+          "delivery": "Amused respect."
+        },
+        {
+          "id": "a11-fair",
+          "start_s": 29.12,
+          "max_s": 0.8,
+          "end_s": 29.92,
+          "on_screen": "Caption 'Fair enough.' 29.12–29.95",
+          "text_v2": "Fair enough.",
+          "text_v3": "Fair enough.",
+          "delivery": "The button."
+        },
+        {
+          "id": "a12-cta",
+          "start_s": 30.03,
+          "max_s": 4.45,
+          "end_s": 34.48,
+          "on_screen": "End card cross-fades in 30.03–30.36: 'Run an Auckland site before you offer.' 30.32, 'Site research: sign up at qsme.co.nz' 31.35 on 'sign up', small print 32.12, pill 'qsme.co.nz' 32.46; holds to 36.0",
+          "text_v2": "Before you offer, sign up at Queue Ess Mee dot Co dot N Z.",
+          "text_v3": "Before you offer, sign up at Queue Ess Mee dot Co dot N Z.",
+          "delivery": "Plain CTA; it finishes the headline."
+        }
+      ]
     },
     {
-     "id": "b02-pro",
-     "from": "vo31-pro",
-     "start_s": 3.45,
-     "max_s": 2.9,
-     "on_screen": "Headline '“Open Pro view.”'; caption 'Pro view. Same site. Much bigger map.'",
-     "text_v2": "Pro view. Same site. Much bigger map.",
-     "text_v3": "Pro view. Same site. Much bigger map.",
-     "delivery": "Deadpan, a little impressed. Lean on 'bigger'."
-    },
-    {
-     "id": "b03-layers",
-     "from": "vo32-layers",
-     "start_s": 6.95,
-     "max_s": 3.5,
-     "on_screen": "Headline 'Four layers.'; chips clicked at 7.0 / 7.8 / 8.6 / 9.4; caption 'Zoning. Buildings. Services. Flood. In Auckland.'",
-     "text_v2": "Zoning. Buildings. Services. Flood. In Auckland.",
-     "text_v3": "Zoning. Buildings. Services. Flood. In Auckland.",
-     "delivery": "Slice the master take: one word per click (0.8 s apart here), 'In Auckland.' at about 9.9."
-    },
-    {
-     "id": "b04-owners",
-     "from": "vo33-owners",
-     "start_s": 10.85,
-     "max_s": 3.4,
-     "on_screen": "Headline 'The Title tab.'; '1 owner on the title' boxed; caption 'Title facts from LINZ. How many owners. Not who.'",
-     "text_v2": "Title facts from LINZ. How many owners. Not who.",
-     "text_v3": "Title facts from LINZ. How many owners. Not who.",
-     "delivery": "Matter-of-fact, a little reassuring. LINZ is said 'linz' (one word, rhymes with 'pins')."
-    },
-    {
-     "id": "b05-licence",
-     "from": "vo34-licence",
-     "start_s": 14.6,
-     "max_s": 2.7,
-     "on_screen": "Amber boxes on 'CV & sales' and 'Available with a data licence'; caption 'The rest? “Available with a data licence.”'",
-     "text_v2": "The rest? Available with a data licence.",
-     "text_v3": "The rest? Available with a data licence.",
-     "delivery": "Small question, plain answer quoting the pill. NZ spelling, said 'LIE-sence'."
-    },
-    {
-     "id": "b06-onepager",
-     "from": "vo36-onepager",
-     "start_s": 17.65,
-     "max_s": 2.8,
-     "on_screen": "Headline '“One pager.”'; print preview and Save as PDF; caption 'Print it, or save a PDF.'",
-     "text_v2": "One pager. Print it, or save a PDF.",
-     "text_v3": "One pager. Print it, or save a PDF.",
-     "delivery": "Practical."
-    },
-    {
-     "id": "b07-meeting",
-     "from": null,
-     "start_s": 21.45,
-     "max_s": 3.0,
-     "on_screen": "Back on the desk (tag 'Illustrative · demo data'); headline 'One page. Three questions.'; caption 'That's the meeting sorted.'",
-     "text_v2": "One page. Three questions. That's the meeting sorted.",
-     "text_v3": "One page. Three questions. That's the meeting sorted.",
-     "delivery": "Quiet satisfaction. Out by 24.5."
-    },
-    {
-     "id": "b08-ring",
-     "from": "vo39-ring",
-     "start_s": 24.9,
-     "max_s": 2.3,
-     "on_screen": "Headline 'The last word:'; quoted disclaimer card; caption 'It even tells you to ring the planner.'",
-     "text_v2": "It even tells you to ring the planner.",
-     "text_v3": "It even tells you to ring the planner.",
-     "delivery": "Amused respect."
-    },
-    {
-     "id": "b09-fair",
-     "from": "vo40-fair",
-     "start_s": 27.4,
-     "max_s": 0.8,
-     "on_screen": "Caption 'Fair enough.'",
-     "text_v2": "Fair enough.",
-     "text_v3": "Fair enough.",
-     "delivery": "The button. Flat, warm, very Kiwi, falling."
-    },
-    {
-     "id": "b10-cta",
-     "from": "vo42-cta",
-     "start_s": 28.65,
-     "max_s": 3.1,
-     "on_screen": "End card cross-fades in: 'Start with your address.' · 'Site research: sign up at qsme.co.nz' · small print incl. 'Dramatised · demo sites'",
-     "text_v2": "Sign up at Q-S-me dot co dot en zed.",
-     "text_v3": "Sign up at Q-S-me dot co dot en zed.",
-     "delivery": "Plain invitation; the headline 'Start with your address.' stays on screen. Out by 31.8."
+      "video": "outputs/address-to-site-report-ch06-07-one-page-for-the-planner-9x16.mp4",
+      "title": "One page for the planner (chapters 06-07 cut, 9:16, 39.3 s)",
+      "take": {
+        "model": "eleven_v3",
+        "voice": "Cam S (53CG2aO2HU48thT3QnMl)",
+        "file": "outputs/vo-take-cam-v3-ch06-07/take.m4a",
+        "alignment": "outputs/vo-take-cam-v3-ch06-07/alignment.json",
+        "words": "outputs/vo-take-cam-v3-ch06-07/words.json",
+        "text_sent": "outputs/vo-take-cam-v3-ch06-07/take-text.txt",
+        "duration_s": 37.76,
+        "max_gap_s": 0.46,
+        "words_per_s": 2.54,
+        "tags": [
+          "[dry]"
+        ],
+        "stability": 0.5,
+        "method": "ONE unbroken request to /v1/text-to-speech/53CG2aO2HU48thT3QnMl/with-timestamps (eleven_v3, stability 0.5); never sliced; laid at 0.0 s at gain 1.15 with tools/mux, no music bed.",
+        "note": "First attempt was the take. 2026-10-10 CTA fix (owner 2026-10-08: \"dot Co dot N Z\"): the whole take was regenerated in one call with only the CTA changed (1st attempt, STT clean, heard 'qsme.co.nz'); the dot-co take is kept as *-attempt-co.* (it was 37.84 s, longest silence 0.46 s)."
+      },
+      "continuous_read_v3": "Planners charge by the hour. So this is the one page I'm taking in, and here's where it's from. Open Pro view: same site, much bigger map. Four layers: zoning, buildings, services, flood. In Auckland. The title tab: title facts from Linz. How many owners, not who. The rest? Available with a data licence. Then one pager: print it, or save a PDF. One page, three questions. That's the meeting sorted. [dry] It even tells you to ring the planner. Fair enough. Start with your address. Sign up at Queue Ess Mee dot Co dot N Z.",
+      "lines": [
+        {
+          "id": "b01-hook",
+          "start_s": 0.0,
+          "max_s": 1.52,
+          "end_s": 1.52,
+          "on_screen": "Headline 'One page for the planner.' over the printed one pager on the desk (tag 'Illustrative · demo data')",
+          "text_v2": "Planners charge by the hour.",
+          "text_v3": "Planners charge by the hour.",
+          "delivery": "The hook: a flat fact."
+        },
+        {
+          "id": "b02-page",
+          "start_s": 1.77,
+          "max_s": 3.51,
+          "end_s": 5.28,
+          "on_screen": "Sticky 'Qs for Monday' slaps onto the page 1.77; captions 'The one page I'm taking in.' 1.77–3.96 / 'Here's where it's from.' 4.04–5.31",
+          "text_v2": "So this is the one page I'm taking in, and here's where it's from.",
+          "text_v3": "So this is the one page I'm taking in, and here's where it's from.",
+          "delivery": "Showing a mate the finished thing."
+        },
+        {
+          "id": "b03-pro",
+          "start_s": 5.39,
+          "max_s": 3.41,
+          "end_s": 8.8,
+          "on_screen": "Headline '“Open Pro view.”' 5.39; click 6.03; Pro view opens 6.43; caption 'Pro view. Same site. Much bigger map.' 5.44–8.85",
+          "text_v2": "Open Pro view: same site, much bigger map.",
+          "text_v3": "Open Pro view: same site, much bigger map.",
+          "delivery": "A little impressed."
+        },
+        {
+          "id": "b04-layers",
+          "start_s": 8.94,
+          "max_s": 5.38,
+          "end_s": 14.32,
+          "on_screen": "Headline 'Four layers.' 8.94; chips clicked on the words 10.38 / 11.02 / 11.74 / 12.54; caption 'Zoning. Buildings. Services. Flood. In Auckland.' 8.99–14.38",
+          "text_v2": "Four layers: zoning, buildings, services, flood. In Auckland.",
+          "text_v3": "Four layers: zoning, buildings, services, flood. In Auckland.",
+          "delivery": "One word per click."
+        },
+        {
+          "id": "b05-owners",
+          "start_s": 14.42,
+          "max_s": 4.94,
+          "end_s": 19.36,
+          "on_screen": "Headline 'The Title tab.' 14.42; click 15.12; '1 owner on the title' boxed 17.24–19.24 on 'How many owners'; caption 'Title facts from LINZ. How many owners. Not who.' 14.46–19.36",
+          "text_v2": "The title tab: title facts from Linz. How many owners, not who.",
+          "text_v3": "The title tab: title facts from Linz. How many owners, not who.",
+          "delivery": "LINZ said 'linz'."
+        },
+        {
+          "id": "b06-licence",
+          "start_s": 19.42,
+          "max_s": 2.82,
+          "end_s": 22.24,
+          "on_screen": "Amber boxes on 'CV & sales' and 'Available with a data licence' 20.17–22.12; caption 'The rest? “Available with a data licence.”' 19.42–22.17",
+          "text_v2": "The rest? Available with a data licence.",
+          "text_v3": "The rest? Available with a data licence.",
+          "delivery": "'LIE-sence'."
+        },
+        {
+          "id": "b07-onepager",
+          "start_s": 22.33,
+          "max_s": 3.35,
+          "end_s": 25.68,
+          "on_screen": "Headline '“One pager.”' 22.33; click 23.04; print preview 23.38; Save 25.35; caption 'Print it, or save a PDF.' 22.44–25.75",
+          "text_v2": "Then one pager: print it, or save a PDF.",
+          "text_v3": "Then one pager: print it, or save a PDF.",
+          "delivery": "Practical."
+        },
+        {
+          "id": "b08-sorted",
+          "start_s": 25.82,
+          "max_s": 3.62,
+          "end_s": 29.44,
+          "on_screen": "Back on the desk 25.82, headline 'One page. Three questions.'; caption 'That's the meeting sorted.' 27.79–29.6",
+          "text_v2": "One page, three questions. That's the meeting sorted.",
+          "text_v3": "One page, three questions. That's the meeting sorted.",
+          "delivery": "Quiet satisfaction."
+        },
+        {
+          "id": "b09-ring",
+          "start_s": 29.9,
+          "max_s": 1.62,
+          "end_s": 31.52,
+          "on_screen": "Headline 'The last word:' 29.64; quoted disclaimer card; red marker 30.59–31.37 on 'ring'; caption 'It even tells you to ring the planner.' 29.9–31.53",
+          "text_v2": "It even tells you to ring the planner.",
+          "text_v3": "[dry] It even tells you to ring the planner.",
+          "delivery": "Amused respect."
+        },
+        {
+          "id": "b10-fair",
+          "start_s": 31.57,
+          "max_s": 1.07,
+          "end_s": 32.64,
+          "on_screen": "Caption 'Fair enough.' 31.57–32.69",
+          "text_v2": "Fair enough.",
+          "text_v3": "Fair enough.",
+          "delivery": "The button."
+        },
+        {
+          "id": "b11-start",
+          "start_s": 32.71,
+          "max_s": 1.53,
+          "end_s": 34.24,
+          "on_screen": "End card cross-fades in 32.71–32.84; 'Start with your address.' pops 32.8",
+          "text_v2": "Start with your address.",
+          "text_v3": "Start with your address.",
+          "delivery": "Plain."
+        },
+        {
+          "id": "b12-cta",
+          "start_s": 34.32,
+          "max_s": 3.44,
+          "end_s": 37.76,
+          "on_screen": "'Site research: sign up at qsme.co.nz' pops 34.32 on 'Sign up'; small print 34.81; pill 'qsme.co.nz' 35.48; holds to 39.3",
+          "text_v2": "Sign up at Queue Ess Mee dot Co dot N Z.",
+          "text_v3": "Sign up at Queue Ess Mee dot Co dot N Z.",
+          "delivery": "No lift."
+        }
+      ]
     }
-   ]
-  }
- ],
- "post_processing": [
-  "Voice the master lines first (python3 tools/make_vo.py projects/2026-10-18-qsme-nz-address-to-site-report <Mel voice id>), then lay the cut-down lines with tools/mux using the take named in 'from'; only a03, a06, a07, a10, b01 and b07 need new takes (b10 reuses vo42).",
-  "Room tone bed under the whole film at -48 to -45 dBFS; light phone-memo EQ; 2:1-3:1 compression; no reverb.",
-  "Master -14 LUFS integrated, -1 dBTP; music 6-8 LU under the VO; duck music 3 dB more under vo18-vo20 (the red/amber/green run)."
- ],
- "changelog": [
-  "2026-10-02 first version, timed on the 151.0 s 16:9 render and the 31 s / 32 s 9:16 cut-downs.",
-  "2026-10-02 v2 after review: re-timed on the 145.5 s master (setup compressed, overlays trimmed, pointer cards cut, 12 s end card). Every caption now matches its VO line, hedges kept in both ('Auckland', 'usually', 'indicative', 'reads as'). vo28 keeps 'usually' (now vo27). New lines: vo17 'To be fair. It said.', vo30 'Two doesn't need a planner. One does.'. Dropped: 'Here's how I picked.' and the dated 'got their own shorts' line. Cut-downs re-timed; a03 and a06 are now new takes.",
-  "2026-10-03 owner CTA rule (sign-ups, never 'free' or 'no account'): vo07 'Step one. The homepage. No account.' → 'Step one. Sign up. Search your address.'; vo11 'Step two. Site research. Free account.' → 'Step two. Site research, in your account.'; vo31 + b02 'Pro view. It's a view, not a paid plan.' → 'Pro view. Same site. Much bigger map.'; vo42 'Site research is free with an account. Q-S-me dot co dot en zed.' → 'Sign up at Q-S-me dot co dot en zed.'; a10 → 'Before you offer, sign up at Q-S-me dot co dot en zed.'; b10 now reuses the vo42 take. End cards now read 'Site research: sign up at qsme.co.nz'. Timings unchanged; videos re-rendered."
- ],
- "total_characters": 1800
+  ],
+  "post_processing": [
+    "Each cut: tools/mux <master> <master>-with-vo.mp4 <take.mp3>@0.0@1.15 (one clip, no bed). Verified with an AVFoundation probe: 1 audio track, duration = video.",
+    "No music bed, no SFX (owner 2026-10-06: clean voice)."
+  ],
+  "changelog": [
+    "2026-10-02 first version (Mel, 42 per-line takes), 2026-10-02 v2 re-timed, 2026-10-03 CTA rule.",
+    "2026-10-06 audio-first remake to the owner-approved N01 standard: three continuous scripts (16:9 film, cut 1, cut 2), one unbroken Cam S eleven_v3 take each, the pages re-timed to alignment.json, captions = phrases lifted from the narration, spoken CTA, lower third dropped from the film.",
+    "2026-10-10 CTA pronunciation fix (owner 2026-10-08): all three takes regenerated whole with \"dot Co dot N Z\" (film 152.48 s, cut 1 34.48 s, cut 2 37.76 s; 1st attempt each, STT clean); pages re-timed through a word-anchored warp old take → new take (film 154.0 s, cuts 36.0 / 39.3 s), re-rendered with QA, re-muxed at 0.0 s / 1.15; dot-co masters and voiced files archived in outputs/archive/ (*-v2-co / *-with-vo-co), silent Oct 3 previews archived as *-preview-v2."
+  ],
+  "total_characters": 6511,
+  "characters_note": "total_characters counts every take sent: 3254 (2026-10-06 final texts) + 3257 (2026-10-10 koh regeneration of all three takes)."
 }

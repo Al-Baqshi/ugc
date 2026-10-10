@@ -3,17 +3,18 @@ vid: N13
 title: "Everything's finished. Except one bit of paper."
 venture: qsme-nz
 idea: qsme-nz-ccc-hunt
-status: "rendered — awaiting approval; HOLD until Session C #1 is recorded end to end (hard gate)"
+status: "rendered — audio-first remake (Cam S, eleven_v3, re-taken 2026-10-10 with the 'dot koh' CTA), awaiting approval; HOLD until Session C #1 is recorded end to end (hard gate)"
 publish_date: 2026-11-01
 publish_time_nzt: "19:30"
 created: 2026-10-02
 calendar_week: 4
 format: short
 kind: kinetic (relatable)
-length_s: 32.2
+length_s: 56.1
 aspect: "9:16"
 platforms: [Instagram Reels, TikTok, Facebook Reels, YouTube Shorts]
 video: outputs/ccc-hunt-9x16.mp4
+video_vo: outputs/ccc-hunt-9x16-with-vo.mp4
 contact_sheet: outputs/ccc-hunt-9x16-frames.png
 cover: outputs/ccc-hunt-cover-1080x1920.png
 features: ["Trade certificates and the CCC pack (one zip for council) (11.1)", "Compliance & process checklist (templates by job type) (9.4)"]
@@ -32,6 +33,51 @@ owner_recordings_needed:
 **The joke:** an escalating hunt for one piece of paper, read like a flat incident report: "SEARCH 1 · Inbox." (No results), "SEARCH 2 · Garage." (BOX 3 OF 7: an oven warranty, tile samples, kitchen quote v3, paint colours), "SEARCH 14 · The ute." (a mince-and-cheese pie receipt, "Not it.", "(good pie though)"). Then three polite texts, Monday, Wednesday, Friday (the last one "Any chance? (sorry, me again)", so the owner is the slightly sheepish one), to a contact saved as "Roofer · usually replies Sundays", and the caption "He's on a job in Queenstown. Fair enough." The paperwork is the joke, never the roofer: he's busy, and "fair enough" is meant. The turn is the lesson for the next build: the paper goes in while they're still on site. The roofer records the certificate on the project, you check it and tick the step, and the CCC Pack is one zip with every certificate plus the council index. The honest close: "You still lodge it with council." / "QSME just ends the hunt." (the end-card small print keeps "QSME doesn't issue certificates or the CCC"). The end card calls back to the hook under a "NEXT BUILD" kicker: "Everything's finished. Even the paper.", with the red ✗ on "Record of Work — Roofing" flipping to a green ✓.
 
 **Job:** organic, week 4 of the calendar, the handover chapter. It goes out Sunday 1 Nov at 7:30 pm, which is owner-builders' planning time (and pays off "usually replies Sundays"), right as the pre-Christmas move-in rush starts and everyone wants their CCC before the shutdown. The CTA pushes sign-ups (owner rule 2026-10-03): **Sign up at qsme.co.nz**. It reuses the inbox card `qsme-nz-ccc-hunt` (the same escalating hunt and glovebox gag), moved from "three years later, the lawyer asks" to the CCC application now, so the product fixes the next build rather than promising anything about old paperwork.
+
+## Audio-first remake (2026-10-06) — the current master
+
+**Why:** the owner's audio-first standard (signed off on the N01 "Which Dave?" pilot, 2026-10-06): the script is continuous speech with a spoken hook, the voice is ONE unbroken eleven_v3 take (Cam S), and the picture is re-timed to the words. Script and page re-timing first done 2026-10-07; **re-taken 2026-10-10** for the owner's pronunciation fix (2026-10-08): the CTA is said "Sign up at Queue Ess Mee dot **koh** dot en zed" ("co" like KO, never spelled C-O). The design, captions and joke are unchanged.
+
+**Hook (0–2.9 s, spoken):** "Everything's finished. Except one bit of paper." The four ticks land on "finished.", and the red ✗ and the red box "Except one bit of paper." slam on "Except" (1.69). Then "The roofer's Record of Work." pulses the red row (4.21).
+
+**The script as spoken (one take, 54.56 s, 130 words, 2.38 words/s; 1 v3 tag, [amused]; longest pause 1.08 s, the whip into Search 1, every other pause ≤ 0.96 s):**
+
+```
+Everything's finished. Except one bit of paper. The roofer's Record of Work. So where is it? Inbox. No results. Garage, box three of seven. Not it. Search fourteen, the ute. A pie receipt. Not it. [amused] Good pie, though.
+
+Text the roofer. Monday. Wednesday. Friday, sorry, me again. He's on a job in Queenstown. Fair enough.
+
+Next build, the paper goes in while they're still on site. On Queue Ess Mee, the roofer records his certificate on your project before he leaves. You check it, you tick it. And the CCC pack is every certificate plus the council index, in one zip.
+
+You still lodge it with council. Queue Ess Mee just ends the hunt.
+
+Everything's finished. Even the paper. Sign up at Queue Ess Mee dot Co dot N Z.
+```
+
+STT check (`tools/el.py stt`): every word heard; QSME heard as "QS Me" (twice); the CTA heard as "qsme.co.nz" (koh = the KO the owner asked for).
+
+| Said (heard onset) | Picture (re-timed to the words) | Caption on screen |
+|---|---|---|
+| 0.00 "Everything's finished. Except one bit of paper. The roofer's Record of Work." | ticks on 'finished.' (0.26–0.94); ✗ + red box 'Except one bit of paper.' slam on 'Except' (1.69); ring 1.79–2.14; red row pulses on 'Record of Work' (4.21) | Everything's finished. / Except one bit of paper. |
+| 5.84 "So where is it?" | dusk still holds; whip left 6.75 after 'it?' | — |
+| 7.58 "Inbox. No results." | SEARCH 1 · Inbox. in by 7.15; search types 7.9–8.59; 'No results' on 'No' (8.97); shake on 'results.' (9.12) | SEARCH 1 · Inbox. / No results |
+| 10.29 "Garage, box three of seven. Not it." | SEARCH 2 · Garage.; box wobble 10.49, flaps 10.81, papers on 'box three of seven' (10.9–11.79); 'Not it.' stamp on 'Not' (12.6) | SEARCH 2 · Garage. / Not it. |
+| 13.65 "Search fourteen, the ute. A pie receipt. Not it." | SEARCH 14 · The ute.; glovebox drops on 'ute.' (14.72); receipt rises on 'A pie receipt.' (15.79); stamp on 'Not' (17.22) | SEARCH 14 · The ute. / Not it. |
+| 18.29 "Good pie, though." | '(good pie though)' on the words (18.27); whip out 19.65 | (good pie though) |
+| 19.86 "Text the roofer. Monday. Wednesday. Friday, sorry, me again." | thread slides up 19.67; bubbles on 'Monday.' (21.06), 'Wednesday.' (22.08), 'Friday,' (23.09); Delivered 24.88 | (the texts) |
+| 25.23 "He's on a job in Queenstown. Fair enough." | caption on 'He's' (25.23); whip out 28.07 | He's on a job in Queenstown. Fair enough. |
+| 28.31 "Next build, the paper goes in while they're still on site." | NEXT BUILD · IN QSME + live guide on 'Next build,' (28.28); LBP Record of Work row outlined on 'paper' (28.94); scroll to 30.81 | The paper goes in while they're still on site. |
+| 31.60 "On Q-S-me, the roofer records his certificate on your project before he leaves." | Issue Certificate dialog on 'On' (31.45); fields fill 31.77–34.35; click 'Issue Certificate' on 'before' (35.7); new row + toast on 'leaves.' (36.44 / 36.53) | The roofer records his certificate before he leaves. |
+| 37.09 "You check it, you tick it." | checklist hard cut 37.09; tick on 'tick' (37.96), 4/5 → 5/5 | You check it. You tick it. |
+| 38.83 "And the CCC pack is every certificate plus the council index, in one zip." | CCC Pack on 'And' (38.84); tooltip 40.2–42.0; click on 'index,' (42.02); CCC_Pack.zip opens on 'one zip.' (42.79) | Every certificate plus the council index. One zip. |
+| 44.15 "You still lodge it with council." | index slides up 43.55; 'You still lodge it with council.' on 'You' (44.15) | You still lodge it with council. |
+| 46.11 "Q-S-me just ends the hunt." | 'QSME just ends the hunt.' slams on 'Queue Ess Mee' (46.1) | QSME just ends the hunt. |
+| 48.92 "Everything's finished. Even the paper." | end card 48.66; headline as 'Everything's' starts (48.92); ✗ → ✓ on 'Even' (50.07) | Everything's finished. Even the paper. |
+| 51.41 "Sign up at Q-S-me dot Co dot N Z." | button 'Sign up at qsme.co.nz' slams on 'Sign' (51.4); small print 51.58; held to 56.1 | Sign up at qsme.co.nz |
+
+**Files:** master `outputs/ccc-hunt-9x16.mp4` (56.1 s = take + 1.5 s tail, silent, QA passed on safe 65,300,1015,1250; contact sheet read and 24 frames spot-checked on the words); voiced `outputs/ccc-hunt-9x16-with-vo.mp4` (the whole take at 0.0 s, gain 1.15, no bed; probe: 56.10 s, video 1, audio 1, 1080x1920); Studio previews `outputs/ccc-hunt-9x16.preview.mp4` + `outputs/ccc-hunt-9x16-with-vo.preview.mp4`; take, alignment, heard word onsets (`words-heard.json`) and the exact text sent in `outputs/vo-take-cam-v3/` (attempts 1–3 from 2026-10-07, CTA "dot co", kept beside it); contract `vo-script.json` / `vo-script.md`. The original 32.2 s silent master is archived as `outputs/archive/ccc-hunt-9x16-v1.mp4`. The cover (frame at 2.0 s) didn't change its text, so it wasn't re-exported. Only one cut exists (9:16).
+
+**What's below:** the Hook, beat-by-beat, VO and music sections describe the 2026-10-04 silent 32.2 s cut (Mel as the planned voice). They are kept as the design record; the timeline above is the one that ships. The Session C #1 publication gate is unchanged.
 
 ## Hook (0–2.6 s)
 
@@ -211,3 +257,5 @@ Source: `research/2026-10-02-qsme-platform-truth.md` (feature IDs in brackets), 
 - 2026-10-02: Approved for the week-4 calendar slot (Sun 1 Nov, 19:30 NZT, 9:16, 29 s), reframed to the CCC application now: a Hamilton owner-builder, one missing Record of Work from a roofer in Queenstown, and the fix for the next build.
 - 2026-10-04: Produced. Read origin/main (read only) for the exact certificate, checklist and CCC-pack wording, and found that issuing a certificate moves its checklist step to "in progress" and a person ticks it. The beat was changed to match. Captured the live public "Site documents" guide (no login; no "free" on the page) and extracted the dusk b-roll. Built `motion/ccc-hunt.html`: the hook list with the red line; the inbox, garage and ute hunt; the thread; the real guide; stand-ins for Issue Certificate, the checklist tick, the CCC Pack and zip, and the index; and the callback end card with [Sign up at qsme.co.nz]. Review passes: bigger hook b-roll, labels moved clear of the skit chip, the box and stamps re-placed for the safe box, the product screens zoomed to about 2× and centred on the action (pointer targets read from the layout), frames run off the bottom of the screen, the guide framed on the heading then pushed to "CCC pack → ROW/", and the thread tightened by 0.45 s to give the index and the honesty line room. Final polish after reading frames from the master: a soft left-edge fade on the guide's last framing (no half-cut words next to "CCC pack → ROW/") and a deeper dim behind "It just ends the hunt.". Fixed a render stall: the b-roll clip now stops at its last frame (`t1`, `frames`) instead of asking for frames that don't exist. QA passed; rendered 31.7 s; cover exported; VO script written (`vo_status` ok).
 - 2026-10-04 (review pass, verdict "fix"): **Must-fix:** the roofer's "Issue Certificate" depends on QSME approving his licence (5.5 🟡 merged, 0 of 22 profiles verified; `certificate_service.go` blocks Record of Work without it), so Session C #1 became a hard publication gate with no stand-in exception, recorded in production end to end; the pinned reply now states the licence prerequisite and the end-card small print adds "Trades record certificates once QSME has approved their licence." Checked `ccc_pack_handler.go`: the zip holds only Site Certificates files, so the review's fallback (owner attaches the PDF to the checklist step) would not put it in `ROW/`; the fallback is written up as a re-cut and the default is to hold. **Should-fix:** conflict inside the first second (list up by 0.15, ticks 0.25–0.70, ✗ 0.85, red box by 1.05, whip at 2.42; "MOVE IN BY CHRISTMAS" 24→34 px); the dusk b-roll replaced by its clean first frame as a still (no floating hologram panels; cover re-exported at 2.0 s); the pie gag +0.8 s (receipt reads clean to 7.50, stamp 7.50, aside 7.80, whip 8.50); the guide no longer pushes to the "Issued & tracked" chip (outline closed on Document + Who issues it, gentle scroll ending on the column headers + the row, -0.9 s); honesty beat shortened to "You still lodge it with council." / "QSME just ends the hunt." with 1.5 s for line one; QSME named positively ("NEXT BUILD · IN QSME" kicker, "QSME · Demo house, Hamilton" window bars); the checklist push reduced to 1.84× so the whole row and the Phase 2 counter (4/5 → 5/5) stay in frame; stand-in labels now "Illustrative · demo data" at 24 px; the toast now lands under the roofer's Site Certificates card with the new row (no blank skeleton page), the owner's certificates card has the On-site safety card below, and every window fades out below the safe area. **Nice:** "NEXT BUILD" kicker on the end card; end card held 0.5 s longer (VO tail 0.65 s); third text "Any chance? (sorry, me again)" so the owner is the butt; caption cards cut hard on the whips (no ghosting); TikTok #ccc → #ownerbuildernz #codecompliance; beat table, VO windows and owner-recording timestamps updated. Re-rendered 32.2 s, QA passed, contact sheet read and the fixed moments spot-checked with `tools/motion/frames`.
+- 2026-10-10 (audio-first re-take): the 2026-10-07 take said the CTA "dot co"; per the owner's pronunciation fix (2026-10-08) the whole script was re-taken in ONE unbroken Cam S eleven_v3 request with "Sign up at Queue Ess Mee dot Co dot N Z" (54.56 s, was 57.60 s; STT: every word heard, CTA heard as 'qsme.co.nz'). The v3 timestamps fold pauses into the next word's start, so each word's heard onset was taken from the audio energy (`words-heard.json`) and every beat in `motion/ccc-hunt.html` was moved onto the new onsets (the ✗ and red box now land on the audible 'Except' at 1.69 instead of 0.4 s early). Re-rendered 56.1 s, QA ok, contact sheet + 24 frames spot-checked; mixed the take at 0.0 s ×1.15, no bed → `outputs/ccc-hunt-9x16-with-vo.mp4` (one audio track, 56.10 s); previews refreshed; `vo-script.json/.md` rewritten (vo_status ok). Design, captions and the publication gate unchanged.
+- 2026-10-10 CTA swap: owner said "koh" sounded wrong; only the final "Sign up at qsme.co.nz" line was replaced (spoken "dot Co dot N Z", tools/fix_cta.py), rest of the take and picture untouched. Old take in outputs/archive/vo-koh-2026-10-10/.

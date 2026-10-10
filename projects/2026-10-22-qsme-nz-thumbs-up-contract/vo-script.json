@@ -1,166 +1,182 @@
 {
  "venture": "qsme-nz",
  "video": "outputs/thumbs-up-contract-9x16.mp4",
- "character": "Mel: everyday Kiwi woman, late 30s, the owner in this skit (fictional, as is Jono the sparky; the video carries an 'A skit · names made up' chip from frame 0). Dry and amused at the thumbs-up, never at Jono or herself; reads the 'contract' like a bored clerk reading out a very short will. General NZ accent, never a caricature, no announcer lift, no exclamation marks. Product lines are second-person or neutral tips ('Paste the thread…', 'That bit's on you'), never 'I use it' or a result claim, so an AI voice can never read as a customer testimonial.",
+ "vid": "N09",
+ "character": "One dry, funny Kiwi bloke telling the whole thing as a story (Cam S, ElevenLabs voice 53CG2aO2HU48thT3QnMl): the thread, the 'contract' read like a very short will, the product lines plain and second-person ('that bit's on you'), never 'I use it', never a result claim. General NZ accent, no caricature, no announcer lift, no exclamation marks. Continuous speech: the narration never stops for more than 1 s. Mel and Jono stay fictional ('A skit · names made up' from frame 0); the joke is the emoji, never the sparky or the owner.",
  "settings": {
-  "model": "eleven_multilingual_v2",
-  "stability": 0.45,
-  "similarity_boost": 0.75,
-  "style": 0,
-  "speed": 1,
-  "use_speaker_boost": true
+  "model": "eleven_v3",
+  "stability": 0.5,
+  "note": "v3 only accepts stability 0.0 / 0.5 / 1.0; no style/speed/similarity"
  },
+ "take": {
+  "model": "eleven_v3",
+  "voice": "Cam S (53CG2aO2HU48thT3QnMl)",
+  "file": "outputs/vo-take-cam-v3/take.m4a",
+  "alignment": "outputs/vo-take-cam-v3/alignment.json",
+  "words": 118,
+  "text_sent": "outputs/vo-take-cam-v3/take-text.txt",
+  "duration_s": 44.88,
+  "method": "ONE unbroken request to /v1/text-to-speech/53CG2aO2HU48thT3QnMl/with-timestamps?output_format=mp3_44100_128 (model eleven_v3, stability 0.5); never sliced; laid onto the master at 0.0 s at gain 1.15 with tools/mux, no bed. Regenerated whole on 2026-10-10 for the CTA 'dot Co dot N Z' (owner fix 2026-10-08); the 2026-10-06 C-O take and attempt 1 are in outputs/archive/vo-take-cam-v3-attempts/.",
+  "stt_check": "tools/el.py stt 2026-10-10 (1st attempt): every word heard; 'Eighteen thousand dollar' heard as '$18,000', QSME as 'QS Me', 'Jonno' as 'Jono', the CTA as 'qsme.co.nz' (koh heard as KO, as the owner wants)",
+  "max_gap_s": 0.7,
+  "words_per_s": 2.64,
+  "tags": [
+   "[dry]",
+   "[amused]"
+  ]
+ },
+ "continuous_read_v3": "[dry] Eighteen thousand dollar rewire, and our entire contract? One thumbs up. Clause one, thumbs up. Two, heat-pump wiring, thumbs up. Three, payment stages, thumbs up. Agreed, never signed. Or, paste the thread into Queue Ess Mee and write it up as a proper agreement. What was said goes in, what wasn't stays a blank, and it never makes up an amount, a date or a name. [amused] The heat pump? That bit's on you. Fill the blanks, send it, and Jonno gets it by email and signs on his phone. Signed, before Monday. Everyone's signed, that one's clear, plus a certificate. Turn the thumbs up into a signature. Sign up at Queue Ess Mee dot Co dot N Z.",
  "lines": [
   {
-   "id": "vo01-hook",
-   "start_s": 0.1,
-   "max_s": 1.85,
-   "on_screen": "Chip 'A skit · names made up' + caption 'Our entire contract:' over the generic text thread ('Rewire's $18,400 all up. Can start Monday' / 'Legend. Heat-pump wiring in that?' / Jono's 👍 / 'Sweet as, see you Monday'); the 👍 pulses (0.08–0.40), then the camera dives into it until it fills the frame (0.42–1.30), gavel squash 1.30",
-   "text_v2": "Our whole contract for the rewire.",
-   "text_v3": "[deadpan] Our whole contract for the rewire.",
-   "delivery": "Flat, a little proud of how little there is, like showing a mate a receipt. Light lean on 'whole', 'rewire' falls. Brisk: out by 1.95, as the thumb flies onto the paper (1.80)."
+   "id": "vo00-hook",
+   "start_s": 0.25,
+   "end_s": 5.4,
+   "max_s": 5.2,
+   "on_screen": "0–5.41 the thread: chip 'A skit · names made up' + 'Our entire contract:' over the whole thread; the 👍 pulses at 0.08 and on 'contract?' (2.87); the camera dives into the 👍 on 'One' (3.73) and it fills the frame with a gavel squash on 'thumbs' (4.37)",
+   "text_v2": "Eighteen thousand dollar rewire, and our entire contract? One thumbs up.",
+   "text_v3": "[dry] Eighteen thousand dollar rewire, and our entire contract? One thumbs up.",
+   "delivery": "A stinging number, then the question, then the punchline flat. 'One' lands on the dive, 'thumbs' on the slam."
   },
   {
-   "id": "vo02-clause1",
-   "start_s": 2.06,
-   "max_s": 1.1,
-   "on_screen": "Paper 'THE REWIRE CONTRACT — Complete and unabridged.'; the thumb lands on 'CLAUSE 1 · Full rewire. $18,400.' (2.24)",
-   "text_v2": "Clause one: thumbs up.",
-   "text_v3": "Clause one: thumbs up.",
-   "delivery": "Clerk reading the terms aloud, totally straight. Tiny beat after 'Clause one', 'thumbs up' dead level. Out by 3.16, before clause 2 pops (3.20)."
+   "id": "vo01-clauses",
+   "start_s": 5.46,
+   "end_s": 12.96,
+   "max_s": 7.55,
+   "on_screen": "5.41–13.10 the contract paper: CLAUSE 1 pops on 'Clause' (5.46), the big 👍 flies from the thread and docks on 'thumbs up' (5.82–6.31); CLAUSE 2 pops on 'Two,' (7.52), 👍 slams on 'thumbs' (9.39), red marker '(unclear)' 9.63; CLAUSE 3 pops on 'Three,' (10.55), slam 12.37, '(also unclear)' 12.61",
+   "text_v2": "Clause one, thumbs up. Two, heat-pump wiring, thumbs up. Three, payment stages, thumbs up.",
+   "text_v3": "Clause one, thumbs up. Two, heat-pump wiring, thumbs up. Three, payment stages, thumbs up.",
+   "delivery": "A clerk reading a very short will; each 'thumbs up' dead level, each one a touch more tired."
   },
   {
-   "id": "vo03-clause2",
-   "start_s": 3.24,
+   "id": "vo02-agreed",
+   "start_s": 13.23,
+   "end_s": 15.2,
+   "max_s": 2.02,
+   "on_screen": "Caption 'Agreed. Never signed.' on 'Agreed,' (13.23–15.09) as the dotted signature line draws (13.18–13.52) and the paper eases back; whip 15.15",
+   "text_v2": "Agreed, never signed.",
+   "text_v3": "Agreed, never signed.",
+   "delivery": "The turn, in near-silence; 'never signed' falls."
+  },
+  {
+   "id": "vo03-paste",
+   "start_s": 15.49,
+   "end_s": 20.08,
+   "max_s": 4.64,
+   "on_screen": "15.15–20.17 Bring in a document (recreated): caption 'Paste the thread into QSME.' on 'paste' (16.24–20.15); the thread pasted on 'the thread' (17.24), 'Write it up as a proper agreement' ringed on 'write' (18.52), 'Write it up' clicked on 'a proper' (19.08), spinner marked 'sped up'",
+   "text_v2": "Or, paste the thread into Q-S-me and write it up as a proper agreement.",
+   "text_v3": "Or, paste the thread into Queue Ess Mee and write it up as a proper agreement.",
+   "delivery": "'Or,' as a dry full stop, then one easy instruction."
+  },
+  {
+   "id": "vo04-said-in",
+   "start_s": 20.21,
+   "end_s": 23.36,
+   "max_s": 3.2,
+   "on_screen": "20.17–23.41 the draft (recreated): caption 'What was said: in. / What wasn't: [blank]' (20.19–23.37); green rings on Mel Turner, Jono Hale and $18,400 on 'goes in' (21.14–21.38); the five yellow [blank]s highlight on 'stays a blank' (22.60–23.20)",
+   "text_v2": "What was said goes in, what wasn't stays a blank,",
+   "text_v3": "What was said goes in, what wasn't stays a blank,",
+   "delivery": "Even, matter-of-fact; a light lean on 'blank'."
+  },
+  {
+   "id": "vo05-never-makes-up",
+   "start_s": 23.4,
+   "end_s": 26.32,
+   "max_s": 2.97,
+   "on_screen": "23.41–26.74 whip to the REAL public Knowledge Hub quote (chip 'live · qsme.co.nz Knowledge Hub'), tight on 'AI never makes up an amount, a date or a name…'; green underline on 'makes up an amount' (23.86–24.98), 'a date' (24.98–25.50), amber under '[blank]' on 'name.' (25.96–26.32); whip back 26.74",
+   "text_v2": "and it never makes up an amount, a date or a name.",
+   "text_v3": "and it never makes up an amount, a date or a name.",
+   "delivery": "The one rule, said plainly; 'name' is the full stop."
+  },
+  {
+   "id": "vo06-heat-pump",
+   "start_s": 27.02,
+   "end_s": 28.88,
+   "max_s": 1.91,
+   "on_screen": "27.00–28.84 back in the draft: caption 'The heat pump? / That bit's on you.' (27.00–28.82); click at the end of term 2 + Enter (27.74), 'Heat-pump wiring: included.' typed by hand on 'That bit's on you' (27.81–28.44), green ring 28.50",
+   "text_v2": "The heat pump? That bit's on you.",
+   "text_v3": "[amused] The heat pump? That bit's on you.",
+   "delivery": "Amused, a half-smile; the owner types it, not the AI."
+  },
+  {
+   "id": "vo07-fill",
+   "start_s": 28.98,
+   "end_s": 30.88,
+   "max_s": 1.95,
+   "on_screen": "28.92–30.74 caption 'Fill the blanks. Send it.' (28.92–30.74); the five blanks typed by hand on 'Fill the blanks' (29.16–30.02, 'sped up'), 'Send for signing' clicked on 'send' (30.24); whip up 30.74",
+   "text_v2": "Fill the blanks, send it,",
+   "text_v3": "Fill the blanks, send it,",
+   "delivery": "Quick and practical, no lift."
+  },
+  {
+   "id": "vo08-email",
+   "start_s": 30.9,
+   "end_s": 33.36,
+   "max_s": 2.51,
+   "on_screen": "30.74–33.50 the phone (recreated, chip 'Jono's phone'): caption 'Gets it by email. / Signs on his phone.' (31.04–33.48); the inbox row tapped on 'by email' (31.70), the signing page scrolls to 'Heat-pump wiring: included.' (ring 32.12–32.60), the finger signature draws on 'signs on his phone' (32.60–32.98), tick 33.20, 'Sign this agreement' 33.36",
+   "text_v2": "and Jono gets it by email and signs on his phone.",
+   "text_v3": "and Jonno gets it by email and signs on his phone.",
+   "delivery": "One breath on from 'send it'. (Spelt 'Jonno' for ElevenLabs so it rhymes with 'Donna'; STT hears 'Jono'.)"
+  },
+  {
+   "id": "vo09-signed",
+   "start_s": 33.5,
+   "end_s": 35.36,
+   "max_s": 1.91,
+   "on_screen": "Toast 'Signed. Download a copy below and keep it.' + caption 'Signed. / Before Monday.' on 'Signed,' (33.50–35.15); whip 35.17",
+   "text_v2": "Signed, before Monday.",
+   "text_v3": "Signed, before Monday.",
+   "delivery": "The callback to 'see you Monday'; 'Monday' falls."
+  },
+  {
+   "id": "vo10-everyone",
+   "start_s": 35.45,
+   "end_s": 37.84,
+   "max_s": 2.44,
+   "on_screen": "35.17–37.81 the sender's Agreements list (recreated): caption 'Everyone's signed.' (35.47); the card flips 'Out for signing' → 'Signed' on 'signed,' (36.26); '👍 (clear)' fades in under the caption on 'that one's clear' (36.89)",
+   "text_v2": "Everyone's signed, that one's clear,",
+   "text_v3": "Everyone's signed, that one's clear,",
+   "delivery": "The callback to '(unclear)'; dry satisfaction."
+  },
+  {
+   "id": "vo11-cert",
+   "start_s": 37.87,
+   "end_s": 38.72,
    "max_s": 0.9,
-   "on_screen": "'CLAUSE 2 · Heat-pump wiring included?' + thumb slam (3.50); red marker '(unclear)' 3.70–4.00",
-   "text_v2": "Two: thumbs up.",
-   "text_v3": "Two: thumbs up.",
-   "delivery": "Same read, shorter: she has already stopped saying 'clause'. Out by 4.14."
+   "on_screen": "The Certificate of completion page slides up on 'plus' (37.81); caption 'Plus a certificate.' (37.97–38.55); whip 38.59",
+   "text_v2": "plus a certificate.",
+   "text_v3": "plus a certificate.",
+   "delivery": "Tag it on the end, like an afterthought that matters."
   },
   {
-   "id": "vo04-clause3",
-   "start_s": 4.22,
-   "max_s": 0.95,
-   "on_screen": "'CLAUSE 3 · Payment stages?' + thumb slam (4.48); '(also unclear)' 4.68–5.06",
-   "text_v2": "Three: thumbs up.",
-   "text_v3": "[sighs] Three: thumbs up.",
-   "delivery": "Lowest and flattest of the three. Out by 5.17, so the dotted signature line (5.20–5.54) draws in silence."
+   "id": "vo12-turn",
+   "start_s": 38.85,
+   "end_s": 41.24,
+   "max_s": 2.44,
+   "on_screen": "38.59–46.38 end card: QSME logo 38.69, headline 'Turn the 👍 / into a signature.' pops on 'Turn' (38.83), the 👍 slams on 'thumbs' (39.49), the green signature stroke draws on 'signature' (40.23–40.67)",
+   "text_v2": "Turn the thumbs up into a signature.",
+   "text_v3": "Turn the thumbs up into a signature.",
+   "delivery": "The title, said plainly."
   },
   {
-   "id": "vo05-signed",
-   "start_s": 5.62,
-   "max_s": 1.35,
-   "on_screen": "Caption 'Agreed. Never signed.' (5.58–7.12) under 'Signed: ______'",
-   "text_v2": "Agreed. Just never signed.",
-   "text_v3": "Agreed. Just never signed.",
-   "delivery": "The dry turn. 'Agreed' on its own with a full stop, then 'just never signed' a shade quieter, like admitting something small. Out by 6.97, before the whip to the laptop (7.06)."
-  },
-  {
-   "id": "vo06-paste",
-   "start_s": 7.4,
-   "max_s": 1.85,
-   "on_screen": "Agreements 'Bring in a document' (recreated screen): the thread is pasted (7.70), 'Write it up as a proper agreement' picked and ringed (8.46), 'Write it up' (8.76), spinner with 'sped up'; caption 'Paste the thread / into QSME.' (7.12–9.12)",
-   "text_v2": "Paste the thread into Q-S-me.",
-   "text_v3": "Paste the thread into Q-S-me.",
-   "delivery": "A practical tip to a mate, not a pitch. Even pace; 'Q-S-me' clear (kyoo-ess-mee), never 'kiss me'. Out by 9.25."
-  },
-  {
-   "id": "vo07-said",
-   "start_s": 9.44,
-   "max_s": 1.8,
-   "on_screen": "The draft lands (9.14); caption 'What we said: in. / What we didn't: [blank]' (9.40–12.00); rings on 'Mel Turner', 'Jono Hale', '$18,400' (9.96–12.04); five [blanks] highlight 10.26–10.86",
-   "text_v2": "What was said goes in.",
-   "text_v3": "What was said goes in.",
-   "delivery": "Matter-of-fact, landing 'in' as the rings appear. Leave the [blank] highlights to play in quiet after it. Out by 11.24."
-  },
-  {
-   "id": "vo08-rule",
-   "start_s": 12.4,
-   "max_s": 2.4,
-   "on_screen": "Whip to the real live capture, qsme.co.nz Knowledge Hub (Agreements guide), held 12.32–15.94: 'AI never makes up an amount, a date or a name. Anything it was not given stays a [blank] for you.' Green underline 12.74–13.62, amber under '[blank]' 14.34–14.64",
-   "text_v2": "No made-up money. No made-up dates.",
-   "text_v3": "No made-up money. No made-up dates.",
-   "delivery": "Two short, even halves with a real full stop between; a hint of relief on the second 'made-up'. Not a slogan: say it like reading the rule back. Out by 14.80; the quote then holds in quiet so it can be read."
-  },
-  {
-   "id": "vo09-onyou",
-   "start_s": 16.28,
-   "max_s": 1.3,
-   "on_screen": "Whip back to the draft: Enter after term 2 (16.60), 'Heat-pump wiring: included.' typed by hand (16.66–17.24), green ring held to 18.66; caption 'The thumbs-up didn't say. / So you do.' (16.24–18.64)",
-   "text_v2": "That bit's on you.",
-   "text_v3": "That bit's on you.",
-   "delivery": "Warm and dry, a small smile on 'you'. Lands while the line is still typing. Out by 17.58."
-  },
-  {
-   "id": "vo10-fill",
-   "start_s": 18.76,
-   "max_s": 1.45,
-   "on_screen": "The five blanks filled in by hand, sped up (18.96–19.84): 'Demo site, Tauranga', 'including GST', '19 Oct 2026', '30 Oct 2026', 'two stages: half at the start, half when the work is finished'; then 'Send for signing' is clicked (20.12); caption 'Fill the blanks. Send.' (18.74–20.24)",
-   "text_v2": "Fill the blanks. Send it.",
-   "text_v3": "Fill the blanks. Send it.",
-   "delivery": "Brisk and practical, two little steps. Out by 20.21, before the whip up to the phone (20.24)."
-  },
-  {
-   "id": "vo11-email",
-   "start_s": 20.62,
-   "max_s": 1.7,
-   "on_screen": "Jono's phone in the ute (recreated screen): the e-mail 'Mel Turner has sent you \"Rewire agreement\" to sign' in his inbox, tapped (20.86); the signing page in the phone's browser, scrolled to '3. Heat-pump wiring: included.' (ring 21.42–21.94); caption 'He signs on his phone.' (20.58–22.38)",
-   "text_v2": "Jono gets it by email.",
-   "text_v3": "Jono gets it by email.",
-   "delivery": "Light, a touch amused, like narrating a mate's bit. 'Email' plain. Out by 22.32, so the finger signature (22.12–22.56), the tick (22.80) and the tap (22.96) play with SFX only."
-  },
-  {
-   "id": "vo12-monday",
-   "start_s": 23.1,
-   "max_s": 1.2,
-   "on_screen": "'You have signed this' + toast 'Signed. Download a copy below and keep it.' (23.08); caption 'Signed. / Before Monday.' (23.08–24.36)",
-   "text_v2": "Signed. Before Monday.",
-   "text_v3": "Signed. Before Monday.",
-   "delivery": "The callback to 'see you Monday': 'Signed' plain, a beat, then 'before Monday' with a quiet, satisfied smile. Out by 24.30."
-  },
-  {
-   "id": "vo13-everyone",
-   "start_s": 24.72,
-   "max_s": 1.25,
-   "on_screen": "Mel's Agreements list (recreated screen): the card flips from 'Out for signing' to 'Signed' (24.86); caption 'Everyone has signed. / [thumbs-up] (clear)' (24.68–26.10)",
-   "text_v2": "Everyone's signed.",
-   "text_v3": "Everyone's signed.",
-   "delivery": "Short and pleased with itself, not a cheer. Leaves room for the '(clear)' gag to land silently. Out by 25.97."
-  },
-  {
-   "id": "vo14-cert",
-   "start_s": 26.22,
-   "max_s": 1.1,
-   "on_screen": "Certificate of completion slides up (26.02; email, network address and device blurred); caption 'Plus a certificate.' (26.18–27.38)",
-   "text_v2": "Plus a certificate.",
-   "text_v3": "Plus a certificate.",
-   "delivery": "Throwaway bonus, said almost as an aside. Out by 27.32, before the whip to the end card (27.42)."
-  },
-  {
-   "id": "vo15-payoff",
-   "start_s": 27.62,
-   "max_s": 1.1,
-   "on_screen": "End card: QSME logo, 'Turn the [thumbs-up] / into a signature.' (27.58) with a green signature stroke drawing under it (27.80–28.14)",
-   "text_v2": "Thumbs-up to signed.",
-   "text_v3": "Thumbs-up to signed.",
-   "delivery": "Easy and conclusive, light lean on 'signed', falling. No tagline lift. Out by 28.72."
-  },
-  {
-   "id": "vo16-cta",
-   "start_s": 28.8,
-   "max_s": 2.65,
-   "on_screen": "Live sign-up page card, scrolling from 'Get started with QSME / What brings you here? / I hire' to 'I provide services · Trades & specialists' (28.60–30.10), green button 'Sign up at qsme.co.nz' (27.86) and small print; full end card held 28.14–31.64",
-   "text_v2": "Sign up at Q-S-me dot co dot en zed.",
-   "text_v3": "Sign up at Q-S-me dot co dot en zed.",
-   "delivery": "Plain next step, like telling a mate where to find it; 'Q-S-me' clear (kyoo-ess-mee), the domain unhurried and easy to type: 'dot co dot en zed'. Never say 'free'. Out by 31.45."
+   "id": "vo13-cta",
+   "start_s": 41.33,
+   "end_s": 44.88,
+   "max_s": 3.6,
+   "on_screen": "[Sign up at qsme.co.nz] pops on 'Sign up' (41.33), small print 41.49, the REAL public sign-up page scrolls from 'Get started with QSME' to 'I provide services · Trades & specialists' (41.79–43.29); take ends 44.88, page 46.38",
+   "text_v2": "Sign up at Q-S-me dot Co dot N Z.",
+   "text_v3": "Sign up at Queue Ess Mee dot Co dot N Z.",
+   "delivery": "A friendly nudge, the URL the Kiwi way ('koh' like KO, never C-O), no rise at the end."
   }
  ],
- "male_alt_lines": [],
- "casting_line": "Clause one: thumbs up. Two: thumbs up. Three: thumbs up. Agreed. Just never signed.",
- "silent_on_purpose": "5.17–5.62 (signature line draws), 6.97–7.40 (whip), 11.24–12.40 (blanks highlight, whip to the live quote), 14.80–16.28 (the quote held to be read, whip back), 17.58–18.76 (typing, ring held), 20.21–20.62 (whip up to the phone), 22.32–23.10 (finger signature, tick, tap: SFX only), 24.30–24.72 (whip to the list), 25.97–26.22 (certificate slides up), 27.32–27.62 (whip to the end card).",
+ "post_processing": [
+  "Time base: every start_s is the start of that phrase's first word in outputs/vo-take-cam-v3/words.json, which is reel time on outputs/thumbs-up-contract-9x16.mp4 (46.38 s). The page was re-timed to this take (motion/thumbs-up-contract.html, const T, 2026-10-10), so picture follows audio: never re-time the voice to the picture.",
+  "Mix: the whole take as ONE clip at 0.0 s, gain 1.15, no music bed (tools/mux). Output outputs/thumbs-up-contract-9x16-with-vo.mp4 (one audio track, duration = video).",
+  "If the script changes, regenerate the whole take (python3 tools/el.py is the key reader; outputs/vo-take-cam-v3/take-text.txt has the exact text and tags), STT-check it, rebuild words.json from alignment.json, then re-derive every T value in motion/thumbs-up-contract.html from it and re-render.",
+  "Never 'free', 'no account', 'no sign-up' or any pricing line (owner CTA rule 2026-10-03). CTA shown as qsme.co.nz, spoken 'Queue Ess Mee dot Co dot N Z' (owner 2026-10-08: 'co' sounds like KO, never C-O)."
+ ],
+ "total_characters": 653,
  "changelog": [
-  "2026-10-04: first script, timed against outputs/thumbs-up-contract-9x16.mp4 (29.8 s, silent master). Owner CTA rule 2026-10-03 applied: no 'free', no 'no account'; CTA 'Sign up at Q-S-me'.",
-  "2026-10-04 (review pass 2): retimed to the 31.64 s cut. Clause reads tightened ('Two: thumbs up.'), new 'Fill the blanks. Send it.' line for the hand-filled blanks + 'Send for signing' beat, 'Jono gets the link.' became 'Jono gets it by email.' (no SMS reading), payoff shortened to 'Thumbs-up to signed.', and the CTA now speaks the domain: 'Sign up at Q-S-me dot co dot en zed.'"
+  "2026-10-06 audio-first remake (supersedes the 2026-10-04 Mel per-line script, archived in post.md's discussion history): continuous narration with the hook spoken ('Eighteen thousand dollar rewire, and our entire contract? One thumbs up.'), 14 caption phrases lifted from one take, Cam S on eleven_v3, one unbroken 43.68 s take, longest silence 0.70 s, 2.70 words/s. Page 31.64 → 45.18 s. Mel's VO character is retired: one narrator plays both sides.",
+  "2026-10-10 CTA re-voice: the whole take regenerated (one request, Cam S, eleven_v3) with 'dot Co dot N Z' per the owner fix of 2026-10-08; 44.88 s, 118 words, longest silence 0.70 s; every T value in the page re-timed to the new words; page 45.18 → 46.38 s; the 45.18 s master archived as outputs/archive/thumbs-up-contract-9x16-v2.mp4."
  ]
 }

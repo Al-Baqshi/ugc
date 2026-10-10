@@ -1,100 +1,40 @@
-# VO script: Kiwi performance
+# Remittance attached. (It wasn't.) — voice script (G10, audio-first remake, re-taken 2026-10-10)
 
-**Character:** The QS, the same narrator as "Six bids. Six formats." and "Action: chase painter". He's a mid-career quantity surveyor (late 30s to 40s) with a general, urban, professional New Zealand accent (Auckland or Wellington office). Not broad, not rural, not Australian. This time he's reading a month-end email thread over the accounts team's shoulder. He's seen this exact thread every month of his career and he's on both accounts teams' side: the joke is the thread and the two spreadsheets, never the people. Calm, dry, deadpan, faintly weary, no announcer lift. He's a fictional narrator: he never claims to be a QSME customer and never speaks as the founder.
+**Video:** `outputs/remittance-attached-4x5.mp4` + `outputs/remittance-attached-9x16.mp4` (41.5 s, one timeline). **Voice:** Cam S on ElevenLabs eleven_v3 (stability 0.5), ONE unbroken take `outputs/vo-take-cam-v3/take.mp3` (39.97 s file, speech 0.10–39.88 s, 116 words, 2.92 words/s, longest silence 0.90 s), laid at 0.0 s at gain 1.15, no music bed. **Clock:** forced alignment (`outputs/vo-take-cam-v3/forced-alignment.json` → `words.json`), not the with-timestamps alignment. The picture was re-timed to this take.
 
-**Model & settings:** `eleven_multilingual_v2` · stability 0.45 · similarity 0.75 · style 0 · speed 1 · speaker boost on
+**Character:** One warm, quick, wry Kiwi storyteller reading the month-end thread over the accounts team's shoulder, amused at the thread and the two spreadsheets, never weary, then showing the fix with energy (Cam S, ElevenLabs voice 53CG2aO2HU48thT3QnMl). General NZ accent, no announcer lift, no exclamation marks. He plays both sides of the thread as a reader, not as actors; the joke is on the thread and the two spreadsheets, never on the people. Continuous speech: the narration never stops for more than 1 s. Fictional narrator: never a QSME customer, never the founder.
 
-**Video:** `outputs/remittance-attached-4x5.mp4` (30.7 s, LinkedIn). `outputs/remittance-attached-9x16.mp4` (YouTube Shorts) runs on the same clock, so one stem fits both. Times below are seconds on those files.
-
-**Casting line:** "Paid on the fourteenth, remittance attached. Yeah, nah. Nothing attached. Classic month-end."
-
-**Silent cut:** both MP4s ship silent, with every line already on screen (the hook, the thread, the captions, the end card), so they work with the sound off. This VO gets added after the ElevenLabs upgrade. Owner CTA rule (2026-10-03): no "free" or pricing line in any take.
-
-## Lines
-
-Re-timed 2026-10-04 after the review pass: the hook now turns at 1.2 s, the payer's dialog has a push-in and the "(Actually attached.)" callback, and the split holds longer. One line was added (vo12b) because the screen gained a line.
-
-| Start | Max | Line (v2) | v3 alt | On screen | Delivery |
-|---|---|---|---|---|---|
-| 0.1s | 1.0s | **Remittance attached.** | (same) | Paid on the 14th. / Remittance attached. (frame 0) over a generic email (Wed 21 Oct, 09:12) whose attachment strip reads "0 attachments"; it scrolls 0.15 to 0.70 | Read straight off the email, flat and polite, as if reading it out to the person at the next desk. No irony yet. Falling end. Out by 1.1, so the red circle (0.75 to 1.10) closes in near-silence. |
-| 1.25s | 0.8s | **It wasn't.** | [deadpan] It wasn't. | (It wasn't.) slams on in red handwriting at 1.20, after the red marker circles "0 attachments" and a "?" lands (1.05) | Bone-dry aside, a touch quieter than vo01, half to himself. Two flat syllables, no smirk. Out by 2.05. |
-| 2.83s | 0.75s | **Nothing attached?** | (same) | Reply 1, Subcontractor, Wed 09:47 (2.78) · the subject gains a second "RE:" | Reading the reply, not acting it: a mild, genuine question with a small lift. vo03 to vo07 come from ONE request (the thread read), each reply a shade more tired. Out by 3.58. |
-| 3.68s | 0.75s | **Reattached.** | (same) | Reply 2, Main contractor, Wed 11:03 (3.63) · file chip "Remittance_14-03.pdf" | Brisk and helpful, the way a busy accounts team types it. Out by 4.43. |
-| 4.53s | 0.75s | **That's March's.** | (same) | Reply 3, Subcontractor, Wed 13:20 (4.48) | A tiny pause first, then deadpan. The file name (14-03) has already told the viewer; the voice just confirms it. Out by 5.28. |
-| 5.38s | 0.75s | **Which account?** | (same) | Reply 4, Main contractor, Wed 15:41 (5.33) | Lower and slower, the first sign of fatigue. Out by 6.13. |
-| 6.23s | 1.9s | **Can we jump on a call?** | [sighs] Can we jump on a call? | Reply 5, Subcontractor, Thu 08:58 (6.18, held to 7.53; the subject reads RE: x6) | The surrender: a small exhale, then the most familiar sentence in construction, read with total resignation and a slight downward drift. Not mocking anyone. Out by 8.13 at the latest (it runs under the swipe at 7.53, which is fine). |
-| 8.18s | 0.65s | **Both correct.** | (same) | Both correct. (7.85) over two generic spreadsheets; the big PAID / OUTSTANDING callouts slam at 8.13 and 8.38 | Calm and level, almost generous, landing just after the PAID stamp. A beat of silence after it. Out by 8.83. |
-| 8.88s | 1.6s | **According to themselves.** | (same) | According to themselves. (8.83) | The punchline, under-played: slower, a light lean on "themselves", falling end. The spreadsheets are the butt, not the people. Out by 10.48. |
-| 10.88s | 2.2s | **Proof and invoice, on the stage.** | (same) | Proof and invoice, on the stage. (10.83) · subcontractor's screen (amber outline): a demo site photo flies into the upload, "Submit progress" (12.13), "Upload invoice" (12.83) | Practical, like showing a mate where the form lives. Small comma pause, falling end. Out by 13.08. |
-| 13.18s | 1.2s | **Not in an inbox.** | (same) | Not in an inbox. (green, 13.13) · toast "Invoice attached to this milestone" | A dry little callback to the thread, half a smile at most. Lean on "inbox". Out by 14.38, as the window flips to the other side (14.43). |
-| 14.6s | 2.2s | **Only the payer can mark it paid.** | (same) | Only the payer can mark it paid. (14.55, "payer" in main-contractor blue) · main contractor's screen (blue outline): "I paid outside QSME" (15.23), the dialog (15.31), the reference typed 15.58 to 16.05, then a push-in on the warning: "so this goes on your word." highlighted 16.29 to 16.89 and quoted as a yellow caption | Plain and precise, a rule read out. Light lean on "payer". Out by 16.8, so the highlight lands as the line finishes. |
-| 17.6s | 0.8s | **Actually attached.** | [deadpan] Actually attached. | The payer picks "Remittance_14-10.pdf" in "Attach the invoice or receipt (optional)" (17.53) and a red handwritten "(Actually attached.)" slams on beside it (17.57) | NEW. The same bone-dry aside as vo02, same level and tone, so the callback to "It wasn't." is heard as well as seen. Out by 18.4. |
-| 18.61s | 0.95s | **Awaiting confirmation.** | (same) | "Awaiting confirmation" pill pops with an amber ring (18.59) · "Recorded as paid outside QSME. Waiting for Demo Framing Co. to confirm the money arrived." | Read off the screen like a parcel tracker, deadpan. Out by 19.56 (the window flips at 19.58). |
-| 19.8s | 2.2s | **Only the receiver can confirm it.** | (same) | Only the receiver can confirm it. (19.70, "receiver" in subcontractor amber) · subcontractor's screen: "Confirm payment received" (20.30), the dialog (20.40), a push-in on the warning: "don't confirm on a promise." highlighted 20.70 to 21.30 and quoted as a yellow caption | Same rhythm as vo12, so the two rules sound like a pair. Light lean on "receiver". Out by 22.0, before the tick (21.92) turns into settled (22.48). |
-| 22.73s | 1.7s | **Q-S-me never touches the money.** | (same) | QSME never touches the money. (22.68, stays through the swipe at 23.58) over "Settled outside QSME and confirmed by both sides." | Calm and matter-of-fact: the honest line, not a reassurance pitch. "Q-S-me" is kyoo-ess-mee, never "kiss me", never four letters. Out by 24.43. |
-| 24.48s | 2.8s | **It keeps the one record you both ticked.** | (same) | It keeps the one record / you both ticked. (24.33, held to 27.48) over both screens side by side (blue and amber outlines), each "Settled outside QSME and confirmed by both sides.", STAGE 2 SETTLED / SETTLED in green (24.03, 24.18) | The payoff: warmer than everything before it, still understated. Light lean on "one" and "both". Falling end. Out by 27.28. |
-| 27.98s | 2.7s | **Book a thirty-minute demo at Q-S-me dot build.** | (same) | End card: logo · the real qsme.build/contact page cropped to "What happens on a demo?" + "Thirty minutes on a working project that resembles yours." (highlighted 28.33 to 28.73) · Book a 30-minute demo (27.98) · qsme.build (28.14) · (the one call worth jumping on) (28.78) | A friendly nudge with the faintest smile; the handwritten note does the joke, the voice doesn't. No announcer lift. Starts with the green button. Out by 30.68. |
-
-Silent on purpose: 2.05–2.83 (the thread arrives), 10.48–10.88 (swipe to QSME), 13.08–13.18, 16.8–17.6 (the highlight finishes, the push eases out, the file is picked), 18.4–18.61, 19.56–19.8 (the window flips to the other side), 22.0–22.73 (tick, Confirm, settled), 27.28–27.98 (end card in).
-
-## Continuous read (v2, the primary source)
+## The take as sent (QSME written 'Queue Ess Mee'; one paragraph; one v3 tag)
 
 ```
-Remittance attached.
-
-It wasn't.
-
-Nothing attached?
-
-Reattached.
-
-That's March's.
-
-Which account?
-
-Can we jump on a call?
-
-Both correct.
-
-According to themselves.
-
-Proof and invoice, on the stage.
-
-Not in an inbox.
-
-Only the payer can mark it paid.
-
-Actually attached.
-
-Awaiting confirmation.
-
-Only the receiver can confirm it.
-
-Q-S-me never touches the money.
-
-It keeps the one record you both ticked.
-
-Book a thirty-minute demo at Q-S-me dot build.
+[confident] Paid on the fourteenth, remittance attached, it wasn't. Nothing attached? Reattached. That's the March one. Which account? Can we jump on a call? Both correct, according to themselves. So on Queue Ess Mee, the subcontractor puts proof and invoice on the stage, not in an inbox. Only the payer can mark it paid, and the screen's honest about it: this goes on your word, and the remittance? Actually attached. Only the receiver can confirm it, once the money's landed. Don't confirm on a promise, because Queue Ess Mee never touches the money. It keeps the one record you both ticked. Book a thirty-minute demo at Queue Ess Mee dot build, the one call worth jumping on.
 ```
 
-Render it three times on the chosen voice, then slice it and place each line at its start time. If a line overruns its max, regenerate it; don't speed it up past 1.05×. Take vo03 to vo07 from one request (the thread read) so the fatigue builds naturally, take vo12 and vo14 from the same take so the two rules match, and take vo02 and vo12b from the same take so the two asides match.
+## Lines (start = first word on the take, forced alignment)
 
-## Paid-test alternative hook (from gl-i-paid-you-last-week)
+| # | Start | Said | On screen | Delivery |
+|---|---|---|---|---|
+| vo00-hook | 0.10 | Paid on the fourteenth, remittance attached, it wasn't. | Hook 0–3.85: 'Paid on the 14th.' + 'Remittance attached.' from frame 0 over the generic email; it scrolls 0.15–0.70; the red marker circles '0 attachments' on 'remittance attached' (1.25–2.00), the '?' lands 2.25, '(It wasn't.)' slams on 'wasn't' (2.80); hard cut to the thread 3.85 | Quick and amused, straight off the email in one run, the sting landing light. Out by 3.14. |
+| vo01-thread | 4.04 | Nothing attached? Reattached. That's the March one. Which account? Can we jump on a call? | The thread: reply cards pop on their words: Nothing attached? 4.04 · Reattached. + 'Remittance_14-03.pdf' 5.40 · That's the March one. 6.38 · Which account? 7.50 · Can we jump on a call? 8.46; a red 'RE:' slams onto the subject with each; swipe to the sheets 9.62 | One storyteller rattling through the thread, enjoying it; the call line is the surrender. Out by 9.32. |
+| vo02-both | 10.06 | Both correct, according to themselves. | Two tilted spreadsheets (PAID 14/10 vs OUTSTANDING, same 49,500.00); 'Both correct.' pops 10.06, STAGE 2 PAID slams on 'correct' (10.32), OUTSTANDING 10.55, 'According to themselves.' pops on the word (10.74), the sheets lean in on 'themselves' (11.18); swipe to QSME 11.85 | Wry, the punchline with a light lean on 'themselves'. Out by 11.68. |
+| vo03-proof | 12.30 | So on Q-S-me, the subcontractor puts proof and invoice on the stage, not in an inbox. | SUBCONTRACTOR'S SCREEN (amber): the note types 12.20–12.80, the demo photo plays big 13.10 and flies into the upload 13.90–14.28, 'Submit progress' clicked on 'proof' (14.90) with the caption 'Proof and invoice, on the stage.' (14.90) and toast 'Progress submitted'; 'Upload invoice' clicked on 'invoice' (15.45) → chip + toast 'Invoice attached to this milestone'; 'Not in an inbox.' pops on the word (16.84); flip to the payer 18.25 | Practical and upbeat, like showing a mate where the form lives; 'not in an inbox' as the callback. Out by 17.86. |
+| vo04-payer | 18.44 | Only the payer can mark it paid, and the screen's honest about it: this goes on your word, | MAIN CONTRACTOR'S SCREEN (blue): caption 'Only the payer can mark it paid.' on 'Only' (18.44); 'I paid outside QSME' clicked on 'payer' (18.90) → dialog 'Record this as paid outside QSME'; reference STG2-1410 types on 'mark' (19.34–19.84); push-in ×1.4 on the warning on 'honest' (21.00); 'so this goes on your word.' highlighted + quoted as the yellow caption on 'this' (22.16–22.76); pull back after 'word,' (23.32) | A rule said plainly, light lean on 'payer'; the product's own honesty line, not a pitch. Out by 23.30. |
+| vo05-attached | 23.58 | and the remittance? Actually attached. | 'Choose file' → 'Remittance_14-10.pdf' appears on 'remittance?' (23.85); the red '(Actually attached.)' slams on 'Actually' (24.70): the callback to '(It wasn't.)'; tick 'I have sent the money.' 24.95, 'Mark as paid' 25.25, dialog closes 25.40, 'Awaiting confirmation' pill pops ×1.2 with the amber ring 25.52 + toast 'Recorded as paid outside QSME' | Amused callback to 'it wasn't'. Out by 25.54. |
+| vo06-receiver | 26.08 | Only the receiver can confirm it, once the money's landed. | The window flips to the SUBCONTRACTOR'S SCREEN at 26.05; caption 'Only the receiver can confirm it.' (26.10); 'Confirm payment received' clicked on 'confirm' (27.12) → dialog 'Confirm you received this payment'; push-in on the warning on 'once' (28.00) | Same rhythm as the payer rule so the two sound like a pair. Out by 29.00. |
+| vo07-promise | 29.54 | Don't confirm on a promise, | 'don't confirm on a promise.' highlighted + quoted on 'Don't' (29.54–30.14); pull back on 'promise' (30.40); tick 'The money has cleared in my account.' 30.75; 'Confirm payment received' 31.00; dialog closes 31.15 | Plain, friendly advice. Out by 30.80. |
+| vo08-never | 30.90 | because Q-S-me never touches the money. | M2 turns green: node + 'Settled outside QSME and confirmed by both sides.' + 'Payment settled · Outside QSME' (31.35) + toast 'Payment confirmed as received'; caption 'QSME never touches the money.' pops on 'Queue' (31.44) and stays through the swipe to the split (33.05) | Matter-of-fact, the honest line. Out by 32.90. |
+| vo09-record | 33.34 | It keeps the one record you both ticked. | Both screens side by side (MAIN CONTRACTOR blue, SUBCONTRACTOR amber), each reading 'Settled outside QSME and confirmed by both sides.' · Ref STG2-1410; caption 'It keeps the one record / you both ticked.' pops on 'It' (33.34); STAGE 2 SETTLED slams on 'record' (34.08) and on 'both' (34.50); swipe to the end card 35.15 (after 'ticked.' ends 35.06) | The payoff, warm and confident; lean on 'one' and 'both'. Out by 35.06. |
+| vo10-cta | 35.64 | Book a thirty-minute demo at Q-S-me dot build, the one call worth jumping on. | End card: QSME logo + the real qsme.build/contact crop (35.40), 'Book a 30-minute demo' slams on 'Book' (35.64), 'Thirty minutes on a working project that resembles yours.' highlighted under 'thirty-minute demo' (36.15–36.65), 'qsme.build' pops on 'Queue Ess Mee dot build' (37.04), '(the one call worth jumping on)' on 'the one call' (38.54); pill pulses 39.90; page ends 41.50 | A friendly, confident nudge, no announcer lift; the last line is the callback joke on us. Out by 39.88. |
 
-Only for a paid A/B after organic earns it. Two different natural Kiwi voices, replacing vo01 and vo02 over the same hook frames (on-screen kicker swapped to match):
+## Rules
 
-| Start | Max | Line | Delivery |
-|---|---|---|---|
-| 0.1s | 1.0s | **I paid you Friday.** | Voice A, the main contractor's accounts person: sure of it, a little defensive. Out by 1.1. |
-| 1.25s | 1.0s | **Nothing's landed.** | Voice B, the subcontractor's accounts person: flat and tired, no blame. Out by 2.25. |
+- Time base: every start_s is the start of the first word on the take from FORCED ALIGNMENT (outputs/vo-take-cam-v3/forced-alignment.json), the take laid at 0.0 s on both masters (41.5 s). The page (motion/remittance-attached.js) was re-timed to these words, so picture follows audio: never re-time the voice to the picture, and never time from the with-timestamps alignment.json (it drifted ~0.8 s on the 2026-10-06 take).
+- Mix: the whole take as ONE clip at 0.0 s, gain 1.15, no music bed (tools/mux). Outputs outputs/remittance-attached-4x5-with-vo.mp4 and outputs/remittance-attached-9x16-with-vo.mp4 (1 video + 1 audio track each, container 41.50 s = video).
+- If the script changes, regenerate the whole take as ONE paragraph (see outputs/vo-take-cam-v3/take-text.txt; QSME is written 'Queue Ess Mee' there; no blank lines — eleven_v3 reads them as ~1 s pauses), STT-check it, run forced alignment, then re-derive T and the DB/EB/FB/GB/HB anchors in motion/remittance-attached.js from words.json and re-render both cuts.
+- Never 'free', pricing, fees or counts (owner CTA rule 2026-10-03); never 'release', escrow, 'secure' or verification of a payment (red list). CTA shown as qsme.build, spoken 'Queue Ess Mee dot build'.
 
-## Sound design (for the mix)
+## Changelog
 
-- **SFX:** one lonely notification ping at 0.05 (the hook's only sound before the VO) · soft trackpad scroll 0.15–0.70 · marker squeak 0.75–1.10 · a small "thock" on "(It wasn't.)" 1.20 · a mail "whoosh" on each reply 2.78 / 3.63 / 4.48 / 5.33 / 6.18 (getting quieter each time) · soft swipe 7.53, 10.63, 23.58, 27.48 · two dull stamps on PAID 8.13 and OUTSTANDING 8.38 · camera-roll "pop" as the photo lands 11.83 · a quick card-flip whoosh as the screen changes hands 14.43 and 19.58 · UI clicks 12.13, 12.83, 15.23, 17.45, 17.88 (checkbox), 18.27, 20.30, 21.92 (checkbox), 22.22 · keyboard taps 15.58–16.05 · a soft zoom "breath" in and out 16.13 / 17.05 and 20.60 / 21.50 · highlighter swipe 16.29 and 20.70 (low) · a short pen scribble on "(Actually attached.)" 17.57 · a soft two-note "pending" blip on the Awaiting confirmation pill 18.59 · a warm, quiet "settled" chime at 22.48 · two matching stamps on SETTLED 24.03 and 24.18 (same sound as the PAID stamp, the rhyme) · pen scribble under the end note 28.78. Duck everything 10–12 dB under the VO.
-- **Music:** see post.md → Music.
-- **Lay it on:** `tools/mux outputs/remittance-attached-4x5.mp4 outputs/remittance-attached-4x5-with-vo.mp4 vo01.mp3@0.1 vo02.mp3@1.25 …` (and the same for the 9:16).
-- **Labels:** if an AI voice ships, switch on LinkedIn's and YouTube's synthetic-content labels. The narrator is a synthetic voice playing a fictional QS.
-
-## Real-person alternative
-
-Better for trust and needs no AI label: the founder, or a real QS or accounts manager who agrees to it, reads the 18 lines as a phone voice memo in a quiet room, on the same timings. It must never imply a real client or a real payment dispute.
+- 2026-10-06 audio-first remake (supersedes the 2026-10-04 18-line plan and the paid-test hook lines, archived in post.md's discussion history): continuous narration with the hook spoken ('Paid on the fourteenth. Remittance attached. It wasn't.'), 10 caption phrases lifted from the one take, Cam S on eleven_v3, one unbroken 46.0 s take, longest silence 0.56 s, 2.39 words/s (the model's natural pace for this text; three attempts). Both cuts re-timed to the words and extended to 47.5 s. The QS character from 'Six bids' is retired: one narrator (the owner's choice, N01 pilot).
+- 2026-10-10 voice-over rollout check: the with-vo files were missing on disk; re-muxed the unchanged take onto both 47.5 s masters (0.0 s, gain 1.15, no bed; probe 1 audio track, 47.50 s = video), 24 word-moment frames per cut checked, previews refreshed. Script, take, alignment and timeline unchanged.
+- 2026-10-10 review fix: the 2026-10-06 take's with-timestamps alignment drifted ~0.8 s early (real gaps up to 1.46 s, real length 46.76 s, 2.39 words/s, [dry] low-energy read). New take (attempt 6): script as one paragraph, [confident], 'That's the March one.'; 39.97 s, 116 words, 2.92 words/s, longest gap 0.90 s; timed from forced alignment; 11 lines; both cuts re-timed to 41.5 s, re-rendered, re-muxed. Character note rewritten (warm, quick, wry; deadpan/weary removed).

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>The back corner</title>
-<!-- QSME NZ · "The back corner" · 9:16 · 29.9 s · silent master with burned-in captions.
+<!-- QSME NZ · "The back corner" · 9:16 · 35.9 s · silent master with burned-in captions (voice laid on with tools/mux → -with-vo.mp4).
      Render (from the studio root):
        node tools/motion/make.mjs projects/2026-10-06-qsme-nz-back-corner/motion/back-corner.html projects/2026-10-06-qsme-nz-back-corner/outputs/back-corner-9x16.mp4 --safe 65,300,1015,1250
      Footage (all real, captured from www.qsme.co.nz):
@@ -18,7 +18,10 @@
      v3 (2026-10-03, owner CTA rule: push sign-ups, never "free" / "no sign-up"): live-screen caption "On qsme.co.nz: / Sign up. /
      “Search your address.”", end card "Search your address." + [Sign up at qsme.co.nz], DEMO pill "Auckland community site · try yours".
      The homepage's own "Free to join." line (under Get started) is patched out with its own background (#fjC on the screencast,
-     per-frame boxes from OCR of clips/search; #fjP on the plate). Nothing else in the UI is touched. -->
+     per-frame boxes from OCR of clips/search; #fjP on the plate). Nothing else in the UI is touched.
+     v5 (2026-10-10, owner pronunciation fix 2026-10-08: the CTA is spoken "dot koh dot en zed", never C-O): the whole take was
+     regenerated (34.48 s), and every beat re-timed to it. W = heard word onsets: the alignment start, moved past any silence
+     (>= 0.15 s under -40 dB) that the aligner folded into the word, so captions land on the word you hear. -->
 <link rel="stylesheet" href="../../../tools/motion/kit.css">
 <style>
   body.nz #root { background: #020617; }
@@ -172,8 +175,8 @@
   </div>
 
   <!-- ================= captions over the product ================= -->
-  <div class="cap" id="capA" style="top:318px"><span class="sm">Before any Auckland open home,</span><span class="xl">check the bit</span><span class="xl">nobody walks to.</span></div>
-  <div class="cap" id="capC" style="top:322px"><span class="sm">On qsme.co.nz:</span><span><em>Sign up.</em></span><span>“Search your address.”</span></div>
+  <div class="cap" id="capA" style="top:318px"><span class="sm">The bit that costs you</span><span class="xl" id="capA2">is the bit</span><span class="xl" id="capA3">nobody walks to.</span></div>
+  <div class="cap" id="capC" style="top:322px"><span><em>Sign up at qsme.co.nz</em></span><span>Search your address.</span></div>
   <div class="cap" id="capD" style="top:304px;flex-direction:row;justify-content:center;gap:12px"><span id="w1" class="sm" style="font-size:46px;padding:12px 22px 15px">Boundary</span><span id="w2" class="sm" style="font-size:46px;padding:12px 22px 15px">Land area</span><span id="w3" class="sm" style="font-size:46px;padding:12px 22px 15px">Council</span><span id="w4" class="sm" style="font-size:46px;padding:12px 22px 15px">Zone</span></div>
   <div class="cap" id="capE" style="top:318px"><span>Checked against</span><span>the <em>whole section,</em></span><span id="capE3">not just the front lawn.</span></div>
   <div class="cap" id="capF" style="top:330px"><span style="font-size:74px;padding:16px 32px 20px"><span class="q">“Check”</span> means check.</span></div>
@@ -252,10 +255,18 @@
   $('#ul1').setAttribute('d', under(590, 984, 3431, 0.4));
   $('#ul2').setAttribute('d', under(80, 318, 3465, 1.7));
 
-  // ---------------- timeline ----------------
+  // ---------------- timeline (v5: every W value is a heard word onset in outputs/vo-take-cam-v3/alignment.json, take 2026-10-10) ----------------
   // rew: hook → rewind · B: flyer · notes: checklist · C: live screencast · X: screencast → still handover (before the map's grey tile load)
   // D: boundary/land/council/zone · E: services & hazards scan · land: amber chip · F: the product's own honesty · G: end card
-  const T = { rew: 3.0, B: 3.45, notes: 5.25, C: 8.3, X: 12.2, D: 12.45, E: 14.45, land: 16.3, F: 20.5, G: 25.7, end: 29.9 };
+  const W = {  // heard word starts (s) in the take
+    is: 1.25, nobody: 1.75, flyer: 3.56, sunny: 4.13, flat: 4.61, easy: 4.94, back: 6.05, corner: 6.14, nobody2: 7.14,
+    sign: 9.31, search: 10.53, boundary: 11.96, land: 12.46, council: 13.18, zone: 13.74, then: 14.38, services: 14.70, hazards: 15.35,
+    one: 16.44, amber: 16.96, overland: 18.05, present: 19.77, check1: 20.60, checked: 21.54, not: 22.78, check2: 24.32, means: 24.53, its: 25.65,
+    ask: 26.77, order: 28.07, check3: 29.28, back2: 29.49, bid: 30.56, sign2: 31.50, queue2: 31.97, zed: 33.96, end: 34.48
+  };
+  const T = { rew: 2.86, B: 3.31, notes: W.easy - 0.28, C: W.sign - 0.60, X: W.boundary - 0.50, D: W.boundary - 0.25, E: W.then - 0.02,
+              land: W.amber + 0.08, F: W.check2 - 0.15, G: W.check3 - 0.30, end: 35.9 };   // end = last word (34.48) + 1.42 s tail
+  const SV = W.services, HZ = W.hazards;
 
   // camera over the tall still: plate point (x, y) sits at screen (540, 960), scaled by s
   const at = (cx, cyScreen, py, s) => ({ x: cx, y: py + (960 - cyScreen) / s, s });
@@ -269,10 +280,10 @@
   const CAM = [
     [0, HOOK0], [T.rew, HOOK1, 'linear'], [T.B, { x: 540, y: 980, s: 1.0 }, 'in'],
     [T.B + 0.01, HAND], [T.X + 0.2, HAND],
-    [T.X + 0.7, D1, 'inOut'], [T.E, D1],
-    [T.E + 0.55, S1, 'inOut'], [T.E + 1.1, S1], [T.E + 1.55, H1, 'inOut'], [T.land, H1],
+    [T.X + 0.7, D1, 'inOut'], [T.E - 0.05, D1],
+    [SV, S1, 'inOut'], [SV + 0.56, S1], [HZ + 0.31, H1, 'inOut'], [T.land, H1],
     [T.land + 0.38, AMB0, 'swipe'], [T.F, AMB1, 'linear'],
-    [T.F + 0.65, FOOT0, 'inOut'], [T.G, FOOT1, 'linear']
+    [T.F + 0.5, FOOT0, 'inOut'], [T.G, FOOT1, 'linear']
   ];
   const cam = $('#cam'), nav = $('#nav'), plateScene = $('#plateScene');
   Kit.each(t => {
@@ -283,14 +294,15 @@
   });
   Kit.add('#plateScene', 'opacity', [[0, 1], [T.B, 1], [T.B + 0.01, 0, 'hold'], [T.X, 0], [T.X + 0.2, 1, 'inOut']]);
 
-  // ---------------- A · HOOK (payoff first), held 3 s so the whole line reads ----------------
+  // ---------------- A · HOOK: "The bit that costs you / is the bit / nobody walks to." on the words ----------------
   Kit.add('#capA', 'opacity', [[0, 1], [T.rew, 1], [T.rew + 0.22, 0, 'in']]);
   Kit.add('#capA', 'scale', [[0, 1.035], [0.35, 1, 'out']]);
   Kit.add('#capA', 'x', [[T.rew, 0], [T.rew + 0.22, -140, 'in']]);
   Kit.add('#capA', 'blur', [[T.rew, 0], [T.rew + 0.22, 14, 'in']]);
-  Kit.add('#ring1', 'trim', [[0, 0.55], [0.3, 1, 'out']]);
+  [['#capA2', W.is], ['#capA3', W.nobody]].forEach(([s, t]) => { Kit.add(s, 'opacity', [[0, 0], [t, 0], [t + 0.06, 1]]); Kit.add(s, 'scale', [[t, 1.3], [t + 0.14, 1, 'slam']]); });
+  Kit.add('#ring1', 'trim', [[0, 0.55], [0.35, 1, 'out']]);
   Kit.add('#ring1', 'opacity', [[0, 1], [T.B, 1], [T.B + 0.01, 0, 'hold']]);
-  // rewind smear (0.45 s)
+  // rewind smear (0.45 s) after "walks to."
   Kit.add('#cam', 'blur', [[0, 0], [T.rew, 0], [T.rew + 0.3, 16, 'in'], [T.B, 22], [T.B + 0.01, 0, 'hold']]);
   Kit.add('#rew', 'opacity', [[0, 0], [T.rew, 0], [T.rew + 0.08, 1], [T.B, 1], [T.B + 0.01, 0, 'hold']]);
   Kit.add('#rwGlyph', 'scale', [[T.rew, 0.7], [T.rew + 0.16, 1, 'outBack']]);
@@ -298,7 +310,7 @@
   [['#tear1', 0, 700], ['#tear2', 0.06, -520], ['#tear3', 0.11, 380]].forEach(([s, d, dy]) => Kit.add(s, 'y', [[T.rew + d, 0], [T.B, dy]]));
   Kit.add('#flash', 'opacity', [[0, 0], [T.B - 0.05, 0], [T.B, 0.85], [T.B + 0.16, 0, 'out']]);
 
-  // ---------------- B · the open home ----------------
+  // ---------------- B · the open home: the flyer is read while "sunny, flat, easy-care" is said; the checklist ticks, "?" on "corner?" ----------------
   const N = T.notes;
   Kit.scene('#siteScene', T.B, T.C + 0.4);
   Kit.add('#siteBg', 'scale', [[T.B, 1.08], [T.C, 1.0]]);
@@ -310,26 +322,27 @@
   Kit.add('#flyerDim', 'opacity', [[0, 0], [N, 0], [N + 0.4, 0.45, 'out']]);
   Kit.add('#notesB', 'y', [[N, 1300], [N + 0.42, 0, 'swipe']]);
   Kit.show('#notesB', N);
-  [['B1', N + 0.35], ['B2', N + 0.55], ['B3', N + 0.75]].forEach(([k, t]) => {
+  [['B1', W.easy + 0.04], ['B2', W.easy + 0.24], ['B3', W.easy + 0.44]].forEach(([k, t]) => {
     Kit.add('#f' + k, 'scale', [[t, 0], [t + 0.16, 1, 'outBack']]);
     Kit.add('#k' + k, 'trim', [[t + 0.06, 0], [t + 0.22, 1, 'out']]);
   });
-  Kit.pop('#rB4', N + 0.97, { dy: 24 });
-  Kit.add('#qB', 'opacity', [[0, 0], [N + 1.21, 0], [N + 1.25, 1]]);
-  Kit.add('#qB', 'scale', [[N + 1.21, 1.9], [N + 1.37, 1, 'slam']]);
-  Kit.add('#qB', 'rotate', [[N + 1.21, -18], [N + 1.37, 9, 'out']]);
-  Kit.pop('#capB', N + 0.55).out('#capB', T.C - 0.12, 0.12);              // 2.4 s on screen
-  // B → C: swipe up like switching apps
+  Kit.pop('#rB4', W.back - 0.25, { dy: 24 });                               // just before "Back" (6.05)
+  const QB = W.corner - 0.04;                                              // "corner?" (6.14)
+  Kit.add('#qB', 'opacity', [[0, 0], [QB, 0], [QB + 0.04, 1]]);
+  Kit.add('#qB', 'scale', [[QB, 1.9], [QB + 0.16, 1, 'slam']]);
+  Kit.add('#qB', 'rotate', [[QB, -18], [QB + 0.16, 9, 'out']]);
+  Kit.pop('#capB', W.nobody2 + 0.04).out('#capB', T.C - 0.12, 0.12);       // "Nobody walks out past the shed." (7.14–8.68)
+  // B → C: swipe up like switching apps, landing on "Sign up"
   Kit.add('#siteScene', 'y', [[T.C - 0.05, 0], [T.C + 0.3, -1920, 'swipe']]);
 
-  // ---------------- C · live screencast ----------------
+  // ---------------- C · live screencast (2.75 s to the handover: "Sign up at QSME and search your address.") ----------------
   const C = T.C;
   Kit.scene('#shotScene', C - 0.05, T.X + 0.25);
   Kit.add('#shotScene', 'y', [[C - 0.05, 1920], [C + 0.3, 0, 'swipe']]);
   const STAMPS = window.SEARCH_STAMPS;
-  // edit time → capture time. Typing at 2.2x, the loading line slowed, the scroll at real speed; the edit leaves the screencast
+  // edit time → capture time. Typing at ~3.2x, the loading line held, the scroll at real speed; the edit leaves the screencast
   // at capture ≈ 8.1 s, while the map is still navy and before it repaints grey (8.27–9.1 s), and hands over to the still.
-  const CAPKEYS = [[C - 0.05, 1.30], [C + 0.3, 1.75], [C + 2.0, 5.6], [C + 2.6, 7.15], [C + 2.85, 7.52], [C + 3.45, 7.60], [C + 3.85, 8.02], [C + 4.3, 8.2]];
+  const CAPKEYS = [[C - 0.05, 1.30], [C + 0.3, 1.75], [C + 1.5, 5.6], [C + 1.9, 7.15], [C + 2.05, 7.52], [C + 2.35, 7.60], [C + 2.6, 8.02], [C + 2.95, 8.2]];
   const shot = $('#shot');
   // "Free to join." on the live homepage: [y0, y1] per capture frame (frames 0–303; x 33–240), from OCR of clips/search (2026-10-03).
   // From frame 304 it is under the page's fixed nav. #fjC copies the same frame's background from 66 px below over it.
@@ -349,25 +362,25 @@
     } else fjC.style.display = 'none';
   });
   shot.setAttribute('src', 'clips/search/f_00030.jpg');
-  [['#tap1', C + 0.27], ['#tap2', C + 2.67]].forEach(([s, t]) => { Kit.add(s, 'scale', [[t, 0.55], [t + 0.42, 1.25, 'out']]); Kit.add(s, 'opacity', [[0, 0], [t, 0], [t + 0.03, 1], [t + 0.42, 0, 'in']]); });
-  Kit.pop('#capC', C + 0.25).out('#capC', C + 3.2, 0.18);
+  [['#tap1', C + 0.27], ['#tap2', C + 1.95]].forEach(([s, t]) => { Kit.add(s, 'scale', [[t, 0.55], [t + 0.42, 1.25, 'out']]); Kit.add(s, 'opacity', [[0, 0], [t, 0], [t + 0.03, 1], [t + 0.42, 0, 'in']]); });
+  Kit.pop('#capC', C + 0.25).out('#capC', T.X - 0.15, 0.18);              // "Sign up at QSME" (9.31) … "search your address." (10.53–11.48)
   // demo label: lower third while typing, then (hidden during the handover) up into the empty map area for the boundary beat
   Kit.add('#demoW', 'opacity', [[0, 0], [C + 0.7, 0], [C + 0.87, 1], [T.X, 1], [T.X + 0.15, 0], [T.D + 0.45, 0], [T.D + 0.6, 1], [T.E - 0.2, 1], [T.E, 0]]);
   Kit.add('#demoW', 'y', [[C + 0.7, 30], [C + 0.95, 0, 'out'], [T.X + 0.15, 0], [T.X + 0.16, -360, 'hold']]);
 
-  // ---------------- D · boundary, land area, council, zone (2.0 s) ----------------
+  // ---------------- D · boundary, land area, council, zone: each pill on its word ----------------
   const D = T.D;
   Kit.add('#trace', 'trim', [[D + 0.15, 0], [D + 0.8, 1, 'inOut']]);
   Kit.add('#trace', 'opacity', [[0, 0], [D + 0.15, 0], [D + 0.16, 1], [T.E - 0.4, 1], [T.E, 0.0, 'inOut']]);
-  Kit.add('#capD', 'opacity', [[0, 0], [D + 0.29, 0], [D + 0.3, 1], [T.E - 0.1, 1], [T.E + 0.1, 0]]);
-  [['#w1', D + 0.3], ['#w2', D + 0.6], ['#w3', D + 0.9], ['#w4', D + 1.2]].forEach(([s, t]) => { Kit.add(s, 'opacity', [[0, 0], [t, 0], [t + 0.1, 1]]); Kit.add(s, 'scale', [[t, 1.3], [t + 0.16, 1, 'slam']]); });
-  [['#olArea', D + 0.6], ['#olCouncil', D + 0.9], ['#olZone', D + 1.2]].forEach(([s, t]) => {
+  Kit.add('#capD', 'opacity', [[0, 0], [D, 0], [D + 0.01, 1], [T.E - 0.1, 1], [T.E + 0.1, 0]]);
+  [['#w1', W.boundary], ['#w2', W.land], ['#w3', W.council], ['#w4', W.zone]].forEach(([s, t]) => { Kit.add(s, 'opacity', [[0, 0], [t, 0], [t + 0.1, 1]]); Kit.add(s, 'scale', [[t, 1.3], [t + 0.16, 1, 'slam']]); });
+  [['#olArea', W.land + 0.05], ['#olCouncil', W.council + 0.04], ['#olZone', W.zone + 0.04]].forEach(([s, t]) => {
     Kit.add(s, 'opacity', [[0, 0], [t, 0], [t + 0.08, 1], [T.E + 0.2, 1], [T.E + 0.4, 0]]);
   });
 
-  // ---------------- E · every chip, then the amber one (1.85 s) ----------------
-  const Es = T.E;
-  const hops = [[Es + 0.55, 'water'], [Es + 0.68, 'waste'], [Es + 0.81, 'storm'], [Es + 0.94, 'gas'], [Es + 1.07, 'elec'], [Es + 1.4, 'flood'], [Es + 1.52, 'prone'], [Es + 1.64, 'coastal'], [T.land - 0.08, 'overland']];
+  // ---------------- E · every chip ("services" / "hazards"), then the amber one on "amber." ----------------
+  const hops = [[SV + 0.01, 'water'], [SV + 0.14, 'waste'], [SV + 0.27, 'storm'], [SV + 0.40, 'gas'], [SV + 0.53, 'elec'],
+                [HZ + 0.35, 'flood'], [HZ + 0.50, 'prone'], [HZ + 0.65, 'coastal'], [W.amber - 0.22, 'overland']];
   const scanBox = $('#scanBox');
   Kit.each(t => {
     if (t < hops[0][0] - 0.05 || t > T.land + 0.55) { scanBox.style.opacity = 0; return; }
@@ -377,17 +390,18 @@
     const r = cur.map((v, k) => prev[k] + (v - prev[k]) * p);
     scanBox.setAttribute('x', r[0] - 6); scanBox.setAttribute('y', r[1] - 6);
     scanBox.setAttribute('width', r[2] - r[0] + 12); scanBox.setAttribute('height', r[3] - r[1] + 12);
-    const landed = t >= T.land - 0.08;
+    const landed = t >= T.land - 0.08;                                     // turns amber on "amber." (16.96)
     scanBox.setAttribute('stroke', landed ? '#F59E0B' : '#F8FAFC');
     scanBox.style.opacity = landed ? clamp(1 - (t - T.land - 0.25) / 0.25, 0, 1) : 1;
   });
-  Kit.add('#ring2', 'trim', [[T.land + 0.42, 0], [T.land + 0.8, 1, 'out']]);
-  Kit.add('#ring2', 'opacity', [[0, 0], [T.land + 0.42, 0], [T.land + 0.43, 1], [T.F + 0.3, 1], [T.F + 0.6, 0]]);
-  // insight: two lines first, the third 0.5 s later; on screen for 3.85 s
-  Kit.pop('#capE', T.land + 0.45, { dy: 30 }).out('#capE', T.F + 0.1, 0.2);
-  Kit.pop('#capE3', T.land + 0.95, { dy: 24 });
+  const RING = W.present + 0.02;                                           // the red ring redraws on "Present." (19.77)
+  Kit.add('#ring2', 'trim', [[RING, 0], [RING + 0.5, 1, 'out']]);
+  Kit.add('#ring2', 'opacity', [[0, 0], [RING, 0], [RING + 0.01, 1], [T.F + 0.3, 1], [T.F + 0.6, 0]]);
+  // insight on "Checked against the whole section," (21.54), third line on "not just the front lawn." (22.78)
+  Kit.pop('#capE', W.checked + 0.02, { dy: 30 }).out('#capE', T.F - 0.06, 0.18);   // gone by 24.29, before the "Check" slam
+  Kit.pop('#capE3', W.not, { dy: 24 });
 
-  // ---------------- F · the product's own honesty ----------------
+  // ---------------- F · the product's own honesty: '"Check" means check.' (24.32), "It's not a lim." (25.65), "Ask the agent." (26.77), "Order the lim." (28.07) ----------------
   const F = T.F;
   Kit.add('#spotSvg', 'opacity', [[0, 0], [F + 0.55, 0], [F + 0.85, 1, 'out'], [T.G, 1]]);
   const spotP = $('#spotP');
@@ -398,25 +412,27 @@
     const hole = (x0, y0, x1, y1, r) => { const a = S(x0, y0), b = S(x1, y1); return rr(a[0], a[1], b[0], b[1], r * c.s); };
     spotP.setAttribute('d', 'M-10 -10H1090V1930H-10Z' + hole(76, 3090, 538, 3299, 20) + hole(64, 3306, 1016, 3478, 18));
   });
-  Kit.add('#ul1', 'trim', [[F + 0.95, 0], [F + 1.35, 1, 'inOut']]);
-  Kit.add('#ul2', 'trim', [[F + 1.35, 0], [F + 1.6, 1, 'out']]);
-  Kit.pop('#capF', F + 0.8, { dy: 0 }); Kit.add('#capF', 'scale', [[F + 0.8, 1.25], [F + 0.98, 1, 'slam']]);
-  Kit.add('#notesF', 'y', [[F + 1.3, 1100], [F + 1.75, 0, 'swipe']]);
-  Kit.show('#notesF', F + 1.3, T.G + 0.45);
-  Kit.add('#scrP', 'trim', [[F + 1.85, 0], [F + 2.1, 1, 'linear']]);
-  Kit.add('#qF', 'opacity', [[0, 1], [F + 2.15, 1], [F + 2.25, 0]]);
-  Kit.add('#scrF', 'opacity', [[0, 1], [F + 2.15, 1], [F + 2.25, 0]]);
-  Kit.type('#tyF1', F + 2.25, F + 2.75);
-  Kit.add('#rF3', 'opacity', [[0, 0], [F + 2.8, 0], [F + 2.85, 1]]);
-  Kit.type('#tyF2', F + 2.85, F + 3.2);                                   // both answers hold together 1.8 s before the end card
+  Kit.add('#ul1', 'trim', [[W.its + 0.06, 0], [W.its + 0.46, 1, 'inOut']]);
+  Kit.add('#ul2', 'trim', [[W.its + 0.46, 0], [W.its + 0.8, 1, 'out']]);
+  const CF = W.check2 + 0.03;                                              // caption slams in on "Check means" (24.32), after capE has gone
+  Kit.pop('#capF', CF, { dy: 0 }); Kit.add('#capF', 'scale', [[CF, 1.25], [CF + 0.18, 1, 'slam']]);
+  const NF = W.ask - 0.15;                                                 // notes card slides in on "Ask"
+  Kit.add('#notesF', 'y', [[NF, 1100], [NF + 0.45, 0, 'swipe']]);
+  Kit.show('#notesF', NF, T.G + 0.45);
+  Kit.add('#scrP', 'trim', [[NF + 0.25, 0], [NF + 0.5, 1, 'linear']]);
+  Kit.add('#qF', 'opacity', [[0, 1], [NF + 0.55, 1], [NF + 0.62, 0]]);
+  Kit.add('#scrF', 'opacity', [[0, 1], [NF + 0.55, 1], [NF + 0.62, 0]]);
+  Kit.type('#tyF1', NF + 0.6, NF + 1.1);                                   // ": ask the agent." (26.77–27.6)
+  Kit.add('#rF3', 'opacity', [[0, 0], [W.order - 0.03, 0], [W.order + 0.02, 1]]);
+  Kit.type('#tyF2', W.order + 0.02, W.order + 0.42);                       // "Order the LIM." (28.07–28.66)
   Kit.add('#capF', 'opacity', [[T.G + 0.1, 1], [T.G + 0.3, 0]]);
 
   // focus: vignette on the amber chip (A, E); scrims behind captions on the live screencast (C)
   Kit.add('#vig', 'opacity', [[0, 1], [T.rew, 1], [T.rew + 0.2, 0], [T.land + 0.25, 0], [T.land + 0.55, 1, 'out'], [T.F, 1], [T.F + 0.4, 0]]);
-  Kit.add('#scrimTop', 'opacity', [[0, 0], [C + 0.2, 0], [C + 0.4, 1], [C + 3.2, 1], [C + 3.4, 0]]);
+  Kit.add('#scrimTop', 'opacity', [[0, 0], [C + 0.2, 0], [C + 0.4, 1], [T.X - 0.25, 1], [T.X - 0.05, 0]]);
   Kit.add('#scrimBot', 'opacity', [[0, 0], [C + 0.65, 0], [C + 0.85, 1], [T.X + 0.26, 1]]);
 
-  // ---------------- G · end card ----------------
+  // ---------------- G · end card on "Check the back corner before you bid." (29.28); button on "Sign up" (31.50) ----------------
   const G = T.G;
   // logo: wordmark only, cropped before the ® (img is 543.2 px wide: Q starts at x ≈ 68, E and its underline end at 494.5, the ® starts at 500)
   const LOGO = { from: 64, to: 497 }, lw = LOGO.to - LOGO.from;
@@ -425,12 +441,13 @@
   Kit.add('#endScene', 'y', [[G - 0.2, 1920], [G + 0.18, 0, 'swipe']]);
   Kit.add('#eTr', 'trim', [[G + 0.1, 0], [G + 1.6, 1, 'inOut']]);
   Kit.fade('#logo', G + 0.12, G + 0.4).add('#logo', 'scale', [[G + 0.12, 0.92], [G + 0.55, 1, 'out']]);
-  Kit.pop('#eHead', G + 0.28, { dy: 40 });
+  Kit.pop('#eHead', W.check3 + 0.03, { dy: 40 });
   $('#eRing').setAttribute('d', loop(540, 697, 338, 60, -0.03, 0.8));
-  Kit.add('#eRing', 'trim', [[G + 0.85, 0], [G + 1.3, 1, 'out']]);
-  Kit.pop('#eSub', G + 1.05);
-  Kit.pop('#ePillW', G + 1.3);
-  Kit.pop('#eTagW', G + 1.5);
+  Kit.add('#eRing', 'trim', [[W.back2 + 0.02, 0], [W.back2 + 0.42, 1, 'out']]);
+  Kit.pop('#eSub', W.bid - 0.04);
+  Kit.pop('#ePillW', W.sign2 - 0.04);
+  Kit.add('#ePill', 'scale', [[W.sign2 - 0.04, 1], [W.queue2, 1], [W.queue2 + 0.12, 1.06, 'out'], [W.queue2 + 0.3, 1, 'out'], [W.zed, 1], [W.zed + 0.12, 1.06, 'out'], [W.zed + 0.3, 1, 'out']]);
+  Kit.pop('#eTagW', W.sign2 + 0.5);
 
   Kit.ready({ duration: T.end, fonts: ['800 60px Manrope', '400 40px Inter', '500 40px Inter', '600 40px Inter', '700 40px Inter', '400 60px "Permanent Marker"', '500 30px "JetBrains Mono"', '700 30px "JetBrains Mono"', '700 80px "Space Grotesk"'] });
 })();

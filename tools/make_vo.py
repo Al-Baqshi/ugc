@@ -22,7 +22,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MUX = os.path.join(ROOT, "tools", "mux")
 # How the written script is spoken. Tested 2026-10-06 on Arnold (NZ): "Queue Ess Mee" is heard back as "QSME";
 # "Q-S-me" / "Q S me" were not. Scripts keep writing "Q-S-me" (readable); a line can override with "text_tts".
-PRON = [("Q-S-me", "Queue Ess Mee"), ("QSME", "Queue Ess Mee"), ("qsme.build", "Queue Ess Mee dot build"), ("qsme.co.nz", "Queue Ess Mee dot co dot en zed")]
+PRON = [("Q-S-me", "Queue Ess Mee"), ("QSME", "Queue Ess Mee"), ("qsme.build", "Queue Ess Mee dot build"), ("qsme.co.nz", "Queue Ess Mee dot Co dot N Z"), ("dot koh dot en zed", "dot Co dot N Z"), ("dot co dot en zed", "dot Co dot N Z")]
 
 
 def spoken(line, v3=False):

@@ -1,46 +1,39 @@
-# VO script: Kiwi performance, "Our whole contract is a thumbs-up"
+# VO script — "Our whole contract is a thumbs-up" (N09) · audio-first remake 2026-10-06, CTA re-voiced 2026-10-10
 
-**Character:** Mel, an everyday Kiwi woman in her late 30s and the owner in this skit. Mel and Jono (the sparky) are fictional, and so are the job and the thread (the video says "A skit · names made up" from frame 0). She is dry and amused by the thumbs-up, never by Jono or herself: the joke is the emoji. She reads the "contract" like a bored clerk reading out a very short will, and each clause gets flatter and shorter. General NZ accent, never a caricature. No announcer lift, no exclamation marks. The product lines are second-person or neutral tips ("Paste the thread…", "That bit's on you"), never "I use it" and never a result claim, so an AI voice can't read as a customer testimonial.
+**Video:** `outputs/thumbs-up-contract-9x16.mp4` (46.38 s, silent master, burned-in captions) → voiced `outputs/thumbs-up-contract-9x16-with-vo.mp4`.
+**Voice:** Cam S (ElevenLabs `53CG2aO2HU48thT3QnMl`), model `eleven_v3`, stability 0.5. ONE unbroken take, 44.88 s, 118 words, 2.64 words/s, longest silence 0.70 s (after "name.", before the [amused] heat-pump line). Take, alignment and the exact text sent: `outputs/vo-take-cam-v3/`.
+**Why the 2026-10-10 take:** the owner's fix of 2026-10-08 says the CTA is "dot Co dot N Z" ("co" sounds like KO, never C-O). The whole take was regenerated in one request with that ending (never sliced), and every beat of the page was re-timed to the new words. The 2026-10-06 C-O take and attempt 1 are in `outputs/archive/vo-take-cam-v3-attempts/`.
+**Character:** one dry, funny Kiwi bloke telling the whole thing as a story: the thread, the "contract" read like a very short will, the product lines plain and second-person ("that bit's on you"), never "I use it". No caricature, no announcer lift, no exclamation marks. Mel and Jono stay fictional ("A skit · names made up" from frame 0); the joke is the emoji, never the sparky or the owner.
 
-**Model & settings:** `eleven_multilingual_v2` · stability 0.45 · similarity 0.75 · style 0 · speed 1 · speaker boost on
+## The take as spoken (what was sent to ElevenLabs; QSME written "Queue Ess Mee")
 
-**Video:** `outputs/thumbs-up-contract-9x16.mp4` (9:16, 31.64 s silent master with burned-in captions). This is the only cut, so every time below is seconds on that file. Windows were checked against the timing table in `motion/thumbs-up-contract.html` and frames from the master on 2026-10-04.
+```
+[dry] Eighteen thousand dollar rewire, and our entire contract? One thumbs up. Clause one, thumbs up. Two, heat-pump wiring, thumbs up. Three, payment stages, thumbs up. Agreed, never signed. Or, paste the thread into Queue Ess Mee and write it up as a proper agreement. What was said goes in, what wasn't stays a blank, and it never makes up an amount, a date or a name. [amused] The heat pump? That bit's on you. Fill the blanks, send it, and Jonno gets it by email and signs on his phone. Signed, before Monday. Everyone's signed, that one's clear, plus a certificate. Turn the thumbs up into a signature. Sign up at Queue Ess Mee dot Co dot N Z.
+```
 
-**Silent cut:** the MP4 ships silent. Every line is already on screen (captions, the paper, the end card), so it works with the sound off. Lay this VO on after the ElevenLabs upgrade, or use a real Kiwi voice memo.
+STT (2026-10-10, first attempt): every word heard; "Eighteen thousand dollar" → "$18,000", QSME → "QS Me", "Jonno" → "Jono", the CTA → "qsme.co.nz" (koh heard as KO, as wanted). "Jonno" is spelt that way only so the voice rhymes it with "Donna"; the screen says Jono.
 
-**Casting line:** "Clause one: thumbs up. Two: thumbs up. Three: thumbs up. Agreed. Just never signed."
+## Phrases, on the words (start = first word in `outputs/vo-take-cam-v3/words.json`)
 
-**Pronunciation:** QSME = **Q-S-me** (kyoo-ess-mee), never "kiss me", never four spelled-out letters. qsme.co.nz = **"Q-S-me dot co dot en zed"** (spoken in the CTA). "Jono" = JOH-noh. "Sparky" is never spoken.
+| # | Start | Said | On screen (picture re-timed to the words) |
+|---|---|---|---|
+| vo00 | 0.25 | Eighteen thousand dollar rewire, and our entire contract? One thumbs up. | The thread under "A skit · names made up" + "Our entire contract:"; 👍 pulses 0.08 and on "contract?" (2.87); dive on "One" (3.73), full frame + gavel on "thumbs" (4.37) |
+| vo01 | 5.46 | Clause one, thumbs up. Two, heat-pump wiring, thumbs up. Three, payment stages, thumbs up. | Paper 5.41; CLAUSE 1 pops 5.46, 👍 docks 6.31; CLAUSE 2 on "Two," (7.52), slam 9.39, "(unclear)" 9.63; CLAUSE 3 on "Three," (10.55), slam 12.37, "(also unclear)" 12.61 |
+| vo02 | 13.23 | Agreed, never signed. | Caption "Agreed. Never signed." 13.23–15.09; signature line draws 13.18–13.52; whip 15.15 |
+| vo03 | 15.49 | Or, paste the thread into Q-S-me and write it up as a proper agreement. | Bring in a document: caption "Paste the thread into QSME." 16.24; paste 17.24; "Write it up as a proper agreement" ringed 18.52; "Write it up" 19.08; spinner (sped up) |
+| vo04 | 20.21 | What was said goes in, what wasn't stays a blank, | The draft lands 20.17; caption "What was said: in. / What wasn't: [blank]" 20.19; rings on the names + $18,400 21.14; [blank]s highlight 22.60 |
+| vo05 | 23.40 | and it never makes up an amount, a date or a name. | Whip 23.41 to the REAL Knowledge Hub quote; underlines 23.86 / 24.98 / 25.96; whip back 26.74 |
+| vo06 | 27.02 | The heat pump? That bit's on you. | Caption "The heat pump? / That bit's on you." 27.00; Enter 27.74; "Heat-pump wiring: included." typed 27.81–28.44; ring 28.50 |
+| vo07 | 28.98 | Fill the blanks, send it, | Caption "Fill the blanks. Send it." 28.92; five blanks typed 29.16–30.02 (sped up); "Send for signing" 30.24; whip up 30.74 |
+| vo08 | 30.90 | and Jono gets it by email and signs on his phone. | The phone: caption "Gets it by email. / Signs on his phone." 31.04; inbox tapped 31.70; page scrolls, ring on the heat-pump term 32.12; signature drawn 32.60–32.98; tick 33.20; Sign 33.36 |
+| vo09 | 33.50 | Signed, before Monday. | Toast + caption "Signed. / Before Monday." 33.50; whip 35.17 |
+| vo10 | 35.45 | Everyone's signed, that one's clear, | Agreements list: caption "Everyone's signed." 35.47; card flips 36.26; "👍 (clear)" fades in 36.89 |
+| vo11 | 37.87 | plus a certificate. | Certificate slides up 37.81; caption "Plus a certificate." 37.97; whip 38.59 |
+| vo12 | 38.85 | Turn the thumbs up into a signature. | End card: headline 38.83; 👍 slams 39.49; signature stroke 40.23 |
+| vo13 | 41.33 | Sign up at Q-S-me dot Co dot N Z. | [Sign up at qsme.co.nz] pops 41.33; small print 41.49; the real sign-up page scrolls 41.79–43.29; take ends 44.88, page 46.38 |
 
-## Lines
+## Mix and rules
 
-Pace: most lines sit at about 2.5–2.9 words/s; five are marked tight by `tools/vo_status.py` (about 3 words/s, still inside the limit). "Out by" = start + max.
-
-| Start | Max | Line (v2) | v3 alt | On screen | Delivery |
-|---|---|---|---|---|---|
-| 0.10s | 1.85s | **Our whole contract for the rewire.** | [deadpan] Our whole contract for the rewire. | "A skit · names made up" + caption "Our entire contract:" over the thread; the 👍 (Jono's answer) pulses, then the camera dives into it (0.42–1.30), gavel squash 1.30 | Flat, a little proud of how little there is. Light lean on "whole", "rewire" falls. Brisk: out by 1.95. |
-| 2.06s | 1.10s | **Clause one: thumbs up.** | Clause one: thumbs up. | Paper "THE REWIRE CONTRACT — Complete and unabridged."; the thumb lands on "CLAUSE 1 · Full rewire. $18,400." (2.24) | Clerk reading the terms aloud, totally straight. Out by 3.16. |
-| 3.24s | 0.90s | **Two: thumbs up.** | Two: thumbs up. | "CLAUSE 2 · Heat-pump wiring included?" + thumb (3.50); red marker "(unclear)" 3.70–4.00 | Shorter: she's already stopped saying "clause". Out by 4.14. |
-| 4.22s | 0.95s | **Three: thumbs up.** | [sighs] Three: thumbs up. | "CLAUSE 3 · Payment stages?" + thumb (4.48); "(also unclear)" 4.68–5.06 | Lowest and flattest of the three. Out by 5.17, so the signature line draws in silence. |
-| 5.62s | 1.35s | **Agreed. Just never signed.** | Agreed. Just never signed. | Caption "Agreed. Never signed." (5.58–7.12) | The dry turn. "Agreed" on its own, then "just never signed" a shade quieter. Out by 6.97, before the whip (7.06). |
-| 7.40s | 1.85s | **Paste the thread into Q-S-me.** | Paste the thread into Q-S-me. | "Bring in a document" (recreated screen): paste (7.70), "Write it up as a proper agreement" picked and ringed (8.46), "Write it up" (8.76), spinner + "sped up"; caption "Paste the thread / into QSME." (7.12–9.12) | A practical tip to a mate, not a pitch. "Q-S-me" clear. Out by 9.25. |
-| 9.44s | 1.80s | **What was said goes in.** | What was said goes in. | Draft lands (9.14); caption "What we said: in. / What we didn't: [blank]" (9.40–12.00); rings on the names and $18,400 (9.96); five [blanks] highlight 10.26–10.86 | Matter-of-fact, landing "in" with the rings. Out by 11.24. |
-| 12.40s | 2.40s | **No made-up money. No made-up dates.** | No made-up money. No made-up dates. | Whip to the real live capture of the qsme.co.nz Knowledge Hub, held 12.32–15.94: "AI never makes up an amount, a date or a name. Anything it was not given stays a [blank] for you." (underlines 12.74–14.64) | Two short, even halves with a real full stop between. Reading the rule back, not a slogan. Out by 14.80; the quote then holds in quiet. |
-| 16.28s | 1.30s | **That bit's on you.** | That bit's on you. | Whip back; "Heat-pump wiring: included." typed by hand (16.66–17.24), ring held to 18.66; caption "The thumbs-up didn't say. / So you do." (16.24–18.64) | Warm and dry, small smile on "you". Out by 17.58. |
-| 18.76s | 1.45s | **Fill the blanks. Send it.** | Fill the blanks. Send it. | The five blanks typed in by hand, sped up (18.96–19.84), then "Send for signing" clicked (20.12); caption "Fill the blanks. Send." (18.74–20.24) | Brisk, two little steps. Out by 20.21, before the whip up to the phone. |
-| 20.62s | 1.70s | **Jono gets it by email.** | Jono gets it by email. | Jono's phone in the ute (recreated): the e-mail in his inbox, tapped (20.86); the signing page in the phone's browser, ring on "3. Heat-pump wiring: included." (21.42); caption "He signs on his phone." (20.58–22.38) | Light, a touch amused. Out by 22.32, so the finger signature, tick and tap play with SFX only. |
-| 23.10s | 1.20s | **Signed. Before Monday.** | Signed. Before Monday. | "You have signed this" + toast "Signed. Download a copy below and keep it." (23.08); caption "Signed. / Before Monday." | Callback to "see you Monday": "Signed" plain, a beat, then "before Monday" with a quiet, satisfied smile. Out by 24.30. |
-| 24.72s | 1.25s | **Everyone's signed.** | Everyone's signed. | Mel's list flips from "Out for signing" to "Signed" (24.86); caption "Everyone has signed. / [thumbs-up] (clear)" | Short and pleased with itself, not a cheer. Out by 25.97. |
-| 26.22s | 1.10s | **Plus a certificate.** | Plus a certificate. | Certificate of completion slides up (26.02; email, network address, device blurred); caption "Plus a certificate." | Throwaway bonus, almost an aside. Out by 27.32. |
-| 27.62s | 1.10s | **Thumbs-up to signed.** | Thumbs-up to signed. | End card: logo, "Turn the [thumbs-up] / into a signature." with a green signature stroke drawing under it | Easy and conclusive, light lean on "signed", falling. Out by 28.72. |
-| 28.80s | 2.65s | **Sign up at Q-S-me dot co dot en zed.** | Sign up at Q-S-me dot co dot en zed. | Live sign-up page card scrolling from "Get started with QSME / I hire" to "I provide services · Trades & specialists" + green button "Sign up at qsme.co.nz"; full end card held 28.14–31.64 | Plain next step, like telling a mate where to find it. The domain unhurried and easy to type. Never say "free". Out by 31.45. |
-
-**Silent on purpose:** 5.17–5.62 (signature line draws), 6.97–7.40 (whip), 11.24–12.40 (blanks highlight, whip to the live quote), 14.80–16.28 (the quote held to be read, whip back), 17.58–18.76 (typing, ring held), 20.21–20.62 (whip up to the phone), 22.32–23.10 (finger signature, tick and tap: SFX only), 24.30–24.72 (whip to the list), 25.97–26.22 (certificate slides up), 27.32–27.62 (whip to the end card).
-
-**Continuous read (for a casting test or a voice memo):** Our whole contract for the rewire. Clause one: thumbs up. Two: thumbs up. Three: thumbs up. Agreed. Just never signed. Paste the thread into Q-S-me. What was said goes in. No made-up money. No made-up dates. That bit's on you. Fill the blanks. Send it. Jono gets it by email. Signed. Before Monday. Everyone's signed. Plus a certificate. Thumbs-up to signed. Sign up at Q-S-me dot co dot en zed.
-
-**Never in the VO:** "free", "no account", "no sign-up", "without an account", "legally binding", "lawyer-approved", "verified", any time or money saved, any count, "text" or "SMS" for how the link arrives (it's e-mail). If an ElevenLabs voice is used, switch on TikTok's AI-generated content label and Meta's AI label.
-
-## Changelog
-- 2026-10-04: first script, timed against `outputs/thumbs-up-contract-9x16.mp4` (29.8 s). Owner CTA rule (2026-10-03) applied: no "free" or "no account" lines; the CTA was "Sign up at Q-S-me". `python3 tools/vo_status.py`: ok.
-- 2026-10-04 (review pass 2): retimed to the 31.64 s cut. "Clause two" became "Two" so the clause reads fit one clause a second. New line "Fill the blanks. Send it." for the hand-filled blanks and "Send for signing". "Jono gets the link." became "Jono gets it by email." (so nobody reads it as a text message). The payoff is shortened to "Thumbs-up to signed." and the CTA now speaks the domain: "Sign up at Q-S-me dot co dot en zed." `python3 tools/vo_status.py`: ok (five lines marked tight, none too long).
+- Whole take as ONE clip at 0.0 s, gain 1.15, no music bed: `tools/mux outputs/thumbs-up-contract-9x16.mp4 outputs/thumbs-up-contract-9x16-with-vo.mp4 outputs/vo-take-cam-v3/take.m4a@0.0@1.15` (probe: 1 audio track, duration = video).
+- Picture follows audio. If the script changes: regenerate the whole take, STT-check it (`python3 tools/el.py stt`), rebuild `words.json` from `alignment.json`, re-derive every `T` value in `motion/thumbs-up-contract.html`, re-render, re-mux.
+- Never "free", "no account", "no sign-up" or any pricing line (owner CTA rule 2026-10-03). CTA shown `qsme.co.nz`, spoken "Queue Ess Mee dot Co dot N Z" (owner 2026-10-08: never C-O).

@@ -10,7 +10,7 @@ created: 2026-10-02
 calendar_week: 2
 format: short
 kind: kinetic
-length_s: 28.7
+length_s: 41.4
 aspect: "4:5 + 9:16"
 platforms: ["LinkedIn (founder profile + page repost)", "YouTube Shorts (9:16)"]
 video: outputs/day-23-4x5.mp4
@@ -24,6 +24,52 @@ video_9x16: outputs/day-23-9x16.mp4
 **The insight:** The subcontract is the one document on the job that everybody agrees with and nobody has signed. The friction isn't bad faith. It's the print, sign, scan and email loop. In QSME you bring in the subcontract PDF you already use, choose "Sign it as it is", and the subcontractor signs from one link on their phone, in the browser, with nothing to install. The signed copy comes back with every page you sent, page 7 included, plus a certificate page.
 
 **Job:** This is organic week 2. It closes the week's arc (compare → award → sign) on Thursday morning in the UK and the Gulf, when signatures get chased before the weekend. It goes out from the founder's LinkedIn profile, the QSME page reposts it, and the 9:16 cut goes to YouTube Shorts in the same slot. It continues the plasterboard & ceilings package from "Six bids. Six formats." and "The Transposition": the awarded ceilings subcontractor is now on site and unsigned. The subcontractor is never the butt. Junk folders and toner happen to everyone, the on-screen caption blames the scanner for page 7, and the close turns the joke on us ("Still can't fix junk folders.").
+
+## Audio-first remake (2026-10-06) — the current master
+
+**Why:** the owner approved the N01 "Which Dave?" pilot as the standard for every QSME video: continuous speech with a real hook in the first 2 s, no silence over 1 s, ONE unbroken eleven_v3 take (Cam S), and the picture re-timed to the words. This cut applies it to G06 with the design unchanged.
+
+**Hook (0–1.96 s, spoken):** "Day twenty-three of chasing one signature." — on screen: "Subcontract signature:" over the giant mono DAY 23 and the amber pill "Not signed" (frame 0, pulses on "signature."). The counter rewinds 23 → 01 under "Sent it day one".
+
+**The script as spoken (one take, 39.9 s, 95 words, 2.38 words/s, longest silence 0.78 s; one v3 tag):**
+
+```
+Day twenty-three of chasing one signature.
+
+Sent it day one. Twelve pages. Will sign tonight. Went to junk. Out of toner. Signed and scanned. Day twenty-three, the scan lands sideways. Eleven pages.
+
+Scanner skipped page seven. Retention.
+
+Crew's been on site since day two.
+
+[dry] Or. Send your own subcontract PDF through Queue Ess Mee as it is. One link on their phone, nothing to install. The signed copy has every page you sent. Page seven included.
+
+Still can't fix junk folders. No printer needed, though.
+
+Book a thirty-minute demo at Queue Ess Mee dot build.
+```
+
+| Said (start) | Picture (re-timed to the words) | Caption on screen |
+|---|---|---|
+| 0.00 "Day twenty-three of chasing one signature." | giant DAY 23 + pill (pulse 1.3); rewind ◀◀ 2.17–2.66, counter 23 → 01 (2.15–2.95), shrinks into the header | Subcontract signature: / DAY 23 · Not signed |
+| 2.16 "Sent it day one. Twelve pages." | thread card in 2.85; Day 1 attachment pops on "one." (3.18), stamp DAY 1; "Sent" 3.5 | (the thread) |
+| 4.56 "Will sign tonight." | bubble pops on the words, stamp DAY 4, counter 01 → 04 | |
+| 5.82 "Went to junk." | bubble, DAY 9, counter → 09 | |
+| 7.43 "Out of toner." | bubble, DAY 15, counter → 15 | |
+| 8.47 "Signed and scanned." | bubble, DAY 22, counter → 22 | |
+| 10.35 "Day twenty-three, the scan lands sideways. Eleven pages." | Scan_0001.pdf attachment on "Day twenty-three," (10.35), counter → 23; the viewer opens on "the scan" (11.42) and lands under "lands sideways" (11.75); "11 pages" pulses on "Eleven pages" (13.05) | |
+| 14.43 "Scanner skipped page seven. Retention." | red ring on the 6 \| 8 seam under "skipped page" (14.95–15.4); "7?" on "seven" (15.5) | Scanner skipped page 7. (14.43) / Retention. (16.43, red) |
+| 17.84 "Crew's been on site since day two." | the 23-day grid fills under "Crew's been" (17.85–18.45) | On site since Day 2. (18.6) |
+| 20.71 "Or. Send your own subcontract PDF through QSME as it is." | QSME logo + Agreements dialog on "Or." (20.55–20.8); cursor appears at 23.3 (hidden until it moves, so it never sits on the caption) and ticks "Sign it as it is" on "as it is" (24.37); "Send for signing" clicked on "is." (24.95); row "Out for signing" 25.24 | Your own subcontract PDF. (21.95) / Sent as it is. (24.37) |
+| 25.20 "One link on their phone, nothing to install." | phone (in its browser) lands on "link" (25.55–25.85); tick 25.95, name 26.15–26.65, signature 26.72–27.28, Sign 27.4, "Signed." 27.55 | One link. (25.62) / On their phone. (26.23) / Nothing to install. (26.85) |
+| 28.08 "The signed copy has every page you sent. Page seven included." | row flips to "Everyone has signed" on "signed" (28.61); certificate slides in on "copy has" (29.1); page strip 29.8–30.1; green ring on 7 on "Page seven" (31.0) | Every page you sent. (29.49) / Page 7 included. (30.98) |
+| 32.45 "Still can't fix junk folders." | type only | Still can't fix junk folders. (32.45) |
+| 34.59 "No printer needed, though." | type only | No printer needed, though. (34.59, green) |
+| 36.06 "Book a thirty-minute demo at QSME dot build." | end card: logo 35.93, headline 36.0, pill pops on "Book" (36.08), qsme.build 36.0–41.4 (5.4 s) | Book a 30-minute demo · qsme.build |
+
+**Files:** masters `outputs/day-23-4x5.mp4` (41.4 s, silent, QA passed on safe 60,60,1020,1290) and `outputs/day-23-9x16.mp4` (41.4 s, silent, QA passed on safe 65,300,1015,1250); the 28.7 s masters are archived as `outputs/archive/day-23-4x5-v1.mp4` and `outputs/archive/day-23-9x16-v1.mp4`. Voiced: `outputs/day-23-4x5-with-vo.mp4` and `outputs/day-23-9x16-with-vo.mp4` (the take at 0.0 s, gain 1.15, no bed, one audio track each). Take + alignment + word timings + the exact text sent in `outputs/vo-take-cam-v3/` (attempts 1 and 2, 44.8 s and 53.8 s, kept as `take-attempt1/2.mp3`). Contract `vo-script.json` / `vo-script.md`. Captions changed to phrases lifted from the narration: "Scanner skipped page 7." / "Retention." (was "The scanner skipped one page." / "Page 7: retention.") and "On site since Day 2." (was "They've been on site since Day 2."). Thumbnails: `day-23-4x5-thumb.png` (hook frame, unchanged) and `-thumb-alt.png` (re-exported 2026-10-10 from the new timeline at 16.6 s). Studio previews `day-23-*.preview.mp4` and `day-23-*-with-vo.preview.mp4` were refreshed on 2026-10-10 from the 41.4 s masters.
+
+**What's below:** the Production status, Beat-by-beat script and VO rows describe the 2026-10-03 silent 28.7 s cut (12 stitched VO lines). They are kept as the design record; the timeline above is the one that ships. The publish condition (Session A real screens, the ® question) still applies.
 
 ## Publish condition (read first)
 
@@ -39,7 +85,7 @@ video_9x16: outputs/day-23-9x16.mp4
 |---|---|---|
 | 4:5 video, 28.7s, 1080×1350, silent-first with burned-in captions | ✅ Re-rendered 2026-10-03 for the owner CTA rule ("No account." → "On their phone." at 17.45), QA passed on 60,60,1020,1290. Before that: re-rendered with the motion kit. QA passed on the 4:5 safe box 60,60,1020,1290. I read the contact sheet and pulled frames from the encoded MP4 (see Discussion history). 🟥 Publish blocked on Session A (see above) | `outputs/day-23-4x5.mp4` · `outputs/day-23-4x5-frames.png` |
 | 9:16 YouTube Shorts video, 28.7s, 1080×1920 | ✅ Re-rendered 2026-10-03 for the owner CTA rule (same caption change), QA passed on 65,300,1015,1250. Before that: rendered. It's a re-layout, not a crop, and QA passed on the 9:16 safe box 65,300,1015,1250. It shares the 4:5 timeline exactly, so the VO stem and the owner's recordings fit both. 🟥 Same publish condition | `outputs/day-23-9x16.mp4` · `outputs/day-23-9x16-frames.png` |
-| LinkedIn custom thumbnail | ✅ Re-rendered: the hook frame ("Subcontract signature: DAY 23 · Not signed", pill now on frame 0), plus an alternative on the scan ("The scanner skipped one page. / Page 7: retention.") | `outputs/day-23-4x5-thumb.png` · `outputs/day-23-4x5-thumb-alt.png` |
+| LinkedIn custom thumbnail | ✅ Re-rendered: the hook frame ("Subcontract signature: DAY 23 · Not signed", pill now on frame 0), plus an alternative on the scan, re-exported 2026-10-10 from the remade timeline at 16.6 s ("Scanner skipped page 7. / Retention." with the red 6 | 8 ring; the old one is in `outputs/archive/day-23-4x5-thumb-alt-v1.png`) | `outputs/day-23-4x5-thumb.png` · `outputs/day-23-4x5-thumb-alt.png` |
 | Motion source | ✅ One timeline for both cuts: `motion/day-23.js` (markup + timeline), `motion/day-23.css` (4:5 styles plus 9:16 overrides), and two thin pages, `motion/day-23.html` (body.build r4x5) and `motion/day-23-9x16.html` (body.build r9x16) | motion/ |
 | Footage | ✅ QSME b-roll `assets/qsme/broll/stage-4-exterior.v1.mp4` (0.4–3.6s, no people in frame), extracted to `motion/clips/site`. It sits behind the phone (16.7–19.5) with a lighter blur (9px), framed on the clad wall and exposed side framing, so it now reads as a building site. Every product screen is a labelled recreation until Session A | `motion/clips/site/` |
 | VO | 🟡 A timed Kiwi QS script is ready: 12 lines, 65 words, `vo_status.py` ok (2026-10-03: line 08 is "One link. On their phone. Nothing to install." and the CTA is "Book a thirty-minute demo at Q-S-me dot build."). Generate it after the ElevenLabs upgrade with the same QS voice as Six bids and Column H. One stem fits both cuts | `vo-script.md` · `vo-script.json` |
@@ -289,3 +335,5 @@ Once Session A and the phone shot are in, the organic cut already carries the re
     - `python3 tools/vo_status.py` reports this project ok (tight-but-legal notes only).
   - **Status:** re-cut, awaiting approval and Session A.
 - 2026-10-03: owner CTA rule — removed free/no-sign-up, CTA now "Book a 30-minute demo at qsme.build" (VO: "Book a thirty-minute demo at Q-S-me dot build."). The grep for free/sign-up/pricing lines found no "free" or pricing copy, but the signer beat said "No account." (caption 17.45, VO line 08, LinkedIn post + page repost + YouTube description, and a quoted platform line "No account is needed to sign…"), which reads as the banned "no login / without an account" family. Changed to "One link. / On their phone. / Nothing to install." (caption wraps to two lines, so "Nothing to install." moved down: 4:5 top 540 → 620, 9:16 664 → 744), dropped the quote, standardised every caption CTA to "Book a 30-minute demo at qsme.build", and swapped the music note's "royalty-free" for "stock library track licensed for…". VO: line 08 text, and line 12 is now "Book a thirty-minute demo at Q-S-me dot build." (start 25.3, max 2.6; `vo_status.py` ok). Re-rendered both cuts (4:5 safe 60,60,1020,1290 and 9:16 safe 65,300,1015,1250; QA ok) and their previews; thumbnails (1.0s hook, 10.0s scan) don't show the changed beat, so they were left as they were. No deploy, no paid API.
+- 2026-10-06: audio-first remake to the owner-approved N01 standard. Script rewritten as continuous speech with the spoken hook "Day twenty-three of chasing one signature.", the six replies read as the thread fills, the twist as a plain fact ("the scan lands sideways. Eleven pages. Scanner skipped page seven. Retention."), the product payoff said in words ("Send your own subcontract PDF through QSME as it is. One link on their phone, nothing to install. The signed copy has every page you sent. Page seven included."), the close and the Global CTA unchanged. Cam S on eleven_v3, ONE unbroken with-timestamps take (3 attempts: 44.8 s and 53.8 s read the "Day X." list too slowly; the kept take is 39.9 s, 95 words, 2.38 words/s, longest silence 0.78 s, STT clean). Every beat in `motion/day-23.js` re-derived from the alignment, both pages extended 28.7 → 41.4 s, captions re-lifted from the narration, design unchanged. Both cuts re-rendered (QA ok on both safe boxes), contact sheets read and frames spot-checked at the word moments; v1 masters archived; take laid onto both masters with `tools/mux` (gain 1.15, no bed, one audio track each). Pace is below the 2.6–2.9 words/s target because Cam S on v3 reads this list structure slowly; the gap rule holds. ElevenLabs use: 3 × 567–656 chars. No deploy, no git.
+- 2026-10-10: review fixes, no new voice. The Agreements cursor sat on the caption "Your own subcontract PDF." from 20.75 to 23.3, so it now stays hidden until 23.15 and starts inside the dialog (measured from the layout, so both cuts). Both cuts were re-rendered (QA ok) and re-muxed with the same take (0.0 s, 1.15, one audio track, 41.4 s). Frames were checked at 22.1–25.0. The Studio previews were refreshed from the 41.4 s masters, including the -with-vo previews. The alt thumbnail was re-exported at 16.6 s with the new captions; the old one is archived. The longest silence is now recorded as 0.78 s (waveform, 'Or.' → 'Send'; the 0.87 s alignment figure included the [dry] tag). Pace stays 2.38 words/s: all 3 attempts are used, so this take is accepted unless the owner flags the pace.

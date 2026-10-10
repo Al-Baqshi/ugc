@@ -13,12 +13,21 @@
    no longer give the answer away; the add-a-bid detour is 3.6 s with readable text; Duration/Status are left out of the
    table so no column is sliced; the flip is a punch-in on Bidder + Excl. GST with the toggle in frame and the "Lowest"
    tag HOPPING (rows stay put: only the tag move is confirmed live); Him's punchline is a 2 s cut back to the phone on
-   the bench ("= $8,510"); the breakdown frames Item + Line total and ends on the Total; the end card builds in 1.2 s. */
+   the bench ("= $8,510"); the breakdown frames Item + Line total and ends on the Total; the end card builds in 1.2 s.
+
+   AUDIO-FIRST REMAKE 2026-10-06 (owner feedback on N01: no gaps, no breath cuts, a real hook, continuous speech): ONE voice
+   (Cam S, eleven_v3) tells it as the partner who asked, playing both the explainer and the self-own. The take
+   (outputs/vo-take-cam-v3/take.mp3, one unbroken request laid at 0.0) is the clock; every beat below sits on its
+   word in alignment.json and the captions are phrases lifted from the narration. Design unchanged: the bench, the cups,
+   the illustrative app, the callback, the real sign-up still.
+   CTA PRONUNCIATION FIX 2026-10-10 (owner rule 2026-10-08: "dot koh dot en zed", co said like KO, never spelled C-O): the
+   whole take was regenerated (38.00 s, attempt 4 overall; attempt 3 kept as *-attempt3) and EVERY timing below was
+   re-derived from the new alignment.json (old word time → new word time, piecewise). The page runs 39.4 s (take + 1.4 s). */
 (function () {
 'use strict';
 const R9 = document.body.classList.contains('r9x16');
 const H = R9 ? 1920 : 1350, SY = R9 ? 300 : 200;
-const DUR = 31.6;
+const DUR = 39.4;                 // take ends 38.00 + 1.4 s tail
 
 /* ---------- GST maths + money format (15%, as the app does it) ---------- */
 const cents = v => Math.round(v * 100) / 100;
@@ -252,9 +261,9 @@ document.getElementById('root').innerHTML = `
       <div class="shadow" style="left:405px;top:790px;width:140px"></div>
       <div class="ball" id="ball" style="left:419px;top:690px">$</div>
       ${cup('a', '$8,298', 'incl. GST')}${cup('b', '$7,400', '+ GST')}${cup('c', '$7,900', 'no GST')}
-      <div class="tag" id="tag1" style="top:868px">looks cheapest…</div>
-      <div class="tag" id="tag2" style="top:868px">…or this one?</div>
-      <div class="tag" id="tag3" style="top:868px">…or this?!</div>
+      <div class="tag" id="tag1" style="top:868px">Looks like this one…</div>
+      <div class="tag" id="tag2" style="top:868px">…or this one,</div>
+      <div class="tag" id="tag3" style="top:868px">…or this.</div>
       <div class="cap" id="sh-cap" style="top:40px"><span>Depends how you read them.</span></div>
     </div></div></div>
 
@@ -270,16 +279,17 @@ document.getElementById('root').innerHTML = `
       <div class="win" id="win"><div class="chrome"><div class="dots"><i></i><i></i><i></i></div><span class="demo">Demo bids</span><span class="illustrative">Illustrative — swap for real QSME screen (demo data)</span></div>
         <div class="vp" id="vp" data-qa-ignore><div id="cam">${appHTML()}</div><div class="efade l" id="ef-l"></div><div class="efade r" id="ef-r"></div></div></div>
       <div class="cap" id="c1" style="top:22px"><span>The emailed one goes in too.</span></div>
-      <div class="cap" id="c2" style="top:22px"><span>After I've checked it.</span></div>
-      <div class="cap" id="c3a" style="top:22px"><span><b style="font-weight:800">Bold</b> = what they wrote.</span></div>
-      <div class="cap" id="c3b" style="top:104px"><span><span class="a">“calc.”</span> = worked out at 15%.</span></div>
+      <div class="cap" id="c2" style="top:22px"><span>Once I've checked it.</span></div>
+      <div class="cap" id="c0" style="top:22px"><span>One table.</span></div>
+      <div class="cap" id="c3a" style="top:22px"><span><b style="font-weight:800">Bold's</b> what they wrote.</span></div>
+      <div class="cap" id="c3b" style="top:104px"><span><span class="a">Grey's</span> the maths.</span></div>
       <div class="cap" id="c4" style="top:22px"><span>Excl. GST: Steamline's lowest.</span></div>
-      <div class="bub tr" id="b1" style="top:30px"><small>Him</small>Hang on. It moved.</div>
+      <div class="bub tr" id="b1" style="top:30px"><small>Him</small>Hang on, it moved.</div>
       <div class="cap" id="c5a" style="top:22px"><span>Incl. GST: Trev's lowest.</span></div>
-      <div class="cap" id="c5b" style="top:104px"><span>We pay incl. GST.</span></div>
+      <div class="cap" id="c5b" style="top:104px"><span>That's what we pay.</span></div>
       <div class="cap" id="c6a" style="top:22px"><span>$7,400 + GST = $8,510.</span></div>
       <div class="cap" id="c6b" style="top:104px"><span><span class="r">Never the cheapest.</span></span></div>
-      <div class="cap" id="c7" style="top:22px"><span>Open one: see what it covers.</span></div>
+      <div class="cap" id="c7" style="top:22px"><span>Open one, see what it covers.</span></div>
     </div>
   </div>
 
@@ -315,123 +325,138 @@ document.getElementById('root').innerHTML = `
 `;
 
 /* =====================================================================================================
-   TIMELINE (seconds). Hook 0–2.95 · shuffle 2.95–6.55 · add a bid 6.55–10.2 · bold/calc 10.2–13.3 ·
-   Excl → Incl flip 13.3–19.6 · never the cheapest 19.6–22.4 · callback 22.4–24.55 · own lines 24.55–26.75 ·
-   end card 26.75–31.6
+   TIMELINE (seconds). AUDIO-FIRST, re-timed 2026-10-10 to the Cam S eleven_v3 take (outputs/vo-take-cam-v3/take.mp3,
+   38.00 s, ONE unbroken request laid at 0.0; CTA "dot koh dot en zed") — every beat sits on its word in alignment.json.
+   Hook 0–2.5 ("Which one's cheapest?" 0.0, "Trick question." 1.46) · shuffle 2.53–7.54 (lifts on "seventy-four
+   hundred" 3.32, "or this one" 4.59, "or this" 5.63; "Depends how you read them." 6.24) · add a bid 7.54–10.7
+   ("The emailed one goes in too," 7.74, "once I've checked it." 9.50: tick 10.24, Add to the bids 10.50) ·
+   "One table:" 10.74 · bold/grey 12.19 / 13.33 · "Excluding GST, Steamline's lowest." 14.77 · "Flip it" 17.70 click,
+   tag hops 17.75 · "hang on, it moved." 18.37 · "Trev." 19.58 · "That's what we pay." 20.37 · "Seventy-four hundred
+   plus GST is eighty-five ten." 21.86 · "Never the cheapest." 25.47 · callback 26.65–28.35 ("I'd have picked that one."
+   26.95) · "Open one, see what it covers." 28.38 · end card 30.15 ("QSME doesn't pick the winner." 30.20, "It stops GST
+   picking it for you." 32.21, "Sign up at…" 34.51; pill pulses on "koh" 36.32 and "zed" 37.52) · page ends 39.4
+   (take 38.00 + 1.4 s tail)
    ===================================================================================================== */
 const K = Kit;
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 
-/* ---- S1 hook ---- */
-K.scene('#s1', 0, 2.99);
-K.add('#s1z', 'scale', [[0, 1.0], [2.95, 1.03, 'out']]);
+/* ---- S1 hook: "Which one's cheapest?" (0.0–1.36) · "Trick question." (1.43–2.48) ---- */
+const S1_OUT = 2.47;                               // hard cut under "Looks like" (2.57)
+K.scene('#s1', 0, S1_OUT + 0.16);
+K.add('#s1z', 'scale', [[0, 1.0], [S1_OUT, 1.03, 'out']]);
 K.add('#p-pdf', 'rotate', [[0, -6]]).add('#p-pdf', 'scale', [[0, 0.95], [0.12, 0.9, 'slam']]);
 K.add('#p-phone', 'opacity', [[0.18, 0], [0.22, 1]]).add('#p-phone', 'rotate', [[0.18, 13], [0.32, 6, 'slam']]).add('#p-phone', 'scale', [[0.18, 1.1], [0.32, 0.9, 'slam']]);
-K.add('#p-note', 'opacity', [[0.38, 0], [0.42, 1]]).add('#p-note', 'rotate', [[0.38, -10], [0.52, -3, 'slam']]).add('#p-note', 'scale', [[0.38, 1.15], [0.52, 0.95, 'slam']]);
-K.add('#h-l2', 'scale', [[0, 1.06], [0.14, 1, 'slam']]);   // on screen from frame 1 (autoplay + thumbnail)
-K.add('#mk7400p', 'trim', [[0.95, 0], [1.3, 1, 'out']]);
-K.add('#qm', 'opacity', [[1.32, 0], [1.36, 1]]).add('#qm', 'scale', [[1.32, 1.6], [1.46, 1, 'slam']]).add('#qm', 'rotate', [[1.32, -18], [1.46, 10, 'out']]);
-K.out('#h-l1', 1.84, 0.1);                       // "3 quotes. Same bathroom." makes way …
-K.pop('#h-trick', 1.9, { dy: 18 });              // … for "…Trick question." in the same spot (Trev's note stays clear)
-K.add('#s1', 'x', [[2.83, 0], [2.97, -460, 'in']]).add('#s1', 'blur', [[2.83, 0], [2.97, 22, 'in']]);
+K.add('#p-note', 'opacity', [[0.38, 0], [0.42, 1]]).add('#p-note', 'rotate', [[0.38, -10], [0.53, -3, 'slam']]).add('#p-note', 'scale', [[0.38, 1.15], [0.53, 0.95, 'slam']]);
+K.add('#h-l2', 'scale', [[0, 1.06], [0.14, 1, 'slam']]);   // "Which one's cheapest?" on screen from frame 1, said at 0.0
+K.add('#mk7400p', 'trim', [[0.87, 0], [1.23, 1, 'out']]);   // the loop lands under "cheapest?" (0.46–1.40)
+K.add('#qm', 'opacity', [[1.28, 0], [1.32, 1]]).add('#qm', 'scale', [[1.28, 1.6], [1.42, 1, 'slam']]).add('#qm', 'rotate', [[1.28, -18], [1.42, 10, 'out']]);
+K.out('#h-l1', 1.40, 0.1);                       // "3 quotes. Same bathroom." makes way …
+K.pop('#h-trick', 1.46, { dy: 18 });             // … for "…Trick question." on the word (1.46)
+K.add('#s1', 'x', [[S1_OUT, 0], [S1_OUT + 0.14, -460, 'in']]).add('#s1', 'blur', [[S1_OUT, 0], [S1_OUT + 0.14, 22, 'in']]);
 
-/* ---- S2 the shuffle ---- */
-const S2_OUT = 6.5;
-K.scene('#s2', 2.93, S2_OUT + 0.17);
-K.add('#s2', 'x', [[2.93, 420], [3.08, 0, 'out']]).add('#s2', 'blur', [[2.93, 22], [3.08, 0, 'out']]);
-K.add('#s2z', 'scale', [[2.93, 1.0], [S2_OUT, 1.03, 'linear']]);
+/* ---- S2 the shuffle: "Looks like the seventy-four hundred, or this one, or this. Depends how you read them." ---- */
+const S2_IN = 2.53, S2_OUT = 7.47;                 // "them." ends 7.44; "The emailed one" starts 7.74
+K.scene('#s2', S2_IN, S2_OUT + 0.17);
+K.add('#s2', 'x', [[S2_IN, 420], [S2_IN + 0.15, 0, 'out']]).add('#s2', 'blur', [[S2_IN, 22], [S2_IN + 0.15, 0, 'out']]);
+K.add('#s2z', 'scale', [[S2_IN, 1.0], [S2_OUT, 1.03, 'linear']]);
 const SLOT = [55, 360, 665];             // cup left edges (stage px) for slots 0,1,2 (the ball sits under slot 1)
 const CUPTOP = 546;
 ['a', 'b', 'c'].forEach((id, i) => { const n = document.getElementById('cw-' + id); n.style.left = SLOT[i] + 'px'; n.style.top = CUPTOP + 'px'; });
-[['a', 3.0], ['b', 3.05], ['c', 3.1]].forEach(([id, t]) => {
+[['a', 2.59], ['b', 2.63], ['c', 2.67]].forEach(([id, t]) => {
   K.add('#cup-' + id, 'y', [[t, -560], [t + 0.16, 0, 'slam']]);
   K.add('#cup-' + id, 'scaleY', [[t + 0.16, 0.9], [t + 0.26, 1, 'out']]);
 });
-// lifts over the middle slot: b ($7,400 + GST) at 3.32, a ($8,298 incl.) at 4.52, c ($7,900 no GST) at 5.66.
-// The cup tips back as it comes up, so the ball reads as just uncovered under its rim.
+// lifts over the middle slot, on the words: b ($7,400 + GST) on "seventy-four" (3.32), a ($8,298 incl.) on "or this one"
+// (4.59), c ($7,900 no GST) on "or this" (5.63). The cup tips back as it comes up, so the ball reads as just uncovered.
 const LIFT = -168, TILT = -12;
 const lift = (id, up, down) => {
   K.add('#cup-' + id, 'y', [[up, 0], [up + 0.18, LIFT, 'out']].concat(down ? [[down, LIFT], [down + 0.14, 0, 'in']] : []));
   K.add('#cup-' + id, 'rotate', [[up, 0], [up + 0.18, TILT, 'out']].concat(down ? [[down, TILT], [down + 0.14, 0, 'in']] : []));
 };
-lift('b', 3.32, 3.84); lift('a', 4.52, 5.02); lift('c', 5.66, null);
+lift('b', 3.27, 4.02); lift('a', 4.58, 5.07); lift('c', 5.64, null);
 const D = SLOT[1] - SLOT[0];
-K.add('#cw-a', 'x', [[4.02, 0], [4.40, D, 'inOut'], [5.18, D], [5.56, 2 * D, 'inOut']]);
-K.add('#cw-a', 'y', [[4.02, 0], [4.21, -70, 'out'], [4.40, 0, 'in'], [5.18, 0], [5.37, 18, 'out'], [5.56, 0, 'in']]);
-K.add('#cw-a', 'scale', [[4.02, 1], [4.21, 1.07, 'out'], [4.40, 1, 'in'], [5.18, 1], [5.37, 0.94, 'out'], [5.56, 1, 'in']]);
-K.add('#cw-b', 'x', [[4.02, 0], [4.40, -D, 'inOut']]);
-K.add('#cw-b', 'y', [[4.02, 0], [4.21, 18, 'out'], [4.40, 0, 'in']]);
-K.add('#cw-b', 'scale', [[4.02, 1], [4.21, 0.94, 'out'], [4.40, 1, 'in']]);
-K.add('#cw-c', 'x', [[5.18, 0], [5.56, -D, 'inOut']]);
-K.add('#cw-c', 'y', [[5.18, 0], [5.37, -70, 'out'], [5.56, 0, 'in']]);
-K.add('#cw-c', 'scale', [[5.18, 1], [5.37, 1.07, 'out'], [5.56, 1, 'in']]);
+const SW1 = 4.18, SW2 = 5.28;            // the two swaps (a↔b after the first lift, a↔c after the second)
+K.add('#cw-a', 'x', [[SW1, 0], [SW1 + 0.38, D, 'inOut'], [SW2, D], [SW2 + 0.26, 2 * D, 'inOut']]);
+K.add('#cw-a', 'y', [[SW1, 0], [SW1 + 0.19, -70, 'out'], [SW1 + 0.38, 0, 'in'], [SW2, 0], [SW2 + 0.13, 18, 'out'], [SW2 + 0.26, 0, 'in']]);
+K.add('#cw-a', 'scale', [[SW1, 1], [SW1 + 0.19, 1.07, 'out'], [SW1 + 0.38, 1, 'in'], [SW2, 1], [SW2 + 0.13, 0.94, 'out'], [SW2 + 0.26, 1, 'in']]);
+K.add('#cw-b', 'x', [[SW1, 0], [SW1 + 0.38, -D, 'inOut']]);
+K.add('#cw-b', 'y', [[SW1, 0], [SW1 + 0.19, 18, 'out'], [SW1 + 0.38, 0, 'in']]);
+K.add('#cw-b', 'scale', [[SW1, 1], [SW1 + 0.19, 0.94, 'out'], [SW1 + 0.38, 1, 'in']]);
+K.add('#cw-c', 'x', [[SW2, 0], [SW2 + 0.26, -D, 'inOut']]);
+K.add('#cw-c', 'y', [[SW2, 0], [SW2 + 0.13, -70, 'out'], [SW2 + 0.26, 0, 'in']]);
+K.add('#cw-c', 'scale', [[SW2, 1], [SW2 + 0.13, 1.07, 'out'], [SW2 + 0.26, 1, 'in']]);
 K.each(t => {   // who is in front during a swap
   const z = { a: 2, b: 1, c: 1 };
-  if (t >= 5.1) { z.a = 1; z.c = 3; }
+  if (t >= SW2 - 0.08) { z.a = 1; z.c = 3; }
   for (const id in z) document.getElementById('cw-' + id).style.zIndex = z[id];
 });
-// the tags only ask: the answer is saved for the app
-K.pop('#tag1', 3.42, { dy: 16 }).out('#tag1', 3.84, 0.12);
-K.pop('#tag2', 4.62, { dy: 16 }).out('#tag2', 5.0, 0.12);
-K.pop('#tag3', 5.76, { dy: 16 });
-K.pop('#sh-cap', 3.36, { dy: 24 });
+// the tags are the narration: "Looks like this one…" / "…or this one," / "…or this." (the answer is saved for the app)
+K.pop('#tag1', 3.32, { dy: 16 }).out('#tag1', 4.04, 0.12);
+K.pop('#tag2', 4.61, { dy: 16 }).out('#tag2', 5.10, 0.12);
+K.pop('#tag3', 5.66, { dy: 16 });
+K.pop('#sh-cap', 6.24, { dy: 24 });              // "Depends how you read them." on the words (6.24–7.44)
 K.add('#s2', 'opacity', [[S2_OUT, 1], [S2_OUT + 0.15, 0, 'in']]);
 K.add('#s2z', 'x', [[S2_OUT, 0], [S2_OUT + 0.15, -360, 'in']]);
 
 /* ---- S3 the app ---- */
-const S3_IN = 6.54, S3_OUT = 26.72;
+const S3_IN = 7.54, S3_OUT = 30.15;                 // "The emailed one" 7.74 … "covers." ends 30.08; "Queue Ess Mee" 30.20
 K.add('#s3', 'opacity', [[S3_IN, 0], [S3_IN + 0.02, 1], [S3_OUT + 0.02, 1], [S3_OUT + 0.14, 0, 'in']]);
 K.add('#win', 'x', [[S3_IN, 420], [S3_IN + 0.18, 0, 'out'], [S3_OUT - 0.04, 0], [S3_OUT + 0.12, -460, 'in']]);
 K.add('#win', 'blur', [[S3_IN, 18], [S3_IN + 0.18, 0, 'out'], [S3_OUT - 0.04, 0], [S3_OUT + 0.12, 18, 'in']]);
 
-// captions (Mel = white, him = green bubbles)
+// captions = phrases from the narration, each on its first word (white) / the self-own as green bubbles
 const capIn = (id, t0, t1) => { K.pop(id, t0, { dy: 22 }); K.out(id, t1, 0.12); };
 const bubIn = (id, t0, t1) => { K.add(id, 'opacity', [[t0, 0], [t0 + 0.06, 1], [t1, 1], [t1 + 0.12, 0]]).add(id, 'scale', [[t0, 0.6], [t0 + 0.18, 1, 'outBack']]); };
-capIn('#c1', 6.62, 8.36); capIn('#c2', 8.46, 9.98);
-capIn('#c3a', 10.22, 13.1); capIn('#c3b', 11.4, 13.1);
-capIn('#c4', 13.32, 14.8);                         // gone before the toggle click (15.0)
-bubIn('#b1', 15.32, 16.72);
-capIn('#c5a', 16.82, 19.48); capIn('#c5b', 17.95, 19.48);
-capIn('#c6a', 19.66, 22.4); capIn('#c6b', 20.7, 22.4);
-capIn('#c7', 24.62, 26.6);
+capIn('#c1', 7.74, 9.40);                          // "The emailed one goes in too," 7.74–9.44
+capIn('#c2', 9.50, 10.64);                         // "once I've checked it." 9.50–10.56
+capIn('#c0', 10.74, 12.08);                        // "One table:" 10.74–12.16
+capIn('#c3a', 12.19, 14.61); capIn('#c3b', 13.32, 14.61);   // "bold's what they wrote," 12.19 · "grey's the maths." 13.32
+capIn('#c4', 14.78, 17.25);                        // "Excluding GST, Steamline's lowest." 14.78–17.20; gone before the click (17.70)
+bubIn('#b1', 18.36, 19.47);                        // "hang on, it moved." 18.36–19.44
+capIn('#c5a', 19.59, 21.76); capIn('#c5b', 20.37, 21.76);   // "Trev." 19.59 · "That's what we pay." 20.37–21.52
+capIn('#c6a', 21.87, 26.58); capIn('#c6b', 25.47, 26.58);   // "Seventy-four hundred plus GST is eighty-five ten." 21.87 · "Never the cheapest." 25.47
+capIn('#c7', 28.38, 30.05);                        // "Open one, see what it covers." 28.38–30.08
 
-// dialog steps: drop (0.8 s) → reading, sped up (0.5 s) → the draft beside the original → tick → added
-K.add('#st-drop', 'opacity', [[7.28, 1], [7.34, 0]]);
-K.add('#st-work', 'opacity', [[0, 0], [7.32, 0], [7.38, 1], [7.82, 1], [7.88, 0]]);
-K.add('#st-rev', 'opacity', [[0, 0], [7.84, 0], [7.95, 1, 'out']]);
-K.add('#dsc1', 'opacity', [[7.84, 1], [7.85, 0]]); K.add('#dsc2', 'opacity', [[0, 0], [7.84, 0], [7.85, 1]]);
-K.add('#spin', 'rotate', [[7.32, 0], [7.88, 420]]);
-K.add('#sped', 'opacity', [[0, 0], [7.32, 0], [7.38, 1], [7.82, 1], [7.88, 0]]);
-K.add('#zonehot', 'opacity', [[0, 0], [6.98, 0], [7.06, 1], [7.26, 1], [7.34, 0]]);
-K.add('#file', 'opacity', [[0, 0], [6.64, 0], [6.7, 1], [7.2, 1], [7.32, 0]]).add('#file', 'scale', [[7.18, 1], [7.32, 0.8, 'in']]);
-const TICK = 9.58, SAVE = 9.8;
+// dialog steps: drop (0.5 s) → reading, sped up (0.45 s) → the draft beside the original → tick on "checked" → added on "it."
+K.add('#st-drop', 'opacity', [[8.36, 1], [8.42, 0]]);
+K.add('#st-work', 'opacity', [[0, 0], [8.40, 0], [8.46, 1], [8.81, 1], [8.90, 0]]);
+K.add('#st-rev', 'opacity', [[0, 0], [8.84, 0], [8.98, 1, 'out']]);
+K.add('#dsc1', 'opacity', [[8.84, 1], [8.86, 0]]); K.add('#dsc2', 'opacity', [[0, 0], [8.84, 0], [8.86, 1]]);
+K.add('#spin', 'rotate', [[8.40, 0], [8.90, 420]]);
+K.add('#sped', 'opacity', [[0, 0], [8.40, 0], [8.46, 1], [8.81, 1], [8.90, 0]]);
+K.add('#zonehot', 'opacity', [[0, 0], [8.02, 0], [8.13, 1], [8.34, 1], [8.42, 0]]);
+K.add('#file', 'opacity', [[0, 0], [7.61, 0], [7.71, 1], [8.28, 1], [8.40, 0]]).add('#file', 'scale', [[8.26, 1], [8.40, 0.8, 'in']]);
+const TICK = 10.24, SAVE = 10.50;                  // "checked" 9.96–10.24 · "it." 10.29–10.56
 K.add('#chk1on', 'opacity', [[0, 0], [TICK + 0.03, 0], [TICK + 0.07, 1]]);
 K.add('#save', 'scale', [[SAVE - 0.02, 1], [SAVE + 0.04, 0.95], [SAVE + 0.14, 1, 'out']]);
-K.add('#dlg', 'opacity', [[9.86, 1], [9.98, 0, 'in']]).add('#dlg', 'scale', [[9.86, 1], [9.98, 0.97, 'in']]);
-K.add('#scrim', 'opacity', [[9.86, 1], [10.02, 0, 'in']]);
-K.add('#flash', 'opacity', [[0, 0], [9.98, 0], [10.12, 1, 'out'], [11.0, 0, 'in']]);
-// the flip: toggle, header, and the "Lowest" tag hops from Steamline to Trev (rows stay put)
-const FLIP = 15.0, HOP = 15.05, HOPD = 0.25;
-K.add('#maskr', 'opacity', [[0, 0], [12.98, 0], [13.3, 1, 'out'], [16.72, 1], [17.0, 0, 'in']]);
-// rings (marker loops)
+K.add('#dlg', 'opacity', [[10.56, 1], [10.68, 0, 'in']]).add('#dlg', 'scale', [[10.56, 1], [10.68, 0.97, 'in']]);
+K.add('#scrim', 'opacity', [[10.56, 1], [10.72, 0, 'in']]);
+K.add('#flash', 'opacity', [[0, 0], [10.68, 0], [10.82, 1, 'out'], [11.72, 0, 'in']]);
+// the flip: click on "it" (17.70); the "Lowest" tag hops from Steamline to Trev (rows stay put) under "and, hang on"
+const FLIP = 17.70, HOP = 17.75, HOPD = 0.25;
+K.add('#maskr', 'opacity', [[0, 0], [14.34, 0], [14.74, 1, 'out'], [19.47, 1], [19.90, 0, 'in']]);
+// rings (marker loops), each on its word
 const ring = (id, t0, t1, tOut) => { K.add('#' + id + '-p', 'trim', [[t0, 0], [t1, 1, 'out']]); K.add('#' + id, 'opacity', [[0, 1], [tOut, 1], [tOut + 0.16, 0]]); };
-ring('rg-bold', 10.75, 11.02, 12.92); ring('rg-calc', 11.5, 11.78, 12.92);
-ring('rg-lows', 13.62, 13.88, 14.7); ring('rg-lowt', 17.12, 17.38, 19.4);
-ring('rg-pu', 20.05, 20.36, 22.5); ring('rg-tot', 26.12, 26.38, 26.8);
+ring('rg-bold', 12.38, 12.73, 14.39);              // "wrote" (12.77)
+ring('rg-calc', 13.49, 13.75, 14.39);              // "maths" (13.76)
+ring('rg-lows', 16.17, 16.47, 17.19);              // "Steamline's lowest" (16.14–17.20)
+ring('rg-lowt', 19.98, 20.37, 21.74);              // "Trev." (19.59–20.24), as the camera pulls back
+ring('rg-pu', 24.23, 24.54, 26.68);                // "eighty-five ten" (24.19–25.44)
+ring('rg-tot', 29.63, 29.94, 30.22);               // "covers" (29.58–30.08)
 // the bench props under the window light up when their bid is on screen (PDF = Steamline, note = Trev, phone = Puddlestone)
-K.add('#bp-pdf', 'var:--b', [[0, 0.5], [6.6, 0.5], [6.75, 0.95], [7.3, 0.95], [7.5, 0.5], [9.95, 0.5], [10.1, 1], [10.9, 1], [11.3, 0.5]]);
-K.add('#bp-note', 'var:--b', [[0, 0.5], [15.25, 0.5], [15.4, 1], [17.0, 1], [17.4, 0.5]]);
-K.add('#bp-phone', 'var:--b', [[0, 0.5], [19.8, 0.5], [19.95, 1], [22.5, 1]]);
+K.add('#bp-pdf', 'var:--b', [[0, 0.5], [7.61, 0.5], [7.84, 0.95], [8.48, 0.95], [8.64, 0.5], [10.63, 0.5], [10.78, 1], [11.61, 1], [12.05, 0.5]]);
+K.add('#bp-note', 'var:--b', [[0, 0.5], [17.95, 0.5], [18.10, 1], [21.56, 1], [21.83, 0.5]]);
+K.add('#bp-phone', 'var:--b', [[0, 0.5], [21.83, 0.5], [21.95, 1], [26.68, 1]]);
 
-/* ---- S5 the callback (Him's punchline over the phone on the bench) ---- */
-const CB0 = 22.4, CB1 = 24.55;
+/* ---- S5 the callback: the phone on the bench while "I'd have picked that one." (26.76–27.60) ---- */
+const CB0 = 26.65, CB1 = 28.35;                    // "cheapest." ends 26.48 → [amused] beat → "Open" 28.38
 K.scene('#s5', CB0, CB1);
 K.add('#s5', 'blur', [[CB0, 14], [CB0 + 0.1, 0, 'out']]);
 K.add('#s5z', 'scale', [[CB0, 1.0], [CB1, 1.05, 'linear']]);
 K.add('#cbmk-p', 'trim', [[CB0, 0.35], [CB0 + 0.22, 1, 'out']]);
-K.add('#cb-arrow-p', 'trim', [[22.6, 0], [22.8, 1, 'out']]);
-K.add('#cb-scrib', 'clipX', [[22.72, 0], [23.12, 1, 'out']]);
-bubIn('#b2', 22.46, 24.46);
+K.add('#cb-arrow-p', 'trim', [[26.76, 0], [26.92, 1, 'out']]);
+K.add('#cb-scrib', 'clipX', [[26.86, 0], [27.18, 1, 'out']]);
+bubIn('#b2', 26.95, 28.24);
 
 /* ---- measured geometry: every box is in #cam coordinates (offsets summed up to #cam). Read once, after fonts load. ---- */
 const VPW = 950, VPH = 708, FORM_S = 2.3, NUM_S = 2.4, DET_S = 1.42, DLG_S = 0.965;
@@ -501,15 +526,15 @@ const F = {
   detTot: m => [m.bdtC.cx + 20, m.bdtC.y - 6 + VPH / 2.3 / 2],                            // Item + Line total, ending on the Total
 };
 const CAM = [
-  [S3_IN, 'dlg', DLG_S], [8.05, 'dlg', DLG_S], [8.4, 'form', FORM_S, 'inOut'],   // the draft beside the original, then the notice
-  [9.84, 'form', FORM_S], [10.2, 'tbl', 'tbl', 'inOut'], [10.42, 'tbl', 'tbl'], [10.72, 'num', 'num', 'inOut'],
-  [12.95, 'num', 'num'], [13.32, 'flip', 'flip', 'inOut'], [16.72, 'flip', 'flip'], [17.08, 'tbl', 'tbl', 'inOut'],
-  [19.5, 'tbl', 'tbl'], [19.84, 'num', 'num', 'inOut'], [CB0, 'num', 'num2', 'linear'],
-  [CB0 + 0.05, 'tbl', 'tbl'], [24.88, 'tbl', 'tbl'], [25.2, 'det', DET_S, 'swipe'], [25.38, 'det', DET_S], [26.15, 'detTot', 2.3, 'inOut'], [S3_OUT + 0.1, 'detTot', 2.33],
+  [S3_IN, 'dlg', DLG_S], [9.00, 'dlg', DLG_S], [9.25, 'form', FORM_S, 'inOut'],   // the draft beside the original, then the notice ("once I've checked it." 9.50)
+  [10.54, 'form', FORM_S], [10.80, 'tbl', 'tbl', 'inOut'], [11.61, 'tbl', 'tbl'], [12.07, 'num', 'num', 'inOut'],   // "One table:" 10.74 → bold/grey 12.19
+  [14.30, 'num', 'num'], [14.76, 'flip', 'flip', 'inOut'], [19.47, 'flip', 'flip'], [19.93, 'tbl', 'tbl', 'inOut'],   // "Excluding GST" 14.78 … pull back on "Trev." 19.59
+  [21.56, 'tbl', 'tbl'], [21.87, 'num', 'num', 'inOut'], [CB0, 'num', 'num2', 'linear'],                              // "Seventy-four hundred plus GST" 21.87
+  [CB0 + 0.05, 'tbl', 'tbl'], [28.66, 'tbl', 'tbl'], [28.97, 'det', DET_S, 'swipe'], [29.15, 'det', DET_S], [29.57, 'detTot', 2.3, 'inOut'], [S3_OUT + 0.1, 'detTot', 2.33],   // "Open one" 28.38 → "covers" 29.58
 ];
-const FOLD0 = 25.42, FOLD1 = 25.78;   // Type / Qty / Rate fold away as the camera pushes in
+const FOLD0 = 29.19, FOLD1 = 29.54;   // Type / Qty / Rate fold away as the camera pushes in
 /* form pane scroll (inside the dialog): the notice → the tick */
-const SCROLL = [[8.95, 0], [9.28, 'B', 'scroll']];
+const SCROLL = [[9.74, 0], [10.09, 'B', 'scroll']];
 /* pointer keys (cam coords) */
 const P = {
   fileStart: m => [m.dlg.cx + 250, m.dlg.y + 470],
@@ -522,14 +547,14 @@ const P = {
   stRowA: m => [m.tbl.x + 520, m.rows.y + 180],
   stRow: m => [m.tbl.x + 330, m.rows.y + 36],
 };
-const SEL = 24.86;
+const SEL = 28.69;                   // click Steamline's row on "one," (28.86)
 const PKEYS = [
-  [6.66, 'fileStart'], [7.2, 'zone', 'inOut'], [7.32, 'zone'],
-  [9.3, 'chkA'], [TICK - 0.02, 'chk', 'inOut'], [TICK + 0.08, 'chk'], [SAVE - 0.02, 'save', 'inOut'], [9.9, 'save'],
-  [14.3, 'rgA'], [FLIP - 0.06, 'rgIn', 'inOut'], [15.3, 'rgIn'],
-  [24.55, 'stRowA'], [SEL - 0.03, 'stRow', 'inOut'], [25.3, 'stRow'],
+  [7.64, 'fileStart'], [8.28, 'zone', 'inOut'], [8.38, 'zone'],
+  [9.90, 'chkA'], [TICK - 0.02, 'chk', 'inOut'], [TICK + 0.08, 'chk'], [SAVE - 0.02, 'save', 'inOut'], [10.60, 'save'],
+  [17.00, 'rgA'], [FLIP - 0.06, 'rgIn', 'inOut'], [18.00, 'rgIn'],
+  [28.35, 'stRowA'], [SEL - 0.03, 'stRow', 'inOut'], [29.08, 'stRow'],
 ];
-const PTR_ON = [[6.66, 7.34], [9.3, 9.92], [14.3, 15.5], [24.55, 25.25]];
+const PTR_ON = [[7.64, 8.42], [9.90, 10.62], [17.00, 18.20], [28.35, 29.03]];
 const CLICKS = [[TICK, 'chk'], [SAVE, 'save'], [FLIP, 'rgIn'], [SEL, 'stRow']];
 
 const EZ = Kit.ease, ez = e => (typeof e === 'string' ? EZ[e] : e) || EZ.linear;
@@ -573,7 +598,7 @@ K.each(t => {
   const fx = fa[0] + (fb[0] - fa[0]) * p, fy = fa[1] + (fb[1] - fa[1]) * p;
   document.getElementById('cam').style.transform = `translate(${(VPW / 2 - fx * s).toFixed(2)}px,${(VPH / 2 - fy * s).toFixed(2)}px) scale(${s.toFixed(4)})`;
   // soft white edges on the table close-ups
-  const ef = t > 10.3 && t < S3_OUT + 0.2 ? clamp((s - 1.8) / 0.3, 0, 1) : 0;
+  const ef = t > 10.83 && t < S3_OUT + 0.2 ? clamp((s - 1.8) / 0.3, 0, 1) : 0;
   document.getElementById('ef-l').style.opacity = ef.toFixed(3); document.getElementById('ef-r').style.opacity = ef.toFixed(3);
   // form pane scroll
   const sv = v => (v === 'B' ? M.scB : v);
@@ -608,18 +633,20 @@ K.each(t => {
   setBd(EZ.inOut(clamp((t - FOLD0) / (FOLD1 - FOLD0), 0, 1)));
 });
 
-/* ---- S4 end card: both lines at the cut, the sign-up page +0.6 s, the CTA +1.2 s ---- */
-const E0 = 26.72;
+/* ---- S4 end card on the words: "QSME doesn't pick the winner." 30.20 · the sign-up page rises 31.0 · "It stops GST
+   picking it for you." 32.21 · logo + "Sign up at qsme.co.nz" pops on "Sign" (34.51), pulses on "koh" (36.32, said
+   "dot koh", never C-O) and "zed" (37.52) ---- */
+const E0 = 30.15;
 K.scene('#s4', E0, DUR + 1);
 K.add('#s4', 'opacity', [[E0, 0], [E0 + 0.14, 1, 'out']]);
-K.pop('#tl1', E0 + 0.1, { dy: 26 });
-K.pop('#tl2', E0 + 0.2, { dy: 30 });
-K.add('#live', 'opacity', [[0, 0], [E0 + 0.68, 0], [E0 + 0.88, 1, 'out']]).add('#live', 'y', [[E0 + 0.68, 60], [E0 + 1.02, 0, 'out']]);
-K.add('#live', 'scale', [[E0 + 1.02, 1], [DUR, 1.025, 'linear']]);
-K.pop('#livechip', E0 + 0.98, { dy: 10 });
-K.add('#rg-hire-p', 'trim', [[E0 + 1.1, 0], [E0 + 1.42, 1, 'out']]);
-K.pop('#endrow', E0 + 1.32, { dy: 24 });
-K.add('#pill', 'scale', [[E0 + 1.62, 1], [E0 + 1.74, 1.08, 'out'], [E0 + 1.92, 1, 'in'], [30.1, 1], [30.22, 1.07, 'out'], [30.42, 1, 'in']]);
+K.pop('#tl1', 30.20, { dy: 26 });
+K.pop('#tl2', 32.21, { dy: 30 });
+K.add('#live', 'opacity', [[0, 0], [30.98, 0], [31.12, 1, 'out']]).add('#live', 'y', [[30.98, 60], [31.24, 0, 'out']]);
+K.add('#live', 'scale', [[31.24, 1], [DUR, 1.025, 'linear']]);
+K.pop('#livechip', 31.20, { dy: 10 });
+K.add('#rg-hire-p', 'trim', [[31.32, 0], [31.64, 1, 'out']]);
+K.pop('#endrow', 34.51, { dy: 24 });
+K.add('#pill', 'scale', [[34.60, 1], [34.72, 1.08, 'out'], [34.90, 1, 'in'], [36.32, 1], [36.44, 1.07, 'out'], [36.64, 1, 'in'], [37.52, 1], [37.64, 1.07, 'out'], [37.84, 1, 'in']]);
 
 K.ready({ duration: DUR, fonts: ['800 60px Manrope', '700 20px Manrope', '600 20px Manrope', '500 20px Manrope', '400 40px Kalam', '700 40px Kalam', '400 40px "Permanent Marker"', '400 20px Inter', '500 20px Inter', '600 20px Inter', '700 20px Inter', '500 20px "JetBrains Mono"', '700 20px "JetBrains Mono"'] });
 })();

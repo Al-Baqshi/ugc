@@ -3,17 +3,19 @@ vid: N12
 title: "The pen on a string"
 venture: qsme-nz
 idea: nz-pen-on-a-string
-status: "rendered — awaiting approval"
+status: "voiced (audio-first remake 2026-10-06) — awaiting approval"
 publish_date: 2026-10-28
 publish_time_nzt: "06:00"
 created: 2026-10-02
 calendar_week: 4
 format: short
 kind: situation-demo (funny)
-length_s: 29.6
+length_s: 48.7
 aspect: "9:16"
 platforms: [Instagram Reels, TikTok, Facebook Reels, YouTube Shorts]
 video: outputs/pen-on-a-string-9x16.mp4
+video_with_vo: outputs/pen-on-a-string-9x16-with-vo.mp4
+voice: "Cam S, ElevenLabs eleven_v3, one unbroken 47.23 s take (outputs/vo-take-cam-v3/, CTA re-take 2026-10-10)"
 cover: outputs/pen-on-a-string-cover-1080x1920.png
 features: ["QR site sign-in poster and the on-site register (8.1, live)"]
 owner_recordings_needed:
@@ -40,7 +42,59 @@ owner_recordings_needed:
 - **The two QSME days are Wed 28 and Thu 29 Oct.** The builder's page reads "Today · Thu, 29 Oct" with Dave Kettle signed in at 7:14 am, so "Who was on site Thursday?" gets an answer with a full name and a time, not just a pun.
 - **Christchurch stays in the story, not on screen as an address.** The demo project is "Two townhouses (demo), Christchurch", with no street, so no private address ever shows.
 
-## Hook (0–3.0 s)
+## Audio-first remake (2026-10-06) — the current master (CTA re-take 2026-10-10)
+
+**Why:** the owner signed off the N01 "Which Dave?" pilot as the standard for every QSME video: the script is continuous speech with a real hook in the first 2 s (no caption fragments, no silence over 1 s), the voice is ONE unbroken eleven_v3 take (Cam S), and the picture is re-timed to the words. This cut applies it to the pen. Design unchanged; the 29.6 s silent cut is archived.
+
+**2026-10-10 re-take:** the owner's pronunciation rule (2026-10-08) says the CTA is "dot Co dot N Z" ("co" said like KO, never spelled C-O). The 2026-10-06 take said "dot co dot en zed", so the WHOLE take was regenerated with only that word changed (same text otherwise, same 3 tags, one unbroken request, attempt 1 accepted). Every word time moved, so every anchor in `motion/pen.js` was re-derived from the new alignment, the page re-rendered and the voice re-muxed. The times below are the new ones.
+
+**Hook (0–1.68 s, spoken):** "Missing: one site pen." — the funniest line first, read straight off the poster that is already on screen (MISSING / SITE PEN / Last seen Tuesday. / REWARD: ONE SAUSAGE ROLL); then "Last seen Tuesday. Reward, one sausage roll." while the tape label "his string" points at the empty string (1.05).
+
+**The script as spoken (one take, 47.23 s, 120 words, 2.54 words/s, longest silence ~0.75 s on the waveform / 0.93 s by the aligner across [amused]; v3 tags in brackets, 3 of them):**
+
+```
+Missing: one site pen. Last seen Tuesday. Reward, one sausage roll.
+
+[dry] Which matters, because someone wants to know who was on site Thursday. And the book says... Dee.
+
+Queue Ess Mee has its own instructions. Print it, laminate it, cable-tie it to the fence.
+
+Walk on, scan the poster with your phone. Name, who you're with, tick what you're wearing, sign in for today. Signed in. On the record.
+
+Next morning, it remembers you. [short pause] Still no pen.
+
+Back at the desk, Dee's got a surname now. You can see who's still due. And the register prints on your own letterhead.
+
+One poster on the gate. Sign up at Queue Ess Mee dot Co dot N Z. [amused] Pen's still missing, mind.
+```
+
+STT check (scribe_v1, transcript saved as `outputs/vo-take-cam-v3/stt.txt`): every word heard; "QSME" → "QS Me", the CTA → "qsme.koh.enz" (the KO sound the owner asked for, same as the accepted koh takes on N-series videos), "Dee" → "D". First attempt accepted.
+
+| Said (start) | Picture (re-timed to the words) | Caption on screen |
+|---|---|---|
+| 0.00 "Missing: one site pen. Last seen Tuesday. Reward, one sausage roll." | the MISSING poster + the empty string in the rain, slow push-in; "his string" 1.05; chip "Dramatised · names made up" | (the poster is the caption) |
+| 6.99 "Which matters, because someone wants to know who was on site Thursday." | whip to the wet book 6.81; zoom onto the Thu row on "Thursday" 9.54–9.94 | Who was on site Thursday? (on "who", 8.72) |
+| 10.30 "And the book says... Dee." | the drop falls on "says..." (11.14), lands 11.38, the smear bleeds; whip back 13.30 | The book says: “D—” (on "Dee.", 12.23) |
+| 13.42 "Queue Ess Mee has its own instructions." | cutters snip the MISSING poster's tie 13.55, it drops | QSME’s own instructions: (13.45) |
+| 15.86 "Print it, laminate it," | the laminated QSME poster rises 15.78–16.23; gloss sweep on "laminate" 16.61 | Print it, laminate it, (15.84) |
+| 17.52 "cable-tie it to the fence." | four ties zip 17.52 / 17.61 / 17.70 / 17.79 | cable-tie it to the fence. (17.50), held to 19.34 |
+| 19.28 "Walk on, scan the poster with your phone." | phone rises 19.31; brackets on "scan" 20.44, link pill on "poster" 20.78, tap on "phone" 21.46; page opens 21.59, holds on the logo and site | Scan the poster. (20.35–21.50) |
+| 22.39 "Name, who you're with, tick what you're wearing, sign in for today." | name types on "Name," (22.39), company on "with" (23.55), scroll to PPE 23.77; rows tick 24.07 / 24.47 / 25.02 ("tick" … "wearing"); scroll + agreement on "sign" (25.14–25.39); Sign in for today on "today" (26.00); "▸▸ sped up" | Tick what you’re wearing. (23.93–26.54) |
+| 26.63 "Signed in. On the record." | the signed-in card pops 26.58 (7:12 am; "Today on this site: Wall framing · Unit 2 · You") | Signed in. On the record. (26.58–29.49) |
+| 29.65 "Next morning, it remembers you." | dark 29.51, the 6:58 page 29.71; Welcome back ringed 29.96–31.08; quick ticks 31.10–31.58, Sign in 31.70, signed in 31.86 | Next morning, it remembers you. (29.61–31.78) |
+| 31.97 "Still no pen." | second sign-in landed 31.86; whip to the desk 33.27 | Still no pen. (31.91–33.25) |
+| 33.36 "Back at the desk, Dee's got a surname now." | On site page; zoom to the table 33.57–33.97; Dave Kettle · 7:14 am ringed on "Dee's" 34.45–35.81 | “D—” now has a surname. (34.47–35.86, top) |
+| 35.88 "You can see who's still due." | pan to Due today on "You can see" 35.91–36.26; heading ringed 36.21–38.03 | Who’s still due. (36.34–38.10) |
+| 37.60 "And the register prints on your own letterhead." | the register PDF slides up on "register" 38.15–38.51 | The register, on your own letterhead. (on "prints", 38.64–39.96) |
+| 40.16 "One poster on the gate." | end card from 39.88: wordmark 40.10, headline on "One" | One poster / on the gate. |
+| 41.81 "Sign up at Queue Ess Mee dot Co dot N Z." | button pops on "Sign up" 41.76, pulses on "zed" 44.60 and 47.08 | Sign up at qsme.co.nz |
+| 45.97 "Pen's still missing, mind." | the tag PEN: STILL MISSING swings in on the string 45.90–47.03; page ends 48.70 | PEN: STILL MISSING |
+
+**Files:** master `outputs/pen-on-a-string-9x16.mp4` (48.7 s, silent, QA passed on safe 65,300,1015,1250; the 29.6 s cut archived as `outputs/archive/pen-on-a-string-9x16-v1.mp4` + its contact sheet); voiced `outputs/pen-on-a-string-9x16-with-vo.mp4` (the take at 0.0 s, gain 1.15, no bed, one audio track, 48.70 s); take + alignment + words + the exact text sent in `outputs/vo-take-cam-v3/`; contract `vo-script.json` / `vo-script.md`; timeline `motion/pen.js` (word anchors `W` at the top). Captions changed in the remake: "And who’s still due." → "Who’s still due.", "The register, on your letterhead." → "The register, on your own letterhead." (both lifted from the narration). Cover unchanged (frame at 1.6 s, same poster; no text changed). Music/SFX: the master ships clean; the rain bed and SFX below stay optional.
+
+**What's below:** the "(v1, superseded)" Hook and Beat-by-beat sections, Production status and Owner recordings describe the 2026-10-04 silent 29.6 s cut (Kiwi-Mikey per-line VO plan, 13 lines). They are kept as the design record and the recording brief only; their times and spoken lines (including the old "dot co" CTA) do NOT apply. The timeline above is the one that ships. Owner recordings, when filmed, slot into the same scenes at the new times (`W` in `motion/pen.js`).
+
+## Hook (0–3.0 s) (v1, superseded — see Audio-first remake)
 
 | Layer | What |
 |---|---|
@@ -51,7 +105,7 @@ owner_recordings_needed:
 
 Mechanism: pattern break (a lost-cat poster for a biro) + call-out (every site manager knows that string).
 
-## Beat-by-beat script (seconds on `outputs/pen-on-a-string-9x16.mp4`, 29.6 s)
+## Beat-by-beat script (v1, superseded — see Audio-first remake; seconds on the archived 29.6 s cut `outputs/archive/pen-on-a-string-9x16-v1.mp4`)
 
 | Time | On-screen text | VO line (Kiwi bloke, later) | Visual | SFX |
 |---|---|---|---|---|
@@ -203,4 +257,8 @@ Source: `research/2026-10-02-qsme-platform-truth.md`, feature **8.1 `qr-site-sig
 - 2026-10-02: Idea generated and fact-checked in the content-programme workflow (score 17/20: R5 S5 O3 Sh4). Calendar slot approved: Wed 28 Oct, 06:00 NZT, week 4, 26 s 9:16.
 - 2026-10-03: Owner CTA rule applied to the idea card (sign-ups only, no "free"/"no account" lines).
 - 2026-10-04: Project folder created and the silent master built and rendered (28.45 s, QA passed). Brief changes: CTA "Sign up at qsme.co.nz"; "No app. No account. No pen." → "Still no pen."; "one tap" dropped (daily ticks shown); builder's side shown as the real On site page. Exact layout and wording taken from the live public bundle; demo data throughout. Owner kit (MISSING poster, blank sign-in sheet) and the Kiwi bloke VO script added. Awaiting approval and Session C.
+- 2026-10-06: Audio-first remake to the N01 standard (owner sign-off 2026-10-06). Continuous script with the poster read as the spoken hook ("Missing: one site pen. Last seen Tuesday. Reward, one sausage roll."), one dry storyteller instead of the site-manager + Jenna A/B; Cam S on eleven_v3, ONE unbroken 44.72 s take (first attempt, STT clean, longest silence 0.82 s, 2.71 words/s); motion/pen.js re-timed to the word alignment (word anchors W; snip on "Queue Ess Mee", poster rises on "Print it", gloss on "laminate", zips on "cable-tie", ticks on "tick what you're wearing", button on "Sign up", tag on "Pen's"); page 46.2 s, re-rendered, QA passed; v1 master archived; muxed clean to outputs/pen-on-a-string-9x16-with-vo.mp4; vo-script rewritten as one take with 14 caption phrases. Awaiting the owner's verdict and Session C.
 - 2026-10-04: Review applied and re-rendered (now 29.6 s, QA passed). Viewer-facing labels; the builder's side rebalanced into three readable beats ("“D—” now has a surname." moved to the top slot, 1.9 s; "And who's still due." 1.7 s; the register 2.25 s with its caption after the PDF lands); the snip moved to 0.25 s into the swap and the instructions caption now builds line by line with one clean box per line; the sign-in page holds on the logo and site before the sped-up fill; "Scan the poster." ends at the tap; the phone field goes from empty to blurred; "Signed in. On the record." and "Still no pen." get a beat each. Stage-plausible tasks (Plumbing rough-in and Windows replace Roof plumbing and Stopping; Demo Joinery Ltd replaces Demo Plasterers Ltd), the worker's task list matches the product (own and company tasks only), the QSME days moved to Wed 28 / Thu 29 Oct so the register answers "Thursday", the register PDF rebuilt to the real landscape layout. Nice-to-haves: chip above the poster, "his string" inside the safe edge, bigger wordmark, tag clear of the right rail, poster smaller and higher so its steps clear the caption. VO re-timed, with a new line for "And who's still due."
+- 2026-10-07: Producer run resumed after a usage-limit stop and verified the remake end to end: STT re-run and saved (clean), page QA re-run (ok, 46.2 s), 17 spot frames checked against the words (1.1 / 6.5 / 8.2 / 11.7 / 12.9 / 15.4 / 17.0 / 19.6 / 22.9 / 25.3 / 27.9 / 30.4 / 32.8 / 34.9 / 37.0 / 40.3 / 43.9 s: every caption, snip, zip, tick, ring, button and the tag land on their word), the take muxed clean onto the master (outputs/pen-on-a-string-9x16-with-vo.mp4, AVFoundation probe: 46.20 s, 1 audio track). Corrected the longest-silence figure from 0.65 s to 0.82 s ("roll." → "Which", the [dry] tag sits in that beat; still under the 1 s rule). Open: owner verdict; the .preview.mp4 still shows the 29.6 s cut until the next publish refreshes it.
+- 2026-10-10: CTA pronunciation fix (owner rule 2026-10-08: "dot Co dot N Z", never C-O). The whole take was regenerated, not spliced: one unbroken Cam S eleven_v3 request with only "co" → "koh" changed (attempt 1, 47.23 s, 120 words, 2.54 words/s, STT clean with the CTA heard as qsme.koh.enz). Every W anchor in motion/pen.js re-derived from the new words.json (hook to tag); page 46.2 s → 48.7 s; re-rendered (QA passed) and spot-checked; re-muxed clean (1 audio track, 48.70 s). vo-script.json/.md updated. The v1 Hook and Beat-by-beat sections are now marked superseded. preview.mp4 refreshed from the voiced master.
+- 2026-10-10 CTA swap: owner said "koh" sounded wrong; only the final "Sign up at qsme.co.nz" line was replaced (spoken "dot Co dot N Z", tools/fix_cta.py), rest of the take and picture untouched. Old take in outputs/archive/vo-koh-2026-10-10/.

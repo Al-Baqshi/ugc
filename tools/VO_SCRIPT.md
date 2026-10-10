@@ -18,6 +18,6 @@ Every project that has a video keeps `vo-script.json` (machine) + `vo-script.md`
 }
 ```
 
-Rules: natural Kiwi speech (contractions, dry understatement, no announcer lift, no exclamation marks); ~2.5 words/s, so a line must fit `max_s`; start when its caption appears; silence is a choice (leave beats empty on purpose). QSME = "Q-S-me" in scripts; the tool speaks it as "Queue Ess Mee" (tested: that is what ElevenLabs renders as "QSME"); qsme.co.nz = "Q-S-me dot co dot en zed"; qsme.build = "Q-S-me dot build".
+Rules: natural Kiwi speech (contractions, dry understatement, no announcer lift, no exclamation marks); ~2.5 words/s, so a line must fit `max_s`; start when its caption appears; silence is a choice (leave beats empty on purpose). QSME = "Q-S-me" in scripts; the tool speaks it as "Queue Ess Mee" (tested: that is what ElevenLabs renders as "QSME"); qsme.co.nz = "Queue Ess Mee dot Co dot N Z" (owner: "co" is said like KO, never spelled C-O); qsme.build = "Q-S-me dot build".
 
 Check every project: `python3 tools/vo_status.py` · Voice everything after the ElevenLabs upgrade: `python3 tools/make_vo.py --all`

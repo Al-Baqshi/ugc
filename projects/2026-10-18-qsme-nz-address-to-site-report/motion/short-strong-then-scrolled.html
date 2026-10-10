@@ -6,7 +6,13 @@
 <!-- 9:16 chapter cut-down of "From an address to a site report" (chapter 03 Overlays + close). Motion kit page.
      v2 (review 2026-10-02): UI re-laid at panel width (SiteUI.narrowPage), so the summary and chips read in full; the
      Illustrative label uses its own class (.itag) so the saved-site pill tags no longer leak onto the map; captions are one
-     box below the frame; the end card cross-fades in (no navy dip) and carries "Dramatised · demo sites". -->
+     box below the frame; the end card cross-fades in (no navy dip) and carries "Dramatised · demo sites".
+     2026-10-06 AUDIO-FIRST REMAKE (N01 standard): outputs/vo-take-cam-v3-ch03/take.mp3 (Cam S, eleven_v3, ONE unbroken
+     take, 34.5 s, laid at 0.0) is the clock; the page runs 36.0 s. The v2 timeline is re-timed through MAP (old time → the
+     word it belongs to, from alignment.json); captions take new times and are phrases lifted from the narration.
+     2026-10-10 CTA FIX (owner 2026-10-08: "dot koh dot en zed", never C-O): the whole take was regenerated in one call with only
+     the CTA changed; new take 34.48 s (was 36.0), page 36.0 s; every NEW-time value (MAP's second column, cap(), RAW blocks, DUR) was moved
+     through a word-anchored warp from the old take's alignment to the new one. -->
 <link rel="stylesheet" href="../../../tools/motion/kit.css">
 <link rel="stylesheet" href="site-ui.css">
 <style>
@@ -72,15 +78,28 @@
 <script src="short-common.js"></script>
 <script>
 (function () {
-  var $ = Short.$, UI = window.SiteUI, DUR = 31;
+  var $ = Short.$, UI = window.SiteUI, DUR = 36.0;   // take 34.48 s + 1.5 s tail
+  /* audio-first re-timing: [old, new] anchors (new = word start in alignment.json); linear between. */
+  var MAP = [[0, 0], [2.62, 2.206], [3.15, 2.897], [4.0, 3.440], [5.45, 3.640], [8.2, 7.115], [8.3, 7.236], [8.8, 7.970], [8.9, 8.060], [11.0, 9.890], [11.1, 10], [11.3, 10.240],
+    [14.0, 13.745], [14.2, 13.840], [14.3, 13.940], [14.6, 14.197], [14.9, 14.791], [15.35, 15.441], [17.15, 16.891], [17.2, 17.016], [17.45, 17.348], [17.7, 20.400], [18.6, 22.348],
+    [18.7, 22.571], [19.4, 24.820], [19.5, 25.020], [20.2, 26.861], [21.55, 27.414], [21.6, 27.506], [22.6, 28.290], [23.2, 28.920], [25.35, 29.953], [25.4, 30.026], [25.75, 30.321],
+    [25.8, 30.362], [27.0, 31.347], [27.6, 32.120], [28.2, 32.460], [31, 36.0]];
+  for (var mi = 1; mi < MAP.length; mi++) if (!(MAP[mi][0] > MAP[mi - 1][0] && MAP[mi][1] > MAP[mi - 1][1])) throw new Error('MAP not monotonic at ' + MAP[mi]);
+  function T(t) { if (t <= 0) return 0; for (var i = 1; i < MAP.length; i++) if (t <= MAP[i][0]) { var a = MAP[i - 1], b = MAP[i]; return a[1] + (b[1] - a[1]) * (t - a[0]) / (b[0] - a[0]); } var l = MAP[MAP.length - 1]; return l[1] + (t - l[0]); }
+  var RAW = false, _add = Kit.add, _scene = Kit.scene, _type = Kit.type;
+  Kit.add = function (target, prop, keys) { if (!RAW) keys = keys.map(function (k) { var c = k.slice(); c[0] = T(c[0]); return c; }); return _add.call(Kit, target, prop, keys); };
+  Kit.scene = function (target, t0, t1) { return _scene.call(Kit, target, RAW ? t0 : T(t0), RAW ? t1 : T(t1)); };
+  Kit.type = function (target, t0, t1) { return _type.call(Kit, target, RAW ? t0 : T(t0), RAW ? t1 : T(t1)); };
+  function TR(rs) { return rs.map(function (r) { return [T(r[0]), T(r[1])]; }); }
+  var cap = function (t0, t1, html) { RAW = true; Short.cap(t0, t1, html); RAW = false; };   // captions take NEW times
   $('ncam').innerHTML = UI.narrowPage('s1', 'pg');
   var mk0 = Short.marker(document.querySelector('#pg-o-r0 .t'), 'mk0');
   var mk1 = Short.marker(document.querySelector('#pg-o-r1 .t'), 'mk1', '#D97706');
   var mk2 = Short.marker(document.querySelector('#pg-o-r2 .t'), 'mk2', '#16A34A');
   var mki = Short.marker($('pg-v-ind'), 'mki');
 
-  Short.ranges('frame', [[0, 21.6]]); Short.ranges('itag', [[0, 21.6]]);
-  Short.ranges('sticky', [[17.2, 21.6]]); Short.ranges('disc', [[21.6, 25.8]]); Short.ranges('end', [[25.4, DUR + 1]]);
+  Short.ranges('frame', TR([[0, 21.6]])); Short.ranges('itag', TR([[0, 21.6]]));
+  Short.ranges('sticky', TR([[17.2, 21.6]])); Short.ranges('disc', TR([[21.6, 25.8]])); Short.ranges('end', [[T(25.4), DUR + 1]]);
 
   // hook
   Short.head('h1', 0, 2.6); Short.head('h2', 2.62, 17.2, true); Short.head('h3', 17.2, 21.6, true); Short.head('h4', 21.6, 25.8);
@@ -89,7 +108,7 @@
   // camera: the narrow page at 1.8x fills the frame width; a slight drift keeps it alive
   Short.cam('#ncam', [[0, 264, 177, 1.8], [2.6, 264, 177, 1.8], [17.2, 264, 177, 1.8]]);
   // scroll slam to the overlays card, then amber + green together, then back up to the verdict
-  Short.scroll('#pg-col', [[0, 0], [2.55, 0], [3.15, ['#pg-o', 8], 'scroll'], [8.25, ['#pg-o', 8]], [8.8, ['#pg-o-g1', 4], 'inOut'], [14.0, ['#pg-o-g1', 4]], [14.6, 0, 'inOut']]);
+  Short.scroll('#pg-col', [[0, 0], [2.55, 0], [3.15, ['#pg-o', 8], 'scroll'], [8.25, ['#pg-o', 8]], [8.8, ['#pg-o-g1', 4], 'inOut'], [14.0, ['#pg-o-g1', 4]], [14.6, 0, 'inOut']].map(function (k) { var c = k.slice(); c[0] = T(c[0]); return c; }));
   Kit.add('#pg-col', 'blur', [[2.55, 0], [2.72, 6], [3.15, 0, 'out']]);
   Kit.add('#pg-o-r0', 'background', [[3.15, '#FFF7F7'], [3.25, '#FECACA'], [3.95, '#FFF7F7', 'out']]);
   Kit.add(mk0, 'trim', [[3.5, 0], [4.0, 1, 'out']]);
@@ -98,18 +117,18 @@
   Kit.add(mk2, 'opacity', [[11.3, 0], [11.31, 1, 'hold']]); Kit.add(mk2, 'trim', [[11.3, 0], [11.75, 1, 'out']]);
   Kit.add(mki, 'opacity', [[14.9, 0], [14.91, 1, 'hold']]); Kit.add(mki, 'trim', [[14.9, 0], [15.35, 1, 'out']]);
   Kit.add('#fdim', 'opacity', [[17.2, 0], [17.5, 0.72, 'out']]);
-  Short.cap(5.45, 8.2, '<span class="r">Red:</span> a road-widening designation.');
-  Short.cap(8.3, 11.0, '<span class="am">Amber:</span> a viewshaft over the top.');
-  Short.cap(11.1, 14.2, '<span class="g">Green</span> says 21 m. <span class="am">Amber</span> says maybe not.');
-  Short.cap(14.3, 17.15, '“Indicatively.” It says that every time.');
+  cap(3.64, 7.11, '<span class="r">Red:</span> a road-widening designation. On the one I liked.');
+  cap(7.24, 9.89, '<span class="am">Amber:</span> a volcanic viewshaft over the top.');
+  cap(10, 13.88, '<span class="g">Green</span> says 21 m. <span class="am">Amber</span> says maybe not.');
+  cap(13.94, 16.89, '“Indicatively.” Every single time.');
   // the questions
   Kit.add('#sticky', 'opacity', [[17.25, 0], [17.3, 1]]); Kit.add('#sticky', 'scale', [[17.25, 1.2], [17.42, 1, 'slam']]); Kit.add('#sticky', 'rotate', [[17.25, -6], [17.42, -2, 'out']]);
   Kit.type('#q1', 17.7, 18.6); Kit.type('#q2', 18.7, 19.4); Kit.type('#q3', 19.5, 20.2);
-  Short.cap(17.3, 21.55, 'Three questions for the planner.');
+  cap(18.45, 27.41, 'Three questions for the planner.');   // "It's three questions for the planner." 18.45; the sticky types each question as it is said
   // last word
   Kit.pop('#disc', 21.65, { dy: 30 }); Kit.add('#discMk', 'trim', [[22.6, 0], [23.2, 1, 'out']]);
-  Short.cap(21.75, 24.3, 'It even tells you to ring the planner.');
-  Short.cap(24.4, 25.35, 'Fair enough.');
+  cap(27.58, 29.1, 'It even tells you to ring the planner.');
+  cap(29.12, 29.95, 'Fair enough.');
   // end card cross-fades straight in over the quote (no dip to navy)
   Kit.add('#end', 'opacity', [[25.4, 0], [25.8, 1, 'out']]);
   Kit.add('#elogo', 'scale', [[25.4, 0.94], [25.9, 1, 'out']]);

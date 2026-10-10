@@ -2,7 +2,27 @@
    chase-the-painter.html       → body.build.r4x5  (LinkedIn 4:5, safe box 60,60,1020,1290)
    chase-the-painter-9x16.html  → body.build.r9x16 (YouTube Shorts 9:16, safe box 65,300,1015,1250)
    Everything is a pure function of t. The schedule and the printout are recreations (demo data) until
-   the owner's Session B recordings replace them; see post.md → "Owner recordings to swap in". */
+   the owner's Session B recordings replace them; see post.md → "Owner recordings to swap in".
+   2026-10-06 AUDIO-FIRST REMAKE (owner standard from the N01 pilot: no gaps, a real hook, continuous speech): the Cam S
+   eleven_v3 take (outputs/vo-take-cam-v3/take.mp3, 40.96 s, ONE unbroken request laid at 0.0) is the clock. Every beat
+   is placed on its word in outputs/vo-take-cam-v3/alignment.json; the page runs 42.5 s (take + ~1.5 s tail). Design unchanged.
+     0.0–5.15   hook: "Six weeks of minutes, one action:" → five page flicks; "chase the painter." → the pen draws the sixth
+                underline (2.62–3.45); "Again." (3.77) → the "(Again.)" jolt; swipe to the ledger 4.85–5.15
+     5.15–13.45 ledger: "Painter's starting a week late." 5.15 · "Finish date didn't move." 6.56 (weeks 9–12 tint green) ·
+                "Then it jumped nine working days." 7.98 (weeks 13–14 tick red, "+9 working days" slams on "nine" 9.04) ·
+                "Something else moved it," 10.31 · "and nobody minuted that." 11.74 · swipe to the schedule 13.1–13.45
+     13.45–28.7 product: pill + View click on "switch" (13.85), cursor rests on the checkbox, tick on "Mee" (15.1); rings pop on
+                "Purple" (15.45–16.11); "Purple decides your finish date." 15.48; finish note on "finish date." (16.35); biro note
+                "nobody minuted this" 16.55–17.38; "Our painter? Grey." 17.32, circle on "Grey." 18.66; "Grey has room to move."
+                19.76 (9:16 grey push 19.78); drag Painting on "Drag him a week late," 21.1–22.1; sticky notes + toast 22.2–23.9;
+                "didn't move ✓" on "doesn't budge" 23.0; push-in on "The fit-off?" 23.9; "Purple slips a day," 24.93; drag the
+                fit-off on "Slips a day," 25.95–26.3, the chain follows 26.39–26.71; "the finish slips a day." 27.06, the finish
+                note flips on "slips" 27.56; the screen leaves 28.45
+     28.45–37.5 printout on "Same rings on the printed programme." (slide 28.55, zoom 29.5–30.4); "QSME calls it 'What drives the
+                finish date'." 30.51; highlighter 32.1–32.7; "You can call it the critical path." 33.82; zoom out 35.75;
+                "We owe the painter a coffee." 35.92, the cup lands 35.95–36.35
+     37.5–42.5  end card: logo 37.65, "Chase the right delay." 37.78, pill "Book a 30-minute demo" on "Book" (37.98),
+                "qsme.build" on "dot build" (40.2) */
 (function () {
 'use strict';
 const R9 = document.body.classList.contains('r9x16');
@@ -90,10 +110,10 @@ const ROW = {}; TASKS.forEach((k, i) => ROW[k.id] = i + 1);
    linked after it along "keeping the gaps", so a Painting → Final clean link could drag the finish with it.
    Unlinked, Painting is simply un-ringed and has room (7.9). Session B test 0 decides whether the link can come back. */
 const LINKS = [
-  { a: 'sw', b: 'ef', chain: 1, on: 11.97 }, { a: 'ef', b: 'co', chain: 1, on: 12.15 },
-  { a: 'co', b: 'fc', chain: 1, on: 12.31 }, { a: 'fc', b: 'ho', chain: 1, on: 12.45 },
+  { a: 'sw', b: 'ef', chain: 1, on: 15.57 }, { a: 'ef', b: 'co', chain: 1, on: 15.75 },
+  { a: 'co', b: 'fc', chain: 1, on: 15.91 }, { a: 'fc', b: 'ho', chain: 1, on: 16.05 },
 ];
-const RING_ON = { sw: 11.85, ef: 12.03, co: 12.21, fc: 12.37, ho: 12.51 };
+const RING_ON = { sw: 15.45, ef: 15.63, co: 15.81, fc: 15.97, ho: 16.11 };   // the rings pop on "Purple" (15.43)
 const COL = { planned: '#64748B', onsite: '#16A34A', done: '#065F46' };
 const TICK = '<svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3.2 3.2L13 4.8" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
@@ -101,11 +121,11 @@ const TICK = '<svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3.
 function stateAt(t) {
   const S = {};
   TASKS.forEach(k => { S[k.id] = { s: k.s, e: k.e }; });
-  const pd = 7 * ez(t, 15.8, 16.55, 'inOut');                         // Painting: starts a week later (2-6 → 9-13 Nov)
+  const pd = 7 * ez(t, 21.1, 22.1, 'inOut');                          // Painting: starts a week later (2-6 → 9-13 Nov) on "Drag him a week late,"
   S.pa.s += pd; S.pa.e += pd;
-  const fd = ez(t, 19.55, 19.87, 'inOut');                            // Electrical fit-off: one day later
-  S.ef.s += fd; S.ef.e += fd + 2 * ez(t, 19.91, 20.05, 'out');        // 17-23 Nov: it now spans the weekend
-  [['co', 19.97], ['fc', 20.05], ['ho', 20.13]].forEach(([id, t0]) => { const k = ez(t, t0, t0 + 0.16, 'out'); S[id].s += k; S[id].e += k; });
+  const fd = ez(t, 25.95, 26.3, 'inOut');                             // Electrical fit-off: one day later, on "Slips a day,"
+  S.ef.s += fd; S.ef.e += fd + 2 * ez(t, 26.33, 26.47, 'out');        // 17-23 Nov: it now spans the weekend
+  [['co', 26.39], ['fc', 26.47], ['ho', 26.55]].forEach(([id, t0]) => { const k = ez(t, t0, t0 + 0.16, 'out'); S[id].s += k; S[id].e += k; });
   return S;
 }
 function barBox(S, id) {
@@ -345,110 +365,121 @@ document.getElementById('root').innerHTML = `
   <div id="endurl" class="abs">qsme.build</div>
 </div>`;
 
-/* ------------------------------------------------------------------ timeline (33.8 s; retimed 2026-10-04 after review) */
-const DUR = 33.8;
-Kit.scene('#s1', 0, 3.24).scene('#s2', 2.92, 9.9).scene('#s3', 9.45, 22.3).scene('#s4', 22.0, 31.0).scene('#s5', 30.75, DUR + 1);
+/* ------------------------------------------------------------------ timeline (42.5 s; AUDIO-FIRST REMAKE 2026-10-06)
+   The Cam S eleven_v3 take (outputs/vo-take-cam-v3/take.mp3, 40.96 s, ONE unbroken request laid at 0.0) is the clock.
+   Every key below sits on its word in outputs/vo-take-cam-v3/alignment.json (words.json has the per-word times);
+   the page runs 42.5 s (take + ~1.5 s tail). Design unchanged. */
+const DUR = 42.5;
+Kit.scene('#s1', 0, 5.5).scene('#s2', 4.85, 13.6).scene('#s3', 13.1, 28.9).scene('#s4', 28.45, 37.9).scene('#s5', 37.5, DUR + 1);
 
-/* S1 hook (0–2.92): frame 0 already carries the whole text hook */
+/* S1 hook (0–5.15): "Six weeks of minutes, one action:" (0–2.56) → five page flicks; "chase the painter." (2.60–3.60) → the pen
+   draws the sixth underline; "Again." (3.77–5.08) → the "(Again.)" jolt. Frame 0 already carries the whole text hook. */
+const FLICK = [0.35, 0.75, 1.15, 1.55, 1.95];
 const scrollKeys = [[0, 20]];
-[0.3, 0.62, 0.94, 1.26, 1.58].forEach((t0, i) => { scrollKeys.push([t0, 20 - i * PITCH]); scrollKeys.push([t0 + 0.2, 20 - (i + 1) * PITCH, 'swipe']); });
+FLICK.forEach((t0, i) => { scrollKeys.push([t0, 20 - i * PITCH]); scrollKeys.push([t0 + 0.2, 20 - (i + 1) * PITCH, 'swipe']); });
 Kit.add('#doc', 'y', scrollKeys);
 const blurKeys = [[0, 0]];
-[0.3, 0.62, 0.94, 1.26, 1.58].forEach(t0 => { blurKeys.push([t0, 0]); blurKeys.push([t0 + 0.08, 5]); blurKeys.push([t0 + 0.2, 0]); });
+FLICK.forEach(t0 => { blurKeys.push([t0, 0]); blurKeys.push([t0 + 0.08, 5]); blurKeys.push([t0 + 0.2, 0]); });
 Kit.add('#doc', 'blur', blurKeys);
-Kit.add('#h-again', 'rotate', [[0, -5], [2.66, -5], [2.74, -9, 'out'], [2.86, -5, 'out']]);   // a little jolt as the sixth line lands
-Kit.add('#h-again', 'scale', [[2.66, 1], [2.74, 1.1, 'out'], [2.9, 1, 'out']]);
-Kit.add('#ul6', 'trim', [[2.12, 0], [2.6, 1, 'inOut']]);
-Kit.add('#pen', 'opacity', [[1.86, 0], [1.96, 1], [2.78, 1], [2.92, 0]]);
-// minutes → ledger: the same horizontal swipe as the ledger → schedule cut (no crossfade of two cream documents)
-Kit.add('#s1', 'x', [[2.92, 0], [3.22, -1100, 'swipe']]);
+Kit.add('#h-again', 'rotate', [[0, -5], [3.77, -5], [3.85, -9, 'out'], [3.97, -5, 'out']]);   // a little jolt on "Again."
+Kit.add('#h-again', 'scale', [[3.77, 1], [3.85, 1.1, 'out'], [4.01, 1, 'out']]);
+Kit.add('#ul6', 'trim', [[2.62, 0], [3.45, 1, 'inOut']]);                                    // "chase the painter."
+Kit.add('#pen', 'opacity', [[2.3, 0], [2.4, 1], [3.75, 1], [3.95, 0]]);
+// minutes → ledger: the same horizontal swipe as the ledger → schedule cut, as "Again." tails off
+Kit.add('#s1', 'x', [[4.85, 0], [5.15, -1100, 'swipe']]);
 
-/* S2 ledger (2.92–9.8) */
-Kit.add('#ledger', 'x', [[2.92, 1100], [3.22, 0, 'swipe'], [9.45, 0], [9.8, -1100, 'swipe']]).add('#plus9', 'x', [[9.45, 0], [9.8, -1100, 'swipe']]);
-Kit.pop('#c2a', 3.25).pop('#c2b', 4.35).out('#c2a', 6.45).out('#c2b', 6.45);
-[1, 2, 3, 4].forEach(k => Kit.add('#tn' + k, 'opacity', [[0, 0], [4.35 + k * 0.06, 0], [4.55 + k * 0.06, 1, 'out'], [6.45, 1], [6.7, 0.35]]));
-[5, 6].forEach(k => Kit.add('#tn' + k, 'opacity', [[0, 0], [6.6, 0], [6.8, 1, 'out']]));
+/* S2 ledger (5.15–13.45): "Painter's starting a week late." 5.13 · "Finish date didn't move." 6.56 · "Then it jumped nine working
+   days." 7.98 (sticker on "nine" 9.04) · "Something else moved it," 10.31 · "and nobody minuted that." 11.74 */
+Kit.add('#ledger', 'x', [[4.85, 1100], [5.15, 0, 'swipe'], [13.1, 0], [13.45, -1100, 'swipe']]).add('#plus9', 'x', [[13.1, 0], [13.45, -1100, 'swipe']]);
+Kit.pop('#c2a', 5.15).pop('#c2b', 6.56).out('#c2a', 7.95).out('#c2b', 7.95);
+[1, 2, 3, 4].forEach(k => Kit.add('#tn' + k, 'opacity', [[0, 0], [6.75 + k * 0.06, 0], [6.95 + k * 0.06, 1, 'out'], [7.95, 1], [8.2, 0.35]]));
+[5, 6].forEach(k => Kit.add('#tn' + k, 'opacity', [[0, 0], [8.0, 0], [8.2, 1, 'out']]));
 const WD = ['Fri 13 Nov', 'Mon 16 Nov', 'Tue 17 Nov', 'Wed 18 Nov', 'Thu 19 Nov', 'Fri 20 Nov', 'Mon 23 Nov', 'Tue 24 Nov', 'Wed 25 Nov', 'Thu 26 Nov'];
 const fmtD = v => WD[Math.max(0, Math.min(9, Math.round(v)))];
-Kit.count('#pc5', [[6.6, 0], [7.45, 9, 'out']], fmtD).count('#pc6', [[6.7, 0], [7.55, 9, 'out']], fmtD);
-// weeks 13-14 stay greyed (not yet) until they tick out in red, so "didn't move" visibly covers only weeks 9-12
-Kit.add('#pc5', 'color', [[0, '#BDBAB2'], [6.6, '#BDBAB2'], [6.8, '#B42318']]).add('#pc6', 'color', [[0, '#BDBAB2'], [6.7, '#BDBAB2'], [6.9, '#B42318']]);
-Kit.fade('#plus9', 7.6, 7.68).add('#plus9', 'scale', [[7.6, 1.5], [7.74, 1, 'slam']]).add('#plus9', 'rotate', [[7.6, -12], [7.74, -4, 'out']]);
-Kit.pop('#c3a', 6.75).pop('#c3b', 7.95).out('#c3a', 9.35).out('#c3b', 9.35);
+Kit.count('#pc5', [[8.0, 0], [8.85, 9, 'out']], fmtD).count('#pc6', [[8.1, 0], [8.95, 9, 'out']], fmtD);
+// weeks 13-14 stay greyed (not yet) until they tick out in red on "Then it jumped", so "didn't move" visibly covers only weeks 9-12
+Kit.add('#pc5', 'color', [[0, '#BDBAB2'], [8.0, '#BDBAB2'], [8.2, '#B42318']]).add('#pc6', 'color', [[0, '#BDBAB2'], [8.1, '#BDBAB2'], [8.3, '#B42318']]);
+Kit.fade('#plus9', 9.04, 9.12).add('#plus9', 'scale', [[9.04, 1.5], [9.18, 1, 'slam']]).add('#plus9', 'rotate', [[9.04, -12], [9.18, -4, 'out']]);
+Kit.pop('#c3a', 10.31).pop('#c3b', 11.74).out('#c3a', 13.05).out('#c3b', 13.05);
 
-/* S3 product (9.45–22.25) */
-Kit.add('#zclip', 'x', [[9.45, 1100], [9.8, 0, 'swipe']]);
-Kit.add('#ill1', 'x', [[9.45, 1100], [9.8, 0, 'swipe']]);
-// the one product action: pill up 2.2 s, menu open 1.7 s, cursor rests on the checkbox ~0.8 s before the tick
-Kit.pop('#logo1', 9.6, { dy: 16 }).pop('#how', 9.7, { dy: 16 }).out('#logo1', 11.88).out('#how', 11.88);
-Kit.add('#menu', 'opacity', [[0, 0], [10.26, 0], [10.36, 1, 'out'], [11.8, 1], [11.94, 0]]).add('#menu', 'scale', [[10.26, 0.96], [10.4, 1, 'out']]);
-Kit.add('#ck-chain-hl', 'opacity', [[0, 0], [10.5, 0], [10.58, 1]]);
-Kit.add('#bx-chain-on', 'opacity', [[0, 0], [11.4, 0], [11.44, 1]]).add('#bx-chain-on', 'scale', [[11.4, 0.6], [11.52, 1, 'outBack']]);
-Kit.add('#viewdot', 'opacity', [[0, 0], [11.44, 0], [11.54, 1]]);
-Kit.add('#key2', 'opacity', [[0, 0], [11.85, 0], [12.05, 1, 'out']]);
+/* S3 product (13.1–28.7): "One switch in QSME." 13.18–15.36 (View 13.85, menu, tick on "Mee" 15.1) · "Purple decides your finish
+   date." 15.43 (rings) · "Our painter? Grey." 17.32 (circle on "Grey." 18.64) · "Grey has room to move." 19.76 · "Drag him a week
+   late," 21.09 (the drag) · "the finish doesn't budge." 22.34 · "The fit-off? Purple." 23.88 (push-in) · "Slips a day," 25.95 (the
+   drag) · "the finish slips a day." 27.06 (the finish flips on "slips" 27.56) */
+Kit.add('#zclip', 'x', [[13.1, 1100], [13.45, 0, 'swipe']]);
+Kit.add('#ill1', 'x', [[13.1, 1100], [13.45, 0, 'swipe']]);
+// the one product action, on the words: pill up on the swipe, View clicked on "switch", the cursor rests on the checkbox ~0.8 s, tick on "Mee"
+Kit.pop('#logo1', 13.25, { dy: 16 }).pop('#how', 13.35, { dy: 16 }).out('#logo1', 15.5).out('#how', 15.5);
+Kit.add('#menu', 'opacity', [[0, 0], [13.9, 0], [14.0, 1, 'out'], [15.45, 1], [15.6, 0]]).add('#menu', 'scale', [[13.9, 0.96], [14.04, 1, 'out']]);
+Kit.add('#ck-chain-hl', 'opacity', [[0, 0], [14.3, 0], [14.38, 1]]);
+Kit.add('#bx-chain-on', 'opacity', [[0, 0], [15.1, 0], [15.14, 1]]).add('#bx-chain-on', 'scale', [[15.1, 0.6], [15.22, 1, 'outBack']]);
+Kit.add('#viewdot', 'opacity', [[0, 0], [15.14, 0], [15.24, 1]]);
+Kit.add('#key2', 'opacity', [[0, 0], [15.45, 0], [15.65, 1, 'out']]);
 Kit.add('#rg-ho', 'rotate', [[0, 45]]);
 Object.entries(RING_ON).forEach(([id, t0]) => { Kit.add('#rg-' + id, 'opacity', [[0, 0], [t0, 0], [t0 + 0.1, 1]]).add('#rg-' + id, 'scale', [[t0, 1.3], [t0 + 0.22, 1, 'out']]); });
 LINKS.forEach((lk, i) => { if (lk.chain) { Kit.add('#ap' + i, 'trim', [[lk.on, 0], [lk.on + 0.16, 1, 'out']]); Kit.add('#aph' + i, 'opacity', [[0, 0], [lk.on + 0.14, 0], [lk.on + 0.17, 1]]); } });
-Kit.pop('#c4', 12.0).out('#c4', 13.55);
-Kit.add('#fin', 'opacity', [[0, 0], [12.7, 0], [12.85, 1, 'out']]).add('#fin', 'scale', [[12.7, 0.85], [12.9, 1, 'outBack']]);
-Kit.show('#fin-a', 0, 20.25).show('#fin-b', 20.25);
-Kit.add('#n1', 'clipX', [[12.9, 0], [13.15, 1, 'inOut']]).add('#n2', 'clipX', [[13.17, 0], [13.5, 1, 'inOut']]).add('#note', 'opacity', [[0, 0], [12.9, 0], [12.93, 1]]).out('#note', 15.2, 0.2);
-Kit.add('#notearr-p', 'trim', [[13.47, 0], [13.73, 1, 'out']]).out('#notearr', 15.2, 0.2);
-Kit.pop('#c5', 13.65).out('#c5', 15.17);
-Kit.add('#biro-p', 'trim', [[13.71, 0], [14.13, 1, 'inOut']]).out('#biro', 15.2, 0.2);
-// grey drag: Painting starts a week later; the finish does not move
-Kit.pop('#c6', 15.3).out('#c6', 18.53);
-Kit.add('#dr', 'opacity', [[0, 0], [15.73, 0], [15.77, 1], [16.59, 1], [16.63, 0], [19.39, 0], [19.43, 1], [19.89, 1], [19.93, 0]]);
-Kit.add('#tg-wk', 'opacity', [[0, 0], [16.63, 0], [16.75, 1, 'out'], [18.47, 1], [18.61, 0]]).add('#tg-wk', 'scale', [[16.63, 0.8], [16.79, 1, 'outBack']]);
-Kit.add('#tg-ok', 'opacity', [[0, 0], [16.85, 0], [16.97, 1, 'out'], [18.47, 1], [18.61, 0]]).add('#tg-ok', 'scale', [[16.85, 0.8], [17.01, 1, 'outBack']]);
-Kit.add('#toast1', 'opacity', [[0, 0], [16.69, 0], [16.83, 1, 'out'], [18.37, 1], [18.53, 0]]).add('#toast1', 'y', [[16.69, 30], [16.85, 0, 'out']]);
-// camera: purple push onto the chart (screen x 310 → frame left, screen y 230 → frame top) in both cuts;
-// the 9:16 also gets a gentle grey push (screen x 231, y 150) so the Shorts cut can read Painting and FINISH
+Kit.pop('#c4', 15.48).out('#c4', 17.25);
+Kit.add('#fin', 'opacity', [[0, 0], [16.35, 0], [16.5, 1, 'out']]).add('#fin', 'scale', [[16.35, 0.85], [16.55, 1, 'outBack']]);   // on "finish date."
+Kit.show('#fin-a', 0, 27.56).show('#fin-b', 27.56);
+Kit.add('#n1', 'clipX', [[16.55, 0], [16.8, 1, 'inOut']]).add('#n2', 'clipX', [[16.82, 0], [17.15, 1, 'inOut']]).add('#note', 'opacity', [[0, 0], [16.55, 0], [16.58, 1]]).out('#note', 19.75, 0.2);
+Kit.add('#notearr-p', 'trim', [[17.12, 0], [17.38, 1, 'out']]).out('#notearr', 19.75, 0.2);
+Kit.pop('#c5', 17.32).out('#c5', 19.7);
+Kit.add('#biro-p', 'trim', [[18.66, 0], [19.1, 1, 'inOut']]).out('#biro', 19.75, 0.2);
+// grey drag: Painting starts a week later on "Drag him a week late,"; the finish does not move ("the finish doesn't budge.")
+Kit.pop('#c6', 19.76).out('#c6', 23.85);
+Kit.add('#dr', 'opacity', [[0, 0], [21.03, 0], [21.07, 1], [22.17, 1], [22.21, 0], [24.93, 0], [24.97, 1], [26.62, 1], [26.66, 0]]);
+Kit.add('#tg-wk', 'opacity', [[0, 0], [22.2, 0], [22.32, 1, 'out'], [23.82, 1], [23.96, 0]]).add('#tg-wk', 'scale', [[22.2, 0.8], [22.36, 1, 'outBack']]);
+Kit.add('#tg-ok', 'opacity', [[0, 0], [23.0, 0], [23.12, 1, 'out'], [23.82, 1], [23.96, 0]]).add('#tg-ok', 'scale', [[23.0, 0.8], [23.16, 1, 'outBack']]);
+Kit.add('#toast1', 'opacity', [[0, 0], [22.25, 0], [22.39, 1, 'out'], [23.72, 1], [23.88, 0]]).add('#toast1', 'y', [[22.25, 30], [22.41, 0, 'out']]);
+// camera: purple push onto the chart (screen x 310 → frame left, screen y 230 → frame top) in both cuts, on "The fit-off?";
+// the 9:16 also gets a gentle grey push (screen x 231, y 150) as "Grey has room to move." pops, so the Shorts cut can read Painting and FINISH
 const ZP = { s: 1.46, x: -310 * 1.46, y: -230 * 1.46 }, ZG = { s: 1.3, x: -231 * 1.3, y: -150 * 1.3 };
 if (R9) {
-  Kit.add('#zoom', 'scale', [[15.22, 1], [15.72, ZG.s, 'inOut'], [18.67, ZG.s], [19.15, ZP.s, 'inOut']])
-     .add('#zoom', 'x', [[15.22, 0], [15.72, ZG.x, 'inOut'], [18.67, ZG.x], [19.15, ZP.x, 'inOut']])
-     .add('#zoom', 'y', [[15.22, 0], [15.72, ZG.y, 'inOut'], [18.67, ZG.y], [19.15, ZP.y, 'inOut']]);
+  Kit.add('#zoom', 'scale', [[19.78, 1], [20.28, ZG.s, 'inOut'], [23.9, ZG.s], [24.4, ZP.s, 'inOut']])
+     .add('#zoom', 'x', [[19.78, 0], [20.28, ZG.x, 'inOut'], [23.9, ZG.x], [24.4, ZP.x, 'inOut']])
+     .add('#zoom', 'y', [[19.78, 0], [20.28, ZG.y, 'inOut'], [23.9, ZG.y], [24.4, ZP.y, 'inOut']]);
 } else {
-  Kit.add('#zoom', 'scale', [[18.67, 1], [19.15, ZP.s, 'inOut']]).add('#zoom', 'x', [[18.67, 0], [19.15, ZP.x, 'inOut']]).add('#zoom', 'y', [[18.67, 0], [19.15, ZP.y, 'inOut']]);
+  Kit.add('#zoom', 'scale', [[23.9, 1], [24.4, ZP.s, 'inOut']]).add('#zoom', 'x', [[23.9, 0], [24.4, ZP.x, 'inOut']]).add('#zoom', 'y', [[23.9, 0], [24.4, ZP.y, 'inOut']]);
 }
-const PUSH = R9 ? 15.22 : 18.67;    // names column, date header and legend leave before the push, so no half-cut names slide past
+const PUSH = R9 ? 19.78 : 23.9;    // names column, date header and legend leave before the push, so no half-cut names slide past
 Kit.add('#key', 'opacity', [[0, 1], [PUSH, 1], [PUSH + 0.18, 0]]);
 ['#names', '#lhead', '#days'].forEach(s => Kit.add(s, 'opacity', [[0, 1], [PUSH, 1], [PUSH + 0.13, 0]]));
-// purple drag: Electrical fit-off one day later; the finish moves a day
-Kit.pop('#c7a', 18.75).pop('#c7b', 19.5).out('#c7a', 21.9).out('#c7b', 21.9);
-Kit.add('#tg-dl', 'opacity', [[0, 0], [19.95, 0], [20.07, 1, 'out']]).add('#tg-dl', 'scale', [[19.95, 0.8], [20.11, 1, 'outBack']]);
-Kit.add('#fin', 'scale', [[20.25, 1], [20.33, 1.14, 'out'], [20.49, 1, 'out']]);
-Kit.add('#tg-p1', 'opacity', [[0, 0], [20.31, 0], [20.43, 1, 'out']]).add('#tg-p1', 'scale', [[20.31, 0.8], [20.47, 1, 'outBack']]);
-Kit.add('#toast2', 'opacity', [[0, 0], [20.05, 0], [20.19, 1, 'out']]).add('#toast2', 'y', [[20.05, 30], [20.21, 0, 'out']]);
-Kit.add('#zclip', 'opacity', [[22.0, 1], [22.25, 0]]).add('#zclip', 'scale', [[22.0, 1], [22.25, 0.92, 'in']]).out('#ill1', 22.0, 0.15);
-Kit.add('#cur', 'opacity', [[0, 0], [9.8, 0], [9.9, 1]]);
-Kit.add('#cur', 'scale', [[10.2, 1], [10.23, 0.82], [10.3, 1], [11.37, 1], [11.4, 0.82], [11.47, 1], [15.67, 1], [15.71, 0.86], [16.59, 0.86], [16.65, 1], [19.33, 1], [19.37, 0.86], [19.89, 0.86], [19.95, 1]]);
+// purple drag: Electrical fit-off one day later on "Slips a day,"; the finish moves a day on "the finish slips"
+Kit.pop('#c7a', 24.93).pop('#c7b', 27.06).out('#c7a', 28.5).out('#c7b', 28.5);
+Kit.add('#tg-dl', 'opacity', [[0, 0], [26.65, 0], [26.77, 1, 'out']]).add('#tg-dl', 'scale', [[26.65, 0.8], [26.81, 1, 'outBack']]);
+Kit.add('#fin', 'scale', [[27.56, 1], [27.64, 1.14, 'out'], [27.8, 1, 'out']]);
+Kit.add('#tg-p1', 'opacity', [[0, 0], [27.62, 0], [27.74, 1, 'out']]).add('#tg-p1', 'scale', [[27.62, 0.8], [27.78, 1, 'outBack']]);
+Kit.add('#toast2', 'opacity', [[0, 0], [26.75, 0], [26.89, 1, 'out']]).add('#toast2', 'y', [[26.75, 30], [26.91, 0, 'out']]);
+Kit.add('#zclip', 'opacity', [[28.45, 1], [28.7, 0]]).add('#zclip', 'scale', [[28.45, 1], [28.7, 0.92, 'in']]).out('#ill1', 28.45, 0.15);
+Kit.add('#cur', 'opacity', [[0, 0], [13.45, 0], [13.55, 1]]);
+Kit.add('#cur', 'scale', [[13.85, 1], [13.88, 0.82], [13.95, 1], [15.07, 1], [15.1, 0.82], [15.17, 1], [21.05, 1], [21.09, 0.86], [22.15, 0.86], [22.21, 1], [24.95, 1], [24.99, 0.86], [26.6, 0.86], [26.66, 1]]);
 
-/* S4 the printout (22.0–27.95), then the coffee (27.9–30.75) */
-Kit.fade('#desk', 22.0, 22.25).fade('#deskpen', 22.1, 22.35);
+/* S4 the printout (28.45–35.75): "Same rings on the printed programme." 28.54 (slide in, zoom) · "QSME calls it 'What drives the
+   finish date'." 30.51 (c8a; highlighter under the feature name 32.1–32.7) · "You can call it the critical path." 33.82 (c8b) ·
+   then the coffee: "We owe the painter a coffee." 35.89 (zoom out, c9, the cup lands) */
+Kit.fade('#desk', 28.45, 28.7).fade('#deskpen', 28.55, 28.8);
 const pz = 2.1, P = [254, 221];      // P = centre of the sentence block on the paper
 const PF = L.pdfF, ZX = PF[0] - L.paperX - pz * P[0], ZY = PF[1] - L.paperY - pz * P[1];
-Kit.add('#paperwrap', 'x', [[22.1, 1150], [22.6, 0, 'out'], [22.72, 0], [23.3, ZX, 'inOut'], [27.95, ZX], [28.45, 0, 'inOut']]);
-Kit.add('#paperwrap', 'y', [[22.1, 60], [22.6, 0, 'out'], [22.72, 0], [23.3, ZY, 'inOut'], [27.95, ZY], [28.45, 0, 'inOut']]);
-Kit.add('#paperwrap', 'rotate', [[22.1, 9], [22.6, -1.5, 'out'], [22.72, -1.5], [23.3, 0, 'inOut'], [27.95, 0], [28.45, -1.5, 'inOut']]);
-Kit.add('#paperwrap', 'scale', [[22.72, 1], [23.3, pz, 'inOut'], [27.95, pz], [28.45, 1, 'inOut']]);
-// reading order once the zoom has landed: c8a (23.3) → highlighter (23.45–23.9) → c8b (25.8); 24 words over 4.6 s
-Kit.add('#hlbar', 'clipX', [[23.45, 0], [23.9, 1, 'inOut']]);
-Kit.pop('#c8a', 23.3).pop('#c8b', 25.8).out('#c8a', 27.9).out('#c8b', 27.9);
-Kit.fade('#ill2', 22.15, 22.35);
-// the punchline gets 2.65 s; the cup lands as the caption finishes popping
-Kit.pop('#c9', 28.1);
-Kit.add('#cup', 'x', [[27.9, 420], [28.3, 0, 'out']]).add('#cup', 'y', [[27.9, -50], [28.22, 7, 'out'], [28.32, 0, 'out']]).add('#cup', 'rotate', [[27.9, 14], [28.3, 0, 'out']]).fade('#cup', 27.9, 27.98);
-Kit.add('#steam', 'opacity', [[0, 0], [28.3, 0], [28.8, 0.5, 'out']]);
-Kit.add('#s4', 'opacity', [[30.75, 1], [31.0, 0]]);
+Kit.add('#paperwrap', 'x', [[28.55, 1150], [29.05, 0, 'out'], [29.5, 0], [30.4, ZX, 'inOut'], [35.75, ZX], [36.25, 0, 'inOut']]);
+Kit.add('#paperwrap', 'y', [[28.55, 60], [29.05, 0, 'out'], [29.5, 0], [30.4, ZY, 'inOut'], [35.75, ZY], [36.25, 0, 'inOut']]);
+Kit.add('#paperwrap', 'rotate', [[28.55, 9], [29.05, -1.5, 'out'], [29.5, -1.5], [30.4, 0, 'inOut'], [35.75, 0], [36.25, -1.5, 'inOut']]);
+Kit.add('#paperwrap', 'scale', [[29.5, 1], [30.4, pz, 'inOut'], [35.75, pz], [36.25, 1, 'inOut']]);
+// reading order once the zoom has landed: c8a on "Queue Ess Mee calls it" (30.51) → highlighter (32.1–32.7) → c8b on "You can call it" (33.82)
+Kit.add('#hlbar', 'clipX', [[32.1, 0], [32.7, 1, 'inOut']]);
+Kit.pop('#c8a', 30.51).pop('#c8b', 33.82).out('#c8a', 35.7).out('#c8b', 35.7);
+Kit.fade('#ill2', 28.6, 28.8);
+// the punchline on the words; the cup lands on "owe the painter"
+Kit.pop('#c9', 35.92);
+Kit.add('#cup', 'x', [[35.95, 420], [36.35, 0, 'out']]).add('#cup', 'y', [[35.95, -50], [36.27, 7, 'out'], [36.37, 0, 'out']]).add('#cup', 'rotate', [[35.95, 14], [36.35, 0, 'out']]).fade('#cup', 35.95, 36.03);
+Kit.add('#steam', 'opacity', [[0, 0], [36.35, 0], [36.85, 0.5, 'out']]);
+Kit.add('#s4', 'opacity', [[37.5, 1], [37.75, 0]]);
 
-/* S5 end card (30.75–33.8) */
-Kit.clip('#bgdone', { dir: 'clips/done', t0: 30.75, fps: 30, frames: 102, ext: '.jpg' });
-Kit.fade('#s5', 30.75, 31.0);
-Kit.add('#bgdone', 'scale', [[30.75, 1.06], [DUR, 1]]);
-Kit.fade('#logo2', 30.9, 31.15).add('#logo2', 'scale', [[30.9, 0.94], [31.25, 1, 'out']]);
-Kit.pop('#endline', 31.07).pop('#endpill', 31.35).pop('#endurl', 31.49);
+/* S5 end card (37.5–42.5): "Book a thirty-minute demo at Queue Ess Mee dot build." 37.63–40.96; the pill pops on "Book", the URL on "dot build" */
+Kit.clip('#bgdone', { dir: 'clips/done', t0: 37.5, fps: 30, frames: 153, ext: '.jpg' });
+Kit.fade('#s5', 37.5, 37.75);
+Kit.add('#bgdone', 'scale', [[37.5, 1.06], [DUR, 1]]);
+Kit.fade('#logo2', 37.65, 37.9).add('#logo2', 'scale', [[37.65, 0.94], [38.0, 1, 'out']]);
+Kit.pop('#endline', 37.78).pop('#endpill', 37.98).pop('#endurl', 40.2);
 
 /* ------------------------------------------------------------------ per-frame geometry */
 const els = {}; TASKS.forEach(k => { els[k.id] = $('#b-' + k.id); els['rg' + k.id] = $('#rg-' + k.id); });
@@ -468,10 +499,10 @@ function measure() {
 const onBar = id => S => { const b = barBox(S, id); return [SCR.x + b.cx + 6, SCR.y + b.cy + 4]; };
 function curKeys(m) {
   return [
-    [9.8, [560, 470]], [10.2, [m.view[0] + 4, m.view[1] + 6], 'inOut'], [10.3, [m.view[0] + 4, m.view[1] + 6]],
-    [10.6, [m.box[0] + 6, m.box[1] + 6], 'inOut'], [11.5, [m.box[0] + 6, m.box[1] + 6]], [12.05, [470, 640], 'inOut'],
-    [15.3, [470, 640]], [15.71, onBar('pa'), 'inOut'], [16.65, onBar('pa')], [17.25, [560, 660], 'inOut'],
-    [18.95, [560, 660]], [19.37, onBar('ef'), 'inOut'], [19.95, onBar('ef')], [20.5, [760, 540], 'inOut'],
+    [13.45, [560, 470]], [13.85, [m.view[0] + 4, m.view[1] + 6], 'inOut'], [13.95, [m.view[0] + 4, m.view[1] + 6]],
+    [14.25, [m.box[0] + 6, m.box[1] + 6], 'inOut'], [15.2, [m.box[0] + 6, m.box[1] + 6]], [15.7, [470, 640], 'inOut'],
+    [20.7, [470, 640]], [21.05, onBar('pa'), 'inOut'], [22.2, onBar('pa')], [22.75, [560, 660], 'inOut'],
+    [24.4, [560, 660]], [24.9, onBar('ef'), 'inOut'], [26.65, onBar('ef')], [27.15, [760, 540], 'inOut'],
   ];
 }
 function at(keys, t, S) {
@@ -487,20 +518,20 @@ let ul6len = 0;
 
 Kit.each(function (t) {
   /* hook: the pen tip rides the sixth underline */
-  if (t > 1.8 && t < 3.0) {
+  if (t > 2.2 && t < 4.1) {
     if (!ul6len) ul6len = ul6.getTotalLength();
-    const p = ez(t, 2.12, 2.6, 'inOut'), q = ul6.getPointAtLength(p * ul6len);
-    const inn = 1 - ez(t, 1.86, 2.1, 'out'), outt = ez(t, 2.64, 2.92, 'in');
+    const p = ez(t, 2.62, 3.45, 'inOut'), q = ul6.getPointAtLength(p * ul6len);
+    const inn = 1 - ez(t, 2.3, 2.58, 'out'), outt = ez(t, 3.5, 3.95, 'in');
     pen.setAttribute('transform', `translate(${(q.x + 160 * inn + 120 * outt).toFixed(1)} ${(q.y + 150 * inn - 90 * outt).toFixed(1)})`);
   }
   /* the coffee: a faint steam wisp drifting up (pure function of t) */
-  if (t > 28 && t < 31.1) {
-    const u = t - 28;
+  if (t > 36 && t < 37.9) {
+    const u = t - 36;
     $('#st1').setAttribute('transform', `translate(${(3 * Math.sin(u * 2.1)).toFixed(2)} ${(-((u * 14) % 22)).toFixed(2)})`);
     $('#st2').setAttribute('transform', `translate(${(3 * Math.sin(u * 1.7 + 1)).toFixed(2)} ${(-((u * 11 + 9) % 22)).toFixed(2)})`);
     $('#st1').style.opacity = (0.55 + 0.25 * Math.sin(u * 2.6)).toFixed(3); $('#st2').style.opacity = (0.4 + 0.25 * Math.sin(u * 2.2 + 2)).toFixed(3);
   }
-  if (t < 9.4 || t > 22.4) return;
+  if (t < 13.0 || t > 28.9) return;
   const m = measure(); if (!m) return;
   /* product: the programme */
   const S = stateAt(t);
@@ -517,10 +548,10 @@ Kit.each(function (t) {
     if (ag[i][2]) { ag[i][2].setAttribute('d', d); ag[i][3].setAttribute('d', head(P2, 14)); }
   });
   /* the dark "dragging" ring */
-  const dr = $('#dr'), dragId = t < 18 ? 'pa' : 'ef', db = barBox(S, dragId), o = dragId === 'ef' ? 11 : 5;
+  const dr = $('#dr'), dragId = t < 23.5 ? 'pa' : 'ef', db = barBox(S, dragId), o = dragId === 'ef' ? 11 : 5;
   dr.style.left = (db.x - o).toFixed(1) + 'px'; dr.style.top = (db.y - o) + 'px'; dr.style.width = (db.w + 2 * o).toFixed(1) + 'px'; dr.style.height = (db.h + 2 * o) + 'px';
-  /* biro circle round the painter (13.3) */
-  const pb = barBox(stateAt(13), 'pa');
+  /* biro circle round the painter (on "Grey." 18.66) */
+  const pb = barBox(stateAt(18), 'pa');
   biro.style.left = (pb.x - 34) + 'px'; biro.style.top = (pb.y - 30) + 'px'; biro.setAttribute('width', pb.w + 68); biro.setAttribute('height', 90);
   if (!biroP.getAttribute('d')) { const w = pb.w + 68; biroP.setAttribute('d', `M ${w * 0.62} 8 C ${w * 0.2} 2, 6 18, 8 46 C 10 78, ${w * 0.7} 88, ${w - 8} 62 C ${w + 6} 40, ${w * 0.86} 6, ${w * 0.42} 12`); }
   /* our annotations (yellow sticky notes in biro, so they never read as QSME UI): finish note + tags follow the bars */
@@ -531,8 +562,8 @@ Kit.each(function (t) {
   const pab = barBox(S, 'pa'); $('#tg-wk').style.left = (pab.x - 16 - m.wk).toFixed(1) + 'px'; $('#tg-wk').style.top = (pab.cy - M.wkh / 2 + 4).toFixed(1) + 'px';
   const efb = barBox(S, 'ef'); $('#tg-dl').style.left = (Math.min(650, efb.x + efb.w + 100) - m.dl).toFixed(1) + 'px'; $('#tg-dl').style.top = (efb.y - 64) + 'px';
   /* in-bar date labels change when the bar is dropped */
-  blPa.textContent = t < 16.55 ? '2-6 Nov' : '9-13 Nov';
-  blEf.textContent = t < 19.87 ? '16-20 Nov' : '17-23 Nov';
+  blPa.textContent = t < 22.1 ? '2-6 Nov' : '9-13 Nov';
+  blEf.textContent = t < 26.3 ? '16-20 Nov' : '17-23 Nov';
   /* the biro note sits right of the switchboard bar, its arrow pointing back at the bar's end */
   const swb = barBox(S, 'sw'); note.style.left = (swb.x + swb.w + 66) + 'px'; note.style.top = (swb.y - 66) + 'px';
   notearr.style.left = (swb.x + swb.w - 4) + 'px'; notearr.style.top = (swb.y - 34) + 'px';

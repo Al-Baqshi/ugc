@@ -1,3 +1,7 @@
+// 2026-10-06 AUDIO-FIRST REMAKE (owner standard from the N01 pilot: continuous speech, a hook in the first 2 s, no gaps): the Cam S eleven_v3 take
+// (outputs/vo-take-cam-v3/take.mp3, 42.24 s, ONE unbroken request laid at 0.0) is the clock. W() is gone: every key is a real second on the take; DUR 43.8 (take + ~1.5 s tail).
+// Cuts: A 3.65 · B 5.92 · C 8.0 · D 11.0 · E 14.18 · F 17.5 · G 22.7 · H 27.1 · Z 38.95. Hook: '6 bids.' at 0 ('Six bids' 0.20), six 4:59 banners under 'all in at four fifty-nine' (0.7–1.3),
+// chip 1.45, '6 formats.' on 'Six formats.' (2.78). Caption H1 is now 'Next tender, put it on QSME.' (lifted from the narration). Design unchanged.
 // 04 Motion — Six bids (LinkedIn 4:5). Page 2:5 only. skillNames: resource:figma-use,resource:figma-use-motion
 // 2026-10-02 fact-check: product beat rebuilt to what is live (identical scope lines with blank rates → bid TOTALS table excl./incl. tax with 'Lowest' → Award bid → contract with milestones + retention, agreement/e-sign as the next step). No per-line matrix across bidders (branch-only). Text inside the 4:5 safe box 60,60,1020,1290; no blank frame at the whiteboard cut.
 // 2026-10-03 review: Global cut shows bid totals EXCL. tax only (no Compare-on toggle, no incl. column, no 'calc.': the live Global screen still says GST and grosses up at 15%);
@@ -9,7 +13,8 @@
 // the product promise gets 1.0s more (sheets held, lock line 22.1 → 24.29, everything from the totals table on +1.0); hook banners from 0.3s, one every 0.12s (chip 0.55);
 // phone screen off-white with a scroll bar and a larger 'Sent from my phone'; the cursor enters from the right of the table, clear of the lower third; headline pops grow from the left edge. DUR 30.3 → 31.8.
 const P=await figma.getNodeByIdAsync('2:5');await figma.setCurrentPageAsync(P);
-const NAME='Motion — Six bids (LinkedIn 4:5)';const DUR=31.8;const W=t=>t+(t>=16.7?1.3:t>=12.3?1.0:t>=10.0?0.3:0);
+const NAME='Motion — Six bids (LinkedIn 4:5)';const DUR=43.8;const W=t=>t;   // 2026-10-06 audio-first remake: every key below is a REAL second on the take (no warp)
+const CA=3.65,CB=5.92,CC=8.0,CD=11.0,CE=14.18,CF=17.5,CG=22.7,CH=27.1,CZ=38.95;   // scene cuts, each a hair before the first word of the next bid
 const removed=[];for(const n of P.children.filter(n=>n.name===NAME)){removed.push(n.id);n.remove();}
 const hex=h=>{h=h.replace('#','');if(h.length===3)h=h.split('').map(c=>c+c).join('');return{r:parseInt(h.slice(0,2),16)/255,g:parseInt(h.slice(2,4),16)/255,b:parseInt(h.slice(4,6),16)/255}};
 const S=(h,o)=>[o===undefined?{type:'SOLID',color:hex(h)}:{type:'SOLID',color:hex(h),opacity:o}];
@@ -186,7 +191,7 @@ const [cG1,cG2]=cap2(sG,'In fairness…','here’s what I sent.',null,'what I se
 //     no incl. column / 'calc.' / Compare-on toggle on Global: the live Global screen still says GST and works it out at 15%)
 // (c) open Bidder F → 'Award bid' → payment contract with milestones + retention (the agreement / e-sign step is not shown on Global: NZ-law templates)
 // Everything in this scene sits in one column, x 100..980, so the 9:16 cut can punch in on it and keep text inside x 150..930.
-const RT=t=>+(t-1.3).toFixed(3);   // H and Z keyframes are written in real video seconds of the 31.8s cut (W() adds 1.3 from 16.7)
+const RT=t=>t;   // (2026-10-06: real seconds everywhere)
 const sH=scene('Scene H — QSME same lines, compare totals, award');
 const lgS=logo(sH,230,60,64,'QSME logo (small)');
 const ill=pill(sH,'Illustrative · demo data',{fill:G,stroke:SU,sw:2,dash:[8,6],c:MU,s:'Medium',r:10,py:10,px:18,name:'Illustrative · demo data'});
@@ -238,7 +243,7 @@ T(cc,'Contract created',{f:'Space Grotesk',s:'Bold',size:48,c:INK,x:116,y:26});T
 const chipsRow=AL(cc,'HORIZONTAL',{gap:16,x:32,y:156,name:'Contract chips'});
 const chips=['Milestones','Retention 5%'].map(s=>pill(chipsRow,s,{fill:SO,stroke:AC,sw:2,c:AC,s:'Medium',name:'Chip — '+s}));
 const curH=keep('H cursor',SV(sH,cursorSvg,{name:'Cursor H'}));
-const [cH1,cH2]=cap2(sH,'So we built QSME.','Same lines for every bidder.',null,'Same lines');
+const [cH1,cH2]=cap2(sH,'Next tender, put it on QSME.','Same lines for every bidder.',null,'Same lines');   // 2026-10-06: lifted from the narration (was 'So we built QSME.', unvoiced)
 const cTb=cap(sH,'Six bids. One table.','One table.');
 const cAw=cap(sH,'Award → contract created','contract created');
 
@@ -284,70 +289,70 @@ const vis=(n,a,b)=>K(n,'OPACITY',[...(a<=0?[[0,1]]:[[0,0],[a,1,'h']]),...(b<DUR?
 const fin=(n,a,d,b)=>K(n,'OPACITY',[[a,0],[a+d,1,'o'],...(b&&b<DUR?[[b,0,'h']]:[])]);
 const mv=(n,a,d,dx,dy,e)=>{if(dx)K(n,'TRANSLATION_X',[[a,dx],[a+d,0,e||'o']]);if(dy)K(n,'TRANSLATION_Y',[[a,dy],[a+d,0,e||'o']])};
 const sc=(n,k)=>{K(n,'SCALE_X',k);K(n,'SCALE_Y',k)};
-const SC=[[s0,0,2.4],[sA,2.4,4.2],[sB,4.2,6.1],[sC,6.1,7.6],[sD,7.6,10.0],[sE,10.0,12.3],[sF,12.3,16.7],[sG,16.7,19.4],[sH,19.4,RT(28.7)],[sZ,RT(28.7),99]];
+const SC=[[s0,0,CA],[sA,CA,CB],[sB,CB,CC],[sC,CC,CD],[sD,CD,CE],[sE,CE,CF],[sF,CF,CG],[sG,CG,CH],[sH,CH,CZ],[sZ,CZ,99]];
 SC.forEach(([s,a,b])=>vis(s,a,b));
 // counter steps
-const CT=[0,2.4,4.2,6.1,7.6,10.0,12.3,16.7];cts.forEach((t,i)=>{vis(t,CT[i],CT[i+1]);if(i)sc(t,[[CT[i],1.35],[CT[i]+0.18,1,'o']])});
+const CT=[0,CA,CB,CC,CD,CE,CF,CG];cts.forEach((t,i)=>{vis(t,CT[i],CT[i+1]);if(i)sc(t,[[CT[i],1.35],[CT[i]+0.18,1,'o']])});
 // hook
-sc(h1,[[0,1.06],[0.2,1,'o']]);K(h1,'TRANSLATION_X',[[0,0.03*h1.width],[0.2,0,'o']]);vis(h2,0.4,99);sc(h2,[[0.4,1.32],[0.52,1,'i']]);K(h2,'TRANSLATION_X',[[0.4,0.16*h2.width],[0.52,0,'i']]);   // pops anchored on the left edge (x 60): '6 formats.' no longer clips at the frame edge
-fin(chip,0.55,0.2);mv(chip,0.55,0.25,0,16);
-banners.forEach((b,i)=>{const t=0.3+i*0.12;fin(b,t,0.16);mv(b,t,0.2,0,-26)});   // motion inside the first second: everyone at 4:59
+sc(h1,[[0,1.06],[0.2,1,'o']]);K(h1,'TRANSLATION_X',[[0,0.03*h1.width],[0.2,0,'o']]);vis(h2,2.78,99);sc(h2,[[2.78,1.32],[2.9,1,'i']]);K(h2,'TRANSLATION_X',[[2.78,0.16*h2.width],[2.9,0,'i']]);   // '6 formats.' on 'Six formats.' (2.78)   // pops anchored on the left edge (x 60): '6 formats.' no longer clips at the frame edge
+fin(chip,1.45,0.2);mv(chip,1.45,0.25,0,16);   // chip on 'fifty-nine' (1.35)
+banners.forEach((b,i)=>{const t=0.7+i*0.12;fin(b,t,0.16);mv(b,t,0.2,0,-26)});   // the six 4:59 banners land under 'all in at four fifty-nine' (0.68–2.72), one every 0.12 s
 // A
-vis(cA1,2.5,99);vis(cA2,3.05,99);
-fin(aw,2.4,0.24);mv(aw,2.4,0.32,240,0);K(aw,'ROTATION',[[2.4,10],[2.72,0,'o'],[3.25,0,'l'],[3.65,-6,'io']]);
+vis(cA1,3.72,99);vis(cA2,5.0,99);   // "One's" 3.74, 'sideways' 5.02
+fin(aw,CA,0.24);mv(aw,CA,0.32,240,0);K(aw,'ROTATION',[[CA,10],[CA+0.32,0,'o'],[5.05,0,'l'],[5.45,-6,'io']]);
 // B
-sc(win,[[4.2,0.97],[4.4,1,'o']]);vis(cB1,4.3,99);vis(cB2,5.0,99);
-mv(curB,4.25,0.45,200,300,'io');vis(pressC,4.75,99);
-vis(alert,4.8,5.7);sc(alert,[[4.8,0.94],[4.92,1,'o']]);
+sc(win,[[CB,0.97],[CB+0.2,1,'o']]);vis(cB1,5.96,99);vis(cB2,7.0,99);   // 'all merged' 7.00
+mv(curB,5.97,0.45,200,300,'io');vis(pressC,6.45,99);
+vis(alert,6.5,7.95);sc(alert,[[6.5,0.94],[6.62,1,'o']]);
 // C
-fin(pc,6.1,0.22);mv(pc,6.1,0.26,0,60);vis(cC1,6.2,99);
-vis(circ,6.75,99);sc(circ,[[6.75,1.15],[6.9,1,'o']]);vis(qm,6.95,99);
+fin(pc,CC,0.22);mv(pc,CC,0.26,0,60);vis(cC1,8.05,99);
+vis(circ,8.9,99);sc(circ,[[8.9,1.15],[9.05,1,'o']]);vis(qm,9.9,99);   // circle on 'discussed' (8.94), the red ? on 'discussed when' (9.92)
 // D
-fin(ph,7.6,0.25);mv(ph,7.6,0.3,0,120);vis(cD1,7.7,99);
-K(ct,'TRANSLATION_Y',[[8.35,0],[9.25,-1700,'io']]);vis(cD2,9.4,99);
-K(sbar,'OPACITY',[[8.35,0],[8.5,1,'o']]);K(sbar,'TRANSLATION_Y',[[8.35,0],[9.25,640,'io']]);
+fin(ph,CD,0.25);mv(ph,CD,0.3,0,120);vis(cD1,11.05,99);
+K(ct,'TRANSLATION_Y',[[12.6,0],[13.3,-1700,'io']]);vis(cD2,12.83,99);   // scroll under 'and there's nothing below' (12.74–14.16); caption on 'there's' (12.83)
+K(sbar,'OPACITY',[[12.6,0],[12.75,1,'o']]);K(sbar,'TRANSLATION_Y',[[12.6,0],[13.3,640,'io']]);
 // E
-fin(ew,10.0,0.22);mv(ew,10.0,0.25,0,60);vis(cE1,10.1,99);
-vis(tE,0,11.35);vis(tE9,11.35,99);   // tag flips to 'page 9' at 11.65 (real), on the last flick, just before 'till page nine.'
-[[cov,10.8],[p4,11.0],[p7,11.18]].forEach(([p,t])=>{K(p,'TRANSLATION_Y',[[t,0],[t+0.17,-1250,'i']]);K(p,'ROTATION',[[t,0],[t+0.17,7,'i']])});
-K(hiE,'WIDTH',[[11.5,1],[11.9,500,'io']]);vis(cE2,11.4,99);
+fin(ew,CE,0.22);mv(ew,CE,0.25,0,60);vis(cE1,14.22,99);
+vis(tE,0,15.55);vis(tE9,15.55,99);   // tag flips to 'page 9' on the last flick (15.38–15.55), on 'page nine' (15.25–15.84)
+[[cov,15.0],[p4,15.2],[p7,15.38]].forEach(([p,t])=>{K(p,'TRANSLATION_Y',[[t,0],[t+0.17,-1250,'i']]);K(p,'ROTATION',[[t,0],[t+0.17,7,'i']])});
+K(hiE,'WIDTH',[[16.05,1],[16.45,500,'io']]);vis(cE2,15.0,99);   // highlighter under 'excludes ceilings' (16.05–17.52); 'till page nine.' on 'till' (15.01)
 // F — the board is on screen from the first frame of the cut (the old 0→1 fade left a dark/dim frame at 12.8s)
-K(bd,'SCALE_X',[[12.3,1.06],[12.55,1,'o'],[14.45,1,'l'],[14.6,Z,'s'],[15.1,Z,'l'],[15.25,1,'o']]);K(bd,'SCALE_Y',[[12.3,1.06],[12.55,1,'o'],[14.45,1,'l'],[14.6,Z,'s'],[15.1,Z,'l'],[15.25,1,'o']]);
-K(bd,'TRANSLATION_X',[[14.45,0],[14.6,zx,'s'],[15.1,zx,'l'],[15.25,0,'o']]);K(bd,'TRANSLATION_Y',[[14.45,0],[14.6,zy,'s'],[15.1,zy,'l'],[15.25,0,'o']]);
-[wl[0],wl[2],wl[3],wl[4],tot].forEach(n=>K(n,'OPACITY',[[14.45,1],[14.6,0.4,'o'],[15.1,0.4,'l'],[15.25,1,'o']]));
-vis(tF,12.3,14.45);
-K(ul1,'WIDTH',[[13.75,1],[13.95,ulw,'o']]);K(ul2,'WIDTH',[[14.0,1],[14.18,ulw-30,'o']]);vis(ul1,13.75,99);vis(ul2,14.0,99);
-vis(cF1,12.3,14.45);vis(cF2,13.1,14.45);
-vis(stk,15.3,99);sc(stk,[[15.3,1.6],[15.42,1,'i']]);K(stk,'ROTATION',[[15.3,12],[15.42,0,'i']]);
-vis(cT1,15.45,99);vis(cT2,15.85,99);
+K(bd,'SCALE_X',[[CF,1.06],[CF+0.25,1,'o'],[19.9,1,'l'],[20.05,Z,'s'],[20.45,Z,'l'],[20.6,1,'o']]);K(bd,'SCALE_Y',[[CF,1.06],[CF+0.25,1,'o'],[19.9,1,'l'],[20.05,Z,'s'],[20.45,Z,'l'],[20.6,1,'o']]);   // snap-zoom on 'Ceilings … INCL' under 'ceilings in.' (19.42–20.56), out on 'Honestly?' (20.62)
+K(bd,'TRANSLATION_X',[[19.9,0],[20.05,zx,'s'],[20.45,zx,'l'],[20.6,0,'o']]);K(bd,'TRANSLATION_Y',[[19.9,0],[20.05,zy,'s'],[20.45,zy,'l'],[20.6,0,'o']]);
+[wl[0],wl[2],wl[3],wl[4],tot].forEach(n=>K(n,'OPACITY',[[19.9,1],[20.05,0.4,'o'],[20.45,0.4,'l'],[20.6,1,'o']]));
+vis(tF,CF,19.9);
+K(ul1,'WIDTH',[[19.42,1],[19.62,ulw,'o']]);K(ul2,'WIDTH',[[19.66,1],[19.84,ulw-30,'o']]);vis(ul1,19.42,99);vis(ul2,19.66,99);   // underlined twice on 'ceilings' (19.42)
+vis(cF1,17.55,19.9);vis(cF2,17.97,19.9);   // 'And one' 17.56, 'is a photo of a whiteboard' 17.97
+vis(stk,20.62,99);sc(stk,[[20.62,1.6],[20.74,1,'i']]);K(stk,'ROTATION',[[20.62,12],[20.74,0,'i']]);
+vis(cT1,20.62,99);vis(cT2,21.28,99);   // 'Honestly?' 20.62, 'Most complete one.' 21.28
 // G
-fin(mw,16.7,0.25);mv(mw,16.7,0.3,0,50);vis(cG1,16.85,99);vis(cG2,17.6,99);
-K(mw,'TRANSLATION_X',[[18.3,0],[18.36,-10,'o'],[18.43,8,'io'],[18.5,0,'o']]);
+fin(mw,CG,0.25);mv(mw,CG,0.3,0,50);vis(cG1,22.75,99);vis(cG2,23.55,99);   // 'In fairness' 22.75, 'here's what I sent' 23.55; the voice then reads the email (24.84–27.04)
+K(mw,'TRANSLATION_X',[[24.85,0],[24.91,-10,'o'],[24.98,8,'io'],[25.05,0,'o']]);   // wince on 'drawings' (24.84)
 // H (times in real video seconds through RT)
-vis(lgS,RT(20.7),99);vis(ill,RT(20.7),99);
+vis(lgS,CH,99);vis(ill,CH,99);
 // (a) six sheets land one on top of the other, 0.12s apart: tab changes, lines don't
-sheets.forEach((s,i)=>{const t=RT(20.67+i*0.13);K(s,'OPACITY',[[t,0],[t+0.05,1,'o']]);K(s,'TRANSLATION_Y',[[t,-34],[t+0.16,0,'o']]);sc(s,[[t,1.04],[t+0.16,1,'o']])});
-K(stack,'OPACITY',[[RT(24.16),1],[RT(24.29),0,'i']]);K(stack,'TRANSLATION_Y',[[RT(24.16),0],[RT(24.29),-30,'i']]);
-K(hid,'OPACITY',[[RT(22.1),0],[RT(22.3),1,'o'],[RT(24.16),1,'l'],[RT(24.29),0,'i']]);K(hid,'TRANSLATION_Y',[[RT(22.1),16],[RT(22.35),0,'o']]);   // lock line up ~2.1s (was 1.3s)
-vis(cH1,RT(20.7),RT(24.3));vis(cH2,RT(21.5),RT(24.3));
+sheets.forEach((s,i)=>{const t=CH+i*0.13;K(s,'OPACITY',[[t,0],[t+0.05,1,'o']]);K(s,'TRANSLATION_Y',[[t,-34],[t+0.16,0,'o']]);sc(s,[[t,1.04],[t+0.16,1,'o']])});
+K(stack,'OPACITY',[[34.3,1],[34.43,0,'i']]);K(stack,'TRANSLATION_Y',[[34.3,0],[34.43,-30,'i']]);   // sheets out after 'budget.' (34.32)
+K(hid,'OPACITY',[[32.45,0],[32.65,1,'o'],[34.3,1,'l'],[34.43,0,'i']]);K(hid,'TRANSLATION_Y',[[32.45,16],[32.7,0,'o']]);   // lock line on 'bidders never see your rates or budget' (32.48–34.32)
+vis(cH1,27.14,34.43);vis(cH2,29.34,34.43);   // 'Next tender' 27.14, 'Same lines' 29.34
 // (b) totals table, rows in, 'Lowest' on F
-K(tbl,'OPACITY',[[RT(24.27),0],[RT(24.42),1,'o']]);mv(tbl,RT(24.27),0.24,0,50);
-trows.forEach((r,i)=>{const t=RT(24.45+i*0.08);K(r,'OPACITY',[[t,0],[t+0.1,1,'o']]);K(r,'TRANSLATION_X',[[t,70],[t+0.2,0,'s']])});
-vis(low,RT(25.25),99);sc(low,[[RT(25.25),1.5],[RT(25.37),1,'i']]);
-fin(lt,RT(24.5),0.25);vis(cTb,RT(24.35),RT(26.95));
+K(tbl,'OPACITY',[[34.42,0],[34.57,1,'o']]);mv(tbl,34.42,0.24,0,50);   // table on 'Six bids, one table' (34.48)
+trows.forEach((r,i)=>{const t=34.55+i*0.08;K(r,'OPACITY',[[t,0],[t+0.1,1,'o']]);K(r,'TRANSLATION_X',[[t,70],[t+0.2,0,'s']])});
+vis(low,35.9,99);sc(low,[[35.9,1.5],[36.02,1,'i']]);   // 'Lowest' on 'table' (35.92)
+fin(lt,34.6,0.25);vis(cTb,34.48,37.8);
 // (c) click Bidder F → bid opens → Award bid → contract created
 const cIn={x:dRow.x+(1000-pRow.x),y:dRow.y-100};   // start: master x 1000 (right of the table), 100px above row F's centre, so it passes over row E and clears the 'Lowest' tag
-K(curH,'OPACITY',[[0,0],[RT(25.75),0,'h'],[RT(25.85),1,'o'],[RT(27.1),1,'l'],[RT(27.25),0,'o']]);
-K(curH,'TRANSLATION_X',[[RT(25.75),cIn.x],[RT(26.2),dRow.x,'io'],[RT(26.45),dRow.x,'l'],[RT(26.8),0,'io']]);
-K(curH,'TRANSLATION_Y',[[RT(25.75),cIn.y],[RT(26.2),dRow.y,'io'],[RT(26.45),dRow.y,'l'],[RT(26.8),0,'io']]);
-fin(scrim,RT(26.3),0.15);
-K(bp,'OPACITY',[[RT(26.3),0],[RT(26.45),1,'o'],[RT(26.95),1,'l'],[RT(27.05),0,'o']]);mv(bp,RT(26.3),0.2,0,60);
-sc(awb,[[RT(26.83),1],[RT(26.88),0.9,'o'],[RT(26.98),1,'o']]);
-fin(cc,RT(26.95),0.2);mv(cc,RT(26.95),0.28,0,70);chips.forEach((c,i)=>vis(c,RT(27.15+i*0.1),99));
-vis(cAw,RT(26.95),99);
+K(curH,'OPACITY',[[0,0],[36.3,0,'h'],[36.4,1,'o'],[37.9,1,'l'],[38.05,0,'o']]);   // cursor in on 'award' (36.51)
+K(curH,'TRANSLATION_X',[[36.3,cIn.x],[36.75,dRow.x,'io'],[37.0,dRow.x,'l'],[37.35,0,'io']]);
+K(curH,'TRANSLATION_Y',[[36.3,cIn.y],[36.75,dRow.y,'io'],[37.0,dRow.y,'l'],[37.35,0,'io']]);
+fin(scrim,36.95,0.15);
+K(bp,'OPACITY',[[36.95,0],[37.1,1,'o'],[37.75,1,'l'],[37.85,0,'o']]);mv(bp,36.95,0.2,0,60);   // row F click on 'one,' (37.12)
+sc(awb,[[37.63,1],[37.68,0.9,'o'],[37.78,1,'o']]);   // 'Award bid' pressed on 'contract's' (37.73)
+fin(cc,37.8,0.2);mv(cc,37.8,0.28,0,70);chips.forEach((c,i)=>vis(c,38.0+i*0.1,99));   // 'Contract created' on 'created.' (38.29)
+vis(cAw,37.8,99);
 // Z
-fin(lgZ,RT(28.67),0.15);sc(lgZ,[[RT(28.67),0.94],[RT(29.1),1,'o']]);fin(cta1,RT(28.82),0.18);mv(cta1,RT(28.82),0.28,0,24);fin(ctaRow,RT(28.98),0.22);mv(ctaRow,RT(28.98),0.3,0,30);
-const uW=uline.width;vis(uline,RT(29.28),99);K(uline,'WIDTH',[[RT(29.28),1],[RT(29.62),uW,'o']]);
+fin(lgZ,CZ,0.15);sc(lgZ,[[CZ,0.94],[CZ+0.43,1,'o']]);fin(cta1,38.98,0.18);mv(cta1,38.98,0.28,0,24);fin(ctaRow,40.4,0.22);mv(ctaRow,40.4,0.3,0,30);   // 'Book' 38.98, 'at' 40.43
+const uW=uline.width;vis(uline,41.45,99);K(uline,'WIDTH',[[41.45,1],[41.79,uW,'o']]);   // underline draws on 'dot build' (41.48–42.24); page ends 43.8 (take 42.24 + tail)
 
 // resting state on canvas = end card
 scenes.forEach(s=>{if(s!==sZ)s.opacity=0});cts.forEach(t=>t.opacity=0);
@@ -358,7 +363,7 @@ for(const [n,f,k] of Q){try{n.applyManualKeyframeTrack({type:'PROPERTY',name:f},
 // fill tracks (colour): row F turns green when it is tagged 'Lowest', flashes on the click
 const C=(h)=>({type:'COLOR',value:{...hex(h),a:1}});
 const FTk=(n,keys)=>{try{n.manualKeyframeTracks={...(n.manualKeyframeTracks||{}),fills:{0:{keyframes:keys.map(([t,h,e])=>({timelinePosition:Math.round(W(t)*1000)/1000,value:C(h),...(e?{easing:EZ[e]}:{})}))}}};nT++}catch(e){errs.push('fill '+n.name+': '+e.message)}};
-FTk(trows[5],[[RT(25.24),RB[1]],[RT(25.25),'#1F4019','h'],[RT(26.24),'#1F4019','l'],[RT(26.25),'#2E6526','h'],[RT(26.45),'#1F4019','o']]);
+FTk(trows[5],[[35.89,RB[1]],[35.9,'#1F4019','h'],[36.94,'#1F4019','l'],[36.95,'#2E6526','h'],[37.15,'#1F4019','o']]);
 let tls=null;try{tls=sZ.timelines;if(tls&&tls[0]&&tls[0].duration<DUR)sZ.setTimelineDuration(tls[0].id,DUR);tls=sZ.timelines}catch(e){errs.push('final timeline: '+e.message)}
 return{frameId:M.id,x:M.x,y:M.y,removed,tracks:nT,queued:Q.length,errs:errs.slice(0,25),errCount:errs.length,timelines:tls,fontFallbacks:fb,shots,ids,
   aBox:pa.absoluteBoundingBox&&{x:Math.round(pa.absoluteBoundingBox.x-M.x),y:Math.round(pa.absoluteBoundingBox.y-M.y),w:Math.round(pa.absoluteBoundingBox.width),h:Math.round(pa.absoluteBoundingBox.height)},

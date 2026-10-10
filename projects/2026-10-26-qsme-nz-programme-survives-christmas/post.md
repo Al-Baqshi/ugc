@@ -3,19 +3,22 @@ vid: N11
 title: "How a programme survives Christmas"
 venture: qsme-nz
 idea: nz-programme-survives-christmas
-status: "rendered (review fixes applied 2026-10-04) — awaiting approval"
+status: "audio-first remake rendered + voiced (Cam S, 2026-10-10) — awaiting approval"
 publish_date: 2026-10-26
 publish_time_nzt: "19:00"
 created: 2026-10-02
 calendar_week: 4
 format: long
 kind: long-form walkthrough (comic cold open)
-length_s: 120.4
-aspect: "16:9 (+ 33 s 9:16 'The January lie' cut)"
+length_s: 137.1   # audio-first master (take 135.6 s + 1.5 s tail); the 2026-10-04 silent cut was 120.4
+aspect: "16:9 (+ 39.9 s 9:16 'The January lie' cut)"
 platforms: [YouTube, Facebook, Instagram Reels (9:16 cut), TikTok (9:16 cut)]
 video: outputs/programme-survives-christmas-16x9.mp4
 cut_downs:
-  - outputs/january-lie-9x16.mp4   # 33.0 s, 'The January lie'
+  - outputs/january-lie-9x16.mp4   # 39.9 s, 'The January lie' (audio-first, own take)
+voiced:
+  - outputs/programme-survives-christmas-16x9-with-vo.mp4
+  - outputs/january-lie-9x16-with-vo.mp4
 thumbnail: outputs/programme-survives-christmas-thumbnail-1920x1080.png
 owner_recordings_needed: [A, B, C, D, E, F, G, H, I, I-desk (optional)]   # Session C, finish by Thu 22 Oct
 ---
@@ -39,6 +42,79 @@ owner_recordings_needed: [A, B, C, D, E, F, G, H, I, I-desk (optional)]   # Sess
 - **The desk stand-in is gone (review).** The CSS desk read as clip art; the film now ends on the PDF itself: a push-in on the purple key and the "Any one of them running late moves the whole finish." sentence, then a pull back to the whole page for "The date you give the buyer. On one page." If the owner's hands-only desk take (I-desk) comes in, it replaces the last 3 s of that pull-back.
 - **B-roll:** title over th-5b-lockup (the four townhouses at lock-up = "the same job"), a th-6-fitout cutaway (a painter, after "Nobody's painting on Christmas Day"), end card over th-7-complete. th-4-structure (framing) no longer fits the late-stage story. All labelled "Illustrative b-roll" in the top-right label slot.
 - **CTA:** "Sign up at qsme.co.nz". No "Free to join" anywhere (screen, VO, captions, titles, hashtags, thumbnails).
+
+## Audio-first remake (2026-10-06; takes regenerated 2026-10-10) — the current masters
+
+**Why:** the owner's N01 standard (signed off 2026-10-06): the script is continuous speech with a spoken hook in the first 2 s, ONE unbroken Cam S eleven_v3 take per cut-length, and the picture re-timed to the words. The 2026-10-06 takes said the CTA as "dot co dot en zed"; the owner's pronunciation fix (2026-10-08: "co" is said like KO, never C-O) meant both takes were regenerated on 2026-10-10 with the CTA sent as **"Sign up at Queue Ess Mee dot Co dot N Z"**, then both pages were re-timed to the new words and re-rendered. The design is unchanged (the owner likes it); the captions are phrases lifted from the narration.
+
+**Hook (0–3.6 s, spoken, both cuts):** "Only one on your job working Christmas Day? Your spreadsheet." On screen: the headline from frame 0 over the generic spreadsheet with the Santa-hat cell; "**Your spreadsheet.**" slams in on "Your" (16:9 2.30 s, 9:16 2.45 s).
+
+### 16:9 master (one take, 135.6 s, 362 words, 2.67 words/s; longest gap 1.35 s = the scripted laugh beat before "It was always February.", every other gap ≤ 0.77 s; tags [dry], [short pause], [confident])
+
+```
+[dry] Only one on your job working Christmas Day? Your spreadsheet.
+Worked Labour Day. Worked Boxing Day. Worked New Year's. Didn't even go to the bach. Handover's the fifteenth of January. She'll be right.
+Here's how a programme survives Christmas. Same job, now in Queue Ess Mee.
+Queue Ess Mee shuts the site from the twenty-third of December to the eleventh of January, by default. We switched it off, to match the spreadsheet. Same job, from the Townhouses programme. Public holidays are built in. Finishes Wednesday the twentieth of January. Mid-January. Lovely.
+Now switch the shutdown back on. Only four of those days are public holidays. Your spreadsheet called the rest ordinary working days. Now there's jobs standing on days the site is shut, and nothing moves until you press the button. Move them off, and there's your real finish. Wednesday the third of February. Congratulations. Your finish date just got later. [short pause] It was always February. Nobody's painting on Christmas Day. Now the programme knows.
+National holidays are built in, Labour Day included. Drop a job on Labour Day and it lands on the Tuesday. The pour is your call: works public holidays, for that job only. Regional ones aren't built in, so add Auckland Anniversary yourself. One more day off, and the finish moves a day.
+Anyone booked on Queue Ess Mee is asked, not told. Nothing changes for them till they say yes. They get it on Queue Ess Mee, and by email. New dates, can you make them? Confirm. One yes, and that bar turns blue.
+Tick what drives the finish date, and you get the purple chain. Slide a grey job: the finish doesn't budge. Slip a purple one a day: the finish moves a day. Undo. Want to finish sooner? Don't hurry the grey ones. Shorten a purple one.
+Then print it. The chart and the task list, on your letterhead. Purple rings on paper too. Any one of them running late moves the whole finish. That's the date you give the buyer. On one page. [confident] A finish date you can still say out loud in January. Sign up at Queue Ess Mee dot Co dot N Z.
+```
+
+| Said (start) | Picture (re-timed to the words; page 137.1 s = take + 1.5 s) |
+|---|---|
+| 0.13 "Only one on your job working Christmas Day?" | cold open: spreadsheet, Santa hat on 25 Dec, headline from frame 0 |
+| 2.30 "Your spreadsheet." | slam; then rings on "Labour Day" / "Boxing Day" / "New Year's" as each is said, "She'll be right." scrawl on "She'll" |
+| 15.49 "Here's how a programme survives Christmas." | title card over the townhouses (15.3) |
+| 21.69 "QSME shuts the site … by default." | chapter 01 (21.2): Days off dialog on the words; toggle OFF on "switched"; Templates → Townhouses; push on FINISHES Wed 20 Jan on "Finishes" |
+| 40.75 "Now switch the shutdown back on." | chapter 02 (40.5): toggle ON on "shutdown", band, rings on "called", amber notice, button on "Move", FINISHES → Wed 3 Feb on "finish." |
+| 60.16 "Congratulations." | celebration (60.0): struck-through card on "got", "It was always February." after the laugh beat |
+| 65.47 "Nobody's painting on Christmas Day." | b-roll cutaway (65.4) |
+| 69.41 "National holidays are built in" | chapter 03 (69.3): live Knowledge Hub page, Labour Day drop → Tuesday on "lands", the pour card + toggle, Auckland Anniversary typed, FINISHES → Thu 4 Feb on "moves a day" |
+| 86.95 "Anyone booked on QSME is asked, not told." | chapter 04 (86.8): phone in on "They get it on QSME", Confirm tapped on "Confirm.", bar turns blue from "yes," |
+| 101.34 "Tick what drives the finish date" | chapter 05 (101.1): purple chain on "purple", grey slide snaps back on "doesn't budge", purple slip → Fri 5 Feb on "moves", Undo on "Undo."; live guide "Want to finish sooner?" (111.9) |
+| 116.50 "Then print it." | chapter 06 (116.3): Export → PDF on letterhead, purple sweep on "Any one of them running late…", FINISHES box on "buyer." |
+| 129.11 "A finish date you can still say out loud in January." | end card (128.8) |
+| 131.90 "Sign up at qsme.co.nz" (said "dot Co dot N Z") | button pops on "Sign up"; holds to 137.1 |
+
+### 9:16 "The January lie" (its own take, 38.4 s, 103 words, 2.68 words/s; longest gap 1.35 s = the same laugh beat, every other gap ≤ 0.53 s; tags [dry], [short pause])
+
+```
+[dry] Only one on your job working Christmas Day? Your spreadsheet.
+Worked Labour Day. Boxing Day. New Year's. Didn't even go to the bach. Handover the fifteenth. She'll be right.
+Same job in Queue Ess Mee. Shutdown's on by default; we switched it off. Switch it back on. Only four of those days are public holidays. Your spreadsheet called the rest working days. Move them off, and there's your real finish. Congratulations. Your finish date just got later. [short pause] It was always February.
+A finish date you can still say out loud in January. Sign up at Queue Ess Mee dot Co dot N Z.
+```
+
+| Said (start) | Picture / caption (page 39.9 s) |
+|---|---|
+| 0.19 "Only one on your job working Christmas Day?" | the spreadsheet under the headline |
+| 2.45 "Your spreadsheet." | slams in |
+| 4.45 "Worked Labour Day. Boxing Day. New Year's." | sheet opens, a ring on each holiday as it is said |
+| 7.20 "Didn't even go to the bach." | caption |
+| 8.88 "Handover the fifteenth. She'll be right." | push to Handover, ring on 15 Jan, scrawl |
+| 11.58 "Same job in QSME." | whip to the QSME schedule (FINISHES Wed 20 Jan 2027) |
+| 13.45 "Shutdown's on by default; we switched it off." | Days off dialog, shutdown OFF |
+| 16.34 "Switch it back on." | toggle ON on "back" |
+| 17.78 "Only four of those days are public holidays." | Christmas shutdown band |
+| 20.53 "Your spreadsheet called the rest working days." | rings on the five jobs on "called", notice |
+| 23.34 "Move them off, and there's your real finish." | button on "Move", FINISHES → Wed 3 Feb 2027 on "finish." |
+| 25.84 "Congratulations." | celebration slams in |
+| 27.33 "Your finish date just got later." | struck-through card on "got", confetti |
+| 30.39 "It was always February." | caption (after the laugh beat) |
+| 31.88 "A finish date you can still say out loud in January." | end card over the finished townhouses |
+| 35.01 "Sign up at qsme.co.nz" (said "dot Co dot N Z") | button pops on "Sign up"; holds to 39.9 |
+
+**Files:**
+- 16:9: master `outputs/programme-survives-christmas-16x9.mp4` (137.1 s, silent, QA passed on safe 96,54,1824,1026) → voiced `outputs/programme-survives-christmas-16x9-with-vo.mp4` (take at 0.0 s, gain 1.15, no bed, one audio track). Take `outputs/vo-take-cam-v3/` (take.mp3, alignment.json, words.json, take-text.txt, stt.txt; attempt 1 kept; the 2026-10-06 "dot co" take in `archive-2026-10-06-co/`). Page `motion/programme-survives-christmas.html` + `motion/vo-words-16x9.js`.
+- 9:16: master `outputs/january-lie-9x16.mp4` (39.9 s, silent, QA passed on safe 65,300,1015,1250) → voiced `outputs/january-lie-9x16-with-vo.mp4`. Take `outputs/vo-take-cam-v3-9x16/`. Page `motion/january-lie-9x16.html` + `motion/vo-words-9x16.js`.
+- Archive: `outputs/archive/programme-survives-christmas-16x9-v1.mp4` and `january-lie-9x16-v1.mp4` (the 2026-10-04 silent cuts), `january-lie-9x16-v2.mp4` (the 2026-10-07 re-time to the "dot co" take, never voiced).
+- Contract: `vo-script.json` (16:9), `vo-script-9x16.json` (9:16), `vo-script.md`. Thumbnail unchanged (its text didn't change).
+- Redo: regenerate the take → rebuild `words.json` (whitespace tokens, whole `[tag]` tokens dropped) → `motion/vo-words-*.js`; the `ANCHORS` / `capW()` word indices keep their meaning as long as the script text is unchanged.
+
+**What's below:** the Hook, Beat-by-beat, 9:16 and Music sections describe the 2026-10-04 silent cuts (120.4 s / 33.0 s, "VO later"). They are kept as the design record; the timelines above are the ones that ship.
 
 ## Hook (0–3.5 s)
 
@@ -277,3 +353,5 @@ Source: `research/2026-10-02-qsme-platform-truth.md` (feature IDs) and the publi
 - 2026-10-03: Owner CTA rule applied to the idea (no "free"; Sign up at qsme.co.nz).
 - 2026-10-04: Produced. Built the generic spreadsheet cold open, a demo four-townhouse programme computed with the NZ rules (holidays Mondayised, 23 Dec–11 Jan shutdown inclusive, Auckland Anniversary Mon 1 Feb 2027 added by hand), the illustrative QSME schedule (Templates, Days off, Gantt with status colours/rings/bands, Labour Day toast, Works public holidays, asked-not-told phone, purple chain + drags + Undo, Export → PDF on a demo letterhead, desk stand-in) and the end card; captured the two public Knowledge Hub pages; rendered the 120.4 s master and the 30.0 s 9:16 cut (QA passed on both); wrote the VO scripts and this post. Design review fixes in the same session: Santa-hat cell → "Painting: first coats"; camera framing clamped to the window and widened so task names stay in frame; callouts moved off the chips; the Public holidays row taken out of the Days off dialog (it lives under Schedule settings); band label "Christmas shutdown"; "When" label, "My work" and "Page 1 of 4" removed as unverified wording; "Add job" as in QSME's own walkthrough; the b-roll's UI tiles softened/cropped on the end cards.
 - 2026-10-04 (review, verdict "fix"): applied every must-fix and should-fix, plus the cheap nice ones, and re-rendered both videos (same paths) and the thumbnail. **Must-fix:** the Labour Day screen now shows FINISHES Wed 3 Feb and "4 Waiting for OK" (was Wed 20 Jan / 0); the shutdown sequence follows the product (on by default → switched off before the template → back on; new captions/VO, Shot A–C rewritten, setup order added); the tradie's phone has a browser address bar "qsme.co.nz" and the caption/VO/description say "on QSME and by email"; the 9:16 never shows the Auckland Anniversary band (S0 → S1 only). **Should-fix:** the b-roll label moved to the top-right slot; flagged captions shortened/split to 1.3–2.6 words/s ("Public holidays: built in.", "Only 4 are public holidays." + "Your spreadsheet called the rest working days.", "It was always February." with the celebration held to 49.4, "Then print it.", "Purple rings on paper too."); the PDF is reframed so the whole "What drives the finish date … moves the whole finish." block sits in the safe area, with a purple highlight sweep; the CSS desk is dropped (end on the PDF pull-back; I-desk optional); 1.6–1.8× push-ins on the amber notice + button + FINISHES, the Labour Day toast and the phone card; the 9:16 rebuilt as a 1.4× portrait crop with captions inside x 65–940 and two-line day headers in the hook sheet; confetti masked below the card (no green) in both; "Want January back?" → "Want to finish sooner?"; the FINISHES-box and waiting-finish questions are now explicit Session C checks with fallbacks; music/SFX flagged as needed before 26 Oct (blocked on the licence; cue list re-timed). **Nice:** the pour card's "Off" helper hides and its header updates to Mon 26 Oct; "Anyone booked on QSME is asked"; the spreadsheet label shows from frame 0 and the sheet stays below it; the Anniversary band label sits on 1 Feb; the PDF reads as page 1 of a stack and the push-in leaves HOW LONG out; 9:16 "It was always February. Now you know."; new thumbnail with the QSME mark and the FINISHES card. Timing: chapter 01 +2.0 s, celebration +0.8 s, chapter 04 +1.0 s, Knowledge Hub +0.2 s, PDF/desk −3.0 s, end card 8.4 → 7.4 s (master still 120.4 s); the 9:16 is now 33.0 s.
+- 2026-10-10: Audio-first remake finished with the owner's pronunciation fix (2026-10-08: "co" said like KO). Both Cam S eleven_v3 takes regenerated as ONE unbroken take each with the CTA sent as "Sign up at Queue Ess Mee dot Co dot N Z" (16:9 135.6 s, 9:16 38.4 s, attempt 2 each, every word heard in STT); word timings rebuilt, both pages re-timed through their word anchors (one anchor guarded where "Undo." now runs straight into "Want"), re-rendered (137.1 s and 39.9 s, QA passed), frames spot-checked on the words, and each mixed with its take at 0.0 s (gain 1.15, no bed) → `*-with-vo.mp4`. The 2026-10-06 "dot co" takes are archived in the take folders; the interim 9:16 re-time is `outputs/archive/january-lie-9x16-v2.mp4`.
+- 2026-10-10 CTA swap: owner said "koh" sounded wrong; only the final "Sign up at qsme.co.nz" line was replaced (spoken "dot Co dot N Z", tools/fix_cta.py), rest of the take and picture untouched. Old take in outputs/archive/vo-koh-2026-10-10/.

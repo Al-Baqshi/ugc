@@ -1,8 +1,30 @@
-/* The pen on a string — QSME NZ 9:16 (29.6 s). Every visual state is a pure function of t.
+/* The pen on a string — QSME NZ 9:16 (48.7 s). Every visual state is a pure function of t.
  * Scenes: A hook (the MISSING poster + the empty string) · B the soggy sign-in book · C cut it down, cable-tie the QSME poster
  * · D scan + sign in (phone) · E next morning · F the builder's On site page + the register PDF · G end card.
  * Product screens are illustrative recreations of the live public sign-in page (site/$code) and the On site page,
- * built from their live wording and layout, with demo data. */
+ * built from their live wording and layout, with demo data.
+ *
+ * 2026-10-06 AUDIO-FIRST REMAKE (owner standard from N01: continuous speech, a real hook in the first 2 s, no gaps, one voice).
+ * 2026-10-10 RE-TAKE for the CTA pronunciation rule (owner 2026-10-08: "dot koh dot en zed", never C-O): the whole take was
+ * regenerated (ONE unbroken Cam S eleven_v3 request, 47.23 s, laid at 0.0 s) and every anchor below re-derived from it.
+ * Every beat sits on its word in outputs/vo-take-cam-v3/alignment.json (words.json = [word, start, end]);
+ * the page runs 48.7 s (take + ~1.5 s tail). Design unchanged (the 2026-10-04 cut, 29.6 s, is outputs/archive/*-v1.mp4).
+ *   0.00–6.81  A  "Missing: one site pen. Last seen Tuesday. Reward, one sausage roll." over the MISSING poster; "his string" 1.05
+ *   6.81–13.30 B  whip to the book on "Which matters" (6.99); "Who was on site Thursday?" on "who" (8.76); zoom to the Thu row on
+ *                 "Thursday" (9.50); the drop falls on "the book says..." (11.14), smear; 'The book says: "D—"' on "Dee." (12.30)
+ *   13.30–19.36 C  whip back on "Queue Ess Mee" (13.42), the MISSING poster drops; "QSME's own instructions:" 13.45;
+ *                 the QSME poster rises on "Print it" (15.86), gloss on "laminate" (16.63), four zips on "cable-tie" (17.52)
+ *   19.36–29.51 D  phone up on "Walk on" (19.28); brackets + "Scan the poster." on "scan" (20.39); pill on "poster", tap on "phone"
+ *                 (21.46); name types on "Name," (22.39), company on "who you're with" (23.55); PPE rows tick on "tick what you're
+ *                 wearing" (24.07 / 24.47 / 25.02) under "Tick what you're wearing."; Sign in for today on "today" (26.00);
+ *                 the signed-in card + "Signed in. On the record." on "Signed" (26.58)
+ *   29.51–33.27 E  dark on "Next morning" (29.65), Welcome back ringed through "remembers you"; quick ticks 31.10–31.58, Sign in 31.70,
+ *                 signed in 31.86; "Still no pen." on "Still" (31.97)
+ *   33.27–39.98 F  whip to On site on "Back at the desk" (33.36); zoom to the table 33.57–33.97; Dave Kettle ringed + '"D—" now has
+ *                 a surname.' on "Dee's" (34.52); pan to Due today on "You can see" (35.91); "Who's still due." on "see who's" (36.38);
+ *                 the register PDF slides up on "register" (38.15); "The register, on your own letterhead." on "prints" (38.69)
+ *   39.98–48.7  G  end card on "One poster on the gate." (40.16); button pops on "Sign up" (41.81), pulses on "zed" (44.60) and 47.08;
+ *                 the PEN: STILL MISSING tag swings in on "Pen's still missing, mind." (45.97) */
 (function () {
   'use strict';
   var $ = function (s) { return document.querySelector(s); };
@@ -18,13 +40,19 @@
   }
 
   // ---------------- clock ----------------
-  var T = { B: 3.0, C: 6.6, D: 10.35, E: 15.9, F: 19.25, G: 25.5, END: 29.6 };
-  // phone, day 1 (D, Wed 28 Oct) and day 2 (E, Thu 29 Oct). Day 1 holds the page top (logo, site, date) before the sped-up fill.
-  var P = { up: T.D - 0.05, brk: T.D + 0.42, pill: T.D + 0.58, tapPill: T.D + 0.82, page: T.D + 0.92,
-    sc0a: T.D + 1.76, sc0b: T.D + 1.92, type0: T.D + 1.93, type1: T.D + 2.13, phone: T.D + 2.17, co: T.D + 2.21, sc1a: T.D + 2.24, sc1b: T.D + 2.42,
-    t0: T.D + 2.54, t1: T.D + 2.76, t2: T.D + 2.98, sc2a: T.D + 3.12, sc2b: T.D + 3.3, agree: T.D + 3.38, btn: T.D + 3.56, ok: T.D + 3.78 };
-  var Q = { dark: T.E, page: T.E + 0.2, sc0: T.E + 0.24, ring: T.E + 0.42, sc1a: T.E + 1.12, sc1b: T.E + 1.26, t0: T.E + 1.3, t1: T.E + 1.39, t2: T.E + 1.48,
-    sc2a: T.E + 1.54, sc2b: T.E + 1.66, agree: T.E + 1.7, btn: T.E + 1.78, ok: T.E + 1.92 };
+  // Word anchors from outputs/vo-take-cam-v3/words.json (start of the word, s). Picture follows audio.
+  var W = { which: 6.99, who: 8.76, thursday: 9.50, says: 11.14, dee: 12.30, queue: 13.42, print: 15.86, laminate: 16.63, cable: 17.52,
+    walk: 19.28, scan: 20.39, poster: 20.78, phone: 21.43, name: 22.39, with: 23.68, tick: 24.03, wearing: 24.95, sign: 25.28, today: 26.00,
+    signed: 26.63, next: 29.65, remembers: 30.45, you: 30.92, still: 31.97, back: 33.36, dees: 34.52, now: 35.50, youCan: 35.88, see: 36.38,
+    due: 37.06, register: 38.22, prints: 38.69, one: 40.16, signUp: 41.81, zed: 44.60, pens: 45.97, end: 47.20 };
+  var T = { B: W.which - 0.18, C: W.queue - 0.12, D: W.walk + 0.08, E: W.next - 0.14, F: W.back - 0.09, G: W.one - 0.18, END: 48.7 };
+  // phone, day 1 (D, Wed 28 Oct) and day 2 (E, Thu 29 Oct). Day 1 holds the page top (logo, site, date) until "Name," then fills on the words.
+  var P = { up: T.D - 0.05, brk: W.scan + 0.05, pill: W.poster, tapPill: W.phone + 0.03, page: W.phone + 0.16,
+    sc0a: W.name - 0.18, sc0b: W.name - 0.02, type0: W.name, type1: W.name + 0.52, phone: W.name + 0.72, co: W.with - 0.13, sc1a: W.tick - 0.26, sc1b: W.tick - 0.06,
+    t0: W.tick + 0.04, t1: W.tick + 0.44, t2: W.wearing + 0.07, sc2a: W.sign - 0.14, sc2b: W.sign + 0.01, agree: W.sign + 0.11, btn: W.today, ok: W.signed - 0.05 };
+  var Q = { dark: T.E, page: T.E + 0.2, sc0: T.E + 0.24, ring: W.next + 0.31, sc1a: W.you - 0.02, sc1b: W.you + 0.12, t0: W.you + 0.18, t1: W.you + 0.30, t2: W.you + 0.42,
+    sc2a: W.you + 0.48, sc2b: W.you + 0.60, agree: W.you + 0.66, btn: W.you + 0.78 };
+  Q.ok = Math.max(W.still - 0.19, Q.btn + 0.16);   // the card never lands on the same frame as the tap
 
   // ---------------- icons (lucide-style) ----------------
   var IC = {
@@ -278,9 +306,9 @@
     ['#phoneScene', [[T.D - 0.1, T.F + 0.2]]],
     ['#deskScene', [[T.F - 0.2, T.G + 0.2]]],
     ['#endScene', [[T.G - 0.1, 99]]], ['#tagW', [[T.G, 99]]],
-    ['#lostW', [[0, T.C + 1.22]]], ['#signW', [[T.C + 0.7, 99]]], ['#cutters', [[T.C - 0.06, T.C + 0.75]]], ['#note', [[0, T.B + 0.2]]],
+    ['#lostW', [[0, T.C + 1.22]]], ['#signW', [[W.print - 0.1, 99]]], ['#cutters', [[T.C - 0.06, T.C + 0.75]]], ['#note', [[0, T.B + 0.2]]],
     ['#cambox', [[0, P.page + 0.3]]], ['#pv1', [[P.page, P.ok]]], ['#pv2', [[P.ok, Q.dark + 0.2]]], ['#pv3', [[Q.page, Q.ok]]], ['#pv4', [[Q.ok, 99]]],
-    ['#pdf', [[T.F + 3.95, 99]]]];
+    ['#pdf', [[W.register - 0.12, 99]]]];
 
   // ---------------- A: hook ----------------
   Kit.add('#noteArrow', 'trim', [[0.95, 0], [1.3, 1, 'out']]);
@@ -300,20 +328,21 @@
 
   // ---------------- B: the book ----------------
   whipIn('#bookScene', T.B); whipOut('#bookScene', T.C);
+  var ZA = W.thursday + 0.04, ZB = W.thursday + 0.44, DR = W.says;   // zoom onto the Thu row on "Thursday"; the drop falls on "says..."
   var bookK = {
-    s: [[T.B, 1.0], [T.B + 1.15, 1.0], [T.B + 1.53, 1.62, 'inOut'], [T.C, 1.68, 'linear']],
-    x: [[T.B, 0], [T.B + 1.15, 0], [T.B + 1.53, 250, 'inOut'], [T.C, 256, 'linear']],
-    y: [[T.B, 40], [T.B + 1.15, -36, 'inOut'], [T.B + 1.53, -690, 'inOut'], [T.C, -700, 'linear']]
+    s: [[T.B, 1.0], [ZA, 1.0], [ZB, 1.62, 'inOut'], [T.C, 1.68, 'linear']],
+    x: [[T.B, 0], [ZA, 0], [ZB, 250, 'inOut'], [T.C, 256, 'linear']],
+    y: [[T.B, 40], [ZA, -36, 'inOut'], [ZB, -690, 'inOut'], [T.C, -700, 'linear']]
   };
-  Kit.add('#fall', 'y', [[T.B + 1.47, -260], [T.B + 1.71, 820, 'in']]);
-  Kit.add('#fall', 'opacity', [[T.B + 1.47, 0], [T.B + 1.51, 1], [T.B + 1.69, 1], [T.B + 1.73, 0]]);
-  Kit.add('#splash', 'scale', [[T.B + 1.71, 0.2], [T.B + 2.15, 1.7, 'out']]);
-  Kit.add('#splash', 'opacity', [[T.B + 1.71, 0], [T.B + 1.73, 0.9], [T.B + 2.15, 0, 'in']]);
-  Kit.add('#smear', 'scale', [[T.B + 1.71, 0.86], [T.B + 2.55, 1.14, 'out']]);
-  Kit.add('#smear', 'opacity', [[T.B + 1.71, 0.75], [T.B + 2.05, 1, 'out']]);
-  Kit.add('#dee', 'blur', [[T.B + 1.71, 0.6], [T.B + 2.45, 2.2, 'out']]);
-  cap('k1', 'Who was on site <span class="q">Thursday?</span>', T.B + 0.2, T.C - 0.02, 'top');
-  cap('k2', 'The book says: <span class="q">“D—”</span>', T.B + 1.9, T.C - 0.02, 'bot');
+  Kit.add('#fall', 'y', [[DR, -260], [DR + 0.24, 820, 'in']]);
+  Kit.add('#fall', 'opacity', [[DR, 0], [DR + 0.04, 1], [DR + 0.22, 1], [DR + 0.26, 0]]);
+  Kit.add('#splash', 'scale', [[DR + 0.24, 0.2], [DR + 0.68, 1.7, 'out']]);
+  Kit.add('#splash', 'opacity', [[DR + 0.24, 0], [DR + 0.26, 0.9], [DR + 0.68, 0, 'in']]);
+  Kit.add('#smear', 'scale', [[DR + 0.24, 0.86], [DR + 1.08, 1.14, 'out']]);
+  Kit.add('#smear', 'opacity', [[DR + 0.24, 0.75], [DR + 0.58, 1, 'out']]);
+  Kit.add('#dee', 'blur', [[DR + 0.24, 0.6], [DR + 0.98, 2.2, 'out']]);
+  cap('k1', 'Who was on site <span class="q">Thursday?</span>', W.who - 0.04, T.C - 0.02, 'top');
+  cap('k2', 'The book says: <span class="q">“D—”</span>', W.dee - 0.07, T.C - 0.02, 'bot');
 
   // ---------------- C: cut it down, cable-tie the poster ----------------
   // the snip comes 0.25 s in; the caption's three lines arrive with the cutters, the rising poster and the first zip
@@ -329,12 +358,13 @@
   Kit.add('#tailLR', 'opacity', [[C + 0.25, 1], [C + 0.72, 0]]);
   Kit.add('#lostW', 'rotate', [[C + 0.25, 0], [C + 0.57, 26, 'outBack'], [C + 0.67, 24], [C + 1.17, 44, 'in']]);
   Kit.add('#lostW', 'y', [[C + 0.67, 0], [C + 1.17, 1500, 'in']]);
-  Kit.add('#signW', 'y', [[C + 0.72, 1450], [C + 1.17, 0, 'out']]);
-  Kit.add('#signW', 'rotate', [[C + 0.72, -7], [C + 1.17, 0, 'out']]);
-  ['#st1', '#st2', '#st3', '#st4'].forEach(function (s, i) { Kit.add(s, 'scaleY', [[C + 1.24 + i * 0.09, 2.6], [C + 1.36 + i * 0.09, 1, 'out']]); });
-  Kit.add('#gloss', 'x', [[C + 1.57, -820], [C + 2.22, 820, 'inOut']]);
-  capStack('k3', [['QSME’s own instructions:', C + 0.15, 'kq'], ['Print it, laminate it,', C + 0.95], ['<span class="g">cable-tie it to the fence.</span>', C + 1.24]], T.D - 0.02, 'bot');
-  Kit.add('#lblPoster', 'opacity', [[0, 0], [C + 0.85, 0], [C + 1.0, 1], [T.D - 0.1, 1], [T.D + 0.05, 0]]);
+  var PR = W.print - 0.08;   // the QSME poster rises on "Print it"
+  Kit.add('#signW', 'y', [[PR, 1450], [PR + 0.45, 0, 'out']]);
+  Kit.add('#signW', 'rotate', [[PR, -7], [PR + 0.45, 0, 'out']]);
+  ['#st1', '#st2', '#st3', '#st4'].forEach(function (s, i) { Kit.add(s, 'scaleY', [[W.cable + i * 0.09, 2.6], [W.cable + 0.12 + i * 0.09, 1, 'out']]); });
+  Kit.add('#gloss', 'x', [[W.laminate - 0.02, -820], [W.laminate + 0.63, 820, 'inOut']]);
+  capStack('k3', [['QSME’s own instructions:', W.queue + 0.03, 'kq'], ['Print it, laminate it,', W.print - 0.02], ['<span class="g">cable-tie it to the fence.</span>', W.cable - 0.02]], T.D - 0.02, 'bot');
+  Kit.add('#lblPoster', 'opacity', [[0, 0], [PR + 0.2, 0], [PR + 0.35, 1], [T.D - 0.1, 1], [T.D + 0.05, 0]]);
 
   // ---------------- D: scan + sign in ----------------
   Kit.add('#phone', 'y', [[P.up, 1500], [P.up + 0.45, 0, 'out']]);
@@ -352,7 +382,7 @@
   Kit.add('#btn1', 'scale', [[P.btn - 0.01, 1], [P.btn + 0.06, 0.96], [P.btn + 0.18, 1]]);
   Kit.add('#okc1', 'scale', [[P.ok, 0.94], [P.ok + 0.22, 1, 'outBack']]);
   Kit.add('#okc1', 'opacity', [[P.ok, 0], [P.ok + 0.1, 1]]);
-  cap('k4', 'Scan the poster.', T.D + 0.02, P.tapPill + 0.04, 'bot');
+  cap('k4', 'Scan the poster.', W.scan - 0.04, P.tapPill + 0.04, 'bot');
   cap('k5', 'Tick what you’re wearing.', P.sc1b - 0.04, P.ok - 0.04, 'bot');
   cap('k6', 'Signed in. <span class="g">On the record.</span>', P.ok, T.E - 0.02, 'bot');
 
@@ -364,38 +394,40 @@
   Kit.add('#okc2', 'scale', [[Q.ok, 0.94], [Q.ok + 0.22, 1, 'outBack']]);
   Kit.add('#okc2', 'opacity', [[Q.ok, 0], [Q.ok + 0.1, 1]]);
   Kit.add('#sped', 'opacity', [[0, 0], [P.sc0a - 0.1, 0], [P.sc0a, 1], [P.ok, 1], [P.ok + 0.12, 0], [Q.sc1a - 0.1, 0], [Q.sc1a, 1], [Q.ok, 1], [Q.ok + 0.12, 0]]);
-  cap('k7', 'Next morning, it <span class="g">remembers you.</span>', T.E + 0.12, Q.ok - 0.08, 'bot');
-  cap('k8', 'Still no pen.', Q.ok - 0.05, T.F - 0.02, 'bot');
+  cap('k7', 'Next morning, it <span class="g">remembers you.</span>', W.next - 0.04, Q.ok - 0.08, 'bot');
+  cap('k8', 'Still no pen.', W.still - 0.06, T.F - 0.02, 'bot');
 
   // ---------------- F: the builder's side ----------------
   var F = T.F;
   whipIn('#deskScene', F); whipOut('#phoneScene', F); whipOut('#deskScene', T.G);
   Kit.add('#lblDesk', 'opacity', [[0, 0], [F + 0.05, 0], [F + 0.2, 1], [T.G - 0.1, 1], [T.G + 0.02, 0]]);
-  // three beats, each with time to read: "D—" gets a surname (1.9 s), who's still due (1.7 s), the register (2.25 s on screen)
-  Kit.add('#ring2', 'opacity', [[0, 0], [F + 0.62, 0], [F + 0.72, 1], [F + 2.15, 1], [F + 2.25, 0], [F + 2.55, 0], [F + 2.65, 1], [F + 3.98, 1], [F + 4.1, 0]]);
-  Kit.add('#ring2', 'scale', [[F + 0.62, 1.1], [F + 0.82, 1, 'out'], [F + 2.55, 1.1], [F + 2.75, 1, 'out']]);
-  Kit.add('#pdf', 'y', [[F + 4.0, 1300], [F + 4.36, 0, 'out']]);
-  Kit.add('#pdf', 'rotate', [[F + 4.0, 7], [F + 4.36, 0.6, 'out']]);
-  Kit.add('#pdf', 'scale', [[F + 4.36, 1], [T.G, 1.015, 'linear']]);
+  // three beats on the words: Dave Kettle ringed on "Dee's got a surname now", the pan to Due today on "You can see", the register on "register"
+  var RD = W.dees - 0.07, PAN = W.youCan + 0.03, RG = W.register - 0.07;
+  Kit.add('#ring2', 'opacity', [[0, 0], [RD, 0], [RD + 0.1, 1], [PAN - 0.1, 1], [PAN, 0], [PAN + 0.3, 0], [PAN + 0.4, 1], [RG - 0.12, 1], [RG, 0]]);
+  Kit.add('#ring2', 'scale', [[RD, 1.1], [RD + 0.2, 1, 'out'], [PAN + 0.3, 1.1], [PAN + 0.5, 1, 'out']]);
+  Kit.add('#pdf', 'y', [[RG, 1300], [RG + 0.36, 0, 'out']]);
+  Kit.add('#pdf', 'rotate', [[RG, 7], [RG + 0.36, 0.6, 'out']]);
+  Kit.add('#pdf', 'scale', [[RG + 0.36, 1], [T.G, 1.015, 'linear']]);
   // top slot: answers the book scene's top-slot question and leaves the table and "Due today" uncovered
-  cap('k9', '<span class="q">“D—”</span> now has a surname.', F + 0.45, F + 2.35, 'top');
-  cap('k10', 'And who’s still due.', F + 2.4, F + 4.1, 'bot');
-  cap('k11', 'The register, <span class="g">on your letterhead.</span>', F + 4.36, T.G - 0.02, 'bot');
+  cap('k9', '<span class="q">“D—”</span> now has a surname.', W.dees - 0.05, PAN - 0.05, 'top');
+  cap('k10', 'Who’s still due.', W.see - 0.04, RG - 0.05, 'bot');
+  cap('k11', 'The register, <span class="g">on your own letterhead.</span>', W.prints - 0.05, T.G - 0.02, 'bot');
   var deskK = {
-    z: [[F, 1.25], [F + 0.25, 1.25], [F + 0.6, 1.45, 'inOut'], [F + 2.25, 1.45], [F + 2.6, 1.42, 'inOut']],
-    px: [[F, 0], [F + 0.25, 0], [F + 0.6, 4, 'inOut']],
-    py: [[F, 8], [F + 0.25, 8], [F + 0.6, 'tbl', 'inOut'], [F + 2.25, 'tbl'], [F + 2.6, 'due', 'inOut']]
+    z: [[F, 1.25], [F + 0.3, 1.25], [F + 0.7, 1.45, 'inOut'], [PAN, 1.45], [PAN + 0.35, 1.42, 'inOut']],
+    px: [[F, 0], [F + 0.3, 0], [F + 0.7, 4, 'inOut']],
+    py: [[F, 8], [F + 0.3, 8], [F + 0.7, 'tbl', 'inOut'], [PAN, 'tbl'], [PAN + 0.35, 'due', 'inOut']]
   };
 
   // ---------------- G: end card ----------------
   var G = T.G;
   Kit.add('#endShade', 'opacity', [[G - 0.1, 0], [G + 0.3, 1, 'out']]);
+  var BT = W.signUp - 0.05, TG = W.pens - 0.07, PL2 = W.end - 0.12;   // button on "Sign up", the tag on "Pen's", pulses on "zed" and at the end
   Kit.pop('#endLogo', G + 0.12, { dy: 20 });
-  Kit.pop('#endHead', G + 0.22, { dy: 34 });
-  Kit.add('#endBtnIn', 'opacity', [[G + 0.62, 0], [G + 0.7, 1]]);
-  Kit.add('#endBtnIn', 'scale', [[G + 0.62, 0.7], [G + 0.9, 1, 'outBack'], [G + 1.95, 1], [G + 2.1, 1.05, 'out'], [G + 2.3, 1, 'inOut'], [G + 3.2, 1], [G + 3.35, 1.05, 'out'], [G + 3.55, 1, 'inOut']]);
-  Kit.add('#tagW', 'opacity', [[G + 2.45, 0], [G + 2.53, 1]]);
-  Kit.add('#tagW', 'rotate', [[G + 2.45, -32], [G + 2.88, 9, 'out'], [G + 3.23, -3, 'inOut'], [G + 3.58, 1, 'inOut']]);
+  Kit.pop('#endHead', W.one - 0.06, { dy: 34 });
+  Kit.add('#endBtnIn', 'opacity', [[BT, 0], [BT + 0.08, 1]]);
+  Kit.add('#endBtnIn', 'scale', [[BT, 0.7], [BT + 0.28, 1, 'outBack'], [W.zed - 0.15, 1], [W.zed, 1.05, 'out'], [W.zed + 0.2, 1, 'inOut'], [PL2 - 0.15, 1], [PL2, 1.05, 'out'], [PL2 + 0.2, 1, 'inOut']]);
+  Kit.add('#tagW', 'opacity', [[TG, 0], [TG + 0.08, 1]]);
+  Kit.add('#tagW', 'rotate', [[TG, -32], [TG + 0.43, 9, 'out'], [TG + 0.78, -3, 'inOut'], [TG + 1.13, 1, 'inOut']]);
   Kit.add('#lblEnd', 'opacity', [[0, 0], [G + 0.5, 0], [G + 0.7, 1]]);
 
   // ---------------- taps + ticks ----------------
@@ -403,7 +435,7 @@
   var taps = [[P.tapPill, '#qrpill'], [P.t0, '#c10'], [P.t1, '#c11'], [P.t2, '#c12'], [P.agree, '#c13'], [P.btn, '#btn1'],
     [Q.t0, '#c20'], [Q.t1, '#c21'], [Q.t2, '#c22'], [Q.agree, '#c23'], [Q.btn, '#btn2']];
   var ticks = [['#c10', P.t0], ['#c11', P.t1], ['#c12', P.t2], ['#c13', P.agree], ['#c20', Q.t0], ['#c21', Q.t1], ['#c22', Q.t2], ['#c23', Q.agree]];
-  var rings = [['#ring1', '#wb', 10, 0, 99], ['#ring2', '#rowDave', 6, 0, F + 2.4], ['#ring2', '#dueH', 8, F + 2.4, 99]];
+  var rings = [['#ring1', '#wb', 10, 0, 99], ['#ring2', '#rowDave', 6, 0, PAN + 0.3], ['#ring2', '#dueH', 8, PAN + 0.3, 99]];
   function rel(el) { var a = el.getBoundingClientRect(), b = root.getBoundingClientRect(); return { x: a.left - b.left, y: a.top - b.top, w: a.width, h: a.height }; }
   function offTop(el, anc) { var y = 0; while (el && el !== anc) { y += el.offsetTop; el = el.offsetParent; } return y; }
   function scrollFor(sel, pg, pad) { return -(offTop($(sel), $(pg)) - (pad == null ? 10 : pad)); }

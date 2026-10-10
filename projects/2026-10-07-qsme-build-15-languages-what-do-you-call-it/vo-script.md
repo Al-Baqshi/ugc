@@ -1,114 +1,69 @@
-# VO script: Kiwi performance
+# One tender document, fifteen languages — voice script (G02, audio-first remake 2026-10-06)
 
-**Character:** The QS: a mid-career quantity surveyor (late 30s to 40s) with a general, urban, professional New Zealand accent (Auckland or Wellington office). Not broad, not rural, not Australian. Calm, dry and deadpan, amused rather than impressed. He has sat in a lot of international tender threads and has opinions about prelims. He is reading the screen to a mate, not presenting it. This is an AI voice, so it never speaks as the founder and never says "we built". The only "we" is the self-own on the German word, which is the studio's joke about itself, not a product claim.
+**Voice:** Cam S (ElevenLabs, eleven_v3, stability 0.5). **Take:** `outputs/vo-take-cam-v3/take.mp3`, one unbroken 80.64 s request (175 words, 2.17 words/s), laid at 0.0 s on `outputs/15-languages-what-do-you-call-it-16x9.mp4` (82.1 s) → `outputs/15-languages-what-do-you-call-it-16x9-with-vo.mp4`. Silences measured from the audio (-40 dB, 20 ms windows): longest 1.34 s = the deliberate 'Leistungs…' break-off beat (allowed, like N01's 1.30 s); next 1.04 s ×2 on chapter cuts (14.40 'it?' → 'Put', 26.54 'question.' → 'Construction'), then 0.98 s ×3; 15 silences are 0.8 s or longer (N01, measured the same way: 1.30 s and 1.02 s). QSME is said "Queue Ess Mee"; CTA shown qsme.build, spoken "Queue Ess Mee dot build". Checked with `tools/el.py stt`: every word heard (QSME as 'QS Me' / 'qsme.build', 'Leistungs...' as 'Leistungen', 'B-O-Q' as 'BOQ').
 
-**Model & settings:** `eleven_multilingual_v2` · stability 0.45 · similarity 0.75 · style 0 · speed 1 · speaker boost on
-
-**Voice:** the QS pick from `projects/2026-10-02-qsme-voice-casting` (shortlist: Arnold `bISW1PJRBPT7aRbtPJlB` or James `QlZn2MPaf2jDn0461bnj`). Use the same voice as "Six bids. Six formats." so qsme.build has one recurring narrator.
-
-**Video:** `outputs/15-languages-what-do-you-call-it-16x9.mp4` (63.6 s, 1920×1080, 30 fps, review cut of 2 Oct). Every time below is in seconds on this file.
-
-**Which cut this targets:** the 16:9 master, which is the only cut so far. There is no 9:16 or 1:1 version yet. If one is made (post.md suggests a 1:1 LinkedIn cut and an ~18 s Short), add `vo-script-9x16.json` (or `-1x1`) only if its timeline differs from this one.
-
-**Casting line:** "Same document, five names. And every one of them wants to know if prelims are included. Q-S-me dot build."
-
-**Pronunciation:**
-- QSME is written **Q-S-me** (said "Cue Ess Me"). qsme.build is **Q-S-me dot build**. Never "kiss me", never four spelled letters.
-- **B-O-Q**: three letters, said quickly (bee-oh-cue).
-- **Prelims**: "PREE-lims".
-- **Leistungs…**: a fair, honest attempt at "LYE-shtoongs", then he stops. It's a real try that runs out of road, not a funny voice. The joke is on him and never on German. Reject any take that sounds like it's mocking the accent.
-- He never tries to say any of the other foreign words, and "Persian" is on screen only. They are on screen, and that's the point.
-
-**Pace:** every line fits its Max at about 2.5–2.8 words a second (`python3 tools/vo_status.py` shows this project as ok with no tight lines). Windows were only widened where the video really is silent before the next caption; elsewhere words were cut.
-
-## Lines
-
-| # | Start | Max | Line (v2) | v3 alt | On screen | Delivery |
-|---|---|---|---|---|---|---|
-| 01 | 0.25s | 1.1s | **Schedule of quantities.** | Schedule of quantities. | English estimating page: "schedule of quantities" boxes up in green (0.06–0.5) with an ENGLISH tag (0.4); the sticky slaps on at 0.16; caption "One tender document." from 0.3; mirror flip to Arabic 1.21–1.30 | Matter-of-fact, almost bored, as if reading a label off a folder. Falling end. Out by 1.35; the tail can ride the 1.30 flip whoosh. |
-| — | 1.35–6.35 | — | *(no VO)* | | Switcher clicks: العربية (1.03), 简体中文 (2.43), Deutsch (3.64), Türkçe (4.97); each H1 boxes its own word with a language tag | Leave it to the clicks and the flips. Silence makes the sound-off version and the sound-on version play the same. |
-| 02 | 6.35s | 1.5s | **Same document. Five names.** | Same document. Five names. | "Same document." (6.35) · "Five names." (6.75) · five word chips (6.95) · "What do you call it?" slams underneath at 7.4 (everything holds to the cut at 9.6) | Dry, unhurried, a real full stop between the two. A small downstep on "Five names", like counting something mildly annoying. It may run past the 7.4 slam because its words stay on screen. Out by 7.85. |
-| 03 | 7.9s | 1.8s | **What do you call it?** | [beat] What do you call it? | "What do you call it?" (slammed at 7.4, holds to 9.6) | A genuine question to the viewer, light lift at the end. The only rising line in the hook. Out by 9.7. |
-| 04 | 9.8s | 1.85s | **One job. One email thread.** | One job. One email thread. | Chip "01 · One job, one thread" and the email card with the first message, on at 9.7; replies pop at 10.65 and 11.65 | Weary, knowing. "Email thread" as if it's a medical condition. It can sit over the first reply pops. Out by 11.65. |
-| — | 11.65–14.7 | — | *(no VO)* | | Replies pop at 12.65 and 13.65 and the card grows; every one ends in a yellow "Prelims included?" | Let the pops and the yellow highlights do it. |
-| 05 | 14.7s | 2.5s | **Five names for it. And one question.** | Five names for it. [pause] And one question. | "Five names." (14.7) · "One question." slams yellow at 15.7 and the sticky wiggles; quote card cuts in at 17.18 | Flat on "Five names for it", then a tiny pause and a drier "And one question", landing near the yellow slam. Out by 17.2. |
-| 06 | 17.4s | 2.3s | **Construction is the same everywhere.** | Construction is the same everywhere. | Quote line 1 on screen at 17.3; line 2 types in from 18.3 (on screen only) | Reading the site's own words, so it's verbatim: say "Construction is", not "Construction's". Calm and even. Out by 19.7, before line 3 lands at 20.0. |
-| 07 | 20.05s | 2.7s | **And vocabulary is where trust starts.** | And vocabulary is where trust starts. | Quote line 3 (words in 20.0–20.3); lines 1–2 dim; attribution at 20.45; card holds to 23.0 | A notch slower and quieter, the line that matters. No tagline lift. Out by 22.75. The middle sentence ("What changes from country to country is the vocabulary") stays on screen only. |
-| 08 | 23.45s | 0.8s | **Leistungs…** | Leistungs— | German page (23.1): "Leistungsverzeichnis" boxed + GERMAN tag; caption types "Leistungs…" (23.45–23.85) | A brave start that runs out of road after "Leistungs". Trail off and stop dead. Cut from the same take as line 09. Out by 24.25. |
-| 09 | 24.3s | 2.7s | **…we'll let a German say that one.** | [exhales] …we'll let a German say that one. | Caption types "we'll let a German say that one." (24.25–24.7); the full line holds to 27.4 | A small exhale, then an easy, self-amused shrug. Warm, not sarcastic. Out by 27.0, before the caption fades. |
-| 10 | 27.7s | 3.0s | **Every page uses its own word for it.** | Every page uses its own word for it. | Montage hard cuts: Chinese (27.6), Japanese (28.6), Korean (29.5), Russian (30.3) | Plain observation, light lean on "own". Falling end. Out by 30.7. |
-| — | 30.7–33.7 | — | *(no VO)* | | The accelerating cuts: French (31.0), Portuguese (31.7), Vietnamese (32.3), Indonesian (32.9), Hindi (33.5) | Ticks only. |
-| 11 | 33.7s | 1.5s | **Hindi just says B-O-Q.** | Hindi just says B-O-Q. | Hindi page: "BOQ" boxed + HINDI tag; caption "The Hindi page just says BOQ." (33.7) | Mild, pleased surprise. Quick letters, falling end. Out by 35.2, before the 35.25 slam. (Cut from "The Hindi page just says…": the full sentence is on screen.) |
-| 12 | 35.3s | 1.15s | **Some words travel.** | Some words travel. | Green caption "Some words travel." slams at 35.25; both captions fade 36.35–36.55 | Warm and short, almost a smile. Out by 36.45. |
-| 13 | 36.6s | 2.2s | **Fifteen words. One document.** | Fifteen words. One document. | Word wall: "Fifteen words." (36.5) · 15 chips (36.75–37.8) · "One document." (37.15); holds to 40.0 | Even, satisfied. Full stop between. Out by 38.8, then let the wall sit. |
-| 14 | 40.05s | 1.8s | **Arabic reads right to left.** | Arabic reads right to left. | Chip "04 · Right to left", headline "Arabic and Persian read right to left." and the English page on screen at 40.0; the Arabic page flips in beside it (40.28) | Informative, unhurried. "Persian" stays on screen only (the tile flips to Persian at 43.0); the full headline didn't fit before the 41.9 slam. Out by 41.85. |
-| 15 | 41.95s | 1.5s | **So does the site.** | So does the site. | "So does the site." slams green at 41.9; the right tile flips Arabic → Persian at 43.0 | A small, quiet pride, nothing more. Out by 43.45 (a natural read ends about 42.8, clear of the flip whoosh). |
-| 16 | 44.4s | 1.7s | **The sticky note doesn't.** | [beat] The sticky note doesn't. | Kalam note "The sticky note doesn't." (44.3); the sticky wiggles (44.35–44.92) | Bone-dry aside, slightly lower. Out by 46.1. |
-| 17 | 47.1s | 1.95s | **The website speaks fifteen languages.** | The website speaks fifteen languages. | Chip "05 · The honest bit", "The website speaks 15 languages." and the 15 switcher chips on screen at 47.0 | Straight, honest, no sell. Out by 49.05. (The chip carries "honest bit"; it is not voiced.) |
-| 18 | 49.15s | 2.25s | **The app? English, Spanish and Arabic.** | The app? English, Spanish and Arabic. | "The app speaks English, Spanish and Arabic." (49.1); 12 chips dim, English · Español · العربية light up (49.2–49.5); legend "In the app today" (49.4) | Same honesty. "The app?" as a small shrug, then a plain list. No apology in the voice. Out by 51.4. |
-| 19 | 51.5s | 1.0s | **So far.** | So far. | "So far." slams green (51.4); card holds to 54.5 | Two words, deadpan, the smallest smile, a beat after the slam. Out by 52.5. |
-| 20 | 54.5s | 2.9s | **What do you call it where you work?** | [beat] What do you call it where you work? | End card: chip "06 · Your word", "What do you call it" (54.48) · "where you work?" (54.95) · "Tell us in the comments." (55.6) · "qsme.build now speaks 15 languages" (56.2) · "Yours next — tell us" (56.6) | The callback to line 03. A real question, asked like you want the answer. Out by 57.4. |
-| 21 | 57.45s | 2.35s | **Oh, and… prelims. In or out?** | Oh, and… [beat] prelims. In or out? | Kalam line "Bonus points if you can settle the prelims question." (57.3); the sticky wiggles (57.35–57.78); logo (58.3); CTA pill (58.65) | Throwaway, mischievous, quieter. The pause before "prelims" is the joke. Out by 59.8. |
-| 22 | 59.9s | 3.25s | **Book a thirty-minute demo at Q-S-me dot build.** | Book a thirty-minute demo at Q-S-me dot build. | QSME logo, "qsme.build" and "Tendering and estimating software for construction organisations" (58.3) · CTA pill "Book a 30-minute demo at qsme.build →" (58.65); holds to 63.6 | Friendly and low-key, with no announcer lift. A clear "thirty-minute", a small break, then a clear "Q-S-me dot build" (kyoo-ess-mee dot build). Out by 63.15, leaving the last half-second to the card. |
-
-## One continuous read (for the most natural take; slice in the edit)
+## As spoken (one take; the exact text sent, v3 tags in brackets)
 
 ```
-Schedule of quantities.
+[dry] One tender document. Five names. Same question every time. English, schedule of quantities. Flip to Arabic and the whole page turns around. Chinese, German, Turkish. What do you call it?
 
-Same document. Five names.
-What do you call it?
+Put all five on one job, and you get one thread. Prelims included? Prelims included? Prelims, in or out? Five names. One question.
 
-One job. One email thread.
+Construction is the same everywhere. And vocabulary is where trust starts.
 
-Five names for it. And one question.
+In German, Leistungs... [short pause] [amused] we'll let a German say that one. Chinese, Japanese, Korean, Russian, French, Portuguese, Vietnamese, Indonesian. Hindi just says B-O-Q. Some words travel.
 
-Construction is the same everywhere.
-And vocabulary is where trust starts.
+Fifteen words. One document. That's the whole idea of Queue Ess Mee. Price the job in one schedule, tender that same schedule, and every bid comes back against it.
 
-Leistungs... we'll let a German say that one.
+Arabic and Persian read right to left. So does the site. The sticky note doesn't.
 
-Every page uses its own word for it.
+The website speaks fifteen languages. The app speaks English, Spanish and Arabic. So far.
 
-Hindi just says B-O-Q. Some words travel.
-
-Fifteen words. One document.
-
-Arabic reads right to left. So does the site.
-The sticky note doesn't.
-
-The website speaks fifteen languages.
-The app? English, Spanish and Arabic.
-So far.
-
-What do you call it where you work?
-Oh, and... prelims. In or out?
-Book a thirty-minute demo at Q-S-me dot build.
+So, what do you call it where you work? Bonus points if you settle the prelims question. And book a thirty-minute demo at Queue Ess Mee dot build.
 ```
 
-## Make it sound recorded, not synthesised
+## Lines (caption phrases; sentence starts at the audio-measured onset, otherwise the alignment)
 
-- Time base: all times are seconds on `outputs/15-languages-what-do-you-call-it-16x9.mp4`. There is no offset; the master is the post.
-- Generation (v2 is the default): render the continuous read three times on the chosen voice, slice it, and place the slices at the start times above. That gives one consistent performance across the 63.6 seconds. Use per-line renders only as patches, with `previous_text` and `next_text` set to the neighbouring lines. Lines 08 and 09 must come from the same take, because the break-off only works if it is one breath. Use a fixed seed per take and log it. Make 3 takes and pick by ear.
-- Eleven v3 is a fallback only, as ONE continuous request with the casting line as a throwaway warm-up and the tags in the v3 column. Never generate v3 line by line.
-- Trim leading and trailing digital silence from every slice. Never time-stretch more than about 4%. If a take runs past its Max, use another take.
-- Room tone: one unbroken bed of quiet office or lounge air (fridge hum, a faint car outside) from 0.3 s to 63.6 s at about -48 to -45 dBFS. The long silent stretches (1.35–6.35, 11.65–14.7, the montage tail 30.7–33.7) are where an AI read gives itself away if the floor drops to digital zero.
-- EQ like a decent phone voice memo: high-pass at about 90 Hz, -2 to -3 dB high shelf from 10 kHz, a 1–2 dB dip at 6–8 kHz with a light de-esser. Compression 2:1 to 3:1, 2–4 dB of gain reduction. No reverb.
-- Keep a quiet natural inhale before lines that follow a long silence (02, 05, 08, 11, 14, 17, 20), pulled down 6–10 dB.
-- Mix: VO mono, centred, 48 kHz. Master about -14 LUFS integrated, true peak -1 dBTP. Music 6–8 LU under the VO. The UI clicks (0.64, 1.03, 1.97, 2.43, 3.22, 3.64, 4.32, 4.97) and the mirror whooshes (1.30, 2.62, 40.28, 43.0) sit in front of the music.
-- LinkedIn autoplays muted and YouTube often plays with sound. Every line above is already on screen as text (or a shorter spoken version of it), so the VO adds personality, not information. If a take fights the on-screen timing, cut the line rather than move the text.
+| # | Start | End | Said | On screen | Delivery |
+|---|---|---|---|---|---|
+| 01-hook | 0.20 | 4.40 | One tender document. Five names. Same question every time. | English estimating page (live capture), 'schedule of quantities' boxed green from 0.06; captions bottom-right 'One tender document.' 0.2 / 'Five names.' 1.82 / 'Same question every time.' 3.08; the sticky 'Prelims included??' slaps on with it (3.12) and never moves again | The hook: a bold, dry claim, three full stops, no lift. 'Same question every time' is the set-up for the prelims gag. |
+| 02-english | 5.12 | 7.12 | English, schedule of quantities. | ENGLISH tag pops beside the boxed word on 'English,' (5.12) | Reading a label off a folder. |
+| 03-flip | 8.00 | 10.32 | Flip to Arabic and the whole page turns around. | Cursor appears 7.8, clicks the globe on 'Flip' (8.15) and العربية on 'Arabic' (8.75); the mirror flip into /ar lands on 'whole page' (9.0); ARABIC tag 9.32 | Plain, a touch amused on 'turns around'. |
+| 04-names | 10.63 | 12.88 | Chinese, German, Turkish. | Each page cuts in on its name: flip back to /zh on 'Chinese' (10.60), whip to /de on 'German' (11.66), panel scrolls and whips to /tr on 'Turkish' (12.46) | Three quick names, a list said like a shrug. |
+| 05-call-it | 13.69 | 14.40 | What do you call it? | Page dims and blurs 12.8 (end of 'Turkish.'); 'One document.' / 'Five names.' / five word chips, then 'What do you call it?' slams on 'What' (13.68) and holds to 15.35 | A genuine question to the viewer, light lift at the end. The only rising line in the hook. |
+| 06-thread | 15.42 | 18.16 | Put all five on one job, and you get one thread. | Chip '01 · One job, one thread' + the dark email card with the first message (Façade consultant · Stuttgart, 'Prelims included?') on at 15.35 | Weary, knowing; 'one thread' like a diagnosis. |
+| 07-prelims | 18.96 | 23.92 | Prelims included? Prelims included? Prelims, in or out? | A reply pops on each spoken 'Prelims': QS · Dubai 18.94, Subcontractor · Istanbul 20.52, Main contractor · Shanghai 22.12; Project manager · London on 'in or out' (22.85); the card grows with each reply | Three different people asking the same thing: flat, flatter, then 'in or out?' with the last bit of patience. |
+| 08-five-names | 24.98 | 26.64 | Five names. One question. | 'Five names.' pops right of the card on the words (24.96); 'One question.' slams yellow (25.87) and the sticky wiggles | A full stop between; 'One question' drier and lower. |
+| 09-quote | 27.59 | 31.20 | Construction is the same everywhere. And vocabulary is where trust starts. | Chip '02 · In the site's own words' + green quote mark; line 1 on screen on 'Construction' (27.5); lines 2 and 3 word in on 'And vocabulary' (29.05 / 29.25), lines 1–2 dim 29.45, attribution 'qsme.build · QSME now speaks 15 languages · 27 Sep 2026' 29.9 | Verbatim lines 1 and 3 of the blog paragraph, calm and even; a notch slower on 'trust starts'. No tagline lift. |
+| 10-german | 32.03 | 36.41 | In German, Leistungs... we'll let a German say that one. | Chip '03 · Fifteen words for it' + live /de page, 'Leistungsverzeichnis' boxed + GERMAN tag from 31.95; the caption types 'Leistungs…' on the word (33.0–33.6), then ' we'll let a German say that one.' on 35.05; full line holds to 37.0 | An honest attempt at 'Leistungs' that runs out of road, a short beat (the laugh), then an easy self-amused shrug. Never mocking: the joke is on the narrator. |
+| 11-montage | 37.19 | 41.45 | Chinese, Japanese, Korean, Russian, French, Portuguese, Vietnamese, Indonesian. | Hard cut to each live page on its name: /zh 37.18, /ja 37.66, /ko 38.36, /ru 38.79, /fr 39.09, /pt 39.50, /vi 40.39, /id 40.78 (boxed word + language tag on each) | A fast roll call, each name its own cut; even, no emphasis. |
+| 12-hindi | 42.25 | 44.65 | Hindi just says B-O-Q. | Live /hi page on 'Hindi' (42.24), 'BOQ' boxed + HINDI tag; caption 'Hindi just says BOQ.' pops 42.27 | Mild pleased surprise; the letters quick (bee-oh-cue). |
+| 13-travel | 45.59 | 46.56 | Some words travel. | Green caption 'Some words travel.' slams on the words (45.58); both captions out at 47.05 | Warm and short, almost a smile. |
+| 14-wall | 47.40 | 49.52 | Fifteen words. One document. | Wall of 15 chips (every word from the live site's navigation) ticks in from 47.3 under 'Fifteen words.' (47.28) / 'One document.' (48.45) | Even, satisfied, a full stop between. |
+| 15-idea | 50.16 | 52.01 | That's the whole idea of Q-S-me. | The wall holds; the product line is spoken over it (the chips make way at 52.6) | The turn to the product, said plainly, like a conclusion rather than a pitch. |
+| 16-payoff | 52.90 | 58.48 | Price the job in one schedule, tender that same schedule, and every bid comes back against it. | Under the headlines, three lines land on the words: 'Price the job in one schedule.' (52.88), 'Tender that same schedule.' (54.84), 'Every bid comes back against it.' in green (56.60); holds to 59.3 | Matter-of-fact, the way you'd explain it to a colleague; lean on 'same', land 'against it' like a full stop. |
+| 17-rtl | 59.41 | 61.69 | Arabic and Persian read right to left. | Chip '04 · Right to left' + English tile on at 59.3; the Arabic tile flips in 59.42, dashed mirror line 59.54; the right tile flips to Persian on 'Persian' (60.0) | Informative, unhurried. |
+| 18-site | 61.94 | 62.88 | So does the site. | 'So does the site.' slams green on the words (61.85) | Small, quiet pride, nothing more. |
+| 19-sticky | 63.38 | 64.48 | The sticky note doesn't. | Kalam note 'The sticky note doesn't.' pops 63.38; the sticky wiggles 63.43–64.0 and stays the right way round | Bone-dry aside, slightly lower. |
+| 20-website | 65.26 | 67.53 | The website speaks fifteen languages. | Chip '05 · The honest bit' + 'The website speaks 15 languages.' + the 15 switcher chips on at 65.15 | Straight, honest, no sell. |
+| 21-app | 67.83 | 70.33 | The app speaks English, Spanish and Arabic. | 'The app speaks English, Spanish and Arabic.' pops 67.8; 12 chips dim and English · Español · العربية light on 'English' (68.6); legend 'In the app today' 68.95 | Same honesty, a plain list. No apology. |
+| 22-so-far | 70.58 | 71.12 | So far. | 'So far.' slams green on the words (70.48); card holds to 71.95 | Deadpan, the smallest smile. |
+| 23-prompt | 72.05 | 73.93 | So, what do you call it where you work? | End card: chip '06 · Your word' on at 71.95; 'What do you call it' slams on 'what' (72.4), 'where you work?' on 'where' (73.17); 'Tell us in the comments.' 74.55 | Callback to the hook question, asked like you want the answer. |
+| 24-bonus | 74.65 | 76.89 | Bonus points if you settle the prelims question. | Kalam 'Bonus points if you settle the prelims question.' pops 74.64 and the sticky wiggles; 'qsme.build now speaks 15 languages' + 'Yours next — tell us' chip pop 76.95–77.05 | Throwaway, mischievous, a little quieter. |
+| 25-cta | 77.70 | 80.64 | And book a thirty-minute demo at Q-S-me dot build. | QSME logo + 'qsme.build' + 'Tendering and estimating software for construction organisations' pop 77.1; the green pill 'Book a 30-minute demo at qsme.build →' pops on 'book' (77.75) and pulses 79.4 / 81.0; page ends 82.1 | Friendly, low-key, no announcer lift; a clear 'thirty-minute', then 'Queue Ess Mee dot build'. |
 
-## Generate (after the ElevenLabs upgrade)
+## Rules for this take
 
-```bash
-python3 tools/make_vo.py projects/2026-10-07-qsme-build-15-languages-what-do-you-call-it <qs_voice_id> --takes 3
-```
-
-`vo-script.json` is the machine-readable twin of this file (same ids, times and text).
+- Time base: start_s is time on outputs/15-languages-what-do-you-call-it-16x9.mp4 (82.1 s) = time in the take. For a line that starts a sentence after a pause it is the AUDIO-MEASURED speech onset (-40 dB, 10 ms windows on take.mp3), because eleven_v3's alignment counts the pause before a sentence as part of its first word (0.2-0.7 s early); otherwise it is the word's start in outputs/vo-take-cam-v3/alignment.json. The page was re-timed to these times (motion/15-languages-what-do-you-call-it.html v4.1, 2026-10-10), so picture follows audio: do not re-time the voice to the picture.
+- Mix: the whole take as ONE clip at 0.0 s, gain 1.15, no music bed (tools/mux). Output outputs/15-languages-what-do-you-call-it-16x9-with-vo.mp4 (one audio track, 82.1 s).
+- If the script changes, regenerate the whole take (see outputs/vo-take-cam-v3/take-text.txt for the exact text and tags), STT-check it, then re-derive every beat in the page from the new alignment and re-render.
+- Global video: no NZ words (tradie, GST, CCC, consent pack), no 'free' or pricing lines, no 'line by line', no app-in-15-languages claim (owner CTA rule 2026-10-03; truth sheet red list). CTA shown as qsme.build, spoken 'Queue Ess Mee dot build'.
 
 ## Changelog
 
 - 2026-10-02 first version, timed on the 78.0 s render.
 - 2026-10-02 v2: retimed on the 63.6 s review cut.
-- 2026-10-02 v3: fit pass against the 63.6 s master (frames pulled at every caption change). Windows widened only into real silence (03, 04, 05, 06, 07, 09, 10, 13, 15, 16, 20); words cut where the next caption was close (11, 14, 18, 20 drops "So.", 21, 22). v3 text now matches v2 word for word.
-- 2026-10-03 v4: owner CTA rule (Global CTA is "Book a 30-minute demo at qsme.build"; no pricing lines of any kind). Line 22 is now "Book a thirty-minute demo at Q-S-me dot build." (8 words in 3.25 s), matching the new end-card pill. Same start and window; no other line changed (none mentioned pricing). `tools/vo_status.py` ok.
+- 2026-10-02 v3: fit pass against the 63.6 s master.
+- 2026-10-03 v4: owner CTA rule; line 22 'Book a thirty-minute demo at Q-S-me dot build.'
+- 2026-10-06 v5 audio-first remake (supersedes every earlier entry; the 22-line per-line plan is archived in post.md's discussion history): continuous narration with a spoken hook ('One tender document. Five names. Same question every time.'), 25 caption phrases lifted from the one take, Cam S on eleven_v3, one unbroken 80.64 s take, 175 words (2.17 words/s), longest silence 0.75 s apart from the 1.31 s 'Leistungs…' break-off beat. A spoken product payoff was added over the wall ('Price the job in one schedule, tender that same schedule, and every bid comes back against it.'). Page extended 63.6 → 82.1 s. The 'QS' character and the 22-line stitched plan are retired: one narrator, one take.
+- 2026-10-10 v5.1 review pass: sentence-start beats and start_s moved to the audio-measured onsets (Five names 1.85, Same 3.16, English 5.12, Flip 8.00, What 13.69, Put 15.42, Prelims 18.96 / 20.52 / 22.13, Five names 24.98, Construction 27.59, In German 32.03, Chinese 37.19, Hindi 42.25, Some 45.59, Fifteen 47.40, That's 50.16, Price 52.90, Arabic 59.41, The sticky 63.38, The website 65.26, The app 67.83, So far 70.58, So 72.05, Bonus 74.65, And book 77.70); master re-rendered and re-muxed with the same take; silence figures corrected to audio-measured values; thumbnail re-exported ('One document.').

@@ -1,65 +1,67 @@
-# VO script: Kiwi performance
+# Column H — voice script (G03, audio-first remake 2026-10-06)
 
-**Character:** The QS. He's the same mid-career quantity surveyor (late 30s to 40s) as "Six bids. Six formats." and has a general, urban, professional New Zealand accent (an Auckland or Wellington office), not broad and not Australian. He's calm, dry and deadpan, and amused at himself. The self-own is his, because he hit send. He says plainly that the bidders did nothing wrong, and he never sneers at them. "What a well-informed market." is aimed at the situation, not at the bidders. It's an AI voice, so it never speaks as the founder: the brand is said only in the CTA, and "In a QSME tender:" stays on screen and isn't voiced.
+**Video:** `outputs/column-h-4x5.mp4` (43.2 s, silent master) · **voiced:** `outputs/column-h-4x5-with-vo.mp4` · **take:** `outputs/vo-take-cam-v3/take.mp3` (Cam S, eleven_v3, stability 0.5, ONE unbroken request, 41.68 s, 2.42 words/s, longest gap 1.0 s, laid at 0.0 s, gain 1.15, no bed).
 
-**Model & settings:** `eleven_multilingual_v2` · stability 0.45 · similarity 0.75 · style 0 · speed 1 · speaker boost on
+**Character:** The QS: a dry, deadpan Kiwi quantity surveyor telling the column H story on himself (Cam S, ElevenLabs voice 53CG2aO2HU48thT3QnMl). General NZ accent, never a caricature, no announcer lift, no exclamation marks. The self-own is his: he hit send; the bidders did nothing wrong and he says so. Continuous speech: the narration never stops for more than 1 s. This is an AI voice, so it never speaks as the founder.
 
-**Voice:** use whichever QS voice wins casting in `projects/2026-10-02-qsme-voice-casting` (shortlist ⭐ Arnold `bISW1PJRBPT7aRbtPJlB`, ⭐ James `QlZn2MPaf2jDn0461bnj`). Use the same voice as Six bids so the series sounds like one person.
+**STT check:** tools/el.py stt: every word heard; QSME heard as 'QS Me' (tender line) and 'qsme.build' (CTA); 'four-forty' heard as 'four forty', '1–2%' as '2%' (homophones)
 
-**Video:** `outputs/column-h-4x5.mp4`, 28.0s, 4:5 (1080×1350, 30 fps). This is the master and the only rendered cut, so the VO targets it. Times below are seconds on this file (v2 re-cut; v3 fit pass 2026-10-02, caption pops read from `motion/column-h.html` and checked on pulled frames). `vo-script.json` is the machine-readable twin for `tools/make_vo.py`. The YouTube Shorts 9:16 re-layout isn't rendered yet: if it keeps these times, reuse this script; if its timeline moves, add `vo-script-9x16.json`.
-
-**Series rule:** the burned-in captions are the subtitles, so the VO follows them. Every line also has to fit its window at a natural Kiwi pace (about 2.5 to 2.8 words a second), and three captions are too long to say in the time they're on screen. In those three the VO says a shorter version and the captions stay as they are: 01 says "All just under our estimate" (the 1–2% stays on screen), 04 says "Not them." for "They did nothing wrong.", and 05 says "Your lines." for "Bidders get your lines." The other six lines match their captions word for word; 09 says the end card's ask ("Book a 30-minute demo" + "qsme.build"), so the voice always ends on the ask, never on a pricing line (owner CTA rule, 2026-10-03). Titles and asides that aren't captions ("In a QSME tender:", "(Weird.)", "Private tenders, by invitation." on the end card, the chips and tags) are never voiced.
-
-**Casting line:** "Six joinery bids. All just under our estimate. Column H. Hidden. Not deleted. Q-S-me dot build."
-
-## Lines
-
-| Start | Max | Out by | Line (v2) | v3 alt | On screen | Delivery |
-|---|---|---|---|---|---|---|
-| 0.15s | 3.1s | 3.25s | **Six joinery bids. All just under our estimate.** | Six joinery bids. All just under our estimate. | Six joinery bids. / All 1–2% under our estimate. (on screen from frame 1; the six totals snap in at 0.35, 0.59, 0.83, 1.07, 1.31, 1.55; '(Weird.)' pops at 2.3 and is never voiced) | Low, flat, unhurried on 'Six joinery bids.', a real full stop, then a plain 'All just under our estimate', falling at the end, no suspicion in the voice yet. 'Just under' is the VO's read of the on-screen '1–2%': the full caption (12 words) can't be said in the 3.1s before the cut at 3.3, so the numbers stay on screen (delta pills) and the voice carries the meaning. 8 words in 3.1s, about 2.6 w/s. The six soft dings sit under it, ducked 10 to 12 dB. '(Weird.)' at 2.3 is never voiced. Out by 3.25 (the hook scene fades 3.28 to 3.38). |
-| 3.70s | 2.4s | 6.10s | **What a well-informed market.** | What a well-informed market. | What a well-informed market. (3.65 to 6.6) · sheet 'Joinery_BoQ_FOR_PRICING.xlsx' appears, camera pushes to the column letters F \| G \| I from 4.35 | The driest line in the piece: admiring on the surface, one notch too sincere, aimed at the situation, not at the bidders. Light lean on 'well-informed', falling on 'market'. No smirk. Word for word the caption (on from 3.65). Out by 6.1, before the right-click (6.27). |
-| 7.80s | 2.1s | 9.90s | **Column H. Hidden. Not deleted.** | Column H. Hidden. Not deleted. | Column H. Hidden. / Not deleted. (7.75) · column H 'OUR ESTIMATE (DO NOT SEND)' is open, red ring around 486,200, the same number as the hook's 'Our estimate' row (7.75 to 8.2) | Three flat beats, each a touch lower than the last, like a QS reading an incident report. Small gaps (0.2s) between them, made in the edit, not by the voice. 'Not deleted.' lands quietly, the realisation, not a punchline. The silence before it (6.1 to 7.8: right-click, Unhide, the column opening) stays completely silent (no VO). Word for word the caption (7.75). Out by 9.9, before the hard cut to the email at 10.0. |
-| 10.45s | 1.8s | 12.25s | **Not them. We hit send.** | Not them. We hit send. | They did nothing wrong. (10.45) / We hit send. (11.3, green) · chip 'Two weeks earlier · Friday 4:40 pm' · the sent email, Bcc 6 recipients (Bidders A–F), with Joinery_BoQ_FOR_PRICING.xlsx; push-in on 'Have a good weekend.' 11.95 to 12.25, held to the cut at 12.9 | The self-own, owned plainly. 'Not them.' is the voice's short read of the caption 'They did nothing wrong.': fair, flat, clearing the bidders (the full caption plus 'We hit send.' is 7 words, too many for the 1.8s before the push-in). Then a beat, and 'We hit send.' lands on its caption at 11.3, flat and rueful, the smallest wince, never preachy. Slice at the full stop. Aim to be out by about 12.0 so the push-in on 'Have a good weekend.' (11.95) is all but silent; hard cap 12.25, so the held close-up (12.25 to 12.9) is dead air. |
-| 13.40s | 2.65s | 16.05s | **Your lines. Your quantities. They price them.** | Your lines. Your quantities. They price them. | QSME logo + chip 'Tendering & estimating software' · In a QSME tender: (12.93, not voiced) / Bidders get your lines. (13.35) / Your quantities. (14.45) / They price them. (15.1) + tag '↑ the bidder's own' on the YOUR RATE column (15.22) · the qsme.build bid-form mock-up, columns highlighted in turn | Calm and matter-of-fact, the same register as the skit: a colleague explaining how it works, not a tagline. The caption 'Bidders get your lines.' stays on screen; the voice says only 'Your lines.' (the full 9 words don't fit the 2.65s before the cut), which sets up the 'Your… / Never your…' rhythm of line 06. Place each phrase on its caption by slicing at the full stops: 'Your lines.' about 13.5 (as the eye reaches it), 'Your quantities.' 14.45, 'They price them.' 15.1. 'They' is the bidders, as in line 04. 'They price them' is a touch lighter, almost obvious. Never stretch. Out by 16.05, before the hard cut at 16.15. |
-| 16.15s | 2.15s | 18.30s | **Never your rates. Never your budget.** | Never your rates. Never your budget. | Never your rates. / Never your budget. (slams in at 16.15 on a clean background; no mock-up behind it) | The one firm line, starting on the slam (16.15). Even stress on both 'Never's, no announcer lift, falling on 'budget'. Quiet confidence, as if it's simply how it should always have been. Word for word the caption. The tail of 'budget' may run a beat past the hard cut to the security page (18.2); that reads naturally because the page is the proof. Hard out by 18.3; the page's reading time (18.3 to 20.55) stays silent (no VO). |
-| 20.60s | 1.15s | 21.75s | **Stripped. Not hidden.** | Stripped. Not hidden. | Stripped. Not hidden. (20.55 to 21.97) · the live qsme.build/security sentence highlighted 18.95 to 20.45: 'Rates, amounts and the tender budget are stripped out server-side, not hidden in the interface.' | A quiet callback to 'Hidden. Not deleted.': same flat two-beat shape, settled and final. Lean slightly on 'Stripped'. Word for word the caption (20.55). 18.3 to 20.55 is reading time with no VO at all. Out by 21.75, before the right-click (21.8). |
-| 22.15s | 1.5s | 23.65s | **Nothing to unhide.** | Nothing to unhide. | Nothing to unhide. (22.1 to 24.3) · right-click just after 'interface.'; the menu opens below the highlight with 'Unhide columns' greyed out | Barely there, almost to himself, the tiniest smile found by choosing takes (never a tag). Falling. Word for word the caption (22.1). Out by 23.65; the picture holds to 24.3 so the gag can be read. |
-| 24.55s | 3.2s | 27.75s | **Book a thirty-minute demo at Q-S-me dot build.** | Book a thirty-minute demo at Q-S-me dot build. | QSME logo (24.3, on the cut) / Private tenders, by invitation. (24.36, not voiced) / Book a 30-minute demo (24.46) / qsme.build (24.56, held to 28.0) | The ask, said once, plainly, like telling a colleague where to book it. Word for word the end card's pill and URL: 'Book a thirty-minute demo' (pill in at 24.46) then 'Q-S-me dot build' as qsme.build lands (24.56). 'Private tenders, by invitation.' stays on screen and isn't voiced. Light lean on 'demo', no announcer lift, no hard sell. Say 'thirty-minute' as one easy word. Say Q-S-me as 'cue ess mee', evenly, no rise on 'build'. Regenerate any take that says 'kiss me' or spells four letters. 8 words in 3.2s, about 2.5 w/s. Out by 27.75 so the music resolves on its own. |
-
-**Silent on purpose:** 3.25 to 3.7: a breath over the cut to the sheet ('(Weird.)' is on screen from 2.3, never voiced) · 6.1 to 7.8: drag-select, right-click, Unhide, column H opens (trackpad clicks only) · 9.9 to 10.45: hard cut to the email; the chip 'Two weeks earlier · Friday 4:40 pm' reads in silence · about 12.0 (hard cap 12.25) to 12.9: push-in on 'Have a good weekend.' and the held close-up play in silence · 18.3 to 20.55: the security page settles and the sentence is highlighted; reading time, no VO · 21.75 to 22.15: the right-click and the greyed-out menu · 23.65 to 24.55: the gag holds, hard cut to the end card · 27.75 to 28.0: music tail.
-
-## One continuous read (the most natural take; slice it in the edit)
+## The script as spoken (the exact text sent to ElevenLabs; v3 tags in brackets)
 
 ```
-Six joinery bids. All just under our estimate.
-
-What a well-informed market.
-
-Column H. Hidden. Not deleted.
-
-Not them. We hit send.
-
-Your lines. Your quantities. They price them.
-
-Never your rates. Never your budget.
-
-Stripped. Not hidden.
-
-Nothing to unhide.
-
-Book a thirty-minute demo at Q-S-me dot build.
+Six joinery bids, all one to two percent under our estimate. Weird. [dry] What a well-informed market.
+So we open the sheet we sent them: F, G, I. Where's H? Right-click, unhide, and there's column H, our estimate. Hidden, not deleted.
+They did nothing wrong. We hit send, Friday four-forty, have a good weekend.
+[confident] In a Queue Ess Mee tender, bidders get your lines and quantities, and they price them. Never your rates, never your budget. The security page says it: stripped out server-side, not hidden in the interface. [amused] Nothing to unhide.
+Book a thirty-minute demo at Queue Ess Mee dot build.
 ```
 
-That's 49 words and 292 characters of text. Every line fits its window at 2.8 words a second or slower (`python3 tools/vo_status.py` shows ok with no tight lines). The tightest are 04 (5 words in 1.8s, before the push-in) and 06 (6 words in 2.15s, which may tail a beat past the 18.2 cut).
+## Timing (from `outputs/vo-take-cam-v3/alignment.json`)
 
-## Make it sound recorded, not synthesised
+| Said (start) | Line | Picture / caption on screen |
+|---|---|---|
+| 0.00 | Six joinery bids, all one to two percent under our estimate. | Hook 0–5.25: 'Six joinery bids.' / 'All 1–2% under our estimate.' + chip 'Joinery package · bids closed' + tag 'example figures' on frame 1; the six totals land 0.75 / 1.01 / 1.27 / 1.53 / 1.79 / 2.05 under 'bids, all one to two percent'; the estimate row lights green on 'our estimate' (2.9) |
+| 3.60 | Weird. [dry] | '(Weird.)' pops at 3.6 on the word; the hook holds to 5.13, fades to the sheet 5.25 |
+| 5.48 | [dry] What a well-informed market. | Sheet 'Joinery_BoQ_FOR_PRICING.xlsx' + chip 'The BoQ we sent them'; caption 'What a well-informed market.' pops on 'What' (5.45) and leaves at 9.3 |
+| 7.15 | So we open the sheet we sent them: F, G, I. Where's H? Right-click, unhide, | Camera pushes to the column letters F | G | I on 'open the sheet we sent them' (8.0–8.9); cursor to G on 'G' (10.1), drag to I on 'I' (10.65–11.05); red 'H?' arrow on 'Where's' (11.45) and 'H?' (12.0); right-click on 'Right-click' (12.6, generic menu), hover walks to Unhide, click on 'unhide' (14.05), column H slides open 14.1–14.75 |
+| 14.66 | and there's column H, our estimate. Hidden, not deleted. | Caption 'Column H. Hidden. / Not deleted.' pops on 'column H' (15.25); column H header 'OUR ESTIMATE (DO NOT SEND)' in red, every line priced; the red ring draws around 486,200 on 'our estimate' (16.05–16.5); hard cut to the email at 18.55 |
+| 18.62 | They did nothing wrong. | Hard cut 18.55 to the sent email (chip 'Two weeks earlier · Friday 4:40 pm', Bcc 6 recipients, Joinery_BoQ_FOR_PRICING.xlsx); caption 'They did nothing wrong.' pops on 'They' (18.62) |
+| 20.24 | We hit send, Friday four-forty, have a good weekend. | Caption 'We hit send.' (green) pops on 'We' (20.24); the push-in on 'Have a good weekend.' plays as it is said (22.8–23.1) and holds to the cut at 24.4 |
+| 24.55 | [confident] In a Queue Ess Mee tender, | Hard cut 24.4 to the product beat: QSME logo + chip 'Tendering & estimating software'; 'In a QSME tender:' pops 24.45 over the qsme.build bid-form mock-up (labelled 'Illustrative · qsme.build mock-up') |
+| 26.20 | bidders get your lines | Caption 'Bidders get your lines.' + green outline on the LINE column, both on 'bidders' (26.2) |
+| 27.22 | and quantities, | Caption 'Your quantities.' + outline on the QTY column on 'quantities' (27.3) |
+| 28.02 | and they price them. | Caption 'They price them.' (green) + outline on the YOUR RATE column on 'they price' (28.1); tag '↑ the bidder's own' under the rate column at 28.6 |
+| 29.01 | Never your rates, never your budget. | Hard cut to a clean background on 'Never' (29.0): 'Never your rates. / Never your budget.' slams in, no mock-up and no rates behind it; holds to the cut at 31.75 |
+| 31.76 | The security page says it: stripped out server-side, not hidden in the interface. | Hard cut 31.75 to the live qsme.build/security page (chip 'qsme.build/security · live page, 2 Oct 2026'), already scrolled to just above 'Bidder visibility rules'; settles 31.75–32.3, spotlight 32.25; the green highlighter covers 'Rates, amounts and the tender budget are stripped out' on 'says it: stripped out' (32.8–33.9) and sweeps 'server-side, not hidden in the interface.' word for word with the voice (33.95–36.3); caption 'Stripped. Not hidden.' pops on 'stripped' (33.5) and leaves 36.9 |
+| 37.08 | [amused] Nothing to unhide. | In the beat before the line the cursor right-clicks just after 'interface.' (36.75) and the generic menu opens below the highlight with 'Unhide columns' greyed out; caption 'Nothing to unhide.' pops on 'Nothing' (37.05); hard cut to the end card 38.15 |
+| 38.19 | Book a thirty-minute demo at Queue Ess Mee dot build. | End card: QSME logo (38.15), 'Private tenders, / by invitation.' (38.2, on screen, not voiced), pill 'Book a 30-minute demo' pops on 'Book' (38.25), 'qsme.build' pops on 'Queue Ess Mee dot build' (40.0) and holds to 43.2 |
 
-- **Source:** render the continuous read three times on the chosen voice, slice it, and place each piece at its start time. Use per-line renders only as patches, on v2 with `previous_text` and `next_text`, so the pitch carries over and doesn't reset on every line. Keep the least polished take. Reject any take where "Hidden. Not deleted." and "Stripped. Not hidden." have identical melodies. The second should sound more settled.
-- **No canned non-verbals:** no [sighs] or [chuckles], and no "eh", "yeah" or "mate". The Kiwi feel comes from the vowels: KIT in six, bids, hidden, hit and build. DRESS in estimate, never, send and demo. PRICE in lines and price. FACE in H, they and rates. Reject voices where "six" drifts to "seeks" (Australian) or a cartoon "sux".
-- **Room tone:** record 60s of a real quiet office on a phone (laptop fan, distant traffic). Run it under all 28s at about -50 dBFS, so the dead air in the skit sounds live and never drops to digital zero.
-- **EQ and dynamics:** high-pass at 90 to 100 Hz, a -2 dB high shelf above 10 kHz and a light de-ess. Compress 2:1 to 3:1 with 3 to 4 dB of gain reduction. Set the VO to about -16 LUFS integrated and -1 dBTP. No reverb and no telephone band-pass. If it still sounds "in the box", play it through a small speaker, re-record it on a phone about 40 cm away, and blend that in at 15 to 25%.
-- **Music:** none under the skit (0 to 12.9). Deadpan needs dead air. Bring it in at 12.9 on the hard cut to the QSME pivot, about 18 dB under the VO. Let it lift slightly through the silent reading beat (18.3 to 20.55), duck it under lines 07 to 09, and resolve on one chord at about 27.6. See post.md under Music.
-- **SFX (synced to picture, ducked 10 to 12 dB under any word they overlap):** six soft generic dings at 0.35, 0.59, 0.83, 1.07, 1.31 and 1.55. Trackpad clicks at 5.6, 5.95, 6.27 (right-click) and 6.77 (Unhide). A soft column slide from 6.85 to 7.5. A marker squeak from 7.75 to 8.2 (the ring). An optional soft highlighter swipe from 18.95 to 20.45. A right-click at 21.8. No sound on the email push-in at 11.95 (the silence is the joke). Nothing branded: no Outlook, Excel or OS sounds.
-- **Timing:** start each line 0 to 4 frames before its caption, varying it by a frame so the sync doesn't look quantised. Never time-stretch more than about 4%. If a take runs past its max, use another take.
-- **Mux:** bounce a mono VO stem and lay it on with `tools/mux outputs/column-h-4x5.mp4 outputs/column-h-4x5-with-vo.mp4 vo01.mp3@0.15 …`, or run `python3 tools/make_vo.py projects/2026-10-08-qsme-build-column-h <voice_id>` after the ElevenLabs upgrade. Keep music and SFX as separate tracks.
-- **Disclosure:** if the VO is ElevenLabs, set LinkedIn's and YouTube's AI-content labels where they apply. A consenting real Kiwi QS, or the founder's own cloned voice, needs no label. Only with the founder's own voice may a line say "we built Q-S-me".
+## Delivery notes
+
+- **vo00-hook** (0.00 s): The stinging number read flat, like a fact that shouldn't be a fact. Out by 3.44.
+- **vo01-weird** (3.60 s): One word, almost to himself. Then the [dry] beat (the only ~1 s pause in the take) sets up the punchline.
+- **vo02-market** (5.48 s): Admiring on the surface, one notch too sincere, aimed at the situation. Out by 6.88.
+- **vo03-sheet** (7.15 s): Narrating what the cursor does, a QS reading the letters off the screen; 'Where's H?' genuinely puzzled for half a second. No caption: the sheet is the picture. Out by 14.56.
+- **vo04-colh** (14.66 s): The realisation, not a punchline. 'Hidden, not deleted.' lands quietly, each word a touch lower. Out by 18.48.
+- **vo05-wrong** (18.62 s): Fair and flat, clearing the bidders. Out by 20.0.
+- **vo06-send** (20.24 s): The self-own, owned plainly; 'have a good weekend' read exactly as the email says it, the smallest wince. Out by 23.76.
+- **vo07-tender** (24.55 s): The pivot: calm, plain, a colleague explaining how it works. QSME as 'cue ess mee', evenly. Out by 26.16.
+- **vo08-lines** (26.20 s): Matter-of-fact. The outline steps with the words.
+- **vo09-qty** (27.22 s): Same even register.
+- **vo10-price** (28.02 s): A touch lighter, almost obvious. 'They' is the bidders. Out by 28.88.
+- **vo11-never** (29.01 s): The one firm line. Even stress on both 'never's, no announcer lift, falling on 'budget'. Out by 31.68.
+- **vo12-proof** (31.76 s): Reading the page's own sentence, plainly; a light lean on 'stripped' and 'not hidden'. Out by 36.32.
+- **vo13-none** (37.08 s): Barely there, the tiniest smile, falling. Out by 38.08.
+- **vo14-cta** (38.19 s): The ask, said once, like telling a colleague where to book it. 'thirty-minute' as one easy word, no rise on 'build'. Out by 41.68.
+
+## Post-processing
+
+- The whole take is ONE clip at 0.0 s, gain 1.15, muxed onto outputs/column-h-4x5.mp4 with tools/mux → outputs/column-h-4x5-with-vo.mp4. No music bed, no SFX, no slicing, no time-stretch (owner standard 2026-10-06: clean continuous voice).
+- If the picture is re-cut, re-time the motion page to the words in outputs/vo-take-cam-v3/alignment.json; never cut the audio to the picture.
+
+## Changelog
+
+- 2026-10-02 first version, timed on the rendered 28.0s 4:5 MP4 (outputs/column-h-4x5.mp4). No API was called.
+- 2026-10-02 v3 fit pass: every line at 2.8 words/s or slower; three captions voiced shorter.
+- 2026-10-03 owner CTA rule: VO 09 says 'Book a thirty-minute demo at Q-S-me dot build.'
+- 2026-10-06 AUDIO-FIRST REMAKE (owner standard from the N01 pilot): continuous script with the hook first, ONE unbroken Cam S eleven_v3 take (41.68 s, 2.42 w/s, longest gap 1.0 s), the picture re-timed to the words (page 43.2 s), captions lifted from the narration, no bed. The 2026-10-02/03 per-line plan above is superseded; its caption text is unchanged on screen.

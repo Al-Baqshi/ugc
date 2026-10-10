@@ -3,18 +3,20 @@ vid: G09
 title: "Wednesday: As above."
 venture: qsme-build
 idea: gl-as-above
-status: "re-rendered after review (2026-10-04) — awaiting Session B recordings"
+status: "audio-first remake (2026-10-06): voiced 45.4 s master — awaiting the owner's verdict + Session B recordings"
 publish_date: 2026-10-22
 publish_time: "19:30 NZDT (Thu 07:30 London BST, 10:30 Dubai, 09:30 Riyadh)"
 created: 2026-10-02
 calendar_week: 3
 format: short
 kind: skit
-length_s: 29.25
+length_s: 45.4
 aspect: "4:5"
 platforms: ["LinkedIn (founder profile + page repost)"]
 platforms_later: ["YouTube Shorts (9:16 re-layout, built once after the Session B recordings are in)"]
 video: outputs/as-above-4x5.mp4
+video_with_vo: outputs/as-above-4x5-with-vo.mp4
+vo_take: outputs/vo-take-cam-v3/take.mp3
 thumbnail: outputs/as-above-4x5-thumb.png
 thumbnail_b: outputs/as-above-4x5-thumb-b.png
 ---
@@ -26,6 +28,48 @@ thumbnail_b: outputs/as-above-4x5-thumb-b.png
 **The insight:** The site diary is written for the claim you hope never happens, at the moment you're least able to remember the week. In QSME the rain day is logged once, on the programme, on the day: the weather-sensitive tasks get their extra day, what follows moves to fit, the history says why ("Rain day — Tue 13 Oct"), and the daily log picks up the rain day and the schedule change by itself. A chat photo marked as proof of work, or a photo added from the phone, lands on the day it's posted. It doesn't write the whole diary. It writes the bits you'd forget by Friday.
 
 **Job:** Organic, week 3. Lands Thursday morning in the UK and the Gulf, the day before everyone writes their Friday diary, as northern-hemisphere rain-day season starts. It ties the programme to the site (a rain day logged on the programme writes itself into the diary). It's a first-person confession by a fictional site manager ("Sam"), so the joke is on the speaker, never on site managers. The founder posts it from his LinkedIn profile, and the QSME page reposts it.
+
+## Audio-first remake (2026-10-06) — the current master
+
+**Why:** the owner signed off the N01 "Which Dave?" pilot (2026-10-06) as the standard for every QSME video: a script that is continuous speech with a real hook in the first 2 s, ONE unbroken eleven_v3 take (Cam S), no silence over 1 s, and the picture re-timed to the words. This cut applies it to G09. The joke, the design and every claim are unchanged (2026-10-04 review build); the clock is now the take.
+
+**Hook (0–3.84 s, spoken):** "Confession. Friday, four fifty-two. Writing Monday's site diary." — on screen: the CONFESSION pill, "Site diary. / Written Friday, 4:52pm." from frame 0, "For Monday." slams in amber on "Monday's" (2.77) while the pen writes Monday's four lines.
+
+**The script as spoken (one take, 43.92 s, 115 words, 2.62 words/s, longest silence 1.08 s measured on the audio (RMS, 10 ms windows, -45 dBFS: 22.53–23.61, between "Or." and "In"; the 0.32 s first reported came from alignment character times, which stretch over pauses; the approved N01 take measures 1.27 s the same way); no audio tags — a `[dry]` tag cost a >1 s gap in attempts 1–2, so attempt 3 ships without one):**
+
+```
+Confession. Friday, four fifty-two. Writing Monday's site diary.
+Monday gets a paragraph. Tuesday got rained off, so Tuesday gets "Works progressed", Wednesday "As above", Thursday too, Friday, ditto.
+Nine months later, head office asks: was Tuesday the thirteenth a rain day? It was. Probably.
+Or. In Queue Ess Mee you log the rain day once, on the programme, and the rain day writes itself into the diary.
+Tag a chat photo as proof of work, and photos land on the day you post them, even from your phone. Not on Friday.
+It doesn't write the whole diary. It writes the bits you'd forget by Friday. Book a thirty-minute demo at Queue Ess Mee dot build.
+```
+
+| Said (start) | Picture (re-timed to the words) | Caption on screen |
+|---|---|---|
+| 0.00 "Confession. Friday, four fifty-two. Writing Monday's site diary." | pen writes Monday 0–3.4; "For Monday." slams on "Monday's" 2.77; hook out 3.85 | CONFESSION · Site diary. / Written Friday, 4:52pm. / For Monday. |
+| 4.00 "Monday gets a paragraph." | clock chip FRI 16 OCT · 4:52 PM 4.1; camera eases down to Monday 3.8–4.4 | Monday gets a paragraph. |
+| 5.99 "Tuesday got rained off, so Tuesday gets 'Works progressed'," | camera to Tuesday 5.85–6.3; rain + blue cast on "rained" 6.55–9.55; pen writes "Works progressed." 8.2–9.3; chip 4:53 | Tuesday: rained off. |
+| 9.52 "Wednesday 'As above', Thursday too, Friday, ditto." | pen: ditto marks + WED 10.28, THU 11.25, FRI "Ditto." 12.66 (chips 4:55 / 4:56 / 4:58); underline on "ditto." 13.2; pull-back on the week 13.3–13.72 | Wednesday gets "As above." |
+| 13.92 "Nine months later, head office asks: was Tuesday the thirteenth a rain day?" | hard cut to the b-roll 13.9; "Nine months later." slams on "Nine"; rises on "head office" as the email arrives 15.1; yellow marker on "thirteenth" 17.3 | Nine months later. · Hi Sam, / Was Tue 13 Oct a rain day? |
+| 18.91 "It was. Probably." | hard cut to Tuesday 18.8; red ring on "Works progressed." 18.9; "It was." 19.0; red "?" in the WEATHER box + "Probably." on the word 20.25 | It was. / Probably. |
+| 21.84 "Or. In QSME you log the rain day once, on the programme," | swipe 21.6–21.9 lands on "Or.": Schedule; click Rain day on "log" 24.6; tick Tue 13 on "once" 25.54; "Push these tasks" on "programme" 26.35; the chain slides 26.5–26.9 | Log the rain day once. |
+| 27.06 "and the rain day writes itself into the diary." | hard cut to the Daily log 27.45; marker on Tue 13 Oct; "Rain day" writes itself in on "writes" 27.95, "Schedule change" on "itself" 28.25 | Log the rain day once. (dimmed) / It writes itself into the diary. |
+| 29.62 "Tag a chat photo as proof of work," | hard cut to Messages on "Tag"; click the photo on "photo" 30.62; "Mark as proof of work" clicked on the words 31.3 | — |
+| 31.88 "and photos land on the day you post them, even from your phone." | hard cut to the Daily log on "photos" 31.9; "Proof of work · Mia T. · 11:42" lands 31.96–32.18; phone swipes in on "even from your phone" 33.95; Add photo 34.45, Take a photo 34.87, shutter 35.05 | Photos land on the day / you post them. |
+| 35.24 "Not on Friday." | "Site photo · Sam K. · 11:51" lands 35.11–35.37; slam on "Not" 35.25 | Not on Friday. |
+| 36.72 "It doesn't write the whole diary." | swipe to the close 36.5–36.8; paper Tuesday vs the QSME Tuesday card (rows 36.98–37.28); marker on "whole diary" 37.4 | It doesn't write the whole diary. |
+| 38.56 "It writes the bits you'd forget by Friday." | pops on "It writes"; rises into the end card 40.5–40.9 | It writes the bits / you'd forget by Friday. |
+| 40.70 "Book a thirty-minute demo at QSME dot build." | end card fades in under the close on "Book" 40.45–40.7: logo, pill pops on "Book" 40.72, qsme.build pops on "QSME dot build" 42.3, holds to 45.4 | Book a 30-minute demo · qsme.build |
+
+**Files:** master `outputs/as-above-4x5.mp4` (45.4 s = take 43.92 + 1.5 s tail, silent, QA passed on the LinkedIn safe box 60,60,1020,1290; contact sheet `outputs/as-above-4x5-frames.png`; 26 frames pulled from the encoded MP4 at the word moments and checked, plus the first 2 s frame by frame); voiced `outputs/as-above-4x5-with-vo.mp4` (the take as ONE clip at 0.0 s, gain 1.15, no music bed; AVFoundation probe: 1 audio track, container 45.4 s = video); take + `alignment.json` + `words.json` + the exact text sent (`take-text.txt`) in `outputs/vo-take-cam-v3/` (attempts 1–2 kept as `*-attempt1/2.*`: 55.2 s and 49.5 s, each with a >1 s gap at the `[dry]` tag); contract `vo-script.json` / `vo-script.md` (14 caption phrases, one take); motion `motion/as-above.js` rewritten on the take clock (the old S1 clock + edit list removed; header comment lists every beat). The 2026-10-04 silent 29.25 s master and its preview are archived as `outputs/archive/as-above-4x5-v1.mp4` / `-v1.preview.mp4` / `-v1-frames.png`. Thumbnails A and B are unchanged (their text did not change; if re-exported, A's still is now 3.2 s, just after "For Monday." slams in at 2.77, and B's is 13.6 s).
+
+**🟥 Blocker (review 2026-10-10):** the speech-to-text check fails on the brand. `tools/el.py stt` hears "QS May" at 23.73 and the spoken CTA as "qsmay.build" at 42.44 (accepted: QSME / QS Me / qsme.build), so a viewer would type the wrong URL. A same-text re-roll on 2026-10-10 (attempt 4, `outputs/vo-take-cam-v3/take-attempt4.mp3`, 45.60 s, longest silence 0.96 s) was heard the same way and is not used. Fix: one more unbroken take with the brand spelling changed (attempt 2 sent "Queue Ess Mee," with a comma and was heard as "QSME" / "qsme.build"), then re-time `motion/as-above.js`, re-render, re-mux and rewrite the timing table. This needs the owner's OK, because it goes over the max-3-attempt rule. The other option is to ship attempt 2 (49.5 s, 2.46 w/s, different wording, longest silence 0.96 s on the audio), re-timed. **Until then the voiced cut is not ready to ship.**
+
+**Still open:** the owner's verdict on the read and the 45 s runtime (LinkedIn feed); Session B recordings must be swapped in at the new times (Schedule 21.84–27.45, Daily log 27.45–29.6 and 31.9–33.95, Messages 29.6–31.9, phone 33.95–36.5); the 9:16 cut is still not built (one output clock now, so it is a re-layout, not a re-time).
+
+**What's below:** the Production status, Beat-by-beat script, Music and Owner recordings sections describe the 2026-10-04 silent 29.25 s cut and its 12-line per-line VO plan. They are kept as the design record; the timeline above is the one that ships.
 
 ## Publish condition (read first)
 
@@ -41,7 +85,7 @@ thumbnail_b: outputs/as-above-4x5-thumb-b.png
 | Piece | State | Where |
 |---|---|---|
 | 4:5 video, 29.25 s, 1080×1350, silent-first with burned-in captions | ✅ Re-rendered 2026-10-04 after the review. QA passed on the LinkedIn safe box 60,60,1020,1290. I read the contact sheet and pulled about 40 frames from the encoded MP4 at every fixed moment (see Discussion history). 🟥 Publish blocked on the owner's recordings | `outputs/as-above-4x5.mp4` · `outputs/as-above-4x5-frames.png` |
-| LinkedIn custom thumbnail A | ✅ The hook frame at 1.2 s ("CONFESSION · Site diary. / Written Friday, 4:52pm. / For Monday." over the diary) | `outputs/as-above-4x5-thumb.png` |
+| LinkedIn custom thumbnail A | ✅ The hook frame (3.2 s on the take clock; was 1.2 s on the 2026-10-04 clock) ("CONFESSION · Site diary. / Written Friday, 4:52pm. / For Monday." over the diary) | `outputs/as-above-4x5-thumb.png` |
 | LinkedIn custom thumbnail B (A/B) | ✅ The whole shrinking week, ending in an underlined "Ditto.", with "CONFESSION · Site diary. / Written Friday, 4:52pm." above it (the 8.45 s pull-back, reframed so Monday's paragraph stays visible) | `outputs/as-above-4x5-thumb-b.png` (source `motion/as-above-thumb.html`) |
 | 9:16 YouTube Shorts cut | ⬜ Deliberately not built yet. It needs a re-layout (captions above the app window, desk reframed), and it should be built once, after the Session B recordings are in. Until then **only LinkedIn is ready**. Plan: a thin `motion/as-above-9x16.html` (body.build r9x16) on the same timeline with r9x16 overrides in `as-above.css`, so the VO stem fits both | — |
 | Motion source | ✅ One timeline: `motion/as-above.js` (markup + timeline + a small render-time edit list), `motion/as-above.css`, page `motion/as-above.html` (body.build r4x5) | `motion/` |
@@ -52,8 +96,8 @@ thumbnail_b: outputs/as-above-4x5-thumb-b.png
 
 **Re-render from the studio root:**
 - `node tools/motion/make.mjs projects/2026-10-22-qsme-build-as-above/motion/as-above.html projects/2026-10-22-qsme-build-as-above/outputs/as-above-4x5.mp4 --safe 60,60,1020,1290` (add `--check` while designing; about 2.5 min for a full render)
-- Thumbnail A: the same command with `--still 1.2 --still-only` into a scratch folder, then copy the PNG to `outputs/as-above-4x5-thumb.png`.
-- Thumbnail B: `node tools/motion/make.mjs projects/2026-10-22-qsme-build-as-above/motion/as-above-thumb.html <scratch>/thumb-b.mp4 --still 8.45 --still-only`, then copy the PNG to `outputs/as-above-4x5-thumb-b.png`.
+- Thumbnail A: the same command with `--still 3.2 --still-only` (was 1.2; "For Monday." now slams in at 2.77 on the take clock) into a scratch folder, then copy the PNG to `outputs/as-above-4x5-thumb.png`.
+- Thumbnail B: `node tools/motion/make.mjs projects/2026-10-22-qsme-build-as-above/motion/as-above-thumb.html <scratch>/thumb-b.mp4 --still 13.6 --still-only` (was 8.45; the pull-back on the whole week sits at 13.3–13.72 on the take clock), then copy the PNG to `outputs/as-above-4x5-thumb-b.png`.
 - Re-cut the b-roll: `tools/motion/extract assets/qsme/broll/th-7-complete.v1.mp4 projects/2026-10-22-qsme-build-as-above/motion/clips/done 30 4.6 7.9 1280`. Keep `frames: 99` and `t1` on `Kit.clip`: a missing frame file leaves a broken `<img>`.
 - **Clocks and edit list:** the desk (S1) is written in output seconds through `S1(t)` and starts 1.2 s before the authored clock, so everything after it keeps its authored times. Six cuts/holds at the bottom of `as-above.js` are applied at render: cut 0.3 s at 11.95 ("Probably." hold), cut 1.0 s at 15.4 (the old "What happened" beat), hold 0.5 s at 17.85 (Daily log caption), cut 0.2 s at 20.8 (idle phone), hold 0.4 s at 22.16 (photo landed), cut 0.3 s at 24.4 (close hold). Cuts sit only in still holds and holds only freeze still frames. **Every time in this file and in the VO script is an output time on the MP4.**
 
@@ -255,3 +299,5 @@ Once Session B and the filmed diary are in: keep 0–13.3 as is, then the real R
   - **Platforms:** only LinkedIn is listed as ready; the 9:16 is built once, after Session B.
   - **Nice:** paper stamp "WRITTEN FRI 4:53 PM" (when Tuesday was written); dark strip under the clock chip; thumbnail B (whole week ending in "Ditto." under the hook). The Schedule change entry's wording note is moot now that entry body text is gone until Session B shows the real wording.
   - No API was called, nothing was published or deployed.
+- 2026-10-06 (audio-first remake, producer run, N01 standard): one continuous script with the hook spoken, the shrinking week told in one breath, the head-office question spoken, "It was. Probably." as captioned, a plain product payoff and the Global CTA spoken; Cam S eleven_v3, ONE unbroken with-timestamps take (attempt 3 ships: 43.92 s, 115 words, 2.62 w/s, longest silence 0.32 s, STT every word heard; attempts 1–2 had a >1 s gap at a [dry] tag); `motion/as-above.js` rewritten on the take clock (edit list gone), 4:5 master re-rendered 29.25 → 45.4 s (QA ok, 26 word-moment frames + the first 2 s checked), v1 master/preview archived, muxed clean to `outputs/as-above-4x5-with-vo.mp4` (1 audio track, 45.4 s); `vo-script.json`/`.md` (14 phrases, `take` block) and this post updated; preview `.preview.mp4` moved to archive. No API beyond the three ElevenLabs takes, nothing published or deployed. Open: owner verdict, Session B at the new times, the 9:16 cut.
+- 2026-10-10 (review fix run): the review found that STT hears the brand as "QS May" and the CTA as "qsmay.build" on the shipped take (must-fix), and that the 0.32 s "longest silence" came from alignment character times (should-fix). Measured on the audio (RMS, -45 dBFS, 10 ms) it is 1.08 s after "Or.". Re-rolled the same take-text.txt once (attempt 4: one unbroken eleven_v3 Cam S request, 652 characters, 45.60 s, 2.52 w/s, longest silence 0.96 s) and STT heard "QS May" / "qsmay.build" again, so it is kept as `take-attempt4.*` and not used. No further paid take was made without the owner's OK (over the max-3 rule). Corrected: the gap figure and method (here, `vo-script.json` `max_gap_s`/`gap_method`, `vo-script.md`), `take.stt_check` (now marked FAIL), and thumbnail A's still time (1.2 → 3.2 s). Added a 🟥 blocker above. Master, with-vo MP4 and motion are unchanged. Decision for the owner: OK one more take with the brand spelling changed (e.g. "Queue Ess Mee," as in attempt 2), or ship attempt 2 re-timed.

@@ -3,18 +3,20 @@ vid: G07
 title: "Action: chase painter (week 6)"
 venture: qsme-build
 idea: gl-chase-the-painter
-status: "rendered — awaiting approval"
+status: "rendered — audio-first remake 2026-10-06 (Cam S, eleven_v3) awaiting approval; publish still blocked on Session B"
 publish_date: 2026-10-20
 publish_time: "10:30 NZDT (Tue 08:30 Sydney/Melbourne AEDT, 07:30 Brisbane; Mon 22:30 London)"
 created: 2026-10-02
 calendar_week: 3
 format: short
 kind: situation-demo
-length_s: 33.8
+length_s: 42.5
 aspect: "4:5 + 9:16"
 platforms: ["LinkedIn (founder profile; QSME page reposts at 07:30 London)", "YouTube Shorts (9:16)"]
 video: outputs/chase-the-painter-4x5.mp4
 video_9x16: outputs/chase-the-painter-9x16.mp4
+video_with_vo: outputs/chase-the-painter-4x5-with-vo.mp4
+video_9x16_with_vo: outputs/chase-the-painter-9x16-with-vo.mp4
 ---
 
 # Action: chase painter (week 6)
@@ -24,6 +26,50 @@ video_9x16: outputs/chase-the-painter-9x16.mp4
 **The insight:** Most programme arguments are about the wrong delay. The loudest late trade usually isn't the one holding up the finish. In QSME one switch, "What drives the finish date", rings in purple the chain of linked tasks that sets the finish. A grey task has room. A purple task that slips a day pushes the finish a day. The same rule prints on the A4 "Construction programme" as one plain sentence: "Any one of them running late moves the whole finish."
 
 **Job:** Week 3 opens programme week on Tuesday morning in AU/NZ, early in the week when progress meetings happen. The founder posts it on LinkedIn, the QSME page reposts it, and the 9:16 goes to YouTube Shorts. It's the 30-second set-up for week 4's "A programme a lender can read", which goes deeper on the same printout. The painter is innocent throughout: the joke is on the meeting (us).
+
+## Audio-first remake (2026-10-06) — the current masters
+
+**Why:** the owner signed off the N01 "Which Dave?" pilot as the standard for every QSME video: a real hook in the first 2 s, continuous speech instead of caption fragments, ONE unbroken eleven_v3 take (Cam S) with no gaps or breath cuts, and the picture re-timed to the words. This cut applies it to G07 without touching the design.
+
+**Hook (0–5.1 s, spoken):** "Six weeks of minutes, one action: chase the painter. Again." — on screen: frame 0 already carries "Six weeks of minutes. / Action: chase painter. / (Again.)"; the minutes flick weeks 9→14 under "Six weeks of minutes, one action:", the biro draws the sixth underline on "chase the painter.", and "(Again.)" jolts on "Again."
+
+**The script as spoken (one take, 40.96 s, 2.71 words/s, longest silence 0.21 s, no v3 audio tags; one dry storyteller who chaired the meeting):**
+
+```
+Six weeks of minutes, one action: chase the painter. Again.
+Painter's starting a week late. Finish date didn't move. Then it jumped nine working days. Something else moved it, and nobody minuted that.
+One switch in Queue Ess Mee. Purple decides your finish date.
+Our painter? Grey. Grey has room to move. Drag him a week late, the finish doesn't budge.
+The fit-off? Purple. Slips a day, the finish slips a day.
+Same rings on the printed programme. Queue Ess Mee calls it "What drives the finish date". You can call it the critical path.
+We owe the painter a coffee.
+Book a thirty-minute demo at Queue Ess Mee dot build.
+```
+
+| Said (start) | Picture (re-timed to the words) |
+|---|---|
+| 0.00 "Six weeks of minutes, one action: chase the painter. Again." | Hook 0–5.15: frame 0 carries 'Six weeks of minutes. / Action: chase painter. / (Again.)'; the minutes flick weeks 9→14 on 'Six weeks of minutes, one action:' (0.35–2.15), the pen draws the sixth underline on 'chase the painter.' (2.62–3.45), '(Again.)' jolts on 'Again.' (3.77); swipe to the ledger 4.85–5.15 |
+| 5.13 "Painter's starting a week late." | Caption 'Painter: starting a week late.' pops 5.15 over the ledger (weeks 9–14, the same action) |
+| 6.56 "Finish date didn't move." | Caption 'Finish date: didn't move.' pops 6.56; weeks 9–12 tint green 6.8–7.2 |
+| 7.98 "Then it jumped nine working days." | Captions out 7.95; weeks 13–14 tick from Fri 13 Nov to Thu 26 Nov in red 8.0–8.95; the '+9 working days' sticker slams on 'nine' (9.04) |
+| 10.31 "Something else moved it," | Caption 'Something else moved it.' pops 10.31 |
+| 11.56 "and nobody minuted that." | Caption 'Nobody minuted that.' (red) pops 11.74; both out 13.05; swipe to the schedule 13.1–13.45 |
+| 13.18 "One switch in Q-S-me." | Schedule swipes in 13.1–13.45 with the pill 'In the schedule, tick "What drives the finish date"' (13.35); cursor clicks View on 'switch' (13.85), menu opens 13.9, cursor rests on the checkbox 14.25–15.1, tick on 'Mee' (15.1) |
+| 15.43 "Purple decides your finish date." | Purple rings + arrows pop on 'Purple' (15.45–16.11), legend line 15.45, caption 'Purple decides your finish date.' pops 15.48; the yellow 'Finish: Thu 26 Nov' note lands on 'finish date.' (16.35); biro note 'nobody minuted this' on the switchboard 16.55–17.38 |
+| 17.32 "Our painter? Grey." | Caption 'Our painter? Grey.' pops 17.32; biro circle round the grey Painting bar on 'Grey.' (18.66–19.1) |
+| 19.76 "Grey has room to move." | Caption 'Grey has room to move.' pops 19.76 (9:16: gentle 1.3× push onto Painting 19.78–20.28) |
+| 21.09 "Drag him a week late, the finish doesn't budge." | Cursor grabs Painting 21.05, drags it 2-6 → 9-13 Nov on 'Drag him a week late,' (21.1–22.1), releases 22.2; sticky 'Painter: 1 week late' 22.2, toast '1 moved · Undo' 22.25, 'didn't move ✓' on 'doesn't budge' (23.0); all out 23.85 |
+| 23.88 "The fit-off? Purple." | Names, header and legend fade 23.9, the camera pushes in 1.46× on 'The fit-off?' (23.9–24.4); caption 'Purple slips a day,' pops on 'Purple.' (24.93) |
+| 25.95 "Slips a day, the finish slips a day." | Cursor drags Electrical fit-off one day (16-20 → 17-23 Nov) on 'Slips a day,' (25.95–26.3); Commissioning, Final clean, Handover follow 26.39–26.71; 'Fit-off: 1 day late' 26.65, toast '1 moved — 3 that follow it came too' 26.75; caption 'the finish slips a day.' pops 27.06; the finish note flips to Fri 27 Nov on 'slips' (27.56), '+1 day' 27.62; captions out 28.5 |
+| 28.54 "Same rings on the printed programme." | Screen leaves 28.45; desk + A4 'Construction programme' slide in 28.55–29.05, zoom onto the purple-ring sentence 29.5–30.4 |
+| 30.51 "Q-S-me calls it "What drives the finish date"." | Caption 'QSME calls it / "What drives the finish date".' pops 30.51; highlighter runs under 'Any one of them running late moves the whole finish.' 32.1–32.7 |
+| 33.82 "You can call it the critical path." | Caption 'You can call it the critical path.' pops 33.82; both captions out 35.7; zoom back out 35.75–36.25 |
+| 35.89 "We owe the painter a coffee." | Caption 'We owe the painter a coffee.' pops 35.92; the PAINTER cup lands 35.95–36.35, steam from 36.35 |
+| 37.63 "Book a thirty-minute demo at Q-S-me dot build." | End card from 37.5: logo 37.65, 'Chase the right delay.' 37.78, green pill 'Book a 30-minute demo' pops on 'Book' (37.98), 'qsme.build' pops on 'dot build' (40.2); page ends 42.5 |
+
+**Files:** masters `outputs/chase-the-painter-4x5.mp4` and `outputs/chase-the-painter-9x16.mp4` (42.5 s, silent, QA passed on 60,60,1020,1290 and 65,300,1015,1250; the 33.8 s v1 masters are archived as `outputs/archive/chase-the-painter-4x5-v1.mp4` and `-9x16-v1.mp4`); voiced `outputs/chase-the-painter-4x5-with-vo.mp4` and `outputs/chase-the-painter-9x16-with-vo.mp4` (the take at 0.0 s, gain 1.15, no bed, one audio track each); take + alignment + per-word times + the exact text sent in `outputs/vo-take-cam-v3/` (attempt 1, 46 s with a 2 s hole where `[short pause]` landed, kept as `take-attempt1.mp3`); contract `vo-script.json` / `vo-script.md`. End-card frame cache re-extracted to 5.1 s (`motion/clips/done`, 153 frames) so the b-roll keeps moving through the longer end card. Captions unchanged except that they now sit on their words; "Chase the right delay." stays as the unspoken end-card line. Thumbnail/cover frame moves to **4.0 s** (six underlines drawn, "(Again.)" just jolted).
+
+**What's below:** the Production status table, the beat-by-beat script and the 9:16 notes describe the 2026-10-04 silent 33.8 s cut (13 stitched VO lines, silent beats on purpose). They are kept as the design record and for Session B's shot list; the timeline above is the one that ships. The Session B timestamps in "Owner recordings to swap in" refer to the old clock: add ~3.7 s to the schedule beats (tick now at 15.1, grey drag 21.1–22.1, purple drag 25.95–26.3) and ~6.5 s to the printout (28.45–37.5).
 
 ## Publish condition (read first)
 
@@ -43,7 +89,7 @@ video_9x16: outputs/chase-the-painter-9x16.mp4
 | **9:16 YouTube Shorts video, 33.8 s, 1080×1920** | ✅ Re-rendered 2026-10-04. A re-layout, not a crop: the label sits on top, captions under it, the schedule is scaled to .82, and the grey drag gets its own gentle push-in. QA passed on 65,300,1015,1250. Same clock as the 4:5. 🟥 Same publish condition | `outputs/chase-the-painter-9x16.mp4` · `outputs/chase-the-painter-9x16-frames.png` |
 | Motion sources | ✅ One timeline for both cuts | `motion/chase-the-painter.html` (4:5) · `motion/chase-the-painter-9x16.html` · `motion/chase-the-painter.js` · `motion/chase-the-painter.css` |
 | Footage | ✅ End-card background from brand b-roll (`assets/qsme/broll/th-7-complete.v1.mp4`, 0.5–3.9 s, dimmed) | `motion/clips/done/` (frame cache, never uploaded) |
-| VO | 🟡 13 lines, retimed to the 33.8 s clock (Kiwi, "Q-S-me"); vo10 now says the feature's name, matching the caption. Generate after the ElevenLabs upgrade, then lay onto both MP4s with `tools/mux` | `vo-script.md` / `vo-script.json` |
+| VO | ✅ 2026-10-06 audio-first remake: ONE unbroken Cam S eleven_v3 take (40.96 s, no tags, STT-checked), laid onto both masters with `tools/mux` → `*-with-vo.mp4`. The 13-line stitched plan is superseded | `vo-script.md` / `vo-script.json` · `outputs/vo-take-cam-v3/` |
 | SFX, music | ⬜ After the ElevenLabs upgrade (commercial licence) or royalty-free | see Music and `vo-script.md` → Sound design |
 | Owner screen recordings | ⬜ Session B: test 0, 4 screen recordings + 1 hands-only shot | see "Owner recordings to swap in" |
 
@@ -121,7 +167,7 @@ It's the same timeline with the same clock, laid out separately so it isn't a bl
 
 **CTA (everywhere):** Book a 30-minute demo at qsme.build. Per the owner CTA rule (2026-10-03), there are no pricing or giveaway lines and no counts anywhere: on screen, in captions, hashtags, titles or the thumbnail.
 
-**Thumbnail / cover (both):** the frame at 2.6 s ("Six weeks of minutes. / Action: chase painter. (Again.)" over the week-14 minutes with six underlines).
+**Thumbnail / cover (both):** the frame at 4.0 s on the 2026-10-06 masters ("Six weeks of minutes. / Action: chase painter. (Again.)" over the week-14 minutes with six underlines; it was 2.6 s on the v1 cut).
 
 ## Music
 
@@ -180,7 +226,7 @@ Run the minutes hook (this cut) against the call-log hook from `gl-wrong-phone-c
 
 1. Where does the "What drives the finish date" switch live in the real schedule (a View/display menu, a toolbar toggle)? Recording #1 will settle it; until then the recreation shows a View menu, labelled illustrative.
 2. OK to post the illustrative cut if Session B slips past Tue 20 Oct, with the caption line "Screens in this cut are recreations with demo data"? Or hold it? **If yes, re-render with `PUBLIC_LABEL = true` first**, so the corner label reads "Recreated screen · demo data" instead of our production note.
-3. Who reads the VO: an AI voice (the QS from "Six bids"), or a real person's phone memo?
+3. ~~Who reads the VO~~ Settled 2026-10-06: Cam S (ElevenLabs eleven_v3), one take, per the N01 standard. Still open: does the owner want the LinkedIn/YouTube AI-content label switched on for a synthetic narrator?
 
 ## Discussion history
 
@@ -215,3 +261,5 @@ Run the minutes hook (this cut) against the call-log hook from `gl-wrong-phone-c
   - **Corner label:** `PUBLIC_LABEL` switch added; public cuts read "Recreated screen · demo data". Noted under open question 2.
   - **VO:** vo10 is now 'Q-S-me calls it "What drives the finish date".', matching the caption; vo02 is "Painter's starting a week late. Finish didn't move."; every line retimed and re-checked with `tools/vo_status.py`.
   - **Nice ones:** weeks 13–14 completion dates greyed until they tick out in red; minutes → ledger is now a horizontal swipe (no crossfade); task names, date header and legend fade before the push-in (no stray half-names); the 9:16 gets a gentle 1.3× push-in on the grey drag; our overlays are yellow sticky notes in biro (no product-status red, no dark pill that could read as QSME UI), and the Painting note reads "Painter: 1 week late" so the bar is identified without the names column; the printout label moved to the bottom-left of the 4:5 frame and the desk pen moved clear of it; the cup is now a 3/4-view takeaway cup with PAINTER on the sleeve and a faint steam wisp.
+- 2026-10-06: **Audio-first remake** to the owner's N01 standard. New continuous script (hook "Six weeks of minutes, one action: chase the painter. Again."; product payoff "One switch in QSME. Purple decides your finish date." and "Same rings on the printed programme. QSME calls it 'What drives the finish date'."), ONE unbroken Cam S eleven_v3 take (attempt 1 rejected: 46 s with a 2.1 s hole where `[short pause]` landed; attempt 2 is 40.96 s, 2.71 words/s, longest silence 0.21 s, STT heard every word). Every beat in `motion/chase-the-painter.js` re-derived from the alignment (pen on "chase the painter", sticker on "nine", tick on "Mee", rings on "Purple", circle on "Grey.", drags on "Drag him a week late" / "Slips a day", finish flip on "slips", zoom on "printed programme", cup on "owe the painter", pill on "Book", URL on "dot build"); pages extended 33.8 → 42.5 s; end-card b-roll cache re-extracted to 5.1 s. Both cuts re-rendered (QA passed), v1 masters archived, voiced `-with-vo.mp4` mixed (take at 0.0, gain 1.15, no bed). Design untouched. Publish still blocked on Session B.
+- 2026-10-07: Resumed after a usage-limit stop and verified the 2026-10-06 remake end to end: QA re-run on both pages (ok on 60,60,1020,1290 and 65,300,1015,1250), 21 frames per cut spot-checked from the final masters at the word/picture moments (pen 3.0, '(Again.)' 3.9, sticker 9.1, tick 15.15, rings 15.7, circle 18.9, drags 21.6/26.2, finish flip 27.7, printout 29.2, highlighter 32.4, cup 36.4, pill 38.1, URL 40.4, tail 42.0), both -with-vo files probed (one audio track, 42.50 s = video, audio 40.985 s). Refreshed the four Studio previews (*.preview.mp4) from the 42.5 s masters; the old ones were the 33.8 s v1 cuts. No design or timing changes.

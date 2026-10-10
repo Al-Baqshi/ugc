@@ -1,191 +1,276 @@
 {
   "venture": "qsme-nz",
   "video": "outputs/which-ones-cheapest-9x16.mp4",
-  "character": "Two voices, a couple at the kitchen bench on a Sunday night. MEL (white captions): everyday Kiwi woman, late 30s, the same Mel as 'Which Dave?', renovating the main bathroom in Hamilton. Dry, under-played, a little bit pleased with herself; she reads the screen out loud the way you'd explain it to your partner, never sells, never says what QSME 'did for her' (no testimonial). HIM (green bubbles): her partner, relaxed Kiwi bloke, late 30s to 40s, low and flat, bone-dry. He asked the question, he'd have picked the wrong quote, and he's fine with that: the joke is on the GST formats and a bit on himself, never on the tradies. General NZ accents, natural and unhurried, never broad, never Australian, no announcer lift, no exclamation marks. Both are AI voices of fictional people: never presented as real customers.",
-  "voices": {
-    "Mel": "tools/voices.json → qsme-nz.voice_id (Jenna, NZ female; casting in projects/2026-10-02-qsme-voice-casting)",
-    "Him": "tools/voices.json → qsme-nz.alt_voice_id (Kiwi Mikey, NZ male)"
-  },
-  "casting_line": "Three quotes for one bathroom, and every one of them wrote GST differently. Course they did.",
+  "video_4x5": "outputs/which-ones-cheapest-4x5.mp4",
+  "vid": "N08",
+  "character": "ONE voice (Cam S, ElevenLabs 53CG2aO2HU48thT3QnMl): the partner who asked 'which one's cheapest?', telling it on himself at the kitchen bench. Dry, under-played Kiwi bloke, general NZ accent, never a caricature, no announcer lift, no exclamation marks. He explains what the screen does the way you'd tell a mate, and the self-own ('I'd have picked that one.') is the laugh. The 'Him' bubbles on screen are his own asides; the white captions are phrases lifted from the same narration. Continuous speech: the narration never stops for more than 1 s. An AI voice of a fictional person, never presented as a real customer.",
   "settings": {
-    "model": "eleven_multilingual_v2",
-    "stability": 0.45,
-    "similarity_boost": 0.75,
-    "style": 0,
-    "speed": 1,
-    "use_speaker_boost": true
+    "model": "eleven_v3",
+    "stability": 0.5,
+    "note": "v3 only accepts stability 0.0 / 0.5 / 1.0; no style/speed/similarity"
   },
-  "continuous_read_v2": "HIM: So which one's cheapest?\nMEL: Trick question.\nMEL: Depends how you read them.\nMEL: The emailed one goes in too, after I've checked it.\nMEL: Bold's what they wrote. Grey's the maths.\nMEL: Ex GST, Steamline's lowest.\nHIM: Hang on. It moved.\nMEL: With GST? Trev. That's what we pay.\nMEL: The seventy-four hundred? Never the cheapest.\nHIM: I'd've picked that one.\nMEL: Open one, see what it covers.\nMEL: Q-S-me doesn't pick the winner. It stops GST picking it for you.\nMEL: Sign up at Q-S-me.",
+  "take": {
+    "model": "eleven_v3",
+    "voice": "Cam S (53CG2aO2HU48thT3QnMl)",
+    "file": "outputs/vo-take-cam-v3/take.m4a",
+    "alignment": "outputs/vo-take-cam-v3/alignment.json",
+    "words": 101,
+    "text_sent": "outputs/vo-take-cam-v3/take-text.txt",
+    "duration_s": 38.0,
+    "method": "ONE unbroken request to /v1/text-to-speech/53CG2aO2HU48thT3QnMl/with-timestamps (model eleven_v3, stability 0.5); never sliced; laid onto both masters at 0.0 s at gain 1.15 with tools/mux, no music bed. 2026-10-10: regenerated whole for the CTA pronunciation fix ('dot Co dot N Z', owner rule 2026-10-08), passed first try (attempt 4 overall). Earlier attempts kept: attempt 1 (43.4 s, too slow), attempt 2 (41.7 s, tag gaps over 1 s), attempt 3 (38.24 s, the 2026-10-06 take that said 'dot co').",
+    "stt_check": "tools/el.py stt (2026-10-10): every word heard; QSME heard as 'QS Me' (first) and the CTA as 'qsme.koh.enz' (said KO, not spelled C-O); 'grey' as 'gray'; 'I'd have picked that one' heard correctly this time.",
+    "max_gap_s": 0.62,
+    "words_per_s": 2.66,
+    "tags": [
+      "[amused]"
+    ],
+    "regenerated": "2026-10-10"
+  },
+  "continuous_read_v3": "Which one's cheapest? Trick question. Looks like the seventy-four hundred, or this one, or this. Depends how you read them.\n\nThe emailed one goes in too, once I've checked it. One table: bold's what they wrote, grey's the maths.\n\nExcluding GST, Steamline's lowest. Flip it and, hang on, it moved. Trev. That's what we pay.\n\nSeventy-four hundred plus GST is eighty-five ten. Never the cheapest. [amused] I'd have picked that one.\n\nOpen one, see what it covers. Queue Ess Mee doesn't pick the winner. It stops GST picking it for you. Sign up at Queue Ess Mee dot Co dot N Z.",
   "lines": [
     {
-      "id": "vo01-hook",
-      "speaker": "Him",
-      "start_s": 0.15,
-      "max_s": 1.6,
-      "on_screen": "Frame 1: chip 'Sunday night · Hamilton · demo quotes', '3 quotes. Same bathroom.' and the green 'Which one's cheapest?' over the three props slapping down (PDF 0.0, phone 0.18, note 0.38)",
-      "text_v2": "So which one's cheapest?",
-      "text_v3": "So which one's cheapest?",
-      "delivery": "HIM. A genuine, slightly tired question across the bench, not a hook read. Light lean on 'cheapest', falling at the end, no upward sell. Out by 1.75 so the marker squeak (0.95 to 1.3) and the '?' slap (1.32) are clean."
+      "id": "vo00-hook",
+      "start_s": 0.0,
+      "end_s": 1.4,
+      "max_s": 1.5,
+      "on_screen": "Hook 0–2.47: chip 'Sunday night · Hamilton · demo quotes', '3 quotes. Same bathroom.' and the green 'Which one's cheapest?' slab on screen from frame 1; the three props slap down (PDF 0.0, phone 0.18, note 0.38); red marker loops '7400 + gst mate' (0.87–1.23), '?' slaps at 1.28",
+      "text_v2": "Which one's cheapest?",
+      "text_v3": "Which one's cheapest?",
+      "delivery": "The unanswerable question first, asked straight across the bench; a real question, no announcer lift."
     },
     {
-      "id": "vo02-trick",
-      "speaker": "Mel",
-      "start_s": 1.95,
-      "max_s": 0.85,
-      "on_screen": "'…Trick question.' (1.9) takes the place of '3 quotes. Same bathroom.' above the green slab · red marker loop round '7400 + gst mate' and the '?'",
+      "id": "vo01-trick",
+      "start_s": 1.46,
+      "end_s": 2.48,
+      "max_s": 1.12,
+      "on_screen": "'3 quotes. Same bathroom.' fades at 1.40 and '…Trick question.' pops in its place at 1.46 (Trev's note stays clear); hard cut to the cups at 2.47",
       "text_v2": "Trick question.",
-      "text_v3": "[dry] Trick question.",
-      "delivery": "MEL. Bone-dry, almost under her breath, a small beat before it. Two flat words, the second falling. Out by 2.8, before the swipe to the cups."
+      "text_v3": "Trick question.",
+      "delivery": "Dry, two flat words, the second falling."
     },
     {
-      "id": "vo03-depends",
-      "speaker": "Mel",
-      "start_s": 3.42,
-      "max_s": 2.0,
-      "on_screen": "'Depends how you read them.' (3.36 to 6.5) · cups drop in (3.0 to 3.36); each lift asks, never answers: '$7,400 + GST' cup 'looks cheapest…' (3.42), '$8,298 incl. GST' '…or this one?' (4.62), '$7,900 no GST' '…or this?!' (5.76)",
+      "id": "vo02-looks",
+      "start_s": 2.57,
+      "end_s": 4.56,
+      "max_s": 2.09,
+      "on_screen": "Shell game: cups drop 2.59/2.63/2.67; the '$7,400 + GST' cup lifts on 'seventy-four' (3.27), tag 'Looks like this one…' pops 3.32, cup down 4.02, cups swap 4.18–4.52",
+      "text_v2": "Looks like the seventy-four hundred,",
+      "text_v3": "Looks like the seventy-four hundred,",
+      "delivery": "Kiwi 'seventy-four hundred', said like he's sure."
+    },
+    {
+      "id": "vo03-or-this-one",
+      "start_s": 4.59,
+      "end_s": 5.6,
+      "max_s": 1.11,
+      "on_screen": "The '$8,298 incl. GST' cup lifts on 'or this one' (4.58), tag '…or this one,' pops 4.61, cup down 5.07, cups swap 5.28–5.62",
+      "text_v2": "or this one,",
+      "text_v3": "or this one,",
+      "delivery": "Slightly less sure."
+    },
+    {
+      "id": "vo04-or-this",
+      "start_s": 5.63,
+      "end_s": 6.16,
+      "max_s": 0.63,
+      "on_screen": "The '$7,900 no GST' cup lifts on 'or this' (5.64) and stays up; tag '…or this.' pops 5.66",
+      "text_v2": "or this.",
+      "text_v3": "or this.",
+      "delivery": "Flat; he's given up guessing."
+    },
+    {
+      "id": "vo05-depends",
+      "start_s": 6.24,
+      "end_s": 7.44,
+      "max_s": 1.3,
+      "on_screen": "Caption 'Depends how you read them.' pops 6.24 over the cups; swipe into the app 7.47–7.72",
       "text_v2": "Depends how you read them.",
       "text_v3": "Depends how you read them.",
-      "delivery": "MEL. Matter-of-fact, a little amused, like she's watching him work it out. Even stress, 'read them' falling. Out by 5.4: the third lift (5.66, '…or this?!') and the swipe into the app (6.5) play on cup clacks and a whoosh."
+      "delivery": "Matter-of-fact, 'read them' falling."
     },
     {
-      "id": "vo04-emailed",
-      "speaker": "Mel",
-      "start_s": 6.62,
-      "max_s": 1.7,
-      "on_screen": "'The emailed one goes in too.' (6.62 to 8.36) · 'Add a bid you received': the PDF dragged onto the drop zone (6.66 to 7.22), 'Reading the quote…' (sped up, 7.32 to 7.88), the draft beside the original (7.9)",
+      "id": "vo06-emailed",
+      "start_s": 7.74,
+      "end_s": 9.44,
+      "max_s": 1.8,
+      "on_screen": "App window slides in 7.54; caption 'The emailed one goes in too.' 7.74–9.40; 'Add a bid you received': the PDF is dragged onto the drop zone 7.64–8.38, 'Reading the quote…' (labelled 'Sped up') 8.40–8.90, the draft beside the original 8.98",
       "text_v2": "The emailed one goes in too,",
       "text_v3": "The emailed one goes in too,",
-      "delivery": "MEL. Practical, reading the screen as she does it. Light lean on 'emailed', and leave the end open (the comma): the sentence carries on into vo05. Out by 8.32."
+      "delivery": "Practical, reading the screen as he does it; the comma leaves the sentence open."
     },
     {
-      "id": "vo05-checked",
-      "speaker": "Mel",
-      "start_s": 8.38,
-      "max_s": 1.15,
-      "on_screen": "'After I've checked it.' (8.46 to 9.98) · push in on the draft's notice 'This was read automatically and can be wrong. Nothing is saved until you have checked it.' (8.4), then the tick (9.58) and 'Add to the bids' (9.8)",
-      "text_v2": "after I've checked it.",
-      "text_v3": "after I've checked it.",
-      "delivery": "MEL. Finishes vo04's sentence after a natural pause, a touch firmer: she's the one who checks. Falls at the end. Out by 9.53: the tick (9.58) and the 'Add to the bids' click (9.8) play on SFX only."
+      "id": "vo07-checked",
+      "start_s": 9.5,
+      "end_s": 10.56,
+      "max_s": 1.16,
+      "on_screen": "Caption 'Once I've checked it.' 9.50–10.64; push in on the notice 'This was read automatically and can be wrong. Nothing is saved until you have checked it.' (9.25–9.50), scroll to the tick 9.74–10.09, tick on 'checked' (10.24), 'Add to the bids' on 'it.' (10.50), dialog closes 10.56, the new Steamline row flashes 10.68",
+      "text_v2": "once I've checked it.",
+      "text_v3": "once I've checked it.",
+      "delivery": "A touch firmer: he's the one who checks."
     },
     {
-      "id": "vo06-bold",
-      "speaker": "Mel",
-      "start_s": 10.3,
-      "max_s": 2.6,
-      "on_screen": "'Bold = what they wrote.' (10.22) then '“calc.” = worked out at 15%.' (11.4), both to 13.1 · punch-in on Excl. GST / GST / Incl. GST: green loop on Steamline's bold $8,298 (10.75), amber loop on the grey '$7,215.65 calc.' (11.5)",
-      "text_v2": "Bold's what they wrote. Grey's the maths.",
-      "text_v3": "Bold's what they wrote. Grey's the maths.",
-      "delivery": "MEL. Two short statements with a real beat between them, so 'Grey's the maths' lands near the amber loop (about 11.5). Plain and pleased, like explaining a simple rule. Out by 12.9."
+      "id": "vo08-table",
+      "start_s": 10.74,
+      "end_s": 12.16,
+      "max_s": 1.52,
+      "on_screen": "Caption 'One table.' 10.74–12.08; the whole Compare bids table (card header → footnote) 10.80–11.61, then the push in on the three figure columns 12.07–12.19",
+      "text_v2": "One table:",
+      "text_v3": "One table:",
+      "delivery": "Plain, a small pause after the colon."
     },
     {
-      "id": "vo07-excl",
-      "speaker": "Mel",
-      "start_s": 13.38,
-      "max_s": 1.4,
-      "on_screen": "'Excl. GST: Steamline's lowest.' (13.32 to 14.8) · close-up on 'Compare on: Excl. GST' + Bidder + Excl. GST, green loop on Steamline's 'Lowest' tag (13.62)",
-      "text_v2": "Ex GST, Steamline's lowest.",
-      "text_v3": "Ex GST, Steamline's lowest.",
-      "delivery": "MEL. Say 'ex G-S-T' the Kiwi way (eks jee-ess-tee), quick and casual; 'Steamline's lowest' as a plain report. Out by 14.78 so the toggle click (15.0) is clean."
+      "id": "vo09-bold",
+      "start_s": 12.19,
+      "end_s": 13.28,
+      "max_s": 1.19,
+      "on_screen": "Caption 'Bold's what they wrote.' 12.19–14.61; green loop on Steamline's bold $8,298 draws 12.38–12.73 (on 'wrote')",
+      "text_v2": "bold's what they wrote,",
+      "text_v3": "bold's what they wrote,",
+      "delivery": "Like explaining a simple rule."
     },
     {
-      "id": "vo08-moved",
-      "speaker": "Him",
-      "start_s": 15.38,
-      "max_s": 1.3,
-      "on_screen": "Green bubble 'Hang on. It moved.' (15.32 to 16.72) · pointer clicks 'Incl. GST' (15.0); the 'Lowest' tag hops from Steamline's row to Trev's (15.05 to 15.3); rows stay put",
-      "text_v2": "Hang on. It moved.",
-      "text_v3": "Hang on. [beat] It moved.",
-      "delivery": "HIM. Genuinely thrown, but flat: 'Hang on' quick, a tiny beat, 'It moved' lower and slower, like the tag did it on purpose. No laugh. Out by 16.68."
+      "id": "vo10-grey",
+      "start_s": 13.33,
+      "end_s": 14.24,
+      "max_s": 1.01,
+      "on_screen": "Caption 'Grey's the maths.' (Grey's in amber) 13.32–14.61 under the first; amber loop on the grey '$7,215.65 calc.' draws 13.49–13.75 (on 'maths')",
+      "text_v2": "grey's the maths.",
+      "text_v3": "grey's the maths.",
+      "delivery": "A bit pleased with it."
     },
     {
-      "id": "vo09-incl",
-      "speaker": "Mel",
-      "start_s": 16.9,
-      "max_s": 2.4,
-      "on_screen": "'Incl. GST: Trev's lowest.' (16.82) then 'We pay incl. GST.' (17.95), both to 19.48 · pull back to the whole table, green loop on Trev's 'Lowest' (17.12)",
-      "text_v2": "With GST? Trev. That's what we pay.",
-      "text_v3": "With GST? Trev. That's what we pay.",
-      "delivery": "MEL. Patient, dry: a small lift on 'With GST?', 'Trev' as a one-word answer, then 'That's what we pay' plain and final, a light lean on 'we'. Out by 19.3."
+      "id": "vo11-excl",
+      "start_s": 14.77,
+      "end_s": 17.2,
+      "max_s": 2.53,
+      "on_screen": "Close-up on 'Compare on' + Bidder + Excl. GST 14.76 (white mask right of the column 14.34–14.74); caption 'Excl. GST: Steamline's lowest.' 14.78–17.25; green loop on Steamline's 'Lowest' tag 16.17–16.47",
+      "text_v2": "Excluding GST, Steamline's lowest.",
+      "text_v3": "Excluding GST, Steamline's lowest.",
+      "delivery": "A plain report, 'GST' as three letters (jee-ess-tee)."
     },
     {
-      "id": "vo10-never",
-      "speaker": "Mel",
-      "start_s": 19.8,
-      "max_s": 2.4,
-      "on_screen": "'$7,400 + GST = $8,510.' (19.66) then 'Never the cheapest.' in red (20.7), both to 22.4 · punch-in on the figures, red loop on Puddlestone's '$8,510 calc.' (20.05)",
-      "text_v2": "The seventy-four hundred? Never the cheapest.",
-      "text_v3": "The seventy-four hundred? [beat] Never the cheapest.",
-      "delivery": "MEL. Kiwi 'seventy-four hundred' (not 'seven thousand four hundred'). A small turn to him on the question, then 'Never the cheapest' deadpan, landing with the red caption (about 20.7). No gloating. Out by 22.2."
+      "id": "vo12-flip",
+      "start_s": 17.3,
+      "end_s": 18.32,
+      "max_s": 1.12,
+      "on_screen": "Pointer travels to 'Incl. GST' 17.00–17.63 and clicks on 'it' (17.70); the 'Lowest' tag hops from Steamline's row to Trev's 17.75–18.00 with a motion trail; rows stay put; Trev's note on the bench lights 18.10",
+      "text_v2": "Flip it and,",
+      "text_v3": "Flip it and,",
+      "delivery": "Light, mid-sentence, like he hasn't noticed yet."
     },
     {
-      "id": "vo11-picked",
-      "speaker": "Him",
-      "start_s": 22.55,
-      "max_s": 1.3,
-      "on_screen": "Cut back to the bench (22.4 to 24.55): the phone with the hook's red loop round '7400 + gst mate', an arrow and '= $8,510' scribbled beside it (22.6 to 23.1) · green bubble 'I'd have picked that one.' (22.46 to 24.46)",
-      "text_v2": "I'd've picked that one.",
-      "text_v3": "I'd've picked that one.",
-      "delivery": "HIM. The self-own: quiet, honest, a little sheepish, falling away. Contract it naturally ('I'd've'). This is the laugh: no pause before it, no smile in the voice. Out by 23.85, then leave the silence."
+      "id": "vo13-moved",
+      "start_s": 18.37,
+      "end_s": 19.44,
+      "max_s": 1.17,
+      "on_screen": "Green 'Him' bubble 'Hang on, it moved.' 18.36–19.47 over the flipped close-up",
+      "text_v2": "hang on, it moved.",
+      "text_v3": "hang on, it moved.",
+      "delivery": "Genuinely thrown, but flat: 'hang on' quick, 'it moved' lower and slower. The first laugh."
     },
     {
-      "id": "vo12-lines",
-      "speaker": "Mel",
-      "start_s": 24.62,
-      "max_s": 1.7,
-      "on_screen": "'Open one: see what it covers.' (24.62 to 26.6) · back in the app, click on Steamline's row (24.86), its card opens (name, $8,298 including GST, 'Detailed price breakdown'), then the close-up on Item + Line total ending on the Total, green loop (26.12)",
+      "id": "vo14-trev",
+      "start_s": 19.58,
+      "end_s": 20.24,
+      "max_s": 0.76,
+      "on_screen": "Pull back to the whole table 19.93 (mask gone 19.90); caption 'Incl. GST: Trev's lowest.' 19.59–21.76; green loop on Trev's 'Lowest' 19.98–20.37",
+      "text_v2": "Trev.",
+      "text_v3": "Trev.",
+      "delivery": "One-word answer."
+    },
+    {
+      "id": "vo15-pay",
+      "start_s": 20.37,
+      "end_s": 21.52,
+      "max_s": 1.25,
+      "on_screen": "Caption 'That's what we pay.' 20.37–21.76 under the first",
+      "text_v2": "That's what we pay.",
+      "text_v3": "That's what we pay.",
+      "delivery": "Plain and final, a light lean on 'we'."
+    },
+    {
+      "id": "vo16-never-a",
+      "start_s": 21.86,
+      "end_s": 25.44,
+      "max_s": 3.68,
+      "on_screen": "Punch in on the figure columns 21.87; caption '$7,400 + GST = $8,510.' 21.87–26.58; red loop on Puddlestone's '$8,510 calc.' draws 24.23–24.54 (on 'eighty-five ten'); the phone prop on the bench lights 21.95",
+      "text_v2": "Seventy-four hundred plus GST is eighty-five ten.",
+      "text_v3": "Seventy-four hundred plus GST is eighty-five ten.",
+      "delivery": "Kiwi numbers ('seventy-four hundred', 'eighty-five ten'), deadpan arithmetic."
+    },
+    {
+      "id": "vo17-never-b",
+      "start_s": 25.47,
+      "end_s": 26.48,
+      "max_s": 1.11,
+      "on_screen": "Caption 'Never the cheapest.' (red) 25.47–26.58 under the sum",
+      "text_v2": "Never the cheapest.",
+      "text_v3": "Never the cheapest.",
+      "delivery": "Deadpan, no gloating."
+    },
+    {
+      "id": "vo18-picked",
+      "start_s": 26.95,
+      "end_s": 27.76,
+      "max_s": 0.91,
+      "on_screen": "Cut back to the bench 26.65 (under the [amused] beat): the phone with the hook's red loop round '7400 + gst mate', the arrow 26.76–26.92 and '= $8,510' scribbled 26.86–27.18; green 'Him' bubble 'I'd have picked that one.' 26.95–28.24; cut back to the app 28.35",
+      "text_v2": "I'd have picked that one.",
+      "text_v3": "I'd have picked that one.",
+      "delivery": "The self-own: quiet, honest, a little sheepish, falling away. This is the laugh."
+    },
+    {
+      "id": "vo19-open",
+      "start_s": 28.38,
+      "end_s": 30.08,
+      "max_s": 1.8,
+      "on_screen": "Caption 'Open one, see what it covers.' 28.38–30.05; pointer clicks Steamline's row on 'one,' (28.69); its card opens whole 28.97 (name, $8,298 including GST, 'Detailed price breakdown'), Type/Qty/Rate fold away 29.19–29.54 as the camera pushes in on Item + Line total; green loop on the Total $8,298 draws 29.63–29.94 (on 'covers'); cut to the end card 30.15",
       "text_v2": "Open one, see what it covers.",
       "text_v3": "Open one, see what it covers.",
-      "delivery": "MEL. Back to practical, unhurried, a light lean on 'covers'. Not a tagline. Out by 26.32."
+      "delivery": "Back to practical, unhurried, a light lean on 'covers'."
     },
     {
-      "id": "vo13-winner",
-      "speaker": "Mel",
-      "start_s": 26.38,
-      "max_s": 1.6,
-      "on_screen": "End card (cut at 26.72): 'QSME doesn't pick the winner.' and 'It stops GST picking it for you.' arrive together (26.82, 26.92)",
+      "id": "vo20-winner",
+      "start_s": 30.2,
+      "end_s": 32.08,
+      "max_s": 1.98,
+      "on_screen": "End card on navy: 'QSME doesn't pick the winner.' pops on 'Queue' (30.20); the real still of the public sign-up page rises 30.98–31.24, chip 'qsme.co.nz/sign-up · live site' 31.20, green loop on 'I hire' 31.32–31.64",
       "text_v2": "Q-S-me doesn't pick the winner.",
-      "text_v3": "Q-S-me doesn't pick the winner.",
-      "delivery": "MEL. Say Q-S-me as 'kyoo-ess-mee', plainly, never 'kiss me'. Calm, level, a straight fact. It starts a beat before the cut (J-cut over the ringed Total) and carries over the end card. Out by 27.98."
+      "text_v3": "Queue Ess Mee doesn't pick the winner.",
+      "delivery": "Calm, level, a straight fact. QSME is 'Queue Ess Mee'."
     },
     {
-      "id": "vo14-gst",
-      "speaker": "Mel",
-      "start_s": 28.02,
-      "max_s": 2.05,
-      "on_screen": "'It stops GST picking it for you.' (GST in green) · the real sign-up page rises in (27.4), 'I hire' ringed (27.82), QSME logo + 'Sign up at qsme.co.nz' (28.04)",
+      "id": "vo21-gst",
+      "start_s": 32.21,
+      "end_s": 34.4,
+      "max_s": 2.29,
+      "on_screen": "'It stops GST picking it for you.' (GST in green) pops on 'It' (32.21)",
       "text_v2": "It stops GST picking it for you.",
       "text_v3": "It stops GST picking it for you.",
-      "delivery": "MEL. The payoff, said like a tip to a mate across the bench: small lean on 'GST', 'for you' falling. No announcer cadence, no smile-sell. Out by 30.07."
+      "delivery": "The payoff, said like a tip to a mate; small lean on 'GST', 'for you' falling."
     },
     {
-      "id": "vo15-cta",
-      "speaker": "Mel",
-      "start_s": 30.12,
-      "max_s": 1.3,
-      "on_screen": "The real sign-up page · QSME logo + 'Sign up at qsme.co.nz' (button pulses at 30.1)",
-      "text_v2": "Sign up at Q-S-me.",
-      "text_v3": "Sign up at Q-S-me.",
-      "delivery": "MEL. Friendly and low-key, an aside rather than a pitch; no rise at the end. The address is on the button (voicing 'Q-S-me dot co dot en zed' would add about 1.4 s to the video). Out by 31.42 so the last chord can ring."
+      "id": "vo22-cta",
+      "start_s": 34.51,
+      "end_s": 38.0,
+      "max_s": 3.59,
+      "on_screen": "QSME logo + green button 'Sign up at qsme.co.nz' pops on 'Sign' (34.51) and pulses on 'koh' (36.32) and 'zed' (37.52); page ends 39.4",
+      "text_v2": "Sign up at Q-S-me dot Co dot N Z.",
+      "text_v3": "Sign up at Queue Ess Mee dot Co dot N Z.",
+      "delivery": "A friendly nudge, the URL the Kiwi way: 'dot koh' (co said like KO, never spelled C-O), 'en zed', no rise at the end."
     }
   ],
   "male_alt_lines": [],
   "silent_beats": [
-    "0.0 to 0.15: the PDF slap only.",
-    "2.8 to 3.42: the swipe and the three cup drops (clack, clack, clack).",
-    "5.42 to 6.62: the third lift ('…or this?!', 5.66) and the swipe into the app (6.5): cup clack, whoosh.",
-    "9.53 to 10.3: the tick (9.58), the click on 'Add to the bids' (9.8), the dialog closing and the new row's flash (9.98).",
-    "14.78 to 15.38: the toggle click (15.0) and the 'Lowest' tag hop (15.05 to 15.3: a short whoosh and a soft pop on landing).",
-    "23.85 to 24.62: the laugh: silence, then the cut back to the app (24.55).",
-    "31.42 to 31.6: last chord."
+    "26.48 to 26.95: the [amused] beat before 'I'd have picked that one.' (0.47 s), over the cut back to the bench.",
+    "27.76 to 28.38: the laugh (0.62 s), then the cut back to the app.",
+    "38.00 to 39.40: tail; the button has pulsed, the page holds."
   ],
   "post_processing": [
-    "Time base: every time is seconds on outputs/which-ones-cheapest-9x16.mp4 (31.6 s). outputs/which-ones-cheapest-4x5.mp4 runs on the same clock, so one VO/SFX/music stem fits both.",
-    "Two voices: tools/make_vo.py voices every line in 'lines' with ONE voice, so do not use --all for this project. Generate Mel's lines with the qsme-nz voice_id and Him's lines (vo01, vo08, vo11) with the qsme-nz alt_voice_id, one request per line with previous_text/next_text set to the neighbouring lines of the SAME speaker. Pick takes by ear, save them as <line id>.mp3 in one folder, then lay them with: python3 tools/make_vo.py projects/2026-10-20-qsme-nz-apples-oranges-pineapple --files <folder> (writes outputs/which-ones-cheapest-9x16-with-vo.mp4). Repeat the mux for the 4:5 file with tools/mux and the same start times.",
-    "vo04 and vo05 are one sentence split across two captions: generate them as ONE request ('The emailed one goes in too, after I've checked it.') and cut at the comma, keeping the natural pause; place the second half at 8.38.",
-    "Trim leading/trailing digital silence. Never time-stretch more than about 4%; if a take runs past max_s, use another take.",
-    "Breaths: keep a quiet inhale before vo03, vo06 and vo12 (after silences), pulled down 6 to 10 dB; cut mouth clicks. vo13 is a J-cut: it starts 0.34 s before the end-card cut.",
-    "Mix: the VO sits on top; music ducks 6 dB under each line. SFX (paper slaps, marker squeak, cup clacks, toggle click) are never under a word.",
-    "AI disclosure: if ElevenLabs voices ship, switch on each platform's AI-generated content label."
+    "Time base: every start_s is reel time on outputs/which-ones-cheapest-9x16.mp4 (39.4 s); outputs/which-ones-cheapest-4x5.mp4 runs on the same clock, so the one take fits both.",
+    "Mix: the whole take as ONE clip at 0.0 s, gain 1.15, no music bed (tools/mux). Outputs *-with-vo.mp4 (one audio track, 39.4 s).",
+    "The page was re-timed to this take (motion/aop.js, 2026-10-06, and again 2026-10-10 after the CTA fix): picture follows audio. If the script changes, regenerate the whole take, STT-check it, re-derive every beat from the new alignment and re-render both cuts.",
+    "Never 'free' or any pricing line (owner CTA rule 2026-10-03). CTA shown as qsme.co.nz, spoken 'Queue Ess Mee dot Co dot N Z' (owner pronunciation rule 2026-10-08: co said like KO, never C-O).",
+    "AI disclosure: switch on each platform's AI-generated content label."
   ],
-  "total_characters": 414
+  "total_characters": 576
 }

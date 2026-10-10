@@ -7,7 +7,35 @@
      Every foreign trade word set in type was captured from the live site that day (see post.md, Integrity notes).
      v2 (review pass): captures sit in a 0.92 window aligned to the 96 px margin; the site mock's "Estimate v3" pill is masked
      on every capture layer (red list 3.12: no estimate versions); end cards merged; no ® on studio-made cards.
-     v3 (owner CTA rule, 2026-10-03): end-card CTA pill is "Book a 30-minute demo at qsme.build"; no pricing lines anywhere. -->
+     v3 (owner CTA rule, 2026-10-03): end-card CTA pill is "Book a 30-minute demo at qsme.build"; no pricing lines anywhere.
+     v4 (2026-10-06 AUDIO-FIRST REMAKE, owner standard from the N01 pilot): the Cam S eleven_v3 take
+     (outputs/vo-take-cam-v3/take.mp3, 80.64 s, ONE unbroken request laid at 0.0) is the clock. Every beat below sits on its
+     word in outputs/vo-take-cam-v3/alignment.json; the page runs 82.1 s (take + ~1.5 s tail). Design unchanged, timeline new:
+       v4.1 (2026-10-10 review): sentence-start beats moved from the alignment start to the AUDIO-MEASURED speech onset
+       (-40 dB, 10 ms windows on take.mp3; eleven_v3's alignment counts the pause before a sentence as part of its first
+       word, so those beats were 0.3–0.7 s early). Mid-sentence beats were already on the word and are unchanged.
+       0.0–15.35  hook on the English page: captions "One tender document." (0.2) / "Five names." (1.82) / "Same question every
+                  time." (3.08, the sticky slaps on with it 3.12); ENGLISH tag on "English," (5.12); cursor in 7.8, the switcher
+                  clicks on "Flip to Arabic" (8.15 / 8.75), mirror flip on "whole page turns around" (9.0), Chinese (10.60),
+                  German (11.66), Turkish (12.46); title beat "One document. / Five names. / chips" 12.8, "What do you call
+                  it?" on "What" (13.68), holds to 15.35
+       15.35–27.5 01 the thread: replies pop on each spoken "Prelims" (18.94, 20.52, 22.12) and "in or out" (22.85);
+                  "Five names." 24.96, "One question." 25.87 (+ sticky wiggle)
+       27.5–31.95 02 the quote: line 1 on "Construction" (27.5); lines 2–3 in on "And vocabulary" (29.05 / 29.25); attribution 29.9
+       31.95–47.3 03 fifteen words: "Leistungs…" types on the word (33.0), "we'll let a German say that one." on 35.05;
+                  montage cuts on the spoken names zh 37.18 · ja 37.66 · ko 38.36 · ru 38.79 · fr 39.09 · pt 39.50 · vi 40.39 ·
+                  id 40.78 · hi 42.24; "Hindi just says BOQ." 42.27; "Some words travel." 45.58
+       47.3–59.3  wall "Fifteen words." (47.28) / "One document." (48.45); then the product payoff on the words: the chips fade 52.6 and
+                  "Price the job in one schedule." (52.88) / "Tender that same schedule." (54.84) / "Every bid comes back
+                  against it." (56.60) land under the headlines
+       59.3–65.15 04 right to left: Arabic tile flips in 59.42, flips to Persian on "Persian" (60.0), "So does the site." 61.85,
+                  "The sticky note doesn't." 63.38 (+ wiggle)
+       65.15–71.95 05 the honest bit: "The app speaks English, Spanish and Arabic." 67.8, chips light on "English" (68.6),
+                  "So far." 70.48
+       71.95–82.1 06 end card: "What do you call it" 72.4 / "where you work?" 73.17 / "Tell us in the comments." 74.55 /
+                  Kalam "Bonus points if you settle the prelims question." 74.64 (+ wiggle) / "qsme.build now speaks 15
+                  languages" + "Yours next — tell us" 76.95 / logo + url + descriptor 77.1 / CTA pill on "book" (77.75),
+                  pulses 79.4 and 81.0 -->
 <link rel="stylesheet" href="../../../tools/motion/kit.css">
 <style>
   body.build #root { background: #0C1310; }
@@ -67,7 +95,7 @@
   #h0a { left: 96px; top: 176px; font-size: 118px; }
   #h0b { left: 96px; top: 312px; font-size: 118px; color: var(--g); }
   #h0c { left: 96px; top: 706px; font-size: 128px; }
-  #cap0 { left: auto; right: 96px; bottom: 64px; text-align: right; }
+  #cap0, #cap0b, #cap0c { left: auto; right: 96px; bottom: 64px; text-align: right; }
 
   /* thread (generic email client in neutral dark grey: not any real product, not QSME) */
   #mail { left: 96px; top: 136px; width: 904px; height: 286px; border-radius: 22px; overflow: hidden; box-shadow: 0 0 0 2px #3A3B41, 0 30px 80px rgba(0,0,0,.5);
@@ -101,6 +129,8 @@
   .wc .wd { font-size: 42px; font-weight: 700; color: var(--ink); white-space: nowrap; line-height: 1.15; letter-spacing: -0.01em; }
   .wc .ln { margin-top: 8px; font: 600 24px/1 "JetBrains Mono", monospace; letter-spacing: .06em; color: var(--mut); text-transform: uppercase; }
   .wc.en { border-color: rgba(75,205,50,.6); }
+  .pay { left: 96px; font-size: 96px; white-space: nowrap; }
+  #pay1 { top: 470px; } #pay2 { top: 615px; } #pay3 { top: 760px; }
 
   /* right to left */
   #r1 { left: 96px; top: 150px; width: 900px; font-size: 76px; }
@@ -144,7 +174,7 @@
   <!-- 0 · HOOK: live switcher captures (filled by script) -->
   <div id="s0" class="fill">
     <div id="dim0" class="fill"></div>
-    <div id="h0a" class="abs display">Same document.</div>
+    <div id="h0a" class="abs display">One document.</div>
     <div id="h0b" class="abs display">Five names.</div>
     <div id="h0chips" class="intl">
       <span class="wchip">Schedule of quantities</span>
@@ -198,13 +228,16 @@
   <div id="s3" class="fill">
     <div id="s3shots" class="fill"></div>
     <div id="cap3a" class="capbox" style="bottom:64px"><span><span id="cap3a_t">Leistungs…</span><span id="cap3a_u"> we'll let a German say that one.</span></span></div>
-    <div id="cap3b" class="capbox" style="bottom:164px"><span>The Hindi page just says BOQ.</span></div>
+    <div id="cap3b" class="capbox" style="bottom:164px"><span>Hindi just says BOQ.</span></div>
     <div id="cap3c" class="capbox" style="bottom:64px"><span style="background:var(--g)">Some words travel.</span></div>
     <div id="wallwrap" class="fill" style="background:transparent;z-index:7">
       <div id="wallbg" class="fill" style="background:#0C1310"></div>
       <div id="wallh1" class="abs display">Fifteen words.</div>
       <div id="wallh2" class="abs display">One document.</div>
       <div id="wall" class="intl"></div>
+      <div id="pay1" class="abs display pay">Price the job in one schedule.</div>
+      <div id="pay2" class="abs display pay">Tender that same schedule.</div>
+      <div id="pay3" class="abs display pay" style="color:var(--g)">Every bid comes back against it.</div>
     </div>
     <div id="band3" class="abs" style="left:0;top:0;width:1920px;height:160px;background:#0C1310;border-bottom:2px solid #213128;z-index:3"></div>
     <div class="chap" id="c3"><i></i><b>03</b>Fifteen words for it</div>
@@ -243,7 +276,7 @@
     <div id="q1" class="abs display">What do you call it</div>
     <div id="q2" class="abs display">where you work?</div>
     <div id="q3" class="abs">Tell us in the comments.</div>
-    <div id="q4" class="abs">Bonus points if you can settle the prelims question.</div>
+    <div id="q4" class="abs">Bonus points if you settle the prelims question.</div>
     <img id="qlogo" class="abs" src="qsme-logo-nomark.svg" alt="QSME">
     <div id="qurl" class="abs">qsme.build</div>
     <div id="qdesc" class="abs">Tendering and estimating software for construction organisations</div>
@@ -251,6 +284,8 @@
   </div>
 
   <div id="cap0" class="capbox"><span>One tender document.</span></div>
+  <div id="cap0b" class="capbox"><span>Five names.</span></div>
+  <div id="cap0c" class="capbox"><span>Same question every time.</span></div>
   <div id="sticky"><div class="paper"></div><div class="ink"><div>Prelims</div><div>included??</div></div></div>
   <div id="cursor"><svg width="46" height="58" viewBox="0 0 23 29"><path d="M3 2 L3 22.5 L8 18 L11.4 26 L14.6 24.6 L11.3 16.9 L18 16.6 Z" fill="#fff" stroke="#111" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
 </div>
@@ -263,8 +298,10 @@
   function mk(tag, cls, parent, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; (parent || root).appendChild(e); return e; }
   function f(l, n) { return 'clips/' + l + '/f_' + String(n).padStart(5, '0') + '.jpg'; }
 
-  // ----- chapter starts (s). Each chapter dissolves in over DS and has its first headline/card on screen at T.
-  var T1 = 9.7, T2 = 17.3, T3 = 23.1, TW = 36.6, T4 = 40.1, T5 = 47.1, T6 = 54.6, END = 63.6, DS = 0.12;
+  // ----- chapter starts (s); take ends 80.64 + ~1.5 s tail
+  // chapter cuts sit just before the audio-measured speech onset of each section's first word (2026-10-10; -40 dB, 10 ms windows on take.mp3):
+  // Put 15.42 · Construction 27.59 · In German 32.03 · Fifteen 47.40 · Arabic 59.41 · The website 65.26 · So, 72.05
+  var T1 = 15.35, T2 = 27.5, T3 = 31.95, TW = 47.3, T4 = 59.3, T5 = 65.15, T6 = 71.95, END = 82.1, DS = 0.12;
 
   // ----- capture geometry: window scale S; LTR heading (x=32 on the page) lands on 96, RTL heading (x=1888) on 1824
   var S = 0.92, WY = (1080 - 1080 * S) / 2, WXL = 96 - 32 * S, WXR = 1824 - 1888 * S, RTL = { ar: 1, fa: 1 };
@@ -333,26 +370,31 @@
   }
 
   // ================= 0 · HOOK (0 – T1) =================
+  // sentence-start beats use the audio-measured onsets (the v3 alignment counts the pause before a sentence as part of its first word):
+  // "One tender document." 0.20 · "Five names." 1.85 · "Same question every time." 3.16 (sticky slaps on) · "English," 5.12 ·
+  // "Flip to Arabic" 8.00–8.64 · "whole page turns around" 8.99–10.32 · "Chinese," 10.43 · "German," 11.57 · "Turkish." 12.38 · "What do you call it?" 13.69
   var s0 = $('#s0'), dim0 = $('#dim0');
-  var C = { ar: 1.30, zh: 2.62, de: 3.84, tr: 5.25 };     // cut times
+  var C = { ar: 9.00, zh: 10.60, de: 11.66, tr: 12.46 };     // cut times: the mirror flip on "whole page turns around", then on the spoken names
   var hen = shotWin(s0, 'h_en', 'en', 2), har = shotWin(s0, 'h_ar', 'ar', 2), hzh = shotWin(s0, 'h_zh', 'zh', 2), hde = shotWin(s0, 'h_de', 'de', 2), htr = shotWin(s0, 'h_tr', 'tr', 2);
   [hen, har, hzh, hde, htr].forEach(function (h) { s0.insertBefore(h.el, dim0); });
   Kit.scene(hen.el, 0, C.ar).scene(har.el, C.ar, C.zh).scene(hzh.el, C.zh, C.de).scene(hde.el, C.de, C.tr).scene(htr.el, C.tr, T1);
-  frames(hen, [[0, 2], [0.68, 3]]);
-  frames(har, [[0, 2], [2.02, 3]]);
-  frames(hzh, [[0, 2], [3.27, 3]]);
-  frames(hde, [[0, 2], [4.37, 3], [4.50, 4], [4.54, 5], [4.58, 6], [4.62, 7], [4.66, 8], [4.70, 9]]);
+  // the panel opens 0.05 after each globe click (frame 3); the German panel scrolls to Türkçe
+  var G = { en: 8.15, ar: 9.95, zh: 11.10, de: 11.88 }, L = { ar: 8.75, zh: 10.45, de: 11.55, tr: 12.36 };
+  frames(hen, [[0, 2], [G.en + 0.05, 3]]);
+  frames(har, [[0, 2], [G.ar + 0.05, 3]]);
+  frames(hzh, [[0, 2], [G.zh + 0.05, 3]]);
+  frames(hde, [[0, 2], [G.de + 0.05, 3], [12.02, 4], [12.06, 5], [12.10, 6], [12.14, 7], [12.18, 8], [12.22, 9]]);
   frames(htr, [[0, 2]]);
   hl(hen.push, R.en[0], 0.06); hl(hen.push, R.en[1], 0.2);
-  hl(har.push, R.ar[0], 1.46, true);
-  hl(hzh.push, R.zh[0], 2.72); hl(hzh.push, R.zh[1], 2.86);
-  hl(hde.push, R.de[0], 3.94);
-  hl(htr.push, R.tr[0], 5.36);
-  ltag(hen.push, 'en', 0.4); ltag(har.push, 'ar', 1.62); ltag(hzh.push, 'zh', 2.98); ltag(hde.push, 'de', 4.12); ltag(htr.push, 'tr', 5.54);
+  hl(har.push, R.ar[0], C.ar + 0.16, true);
+  hl(hzh.push, R.zh[0], C.zh + 0.1); hl(hzh.push, R.zh[1], C.zh + 0.24);
+  hl(hde.push, R.de[0], C.de + 0.1);
+  hl(htr.push, R.tr[0], C.tr + 0.11);
+  ltag(hen.push, 'en', 5.12); ltag(har.push, 'ar', C.ar + 0.32); ltag(hzh.push, 'zh', C.zh + 0.36); ltag(hde.push, 'de', C.de + 0.28); ltag(htr.push, 'tr', C.tr + 0.29);
   // mirror flips on the direction changes (LTR→RTL→LTR), hinged where the cursor clicked, so the open panel never slides under the sticky
   var hingeA = scr('en', 1480, 258)[0], hingeB = scr('ar', 430, 343)[0];
   hen.el.style.transformOrigin = hingeA + 'px 540px'; hzh.el.style.transformOrigin = hingeB + 'px 540px';
-  Kit.each(function (t) { har.el.style.transformOrigin = (t < 2.0 ? hingeA : hingeB) + 'px 540px'; });
+  Kit.each(function (t) { har.el.style.transformOrigin = (t < C.ar + 0.5 ? hingeA : hingeB) + 'px 540px'; });
   Kit.add(hen.el, 'scaleX', [[C.ar - 0.09, 1], [C.ar, 0.02, 'in']]);
   Kit.add(har.el, 'scaleX', [[C.ar, 0.02], [C.ar + 0.11, 1, 'out'], [C.zh - 0.09, 1], [C.zh, 0.02, 'in']]);
   Kit.add(hzh.el, 'scaleX', [[C.zh, 0.02], [C.zh + 0.11, 1, 'out']]);
@@ -360,39 +402,47 @@
   Kit.add(htr.el, 'x', [[C.tr, 70], [C.tr + 0.14, 0, 'out']]).add(htr.el, 'blur', [[C.tr, 8], [C.tr + 0.14, 0, 'out']]);
   // cursor: globe → language, four times; it travels below the sticky, never across it
   var a0 = scr('en', 1480, 258), b0 = scr('ar', 430, 343), c0 = scr('zh', 1510, 648), d0 = scr('de', 1488, 452);
-  var P = [[0.28, scr('en', 1520, 700)], [0.62, scr('en', 1722, 66), 'inOut'], [0.98, a0, 'inOut'],
-           [1.42, a0, 'inOut'], [1.58, [1330, 470], 'in'], [1.74, [990, 450]], [1.95, scr('ar', 198, 66), 'out'], [2.38, b0, 'inOut'],
-           [2.72, b0, 'inOut'], [2.86, [990, 450], 'in'], [3.02, [1330, 470]], [3.20, scr('zh', 1722, 66), 'out'], [3.60, c0, 'inOut'],
-           [3.92, c0, 'inOut'], [4.30, scr('de', 1722, 66), 'inOut'], [4.82, d0, 'inOut'], [5.30, d0, 'inOut']];
+  var P = [[7.80, scr('en', 1520, 700)], [G.en - 0.02, scr('en', 1722, 66), 'inOut'], [L.ar - 0.05, a0, 'inOut'],
+           [C.ar + 0.12, a0, 'inOut'], [C.ar + 0.28, [1330, 470], 'in'], [C.ar + 0.44, [990, 450]], [G.ar - 0.02, scr('ar', 198, 66), 'out'], [L.zh - 0.05, b0, 'inOut'],
+           [C.zh + 0.10, b0, 'inOut'], [C.zh + 0.24, [990, 450], 'in'], [C.zh + 0.38, [1330, 470]], [G.zh, scr('zh', 1722, 66), 'out'], [L.de - 0.05, c0, 'inOut'],
+           [C.de + 0.08, c0, 'inOut'], [G.de - 0.02, scr('de', 1722, 66), 'inOut'], [L.tr - 0.04, d0, 'inOut'], [C.tr + 0.1, d0, 'inOut']];
   Kit.add('#cursor', 'x', P.map(function (p) { return [p[0], p[1][0], p[2]]; }));
   Kit.add('#cursor', 'y', P.map(function (p) { return [p[0], p[1][1], p[2]]; }));
-  Kit.add('#cursor', 'opacity', [[0.22, 0], [0.32, 1], [5.35, 1], [5.55, 0]]);
-  [[0.64, scr('en', 1722, 66)], [1.03, a0], [1.97, scr('ar', 198, 66)], [2.43, b0], [3.22, scr('zh', 1722, 66)], [3.64, c0], [4.32, scr('de', 1722, 66)], [4.97, d0]]
+  Kit.add('#cursor', 'opacity', [[7.7, 0], [7.8, 1], [C.tr + 0.1, 1], [C.tr + 0.3, 0]]);
+  [[G.en, scr('en', 1722, 66)], [L.ar, a0], [G.ar, scr('ar', 198, 66)], [L.zh, b0], [G.zh, scr('zh', 1722, 66)], [L.de, c0], [G.de, scr('de', 1722, 66)], [L.tr, d0]]
     .forEach(function (c) { ripple(c[1][0], c[1][1], c[0]); Kit.add('#cursor', 'scale', [[c[0] - 0.04, 1], [c[0], 0.86], [c[0] + 0.1, 1, 'out']]); });
-  // sticky: slapped on in the first beat, then it never moves
-  Kit.add('#sticky', 'opacity', [[0.16, 0], [0.2, 1]]).add('#sticky', 'scale', [[0.16, 1.32], [0.3, 1, 'slam']]).add('#sticky', 'rotate', [[0.16, -9], [0.3, -4, 'slam'], [0.36, -4.6, 'out'], [0.44, -4, 'out']]);
-  // the title beat over the Turkish page; "What do you call it?" lands at 7.4 and holds to the cut
-  Kit.add(dim0, 'opacity', [[6.2, 0], [6.5, 1, 'out']]);
-  Kit.add(htr.el, 'blur', [[6.2, 0], [6.55, 12, 'out']]);
-  Kit.slam('#h0a', 6.35, { from: 1.12, dur: 0.16 });
-  Kit.pop('#h0b', 6.75);
-  Array.prototype.forEach.call(document.querySelectorAll('#h0chips .wchip'), function (c, i) { Kit.pop(c, 6.95 + i * 0.08, { dy: 24 }); });
-  Kit.slam('#h0c', 7.4, { from: 1.1, dur: 0.16 });
-  Kit.add('#cap0', 'opacity', [[0.3, 0], [0.42, 1, 'out'], [6.1, 1], [6.25, 0]]);
+  // sticky: slapped on with "Same question every time." (3.16), then it never moves
+  var SK = 3.12;
+  Kit.add('#sticky', 'opacity', [[SK, 0], [SK + 0.04, 1]]).add('#sticky', 'scale', [[SK, 1.32], [SK + 0.14, 1, 'slam']]).add('#sticky', 'rotate', [[SK, -9], [SK + 0.14, -4, 'slam'], [SK + 0.2, -4.6, 'out'], [SK + 0.28, -4, 'out']]);
+  // hook captions, one phrase each, on the words
+  Kit.add('#cap0', 'opacity', [[0.2, 0], [0.32, 1, 'out'], [1.74, 1], [1.82, 0]]);
+  Kit.add('#cap0b', 'opacity', [[1.82, 0], [1.92, 1, 'out'], [3.02, 1], [3.1, 0]]);
+  Kit.add('#cap0c', 'opacity', [[3.08, 0], [3.18, 1, 'out'], [4.9, 1], [5.05, 0]]);
+  // the title beat over the Turkish page; "What do you call it?" lands on the word (13.69) and holds to the cut
+  var TB = 12.80;
+  Kit.add(dim0, 'opacity', [[TB, 0], [TB + 0.3, 1, 'out']]);
+  Kit.add(htr.el, 'blur', [[TB, 0], [TB + 0.35, 12, 'out']]);
+  Kit.slam('#h0a', TB + 0.04, { from: 1.12, dur: 0.16 });
+  Kit.pop('#h0b', TB + 0.2);
+  Array.prototype.forEach.call(document.querySelectorAll('#h0chips .wchip'), function (c, i) { Kit.pop(c, 12.95 + i * 0.08, { dy: 24 }); });
+  Kit.slam('#h0c', 13.68, { from: 1.1, dur: 0.16 });
   Kit.scene(s0, 0, T1); Kit.add(s0, 'opacity', [[T1 - DS, 1], [T1, 0, 'in']]);
 
   // ================= 1 · THE THREAD (T1 – T2): five names, one question =================
+  // "Put all five on one job, and you get one thread." 15.42–18.16 · "Prelims included?" 18.96 · "Prelims included?" 20.52 ·
+  // "Prelims, in or out?" 22.13 / 22.83 · "Five names." 24.98 · "One question." 25.85
   chapter('#s1', T1, T2);
   Kit.pop('#c1', T1 - DS, { dy: 0, fade: DS });
   Kit.add('#mail', 'y', [[T1 - DS, 24], [T1 + 0.12, 0, 'out']]);
-  // the card grows with each reply (one row = 150 px), replies every 1.0 s
-  var H0 = 84 + 150 + 52, RT = [10.65, 11.65, 12.65, 13.65], hk = [[T1, H0]];
+  // the card grows with each reply (one row = 150 px); a reply pops on each spoken "Prelims" and on "in or out"
+  var H0 = 84 + 150 + 52, RT = [18.94, 20.52, 22.12, 22.85], hk = [[T1, H0]];
   RT.forEach(function (t, i) { hk.push([t - 0.05, H0 + i * 150]); hk.push([t + 0.17, H0 + (i + 1) * 150, 'out']); Kit.pop('#m' + (i + 2), t, { dy: 24, dur: 0.22 }); });
   Kit.add('#mail', 'height', hk);
-  Kit.pop('#t1a', 14.7, { dy: 30 }); Kit.slam('#t1c', 15.7, { from: 1.15, dur: 0.16 });
-  Kit.add('#sticky', 'rotate', [[15.72, -4], [15.82, -1.5, 'out'], [15.96, -6.5, 'inOut'], [16.1, -2.5, 'inOut'], [16.24, -4, 'out']]);
+  Kit.pop('#t1a', 24.96, { dy: 30 }); Kit.slam('#t1c', 25.87, { from: 1.15, dur: 0.16 });
+  Kit.add('#sticky', 'rotate', [[25.9, -4], [26.0, -1.5, 'out'], [26.14, -6.5, 'inOut'], [26.28, -2.5, 'inOut'], [26.42, -4, 'out']]);
 
   // ================= 2 · THE SITE'S OWN WORDS (T2 – T3) =================
+  // "Construction is the same everywhere." 27.59–29.08 · "And vocabulary is where trust starts." 29.27–31.20
   chapter('#s2', T2, T3);
   Kit.pop('#c2', T2 - DS, { dy: 0, fade: DS });
   function words(el, text, t0, rate, green) {
@@ -400,16 +450,20 @@
     parts.forEach(function (w, i) { if (w === '|') { mk('br', '', el); return; } var s = mk('span', 'w' + (green && green.indexOf(w.replace(/[^\wäöü]/g, '')) >= 0 ? ' vg' : ''), el, w + (i < parts.length - 1 ? ' ' : '')); Kit.pop(s, t0 + i * rate, { dy: 18, dur: 0.2, fade: 0.12 }); });
   }
   words($('#qa'), 'Construction is the same everywhere…', T2 - DS, 0);
-  words($('#qb'), 'What changes from country to country | is the vocabulary —', 18.3, 0.035, ['vocabulary']);
-  words($('#qc'), 'and vocabulary is where trust starts.', 20.0, 0.05, ['vocabulary']);
-  Kit.add('#qa', 'opacity', [[20.0, 1], [20.3, 0.45, 'out']]); Kit.add('#qb', 'opacity', [[20.0, 1], [20.3, 0.45, 'out']]);
-  Kit.pop('#qattr', 20.45, { dy: 0 });
+  words($('#qb'), 'What changes from country to country | is the vocabulary —', 29.05, 0.03, ['vocabulary']);
+  words($('#qc'), 'and vocabulary is where trust starts.', 29.25, 0.05, ['vocabulary']);
+  Kit.add('#qa', 'opacity', [[29.45, 1], [29.75, 0.45, 'out']]); Kit.add('#qb', 'opacity', [[29.45, 1], [29.75, 0.45, 'out']]);
+  Kit.pop('#qattr', 29.9, { dy: 0 });
 
   // ================= 3 · FIFTEEN WORDS (T3 – T4) =================
+  // "In German," 32.03 · "Leistungs..." 33.01–33.76 · (beat) · "we'll let a German say that one." 35.07–36.41 · montage on the names:
+  // Chinese 37.19 · Japanese 37.66 · Korean 38.36 · Russian 38.79 · French 39.09 · Portuguese 39.50 · Vietnamese 40.39 · Indonesian 40.78 ·
+  // "Hindi just says B-O-Q." 42.25–44.65 · "Some words travel." 45.59–46.56 · "Fifteen words." 47.40 · "One document." 48.45 ·
+  // "That's the whole idea of QSME." 50.16–52.01 · "Price the job in one schedule," 52.90 · "tender that same schedule," 54.88 · "and every bid comes back against it." 56.62–58.48
   chapter('#s3', T3, T4);
   var shots3 = $('#s3shots');
-  var M = [['de', T3 - DS, 27.6], ['zh', 27.6, 28.6], ['ja', 28.6, 29.5], ['ko', 29.5, 30.3], ['ru', 30.3, 31.0], ['fr', 31.0, 31.7],
-           ['pt', 31.7, 32.3], ['vi', 32.3, 32.9], ['id', 32.9, 33.5], ['hi', 33.5, TW]];
+  var M = [['de', T3 - DS, 37.18], ['zh', 37.18, 37.66], ['ja', 37.66, 38.36], ['ko', 38.36, 38.79], ['ru', 38.79, 39.09], ['fr', 39.09, 39.50],
+           ['pt', 39.50, 40.39], ['vi', 40.39, 40.78], ['id', 40.78, 42.24], ['hi', 42.24, TW]];
   M.forEach(function (m) {
     var l = m[0], t0 = m[1], t1 = m[2], h = shotWin(shots3, 'm_' + l, l, ZOOMED[l] || LAST[l]), rs = R[l];
     Kit.scene(h.el, t0, t1);
@@ -418,17 +472,17 @@
     Kit.add(h.push, 'scale', [[t0, 1.0], [t1, 1.045]]);
     if (l !== 'de') Kit.add(h.el, 'opacity', [[t0, 0.2], [t0 + 0.08, 1, 'out']]);
     spot(h.push, rs, t0 + 0.02, 0.6);
-    rs.forEach(function (r, i) { hl(h.push, r, t0 + 0.06 + i * 0.1, false, 12); });
-    ltag(h.push, l, t0 + 0.12);
+    rs.forEach(function (r, i) { hl(h.push, r, t0 + 0.04 + i * 0.08, false, 12); });
+    ltag(h.push, l, t0 + 0.1);
     var u = mk('div', 'url', $('#s3'), 'qsme.build/' + l + '/platform/estimating'); Kit.show(u, t0, t1);
   });
   Kit.pop('#c3', T3 - DS, { dy: 0, fade: DS }); Kit.add('#band3', 'opacity', [[TW, 1], [TW + 0.12, 0]]); Kit.add('#c3', 'opacity', [[TW, 1], [TW + 0.12, 0]]);
-  // the self-own: the box grows with the typed text and the full line holds ~2.8 s
-  Kit.add('#cap3a', 'opacity', [[23.38, 0], [23.42, 1], [27.42, 1], [27.56, 0]]);
-  Kit.type('#cap3a_t', 23.45, 23.85);
-  Kit.type('#cap3a_u', 24.25, 24.7);
-  Kit.pop('#cap3b', 33.7, { dy: 20 }); Kit.out('#cap3b', 36.35, 0.2);
-  Kit.slam('#cap3c', 35.25, { from: 1.12 }); Kit.out('#cap3c', 36.35, 0.2);
+  // the self-own: "Leistungs…" types on the word, the second half lands on "we'll let a German say that one."
+  Kit.add('#cap3a', 'opacity', [[32.95, 0], [32.99, 1], [37.0, 1], [37.14, 0]]);
+  Kit.type('#cap3a_t', 33.0, 33.6);
+  Kit.type('#cap3a_u', 35.05, 35.6);
+  Kit.pop('#cap3b', 42.27, { dy: 20 }); Kit.out('#cap3b', 47.05, 0.2);
+  Kit.slam('#cap3c', 45.58, { from: 1.12 }); Kit.out('#cap3c', 47.05, 0.2);
   // the wall: every word below was captured from the live site's own navigation, 2 Oct 2026
   var WALL = [['Schedule of quantities', 'English', 'en'], ['جدول الكميات', 'Arabic', 'ar'], ['工程量清单', 'Chinese', 'zh-Hans'], ['Lista de cantidades', 'Spanish', 'es'],
     ['Devis quantitatif', 'French', 'fr'], ['Ведомость объёмов работ', 'Russian', 'ru'], ['Leistungsverzeichnis', 'German', 'de'], ['Planilha de quantitativos', 'Portuguese', 'pt'],
@@ -442,54 +496,64 @@
     Kit.pop(c, TW + 0.15 + i * 0.07, { dy: 26, dur: 0.24 });
   });
   Kit.add('#wallwrap', 'opacity', [[TW - 0.1, 0], [TW, 1, 'out']]);
-  Kit.slam('#wallh1', TW - 0.1, { from: 1.08 }); Kit.slam('#wallh2', TW + 0.55, { from: 1.1 });
+  Kit.slam('#wallh1', TW - 0.02, { from: 1.08 }); Kit.slam('#wallh2', 48.45, { from: 1.1 });
+  // the product payoff, said plainly: the chips make way for the three lines on their words
+  var PY = 52.6;
+  Kit.add('#wall', 'opacity', [[PY, 1], [PY + 0.3, 0, 'in']]).add('#wall', 'y', [[PY, 0], [PY + 0.3, 18, 'in']]);
+  Kit.scene('#wall', 0, PY + 0.32);
+  Kit.pop('#pay1', 52.88, { dy: 28 }); Kit.pop('#pay2', 54.84, { dy: 28 }); Kit.slam('#pay3', 56.60, { from: 1.08, dur: 0.16 });
 
   // ================= 4 · RIGHT TO LEFT (T4 – T5) =================
+  // "Arabic and Persian read right to left." 59.41–61.69 ("Persian" 59.91) · "So does the site." 61.94 · "The sticky note doesn't." 63.38–64.48
   chapter('#s4', T4, T5);
   Kit.pop('#c4', T4 - DS, { dy: 0, fade: DS });
   var TS = 848 / 1920, ptl = capPage($('#tl'), 'en', TS, 2), ptr = capPage($('#tr'), 'ar', TS, 2);
-  var FLIP = 43.0;
+  var FLIP = 60.0, TR0 = 59.42;
   Kit.each(function (t) { var l = t < FLIP ? 'ar' : 'fa'; ptr.lang = l; setFrame(ptr, l, 2); });
   Kit.pop('#r1', T4 - DS, { dy: 14, fade: DS });
   Kit.pop('#tl', T4 - DS, { dy: 0, fade: DS }).add('#tl', 'x', [[T4 - DS, -40], [T4 + 0.2, 0, 'out']]);
-  Kit.add('#tr', 'opacity', [[40.28, 0], [40.32, 1]]).add('#tr', 'scaleX', [[40.28, 0.02], [40.55, 1, 'out'], [FLIP - 0.12, 1], [FLIP, 0.02, 'in'], [FLIP + 0.12, 1, 'out']]);
-  Kit.add('#mirror', 'opacity', [[40.4, 0], [40.7, 1, 'out']]).add('#mirror', 'scaleY', [[40.4, 0], [40.8, 1, 'out']]);
-  Kit.pop('#tll', T4 - DS, { dy: 0, fade: DS }); Kit.add('#trl1', 'opacity', [[40.5, 0], [40.65, 1], [FLIP - 0.07, 1], [FLIP, 0]]); Kit.add('#trl2', 'opacity', [[FLIP, 0], [FLIP + 0.18, 1, 'out']]);
-  Kit.slam('#r2', 41.9, { from: 1.12 });
-  Kit.pop('#r3', 44.3, { dy: 0 }).add('#r3', 'rotate', [[44.3, -6], [44.5, -3, 'out']]);
-  Kit.add('#sticky', 'rotate', [[44.35, -4], [44.47, -1, 'out'], [44.62, -7, 'inOut'], [44.78, -2.5, 'inOut'], [44.92, -4, 'out']]);
+  Kit.add('#tr', 'opacity', [[TR0, 0], [TR0 + 0.04, 1]]).add('#tr', 'scaleX', [[TR0, 0.02], [TR0 + 0.27, 1, 'out'], [FLIP - 0.12, 1], [FLIP, 0.02, 'in'], [FLIP + 0.12, 1, 'out']]);
+  Kit.add('#mirror', 'opacity', [[TR0 + 0.12, 0], [TR0 + 0.42, 1, 'out']]).add('#mirror', 'scaleY', [[TR0 + 0.12, 0], [TR0 + 0.52, 1, 'out']]);
+  Kit.pop('#tll', T4 - DS, { dy: 0, fade: DS }); Kit.add('#trl1', 'opacity', [[TR0 + 0.22, 0], [TR0 + 0.37, 1], [FLIP - 0.07, 1], [FLIP, 0]]); Kit.add('#trl2', 'opacity', [[FLIP, 0], [FLIP + 0.18, 1, 'out']]);
+  Kit.slam('#r2', 61.85, { from: 1.12 });
+  Kit.pop('#r3', 63.38, { dy: 0 }).add('#r3', 'rotate', [[63.38, -6], [63.58, -3, 'out']]);
+  Kit.add('#sticky', 'rotate', [[63.43, -4], [63.55, -1, 'out'], [63.7, -7, 'inOut'], [63.86, -2.5, 'inOut'], [64.0, -4, 'out']]);
 
   // ================= 5 · THE HONEST BIT (T5 – T6) =================
+  // "The website speaks fifteen languages." 65.26–67.53 · "The app speaks English, Spanish and Arabic." 67.83–70.33 ("English," 68.62) · "So far." 70.46
   chapter('#s5', T5, T6);
   Kit.pop('#c5', T5 - DS, { dy: 0, fade: DS });
   Kit.pop('#o1', T5 - DS, { dy: 16, fade: DS });
   Kit.pop('#hcap', T5 - DS, { dy: 0, fade: DS });
-  Kit.pop('#o2', 49.1, { dy: 30 });
-  Kit.pop('#hleg', 49.4, { dy: 10 });
-  Kit.slam('#o3', 51.4, { from: 1.15, dur: 0.16 });
+  Kit.pop('#o2', 67.8, { dy: 30 });
+  Kit.pop('#hleg', 68.95, { dy: 10 });
+  Kit.slam('#o3', 70.48, { from: 1.15, dur: 0.16 });
   var LANGS = [['English', 'en'], ['العربية', 'ar'], ['简体中文', 'zh-Hans'], ['Español', 'es'], ['Français', 'fr'], ['Русский', 'ru'], ['Deutsch', 'de'], ['Português', 'pt'],
                ['Türkçe', 'tr'], ['हिन्दी', 'hi'], ['Bahasa Indonesia', 'id'], ['日本語', 'ja'], ['한국어', 'ko'], ['Tiếng Việt', 'vi'], ['فارسی', 'fa']];
-  var APP = { en: 1, es: 1, ar: 1 }, hchips = $('#hchips');
+  var APP = { en: 1, es: 1, ar: 1 }, hchips = $('#hchips'), LIT = 68.6;
   LANGS.forEach(function (l, i) {
     var c = mk('span', 'pc' + ((l[1] === 'ru' || l[1] === 'vi') ? ' sys' : ''), hchips); c.textContent = l[0]; c.setAttribute('lang', l[1]);
     Kit.pop(c, T5 - DS + i * 0.04, { dy: 14, dur: 0.2 });
-    if (APP[l[1]]) Kit.add(c, 'borderColor', [[49.2, '#2C3B32'], [49.5, '#4BCD32', 'out']]).add(c, 'color', [[49.2, '#F2F6F2'], [49.5, '#7BE85E', 'out']]).add(c, 'background', [[49.2, '#19241E'], [49.5, '#16301A', 'out']]);
-    else Kit.add(c, 'opacity', [[49.2, 1], [49.55, 0.2, 'out']]);
+    if (APP[l[1]]) Kit.add(c, 'borderColor', [[LIT, '#2C3B32'], [LIT + 0.3, '#4BCD32', 'out']]).add(c, 'color', [[LIT, '#F2F6F2'], [LIT + 0.3, '#7BE85E', 'out']]).add(c, 'background', [[LIT, '#19241E'], [LIT + 0.3, '#16301A', 'out']]);
+    else Kit.add(c, 'opacity', [[LIT, 1], [LIT + 0.35, 0.2, 'out']]);
   });
 
   // ================= 6 · YOUR WORD + CTA (T6 – END) =================
+  // "So, what do you call it where you work?" 72.05–73.93 ("what" 72.41, "where" 73.17) · "Bonus points if you settle the prelims question." 74.65–76.89 ·
+  // "And book a thirty-minute demo at QSME dot build." 77.70–80.64 ("book" 77.73)
   Kit.scene('#s6', T6 - DS, END + 0.01); Kit.add('#s6', 'opacity', [[T6 - DS, 0], [T6, 1, 'out']]);
   Kit.pop('#c6', T6 - DS, { dy: 0, fade: DS });
-  Kit.slam('#q1', T6 - DS, { from: 1.06, dur: 0.16 }); Kit.slam('#q2', 54.95, { from: 1.08, dur: 0.16 });
-  Kit.pop('#q3', 55.6, { dy: 20 });
-  Kit.pop('#elab', 56.2, { dy: 14 });
-  Kit.slam('#enext', 56.6, { from: 1.2, dur: 0.16 });
-  Kit.add('#nx', 'var:--gl', [[56.75, 0], [57.05, 1], [57.6, 0.35]]);
+  Kit.slam('#q1', 72.4, { from: 1.06, dur: 0.16 }); Kit.slam('#q2', 73.17, { from: 1.08, dur: 0.16 });
+  Kit.pop('#q3', 74.55, { dy: 20 });
+  Kit.pop('#q4', 74.64, { dy: 0 }).add('#q4', 'rotate', [[74.64, -2.5], [74.84, -1.2, 'out']]);
+  Kit.add('#sticky', 'rotate', [[74.69, -4], [74.81, -1, 'out'], [74.96, -7, 'inOut'], [75.12, -4, 'out']]);
+  Kit.pop('#elab', 76.95, { dy: 14 });
+  Kit.slam('#enext', 77.05, { from: 1.2, dur: 0.16 });
+  Kit.add('#nx', 'var:--gl', [[77.2, 0], [77.5, 1], [78.05, 0.35]]);
   $('#nx').style.boxShadow = '0 0 calc(var(--gl, 0) * 46px) rgba(75,205,50,.55)';
-  Kit.pop('#q4', 57.3, { dy: 0 }).add('#q4', 'rotate', [[57.3, -2.5], [57.5, -1.2, 'out']]);
-  Kit.add('#sticky', 'rotate', [[57.35, -4], [57.47, -1, 'out'], [57.62, -7, 'inOut'], [57.78, -4, 'out']]);
-  Kit.pop('#qlogo', 58.3, { dy: 14 }); Kit.pop('#qurl', 58.36, { dy: 14 }); Kit.pop('#qdesc', 58.45, { dy: 10 });
-  Kit.pop('#pcta', 58.65, { dy: 20 });
+  Kit.pop('#qlogo', 77.1, { dy: 14 }); Kit.pop('#qurl', 77.16, { dy: 14 }); Kit.pop('#qdesc', 77.25, { dy: 10 });
+  Kit.pop('#pcta', 77.75, { dy: 20 });
+  Kit.add('#pcta', 'scale', [[79.3, 1], [79.45, 1.04, 'out'], [79.7, 1, 'out'], [80.9, 1], [81.05, 1.04, 'out'], [81.3, 1, 'out']]);
 
   Kit.ready({ duration: END, fonts: ['700 100px "Space Grotesk"', '400 48px "Permanent Marker"', '700 40px Kalam', '600 30px Inter', '700 30px Inter', '500 40px Inter', '700 28px "JetBrains Mono"', '500 30px "JetBrains Mono"', '600 28px "JetBrains Mono"'] });
 })();

@@ -1,5 +1,5 @@
 /* Auckland first (we know). One timeline, three cuts: body.r16x9 (YouTube/Facebook master), body.r9x16 (Reels/TikTok
- * full version) and body.r9x16.short (35-45 s Reels/TikTok cut: hook, Dunedin, table, "We know.", CTA).
+ * full version) and body.r9x16.short (48 s Reels/TikTok cut with its own take: hook, Dunedin, table, "We know.", CTA).
  * Footage: real public qsme.co.nz homepage searches recorded 2 Oct 2026 (keystrokes.mjs per-keystroke screenshots,
  * stills.mjs hi-res result stills). Test addresses are the councils' own buildings (public, no private homes).
  * Other addresses in the live autocomplete are blurred (af-redact.js); only the council's own row stays sharp.
@@ -7,9 +7,28 @@
  * (af-hush.js, made by hush-rows.swift). CTA copy pushes sign-ups; no pricing or no-account lines anywhere.
  * Everything here is a pure function of t (Kit contract). Data: af-data.js, af-redact.js, nz-outline.js.
  *
- * Timing: the page is AUTHORED on the original 80 s timeline and re-timed by W() below (review of 2 Oct):
- * +0.6 s for the Dunedin joke, +0.9 s for the Wellington beat, +2.5 s hold on the finished table, -0.5 s from the
- * checklist hold; the quote beat is folded under "We know." and the end card is 5.2 s. Output length: W(END_A). */
+ * Timing: the page is AUTHORED on the original 80 s timeline and re-timed by W() below.
+ * 2026-10-06 AUDIO-FIRST REMAKE (owner standard from the N01 pilot: continuous speech, a spoken hook in the first 2 s,
+ * no silence over 1 s, ONE unbroken Cam S eleven_v3 take per cut-length, picture follows audio). The take is the clock:
+ *   long film (16:9 + full 9:16): outputs/vo-take-cam-v3/take.mp3, 78.60 s, laid at 0.0 → page 80.1 s (take + 1.5 s tail)
+ *   short 9:16 cut:               outputs/vo-take-cam-v3-short/take.mp3, 46.29 s → page 47.8 s
+ * 2026-10-10 re-take (owner pronunciation fix 2026-10-08): the CTA is now said "dot koh dot en zed" (KO, never C-O), so
+ * both takes were regenerated whole and every anchor below was moved onto the new takes' word starts (same script).
+ * W() is a piecewise-linear map from authoring time to output time through ANCHORS (below): every beat is pinned to the
+ * start of the word it belongs to in alignment.json (the comment on each anchor names the word). Between anchors the
+ * design plays as authored, slightly stretched or squeezed. The short cut uses its own anchor list on the same authored
+ * timeline: the parts it does not use (22.1–46.5 and 54.85–63.3) are flat (collapsed), which is the old hard cut.
+ * Captions are phrases lifted from the narration (hook sub, S1 ×2, Wellington, "That lot's another video").
+ * Spoken (long): "Not in Auckland? Every nationwide property tool has an asterisk. Here's ours, read out loud. Fair test: we
+ * typed each council's own address into QSME site search. Dunedin first. Anywhere in the country you get the basics:
+ * boundary, land area, legal description, and council. Services and hazards? Not here yet. It says so, right on the card.
+ * So we told Dunedin City Council it's in Dunedin City. They knew. Four councils add the planning zone: Auckland,
+ * Wellington City, Christchurch and Hamilton. Christchurch: Commercial Zone. Hamilton: Central City Zone. Wellington City:
+ * zone too. Hazards? Not yet. And Auckland gets the whole card: the zone, then pipes, power, flood and hazard checks. That
+ * lot's another video: The back corner. So, screenshot this. Everywhere: the basics. Three more councils: plus the zone.
+ * Auckland: the lot. Wherever you are, it's not a substitute for a LIM, PIM or engineering advice. So still order the LIM,
+ * check the title, and ask the council or a planner. Yeah. We started in Auckland. We know. Card says so. Search your
+ * address. Sign up at qsme.co.nz" (said "Queue Ess Mee dot koh dot en zed"). Output length: W(END_A). */
 (function () {
   'use strict';
   var HZ = document.body.classList.contains('r16x9');
@@ -17,14 +36,163 @@
   var root = document.getElementById('root');
   var E = Kit.ease, D = window.AF, NZ = window.NZ, RED = window.AF_REDACT, HUSH = window.AF_HUSH || {};
 
-  // ------------------------------------------------------------------ authoring time -> output time
-  var INSERTS = [[20.9, 0.6], [35.0, 0.9], [53.0, 2.5]];   // [authoring t, seconds of hold added there]
-  var CUTS = [[61.6, 62.1]];                                // [from, to]: authoring seconds removed (a static hold)
+  // ------------------------------------------------------------------ authoring time -> output time (the take is the clock)
+  // [authoring t, output t]: output t = the start of the word in the take's alignment.json (words.json) named on the right.
+  var ANCHORS_LONG = [
+    [0, 0],            // "Not in Auckland?" (title is on from frame 1)
+    [0.25, 0.98],      // hook sub pops on "Every"
+    [0.32, 1.13],       // Auckland card drops ("nationwide")
+    [0.92, 2.44],       // Dunedin card drops ("property tool")
+    [1.6, 4.16],       // "Real searches" line on "Here's"
+    [4.95, 5.47],       // hook fades out under "loud."
+    [5.4, 5.87],
+    [5.9, 6.19],       // "Fair test:" caption; the Dunedin typing runs under "we typed each council's own address into QSME"
+    [8.6, 9.32],        // cut to the settled result ("into")
+    [9.4, 10.16],        // camera on the map and card ("Queue Ess Mee site search")
+    [9.9, 12.53],      // "Dunedin first." (hold on the card)
+    [10.0, 12.96],     // "Anywhere" caption
+    [10.75, 14.84],     // zoom to the parcel ("basics:")
+    [10.95, 15.57],    // parcel pulses on "boundary"
+    [12.3, 16.24],
+    [12.55, 16.38],    // box on "land area"
+    [13.15, 17.41],    // box on "legal description"
+    [13.75, 18.79],    // box on "council"
+    [15.5, 19.2],
+    [15.75, 19.49],    // "Services and hazards?" caption
+    [16.25, 21.57],     // amber underline on "Not here yet"
+    [16.7, 22.13],
+    [19.35, 24.6],    // "card." ends
+    [19.55, 24.83],    // "So we told Dunedin City Council…" caption
+    [19.95, 27.1],    // punch-in on the boxed "Dunedin City" as it is said
+    [20.4, 27.64],
+    [22.2, 28.83],      // "They knew." ends; S1 out
+    [22.6, 28.98],     // "Four councils" title; Christchurch typing under "add the planning zone: Auckland,"
+    [24.92, 32.03],     // Christchurch result ("Auckland, Wellington City, Christchurch and Hamilton" play over the card)
+    [25.6, 32.56],
+    [26.1, 34.49],
+    [26.5, 34.93],     // "Christchurch:" caption
+    [26.8, 36.35],     // green box on "Commercial Zone"
+    [27.3, 36.62],
+    [29.3, 37.33],
+    [29.55, 37.61],    // "Hamilton:" caption; 3x typing
+    [30.62, 38.48],     // Hamilton result ("City")
+    [31.25, 38.63],
+    [31.95, 39.04],    // box on "Zone."
+    [33.45, 39.67],
+    [33.6, 39.8],     // "Wellington City: zone too." caption
+    [34.1, 40.42],
+    [34.25, 41.8],    // amber underline on "Hazards?"
+    [34.5, 43.18],      // "Not yet."
+    [36.0, 44.03],      // S2 out
+    [36.4, 44.21],     // "Auckland" title; typing under "gets the whole card:"
+    [36.6, 44.43],      // "Auckland gets the whole card." caption
+    [38.55, 45.53],     // Auckland result
+    [39.6, 45.84],
+    [40.05, 45.94],    // "the zone," caption
+    [40.2, 45.98],
+    [40.75, 46.77],    // green box on the zone ("then")
+    [43.0, 47.75],     // "power,"
+    [43.6, 48.32],      // wide shot of the chips on "flood and hazard checks"
+    [43.65, 48.38],
+    [44.3, 50.22],
+    [44.45, 50.61],    // "That lot's another video: The back corner." caption
+    [46.4, 52.83],      // S3 out
+    [46.5, 52.9],
+    [46.75, 53.04],    // "So, screenshot this." kicker + title
+    [47.2, 53.66],
+    [48.0, 54.53],
+    [48.2, 55.13],     // column 1 ticks on "Everywhere:"
+    [49.7, 57.0],     // column 2 on "Three more councils:"
+    [51.4, 59.56],     // column 3 on "Auckland:"
+    [51.94, 59.85],     // table complete; holds through "the lot."
+    [54.55, 60.89],     // table out as "Wherever you are" starts
+    [54.85, 61.16],
+    [55.0, 61.33],      // "What it's not" title
+    [55.35, 61.83],     // box on the card footer ("it's not a substitute")
+    [55.4, 61.89],      // quote caption
+    [57.9, 64.94],      // "advice."
+    [57.95, 64.99],
+    [58.25, 65.86],     // "So still order the LIM"
+    [59.2, 67.08],     // "check the title"
+    [60.15, 68.22],     // "and ask the council or a planner"
+    [63.05, 69.76],
+    [63.3, 69.87],      // map returns under "Yeah."
+    [63.6, 70.17],
+    [63.8, 70.83],     // "We started in Auckland."
+    [65.45, 72.19],    // "We know." slams
+    [66.05, 73.3],    // the card's own line on "Card says so."
+    [66.25, 73.56],
+    [67.45, 74.06],
+    [67.6, 74.2],
+    [67.75, 74.4],
+    [68.0, 74.46],     // "Search your address."
+    [68.35, 74.97],     // the real search box ("address.")
+    [68.6, 75.57],     // "Sign up to see yours." on "Sign up"
+    [69.0, 76.44],     // qsme.co.nz pill on "Queue Ess Mee"
+    [69.6, 77.37],     // "Your account unlocks Site research" on "dot koh dot en zed"
+    [72.85, 80.1]      // end: take 78.60 s + 1.5 s tail
+  ];
+  var ANCHORS_SHORT = [
+    [0, 0], [0.25, 0.98], [0.32, 1.08], [0.92, 2.34], [1.6, 4.08], [4.95, 5.33], [5.4, 5.84],
+    [5.9, 6.13],       // "Fair test:"
+    [8.6, 9.94],       // Dunedin result ("into Queue Ess Mee")
+    [9.4, 10.71],
+    [9.9, 13.14],       // "Dunedin first."
+    [10.0, 13.6],      // "Anywhere"
+    [10.75, 15.64],
+    [10.95, 16.21],    // "boundary"
+    [12.3, 16.88],
+    [12.55, 16.94],    // "land area"
+    [13.15, 17.89],    // "legal description"
+    [13.75, 19.1],    // "council"
+    [15.5, 19.49],
+    [15.75, 19.74],    // "Services and hazards?"
+    [16.25, 21.6],    // "Not here yet"
+    [16.7, 22.49],
+    [19.35, 24.53],
+    [19.55, 24.8],    // "So we told…"
+    [19.95, 27.18],    // punch-in on "Dunedin City"
+    [20.4, 27.74],
+    [22.1, 29.11],      // hard cut after "They knew."
+    [46.5, 29.11],      // (22.1–46.5 collapsed: the old slice boundary)
+    [46.75, 29.24],    // "Screenshot this."
+    [47.2, 30.16],
+    [48.0, 30.86],
+    [48.2, 30.96],      // "Everywhere:"
+    [49.7, 32.76],     // "Three more councils:"
+    [51.4, 35.06],      // "Auckland:"
+    [51.94, 36.02],     // complete; holds through "the lot."
+    [54.55, 37.16],     // table out on "Yeah."
+    [54.85, 37.45],
+    [63.3, 37.45],      // (54.85–63.3 collapsed)
+    [63.6, 37.76],
+    [63.8, 38.08],     // "We started in Auckland."
+    [65.45, 39.23],    // "We know."
+    [66.05, 40.33],    // "Card says so."
+    [66.25, 40.61],
+    [67.45, 41.16], [67.6, 41.28], [67.75, 41.46],
+    [68.0, 41.59],     // "Search your address."
+    [68.35, 42.23],
+    [68.6, 43.15],     // "Sign up"
+    [69.0, 43.73],     // "Queue Ess Mee"
+    [69.6, 44.5],
+    [72.85, 47.8]      // end: take 46.29 s + 1.5 s tail
+  ];
+  var AN = SHORT ? ANCHORS_SHORT : ANCHORS_LONG;
   function W(t) {
-    var o = t;
-    INSERTS.forEach(function (d) { if (t >= d[0]) o += d[1]; });
-    CUTS.forEach(function (c) { o -= Math.max(0, Math.min(t, c[1]) - c[0]); });
-    return +o.toFixed(4);
+    var n = AN.length, i;
+    if (t <= AN[0][0]) return +(AN[0][1] + (t - AN[0][0])).toFixed(4);
+    if (t >= AN[n - 1][0]) return +(AN[n - 1][1] + (t - AN[n - 1][0])).toFixed(4);
+    for (i = 1; i < n; i++) if (t <= AN[i][0]) { var a = AN[i - 1], b = AN[i]; return +(a[1] + (b[1] - a[1]) * (t - a[0]) / (b[0] - a[0])).toFixed(4); }
+    return t;
+  }
+  /** output time -> authoring time (flat, collapsed stretches map to their authoring start). */
+  function Winv(o) {
+    var n = AN.length, i;
+    if (o <= AN[0][1]) return AN[0][0] + (o - AN[0][1]);
+    if (o >= AN[n - 1][1]) return AN[n - 1][0] + (o - AN[n - 1][1]);
+    for (i = 1; i < n; i++) if (o <= AN[i][1]) { var a = AN[i - 1], b = AN[i]; return b[1] === a[1] ? a[0] : a[0] + (b[0] - a[0]) * (o - a[1]) / (b[1] - a[1]); }
+    return o;
   }
   var _add = Kit.add, _scene = Kit.scene;
   Kit.add = function (target, prop, keys) { return _add.call(Kit, target, prop, keys.map(function (k) { var c = k.slice(); c[0] = W(k[0]); return c; })); };
@@ -128,7 +296,7 @@
     if (HZ) {
       T(hook, 96, 196, 'kicker', 'Council by council');
       T(hook, 96, 248, 'title', 'Not in<br>Auckland?', { fontSize: 132 });
-      var sub = T(hook, 96, 538, 'cap dimtext', 'Here’s exactly what site search shows you.', { fontSize: 56, width: 740, color: 'var(--ink-70)' });
+      var sub = T(hook, 96, 538, 'cap dimtext', 'Every nationwide property tool has an asterisk.', { fontSize: 56, width: 740, color: 'var(--ink-70)' });
       popIn(sub, 0.25, 18);
       var real = T(hook, 96, 700, 'src', 'Real searches · qsme.co.nz · 2 Oct 2026');
       popIn(real, 1.6, 10);
@@ -149,7 +317,7 @@
     } else {
       T(hook, 65, 300, 'kicker', 'Council by council', { fontSize: 24, lineHeight: 1.25 });
       T(hook, 65, 380, 'title', 'Not in<br>Auckland?', { fontSize: 128 });
-      var sub2 = T(hook, 65, 650, 'cap', 'Here’s exactly what site search shows you.', { fontSize: 48, width: 950, color: 'var(--ink-70)' });
+      var sub2 = T(hook, 65, 650, 'cap', 'Every nationwide property tool has an asterisk.', { fontSize: 48, width: 950, color: 'var(--ink-70)' });
       popIn(sub2, 0.25, 18);
       var m2 = nzMap(hook, 742, 300, 0.36);
       var pos2 = { akl: [65, 820], chc: [545, 820], dun: [545, 1062] }, cw2 = 470;
@@ -171,7 +339,9 @@
 
   // ------------------------------------------------------------------ scene: MAIN (5.4 – 63.4): panel + capture window
   var main = mk('div', 'fill', root);
-  Kit.scene(main, 5.3, 63.45);
+  // the short cut ends MAIN at the hard cut (authored 22.1 = output 30.3): otherwise the collapsed stretches leak one frame of the
+  // Auckland card under the table (30.3 s) and the small-print card footer between the table and the map (38.1–38.3 s).
+  Kit.scene(main, 5.3, SHORT ? 22.1 : 63.45);
   Kit.add(main, 'opacity', [[5.3, 0], [5.55, 1, 'out']]);
 
   var win = mk('div', 'win', main, { left: L.win.x, top: L.win.y, width: L.win.w, height: L.win.h, borderRadius: L.win.r, boxShadow: '0 0 0 2px #1E293B, 0 30px 80px rgba(0,0,0,.55)' });
@@ -210,7 +380,8 @@
     var geo = HZ ? { x0: 416, x1: 992, top: 618, r2: 668, rh: 48 } : { x0: 16, x1: 374, top: 466.4, r2: 516.3, rh: 47.9 };
     var last = -1;
     Kit.each(function (t) {
-      var tt = Math.min(Math.max(t, T0), TE - 1e-4), target = st[1] + (tt - T0) * sp, i = 1;
+      // the clip plays in authoring time, so it follows W(): typing stretches or squeezes with the words it sits under
+      var tt = Math.min(Math.max(t, T0), TE - 1e-4), target = st[1] + Math.max(0, Winv(tt) - t0) * sp, i = 1;
       while (i + 1 < st.length && st[i + 1] <= target + 1e-9) i++;
       if (i === last) return; last = i;
       G.k.setAttribute('src', frame(G.kdir, i));
@@ -344,8 +515,8 @@
   title(5.6, 22.2, HZ ? 'Anywhere<br>in NZ<sup>*</sup>' : 'Anywhere in NZ<sup>*</sup>');
   var f1 = T(main, P.x, P.footY, 'foot', '<b>*</b>Any address on the LINZ register. Some brand-new and rural lots aren’t on it yet.', { width: HZ ? 600 : 950, fontSize: HZ ? 25 : 24 });
   popIn(f1, 6.3, 10); outAt(f1, 22.2);
-  cap(5.9, 9.45, 'Fair test: we typed in each <span class="g">council’s own address.</span>');
-  cap(9.6, 15.55, 'Every address on the register gets <span class="g">the basics.</span>');
+  cap(5.9, 9.7, 'Fair test: we typed each <span class="g">council’s own address.</span>');   // out under "Dunedin first."
+  cap(10.0, 15.55, 'Anywhere in the country you get <span class="g">the basics.</span>');
   cap(15.75, 19.35, 'Services and hazards? <span class="a">Not here yet.</span> It says so.');
   cap(19.55, 22.2, 'We told Dunedin City Council it’s in Dunedin City. <span class="g">They knew.</span>');
   if (HZ) tagOn(6.0, 22.2, '50 The Octagon <i>· Dunedin City Council</i>');
@@ -391,7 +562,7 @@
   cap(22.8, 26.35, 'They add the <span class="g">planning zone.</span>');
   cap(26.5, 29.3, 'Christchurch: <span class="g">Commercial Zone.</span>');
   cap(29.55, 33.45, 'Hamilton: <span class="g">Central City Zone.</span>');
-  cap(33.6, 36.0, 'Wellington City: <span class="g">zone too.</span> <span class="a">Hazards: not yet.</span>');
+  cap(33.6, 36.0, 'Wellington City: <span class="g">zone too.</span> <span class="a">Hazards? Not yet.</span>');
   // 9:16: the tag leaves once the card fills the window (its own title names the address)
   tagOn(22.8, HZ ? 29.3 : 25.5, '53 Hereford St <i>· Christchurch City Council</i>');
   tagOn(29.6, HZ ? 36.0 : 31.15, '260 Anglesea St <i>· Hamilton City Council</i>');
@@ -439,8 +610,8 @@
   popIn(f3, 36.8, 10); outAt(f3, 46.4);
   var c3 = HZ ? { top: 300 } : {};
   cap(36.6, 40.05, 'Auckland gets <span class="g">the whole card.</span>', c3);
-  cap(40.2, 43.3, 'The zone, then pipes, power, flood and hazard checks.', c3);
-  cap(43.45, 46.4, 'Services and hazards in detail: see <span class="g">“The back corner”.</span>', c3);
+  cap(40.2, 44.3, 'The zone, then pipes, power, flood and hazard checks.', c3);
+  cap(44.45, 46.4, 'That lot’s another video: <span class="g">“The back corner”.</span>', c3);
   tagOn(36.6, HZ ? 43.3 : 39.05, '135 Albert St <i>· Auckland Council</i>');
   resetLadder(36.3);
 
@@ -595,23 +766,9 @@
     popIn(sm, 69.6, 10);
   })();
 
-  // ------------------------------------------------------------------ the short 9:16 cut: four slices of the same timeline
-  var duration = DUR;
-  if (SHORT) {
-    var SEGS = [[0, W(22.1)], [W(46.78), W(51.94) + 3.5], [W(63.6), W(67.55)], [W(67.55), DUR]];
-    var _render = Kit.render;
-    Kit.render = function (s) {
-      var acc = 0;
-      for (var i = 0; i < SEGS.length; i++) {
-        var len = SEGS[i][1] - SEGS[i][0];
-        if (s < acc + len || i === SEGS.length - 1) return _render.call(Kit, Math.min(SEGS[i][0] + (s - acc), SEGS[i][1]));
-        acc += len;
-      }
-    };
-    duration = +SEGS.reduce(function (a, g) { return a + g[1] - g[0]; }, 0).toFixed(3);
-    window.AF_SEGS = SEGS;
-  }
-  window.AF_W = W;
+  // ------------------------------------------------------------------ the short 9:16 cut: the same authored timeline through
+  // ANCHORS_SHORT (its own take); the unused stretches are collapsed in W(), so no render remap is needed any more.
+  window.AF_W = W; window.AF_WINV = Winv;
 
-  Kit.ready({ duration: duration, fonts: ['800 100px Manrope', '700 50px Manrope', '600 30px Inter', '500 25px Inter', '600 26px "JetBrains Mono"'] });
+  Kit.ready({ duration: DUR, fonts: ['800 100px Manrope', '700 50px Manrope', '600 30px Inter', '500 25px Inter', '600 26px "JetBrains Mono"'] });
 })();

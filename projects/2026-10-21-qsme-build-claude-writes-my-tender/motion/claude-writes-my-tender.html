@@ -10,7 +10,37 @@
      exact wording) and carries the .illustrative label (#tagIll / #tagHook) while it is on screen. Swap list: post.md.
      Real footage: element crops of public qsme.build pages (clips/stills, from stills.json via still.mjs) and brand b-roll
      (clips/dusk = assets/qsme/broll/th-7-complete.v1.mp4, clips/structure = th-4-structure.v1.mp4).
-     Optional founder kicker ("Same rules I had in my first year as a QS."): off unless <html data-kicker="on">. -->
+     Optional founder kicker ("Same rules I had in my first year as a QS."): off unless <html data-kicker="on">.
+     2026-10-06 AUDIO-FIRST REMAKE (owner standard from the N01 pilot: continuous speech, a spoken hook in the first 2 s, no
+     gaps over 1 s, one unbroken eleven_v3 take): the Cam S take (outputs/vo-take-cam-v3/take.mp3, 120.57 s, ONE request, laid
+     at 0.0 by tools/mux) is the clock. Every beat is placed on its word in alignment.json; the page runs 122.1 s (take + 1.5 s
+     tail). Design unchanged; captions are phrases lifted from the narration.
+       0.0–7.22  hook: "Asked my AI to push the programme back a week." over the chat (reply types 1.5–3.1), "It can't." slams on
+                 "can't" (3.42), hard cut to the untouched Gantt on "On" (4.12), "On purpose." slams on "purpose." (4.66);
+                 "Nine-forty on a Tuesday." is said over the untouched Gantt; wipe on "Here's" (7.22 → 7.49)
+       7.49–16.17 title card ("Here's what your AI assistant can do in QSME, and the four things it never will."), caption
+                 "It gets the typing…" on "It gets" (12.0)
+       16.17–30.99 ch1: card on "One." (16.17), the ask bubble on "What's" (17.78), the answer rows under "answers from the
+                 project's own schedule" (20.3–21.35), split on "Next to the real thing" (22.65), rings on "same crews … same
+                 dates" (24.1–25.36), "It sees what your login sees." (26.02), "Nothing more." (27.67), "Read alone…" (28.66)
+       30.99–53.42 ch2: card on "Two." (30.99), the ask bubble on "Draft" (32.93), reply on "It creates the draft" (37.05),
+                 highlighter rides "it isn't published and nobody has been invited" (38.5–40.3), "It drafts it. Then it stops."
+                 (40.6), the draft on "Here's the draft." (42.62), the cursor reaches Send on "button?" (44.4), pulls back,
+                 returns on "It drafts." (45.55) and waits through "A person presses send." (never clicks), chat 3 on "Paste"
+                 (47.9), the sheet on "Your own spreadsheet" (50.88)
+       53.42–78.47 ch3: card on "Three." (53.42), the list on "QSME's own list" (55.55), each never-line types as it is said
+                 (58.1 / 60.0 / 62.5 / 64.9) and its ✕ lands on its last word (59.95 / 62.45 / 64.85 / 67.15), "Not a setting."
+                 (67.25), the live award card on "On the public page" (70.2, highlight 71.6–73.3), the callback Gantt on "So,
+                 back at nine-forty" (74.48; the pinned reply on "nine-forty" 75.45), caption "The programme stays…" (76.4)
+       78.47–87.41 ch4: card on "Four." (78.47), Settings on "Settings." (80.25), the activity rows on "What it did, newest
+                 first." (82.45–82.95), the click on "Disconnect," (84.5), the dialog 84.75
+       87.41–106.37 ch5: card on "Five." (87.41; "Not hidden in a footer." is said over the card), the quote on "If an
+                 assistant" (90.8), the live estimating card on "Every draft" (95.27, highlights 96.3–97.9), the small-print
+                 card on "Works with" (98.3; "ChatGPT needs a paid plan…" rises on the words 103.35)
+       106.37–122.1 close: "The assistant drafts; you decide." slams on the words (106.47), the chip rows on "It drafts;" (108.6)
+                 and "you send, award, sign, pay" (109.55), the live /contact card on "Thirty minutes" (113.1, highlight
+                 114.3–115.4), end card on "Book" (115.9): logo, "Book a 30-minute demo" (116.0), "at qsme.build" on "at"
+                 (117.3), the comment prompt on "What would you let it type first?" (119.2). -->
 <link rel="stylesheet" href="../../../tools/motion/kit.css">
 <style>
   /* ---------- canvas ---------- */
@@ -471,7 +501,7 @@
   <div id="k2e" class="cap"><span>Your own spreadsheet, <b>inside the project</b>.</span></div>
   <div id="k3b" class="cap"><span>Not a setting. Those doors <b>just aren’t wired up.</b></span></div>
   <div id="k3c" class="cap"><span>No automation and <b>no assistant awards a tender.</b></span></div>
-  <div id="k3d" class="cap"><span>So the programme stays <b>where a person put it.</b></span></div>
+  <div id="k3d" class="cap"><span>The programme stays <b>where a person put it.</b></span></div>
   <div id="k4a" class="cap"><span>Settings. Connected apps. <b>What it did</b>, newest first.</span></div>
   <div id="k4b" class="cap"><span>Disconnect, and it <b>loses access immediately.</b></span></div>
   <div id="k5b" class="cap"><span>Every draft is <b>a suggestion for a person to check.</b></span></div>
@@ -586,19 +616,19 @@
   hl('#hl6b', [123, 121, 871, 40], 1260, 1074, 'clips/stills/demo-what-happens.png');
 
   // ---------------- scenes ----------------
-  // 2026-10-04 review pass: title +0.6s (no list build), chapter cards 2.2s, split screen -1.6s, chat 2 +0.4s (highlighter),
-  // Send-button beat -1.7s (hover + hesitation, 1.8s hold), small print +2.0s. 130.2s overall.
-  const W = [7.0, 14.0, 34.2, 57.9, 84.7, 95.3, 112.7];   // wipes; scene swaps happen at w + 0.27
-  const C = W.map(w => +(w + 0.27).toFixed(2));
-  const CARD = 2.2;                                        // wipe start -> first scene of the chapter
-  const END = 130.2;
-  K.scene('#s0a', 0, 4.2).scene('#s0b', 4.2, C[0]).scene('#sT', C[0], C[1]);
-  K.scene('#c1', C[1], W[1] + CARD).scene('#s1a', 16.2, 24.6).scene('#s1b', 24.6, 29.2).scene('#s1c', 29.2, C[2]);
-  K.scene('#c2', C[2], W[2] + CARD).scene('#s2a', 36.4, 43.2).scene('#s2b', 43.2, 48.3).scene('#s2c', 48.3, 53.1).scene('#s2d', 53.1, C[3]);
-  K.scene('#c3', C[3], W[3] + CARD).scene('#s3a', 60.1, 76.5).scene('#s3c', 76.5, 80.9).scene('#s3d', 80.9, C[4]);
-  K.scene('#c4', C[4], W[4] + CARD).scene('#s4a', 86.9, C[5]);
-  K.scene('#c5', C[5], W[5] + CARD).scene('#s5a', 97.5, 102.6).scene('#s5b', 102.6, 106.7).scene('#s5c', 106.7, C[6]);
-  K.scene('#s6a', C[6], 118.7).scene('#s6b', 118.7, 122.7).scene('#sE', 122.7, END + 0.1);
+  // 2026-10-06 AUDIO-FIRST REMAKE: the Cam S eleven_v3 take (outputs/vo-take-cam-v3/take.mp3, 120.57 s, one unbroken request
+  // laid at 0.0) is the clock. Every time below is a word start from alignment.json (see the page header). Page = take + 1.5 s.
+  const W = [7.22, 15.9, 30.72, 53.15, 78.2, 87.14, 106.1];   // wipes land 0.27 s before "Here's" / "One." / "Two." / "Three." / "Four." / "Five." / "The assistant drafts"
+  const C = W.map(w => +(w + 0.27).toFixed(2));              // scene swaps (the wipe covers the frame)
+  const S1 = 17.75, S2 = 32.9, S3 = 55.55, S4 = 80.25, S5 = 90.8;   // first scene of each chapter: "What's on my schedule", "Draft a tender", "QSME's own list", "Settings.", "If an assistant"
+  const END = 122.1;                                          // take ends 120.57 + ~1.5 s tail
+  K.scene('#s0a', 0, 4.12).scene('#s0b', 4.12, C[0]).scene('#sT', C[0], C[1]);
+  K.scene('#c1', C[1], S1).scene('#s1a', S1, 22.65).scene('#s1b', 22.65, 26.02).scene('#s1c', 26.02, C[2]);
+  K.scene('#c2', C[2], S2).scene('#s2a', S2, 42.62).scene('#s2b', 42.62, 47.9).scene('#s2c', 47.9, 50.88).scene('#s2d', 50.88, C[3]);
+  K.scene('#c3', C[3], S3).scene('#s3a', S3, 70.2).scene('#s3c', 70.2, 74.48).scene('#s3d', 74.48, C[4]);
+  K.scene('#c4', C[4], S4).scene('#s4a', S4, C[5]);
+  K.scene('#c5', C[5], S5).scene('#s5a', S5, 95.27).scene('#s5b', 95.27, 98.3).scene('#s5c', 98.3, C[6]);
+  K.scene('#s6a', C[6], 113.1).scene('#s6b', 113.1, 115.9).scene('#sE', 115.9, END + 0.1);
   K.scene('#topbar', C[1], C[6]).scene('#tband', C[1], C[6]).scene('#tagHook', 0, C[0]);
 
   // wipe: a dark panel with an accent edge crosses the frame on every chapter change
@@ -614,78 +644,80 @@
     K.add('#pp' + i, 'color', [[0, INK50], [on, DARK, 'hold'], [off, ACC, 'hold']]);
     K.add('#pp' + i, 'borderColor', [[0, LINE], [on, ACC, 'hold']]);
   }
-  // chapter cards (2.2s each: the sub-line lands 0.55s after the wipe clears so it gets ~1.4s on screen)
+  // chapter cards: the numeral lands on the spoken number ("One." 16.18 …), the sub-line 0.55 s later
   ['#c1', '#c2', '#c3', '#c4', '#c5'].forEach((c, i) => {
     const t = C[i + 1];
     K.add(c + ' .num', 'opacity', [[t + 0.05, 0], [t + 0.3, 1, 'out']]); K.add(c + ' .num', 'x', [[t + 0.05, -90], [t + 0.45, 0, 'out']]);
     rise(c + ' .ck', t + 0.15, 20); rise(c + ' .ttl', t + 0.25, 36); rise(c + ' .sub', t + 0.55, 20);
   });
 
-  // ---------------- HOOK (0 – 7.0) ----------------
-  // frame 0: chip + headline + the ask already sent. The reply types, "It can't." slams, then a hard cut to the untouched Gantt.
+  // ---------------- HOOK (0 – 7.22) ----------------
+  // "Asked my AI to push the programme back a week." 0.00–2.72: the ask is on screen, the reply types and finishes before
+  // "It can't." (3.34; the slam lands on "can't" 3.44). Hard cut to the untouched Gantt on "On" (4.16); "On purpose." slams on
+  // "purpose." (4.70). "Nine-forty on a Tuesday." (5.49) is said over the untouched Gantt; wipe to the title on "Here's" (7.49).
   // SWAP (Session B shot 1): replace #chatH with the real take; keep "It can't." 0.2s after the real reply's first sentence lands.
   dots('#hd', 0.4, 1.15); K.scene('#hDots', 0, 1.15);
   K.add('#hTool', 'opacity', [[0, 0], [1.15, 0], [1.3, 1, 'out']]);
-  K.show('#hR1', 1.6); K.show('#hR2', 1.6);
-  K.type('#hR1', 1.6, 2.15); K.type('#hR2', 2.15, 3.05);
-  K.slam('#hCant', 3.25, { from: 1.22, dur: 0.16 });
+  K.show('#hR1', 1.5); K.show('#hR2', 1.5);
+  K.type('#hR1', 1.5, 2.05); K.type('#hR2', 2.05, 3.1);
+  K.slam('#hCant', 3.42, { from: 1.22, dur: 0.16 });
   // hard cut: nothing animates on the Gantt (it hasn't moved), only a slow camera drift
-  K.add('#gHook', 'scale', [[4.2, 1.0], [C[0], 1.02]]);
-  K.slam('#h2b', 4.6, { from: 1.25, dur: 0.16 });
+  K.add('#gHook', 'scale', [[4.12, 1.0], [C[0], 1.02]]);
+  K.slam('#h2b', 4.66, { from: 1.25, dur: 0.16 });
 
-  // ---------------- TITLE (7.0 – 14.0) ----------------
+  // ---------------- TITLE (7.49 – 16.17) ----------------
   K.clip('#duskBg', { dir: 'clips/dusk', t0: C[0], fps: 30, frames: 240, ext: '.jpg' });
   K.fade('#duskBg', C[0], C[0] + 0.5);
-  rise('#tKick', C[0] + 0.1, 16); rise('#tTitle', C[0] + 0.2, 30);
-  cap('#kT', 8.3, C[1] - 0.05);   // the thesis: 5.6s on screen
+  rise('#tKick', C[0] + 0.1, 16); rise('#tTitle', C[0] + 0.2, 30);   // "Here's what your AI assistant can do…" 7.49
+  cap('#kT', 12.0, C[1] - 0.05);   // "It gets the typing." 12.05 → "subcontractors." ends 15.76
 
   // ---------------- CH1: WHAT IT CAN SEE ----------------
-  rise('#chat1', 16.22, 24);
-  rise('#q1', 16.45, 14);           // the bubble is the line (no separate caption box)
-  dots('#d1', 16.9, 17.8); K.scene('#d1', 0, 17.8);
-  K.pop('#t1', 17.8, { dy: 8 });
-  K.pop('#a1h', 18.3, { dy: 10 });
-  ['#a1r1', '#a1r2', '#a1r3', '#a1r4'].forEach((s, i) => K.pop(s, 18.65 + i * 0.4, { dy: 10 }));
-  K.pop('#a1s', 20.5, { dy: 10 });
-  cap('#k1b', 20.25, 24.6);
+  rise('#chat1', S1, 24);
+  rise('#q1', 17.78, 14);           // the bubble is the line: "What's on my schedule this week, and who's turning up?" 17.78–20.32
+  dots('#d1', 18.3, 19.3); K.scene('#d1', 0, 19.3);
+  K.pop('#t1', 19.3, { dy: 8 });
+  K.pop('#a1h', 19.85, { dy: 10 });
+  ['#a1r1', '#a1r2', '#a1r3', '#a1r4'].forEach((s, i) => K.pop(s, 20.3 + i * 0.35, { dy: 10 }));   // the rows land under "answers from the project's own schedule"
+  K.pop('#a1s', 21.9, { dy: 10 });
+  cap('#k1b', 20.45, 22.65);        // "It answers from the project's own schedule." 20.48–22.56
 
-  rise('#lab1L', 24.62, 12); rise('#ans1', 24.62, 24); rise('#lab1R', 24.9, 12); rise('#g1wrap', 24.9, 24);
+  rise('#lab1L', 22.67, 12); rise('#ans1', 22.67, 24); rise('#lab1R', 22.95, 12); rise('#g1wrap', 22.95, 24);   // "Next to the real thing:" 22.69
   [1, 2, 3, 4].forEach((n, i) => {
-    const t = 25.5 + i * 0.6;
+    const t = 24.1 + i * 0.42;      // rings on "same crews" (24.08) … the last on "dates." (25.36)
     K.add('#gr' + n, 'opacity', [[t, 0], [t + 0.15, 1, 'out']]);
     K.add('#b1r' + n, 'background', [[0, '#ffffff'], [t, '#ffffff'], [t + 0.15, '#dcfce7', 'out']]);
   });
-  cap('#k1c', 24.85, 29.2);
+  cap('#k1c', 24.05, 26.02);        // "same crews, same dates." 24.08–26.00
 
-  rise('#sees1', 29.25, 30); K.slam('#sees2', 30.5, { from: 1.12, dur: 0.18 }); rise('#sees3', 31.6, 16);
+  rise('#sees1', 26.05, 30); K.slam('#sees2', 27.67, { from: 1.12, dur: 0.18 }); rise('#sees3', 28.66, 16);   // "It sees…" 26.08 / "Nothing more." 27.67 / "Read alone…" 28.69
 
   // ---------------- CH2: WHAT IT CAN TYPE ----------------
-  rise('#chat2', 36.42, 24);
-  rise('#q2', 36.65, 14);           // the bubble is the line (no separate caption box)
-  dots('#d2', 37.15, 38.1); K.scene('#d2', 0, 38.1);
-  K.pop('#t2a', 38.1, { dy: 8 }); K.pop('#t2b', 38.55, { dy: 8 });
-  K.pop('#a2a', 39.1, { dy: 10 }); K.pop('#a2b', 39.9, { dy: 10 });
-  K.add('#mk2', 'var:--hp', [[0, 0], [40.25, 0], [40.85, 1, 'inOut']]);   // highlighter on the proof sentence
-  cap('#k2b', 40.85, 43.2);
+  rise('#chat2', S2, 24);
+  rise('#q2', 32.93, 14);           // the bubble is the line: "Draft a tender for the façade package, private, closing next Friday." 32.93–36.56
+  dots('#d2', 33.5, 34.6); K.scene('#d2', 0, 34.6);
+  K.pop('#t2a', 34.6, { dy: 8 }); K.pop('#t2b', 35.1, { dy: 8 });
+  K.pop('#a2a', 37.05, { dy: 10 }); K.pop('#a2b', 38.2, { dy: 10 });   // "It creates the draft," 37.09 / "and says" 38.21
+  K.add('#mk2', 'var:--hp', [[0, 0], [38.5, 0], [40.3, 1, 'inOut']]);   // highlighter rides "it isn't published and nobody has been invited." 38.52–40.48
+  cap('#k2b', 40.6, 42.62);         // "It drafts it. Then it stops." 40.64–42.56
 
-  rise('#w2b', 43.22, 26);
-  K.add('#w2b', 'scale', [[43.5, 1], [48.3, 1.015]]);
-  K.add('#pDraft', 'scale', [[44.0, 1], [44.2, 1.12, 'out'], [44.5, 1, 'out']]);
-  cap('#k2c', 43.6, 48.3);
+  rise('#w2b', 42.64, 26);          // "Here's the draft." 42.67
+  K.add('#w2b', 'scale', [[42.9, 1], [47.9, 1.015]]);
+  K.add('#pDraft', 'scale', [[43.4, 1], [43.6, 1.12, 'out'], [43.9, 1, 'out']]);
+  cap('#k2c', 45.6, 47.9);          // "It drafts. A person presses send." 45.64–47.85 (the cursor waits by Send and never clicks)
 
-  rise('#chat3', 48.32, 24);
-  rise('#q3', 48.5, 14); K.pop('#q3b', 49.35, { dy: 6 });
-  dots('#d3', 49.8, 50.5); K.scene('#d3', 0, 50.5);
-  K.pop('#t3', 50.5, { dy: 8 }); K.pop('#a3', 51.0, { dy: 10 });
-  cap('#k2d', 48.55, 53.1);
+  rise('#chat3', 47.92, 24);
+  rise('#q3', 47.96, 14); K.pop('#q3b', 48.7, { dy: 6 });   // "Paste in a defects list," 47.96
+  dots('#d3', 49.1, 49.8); K.scene('#d3', 0, 49.8);
+  K.pop('#t3', 49.8, { dy: 8 }); K.pop('#a3', 50.3, { dy: 10 });   // "comes back as a sheet." 49.73–50.81
+  cap('#k2d', 48.0, 50.88);
 
-  rise('#w2d', 53.12, 26);
-  ['#sr1', '#sr2', '#sr3', '#sr4', '#sr5', '#sr6'].forEach((s, i) => K.add(s, 'opacity', [[53.55 + i * 0.22, 0], [53.7 + i * 0.22, 1, 'out']]));
-  cap('#k2e', 53.3, C[3]);
+  rise('#w2d', 50.9, 26);           // "Your own spreadsheet, inside the project." 50.91–53.25
+  ['#sr1', '#sr2', '#sr3', '#sr4', '#sr5', '#sr6'].forEach((s, i) => K.add(s, 'opacity', [[51.3 + i * 0.2, 0], [51.45 + i * 0.2, 1, 'out']]));
+  cap('#k2e', 51.0, C[3]);
 
   // ---------------- CH3: WHAT IT CAN NEVER DO ----------------
-  rise('#nHead', 60.15, 20); rise('#nSrc', 60.4, 12);
-  const NR = [[60.7, 61.25, 62.5], [63.1, 63.8, 65.8], [66.4, 66.95, 68.25], [68.8, 69.45, 71.2]];   // type start, type end, stamp
+  rise('#nHead', 55.58, 20); rise('#nSrc', 55.75, 12);   // "QSME's own list, word for word." 55.57–58.01
+  const NR = [[58.1, 59.6, 59.95], [60.0, 62.0, 62.45], [62.5, 64.4, 64.85], [64.9, 66.8, 67.15]];   // type start, type end, stamp: each line types as it is said, the ✕ lands on its last word
   NR.forEach(([a, b, st], i) => {
     const n = i + 1;
     K.show('#nr' + n, a);
@@ -694,65 +726,67 @@
     K.add('#ns' + n, 'scale', [[st, 1.6], [st + 0.14, 1, 'slam']]);
     K.add('#ns' + n, 'rotate', [[st, -14], [st + 0.14, -6, 'out']]);
   });
-  // the list dims a touch while the caption lands
-  ['#nt1', '#nt2', '#nt3', '#nt4'].forEach(s => K.add(s, 'color', [[0, '#eef4ef'], [72.1, '#eef4ef'], [72.5, '#a9b8ae', 'out']]));
-  cap('#k3b', 72.3, 76.5);
-  if (KICKER) { K.pop('#kicker', 73.9, { dy: 0 }); K.add('#kicker', 'scale', [[73.9, 1.15], [74.15, 1, 'out']]); K.add('#kicker', 'rotate', [[0, -2]]); }
+  // the list dims a touch while the caption lands ("Not a setting." 67.27)
+  ['#nt1', '#nt2', '#nt3', '#nt4'].forEach(s => K.add(s, 'color', [[0, '#eef4ef'], [67.25, '#eef4ef'], [67.65, '#a9b8ae', 'out']]));
+  cap('#k3b', 67.25, 70.2);         // "Not a setting. Those doors just aren't wired up." 67.27–70.09
+  if (KICKER) { K.pop('#kicker', 68.9, { dy: 0 }); K.add('#kicker', 'scale', [[68.9, 1.15], [69.15, 1, 'out']]); K.add('#kicker', 'rotate', [[0, -2]]); }
 
-  rise('#ch3c', 76.52, 12); rise('#w3c', 76.56, 24);
-  K.add('#w3c', 'scale', [[76.56, 1], [81.0, 1.03, 'inOut']]);
-  sweep('#hl3c', 77.1, 78.0, 'inOut'); sweep('#hl3d', 78.0, 78.25);
-  cap('#k3c', 76.7, 80.9);
+  rise('#ch3c', 70.22, 12); rise('#w3c', 70.26, 24);   // "On the public page:" 70.25
+  K.add('#w3c', 'scale', [[70.26, 1], [74.5, 1.03, 'inOut']]);
+  sweep('#hl3c', 71.6, 72.9, 'inOut'); sweep('#hl3d', 72.9, 73.3);   // "no automation and no assistant awards a tender." 71.66–74.33
+  cap('#k3c', 71.6, 74.48);
 
-  K.add('#gCall', 'scale', [[80.9, 1.0], [C[4], 1.02]]);
-  rise('#callBub', 81.5, 20);
-  cap('#k3d', 81.1, C[4]);
+  K.add('#gCall', 'scale', [[74.48, 1.0], [C[4], 1.02]]);   // "So, back at nine-forty," 74.52
+  rise('#callBub', 75.45, 20);      // the pinned reply lands on "nine-forty" 75.50
+  cap('#k3d', 76.4, C[4]);          // "the programme stays where a person put it." 76.43–78.25
 
   // ---------------- CH4: WHO DID WHAT ----------------
-  rise('#w4', 86.92, 26);
-  ['#ra1', '#ra2', '#ra3'].forEach((s, i) => K.add(s, 'opacity', [[87.7 + i * 0.25, 0], [87.85 + i * 0.25, 1, 'out']]));
-  K.add('#ra1', 'background', [[0, '#ffffff'], [87.7, '#ffffff'], [87.9, '#f0fdf4', 'out']]);
-  K.add('#dim4', 'opacity', [[0, 0], [90.95, 0], [91.15, 1, 'out']]);
-  K.add('#dlg4', 'opacity', [[0, 0], [91.0, 0], [91.15, 1, 'out']]);
-  K.add('#dlg4', 'scale', [[91.0, 0.94], [91.25, 1, 'out']]);
-  cap('#k4a', 87.1, 90.9); cap('#k4b', 91.1, C[5]);
+  rise('#w4', 80.27, 26);           // "Settings." 80.28 / "Connected apps." 81.28
+  ['#ra1', '#ra2', '#ra3'].forEach((s, i) => K.add(s, 'opacity', [[82.45 + i * 0.25, 0], [82.6 + i * 0.25, 1, 'out']]));   // "What it did, newest first." 82.43
+  K.add('#ra1', 'background', [[0, '#ffffff'], [82.45, '#ffffff'], [82.65, '#f0fdf4', 'out']]);
+  K.add('#dim4', 'opacity', [[0, 0], [84.7, 0], [84.9, 1, 'out']]);
+  K.add('#dlg4', 'opacity', [[0, 0], [84.75, 0], [84.9, 1, 'out']]);
+  K.add('#dlg4', 'scale', [[84.75, 0.94], [85.0, 1, 'out']]);
+  cap('#k4a', 80.3, 84.45); cap('#k4b', 84.5, C[5]);   // "Disconnect, and it loses access immediately." 84.50–87.13
 
   // ---------------- CH5: THE SMALL PRINT ----------------
-  rise('#q5', 97.55, 30); rise('#q5s', 98.3, 12);
-  rise('#ch5b', 102.65, 12); rise('#w5b', 102.7, 24);
-  K.add('#w5b', 'scale', [[102.7, 1], [106.8, 1.015, 'inOut']]);
-  ['#hl5a', '#hl5b', '#hl5c', '#hl5d'].forEach((s, i) => sweep(s, 103.2 + i * 0.32, 103.52 + i * 0.32));
-  cap('#k5b', 102.8, 106.7);
-  // 6.0s card; the "No partnership implied." line is on screen for 4.6s
-  rise('#sp', 106.75, 30); rise('#sp1', 106.9, 14); rise('#sp2', 107.2, 20); rise('#sp3', 108.1, 12);
+  rise('#q5', 90.82, 30); rise('#q5s', 91.6, 12);   // "If an assistant tells you it has sent, paid or awarded something, it has not." 90.84–95.21
+  rise('#ch5b', 95.29, 12); rise('#w5b', 95.33, 24);   // "Every draft is a suggestion for a person to check." 95.30–98.25
+  K.add('#w5b', 'scale', [[95.33, 1], [98.4, 1.015, 'inOut']]);
+  ['#hl5a', '#hl5b', '#hl5c', '#hl5d'].forEach((s, i) => sweep(s, 96.3 + i * 0.32, 96.62 + i * 0.32));   // "a suggestion for a person to check" 96.37–98.25
+  cap('#k5b', 95.4, 98.3);
+  // the card: "Works with Claude, ChatGPT, Claude Code, Codex or Cursor." 98.34; "ChatGPT needs a paid plan with developer mode." 103.37; the disclaimer is up 4.6 s
+  rise('#sp', 98.32, 30); rise('#sp1', 98.5, 14); rise('#sp2', 103.35, 20); rise('#sp3', 101.5, 12);
 
   // ---------------- CLOSE + CTA ----------------
-  K.slam('#cl1', C[6] + 0.15, { from: 1.1, dur: 0.2 });
-  rise('#clA', 114.7, 20); rise('#clB', 116.0, 20);
-  rise('#ch6b', 118.72, 12); rise('#w6b', 118.76, 24);
-  K.add('#w6b', 'scale', [[118.76, 1], [122.8, 1.04, 'inOut']]);
-  sweep('#hl6b', 119.3, 120.4, 'inOut');
-  cap('#k6b', 118.9, 122.7);
+  K.slam('#cl1', C[6] + 0.1, { from: 1.1, dur: 0.2 });   // "The assistant drafts; you decide." 106.43
+  rise('#clA', 108.6, 20); rise('#clB', 109.55, 20);     // "It drafts;" 108.60 / "you send, award, sign, pay, and move the dates." 109.55
+  rise('#ch6b', 113.12, 12); rise('#w6b', 113.16, 24);   // "Thirty minutes," 113.15
+  K.add('#w6b', 'scale', [[113.16, 1], [116.0, 1.04, 'inOut']]);
+  sweep('#hl6b', 114.3, 115.4, 'inOut');                 // "on a working project like yours." 114.36–115.85
+  cap('#k6b', 113.3, 115.9);
 
-  // end card (7.5s): left half carries logo, URL, demo pill and the comment prompt; right half = YouTube end-screen zone
-  K.clip('#bgE', { dir: 'clips/structure', t0: 122.7, fps: 30, frames: 240, ext: '.jpg' });
-  K.fade('#bgE', 122.7, 123.2);
-  K.fade('#logo', 122.85, 123.25).add('#logo', 'scale', [[122.85, 0.94], [123.4, 1, 'out']]);
-  rise('#eHead', 123.15, 20); rise('#eUrl', 123.45, 20); K.add('#eRule', 'clipX', [[123.7, 0], [124.05, 1, 'out']]);
-  rise('#eAsk', 124.3, 20);
+  // end card (6.2 s): logo + "Book a 30-minute demo" on "Book" (115.96), "at qsme.build" on "at" (117.34), the comment prompt on "What" (119.23)
+  K.clip('#bgE', { dir: 'clips/structure', t0: 115.9, fps: 30, frames: 240, ext: '.jpg' });
+  K.fade('#bgE', 115.9, 116.4);
+  K.fade('#logo', 115.95, 116.35).add('#logo', 'scale', [[115.95, 0.94], [116.5, 1, 'out']]);
+  rise('#eHead', 116.0, 20); rise('#eUrl', 117.3, 20); K.add('#eRule', 'clipX', [[118.2, 0], [118.55, 1, 'out']]);
+  rise('#eAsk', 119.2, 20);
 
   // the illustrative label is on (in the top bar) whenever a stand-in is on screen
-  K.add('#tagIll', 'opacity', [[0, 0], [16.2, 1, 'hold'], [29.2, 0, 'hold'], [36.4, 1, 'hold'], [C[3], 0, 'hold'], [80.9, 1, 'hold'], [C[4], 0, 'hold'], [86.9, 1, 'hold'], [C[5], 0, 'hold']]);
+  K.add('#tagIll', 'opacity', [[0, 0], [S1, 1, 'hold'], [26.02, 0, 'hold'], [S2, 1, 'hold'], [C[3], 0, 'hold'], [74.48, 1, 'hold'], [C[4], 0, 'hold'], [S4, 1, 'hold'], [C[5], 0, 'hold']]);
 
   // ---------------- cursor: the person (never clicks Send) ----------------
   // Points: [t, target, ease-into]. target = [x, y] or { s, fx, fy (0..1 of the element box), dx, dy }.
   // Over a button the arrow becomes a pointing hand and the button shows its hover state (pure function of t).
   const SEND = { s: '#sendBtn', fx: 0.965, fy: 0.7 };            // right padding of the button: the hand never covers the label
   const paths = [
-    { t0: 44.4, t1: 48.25, pts: [[44.4, [1330, 815]], [45.4, SEND, 'swipe'], [45.65, SEND],
-      [45.95, { ...SEND, dx: -16, dy: 24 }, 'out'], [46.1, { ...SEND, dx: -16, dy: 24 }],   // hesitates: pulls back off the button
-      [46.45, SEND, 'inOut'], [48.25, { ...SEND, fx: 0.95, fy: 0.74 }, 'linear']], clicks: [] },   // ...comes back, and waits (1.8s)
-    { t0: 89.5, t1: 95.5, pts: [[89.5, [1450, 780]], [90.65, { s: '#discBtn', fx: 0.92, fy: 0.72 }, 'swipe'], [91.7, { s: '#discBtn', fx: 0.92, fy: 0.72 }], [92.7, { s: '#dlgBtn', dx: 30, dy: 30 }, 'swipe'], [95.5, { s: '#dlgBtn', dx: 34, dy: 34 }, 'linear']], clicks: [90.8] },
+    // reaches Send on "button?" (44.45), hesitates, comes back on "It drafts." (45.64) and waits through "A person presses send." (47.85)
+    { t0: 43.3, t1: 47.85, pts: [[43.3, [1330, 815]], [44.4, SEND, 'swipe'], [44.7, SEND],
+      [45.0, { ...SEND, dx: -16, dy: 24 }, 'out'], [45.2, { ...SEND, dx: -16, dy: 24 }],   // hesitates: pulls back off the button
+      [45.55, SEND, 'inOut'], [47.85, { ...SEND, fx: 0.95, fy: 0.74 }, 'linear']], clicks: [] },   // ...comes back, and waits (2.3 s)
+    // Disconnect: the click lands on "Disconnect," (84.50); the hand parks by the confirm and never clicks it
+    { t0: 83.3, t1: C[5], pts: [[83.3, [1450, 780]], [84.35, { s: '#discBtn', fx: 0.92, fy: 0.72 }, 'swipe'], [85.3, { s: '#discBtn', fx: 0.92, fy: 0.72 }], [86.2, { s: '#dlgBtn', dx: 30, dy: 30 }, 'swipe'], [C[5], { s: '#dlgBtn', dx: 34, dy: 34 }, 'linear']], clicks: [84.5] },
   ];
   const HOVER = { '#sendBtn': { background: '#166534', boxShadow: '0 0 0 5px rgba(22,163,74,.22)' }, '#discBtn': { background: '#FEF2F2' }, '#dlgBtn': { background: '#B91C1C' } };
   const cur = $('#cursor'), hand = $('#hand'), ring = $('#ring'), ease = Kit.ease;

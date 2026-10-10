@@ -1,5 +1,5 @@
 {
-  "_note": "Which ElevenLabs voice reads each venture. Library voices need a PAID plan. Swap IDs after you pick by ear (projects/2026-10-02-qsme-voice-casting).",
-  "qsme-nz":    { "voice_id": "7R9vnLAE0ZSpY0xWp0mv", "voice_name": "Jenna (NZ female)", "alt_voice_id": "dwQyeacJ1LCJv0kQomJE", "alt_voice_name": "Kiwi Mikey (NZ male)" },
-  "qsme-build": { "voice_id": "bISW1PJRBPT7aRbtPJlB", "voice_name": "Arnold (NZ male)", "alt_voice_id": "QlZn2MPaf2jDn0461bnj", "alt_voice_name": "James (NZ male)" }
+  "_note": "Approved by the owner 2026-10-06 on the N01 pilot: ONE voice for everything, model eleven_v3, one unbroken take, clean background (no bed). Swap only if the owner says so.",
+  "qsme-nz":    { "voice_id": "53CG2aO2HU48thT3QnMl", "voice_name": "Cam S (Kiwi)", "model": "eleven_v3" },
+  "qsme-build": { "voice_id": "53CG2aO2HU48thT3QnMl", "voice_name": "Cam S (Kiwi)", "model": "eleven_v3" }
 }

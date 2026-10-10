@@ -1,344 +1,466 @@
 {
  "venture": "qsme-build",
  "video": "outputs/claude-writes-my-tender-16x9.mp4",
- "character": "The PM in first person: a Kiwi project manager, late 30s, on the couch at 9:40 pm with the week's typing still to do. General urban New Zealand accent (Auckland or Wellington office), not broad, not Australian, never a caricature. Dry, under-played, a bit tired, amused at her own rules for the AI. The script is written gender-neutral, so it suits (best) the founder in his own voice, (default AI read) the cast Global QS voice in tools/voices.json (qsme-build: Arnold, alt James), or a female Kiwi voice (e.g. Jenna, run make_vo.py with that voice id). An AI voice never speaks as the founder and is never captioned as him.",
- "casting_line": "Asked my AI to push the programme a week. It can't. On purpose. Book a thirty-minute demo at Q-S-me dot build.",
- "series_rule": "The burned-in captions are the subtitles, so every voiced line matches its on-screen text word for word ('30-minute' is read 'thirty-minute'; QSME is read 'Q-S-me'). Where the hero text IS the line (hook headline, 'It can't.', 'On purpose.', the two typed asks in the chat bubbles, 'It sees what your login sees. Nothing more.', the four never-list lines, the quote card, the small-print line, 'The assistant drafts; you decide.'), there is no separate caption box. Chapter numbers are spoken; labels, chips, chat replies and the 'Illustrative' tag stay unvoiced.",
+ "vid": "G08",
+ "character": "One dry Kiwi storyteller in first person: a project manager at 9:40 pm telling you what the AI could and couldn't do (Cam S, ElevenLabs voice 53CG2aO2HU48thT3QnMl). General NZ accent, never a caricature, no announcer lift, no exclamation marks; the never-list flat and certain, the product lines plain, the CTA clear. Continuous speech: the narration never stops for more than 1 s. An AI voice never speaks as the founder and is never captioned as him.",
  "settings": {
-  "model": "eleven_multilingual_v2",
-  "stability": 0.45,
-  "similarity_boost": 0.75,
-  "style": 0,
-  "speed": 1,
-  "use_speaker_boost": true
+  "model": "eleven_v3",
+  "stability": 0.5,
+  "note": "v3 only accepts stability 0.0 / 0.5 / 1.0; no style/speed/similarity"
  },
+ "take": {
+  "model": "eleven_v3",
+  "voice": "Cam S (53CG2aO2HU48thT3QnMl)",
+  "file": "outputs/vo-take-cam-v3/take.mp3",
+  "alignment": "outputs/vo-take-cam-v3/alignment.json",
+  "words": 344,
+  "text_sent": "outputs/vo-take-cam-v3/take-text.txt",
+  "duration_s": 120.57,
+  "method": "ONE unbroken request to /v1/text-to-speech/53CG2aO2HU48thT3QnMl/with-timestamps (model eleven_v3, stability 0.5, 1,943 characters); never sliced; laid onto the master at 0.0 s at gain 1.15 with tools/mux, no bed. First attempt accepted.",
+  "stt_check": "tools/el.py stt (outputs/vo-take-cam-v3/heard.txt): every word heard; QSME heard as 'QS Me' (title, never list) and 'qsme.build' (CTA); 'programme' transcribed 'program' (homophone)",
+  "max_gap_s": 0.84,
+  "max_gap_at": "the beat after 'That green button?' (the [short pause] before 'It drafts. A person presses send.')",
+  "words_per_s": 2.85,
+  "tags": [
+   "[dry]",
+   "[short pause]",
+   "[confident]"
+  ]
+ },
+ "series_rule": "The burned-in captions are phrases lifted from the narration (never the whole script), so a viewer with sound off still gets the beats and a viewer with sound on never reads the same line twice. Where the hero text IS the line (hook, 'It can't.', 'On purpose.', the two typed asks, 'It sees what your login sees. Nothing more.', the four never-list lines, the quote card, the small-print line, 'The assistant drafts; you decide.'), there is no caption box. Chapter numbers are spoken; the chapter sub-lines, chips, chat replies, the 'Illustrative' tag and 'No partnership implied.' stay unvoiced.",
+ "continuous_read_v3": "Asked my AI to push the programme back a week. [dry] It can't. On purpose.\n\nNine-forty on a Tuesday. Here's what your AI assistant can do in Queue Ess Mee, and the four things it never will. It gets the typing. Not the dates, the money or the subcontractors.\n\nOne. What it can see. What's on my schedule this week, and who's turning up? It answers from the project's own schedule. Next to the real thing: same crews, same dates. It sees what your login sees. Nothing more. Read alone can never change anything.\n\nTwo. What it can type. Draft a tender for the façade package, private, closing next Friday. It creates the draft, and says it isn't published and nobody has been invited. It drafts it. Then it stops. Here's the draft. That green button? [short pause] It drafts. A person presses send. Paste in a defects list, and it comes back as a sheet. Your own spreadsheet, inside the project.\n\nThree. What it can never do. Queue Ess Mee's own list, word for word. Move money or record a payment. Send or publish a tender, or accept a bid. Issue, sign or cancel a contract. Change the schedule or delete a project. Not a setting. Those doors just aren't wired up. On the public page: no automation and no assistant awards a tender. So, back at nine-forty, the programme stays where a person put it.\n\nFour. Who did what. Settings. Connected apps. What it did, newest first. Disconnect, and it loses access immediately.\n\nFive. The small print. Not hidden in a footer. If an assistant tells you it has sent, paid or awarded something, it has not. Every draft is a suggestion for a person to check. Works with Claude, ChatGPT, Claude Code, Codex or Cursor. ChatGPT needs a paid plan with developer mode.\n\n[confident] The assistant drafts; you decide. It drafts; you send, award, sign, pay, and move the dates. Thirty minutes, on a working project like yours. Book a thirty-minute demo at Queue Ess Mee dot build. What would you let it type first?",
  "lines": [
   {
-   "id": "01-hook",
-   "start_s": 0.2,
-   "max_s": 3.0,
-   "on_screen": "Headline 'Asked my AI to push the programme a week.' (frame 1) · chat: 'Push the programme back a week.' already sent · chip '9:40 pm · Tuesday'",
-   "text_v2": "Asked my AI to push the programme a week.",
-   "text_v3": "[sighs] Asked my AI to push the programme a week.",
-   "delivery": "First person, tired, 9:40 at night on the couch. A real Kiwi PM telling a mate, not an announcer. Flat and a bit sheepish, a light lean on 'push', falling at 'a week'. Out by 3.2, before 'It can't.' slams."
+   "id": "vo00-hook",
+   "start_s": 0.0,
+   "end_s": 2.72,
+   "max_s": 2.72,
+   "on_screen": "Hook 0–4.12: chip '9:40 pm · Tuesday', headline 'Asked my AI to push the programme a week.', the ask already sent in the chat; dots 0.4–1.15, tool chip 1.3, the reply types 1.5–3.1",
+   "text_v2": "Asked my AI to push the programme back a week.",
+   "text_v3": "Asked my AI to push the programme back a week.",
+   "delivery": "Flat, a bit tired, like telling a mate what happened. No lift."
   },
   {
-   "id": "02-cant",
-   "start_s": 3.3,
-   "max_s": 0.9,
-   "on_screen": "'It can't.' slams in red under the headline (3.25); the assistant's reply 'I can't change the schedule.' is on screen",
+   "id": "vo01-cant",
+   "start_s": 3.34,
+   "end_s": 3.92,
+   "max_s": 0.58,
+   "on_screen": "'It can't.' slams red on 'can't' (3.42)",
    "text_v2": "It can't.",
-   "text_v3": "It can't.",
-   "delivery": "Dry, almost amused. Two syllables, a small gap before it. Kiwi 'can't' (broad 'ah', never the American 'can't'). Out by 4.2 (the hard cut)."
+   "text_v3": "[dry] It can't.",
+   "delivery": "Dry, short. The joke is that it failed."
   },
   {
-   "id": "03-purpose",
-   "start_s": 4.65,
-   "max_s": 1.3,
-   "on_screen": "Hard cut (4.2) to the QSME schedule, untouched · 'It can't.' (red) 'On purpose.' (green, slams 4.6)",
+   "id": "vo02-purpose",
+   "start_s": 4.16,
+   "end_s": 5.28,
+   "max_s": 1.12,
+   "on_screen": "Hard cut to the untouched Gantt on 'On' (4.12); 'On purpose.' slams green on 'purpose.' (4.66)",
    "text_v2": "On purpose.",
    "text_v3": "On purpose.",
-   "delivery": "The turn. Warm, quietly pleased, like it was your idea all along. No punchline lift. Out by 5.95 so the cut to the title breathes."
+   "delivery": "Land it; the failure is the feature."
   },
   {
-   "id": "04-title",
-   "start_s": 8.5,
-   "max_s": 4.6,
-   "on_screen": "Title card 'What your AI assistant can do in QSME, and the four things it never will.' (no chapter list) · caption 'It gets the typing. Not the dates, the money or the subcontractors.' (8.3 to 14.2)",
+   "id": "vo03-nine-forty",
+   "start_s": 5.49,
+   "end_s": 7.44,
+   "max_s": 1.95,
+   "on_screen": "Said over the untouched Gantt (camera drift only); the wipe to the title starts on 'Here's' (7.22)",
+   "text_v2": "Nine-forty on a Tuesday.",
+   "text_v3": "Nine-forty on a Tuesday.",
+   "delivery": "A scene-setter, easy."
+  },
+  {
+   "id": "vo04-title",
+   "start_s": 7.49,
+   "end_s": 11.92,
+   "max_s": 4.43,
+   "on_screen": "Title card 7.49: kicker '9:40 pm · the week's typing still to do' + the title (the words)",
+   "text_v2": "Here's what your AI assistant can do in Q-S-me, and the four things it never will.",
+   "text_v3": "Here's what your AI assistant can do in Queue Ess Mee, and the four things it never will.",
+   "delivery": "The title read straight, 'never will' as a promise."
+  },
+  {
+   "id": "vo05-typing",
+   "start_s": 12.05,
+   "end_s": 15.76,
+   "max_s": 3.71,
+   "on_screen": "Caption kT 12.0 → 16.12: 'It gets the typing. Not the dates, the money or the subcontractors.'",
    "text_v2": "It gets the typing. Not the dates, the money or the subcontractors.",
    "text_v3": "It gets the typing. Not the dates, the money or the subcontractors.",
-   "delivery": "Matter-of-fact, the house rule. A small beat after 'typing'. The list is three even steps, the last one falling. Out by 13.1 (wipe 14.0)."
+   "delivery": "Even; a small lean on 'typing'."
   },
   {
-   "id": "05-ch1",
-   "start_s": 14.4,
-   "max_s": 1.7,
-   "on_screen": "Chapter card '1 · What it can see' / 'Anything your login can see. Nothing else.' (2.2s card)",
+   "id": "vo06-ch1",
+   "start_s": 16.18,
+   "end_s": 17.68,
+   "max_s": 1.5,
+   "on_screen": "Chapter 1 card on 'One.' (wipe 15.9, card 16.17–17.75); the sub-line 'Anything your login can see. Nothing else.' is on screen, unvoiced",
    "text_v2": "One. What it can see.",
    "text_v3": "One. What it can see.",
-   "delivery": "Chapter marker, unhurried, lower energy than the lines either side. Out by 16.1."
+   "delivery": "Chapter number plain."
   },
   {
-   "id": "06-ask-schedule",
-   "start_s": 16.45,
-   "max_s": 3.6,
-   "on_screen": "Chat bubble: 'What's on my schedule this week, and who's turning up?' (no separate caption box: the bubble is the line)",
+   "id": "vo07-ask-schedule",
+   "start_s": 17.78,
+   "end_s": 20.32,
+   "max_s": 2.54,
+   "on_screen": "Chat 1 17.75; the bubble is the line (rises 17.78); dots, 'QSME · read the schedule' 19.3, answer rows 20.3–21.35",
    "text_v2": "What's on my schedule this week, and who's turning up?",
    "text_v3": "What's on my schedule this week, and who's turning up?",
-   "delivery": "Read as the question she actually types, conversational, a slight rise on 'turning up?' only. Out by 20.05."
+   "delivery": "The question as typed, slightly hopeful."
   },
   {
-   "id": "07-answers",
-   "start_s": 20.3,
-   "max_s": 3.0,
-   "on_screen": "The answer: four crews with dates and names (demo data) · caption 'It answers from the project's own schedule.'",
+   "id": "vo08-answers",
+   "start_s": 20.48,
+   "end_s": 22.56,
+   "max_s": 2.08,
+   "on_screen": "Caption k1b 20.45 → 22.65 while the four rows and 'Four crews. Lee hasn't confirmed yet.' (21.9) land",
    "text_v2": "It answers from the project's own schedule.",
    "text_v3": "It answers from the project's own schedule.",
-   "delivery": "Plain, a touch impressed despite herself. Lean on 'own'. Out by 23.3."
+   "delivery": "Matter-of-fact."
   },
   {
-   "id": "08-same",
-   "start_s": 24.9,
-   "max_s": 2.0,
-   "on_screen": "Split: the answer beside the QSME schedule; the four bars ring green one by one (25.5 to 27.3) · caption 'Same crews. Same dates.'",
-   "text_v2": "Same crews. Same dates.",
-   "text_v3": "Same crews. Same dates.",
-   "delivery": "Two short statements, the second a hair lower. Ticking boxes. Out by 26.9; the rings finish in silence."
+   "id": "vo09-same",
+   "start_s": 22.69,
+   "end_s": 26.0,
+   "max_s": 3.31,
+   "on_screen": "Split screen 22.65 (THE ANSWER / THE PROJECT'S OWN SCHEDULE); rings on 24.1 / 24.52 / 24.94 / 25.36 (the last on 'dates'); caption k1c 'Same crews. Same dates.' 24.05 → 26.02",
+   "text_v2": "Next to the real thing: same crews, same dates.",
+   "text_v3": "Next to the real thing: same crews, same dates.",
+   "delivery": "'same … same' as a tick-tick."
   },
   {
-   "id": "09-login",
-   "start_s": 29.3,
-   "max_s": 3.4,
-   "on_screen": "'It sees what your login sees.' then 'Nothing more.' (green, 30.5) · chips 'read' 'write' + 'Two separate permissions. Read alone can never change anything.' (unvoiced)",
+   "id": "vo10-login",
+   "start_s": 26.08,
+   "end_s": 28.56,
+   "max_s": 2.48,
+   "on_screen": "Big type 26.02: 'It sees what your login sees.' rises 26.05, 'Nothing more.' slams 27.67",
    "text_v2": "It sees what your login sees. Nothing more.",
    "text_v3": "It sees what your login sees. Nothing more.",
-   "delivery": "Reassuring, firm, not salesy. Full stop after 'sees'. 'Nothing more' quieter and final. Out by 32.7."
+   "delivery": "Lean on 'your'; 'Nothing more.' as a full stop."
   },
   {
-   "id": "10-ch2",
-   "start_s": 34.6,
-   "max_s": 1.7,
-   "on_screen": "Chapter card '2 · What it can type' / 'Drafts and sheets. Never the send button.' (2.2s card)",
+   "id": "vo11-read-alone",
+   "start_s": 28.69,
+   "end_s": 30.72,
+   "max_s": 2.03,
+   "on_screen": "read · write chips + 'Two separate permissions. Read alone can never change anything.' rise 28.66",
+   "text_v2": "Read alone can never change anything.",
+   "text_v3": "Read alone can never change anything.",
+   "delivery": "Plain."
+  },
+  {
+   "id": "vo12-ch2",
+   "start_s": 30.98,
+   "end_s": 32.8,
+   "max_s": 1.82,
+   "on_screen": "Chapter 2 card on 'Two.' (wipe 30.72, card 30.99–32.9); sub-line 'Drafts and sheets. Never the send button.' unvoiced",
    "text_v2": "Two. What it can type.",
    "text_v3": "Two. What it can type.",
-   "delivery": "Chapter marker, same shape as 05. Out by 36.3."
+   "delivery": "Chapter number plain."
   },
   {
-   "id": "11-ask-tender",
-   "start_s": 36.65,
-   "max_s": 4.0,
-   "on_screen": "Chat bubble: 'Draft a tender for the façade package, private, closing next Friday.' (no separate caption box: the bubble is the line)",
+   "id": "vo13-ask-tender",
+   "start_s": 32.93,
+   "end_s": 36.56,
+   "max_s": 3.63,
+   "on_screen": "Chat 2 32.9; the bubble is the line (32.93); dots, 'created a tender draft' 34.6, 'added 4 SOQ jobs to it' 35.1",
    "text_v2": "Draft a tender for the façade package, private, closing next Friday.",
    "text_v3": "Draft a tender for the façade package, private, closing next Friday.",
-   "delivery": "Instruction voice, a PM rattling off a job: brisk, clipped commas, 'façade' said fuh-SAHD. Out by 40.65."
+   "delivery": "The ask as typed, brisk."
   },
   {
-   "id": "12-stops",
-   "start_s": 41.0,
-   "max_s": 1.9,
-   "on_screen": "The reply: 'Done. \"Façade package\" is saved as a draft…' and, bold with a green highlighter (40.25), 'It isn't published and nobody has been invited.' · caption 'It drafts it. Then it stops.'",
+   "id": "vo14-creates",
+   "start_s": 36.72,
+   "end_s": 40.48,
+   "max_s": 3.76,
+   "on_screen": "Reply a2a pops 37.05, a2b 38.2; the green highlighter rides 'It isn't published and nobody has been invited.' 38.5–40.3",
+   "text_v2": "It creates the draft, and says it isn't published and nobody has been invited.",
+   "text_v3": "It creates the draft, and says it isn't published and nobody has been invited.",
+   "delivery": "The proof sentence a touch slower, like reading it off the screen."
+  },
+  {
+   "id": "vo15-stops",
+   "start_s": 40.64,
+   "end_s": 42.56,
+   "max_s": 1.92,
+   "on_screen": "Caption k2b 40.6 → 42.62",
    "text_v2": "It drafts it. Then it stops.",
    "text_v3": "It drafts it. Then it stops.",
-   "delivery": "Dry observation, a tiny smile on 'stops'. Out by 42.9."
+   "delivery": "Two short sentences; the second one lands."
   },
   {
-   "id": "13-send",
-   "start_s": 43.7,
-   "max_s": 3.0,
-   "on_screen": "QSME tender draft (Draft · Private · Closes Fri 30 Oct); the cursor reaches 'Send Tender Invitations' (hover, hand), pulls back, comes back and waits; it never clicks · caption 'It drafts. A person presses send.'",
+   "id": "vo16-draft",
+   "start_s": 42.67,
+   "end_s": 44.8,
+   "max_s": 2.13,
+   "on_screen": "The tender draft 42.62 ('Façade package' · Draft · Private · nobody invited yet); the cursor heads for 'Send Tender Invitations' and reaches it on 'button?' (44.4), pulls back (45.0), comes back (45.55)",
+   "text_v2": "Here's the draft. That green button?",
+   "text_v3": "Here's the draft. That green button? [short pause]",
+   "delivery": "A beat after 'button?' (0.84 s): the hesitation is the joke."
+  },
+  {
+   "id": "vo17-send",
+   "start_s": 45.64,
+   "end_s": 47.85,
+   "max_s": 2.21,
+   "on_screen": "Caption k2c 45.6 → 47.9 while the hand waits by Send and never clicks",
    "text_v2": "It drafts. A person presses send.",
    "text_v3": "It drafts. A person presses send.",
-   "delivery": "The thesis line, but said like common sense. Even weight, lean on 'person'. Out by 46.7; the cursor waits in silence after."
+   "delivery": "Deadpan."
   },
   {
-   "id": "14-defects",
-   "start_s": 48.6,
-   "max_s": 4.3,
-   "on_screen": "Chat: a pasted defects list (six lines) + 'Put it in QSME as a sheet.' · caption 'Paste in a defects list. It comes back as a sheet.'",
-   "text_v2": "Paste in a defects list. It comes back as a sheet.",
-   "text_v3": "Paste in a defects list. It comes back as a sheet.",
-   "delivery": "Light, practical, the tiny win of the evening. Out by 52.9."
+   "id": "vo18-defects",
+   "start_s": 47.96,
+   "end_s": 50.81,
+   "max_s": 2.85,
+   "on_screen": "Chat 3 47.9: the pasted list (47.96) + 'Put it in QSME as a sheet.' (48.7), 'created a sheet' 49.8, reply 50.3; caption k2d 'Paste in a defects list. It comes back as a sheet.' 48.0 → 50.88",
+   "text_v2": "Paste in a defects list, and it comes back as a sheet.",
+   "text_v3": "Paste in a defects list, and it comes back as a sheet.",
+   "delivery": "Easy, a bit pleased."
   },
   {
-   "id": "15-sheet",
-   "start_s": 53.4,
-   "max_s": 3.5,
-   "on_screen": "QSME sheet 'Defects, level 3' fills row by row · caption 'Your own spreadsheet, inside the project.'",
+   "id": "vo19-sheet",
+   "start_s": 50.91,
+   "end_s": 53.25,
+   "max_s": 2.34,
+   "on_screen": "The sheet 'Defects, level 3' 50.88, six rows fill 51.3–52.45; caption k2e 51.0 → 53.42",
    "text_v2": "Your own spreadsheet, inside the project.",
    "text_v3": "Your own spreadsheet, inside the project.",
-   "delivery": "Satisfied, unhurried. Out by 56.9, before the wipe at 57.9."
+   "delivery": "Plain."
   },
   {
-   "id": "16-ch3",
-   "start_s": 58.3,
-   "max_s": 2.0,
-   "on_screen": "Chapter card '3 · What it can never do' (red numeral) / 'QSME's own list, word for word.' (2.2s card)",
+   "id": "vo20-ch3",
+   "start_s": 53.41,
+   "end_s": 55.45,
+   "max_s": 2.04,
+   "on_screen": "Chapter 3 card (red numeral) on 'Three.' (wipe 53.15, card 53.42–55.55)",
    "text_v2": "Three. What it can never do.",
    "text_v3": "Three. What it can never do.",
-   "delivery": "Slightly slower and lower than the other chapter markers: this is the one that matters. It may run a beat into the list heading. Out by 60.3."
+   "delivery": "A shade lower: this is the point."
   },
   {
-   "id": "17-never-money",
-   "start_s": 60.7,
-   "max_s": 2.2,
-   "on_screen": "'What it can never do' + line 1 types: 'Move money or record a payment' · red ✕ stamps at 62.5",
+   "id": "vo21-own-list",
+   "start_s": 55.57,
+   "end_s": 58.01,
+   "max_s": 2.44,
+   "on_screen": "'What it can never do' + chip 'QSME's own list · word for word' rise 55.58 / 55.75",
+   "text_v2": "Q-S-me's own list, word for word.",
+   "text_v3": "Queue Ess Mee's own list, word for word.",
+   "delivery": "Plain."
+  },
+  {
+   "id": "vo22-never-money",
+   "start_s": 58.12,
+   "end_s": 59.93,
+   "max_s": 1.81,
+   "on_screen": "Line 1 types 58.1–59.6 as it is said; red ✕ slams on 'payment.' (59.95)",
    "text_v2": "Move money or record a payment.",
    "text_v3": "Move money or record a payment.",
-   "delivery": "Reading a rule off the wall. Flat, deliberate, a full stop. Out by 62.45 so the stamp lands clean."
+   "delivery": "Each never-line flat and certain."
   },
   {
-   "id": "18-never-tender",
-   "start_s": 63.1,
-   "max_s": 3.1,
-   "on_screen": "Line 2: 'Send or publish a tender, or accept a bid' · stamp 65.8",
+   "id": "vo23-never-tender",
+   "start_s": 60.04,
+   "end_s": 62.41,
+   "max_s": 2.37,
+   "on_screen": "Line 2 types 60.0–62.0; ✕ on 'bid.' (62.45)",
    "text_v2": "Send or publish a tender, or accept a bid.",
    "text_v3": "Send or publish a tender, or accept a bid.",
-   "delivery": "Same flat delivery, no list-sing (don't rise on 'tender'). Out by 65.75."
+   "delivery": "Flat and certain."
   },
   {
-   "id": "19-never-contract",
-   "start_s": 66.4,
-   "max_s": 2.2,
-   "on_screen": "Line 3: 'Issue, sign or cancel a contract' · stamp 68.25",
+   "id": "vo24-never-contract",
+   "start_s": 62.54,
+   "end_s": 64.81,
+   "max_s": 2.27,
+   "on_screen": "Line 3 types 62.5–64.4; ✕ on 'contract.' (64.85)",
    "text_v2": "Issue, sign or cancel a contract.",
    "text_v3": "Issue, sign or cancel a contract.",
-   "delivery": "Same. Each verb distinct but quick. Out by 68.2."
+   "delivery": "Flat and certain."
   },
   {
-   "id": "20-never-schedule",
-   "start_s": 68.8,
-   "max_s": 3.0,
-   "on_screen": "Line 4: 'Change the schedule or delete a project' · stamp 71.2",
+   "id": "vo25-never-schedule",
+   "start_s": 64.91,
+   "end_s": 67.13,
+   "max_s": 2.22,
+   "on_screen": "Line 4 types 64.9–66.8; ✕ on 'project.' (67.15)",
    "text_v2": "Change the schedule or delete a project.",
    "text_v3": "Change the schedule or delete a project.",
-   "delivery": "Last of four, the faintest knowing lean on 'schedule' (the hook). Falling end. Out by 71.15."
+   "delivery": "The last one a touch slower: the hook's answer."
   },
   {
-   "id": "21-not-wired",
-   "start_s": 72.4,
-   "max_s": 3.8,
-   "on_screen": "The list dims · caption 'Not a setting. Those doors just aren't wired up.'",
+   "id": "vo26-not-wired",
+   "start_s": 67.27,
+   "end_s": 70.09,
+   "max_s": 2.82,
+   "on_screen": "The list dims 67.25; caption k3b 67.25 → 70.2",
    "text_v2": "Not a setting. Those doors just aren't wired up.",
    "text_v3": "Not a setting. Those doors just aren't wired up.",
-   "delivery": "Conversational, explaining to a sceptical commercial manager. 'Not a setting' quick, then a beat, then the rest relaxed. Out by 76.2."
+   "delivery": "Dry; 'wired up' as the full stop."
   },
   {
-   "id": "22-award",
-   "start_s": 76.8,
-   "max_s": 3.8,
-   "on_screen": "Live qsme.build/platform/tendering card 'Award is a person's decision', 'No automation and no assistant awards a tender.' highlighted (text goes near-white) · caption the same",
-   "text_v2": "No automation and no assistant awards a tender.",
-   "text_v3": "No automation and no assistant awards a tender.",
-   "delivery": "Quoting their own website, deadpan, almost reading it aloud. Out by 80.6."
+   "id": "vo27-award",
+   "start_s": 70.25,
+   "end_s": 74.33,
+   "max_s": 4.08,
+   "on_screen": "Live qsme.build/platform/tendering card 70.2 (chip 'Live page · excerpt · captured 4 Oct 2026'); the sentence highlights 71.6–73.3 on the words; caption k3c 71.6 → 74.48",
+   "text_v2": "On the public page: no automation and no assistant awards a tender.",
+   "text_v3": "On the public page: no automation and no assistant awards a tender.",
+   "delivery": "Reading the page back, even."
   },
   {
-   "id": "23-programme",
-   "start_s": 81.2,
-   "max_s": 3.5,
-   "on_screen": "Callback: the same untouched schedule + the hook's reply bubble 'I can't change the schedule.' · caption 'So the programme stays where a person put it.'",
-   "text_v2": "So the programme stays where a person put it.",
-   "text_v3": "So the programme stays where a person put it.",
-   "delivery": "Callback, a small smile in the voice. Out by 84.7 (wipe 84.7)."
+   "id": "vo28-programme",
+   "start_s": 74.52,
+   "end_s": 78.25,
+   "max_s": 3.73,
+   "on_screen": "The callback Gantt 74.48 (untouched, drift only); the pinned reply 'I can't change the schedule. · 9:40 pm, from the top of this video' lands on 'nine-forty' (75.45); caption k3d 'The programme stays where a person put it.' 76.4 → 78.47",
+   "text_v2": "So, back at nine-forty, the programme stays where a person put it.",
+   "text_v3": "So, back at nine-forty, the programme stays where a person put it.",
+   "delivery": "A small smile on 'nine-forty'."
   },
   {
-   "id": "24-ch4",
-   "start_s": 85.1,
+   "id": "vo29-ch4",
+   "start_s": 78.47,
+   "end_s": 80.17,
    "max_s": 1.7,
-   "on_screen": "Chapter card '4 · Who did what' / 'A list of what it did. And an off switch.' (2.2s card)",
+   "on_screen": "Chapter 4 card on 'Four.' (wipe 78.2, card 78.47–80.25); sub-line 'A list of what it did. And an off switch.' unvoiced",
    "text_v2": "Four. Who did what.",
    "text_v3": "Four. Who did what.",
-   "delivery": "Chapter marker. Out by 86.8."
+   "delivery": "Chapter number plain."
   },
   {
-   "id": "25-activity",
-   "start_s": 87.2,
-   "max_s": 3.5,
-   "on_screen": "QSME Settings → Connected apps → 'Recent activity — What your connected apps have done, newest first.' (three rows) · caption 'Settings. Connected apps. What it did, newest first.'",
+   "id": "vo30-activity",
+   "start_s": 80.28,
+   "end_s": 84.41,
+   "max_s": 4.13,
+   "on_screen": "Settings → Connected apps 80.25; the three activity rows land on 'What it did, newest first.' (82.45–82.95); caption k4a 80.3 → 84.45",
    "text_v2": "Settings. Connected apps. What it did, newest first.",
    "text_v3": "Settings. Connected apps. What it did, newest first.",
-   "delivery": "Two quick signposts like reading a menu path, then the payoff. Out by 90.7."
+   "delivery": "Three stops, like clicking through."
   },
   {
-   "id": "26-disconnect",
-   "start_s": 91.2,
-   "max_s": 3.5,
-   "on_screen": "Click Disconnect (90.8) → dialog 'It will lose access immediately.' · caption 'Disconnect, and it loses access immediately.'",
+   "id": "vo31-disconnect",
+   "start_s": 84.5,
+   "end_s": 87.13,
+   "max_s": 2.63,
+   "on_screen": "The hand clicks Disconnect on the word (84.5); dialog 'It will lose access immediately.' 84.75; caption k4b 84.5 → 87.41",
    "text_v2": "Disconnect, and it loses access immediately.",
    "text_v3": "Disconnect, and it loses access immediately.",
-   "delivery": "Calm, final. No drama. Out by 94.7."
+   "delivery": "'immediately' said plainly, no drama."
   },
   {
-   "id": "27-ch5",
-   "start_s": 95.7,
-   "max_s": 1.7,
-   "on_screen": "Chapter card '5 · The small print' / 'Not hidden in a footer.' (2.2s card)",
-   "text_v2": "Five. The small print.",
-   "text_v3": "Five. The small print.",
-   "delivery": "Chapter marker, a little wry. Out by 97.4."
+   "id": "vo32-ch5",
+   "start_s": 87.4,
+   "end_s": 90.65,
+   "max_s": 3.25,
+   "on_screen": "Chapter 5 card on 'Five.' (wipe 87.14, card 87.41–90.8): the sub-line 'Not hidden in a footer.' rises 87.96 and is said at 89.47",
+   "text_v2": "Five. The small print. Not hidden in a footer.",
+   "text_v3": "Five. The small print. Not hidden in a footer.",
+   "delivery": "Light."
   },
   {
-   "id": "28-has-not",
-   "start_s": 97.7,
-   "max_s": 4.8,
-   "on_screen": "Quote card: 'If an assistant tells you it has sent, paid or awarded something, it has not.' · chip 'QSME guide · AI assistants (MCP)'",
+   "id": "vo33-has-not",
+   "start_s": 90.84,
+   "end_s": 95.21,
+   "max_s": 4.37,
+   "on_screen": "Quote card 90.8 (the words; chip 'QSME guide · AI assistants (MCP)' 91.6)",
    "text_v2": "If an assistant tells you it has sent, paid or awarded something, it has not.",
    "text_v3": "If an assistant tells you it has sent, paid or awarded something, it has not.",
-   "delivery": "Small print said out loud: steady, a beat before 'it has not', which lands flat and certain. Out by 102.5."
+   "delivery": "The guide's line, read like a rule you agree with; 'it has not' final."
   },
   {
-   "id": "29-suggestion",
-   "start_s": 102.9,
-   "max_s": 3.6,
-   "on_screen": "Live qsme.build/platform/estimating card 'Draft with AI, then check', highlighted (text goes near-white) · caption 'Every draft is a suggestion for a person to check.'",
+   "id": "vo34-suggestion",
+   "start_s": 95.3,
+   "end_s": 98.25,
+   "max_s": 2.95,
+   "on_screen": "Live qsme.build/platform/estimating card 95.27; highlights 96.3–97.9 on 'a suggestion for a person to check'; caption k5b 95.4 → 98.3",
    "text_v2": "Every draft is a suggestion for a person to check.",
    "text_v3": "Every draft is a suggestion for a person to check.",
-   "delivery": "Even, sensible. Out by 106.5."
+   "delivery": "Even."
   },
   {
-   "id": "30-paid-plan",
-   "start_s": 107.3,
-   "max_s": 3.2,
-   "on_screen": "Small-print card (6s): 'Works with Claude, ChatGPT, Claude Code, Codex or Cursor.' · 'ChatGPT needs a paid plan with developer mode.' · 'Your own assistant, on your own account. No partnership implied.' (from 108.1)",
+   "id": "vo35-works-with",
+   "start_s": 98.34,
+   "end_s": 103.29,
+   "max_s": 4.95,
+   "on_screen": "Small-print card 98.3; line 'Works with Claude, ChatGPT, Claude Code, Codex or Cursor.' rises 98.5; 'Your own assistant, on your own account. No partnership implied.' rises 101.5 (unvoiced, 4.6 s on screen)",
+   "text_v2": "Works with Claude, ChatGPT, Claude Code, Codex or Cursor.",
+   "text_v3": "Works with Claude, ChatGPT, Claude Code, Codex or Cursor.",
+   "delivery": "A list, no favourites."
+  },
+  {
+   "id": "vo36-paid-plan",
+   "start_s": 103.37,
+   "end_s": 106.01,
+   "max_s": 2.64,
+   "on_screen": "'ChatGPT needs a paid plan with developer mode.' rises on the words (103.35)",
    "text_v2": "ChatGPT needs a paid plan with developer mode.",
    "text_v3": "ChatGPT needs a paid plan with developer mode.",
-   "delivery": "Terms-and-conditions voice, slightly faster and lower, a wink of 'I know, I know'. Say 'Chat G-P-T'. Out by 110.5."
+   "delivery": "Plain, helpful."
   },
   {
-   "id": "31-decide",
-   "start_s": 113.3,
-   "max_s": 2.4,
-   "on_screen": "'The assistant drafts; you decide.' (slams 113.1) · then chips IT DRAFTS / YOU DECIDE build in silence (114.7, 116.0)",
-   "text_v2": "The assistant drafts. You decide.",
-   "text_v3": "The assistant drafts. You decide.",
-   "delivery": "The line of the video, said simply. Lean on 'you'. Then silence while the chips land. Out by 115.7."
+   "id": "vo37-decide",
+   "start_s": 106.43,
+   "end_s": 108.49,
+   "max_s": 2.06,
+   "on_screen": "Wipe 106.1; 'The assistant drafts; you decide.' slams 106.47",
+   "text_v2": "The assistant drafts; you decide.",
+   "text_v3": "[confident] The assistant drafts; you decide.",
+   "delivery": "The thesis; a touch more weight."
   },
   {
-   "id": "32-thirty",
-   "start_s": 119.0,
-   "max_s": 3.6,
-   "on_screen": "Live qsme.build/contact 'What happens on a demo? Thirty minutes on a working project that resembles yours.' highlighted · caption 'Thirty minutes, on a working project like yours.'",
+   "id": "vo38-chips",
+   "start_s": 108.6,
+   "end_s": 113.05,
+   "max_s": 4.45,
+   "on_screen": "Chip rows: IT DRAFTS Tenders · Contracts · SOQ lines · Sheets on 'It drafts;' (108.6); YOU DECIDE Send · Award · Sign · Pay · The dates on 'you send' (109.55)",
+   "text_v2": "It drafts; you send, award, sign, pay, and move the dates.",
+   "text_v3": "It drafts; you send, award, sign, pay, and move the dates.",
+   "delivery": "List rhythm; 'move the dates' closes the hook."
+  },
+  {
+   "id": "vo39-thirty",
+   "start_s": 113.15,
+   "end_s": 115.85,
+   "max_s": 2.7,
+   "on_screen": "Live qsme.build/contact card 113.1; highlight 114.3–115.4; caption k6b 113.3 → 115.9",
    "text_v2": "Thirty minutes, on a working project like yours.",
    "text_v3": "Thirty minutes, on a working project like yours.",
-   "delivery": "Plain and friendly, like describing the visit to a mate. Kiwi 'thirty' (soft t). Small comma pause after 'minutes'. Out by 122.6."
+   "delivery": "An offer, not a pitch."
   },
   {
-   "id": "33-cta",
-   "start_s": 123.3,
-   "max_s": 5.9,
-   "on_screen": "End card: QSME logo · 'Book a 30-minute demo' / 'at qsme.build' · 'What would you let it type first? Tell us in the comments.'",
-   "text_v2": "Book a thirty-minute demo at Q-S-me dot build. What would you let it type first?",
-   "text_v3": "Book a thirty-minute demo at Q-S-me dot build. What would you let it type first?",
-   "delivery": "The CTA as an invitation, not a pitch: say 'Q-S-me dot build' clearly (kyoo-ess-mee dot build). Breath, then the question, genuinely curious with a light rise. Out by 129.2; the card holds a beat for YouTube end-screen elements."
+   "id": "vo40-cta",
+   "start_s": 115.96,
+   "end_s": 119.21,
+   "max_s": 3.25,
+   "on_screen": "End card 115.9: logo, 'Book a 30-minute demo' rises on 'Book' (116.0), 'at qsme.build' on 'at' (117.3), green rule 118.2",
+   "text_v2": "Book a thirty-minute demo at Q-S-me dot build.",
+   "text_v3": "Book a thirty-minute demo at Queue Ess Mee dot build.",
+   "delivery": "The exact Global CTA, clear."
+  },
+  {
+   "id": "vo41-comments",
+   "start_s": 119.23,
+   "end_s": 120.57,
+   "max_s": 1.34,
+   "on_screen": "'What would you let it type first? Tell us in the comments.' rises on 'What' (119.2); the card holds to 122.1",
+   "text_v2": "What would you let it type first?",
+   "text_v3": "What would you let it type first?",
+   "delivery": "A real question, then out."
   }
  ],
  "male_alt_lines": [],
- "continuous_read_v2": "Asked my AI to push the programme a week.\n\nIt can't.\n\nOn purpose.\n\nIt gets the typing. Not the dates, the money or the subcontractors.\n\nOne. What it can see.\n\nWhat's on my schedule this week, and who's turning up?\n\nIt answers from the project's own schedule.\n\nSame crews. Same dates.\n\nIt sees what your login sees. Nothing more.\n\nTwo. What it can type.\n\nDraft a tender for the façade package, private, closing next Friday.\n\nIt drafts it. Then it stops.\n\nIt drafts. A person presses send.\n\nPaste in a defects list. It comes back as a sheet.\n\nYour own spreadsheet, inside the project.\n\nThree. What it can never do.\n\nMove money or record a payment.\n\nSend or publish a tender, or accept a bid.\n\nIssue, sign or cancel a contract.\n\nChange the schedule or delete a project.\n\nNot a setting. Those doors just aren't wired up.\n\nNo automation and no assistant awards a tender.\n\nSo the programme stays where a person put it.\n\nFour. Who did what.\n\nSettings. Connected apps. What it did, newest first.\n\nDisconnect, and it loses access immediately.\n\nFive. The small print.\n\nIf an assistant tells you it has sent, paid or awarded something, it has not.\n\nEvery draft is a suggestion for a person to check.\n\nChatGPT needs a paid plan with developer mode.\n\nThe assistant drafts. You decide.\n\nThirty minutes, on a working project like yours.\n\nBook a thirty-minute demo at Q-S-me dot build. What would you let it type first?",
- "silent_beats": [
-  "1.0 to 3.2 under 01: the reply types (no keyboard clatter, just a soft UI tick at 1.6)",
-  "5.95 to 8.5: the cut to the title card (wipe 7.0)",
-  "13.1 to 14.4: chapter 1 wipe (14.0)",
-  "26.9 to 29.3: the four schedule rings finish, then the cut to 'It sees what your login sees.'",
-  "46.7 to 48.6: the cursor waits by 'Send Tender Invitations' after its hesitation and never clicks (hold the silence: this is the joke)",
-  "56.9 to 58.3: chapter 3 wipe (57.9)",
-  "62.45 to 63.1, 65.75 to 66.4, 68.2 to 68.8, 71.15 to 72.4: each red ✕ stamp lands in silence",
-  "94.7 to 95.7: chapter 5 wipe (95.3)",
-  "115.7 to 119.0: the IT DRAFTS / YOU DECIDE chips land in silence",
-  "129.2 to 130.2: end card holds for YouTube end-screen elements"
- ],
- "optional_kicker": "Only if the founder approves (render with <html data-kicker=\"on\">): a handwritten caption 'Same rules I had in my first year as a QS.' pops at 73.9 under the never list. It stays unvoiced in this script because line 21 is speaking then; if the founder reads the VO himself, he can swap line 21 for 'Same rules I had in my first year as a QS.' (10 words, max 3.8) and the caption k3b then needs the same text.",
+ "optional_kicker": "Only if the founder approves (render with <html data-kicker=\"on\">): a handwritten caption 'Same rules I had in my first year as a QS.' pops at 68.9 under the never list, unvoiced (the take says 'Those doors just aren't wired up.' then).",
  "post_processing": [
-  "If the founder records it: one continuous read of continuous_read_v2, three takes, natural pace, then slice at the blank lines and place each piece at its start_s. Keep breaths and small hesitations; never time-stretch more than about 4%.",
-  "If AI (after the ElevenLabs upgrade): python3 tools/make_vo.py projects/2026-10-21-qsme-build-claude-writes-my-tender <voice_id> --takes 3, or render continuous_read_v2 three times and slice. Use request stitching (previous_text/next_text). Pick the least polished take.",
-  "Room tone bed (a real quiet lounge at night on a phone: fridge hum, faint traffic) under the whole 130.2s at about -48 to -50 dBFS so silences never drop to digital zero.",
-  "EQ: high-pass 90 to 100 Hz; -2 dB high shelf above 10 kHz; light de-ess. Compression 2:1 to 3:1, 3 to 4 dB GR. VO about -16 LUFS integrated, -1 dBTP. No reverb.",
-  "Music (see post.md): none under the hook (0 to 7.0); a sparse late-night pulse enters on the title card, sits ~20 dB under the VO, dips on every wipe, drops to almost nothing for the never list (60.1 to 76.5) so the stamps carry it, returns for chapter 4, resolves on one held chord at ~131.5.",
-  "SFX, ducked 10 to 12 dB under any word: soft message-send tick 0.0; three faint 'thinking' pulses 0.4 to 1.15; a dull thud on 'It can't.' 3.25; a hard cut with a tiny room-tone drop at 4.2; whoosh on each wipe (7.0, 14.0, 34.2, 57.9, 84.7, 95.3, 112.7); chat pops 16.45, 36.65, 48.5; a soft marker squeak 40.25 (the highlighter in the chat); trackpad click 90.8; four rubber-stamp thunks 62.5, 65.8, 68.25, 71.2; highlighter swipes 77.1, 103.2, 119.3. No OS- or app-branded sounds.",
-  "Bounce a mono VO stem and mux onto outputs/claude-writes-my-tender-16x9.mp4 with tools/mux as a separate track, so music and SFX stay adjustable."
+  "Nothing: the voiced master outputs/claude-writes-my-tender-16x9-with-vo.mp4 is the take at 0.0 s, gain 1.15, one audio track, no music, no SFX (owner 2026-10-06: clean background).",
+  "If a music bed is ever wanted, re-mux with tools/mux --bed at <=0.09 ducked to 0.03; never re-slice the take."
  ],
  "changelog": [
-  "2026-10-02 first version, timed on the rendered 132.5s 16:9 master (outputs/claude-writes-my-tender-16x9.mp4). Captions and VO match word for word. No API was called.",
-  "2026-10-04 resume pass: owner CTA rule (2026-10-03) applied. The end card and line 33 now carry the exact Global CTA 'Book a 30-minute demo at qsme.build' ('Book a thirty-minute demo at Q-S-me dot build.'); line 32 over the live /contact crop becomes 'Thirty minutes, on a working project like yours.' so the CTA isn't said twice. The tendering card crop no longer shows its second sentence ('without an account'). Re-rendered the 132.5s master; all other timings unchanged. No API was called.",
-  "2026-10-04 review pass (130.2s): caption and line 25 now use the product's own wording ('What it did, newest first', not 'Everything it did'); chapter cards trimmed to 2.2s (lines 05/10/16/24/27 retimed), the split screen -1.6s, the Send-button beat -1.7s, title +0.6s (caption from 8.3, line 04 from 8.5), small-print card +2.0s; every later line moved with its beat. Lines 06 and 11 lose their caption boxes (the chat bubble is the line). Hook chip '9:40 pm · Tuesday'. No API was called."
+  "2026-10-02 first version, 33 caption-timed lines on the 132.5 s master (silent-first). No API was called.",
+  "2026-10-04 resume + review passes: owner CTA rule applied, 'What it did, newest first', 130.2 s. No API was called.",
+  "2026-10-06 AUDIO-FIRST REMAKE (owner standard from the N01 pilot): the script is continuous speech with the hook in the first 2 s ('Asked my AI to push the programme back a week. It can't. On purpose.'), 344 words at 2.85 w/s, longest silence 0.84 s; ONE unbroken Cam S eleven_v3 take with timestamps (120.57 s); the picture re-timed to the words (page 122.1 s); captions become phrases from the narration ('So the programme stays…' → 'The programme stays where a person put it.'); the old 130.2 s silent master archived as outputs/archive/claude-writes-my-tender-16x9-v1.mp4."
  ],
- "total_characters": 1339
+ "total_characters": 1942
 }

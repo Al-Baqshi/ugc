@@ -6,7 +6,14 @@
 <!-- 9:16 chapter cut-down of "From an address to a site report" (chapters 06 Pro view + 07 One pager + close). Motion kit page.
      v2 (review 2026-10-02): "Illustrative · demo data" also on both desk beats; captions are one box below the frame (they no
      longer stack or cover the rows); the frame is shorter so the Reels safe box holds picture + caption; the end card
-     cross-fades in and carries "Dramatised · demo sites". -->
+     cross-fades in and carries "Dramatised · demo sites".
+     2026-10-06 AUDIO-FIRST REMAKE (N01 standard): outputs/vo-take-cam-v3-ch06-07/take.mp3 (Cam S, eleven_v3, ONE unbroken
+     take, 37.8 s, laid at 0.0) is the clock; the page runs 39.3 s. Spoken hook "Planners charge by the hour. So this is the
+     one page I'm taking in." The v2 timeline is re-timed through MAP (old time → the word it belongs to, from
+     alignment.json); captions take new times and are phrases lifted from the narration.
+     2026-10-10 CTA FIX (owner 2026-10-08: "dot koh dot en zed", never C-O): the whole take was regenerated in one call with only
+     the CTA changed; new take 37.76 s, page 39.3 s; every NEW-time value (MAP's second column, cap(), RAW blocks, DUR) was moved
+     through a word-anchored warp from the old take's alignment to the new one. -->
 <link rel="stylesheet" href="../../../tools/motion/kit.css">
 <link rel="stylesheet" href="site-ui.css">
 <style>
@@ -90,7 +97,19 @@
 <script src="short-common.js"></script>
 <script>
 (function () {
-  var $ = Short.$, UI = window.SiteUI, camEl = $('cam'), DUR = 32;
+  var $ = Short.$, UI = window.SiteUI, camEl = $('cam'), DUR = 39.3;   // take 37.76 s + 1.5 s tail
+  /* audio-first re-timing: [old, new] anchors (new = word start in alignment.json); linear between. */
+  var MAP = [[0, 0], [0.55, 1.772], [0.72, 2.355], [3.2, 5.394], [4.0, 6.027], [4.35, 6.434], [4.6, 6.702], [6.6, 8.944], [7.0, 10.380], [7.8, 11.016], [8.6, 11.740], [9.4, 12.543], [9.75, 12.846],
+    [10.6, 14.420], [11.1, 15.120], [11.45, 15.520], [12.0, 17.240], [14.2, 19.243], [14.4, 19.403], [14.9, 20.168], [15.3, 20.990], [17.2, 22.118], [17.4, 22.330], [17.8, 23.040], [18.05, 23.381],
+    [18.3, 23.626], [20.6, 25.349], [21.2, 25.820], [24.6, 29.640], [25.6, 30.587], [26.2, 31.373], [28.2, 32.706], [28.5, 32.802], [28.6, 32.840], [29.4, 34.321], [29.9, 34.810], [30.3, 35.480], [32, 39.3]];
+  for (var mi = 1; mi < MAP.length; mi++) if (!(MAP[mi][0] > MAP[mi - 1][0] && MAP[mi][1] > MAP[mi - 1][1])) throw new Error('MAP not monotonic at ' + MAP[mi]);
+  function T(t) { if (t <= 0) return 0; for (var i = 1; i < MAP.length; i++) if (t <= MAP[i][0]) { var a = MAP[i - 1], b = MAP[i]; return a[1] + (b[1] - a[1]) * (t - a[0]) / (b[0] - a[0]); } var l = MAP[MAP.length - 1]; return l[1] + (t - l[0]); }
+  var RAW = false, _add = Kit.add, _scene = Kit.scene, _type = Kit.type;
+  Kit.add = function (target, prop, keys) { if (!RAW) keys = keys.map(function (k) { var c = k.slice(); c[0] = T(c[0]); return c; }); return _add.call(Kit, target, prop, keys); };
+  Kit.scene = function (target, t0, t1) { return _scene.call(Kit, target, RAW ? t0 : T(t0), RAW ? t1 : T(t1)); };
+  Kit.type = function (target, t0, t1) { return _type.call(Kit, target, RAW ? t0 : T(t0), RAW ? t1 : T(t1)); };
+  function TR(rs) { return rs.map(function (r) { return [T(r[0]), T(r[1])]; }); }
+  var cap = function (t0, t1, html) { RAW = true; Short.cap(t0, t1, html); RAW = false; };   // captions take NEW times
   camEl.innerHTML = UI.simplePage('s1', 'pg').html + UI.proPage('s1', 'pro').html +
     '<div id="print" class="fill" style="background:rgba(32,33,36,.78)"><div id="opWrap" class="abs" style="left:230px;top:20px;width:509px;height:720px"><div style="position:absolute;left:0;top:0;width:620px;height:877px;transform:scale(.82);transform-origin:0 0">' + UI.onePager('s1', 'op', '11 Oct 2026') + '</div></div>' + UI.printDialog('pd') + '</div>';
   $('op').style.left = '0px'; $('op').style.top = '0px'; $('pd').style.left = '1000px'; $('pd').style.top = '196px';
@@ -100,10 +119,10 @@
   ['#pg-m-svc', '#pg-m-dist', '#pg-dlbl'].forEach(function (s) { Kit.add(s, 'opacity', [[0, 1]]); });
   var C = Short.cursor(camEl);
 
-  Short.ranges('desk', [[0, 3.2], [21.2, 24.6]]); Short.ranges('dtag', [[0, 3.2], [21.2, 24.6]]);
-  Short.ranges('frame', [[3.2, 21.2]]); Short.ranges('itag', [[3.2, 21.2]]);
-  Short.ranges('pg', [[3.2, 4.35]]); Short.ranges('pro', [[4.35, 18.05]]); Short.ranges('print', [[18.05, 21.2]]);
-  Short.ranges('disc', [[24.6, 28.6]]); Short.ranges('end', [[28.2, DUR + 1]]);
+  Short.ranges('desk', TR([[0, 3.2], [21.2, 24.6]])); Short.ranges('dtag', TR([[0, 3.2], [21.2, 24.6]]));
+  Short.ranges('frame', TR([[3.2, 21.2]])); Short.ranges('itag', TR([[3.2, 21.2]]));
+  Short.ranges('pg', TR([[3.2, 4.35]])); Short.ranges('pro', TR([[4.35, 18.05]])); Short.ranges('print', TR([[18.05, 21.2]]));
+  Short.ranges('disc', TR([[24.6, 28.6]])); Short.ranges('end', [[T(28.2), DUR + 1]]);
   Short.head('h1', 0, 3.2); Short.head('h2', 3.2, 6.6, true); Short.head('h3', 6.6, 10.6, true); Short.head('h4', 10.6, 17.4, true);
   Short.head('h5', 17.4, 21.2, true); Short.head('h6', 21.2, 24.6, true); Short.head('h7', 24.6, 28.6);
 
@@ -111,7 +130,8 @@
   Kit.add('#paperWrap', 'rotate', [[0, -3]]);
   Kit.add('#sticky', 'opacity', [[0.55, 0], [0.6, 1]]); Kit.add('#sticky', 'scale', [[0.55, 1.25], [0.72, 1, 'slam']]); Kit.add('#sticky', 'rotate', [[0.55, 9], [0.72, 4, 'out']]);
   Short.cam('#dcam', [[0, 540, 960, 1.0], [3.2, 560, 960, 1.05, 'linear'], [21.2, 560, 960, 1.05], [24.6, 640, 930, 1.18, 'linear']]);
-  Short.cap(1.2, 3.15, 'Here’s where it’s from.');
+  cap(1.77, 3.96, 'The one page I’m taking in.');   // "Planners charge by the hour. So this is the one page I'm taking in" 0–3.96
+  cap(4.04, 5.31, 'Here’s where it’s from.');
 
   // simple page → Pro view (frame 950x638, so a 1.25 camera shows 760x510 of the 1500x760 desktop page)
   Short.cam('#cam', [[3.2, 1120, 255, 1.25], [4.35, 1120, 255, 1.25], [4.36, 380, 255, 1.25, 'hold'], [6.6, 380, 270, 1.25], [7.0, 380, 300, 1.25, 'inOut'], [10.4, 380, 300, 1.25],
@@ -119,7 +139,7 @@
     [17.5, 1135, 255, 1.25, 'inOut'], [18.0, 1135, 255, 1.25], [18.6, 484, 380, 1.25, 'inOut'], [19.0, 484, 300, 1.25], [19.8, 484, 470, 1.25, 'inOut'], [20.3, 1150, 380, 1.25, 'inOut'], [21.2, 1150, 380, 1.25]]);
   C.show(3.3, 4.3); C.to(3.3, 3.95, 985, 36); C.click(4.0, 985, 36);
   Kit.add('#pro', 'opacity', [[4.35, 0], [4.6, 1, 'out']]);
-  Short.cap(3.3, 6.55, 'Pro view. Same site. Much bigger map.');
+  cap(5.44, 8.85, 'Pro view. Same site. Much bigger map.');
   // layers
   C.show(6.7, 9.8);
   [['lz', 60, 7.0], ['lb', 163, 7.8], ['ls', 271, 8.6], ['lf', 402, 9.4]].forEach(function (c) {
@@ -128,7 +148,7 @@
   });
   Kit.add('#pro-m-zone', 'opacity', [[7.05, 0], [7.35, 1, 'out']]); Kit.add('#pro-legend', 'opacity', [[7.2, 0], [7.5, 1, 'out']]);
   Kit.add('#pro-m-bld', 'opacity', [[7.85, 0], [8.15, 1, 'out']]); Kit.add('#pro-m-svc', 'opacity', [[8.65, 0], [8.95, 1, 'out']]); Kit.add('#pro-m-flood', 'opacity', [[9.45, 0], [9.75, 1, 'out']]);
-  Short.cap(6.7, 10.55, 'Zoning. Buildings. Services. Flood. <span class="g">In Auckland.</span>');
+  cap(8.99, 14.38, 'Zoning. Buildings. Services. Flood. <span class="g">In Auckland.</span>');
   // Title tab
   C.show(10.6, 11.5); C.to(10.6, 11.05, 962, 108); C.click(11.1, 962, 108);
   Kit.add('#pro-t0', 'background', [[11.1, '#DCFCE7'], [11.2, '#FFFFFF']]); Kit.add('#pro-t0', 'color', [[11.1, '#15803D'], [11.2, '#475569']]); Kit.add('#pro-t0', 'borderColor', [[11.1, '#86EFAC'], [11.2, '#E2E7EE']]);
@@ -137,20 +157,20 @@
   var hOwn = Short.hl(camEl, 'hl-own', [875, 445, 1180, 470]), hLic = Short.hl(camEl, 'hl-lic', [987, 483, 1209, 511], 'amber'), hCv = Short.hl(camEl, 'hl-cv', [1250, 92, 1352, 124], 'amber');
   Kit.add(hOwn, 'opacity', [[12.0, 0], [12.2, 1], [14.2, 1], [14.4, 0]]);
   Kit.add(hLic, 'opacity', [[14.9, 0], [15.1, 1], [17.2, 1], [17.4, 0]]); Kit.add(hCv, 'opacity', [[15.1, 0], [15.3, 1], [17.2, 1], [17.4, 0]]);
-  Short.cap(10.7, 14.35, 'Title facts from LINZ. How many owners. Not who.');
-  Short.cap(14.45, 17.35, 'The rest? “Available with a data licence.”');
+  cap(14.46, 19.36, 'Title facts from LINZ. How many owners. Not who.');
+  cap(19.42, 22.17, 'The rest? “Available with a data licence.”');
   // One pager
   C.show(17.4, 18.2); C.to(17.4, 17.75, 1409, 39); C.click(17.8, 1409, 39);
   Kit.add('#print', 'opacity', [[18.05, 0], [18.3, 1, 'out']]);
   C.show(20.2, 21.1); C.to(20.2, 20.55, 1338, 461); C.click(20.6, 1338, 461);
   C.done();
-  Short.cap(17.5, 21.15, 'Print it, or save a PDF.');
+  cap(22.44, 25.75, 'Print it, or save a PDF.');
   // back on the desk
-  Short.cap(21.3, 24.55, 'That’s the meeting sorted.');
+  cap(27.79, 29.6, 'That’s the meeting sorted.');
   // last word
   Kit.pop('#disc', 24.65, { dy: 30 }); Kit.add('#discMk', 'trim', [[25.6, 0], [26.2, 1, 'out']]);
-  Short.cap(24.75, 27.2, 'It even tells you to ring the planner.');
-  Short.cap(27.3, 28.15, 'Fair enough.');
+  cap(29.9, 31.53, 'It even tells you to ring the planner.');
+  cap(31.57, 32.69, 'Fair enough.');
   // end card cross-fades straight in over the quote (no dip to navy)
   Kit.add('#end', 'opacity', [[28.2, 0], [28.6, 1, 'out']]); Kit.add('#elogo', 'scale', [[28.2, 0.94], [28.7, 1, 'out']]);
   Kit.pop('#eh', 28.5, { dy: 24 }); Kit.pop('#es', 29.4, { dy: 18 }); Kit.pop('#ef', 29.9, { dy: 12 }); Kit.pop('#ecta', 30.3, { dy: 16 });

@@ -3,26 +3,31 @@
 // 2026-10-04 review pass: one Dave all the way through (the contacts name types "Dave K."), Mel's job in the mock data
 // ("Bathroom + deck"), the tally counts 1 → 3 → 5 → 6 (ish) → ? on the comments, bigger recreations, 28 px chips, the
 // product beat gets the time the end card didn't need, "Every quote covers the same lines.", 4:5 thread sits lower.
-//   0.0–2.5   hook: "212 comments. Still no builder." as kinetic text over the full-frame thread, count 197 → 205 → 212
-//   2.5–14.3  the thread. Mel's post card holds to 4.1 (underline on "Keen for a few quotes" 3.05–3.4) so it can be read; the
-//             tally: 1 (4.45) → 3 (5.5, Sam) → 5 (6.65, Aroha) → 6 (ish) (7.95, Jase) → ? (10.4, after the slam on
-//             "Dave here. Which Dave do you mean?" at 9.8), "...can anyone actually come and quote?" (12.1) / "Dave can." (12.7),
-//             swipe to QSME 13.9–14.3
-//   14.3–17.0 A  "Or. Put the actual job on QSME." over the REAL iPhone app still (04-project, demo data): the "Project" nav bar
-//             and the tile grid (the "42 Rimu Street townhouses" header and stats row between them are cropped out), in a
-//             phone-style frame; red marker on "Ask for quotes" (14.75) and "Invite" (15.1), marker note "Dave K." → Invite
-//             (15.4, holds 1.5 s)
-//   17.0–20.4 B  "Send one job to the trades you choose." Two muted, cropped walkthrough recreations stacked:
-//             tenders Step 1 "Tender details" with the title typing "Bathroom + deck" (overlay in the field's own font) and
-//             contacts "Add contact" (18.05) with the Name typing "Dave K." (overlay; the "auto-link" subline is covered;
-//             email, phone, notes, the list behind and every walkthrough caption are cropped out); marker "your Dave" (18.9)
-//   20.4–23.1 C  "Every quote covers the same lines." tenders Step 2 "Scope from SOQ" relabelled to Mel's job ("Bathroom + deck";
-//             rows "Strip-out" / "Waterproofing & tiling" / "Deck framing" tick 20.75, 21.05, 21.35), marker bracket (21.5)
-//             + note "same list → every quote" (21.75). No underline on "Pulled from your SOQ". Lines/$ column, totals,
-//             pointer and captions cropped out.
-//   23.1–25.0 D  callback: "Dave count: 1" (23.2) + green tick (23.45) / "— the one you invited." (23.6) / "Know which Dave." (24.1)
-//   25.0–30   end card: the tally shrinks into the upper-left corner, QSME logo (25.2), "Know which Dave." moves up,
-//             green button "Sign up at qsme.co.nz" (25.5, pulses 26.9 and 28.4). (Owner CTA rule 2026-10-03.)
+// 2026-10-06 AUDIO-FIRST REMAKE (owner feedback: no gaps, no breath cuts, a real hook, continuous speech): the Cam S
+// eleven_v3 take is the clock, ONE unbroken request laid at 0.0. Every beat is placed on its word in alignment.json.
+// 2026-10-10 RETAKE (owner rule 2026-10-08: the CTA is said "dot koh dot en zed"): new whole take
+// outputs/vo-take-cam-v3/take.mp3 (35.79 s, speech 0.00–35.76), same text apart from "koh". Every beat below was re-timed
+// to the new words (old word → new word, measured on the audio); the page runs 37.3 s (take + 1.5 s tail). Design unchanged.
+//   0.0–4.0   hook, three kinetic lines on the words: "212 comments." (count 197 → 205 → 212 on "twelve", 0.67), "Six Daves."
+//             (1.58), "Still no builder." (3.0). Hard cut to the thread at 4.0.
+//   4.0–22.25 the thread. Mel's post card 4.0–4.54 (underline 4.12–4.39), collapses 4.54–4.76; Kerry pops on "Cousin Dave"
+//             (4.73), Sam on "Hillcrest Dave" (5.47), Aroha on "Deck Dave" (8.08), Jase on "Big Dave" (10.56); the tally counts
+//             the Daves as they are said: 1 (4.97) → 3 (6.30) → 5 (9.71) → 6 (ish) (11.81) → ? (16.83, on "mean?"). Fling
+//             under "Then Dave turns up." (13.78), slam on "Dave here." (14.37, circle 14.5), Mel's "...can anyone actually
+//             come and quote?" (17.64), Kerry's "Dave can." (20.82), swipe to QSME 21.9–22.3 landing on "Or." (22.24)
+//   22.25–24.32 A  "Or. Put the actual job on QSME." over the REAL iPhone app still (04-project, demo data) in a phone-style
+//             frame; red marker on "Ask for quotes" (22.72, "actual") and "Invite" (23.18, "job"), marker note "Dave K." →
+//             Invite (23.52, "on QSME")
+//   24.32–26.92 B  "Post it once. Invite the trades you choose." Two muted, cropped walkthrough recreations stacked: tenders
+//             Step 1 "Tender details" with the title typing "Bathroom + deck" (24.76) and contacts "Add contact" (25.54, on
+//             "Invite") with the Name typing "Dave K."; marker "your Dave" (26.46, "you choose")
+//   26.92–30.5 C  "Every quote covers the same lines." (the voice carries on: "so you compare them in one table") over tenders
+//             Step 2 "Scope from SOQ" relabelled to Mel's job; rows tick 27.85, 28.18, 28.50 (quote / covers / same),
+//             bracket 28.73 ("lines"), note 29.02
+//   30.58–32.16 D  callback: "Dave count: 1" (30.58, "table." ends 30.61) + green tick (30.83) / "— the one you invited."
+//             (30.89) / "Know which Dave." (31.04, on "Know")
+//   32.16–37.3 end card: the tally shrinks into the upper-left corner, QSME logo (32.26), "Know which Dave." moves up,
+//             green button "Sign up at qsme.co.nz" pops on "Sign up" (32.24; pulses 33.74 and 36.04). (Owner CTA rule 2026-10-03.)
 // Walkthrough crops come from motion/clips (muted JPEG frames of assets/qsme/walkthroughs/client-tenders.mp4 and
 // client-contacts.mp4), each labelled "Recreation of the app · mock data". Their mock text is swapped for Mel's job with
 // HTML overlays in the recreation's own font, size and colour (still mock data, still labelled). No comparison,
@@ -34,8 +39,9 @@
   const SAFE_T = 300;                  // safe-box top in stage coords (both cuts)
   const q = R45 ? 1 : 0;
   const L45 = q * 120;                 // 4:5: the comment list sits 120 px lower so the thread fills the feed frame
-  const BODY = 2.5;                    // the thread section's own clock starts at reel 2.5 s
-  const HOLD = 0.8;                    // extra hold on Mel's post card: thread keys at body >= 0.8 move by +0.8
+  const BODY = 4.0;                    // hook 0–4.0 ("Still no builder." ends 3.90), then the thread
+  const SW = 21.9;                     // the group app swipes away to QSME 21.9–22.3 ("Or." 22.24)
+  const DUR = 37.3;                    // take ends 35.76 (file 35.79) + ~1.5 s tail
   const $ = id => document.getElementById(id);
   const LOGO = 'qsme-logo.svg';
   const centreTop = h => Math.round(SAFE_T + (SB - SAFE_T - h) / 2);
@@ -156,7 +162,7 @@
     </div>
 
     <!-- B: tenders Step 1 + contacts, one caption -->
-    <div id="capBw" class="capwrap abs" style="top:330px"><div id="capB" class="cap s">Send one job to the<br>trades you choose.</div></div>
+    <div id="capBw" class="capwrap abs" style="top:330px"><div id="capB" class="cap s">Post it once. Invite<br>the trades you choose.</div></div>
     <div id="gB" class="grp abs" style="left:65px;width:950px;top:550px">
       <div id="gS1" class="abs" style="left:0;top:0;width:950px">
         <div class="panel" style="position:relative;height:${S1.h.toFixed(2)}px">
@@ -216,6 +222,7 @@
     <div id="hk" class="abs">
       <div id="hkSub">Asked the community page for a builder.</div>
       <div id="hk1" class="hl"><span class="box"><span id="hkCountWrap"><span id="hkNum">197</span><svg id="hkCirc" class="abs"></svg></span> comments.</span></div>
+      <div id="hk3" class="hl"><span class="box">Six Daves.</span></div>
       <div id="hk2" class="hl"><span class="box">Still no builder.</span></div>
     </div>
   </div>`;
@@ -280,56 +287,62 @@
   const hx = h => [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)];
   function val(k, t) { if (t <= k[0].t) return k[0].v; const last = k[k.length - 1]; if (t >= last.t) return last.v; for (let i = 1; i < k.length; i++) if (t < k[i].t) { const a = k[i - 1], b = k[i], p = b.fn((t - a.t) / (b.t - a.t)); if (typeof a.v === 'string') { const A = hx(a.v), B = hx(b.v); return `rgb(${A.map((c, j) => Math.round(c + (B[j] - c) * p)).join(',')})`; } return a.v + (b.v - a.v) * p; } return last.v; }
   function makeThreadTL(M) {
+    // Every key below is REEL time (= take time: the Cam S v3 take is laid at 0.0). Each beat lands on its word in
+    // outputs/vo-take-cam-v3/alignment.json; the word times are quoted in the comments.
     const T = [];
-    // every key at body >= 0.8 (the card collapse and everything after it) moves HOLD later; `fixed` keys don't move
-    const sh = t => (t >= 0.8 - 1e-9 ? t + HOLD : t);
-    const add = (id, f, k, fixed) => T.push({ id, f, k: k.map(a => ({ t: fixed ? a[0] : sh(a[0]), v: a[1], fn: EZ[a[2] || 'L'] })) });
+    const add = (id, f, k) => T.push({ id, f, k: k.map(a => ({ t: a[0], v: a[1], fn: EZ[a[2] || 'L'] })) });
     const pop = (id, t) => { add(id, 'OPACITY', [[t, 0], [t + 0.16, 1, 'O']]); add(id, 'TY', [[t, 36], [t + 0.24, 0, 'O']]); };
     const showAt = (id, t) => add(id, 'OPACITY', [[0, 0], [t, 1, 'H']]);
     const top = M.itemTop, S = (i, y) => Math.round(y + L45 - M.listY0 - top[i]);
     const S1 = S(2, 840), S2 = S(3, 820), S3 = S(12, 640), S4 = S(17, 640);
-    // 0.00–1.6 Mel's post card fills the screen; the underline draws once the post has been read (reel 3.05–3.4) and sits
-    // for 0.7 s; the card collapses into the pinned strip at body 0.8 + HOLD (reel 4.1)
-    add('u1', 'OPACITY', [[0.54, 0], [0.55, 1, 'H']], true); add('u1', 'TRIM', [[0.55, 0], [0.9, 1, 'O']], true);
-    add('card', 'OPACITY', [[0.82, 1], [0.94, 0]]);
-    add('card', 'TY', [[0.8, 0], [1.02, Math.round(350 - (M.cardTop + M.cardH / 2)), 'IO']]);
-    add('card', 'SCALE', [[0.8, 1], [1.02, 0.55, 'IO']]);
-    add('morph', 'TY', [[0.8, 0], [1.02, 300 - M.cardTop, 'IO']]);
-    add('morph', 'HEIGHT', [[0.8, M.cardH], [1.02, 100, 'IO']]);
-    add('morph', 'RADIUS', [[0.8, 20], [1.02, 12, 'IO']]);
-    add('morph', 'FILL', [[0.8, '#FFFFFF'], [1.02, '#F1F0EC', 'IO']]);
-    add('pinned', 'OPACITY', [[0.96, 0], [1.08, 1, 'O']]); add('pinned', 'TY', [[0.96, 12], [1.08, 0, 'O']]);
-    // comments
-    pop('c0', 1.0); pop('c1', 1.9); pop('c2', 3.05); pop('c3', 4.4);
-    for (let i = 4; i <= 12; i++) showAt('c' + i, 5.9);
-    for (let j = 13; j <= 16; j++) showAt('c' + j, 8.5);
-    pop('c17', 8.8);   // Mel R. ...can anyone actually come and quote?
-    pop('c18', 9.4);   // Kerry P. Dave can.
+    // 4.0–4.54 Mel's post card fills the screen (the voice has just said "Still no builder."); the underline draws
+    // 4.12–4.39; the card collapses into the pinned strip 4.54–4.70, just before "Cousin Dave" (4.75)
+    const CC = 4.54;   // card collapse
+    add('u1', 'OPACITY', [[4.11, 0], [4.12, 1, 'H']]); add('u1', 'TRIM', [[4.12, 0], [4.39, 1, 'O']]);
+    add('card', 'OPACITY', [[CC + 0.02, 1], [CC + 0.14, 0]]);
+    add('card', 'TY', [[CC, 0], [CC + 0.22, Math.round(350 - (M.cardTop + M.cardH / 2)), 'IO']]);
+    add('card', 'SCALE', [[CC, 1], [CC + 0.22, 0.55, 'IO']]);
+    add('morph', 'TY', [[CC, 0], [CC + 0.22, 300 - M.cardTop, 'IO']]);
+    add('morph', 'HEIGHT', [[CC, M.cardH], [CC + 0.22, 100, 'IO']]);
+    add('morph', 'RADIUS', [[CC, 20], [CC + 0.22, 12, 'IO']]);
+    add('morph', 'FILL', [[CC, '#FFFFFF'], [CC + 0.22, '#F1F0EC', 'IO']]);
+    add('pinned', 'OPACITY', [[CC + 0.16, 0], [CC + 0.28, 1, 'O']]); add('pinned', 'TY', [[CC + 0.16, 12], [CC + 0.28, 0, 'O']]);
+    // comments, each popping on its line in the voice:
+    //   Kerry "Cousin Dave." 4.75 · Sam "Hillcrest Dave, or the other Hillcrest Dave." 5.49 · Aroha "Deck Dave. Roof Dave." 8.16
+    //   Jase "Big Dave, not Little Dave." 10.60 · fling under "Then Dave turns up." 13.32–14.52, slam on "Dave here." 14.71
+    //   Mel "Can anyone actually come and quote?" 17.63 · Kerry "Dave can." 20.85
+    const K0 = 4.73, K1 = 5.47, K2 = 8.08, K3 = 10.56, FL = 13.78, SL = 14.37, SC2 = 17.38, K17 = 17.64, K18 = 20.82;
+    pop('c0', K0); pop('c1', K1); pop('c2', K2); pop('c3', K3);
+    for (let i = 4; i <= 12; i++) showAt('c' + i, FL);
+    for (let j = 13; j <= 16; j++) showAt('c' + j, SC2);
+    pop('c17', K17);   // Mel R. ...can anyone actually come and quote?
+    pop('c18', K18);   // Kerry P. Dave can.
     // scroll, stop, scroll, fling + slam on Dave, then the last two comments
-    add('list', 'TY', [[3.0, 0], [3.15, S1, 'SCROLL'], [4.35, S1], [4.5, S2, 'SCROLL'], [5.9, S2], [6.5, S3 - 18, 'SLAM'], [6.62, S3, 'O'], [8.5, S3], [8.8, S4, 'IO']]);
-    add('list', 'BLUR', [[5.9, 0], [6.1, 7, 'I'], [6.42, 7], [6.5, 0], [8.5, 0], [8.6, 4, 'I'], [8.72, 4], [8.8, 0]]);
-    add('circle', 'OPACITY', [[6.64, 0], [6.65, 1, 'H']]); add('circle', 'TRIM', [[6.65, 0], [7.0, 1, 'O']]);
-    // red-marker tally, counting the Daves as they arrive: 1 (Kerry) → 3 (Sam, reel 5.5) → 5 (Aroha, reel 6.65)
-    // → 6 (ish) (Jase, reel 7.95) → ? (after the slam on Dave K., reel 10.4). Each change: strike, rattle, new number.
-    add('tlabel', 'OPACITY', [[1.15, 0], [1.25, 1, 'O']]); add('tlabel', 'SCALE', [[1.15, 1.18], [1.35, 1, 'O']]);
-    add('tv1', 'OPACITY', [[1.15, 0], [1.25, 1, 'O'], [2.17, 1], [2.25, 0]]); add('tv1', 'SCALE', [[1.15, 1.4], [1.35, 1, 'O']]);
-    const change = (x, from, to, s, toEnd) => {
+    add('list', 'TY', [[K2 - 0.07, 0], [K2 + 0.08, S1, 'SCROLL'], [K3 - 0.05, S1], [K3 + 0.1, S2, 'SCROLL'], [FL, S2], [SL, S3 - 18, 'SLAM'], [SL + 0.12, S3, 'O'], [SC2, S3], [SC2 + 0.3, S4, 'IO']]);
+    add('list', 'BLUR', [[FL, 0], [FL + 0.2, 7, 'I'], [SL - 0.08, 7], [SL, 0], [SC2, 0], [SC2 + 0.1, 4, 'I'], [SC2 + 0.22, 4], [SC2 + 0.3, 0]]);
+    add('circle', 'OPACITY', [[SL + 0.14, 0], [SL + 0.15, 1, 'H']]); add('circle', 'TRIM', [[SL + 0.15, 0], [SL + 0.5, 1, 'O']]);
+    // red-marker tally, counting the Daves as they are said: 1 (4.97, after "Cousin Dave.") → 3 (6.30, "Hillcrest Dave,")
+    // → 5 (9.71, "Roof Dave") → 6 (ish) (11.81, "Little Dave") → ? (16.83, on "mean?"). Each change: strike, rattle, new number.
+    const T1 = 4.97, CH = [6.30, 9.71, 11.81, 16.83];
+    add('tlabel', 'OPACITY', [[T1, 0], [T1 + 0.1, 1, 'O']]); add('tlabel', 'SCALE', [[T1, 1.18], [T1 + 0.2, 1, 'O']]);
+    const change = (x, s) => {
       add(x, 'OPACITY', [[s - 0.01, 0], [s, 1, 'H'], [s + 0.12, 1], [s + 0.2, 0]]); add(x, 'TRIM', [[s, 0], [s + 0.12, 1, 'O']]);
       return [s + 0.12, s + 0.2, s + 0.15];   // old number fades 0.12–0.2 after the strike starts; new one pops at +0.15
     };
     const keysOf = (tin, tout) => { const k = [[tin, 0], [tin + 0.08, 1, 'O']]; if (tout) k.push([tout[0], 1], [tout[1], 0]); return k; };
-    const c13 = change('x1', 'tv1', 'tv3', 2.05), c35 = change('x3', 'tv3', 'tv5', 3.2), c56 = change('x5', 'tv5', 'tv6', 4.5), c6q = change('x6', 'tv6', 'tvq', 6.94);
+    const c13 = change('x1', CH[0]), c35 = change('x3', CH[1]), c56 = change('x5', CH[2]), c6q = change('x6', CH[3]);
+    add('tv1', 'OPACITY', keysOf(T1, c13)); add('tv1', 'SCALE', [[T1, 1.4], [T1 + 0.2, 1, 'O']]);
     add('tv3', 'OPACITY', keysOf(c13[2], c35)); add('tv3', 'SCALE', [[c13[2], 1.4], [c13[2] + 0.2, 1, 'O']]);
     add('tv5', 'OPACITY', keysOf(c35[2], c56)); add('tv5', 'SCALE', [[c35[2], 1.4], [c35[2] + 0.2, 1, 'O']]);
     add('tv6', 'OPACITY', keysOf(c56[2], c6q)); add('tv6', 'SCALE', [[c56[2], 1.4], [c56[2] + 0.2, 1, 'O']]);
     add('tvq', 'OPACITY', keysOf(c6q[2])); add('tvq', 'SCALE', [[c6q[2], 1.5], [c6q[2] + 0.22, 1, 'O']]);
-    // a short rattle on every change (the same shake the 3 → 6 change had)
+    // a short rattle on every change
     const rot = [[0, 0]], tx = [[0, 0]];
-    [2.05, 3.2, 4.5, 6.94].forEach(s => { rot.push([s, 0], [s + 0.035, 5], [s + 0.07, -4], [s + 0.105, 3], [s + 0.17, 0, 'O']); tx.push([s, 0], [s + 0.035, -6], [s + 0.07, 6], [s + 0.105, -4], [s + 0.17, 0, 'O']); });
+    CH.forEach(s => { rot.push([s, 0], [s + 0.035, 5], [s + 0.07, -4], [s + 0.105, 3], [s + 0.17, 0, 'O']); tx.push([s, 0], [s + 0.035, -6], [s + 0.07, 6], [s + 0.105, -4], [s + 0.17, 0, 'O']); });
     add('tinner', 'ROT', rot); add('tinner', 'TX', tx);
-    // body 11.4–11.8 (reel 13.9–14.3) the group app swipes away to QSME
-    add('app', 'TX', [[10.6, 0], [11.0, -1080, 'SWIPE']]);
-    add('qsme', 'TX', [[10.6, 0], [11.0, -1080, 'SWIPE']]);
+    // 21.90–22.25 the group app swipes away to QSME, landing as "Or." is said (22.24)
+    add('app', 'TX', [[SW, 0], [SW + 0.4, -1080, 'SWIPE']]);
+    add('qsme', 'TX', [[SW, 0], [SW + 0.4, -1080, 'SWIPE']]);
     return T;
   }
   let EL = null;
@@ -347,37 +360,44 @@
       if ('TRIM' in s) e.el.querySelectorAll('path').forEach(p => { const L = p.__len || (p.__len = p.getTotalLength()); p.style.strokeDasharray = L + ' ' + (L + 10); p.style.strokeDashoffset = L * (1 - s.TRIM); });
     }
   }
-  Kit.each(t => { if (EL) renderTL(t - BODY); });
+  Kit.each(t => { if (EL) renderTL(t); });
 
-  // ---------------------------------------------------------------- hook 0–2.5
+  // ---------------------------------------------------------------- hook 0–4.0, on the words
+  // "Two hundred and twelve comments." 0.00–1.36 (count 197 → 205 at 0.37 → 212 at 0.67, on "twelve"; circle 0.79–1.12)
+  // "Six Daves." 1.58–2.72 (slam at 1.58) · "Still no builder." 2.81–3.90 (slam at 3.0) · hard cut to the thread at 4.01
   Kit.scene('#hook', 0, BODY);
-  Kit.add('#hlist', 'y', [[0, 0], [0.42, -430, 'scroll'], [0.5, -430], [0.97, -880, 'scroll'], [1.05, -880], [1.6, -1360, 'scroll'], [2.5, -1470, 'out']]);
-  Kit.add('#hlist', 'blur', [[0, 4], [0.12, 6], [0.42, 1.6, 'out'], [0.5, 1.6], [0.6, 6], [0.97, 1.6, 'out'], [1.05, 1.6], [1.15, 6], [1.6, 1.6, 'out']]);
-  Kit.add('#hk1', 'scale', [[0, 1.06], [0.22, 1, 'out']]);
-  Kit.count('#hkNum', [[0, 197], [0.5, 205, 'hold'], [1.05, 212, 'hold']], v => String(Math.round(v)));
-  Kit.add('#hkNum', 'scale', [[0, 1], [0.5, 1], [0.5, 1.38, 'hold'], [0.72, 1, 'out'], [1.05, 1], [1.05, 1.38, 'hold'], [1.27, 1, 'out']]);
-  Kit.slam('#hk2', 1.3, { from: 1.35, dur: 0.16 });
-  Kit.add('#hk2', 'rotate', [[1.3, -3], [1.46, -1.5, 'slam']]);
+  Kit.add('#hlist', 'y', [[0, 0], [0.30, -430, 'scroll'], [0.37, -430], [0.60, -880, 'scroll'], [0.67, -880], [1.50, -1360, 'scroll'], [BODY, -1550, 'out']]);
+  Kit.add('#hlist', 'blur', [[0, 4], [0.10, 6], [0.30, 1.6, 'out'], [0.37, 1.6], [0.44, 6], [0.60, 1.6, 'out'], [0.67, 1.6], [0.79, 6], [1.50, 1.6, 'out']]);
+  Kit.add('#hk1', 'scale', [[0, 1.06], [0.18, 1, 'out']]);
+  Kit.count('#hkNum', [[0, 197], [0.37, 205, 'hold'], [0.67, 212, 'hold']], v => String(Math.round(v)));
+  Kit.add('#hkNum', 'scale', [[0, 1], [0.37, 1], [0.37, 1.38, 'hold'], [0.57, 1, 'out'], [0.67, 1], [0.67, 1.38, 'hold'], [0.92, 1, 'out']]);
+  Kit.slam('#hk3', 1.58, { from: 1.35, dur: 0.16 });
+  Kit.add('#hk3', 'rotate', [[1.58, 2.5], [1.74, 1.2, 'slam']]);
+  Kit.slam('#hk2', 3.0, { from: 1.35, dur: 0.16 });
+  Kit.add('#hk2', 'rotate', [[3.0, -3], [3.16, -1.5, 'slam']]);
 
-  // ---------------------------------------------------------------- QSME product beat (reel time)
-  // A 14.3–17.0: the real iPhone app still; the "Dave K." note is in by 15.5 and holds 1.4 s before the swipe
-  Kit.pop('#capA', 14.3, { dy: 30 }); Kit.add('#capA', 'opacity', [[16.85, 1], [17.0, 0, 'in']]); Kit.add('#capA', 'y', [[16.85, 0], [17.0, -24, 'in']]);
-  Kit.pop('#gPhone', 14.35, { dy: 44, dur: 0.32, fade: 0.2 });
-  Kit.add('#phZoom', 'scale', [[14.5, 1], [16.95, 1.02, 'inOut']]);
-  Kit.add('#daveA', 'opacity', [[15.4, 0], [15.5, 1, 'out']]); Kit.add('#daveA', 'scale', [[15.4, 1.25], [15.6, 1, 'out']]); Kit.add('#daveA', 'rotate', [[0, -3]]);
-  Kit.add('#gPhone', 'x', [[16.9, 0], [17.22, -1100, 'swipe']]);
+  // ---------------------------------------------------------------- QSME product beat (reel time = take time)
+  // A 22.25–24.47: "Or. Put the actual job on QSME." (22.24–24.38) over the real iPhone app still; marker on "Ask for quotes"
+  //   at "actual" (22.78), on "Invite" at "job" (23.20), the "Dave K." note at "on QSME" (23.52), holds to the swipe
+  const A0 = 22.25, AB = 24.32, BC = 26.92, CD = 30.49, D0 = 30.58, E0 = 32.16;
+  Kit.pop('#capA', A0, { dy: 30 }); Kit.add('#capA', 'opacity', [[AB, 1], [AB + 0.15, 0, 'in']]); Kit.add('#capA', 'y', [[AB, 0], [AB + 0.15, -24, 'in']]);
+  Kit.pop('#gPhone', A0 + 0.05, { dy: 44, dur: 0.32, fade: 0.2 });
+  Kit.add('#phZoom', 'scale', [[A0 + 0.2, 1], [AB + 0.1, 1.02, 'inOut']]);
+  Kit.add('#daveA', 'opacity', [[23.52, 0], [23.62, 1, 'out']]); Kit.add('#daveA', 'scale', [[23.52, 1.25], [23.69, 1, 'out']]); Kit.add('#daveA', 'rotate', [[0, -3]]);
+  Kit.add('#gPhone', 'x', [[AB, 0], [AB + 0.32, -1100, 'swipe']]);
 
-  // B 17.0–20.4: tenders Step 1 (title types "Bathroom + deck") + contacts (name types "Dave K."), "Send one job to the trades you choose."
-  Kit.add('#gB', 'x', [[16.9, 1100], [17.22, 0, 'swipe'], [20.25, 0], [20.57, -1100, 'swipe']]);
-  Kit.pop('#capB', 17.05, { dy: 30 }); Kit.add('#capB', 'opacity', [[20.25, 1], [20.4, 0, 'in']]); Kit.add('#capB', 'y', [[20.25, 0], [20.4, -24, 'in']]);
-  Kit.add('#s1Zoom', 'scale', [[17.2, 1], [20.3, 1.02, 'inOut']]);
-  Kit.pop('#gCt', 18.05, { dy: 40, dur: 0.3, fade: 0.2 });
-  Kit.add('#daveCt', 'opacity', [[18.9, 0], [19.0, 1, 'out']]); Kit.add('#daveCt', 'scale', [[18.9, 1.25], [19.1, 1, 'out']]); Kit.add('#daveCt', 'rotate', [[0, -4]]);
+  // B 24.47–27.08: "Post it once." (24.48–25.52) over tenders Step 1 (title types "Bathroom + deck"); "Invite the trades you
+  //   choose." (25.53–27.06): contacts pops on "Invite", the name types "Dave K.", "your Dave" note on "you choose"
+  Kit.add('#gB', 'x', [[AB, 1100], [AB + 0.32, 0, 'swipe'], [BC, 0], [BC + 0.32, -1100, 'swipe']]);
+  Kit.pop('#capB', AB + 0.15, { dy: 30 }); Kit.add('#capB', 'opacity', [[BC, 1], [BC + 0.15, 0, 'in']]); Kit.add('#capB', 'y', [[BC, 0], [BC + 0.15, -24, 'in']]);
+  Kit.add('#s1Zoom', 'scale', [[AB + 0.3, 1], [BC + 0.05, 1.02, 'inOut']]);
+  Kit.pop('#gCt', 25.54, { dy: 40, dur: 0.3, fade: 0.2 });
+  Kit.add('#daveCt', 'opacity', [[26.46, 0], [26.56, 1, 'out']]); Kit.add('#daveCt', 'scale', [[26.46, 1.25], [26.66, 1, 'out']]); Kit.add('#daveCt', 'rotate', [[0, -4]]);
   // footage: a pure function of t (frame index clamped to the clip), so any frame renders the same on its own. The typed
   // overlays follow the clip's own typing: the title over tender-step1 frames 1–17 (the field loses focus at 19), the
   // name over contacts-add frames 15–25 (the field's own placeholder shows until 14; it stays focused to the end, 31).
   const clipFrame = (t, t0, from, speed, n) => Math.max(from, Math.min(n - 1, from + Math.floor(Math.max(0, t - t0) * 30 * speed + 1e-6)));
-  const S1T = 'Bathroom + deck', CTT = 'Dave K.', T_S1 = 17.25, SP_S1 = 0.9, T_CT = 18.1, SP_CT = 1.0;
+  const S1T = 'Bathroom + deck', CTT = 'Dave K.', T_S1 = 24.76, SP_S1 = 0.9, T_CT = 25.54, SP_CT = 1.0;
   const s1img = document.querySelector('.s1img'), ctimgs = [...document.querySelectorAll('.ctimg')];
   const s1T = $('s1T'), s1Car = $('s1Car'), ctT = $('ctT'), ctCar = $('ctCar'), ctOv = $('ctOv');
   const blinkOn = (t, t0) => Math.floor(Math.max(0, t - t0) * 2.4) % 2 === 0;
@@ -397,31 +417,34 @@
     ctCar.style.opacity = nb >= 0 && ((nb < CTT.length) || blinkOn(t, T_CT)) ? 1 : 0;
   });
 
-  // C 20.4–23.1: Scope from SOQ (Mel's job), "Every quote covers the same lines."
-  Kit.add('#gSoq', 'x', [[20.25, 1100], [20.57, 0, 'swipe']]);
-  Kit.add('#sqZoom', 'scale', [[20.6, 1], [22.95, 1.02, 'inOut']]);
-  Kit.pop('#capC', 20.42, { dy: 30 }); Kit.add('#capC', 'opacity', [[22.95, 1], [23.1, 0, 'in']]); Kit.add('#capC', 'y', [[22.95, 0], [23.1, -24, 'in']]);
-  [20.75, 21.05, 21.35].forEach((t, i) => {
+  // C 27.08–30.63: "Every quote covers the same lines, so you compare them in one table." (27.13–30.61) over Scope from SOQ
+  //   (Mel's job): the three rows tick on "quote / covers / same" (27.85, 28.18, 28.50), bracket on "lines" (28.73), note 29.02
+  Kit.add('#gSoq', 'x', [[BC, 1100], [BC + 0.32, 0, 'swipe']]);
+  Kit.add('#sqZoom', 'scale', [[BC + 0.35, 1], [CD, 1.02, 'inOut']]);
+  Kit.pop('#capC', BC + 0.17, { dy: 30 }); Kit.add('#capC', 'opacity', [[CD, 1], [CD + 0.15, 0, 'in']]); Kit.add('#capC', 'y', [[CD, 0], [CD + 0.15, -24, 'in']]);
+  [27.85, 28.18, 28.50].forEach((t, i) => {
     Kit.add('#tk' + i, 'opacity', [[t, 0], [t + 0.1, 1, 'out']]);
     Kit.add('#tap' + i, 'opacity', [[t - 0.08, 0], [t - 0.02, 1], [t + 0.22, 0, 'out']]);
     Kit.add('#tap' + i, 'scale', [[t - 0.08, 0.45], [t + 0.22, 1.25, 'out']]);
   });
-  Kit.add('#noteC', 'opacity', [[21.75, 0], [21.85, 1, 'out']]); Kit.add('#noteC', 'scale', [[21.75, 1.2], [21.95, 1, 'out']]); Kit.add('#noteC', 'rotate', [[0, -3]]);
-  Kit.add('#gSoq', 'opacity', [[22.95, 1], [23.2, 0, 'in']]);
-  Kit.add('#gSoq', 'scale', [[22.95, 1], [23.2, 0.94, 'out']]);
+  Kit.add('#noteC', 'opacity', [[29.02, 0], [29.11, 1, 'out']]); Kit.add('#noteC', 'scale', [[29.02, 1.2], [29.20, 1, 'out']]); Kit.add('#noteC', 'rotate', [[0, -3]]);
+  Kit.add('#gSoq', 'opacity', [[CD, 1], [CD + 0.25, 0, 'in']]);
+  Kit.add('#gSoq', 'scale', [[CD, 1], [CD + 0.25, 0.94, 'out']]);
 
-  // D 23.1–25.0: the callback, big and centred (no sound needed: the tick pops)
-  Kit.add('#t2label', 'opacity', [[23.2, 0], [23.3, 1, 'out']]); Kit.add('#t2label', 'scale', [[23.2, 1.18], [23.4, 1, 'out']]);
-  Kit.add('#t2v', 'opacity', [[23.2, 0], [23.3, 1, 'out']]); Kit.add('#t2v', 'scale', [[23.2, 1.4], [23.4, 1, 'out']]);
-  Kit.add('#tick', 'scale', [[23.62, 1], [23.76, 1.22, 'out'], [23.96, 1, 'out']]);
-  Kit.pop('#t2sub', 23.6, { dy: 18 }); Kit.out('#t2sub', 24.85, 0.15);
-  Kit.add('#knowC', 'opacity', [[24.1, 0], [24.3, 1, 'out']]);
-  Kit.add('#knowC', 'scale', [[24.1, 0.9], [24.4, 1, 'outBack']]);
-  // E 25.0–30: end card. "Know which Dave." stays and moves up; logo, then the sign-up button (in by 25.6, holds 4.4 s)
-  Kit.add('#know', 'y', [[25.0, 0], [25.4, knowEnd - knowTop, 'inOut']]);
-  Kit.fade('#logo', 25.2, 25.5); Kit.add('#logo', 'scale', [[25.2, 0.94], [25.6, 1, 'out']]);
-  Kit.pop('#ctaC', 25.5, { dy: 28 });
-  Kit.add('#ctaC', 'scale', [[26.9, 1], [27.1, 1.045, 'out'], [27.35, 1, 'inOut'], [28.4, 1], [28.6, 1.045, 'out'], [28.85, 1, 'inOut']]);
+  // D 30.58–32.16: the callback, big and centred, as "table." lands (30.61): tally 30.58, tick 30.83, "— the one you invited." 30.89,
+  //   "Know which Dave." on the words (31.01–32.12)
+  Kit.add('#t2label', 'opacity', [[D0, 0], [D0 + 0.1, 1, 'out']]); Kit.add('#t2label', 'scale', [[D0, 1.18], [D0 + 0.2, 1, 'out']]);
+  Kit.add('#t2v', 'opacity', [[D0, 0], [D0 + 0.1, 1, 'out']]); Kit.add('#t2v', 'scale', [[D0, 1.4], [D0 + 0.2, 1, 'out']]);
+  Kit.add('#tick', 'scale', [[31.01, 1], [31.15, 1.22, 'out'], [31.35, 1, 'out']]);
+  Kit.pop('#t2sub', 30.89, { dy: 18 }); Kit.out('#t2sub', E0 - 0.15, 0.15);
+  Kit.add('#knowC', 'opacity', [[31.04, 0], [31.24, 1, 'out']]);
+  Kit.add('#knowC', 'scale', [[31.04, 0.9], [31.34, 1, 'outBack']]);
+  // E 32.16–37.3: end card. "Know which Dave." stays and moves up; logo, then the sign-up button pops on "Sign up" (32.25)
+  //   and holds to the end (pulses 33.74 and 36.04)
+  Kit.add('#know', 'y', [[E0, 0], [E0 + 0.4, knowEnd - knowTop, 'inOut']]);
+  Kit.fade('#logo', E0 + 0.1, E0 + 0.4); Kit.add('#logo', 'scale', [[E0 + 0.1, 0.94], [E0 + 0.5, 1, 'out']]);
+  Kit.pop('#ctaC', 32.24, { dy: 28 });
+  Kit.add('#ctaC', 'scale', [[33.74, 1], [33.94, 1.045, 'out'], [34.19, 1, 'inOut'], [36.04, 1], [36.24, 1.045, 'out'], [36.49, 1, 'inOut']]);
 
   // ---------------------------------------------------------------- layout that needs measuring
   const setup = (async () => {
@@ -440,7 +463,7 @@
     ['tv1', 'tv3', 'tv5', 'tv6', 'tvq'].forEach(id => $(id).style.left = vx + 'px');
     [['x1', 'tv1'], ['x3', 'tv3'], ['x5', 'tv5'], ['x6', 'tv6']].forEach(([x, v]) => { const w = $(v).offsetWidth; markerAt($(x), strikePts(w, 80).map(([a, b]) => [a + vx, b]), 6, '#E0302A'); });
     $('tinner').style.width = (vx + $('tv6').offsetWidth) + 'px';
-    // callback tally (120px marker) + big green tick, centred; at 25.0–25.4 it shrinks into the upper-left corner
+    // callback tally (120px marker) + big green tick, centred; at E0 (32.16–32.56) it shrinks into the upper-left corner
     const lw2 = $('t2label').offsetWidth; $('t2v').style.left = (lw2 + 30) + 'px';
     const tx0 = lw2 + 30 + $('t2v').offsetWidth + 34, sz = 108;
     markerAt($('tick'), [[tx0, 45 + sz * 0.5], [tx0 + sz * 0.38, 45 + sz * 0.9], [tx0 + sz * 1.05, 45 - 7]], 13, '#3DC023');
@@ -450,10 +473,10 @@
     const L0 = Math.round((1080 - W2) / 2);
     $('t2pos').style.left = L0 + 'px';
     const sEnd = 41 / 120;   // ends at the old corner size (66px marker × 0.62)
-    Kit.add('#t2pos', 'x', [[25.0, 0], [25.4, 80 - L0, 'inOut']]);
-    Kit.add('#t2pos', 'y', [[25.0, 0], [25.4, 330 - dTop, 'inOut']]);
-    Kit.add('#t2pos', 'scale', [[25.0, 1], [25.4, sEnd, 'inOut']]);
-    Kit.add('#tick path', 'trim', [[23.45, 0], [23.65, 1, 'out']]);
+    Kit.add('#t2pos', 'x', [[E0, 0], [E0 + 0.4, 80 - L0, 'inOut']]);
+    Kit.add('#t2pos', 'y', [[E0, 0], [E0 + 0.4, 330 - dTop, 'inOut']]);
+    Kit.add('#t2pos', 'scale', [[E0, 1], [E0 + 0.4, sEnd, 'inOut']]);
+    Kit.add('#tick path', 'trim', [[30.83, 0], [31.04, 1, 'out']]);
     // thread geometry + circle around Dave K.
     const itemTop = ITEMS.map((_, i) => $('c' + i).offsetTop);
     const db = $('c12').querySelector('.bub');
@@ -470,7 +493,7 @@
     hk.style.top = hkTop + 'px'; $('hwash').style.setProperty('--hy', (hkTop + hk.offsetHeight / 2) + 'px');
     const nw = $('hkNum'), nr = { w: nw.offsetWidth, h: nw.offsetHeight };
     markerAt($('hkCirc'), ellipsePts(nr.w / 2, nr.h / 2 + 4, nr.w / 2 + 14, nr.h / 2 + 10), 7, '#E0302A');
-    Kit.add('#hkCirc path', 'trim', [[1.1, 0], [1.4, 1, 'out']]);
+    Kit.add('#hkCirc path', 'trim', [[0.79, 0], [1.12, 1, 'out']]);
 
     // product beat layout: each beat (caption + panels + chips + marker notes) is centred in the safe box, so the
     // cards use the frame down to the safe bottom instead of leaving it empty
@@ -488,8 +511,8 @@
     const ask = tile(731, 992, 943, 1116, 1, 6), inv = tile(1015, 1276, 943, 1116, 0.82, 0);
     markerAt($('mkAsk'), ellipsePts(ask.cx, ask.cy, ask.rx, ask.ry), 7, '#F0473C');
     markerAt($('mkInv'), ellipsePts(inv.cx, inv.cy, inv.rx, inv.ry, -0.2), 7, '#F0473C');
-    Kit.add('#mkAsk path', 'trim', [[14.75, 0], [15.05, 1, 'out']]);
-    Kit.add('#mkInv path', 'trim', [[15.1, 0], [15.4, 1, 'out']]);
+    Kit.add('#mkAsk path', 'trim', [[22.72, 0], [23.09, 1, 'out']]);
+    Kit.add('#mkInv path', 'trim', [[23.18, 0], [23.42, 1, 'out']]);
     // marker note: "Dave K." under the panel, arrow up through the gutter between "Daily log" and "AI SOQ" into the Invite ring
     // (the chip is left-aligned so the arrow clears it)
     const gx = phX(1003.5), dv = $('daveA'), dvTop = PH.h + 52;
@@ -498,7 +521,7 @@
     const head = [[tip[0] - hl * Math.cos(ang - 0.5), tip[1] - hl * Math.sin(ang - 0.5)], tip, [tip[0] - hl * Math.cos(ang + 0.5), tip[1] - hl * Math.sin(ang + 0.5)]];
     markerMulti($('arrA'), [[a0, a1, a2, a3, tip], head], 6, '#F0473C');
     const ap = $('arrA').querySelectorAll('path');   // shaft, then the head (each path gets its own draw-on)
-    Kit.add(ap[0], 'trim', [[15.3, 0], [15.5, 1, 'out']]); Kit.add(ap[1], 'trim', [[15.48, 0], [15.58, 1, 'out']]);
+    Kit.add(ap[0], 'trim', [[23.42, 0], [23.62, 1, 'out']]); Kit.add(ap[1], 'trim', [[23.60, 0], [23.68, 1, 'out']]);
     dv.style.left = Math.round(gx - 60) + 'px';
 
     // B2: "your Dave" in the empty right half of the Name field, arrow back to the typed "Dave K." (field x 745–1445,
@@ -511,13 +534,13 @@
     const bhead = [[btip[0] - bhl * Math.cos(bang - 0.5), btip[1] - bhl * Math.sin(bang - 0.5)], btip, [btip[0] - bhl * Math.cos(bang + 0.5), btip[1] - bhl * Math.sin(bang + 0.5)]];
     markerMulti($('arrCt'), [[b0, b1, b2, btip], bhead], 6, '#E0302A');
     const bp = $('arrCt').querySelectorAll('path');
-    Kit.add(bp[0], 'trim', [[18.75, 0], [18.95, 1, 'out']]); Kit.add(bp[1], 'trim', [[18.92, 0], [19.0, 1, 'out']]);
+    Kit.add(bp[0], 'trim', [[26.31, 0], [26.51, 1, 'out']]); Kit.add(bp[1], 'trim', [[26.48, 0], [26.56, 1, 'out']]);
 
     // C: a bracket on the three ticked rows, just right of the longest new label, and the note beside it
     const labelR = sqX(LBL.x) + Math.max(...[0, 1, 2].map(i => $('lb' + i).offsetWidth)) * SQ.k;
     const yA = sqY(SQ.rows[0][0] + 9) + 2, yB = sqY(SQ.rows[2][1] - 16), ym = (yA + yB) / 2, bx = Math.round(labelR + 34);
     markerAt($('mkBr'), [[bx - 30, yA], [bx - 6, yA + 6], [bx + 2, yA + 34], [bx + 3, ym - 26], [bx + 10, ym - 6], [bx + 30, ym], [bx + 10, ym + 6], [bx + 3, ym + 26], [bx + 2, yB - 34], [bx - 6, yB - 6], [bx - 30, yB]], 7, '#E0302A');
-    Kit.add('#mkBr path', 'trim', [[21.5, 0], [21.8, 1, 'out']]);
+    Kit.add('#mkBr path', 'trim', [[28.73, 0], [29.02, 1, 'out']]);
     const nc = $('noteC'), ncX = bx + 46; let nf = 50;
     while (ncX + nc.offsetWidth > 935 && nf > 36) { nf--; nc.style.fontSize = nf + 'px'; nc.style.lineHeight = Math.round(nf * 1.2) + 'px'; const s = nf / 50; const ar = $('noteArr'); ar.setAttribute('width', (46 * s).toFixed(1)); ar.setAttribute('height', (30 * s).toFixed(1)); }
     nc.style.left = ncX + 'px'; nc.style.top = Math.round(ym - nc.offsetHeight / 2 + 4) + 'px';
@@ -527,7 +550,7 @@
     return { cardH, cardTop, pinnedFont: fs, hookFont: hs, hkTop, SB, tallyW: W2, pillFont: pf, chipBelow, A: LA, B: LB, C: LC, S1h: Math.round(S1.h), CTh: Math.round(CT.h), sqH: Math.round(sqH), noteFont: nf, noteX: ncX, noteW: nc.offsetWidth, bracketX: bx };
   })();
 
-  Kit.ready({ duration: 30 });
+  Kit.ready({ duration: DUR });
   const kitReady = window.__ready;
   window.__ready = (async () => { const layout = await setup; const info = await kitReady; Kit.render(0); return Object.assign({}, info, { layout }); })();
 })();

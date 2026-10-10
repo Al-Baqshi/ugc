@@ -3,21 +3,22 @@ vid: N10
 title: "Price it once: from the consent pack to one scope every trade prices"
 venture: qsme-nz
 idea: nz-pricing-a-build-line-by-line
-status: "re-rendered after review — awaiting approval"
+status: "audio-first remake (Cam S, koh CTA) — awaiting review"
 publish_date: 2026-10-24
 publish_time_nzt: "09:00"
 created: 2026-10-02
 calendar_week: 3
 format: long
 kind: long-form walkthrough (dramatised, illustrative screens)
-length_s: 135.4
+length_s: 146.5
 aspect: "16:9 (+ three 9:16 chapter cut-downs)"
 platforms: [YouTube, Facebook, YouTube Shorts (chapter cuts)]
 video: outputs/pricing-a-build-16x9.mp4
+video_with_vo: outputs/pricing-a-build-16x9-with-vo.mp4
 cut_downs:
-  - outputs/pricing-a-build-9x16-found-before-the-tender.mp4   # 31.5 s
-  - outputs/pricing-a-build-9x16-same-lines-every-bidder.mp4   # 26.9 s
-  - outputs/pricing-a-build-9x16-ai-drafts-you-check.mp4       # 27.6 s
+  - outputs/pricing-a-build-9x16-found-before-the-tender.mp4   # 35.1 s (+ -with-vo)
+  - outputs/pricing-a-build-9x16-same-lines-every-bidder.mp4   # 37.4 s (+ -with-vo)
+  - outputs/pricing-a-build-9x16-ai-drafts-you-check.mp4       # 32.7 s (+ -with-vo)
 owner_recordings_needed: [bench-filmed, A, A2, B, C, D, E, F, H, I]   # G only if the chat beat comes back
 ---
 
@@ -37,6 +38,129 @@ owner_recordings_needed: [bench-filmed, A, A2, B, C, D, E, F, H, I]   # G only i
 - The pointer to the comparing-bids video is **evergreen**: "Comparing the totals on the same GST basis? That video's linked here ↗" + a YouTube info card. No "Tuesday".
 - The bidder shot shows **"Itemize" chosen**, and the small tag says "They can itemise or quote one total." Bids are never shown compared line by line.
 - The **® is dropped** from the end-card wordmark (registration unconfirmed, same as the other NZ videos).
+
+## Audio-first remake (2026-10-10) — the current masters
+
+**Why:** the owner's fundamental fix (approved on the N01 "Which Dave?" pilot): no gaps or breath cuts in the voice, a real hook in the first 2 s, scripts as continuous speech, one voice, the picture re-timed to the words. Plus the owner's 2026-10-08 pronunciation fix: the NZ CTA is said "Queue Ess Mee dot **koh** dot en zed" (never C-O). All four cuts of this project are remade: each has its own continuous script and ONE unbroken Cam S eleven_v3 take (stability 0.5, `with-timestamps`, never sliced), laid at 0.0 s (gain 1.15, no music bed). Design unchanged; "Mel" in the sections below is the design record only. The 2026-10-06 takes (said "dot co") are archived in `outputs/archive/vo-co-2026-10-06/` and were never laid on a video.
+
+**Hooks (spoken, first 2 s):** film + cut A: "Forty-eight pages of consent drawings. Not one of them is drainage." · cut B: "Every bidder on this job prices the same lines. And not one of them sees her rates." · cut C: "The AI priced three lines. She's fixed one. The other two still say so."
+
+**Product payoff in words:** QSME splits the consent pack into its real sections, says what it didn't find, prices a pocket per trade, drafts and estimates with AI (marked until a person edits it), and turns the pocket into a private tender where every bidder prices the same lines and never sees her rates or budget.
+
+**Takes** (`python3 tools/el.py stt`: every word heard; QSME → "QS Me", CTA → "qsme.co.nz" / "qsme.koh.enz"):
+
+| Cut | Take | Length | Words · pace | Longest silence | Page |
+|---|---|---|---|---|---|
+| 16:9 film | `outputs/vo-take-cam-v3/take.m4a` | 144.96 s | 370 · 2.55 w/s | 0.53 s | 146.5 s |
+| 9:16 A Found before the tender | `outputs/vo-take-cam-v3-a/take.m4a` | 33.60 s | 94 · 2.80 w/s | 0.68 s | 35.1 s |
+| 9:16 B Same lines for every bidder | `outputs/vo-take-cam-v3-b/take.m4a` | 35.84 s | 106 · 2.96 w/s | 0.48 s | 37.4 s |
+| 9:16 C AI drafts. You check. | `outputs/vo-take-cam-v3-c/take.m4a` | 31.20 s | 90 · 2.88 w/s | 0.56 s | 32.7 s |
+
+Film attempt 1 (152.6 s, 2.43 w/s, a 0.95 s hole before "Step five", STT heard "Import it" as "Imported") is kept as `*-attempt1.*`; attempt 2 is the take. A, B and C are first attempts. v3 tags: film `[amused]` (Twenty twenty-four rates, mind), `[confident]` (Step five); A `[dry]` (Heads up); C `[dry]` (hook).
+
+**The film as spoken (one take, 144.96 s; exactly the text sent):**
+
+```
+Forty-eight pages of consent drawings. Not one of them is drainage. Found before the tender... not in a trench.
+
+Price it once. Here's how.
+
+Christchurch owner-builder. Consent pack thick enough to prop a door open. And her brother-in-law's spreadsheet. From two years ago. Neither one mentions drainage.
+
+Step one. Read the pack. Queue Ess Mee splits it into its real sections. Floor plans, bracing, foundations, schedules. It reads what the drawings say, it doesn't measure them. And it takes a few minutes, so this bit's sped up. Tables come out as tables. And it says what it didn't find. Heads up: no drainage in this pack. Found before anyone priced it. So she asks the designer.
+
+Days later, the drainage sheets turn up. Their own PDF. Read in. Drainage, found.
+
+Step two. Price it. A pocket per trade. Plumbing and drainage. It starts as a Draft. She makes it Active. A quantity, a rate, and the line, the job, the pocket and the Grand total tick up together. Her own columns too. Waste percent, then a formula. And the brother-in-law's spreadsheet? Import it. In it comes as drafts. [amused] Twenty twenty-four rates, mind.
+
+Step three. Fill the gaps. Draft with AI adds the pockets she hasn't got, as AI drafts. Keep one. Bin the other. Then Estimate with AI prices only the empty lines. Indicative, not quotes. Every AI number stays marked until a person edits it. She swaps one for her supplier's figure, and its mark goes. The other two stay marked. She still has to check them.
+
+Step four. Make it a tender. Private, so only who she invites. Select the whole pocket: its jobs and lines are the scope. Three of three. Point them at the drainage pages. The ones that exist now. Thirty, thirty, forty, with five percent retention. Then invite the trades she picks. [confident]
+
+Step five. What the drainlayer sees. The same lines, for every bidder. They can itemise, or quote one total. Her rates and her budget are stripped before they see it. Comparing the totals on the same G S T basis? That video's linked here.
+
+Price it once. Tender the same lines. Sign up at Queue Ess Mee dot Co dot N Z.
+```
+
+| Said (start, s) | Picture (re-timed to the words) | Caption on screen |
+|---|---|---|
+| 0.00 "Forty-eight pages of consent drawings. Not one of them is drainage." | Pack down at frame 0, 'Found before the tender.'; notice in by 0.3; red underline on "drainage." 3.91–4.41 | (headline) |
+| 4.76 "Found before the tender... not in a trench." | Cut to the trench on "not" 7.06: '**Not** in a trench.' | (headline) |
+| 8.47 "Price it once. Here's how." | Title card pops on "Price" | Price it once. (title) |
+| 11.21 "Christchurch owner-builder. Consent pack thick enough to prop a door open." | Bench, CHCH sticky | Christchurch owner-builder. Consent pack… |
+| 15.88 "And her brother-in-law's spreadsheet. From two years ago." | Spreadsheet slides in 15.8; "2024" circled on "two years" 18.46 | And her brother-in-law's spreadsheet. From two years ago. |
+| 19.51 "Neither one mentions drainage." | Marker "drainage??" on "mentions drainage" 20.28; chapter strip 20.95 | Neither one mentions drainage. |
+| 21.63 "Step one. Read the pack." | App window 21.45, pill 01 | Step 1: read the pack. |
+| 23.57 "Queue Ess Mee splits it into its real sections. Floor plans, bracing, foundations, schedules." | Read a document → Demo pack.pdf; the 11 chips pop 25.9–29.6 | QSME splits it into its real sections. / Floor plans, bracing, foundations, schedules. |
+| 29.92 "It reads what the drawings say, it doesn't measure them. And it takes a few minutes, so this bit's sped up." | Zoom on the chips; "▸▸ sped up · Can take a few minutes" held to 35.35; tag "Reads what the drawings say. Doesn't measure them." | It takes a few minutes, so this bit's sped up. |
+| 35.71 "Tables come out as tables." | Window-schedule drawer 35.55 | Tables come out as tables. |
+| 37.87 "And it says what it didn't find." | Notice slides in 37.6, zoom 1.62× | And it says what it didn't find. |
+| 39.56 "Heads up: no drainage in this pack. Found before anyone priced it." | Red underline on "no drainage" 40.59 | Heads up: no drainage. Found before anyone priced it. |
+| 44.45 "So she asks the designer." | Sticky slams on "So" | So she asks the designer. |
+| 46.35 "Days later, the drainage sheets turn up. Their own PDF." | Bench: DRAINAGE sheets 46.4; tick on "turn up" 47.98 | Days later, the drainage sheets turn up. Their own PDF. |
+| 49.94 "Read in. Drainage, found." | Drainage — demo.pdf read; chips on "found" 51.6 | Read in. Drainage: found. |
+| 52.67 "Step two. Price it. A pocket per trade. Plumbing and drainage." | Pill 02; Add a pocket; name types as said 56.3–57.4 | Step 2: price it. / A pocket per trade. |
+| 57.71 "It starts as a Draft. She makes it Active." | Pocket 57.75; badge flips on "Active" 60.05 | It starts as a Draft. She makes it Active. |
+| 60.88 "A quantity, a rate, and the line, the job, the pocket and the Grand total tick up together." | Qty on "quantity" 61.1, rate 62.0, totals tick from "the line" 62.98 | Line, job, pocket and Grand total tick up together. |
+| 66.62 "Her own columns too. Waste percent, then a formula." | Waste % on "percent" 68.9; formula column 69.3–70.5 | Her own columns too. Waste %, then a formula. |
+| 70.80 "And the brother-in-law's spreadsheet? Import it. In it comes as drafts. Twenty twenty-four rates, mind." | Import 73.0; toast on "In it comes" 73.75; draft pockets on "as drafts" 74.6 | …spreadsheet? Import it. / In it comes as drafts. 2024 rates, mind. |
+| 77.89 "Step three. Fill the gaps. Draft with AI adds the pockets she hasn't got, as AI drafts." | Pill 03; AI menu on "Draft with AI" 80.25; AI-draft pockets on "as AI drafts" 83.09 | Step 3: fill the gaps. / Draft with AI adds the pockets she hasn't got. |
+| 84.67 "Keep one. Bin the other." | Keep 84.67; bin 85.79 | Keep one. Bin the other. |
+| 86.96 "Then Estimate with AI prices only the empty lines. Indicative, not quotes." | Estimate with AI 87.25; ✦ rates fill on "the empty lines" 89.4; tag "AI rates are indicative, not quotes." | Estimate with AI prices only the empty lines. / Indicative, not quotes. |
+| 92.39 "Every AI number stays marked until a person edits it." | ✦ banner 92.3 | Every AI number stays marked ✦ until a person edits it. |
+| 96.04 "She swaps one for her supplier's figure, and its mark goes. The other two stay marked. She still has to check them." | Edit on "swaps" 96.45; ✦ goes on "mark goes" 98.75 | She swaps one… Its mark goes. / The other two stay marked… |
+| 103.14 "Step four. Make it a tender. Private, so only who she invites." | Pill 04; Create New Tender; Private 105.3 | Step 4: make it a tender. Private: only who she invites. |
+| 107.73 "Select the whole pocket: its jobs and lines are the scope. Three of three." | Select whole pocket 108.55; counter steps to "Three of three" 111.55 | Select the whole pocket: its jobs and lines are the scope. |
+| 112.99 "Point them at the drainage pages. The ones that exist now." | Ticks on "drainage pages" 113.73 / "The ones" 115.0 | Point them at the drainage pages. The ones that exist now. |
+| 116.71 "Thirty, thirty, forty, with five percent retention." | 30-30-40 116.75; retention 118.75; Excluding GST 119.6 | 30-30-40, with 5% retention. |
+| 120.24 "Then invite the trades she picks." | Invite ticks 121.1–121.7; send 122.2 | Then invite the trades she picks. |
+| 122.76 "Step five. What the drainlayer sees. The same lines, for every bidder." | Split 122.6; pill 05 | Step 5: what the drainlayer sees. / The same lines, for every bidder. |
+| 127.42 "They can itemise, or quote one total." | Itemize clicked on "itemise" 127.95 | They can itemise, or quote one total. (was a tag) |
+| 130.23 "Her rates and her budget are stripped before they see it." | Rows travel, rates blur 130.1–131.95; green / dashed amber boxes | Her rates and budget are stripped before they see it. |
+| 133.09 "Comparing the totals on the same G S T basis? That video's linked here." | Slow push; YouTube info card (move it to ~133 s) | Comparing the totals on the same GST basis? That video's linked here ↗ |
+| 138.04 "Price it once. Tender the same lines. Sign up at Queue Ess Mee dot Co dot N Z." | End card: "Price it once." 138.04, "Tender the same lines." 139.66, button on "Sign" 141.2; ends 146.5 | (end card) |
+
+**Cut A (33.60 s take, page 35.1 s):**
+```
+Forty-eight pages of consent drawings. Not one of them is drainage. Found before the tender. Not on site.
+
+Queue Ess Mee reads the pack into its real sections, page numbers and all. Tables come out as tables. And it says what it didn't find. [dry] Heads up: no drainage. Found before anyone priced it.
+
+Days later, the drainage sheets turn up as their own PDF. Read in. Drainage, found. So the tender points the drainlayer at the drainage pages. The ones that exist now.
+
+Sign up at Queue Ess Mee dot Co dot N Z.
+```
+"Not on site." pops on its words (5.78); red underline on "drainage." 3.34 and on "no drainage" 16.21; chips through "real sections, page numbers and all"; tick on "turn up" 21.05; drainage-page ticks on "drainage pages" 27.6 / "The ones" 28.7; button on "Sign" 30.3.
+
+**Cut B (35.84 s take, page 37.4 s):**
+```
+Every bidder on this job prices the same lines. And not one of them sees her rates. Here's how.
+
+A pocket per trade. Plumbing and drainage. Draft first; she makes it Active. A quantity, a rate, and the line, the job, the pocket and the Grand total tick up together.
+
+Then the pocket becomes the tender. Select the whole pocket: its jobs and lines are the scope. Three of three.
+
+What the drainlayer sees. The same lines. They can itemise, or quote one total. Her rates and her budget are stripped before they see it.
+
+Sign up at Queue Ess Mee dot Co dot N Z.
+```
+Hook headline "Same lines for every bidder." held to 5.25; badge flips on "Active" 10.0; the callouts now pop on their own words (line 12.80, job 13.54, pocket 14.14, Grand total 14.95); job ticks step through to "Three of three" 22.4; Itemize on "itemise" 26.68; rates blur on "stripped"; button on "Sign" 31.9. The "They can itemise…" tag became a caption.
+
+**Cut C (31.20 s take, page 32.7 s):**
+```
+[dry] The AI priced three lines. She's fixed one. The other two still say so.
+
+Draft with AI adds the pockets she hasn't got, as AI drafts. Keep one. Bin the other. Then Estimate with AI prices only the empty lines. Indicative, not quotes. Every AI number stays marked until a person edits it. She swaps one for her supplier's figure, and its mark goes. The other two stay marked. She still has to check them.
+
+AI drafts. You check. Sign up at Queue Ess Mee dot Co dot N Z.
+```
+Hook headline changed to the spoken line: "AI priced three. **She's fixed one.**" (was "AI drafts. You check."), the ✦ goes on "fixed one" 2.6; end card lines now "AI drafts." / "You check." popping on the words (26.1 / 27.2), button on "Sign" 27.85.
+
+**How the picture follows the audio:** `motion/warp.js` maps each page's authored 2026-10-04 timeline through word anchors (`[authored_s, output_s]`, every output time a word start in that take's `alignment.json`; listed with the word in `motion/pricing-a-build.html` and `motion/cut.js`). Captions (phrases lifted from the narration) and cut B's callouts are placed directly in output time.
+
+**Files:** masters `outputs/pricing-a-build-16x9.mp4` (146.5 s, QA ok on 96,54,1824,1026) and the three 9:16 cuts (35.1 / 37.4 / 32.7 s, QA ok on 65,300,1015,1250), each with its voiced `*-with-vo.mp4` (one audio track, duration = video). v1 masters archived as `outputs/archive/*-v1.mp4`. Voice contract: `vo-script.json` / `vo-script.md`. Studio previews (`*.preview.mp4`) are still the v1 and get refreshed on the next `npm run publish`. Thumbnail unchanged (its text didn't change). **YouTube:** move the info card from 124 s to ~133 s (the GST line now lands at 133.09).
+
+**What's below:** the Hook, Beat-by-beat, cut-down, Music and Voice sections describe the 2026-10-04 silent cut (Mel, per-line). They are kept as the design record; the timeline above is the one that ships.
 
 ## Hook (0–6.9 s)
 
@@ -262,3 +386,5 @@ Source: `research/2026-10-02-qsme-platform-truth.md` (feature IDs).
 - 2026-10-04 (review pass): portrait captions changed to one box per caption (two-line captions were hiding the first line's descenders: "Line, job," read as "Line. iob."). Cut B's totals beat was tightened and given callouts. The second homepage capture got a blur over "…nothing is guessed". The import dialog now lists the sample file's real extra columns. The cold-open pack moved down 40 px so the binder clip no longer cuts through the headline (first frame and thumbnail).
 - 2026-10-04: Resumed and finished. All app chapters were rebuilt as shared builders (`story.js`) so the master and the three cuts use the same screens. Added chapters 2–6, the split screen, the end card, three 9:16 cuts, the VO script and this post. Owner CTA rule applied: "Free to join" → "Sign up at qsme.co.nz". Chat beat shows no answer or citation. Rendered the 148.0 s master and the three cuts, all QA passed.
 - 2026-10-04 (second review, verdict "fix"): all 4 must-fixes, all 7 should-fixes and 5 nice-to-haves applied, then the master and all three cuts were re-rendered (QA passed). **Must:** hook at 4.6 s now reads "**Not** in a trench." (accent on "Not", matches the VO); the internal "swap for real QSME screen" / "stand-in for a filmed shot" labels are now "Illustrative screen · demo data" / "Dramatised"; the Chat with AI beat is cut (VO vo27–vo29 deleted, chapters renumbered: Tender = Step 4, What bidders see = Step 5); both plan reads carry "▸▸ sped up" + "Can take a few minutes". **Should:** ✦ copy now says it stays "until a person edits it" / "She still has to check them" (captions, VO, cut C, Shorts and description copy); the drainage arrival + read-in moved to straight after "she asks the designer", so Step 2 prices lines the sheets support; the two homepage captures are dropped and the chapter pill + a short lead-in on the app carry each step; the tender wizard's three dense beats each hold 1 s longer; CH2 camera keys keep the pocket names in frame (after the Draft→Active flip and on the imported pockets); the "Tuesday's video" pointer is now "Comparing the totals on the same GST basis? That video's linked here ↗" + an info card, with the hold trimmed and a slow push added; frame 0 of the master and cut A is the pack already down + the headline. **Nice:** "Her rates never shown." everywhere; end-card text kept in the left half for end-screen elements (no single-storey dusk b-roll exists, noted); the wizard starts with nothing selected and cut B's counter steps 1 → 2 → 3; "Paid plans" in the same grey as the rest of its tag; CH1 and wizard cameras no longer slice a text line or the dialog's top edge. Also fixed in passing: the drainage read's section chips no longer slide under the second PDF row, and the idle progress track is hidden until the read starts. New length 135.4 s (master), 26.9 s (cut B).
+- 2026-10-10: Audio-first remake to the N01 standard + the owner's "dot koh" CTA (2026-10-08). Four continuous scripts, four unbroken Cam S eleven_v3 takes (film 144.96 s, A 33.60, B 35.84, C 31.20; STT clean, longest silence 0.68 s), pages re-timed to the words through motion/warp.js, all four masters re-rendered (QA ok) and voiced (*-with-vo.mp4); v1 masters archived; cut C hook headline and end card follow the narration; vo-script.json/.md rewritten. The 2026-10-06 "dot co" takes archived unused. Awaiting review.
+- 2026-10-10 CTA swap: owner said "koh" sounded wrong; only the final "Sign up at qsme.co.nz" line was replaced (spoken "dot Co dot N Z", tools/fix_cta.py), rest of the take and picture untouched. Old take in outputs/archive/vo-koh-2026-10-10/.

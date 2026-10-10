@@ -3,17 +3,18 @@ vid: G05
 title: "Why six bids never compare (it's the tender, not the subcontractors)"
 venture: qsme-build
 idea: gl-why-bids-never-compare
-status: "rendered v2.1 (owner CTA rule 2026-10-03) — awaiting approval"
+status: "audio-first remake 2026-10-06 (Cam S, eleven_v3, one take) — awaiting review"
 publish_date: 2026-10-14
 publish_time: "19:30 NZDT (Wed 07:30 London BST, 10:30 Dubai, 09:30 Riyadh)"
 created: 2026-10-02
 calendar_week: 2
 format: long
 kind: long-form
-length_s: 139
+length_s: 142.4
 aspect: "16:9"
 platforms: ["LinkedIn (native video, founder profile; page reposts Thu 08:30 Sydney)", "YouTube (chapters from the chapter cards)"]
 video: outputs/why-bids-never-compare-16x9.mp4
+video_with_vo: outputs/why-bids-never-compare-16x9-with-vo.mp4
 thumbnail: outputs/why-bids-never-compare-thumb.png
 follows: projects/2026-10-02-qsme-build-six-bids-six-formats
 ---
@@ -25,6 +26,87 @@ follows: projects/2026-10-02-qsme-build-six-bids-six-formats
 **The joke (light, one per chapter, always on us):** the tender we laid on the pile just says "Drawings attached. Please price."; "Bidder D: missed off the list"; "looks cheaper" struck out; and the emailed-quotes chapter's aside, "Photos too. Yes, even the whiteboard."
 
 **Job:** Week 2 long-form, the payoff to "Six bids. Six formats." posted a week later while the people who commented are still warm. It answers "so what do I do about it?". LinkedIn native video from the founder's profile (the page reposts Thu 08:30 Sydney) and YouTube, where the chapter cards become YouTube chapters and the video becomes the standing link for demo follow-ups. Silent-first: every beat reads with the sound off; the Kiwi VO is scripted for later, ideally read by the founder.
+
+## Audio-first remake (2026-10-06) — the current master
+
+**Why:** the owner's fundamental fix for every QSME video (approved on the N01 "Which Dave?" pilot): no gaps and breath cuts in the voice, a real hook in the first 2 s, scripts written as continuous speech rather than caption fragments. This cut applies that standard: one dry Kiwi QS narrates the whole film, the voice is ONE unbroken eleven_v3 take (Cam S), and the picture was re-timed to the words. The design is unchanged (the owner likes it); the founder read, music bed and SFX plan below are retired for this cut.
+
+**Hook (0–6.3 s, spoken):** "Six bids. Zero that compare. And it's not the subcontractors. It's the tender. Ours." — on screen frame 1 already reads "6 bids. / 0 that compare." with the six part-1 bids; "It's not the subcontractors." rises on "not" (2.42), "It's the tender." slams on "tender" (4.37) as the TENDER sheet lands (4.75), and the red ring draws on "Ours." (5.56).
+
+**The script as spoken (one take, 140.89 s, 380 words, 2.70 words/s, longest silence 0.76 s; v3 tags in brackets, 3 of them):**
+
+```
+Six bids. Zero that compare. And it's not the subcontractors. It's the tender. Ours.
+
+[dry] Five reasons it went wrong, and the fix for each one.
+
+One. Everyone read the scope differently. Our tender said: drawings attached, please price. No lines to price, so six bidders wrote six scopes. The fix. Cut the tender from your estimate. Pick the pocket, and its jobs become the scope. Same lines for every bidder. Your rates and your budget never go with them. So every total prices the same scope.
+
+Two. Two drawing revisions in circulation. Three priced Rev B. Three priced Rev C, the one with the new bulkhead. The fix. Point every bidder at the right sheets. Tick the sections, and the bidder sees those pages, pinned to the version. New set uploaded? The bidder sees it.
+
+Three. The scope changed on Tuesday. Addendum two went to five. Bidder D priced the old scope. [amused] Missed off the list. Our list. The fix. Change it in the tender. It knows two bids are already in, so change it once, and everyone still in is told what moved.
+
+Four. Plus tax. Including tax. Bidder X, ten thousand plus VAT. Bidder Y, eleven and a half, including. Which one's cheaper? Looks like X. Put them on the same basis, and the cheaper-looking bid isn't cheaper. It's Y, either way. Same tax basis, or it isn't a comparison. Queue Ess Mee asks the tax question before anyone quotes, and it sticks to every bid.
+
+Five. It came by email. A PDF, at four fifty-nine. A PDF in an inbox isn't in your comparison. The fix. Drop it on the tender. It's read into a draft, and a person checks it against the original. Emailed quotes, checked, in the same table. Photos too. Yes, even the whiteboard.
+
+[short pause] Now, the honest bit. Totals side by side. Each bid's own lines, one click away. It won't pick the winner for you. You decide. It's just a fair fight now.
+
+So. Fix the tender, and the bids start to compare. Same lines. The right sheets. Changes reach everyone. Tax basis up front. Emailed bids checked in.
+
+Bring a real package, and book a thirty-minute demo at Queue Ess Mee dot build. Which of the five gets you most?
+```
+
+**Product payoff in words:** cut the tender from your estimate (pick the pocket, its jobs become the scope; same lines for every bidder; your rates and budget never go with them) · point every bidder at the right sheets, pinned to the version, warned when a new set is uploaded · change the scope once and everyone still in is told what moved · the tax question asked before anyone quotes and stuck to every bid · emailed quotes read into a draft, checked by a person, in the same table · totals side by side, each bid's own lines one click away, a person still picks the winner. Claims per `research/2026-10-02-qsme-platform-truth.md` 4.1–4.3, 5.1–5.3 and the live tendering page; no line-by-line matrix, no takeoff, no pricing or "free" lines (owner CTA rule 2026-10-03).
+
+| Said (start) | Picture (re-timed to the words) | Caption on screen |
+|---|---|---|
+| 0.00 "Six bids. Zero that compare. And it's not the subcontractors. It's the tender. Ours." | Hook 0–7.0: frame 1 already reads '6 bids. / 0 that compare.' + chip; the six part-1 bids pile up 0.45–1.9; 'It's not the subcontractors.' rises on 'not' (2.42); 'It's the tender.' slams on 'tender' (4.37) and the TENDER sheet lands 4.75; the red ring draws on 'Ours.' (5.56) | 6 bids. / 0 that compare. · It's not the subcontractors. · It's the tender. |
+| 7.01 "Five reasons it went wrong, and the fix for each one." | Title card 6.76–9.1: 'Five reasons bids don't compare.' on 'Five' (7.01), the list builds 7.41–8.53, subline 'And the fix for each one.' on 'and the fix' (8.6) | Five reasons bids don't compare. · And the fix for each one. |
+| 9.42 "One. Everyone read the scope differently." | Wipe 9.12 → chapter 1 card on 'One.' (9.42): '1 · Reason 1 of 5 · Everyone read the scope differently.' | (chapter card 1) |
+| 12.54 "Our tender said: drawings attached, please price." | The sent email card rises on 'Our tender said' (12.54): 'To: Bidders A–F · Drawings attached. Please price.' | (the email: Drawings attached. Please price.) |
+| 16.14 "No lines to price, so six bidders wrote six scopes." | Caption 'No lines to price, so six bidders wrote six scopes.' 16.14–19.6; the six scope cards A→F land on 'six bidders' (17.62, 0.3 apart) | No lines to price, so six bidders wrote six scopes. |
+| 19.60 "The fix. Cut the tender from your estimate. Pick the pocket, and its jobs become the scope." | 'Create New Tender · STEP 3 OF 4' stand-in on 'The fix.' (19.6); caption 'Cut the tender from your estimate.' 20.54–24.85; cursor clicks 'Select whole pocket' on 'Pick the pocket' (22.55), four jobs tick, '4 of 4 selected' | Cut the tender from your estimate. |
+| 24.85 "Same lines for every bidder." | Split stand-in 'YOU · your SOQ, rates in' | 'EVERY BIDDER · same lines, no rates' on 'Same lines' (24.85); bidder tabs step A→F 25.75–28.0; caption 24.9–26.48 | Same lines for every bidder. |
+| 26.48 "Your rates and your budget never go with them." | Caption 'Your rates and your budget never go with them.' 26.48–28.88; our rate column glows amber on 'rates' (26.78) | Your rates and your budget never go with them. |
+| 28.88 "So every total prices the same scope." | Live qsme.build/platform/tendering FAQ 'What is a private tender?' on 'So every total' (28.88); highlight sweeps on 'the same scope' (30.34); caption 28.98–31.87 | So every total prices the same scope. |
+| 31.90 "Two. Two drawing revisions in circulation." | Wipe 31.6 → chapter 2 card on 'Two.' (31.9) | (chapter card 2) |
+| 34.99 "Three priced Rev B. Three priced Rev C, the one with the new bulkhead." | Rev B sheet rises on 'Three priced Rev B' (34.99), Rev C on the second 'Three' (36.74), 'Priced by A B C / D E F' 0.5 later; the revision cloud draws on 'new bulkhead' (38.92); caption 'Three priced Rev B. Three priced Rev C.' 35.04–39.78 | Three priced Rev B. Three priced Rev C. |
+| 39.78 "The fix. Point every bidder at the right sheets. Tick the sections," | 'Point them at the right sheets' stand-in on 'The fix.' (39.78); caption 'Point every bidder at the right sheets.' 40.83–45.25; the three plan sections tick on 'Tick the sections' (43.16, 43.56, 43.96) | Point every bidder at the right sheets. |
+| 44.26 "and the bidder sees those pages, pinned to the version." | Bidder view 'Referenced drawing pages' from 45.25; caption 'Those pages, pinned to the version.' 45.35–47.23 | Those pages, pinned to the version. |
+| 47.28 "New set uploaded? The bidder sees it." | Chip 'Tuesday · drawing set v2 uploaded' pops on 'New set uploaded?' (47.28); rows turn amber 'pages may have moved' on 'The bidder sees it' (48.72); caption 47.33–50.25 | New set uploaded? The bidder sees it. |
+| 50.28 "Three. The scope changed on Tuesday." | Wipe 49.98 → chapter 3 card on 'Three.' (50.28): 'The scope changed on Tuesday. One bidder never heard.' | (chapter card 3) |
+| 52.78 "Addendum two went to five. Bidder D priced the old scope." | Sent email 'To: Bidder A; B; C; E; F · Addendum 2 (bulkheads added)' on 'Addendum two' (52.78); five green ticks on 'went to five' (53.81); D ringed in red on 'Bidder D' (54.84); caption 'Addendum 2 went to five. Bidder D priced the old scope.' 52.88–59.15 | Addendum 2 went to five. Bidder D priced the old scope. |
+| 57.30 "Missed off the list. Our list." | Marker note 'missed off the list' pops on 'Missed' (57.3) | (marker: missed off the list) |
+| 59.15 "The fix. Change it in the tender. It knows two bids are already in," | Open tender stand-in 'Open · 2 bids in' on 'The fix.' (59.15); caption 'Change it in the tender. It knows 2 bids are already in.' 60.09–63.57; the blue banner pulses on 'It knows two bids' (61.5); 'Bulkheads' ticked 62.8 → '5 of 5 selected' | Change it in the tender. It knows 2 bids are already in. |
+| 63.57 "so change it once, and everyone still in is told what moved." | Kinetic 'Tender · scope changed' node on 'change it once' (63.57), lines draw to A–F; the six light green on 'everyone still in' (64.93); 'All six still in the running → told what moved' on 'told' (66.06); caption 'Change it once. Everyone still in is told what moved.' 63.67–67.47 | Change it once. Everyone still in is told what moved. |
+| 67.50 "Four. Plus tax. Including tax." | Wipe 67.2 → chapter 4 card on 'Four.' (67.5): '“Plus tax.” “Incl. tax.”'; subline 'Same job. Two different numbers.' on 'Including tax.' (69.62) | (chapter card 4 · Same job. Two different numbers.) |
+| 70.55 "Bidder X, ten thousand plus VAT. Bidder Y, eleven and a half, including." | Chip 'Example figures · VAT 20%' + 'AS WRITTEN'; Bidder X '10,000 + VAT' on 'Bidder X' (70.55); Bidder Y '11,500 incl. VAT' on 'Bidder Y' (73.33) | (Bidder X 10,000 + VAT · Bidder Y 11,500 incl. VAT) |
+| 76.02 "Which one's cheaper? Looks like X." | Caption 'Which one's cheaper?' 76.02–78.55; marker 'looks cheaper' on X on 'Looks like X' (77.45) | Which one's cheaper? |
+| 78.55 "Put them on the same basis, and the cheaper-looking bid isn't cheaper. It's Y, either way." | The 'our maths' pad slides in on 'Put them on the same basis' (78.55): 'both incl. VAT · X 10,000 + 20% = 12,000' writes 78.75–79.85; 'looks cheaper' struck out on 'isn't cheaper' (81.37); 'Y 11,500' ringed 82.17; 'both excl. VAT · X 10,000 · Y 11,500 ÷ 1.2 = 9,583' writes on 'It's Y, either way' (82.53–84.2); 'Y is cheaper, either way.' 83.93; caption 'On the same basis, the cheaper-looking bid isn't cheaper.' 78.55–83.83 | On the same basis, the cheaper-looking bid isn't cheaper. |
+| 83.83 "Same tax basis, or it isn't a comparison." | Caption 'Same tax basis, or it isn't a comparison.' 83.83–86.67 over the finished pad | Same tax basis, or it isn't a comparison. |
+| 86.67 "Q-S-me asks the tax question before anyone quotes, and it sticks to every bid." | Live qsme.build FAQ 'Can we compare bids that include and exclude tax?' on 'Queue Ess Mee asks' (86.67), highlight 'The comparison sorts on the basis you choose' 87.37–88.57; caption 'QSME asks the tax question before anyone quotes. It sticks to every bid.' 86.72–92.12 | QSME asks the tax question before anyone quotes. It sticks to every bid. |
+| 92.15 "Five. It came by email. A PDF, at four fifty-nine." | Wipe 91.85 → chapter 5 card on 'Five.' (92.15): 'It came by email.'; subline 'As a PDF. At 4:59 pm.' on 'A PDF, at four fifty-nine' (94.81) | (chapter card 5 · As a PDF. At 4:59 pm.) |
+| 97.05 "A PDF in an inbox isn't in your comparison." | Generic inbox 'Bidder A · 4:59 pm · Quote_FINAL_v3_revised(2).pdf' + 'Your comparison' B–F on 'A PDF in an inbox' (97.05); slot 'A · not here' pulses on 'isn't in your comparison' (98.73); caption 97.15–100.13 | A PDF in an inbox isn't in your comparison. |
+| 100.13 "The fix. Drop it on the tender. It's read into a draft," | 'Add a bid you received' stand-in on 'The fix.' (100.13); the PDF drops into the box on 'Drop it' (101.18–101.93); 'Reading the quote…' 102.03; 'The bid' beside 'The original' with the 'can be wrong … nothing is saved until you have checked it' notice on 'read into a draft' (103.36); caption 'Drop it on the tender. It's read into a draft.' 101.18–104.21 | Drop it on the tender. It's read into a draft. |
+| 104.21 "and a person checks it against the original." | Cursor ticks 'I have checked this against the original and it is right.' on 'checks it' (104.82); caption 'A person checks it against the original.' 104.21–106.33 | A person checks it against the original. |
+| 106.33 "Emailed quotes, checked, in the same table. Photos too. Yes, even the whiteboard." | 'Compare bids · 6 bids' stand-in on 'Emailed quotes' (106.33): rows A and F flash 'Received by you'; chip 'All totals excl. tax' 106.63; the aside 'Photos too. Yes, even the whiteboard.' pops on 'Photos too.' (109.33); caption 'Emailed quotes, checked, in the same table.' 106.43–112.98 | Emailed quotes, checked, in the same table. (aside: Photos too. Yes, even the whiteboard.) |
+| 113.01 "Now, the honest bit." | Wipe 112.71 → 'WHAT IT WON'T DO · The honest bit.' slams on 'honest bit' (113.34) | (card: The honest bit.) |
+| 114.17 "Totals side by side." | 'Compare bids' stand-in with six totals on 'Totals' (114.17); chip 'All totals excl. tax'; caption 114.17–115.9 | Totals side by side. |
+| 115.90 "Each bid's own lines, one click away." | Cursor clicks Bidder B on 'own lines' (116.2) → 'Detailed price breakdown' slides in; caption 'Each bid's own lines, one click away.' 115.9–118.67 | Each bid's own lines, one click away. |
+| 118.67 "It won't pick the winner for you. You decide." | Live qsme.build card 'Award is a person's decision' on 'It won't pick' (118.67), highlight 'No automation and no assistant awards a tender.' 119.17–120.32; caption 118.77–121.5 | It won't pick the winner for you. You decide. |
+| 121.50 "It's just a fair fight now." | Part 1's six bids appear on 'It's just a fair fight' (121.5) and fly into six identical rows 122.25–123.4; caption 121.6–123.92 | It's just a fair fight now. |
+| 123.34 "So. Fix the tender, and the bids start to compare." | Wipe 123.92 → the TENDER sheet returns on 'Fix the tender' (124.22); 'Drawings attached. Please price.' struck through 124.64; caption 'Fix the tender, and the bids start to compare.' 124.32–134.34 | Fix the tender, and the bids start to compare. |
+| 126.70 "Same lines. The right sheets. Changes reach everyone. Tax basis up front. Emailed bids checked in." | The five ticked lines rise on their words: 'Cut from the SOQ: same lines for every bidder' (126.7), 'The right sheets, pinned to the version' (127.93), 'Scope changes reach everyone still in' (129.15), 'Tax basis stated before anyone quotes' (130.83), 'Emailed bids checked into the same table' (132.61) | (the five ticked lines) |
+| 134.34 "Bring a real package," | Live qsme.build band 'Run one of your packages through it — Bring a real package.' on 'Bring a real package' (134.34), underline 134.84; caption 'Bring a real package.' 134.44–136.66 | Bring a real package. |
+| 136.06 "and book a thirty-minute demo at Q-S-me dot build." | End card from 136.66: b-roll + QSME logo, green pill 'Book a 30-minute demo' pops 136.91; 'qsme.build' rises on 'Queue Ess Mee dot build' (137.49) | (end card: qsme.build · Book a 30-minute demo) |
+| 139.00 "Which of the five gets you most?" | 'Which of the five gets you most? Tell us in the comments.' rises on 'Which of the five' (139.0); page ends 142.4 | Which of the five gets you most? Tell us in the comments. |
+
+**Files:** master `outputs/why-bids-never-compare-16x9.mp4` (142.4 s, silent, QA passed on the YouTube safe box 96,54,1824,1026; the 139.0 s v2.1 master is archived as `outputs/archive/why-bids-never-compare-16x9-v1.mp4`); voiced `outputs/why-bids-never-compare-16x9-with-vo.mp4` (the take at 0.0 s, gain 1.15, no bed, one audio track); take + alignment + words + the exact text sent + the STT transcript in `outputs/vo-take-cam-v3/`; contract `vo-script.json` / `vo-script.md`. Motion source `motion/why-bids-never-compare.html` (the `T` table at the top of the script is the clock; every beat is placed on its word). Captions changed to the narration's words: "Your rates and **your** budget…", "Those pages, pinned to the version.", "It knows 2 bids are **already** in.", "Everyone still in is told **what moved**.", "**On the same basis,** the cheaper-looking bid isn't cheaper.", "Bring a real package." (the demo pill + qsme.build carry the CTA on the end card). The thumbnail (hook frame) is unchanged. YouTube end-screen zone: the right half from 136.66 s.
+
+**YouTube chapters (142.4 s cut):** 0:00 Six bids, none that compare · 0:09 1. Everyone read the scope differently · 0:32 2. Two drawing revisions in circulation · 0:50 3. The scope changed on Tuesday · 1:07 4. "Plus tax", "incl. tax" · 1:32 5. It came by email · 1:53 The honest bit · 2:04 Fix the tender
+
+**What's below:** the Production status, Beat-by-beat script, Music and VO notes describe the 2026-10-03 silent 139 s cut (caption-for-caption lines for a founder read). They are kept as the design record; the timeline above is the one that ships.
 
 ## Production status (2026-10-03, v2.1 owner CTA rule)
 
@@ -114,17 +196,17 @@ follows: projects/2026-10-02-qsme-build-six-bids-six-formats
 
 Captions are 54px Space Grotesk on a dark box (bottom 66px, max width 1560px), well above the 40px floor; the chapter titles are 92–150px. Every caption above is the exact VO line (series rule), so the captions double as subtitles.
 
-## YouTube chapters (paste into the description)
+## YouTube chapters (paste into the description; times on the 142.4 s audio-first cut)
 
 ```
 0:00 Six bids, none that compare
-0:12 1. Everyone read the scope differently
-0:33 2. Two drawing revisions in circulation
-0:51 3. The scope changed on Tuesday
+0:09 1. Everyone read the scope differently
+0:32 2. Two drawing revisions in circulation
+0:50 3. The scope changed on Tuesday
 1:07 4. "Plus tax", "incl. tax"
-1:27 5. It came by email
-1:44 The honest bit
-2:00 Fix the tender
+1:32 5. It came by email
+1:53 The honest bit
+2:04 Fix the tender
 ```
 
 ## Captions, hashtags and CTA
@@ -258,3 +340,5 @@ Until these arrive, the stand-ins carry the beats and the top bar reads "Recreat
 - 2026-10-02: Built from the approved calendar slot (2026-10-14, week 2, idea gl-why-bids-never-compare, Global, 16:9 long-form, 125s target). Same plasterboard & ceilings package and six bids as part 1; five numbered causes, each with its fix; the honest bit and the demo page's own offer as the CTA. Captured qsme.build/pricing and four elements of qsme.build/platform/tendering live (public, no login). Built eight labelled stand-ins from the truth sheet's exact wording. Picky-CD passes before the final render: fixed an ID clash that laid two scenes over everything; vertically centred the hook; un-clipped the prop tags; gentler push-ins that keep window edges in frame; moved the illustrative label into a dark top band so it never zooms away; caption bar kept clear of windows and cursor paths; tightened the tax example and recap layouts. Then matched every VO line to its caption word for word (series rule). Rendered 126.0s, QA passed. VO script ready for later (ElevenLabs upgrade pending). Status: rendered — awaiting approval.
 - 2026-10-02 (v2, review fixes): applied the director review. Must-fix: the stand-in label now reads "Recreated screen · demo data" at 26px; chapter 4's tax example is our own napkin maths on a pad ("our maths"), with no product-style toggle or "Lowest" tag, and the live tax FAQ is cropped after "…the basis you choose". Should-fix: title card held to 6.5s, six-scopes beat 5.5s with staggered cards, "All totals excl. tax" chips on both Compare-bids stand-ins, "fair fight" now lands on part 1's six bids filed into six identical rows (pricing page dropped), recap 7s without the duplicate headline, caption 09 now "So every total prices the same scope.", end card 7.9s with a clear right half for YouTube end-screen elements. Nice: STEP 3 OF 4, bidder crumbs "Tenders", the emailed-bid window kept below the top band (band now fully opaque), Bidder F "Received by you" with a longer aside, cursor parks beside targets, chips clear of window edges. Re-rendered 139.0s, QA passed; VO script re-timed (38 lines, vo_status ok). Added the open question on the Global calc rate. Status: rendered v2 — awaiting approval.
 - 2026-10-03: owner CTA rule — removed free/no-sign-up, CTA now "Book a 30-minute demo at qsme.build" on every platform. Two on-screen violations fixed: the "Add a bid you received" stand-in no longer says bidders "don't need a QSME account", and the live "Award is a person's decision" card is cropped after "…awards a tender." (its "award to a firm without an account … when they sign up" sentence is gone). Post copy CTAs (LinkedIn post + first comment, page repost, YouTube description + pinned comment, CTA line) now lead with the demo; retired the /pricing capture (removed from stills.json, files marked retired). VO and timings unchanged (vo_status ok). Re-rendered the 16:9 master (QA ok) and its preview; thumbnail unaffected. Status: rendered v2.1 — awaiting approval.
+- 2026-10-06 — Audio-first remake (the owner-approved N01 standard rolled out here): script rewritten as continuous speech with a spoken hook ("Six bids. Zero that compare. And it's not the subcontractors. It's the tender. Ours."); Cam S on eleven_v3, ONE unbroken with-timestamps take (140.89 s, 380 words, 2.70 words/s, longest silence 0.76 s, STT clean), never sliced; the page re-timed to the word alignment (now 142.4 s, six captions reworded to the narration, end card from 136.66), re-rendered with QA ok, muxed clean at 0.0 s → outputs/why-bids-never-compare-16x9-with-vo.mp4; v2.1 master archived as outputs/archive/why-bids-never-compare-16x9-v1.mp4. Founder read, bed and SFX plan retired for this cut. Awaiting the owner's review.
+- 2026-10-07 — Resumed after the usage-limit cut and verified the remake end to end: master 142.4 s / 30 fps / silent, voiced cut 142.4 s with ONE audio track (take 140.89 s at 0.0, gain 1.15, no bed), layout QA re-run in check mode (all text inside 96,54,1824,1026), 38 frames spot-checked against the word alignment (hook, every chapter card, every 'The fix.' stand-in, the tax pad, the five ticked lines, the end card and the 'Which of the five' question) — all land on their words. Longest silence 0.76 s (whiteboard. → Now,), 2.7 words/s. No 4:5 / 9:16 / chapter cut-downs exist for this film (the 1:1 cut stays an open question), so the 16:9 pair is the whole deliverable. Still awaiting the owner's review.

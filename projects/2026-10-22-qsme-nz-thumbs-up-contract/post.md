@@ -3,17 +3,18 @@ vid: N09
 title: "Our whole contract is a thumbs-up"
 venture: qsme-nz
 idea: nz-thumbs-up-contract
-status: "rendered (review pass 2), NOT for posting yet: Session B must replace the recreated screens, or the owner explicitly approves posting them labelled 'Recreated screen · demo data'"
+status: "rendered — audio-first remake 2026-10-06, CTA re-voiced 'koh' 2026-10-10 (Cam S, eleven_v3, voiced master) awaiting the owner's verdict; NOT for posting yet: Session B must replace the recreated screens, or the owner explicitly approves posting them labelled 'Recreated screen · demo data'"
 publish_date: 2026-10-22
 publish_time_nzt: "06:15"
 created: 2026-10-02
 calendar_week: 3
 format: short
 kind: skit (funny)
-length_s: 31.64
+length_s: 46.38
 aspect: "9:16"
 platforms: [Instagram Reels, TikTok, Facebook Reels, YouTube Shorts]
 video: outputs/thumbs-up-contract-9x16.mp4
+video_vo: outputs/thumbs-up-contract-9x16-with-vo.mp4
 cover: outputs/thumbs-up-contract-cover-1080x1920.png
 features: ["Bring in an agreement you already have, or have QSME write notes up as one (6.4)", "Agreements signed from a link (6.2)"]
 owner_recordings_needed:
@@ -31,6 +32,55 @@ owner_recordings_needed:
 **The joke:** "Heat-pump wiring in that?" gets 👍 from the sparky. Yes? Or just "seen"? We read the thread back as a legal document, deadpan: "THE REWIRE CONTRACT — Complete and unabridged.", where every clause is a thumbs-up, two of them marked "(unclear)" in red marker. Then QSME writes the thread up properly and refuses to guess: what was said goes in, and what wasn't stays a **[blank]**. The owner types the heat-pump line and fills every blank herself, presses "Send for signing", and Jono signs on his phone. The payoff is a callback: "Everyone has signed. 👍 (clear)", and the end card "Turn the 👍 into a signature." The joke is always the emoji, never the sparky or the owner: Jono answers every message, the emoji just doesn't say enough.
 
 **Job:** Organic first. Week 3's funny short, posted Thursday 6:15 am when sparkies and tradies scroll in the ute before 7, then re-shared to Stories and Facebook at 7:30 pm for owners. It lands just before Labour Day weekend and the pre-Christmas rush of small jobs agreed by text. CTA pushes sign-ups (owner rule 2026-10-03): **Sign up at qsme.co.nz**.
+
+## Audio-first remake (2026-10-06) — the current master (CTA re-voiced 2026-10-10)
+
+**Why:** the owner signed off the N01 "Which Dave?" pilot as the standard for every QSME video: no gaps or breath cuts in the voice, a real hook spoken in the first 2 s, continuous speech instead of caption fragments, and the product payoff said in words. This cut applies it: the script is one continuous story, the voice is ONE unbroken eleven_v3 take (Cam S, one narrator playing both sides), and the picture was re-timed to the words. Design unchanged.
+
+**2026-10-10 re-voice:** the owner's fix of 2026-10-08 says the CTA is spoken "dot Co dot N Z" ("co" like KO, never C-O). The 2026-10-06 take said C-O, so the WHOLE take was regenerated in one request with the new ending (never sliced), STT-checked, and every beat of the page re-timed to the new words (all timestamps moved). The C-O take and attempt 1 are in `outputs/archive/vo-take-cam-v3-attempts/`; the 45.18 s master that matched it is `outputs/archive/thumbs-up-contract-9x16-v2.mp4`.
+
+**Hook (0–5.4 s, spoken):** "Eighteen thousand dollar rewire, and our entire contract? One thumbs up." — on screen: the chip "A skit · names made up" and "Our entire contract:" over the whole thread; Jono's 👍 pulses on "contract?", the camera dives into it on "One" and it fills the frame with the gavel squash on "thumbs".
+
+**The script as spoken (one take, 44.88 s, 118 words, ~2.64 words/s, longest silence 0.70 s; v3 tags in brackets, 2 of them):**
+
+```
+[dry] Eighteen thousand dollar rewire, and our entire contract? One thumbs up.
+Clause one, thumbs up. Two, heat-pump wiring, thumbs up. Three, payment stages, thumbs up.
+Agreed, never signed.
+Or, paste the thread into Queue Ess Mee and write it up as a proper agreement.
+What was said goes in, what wasn't stays a blank, and it never makes up an amount, a date or a name.
+[amused] The heat pump? That bit's on you. Fill the blanks, send it, and Jonno gets it by email and signs on his phone.
+Signed, before Monday. Everyone's signed, that one's clear, plus a certificate.
+Turn the thumbs up into a signature. Sign up at Queue Ess Mee dot Co dot N Z.
+```
+
+("Jonno" is spelt that way only for the voice; the screen says Jono. STT 2026-10-10, first attempt: every word heard; the CTA came back as "qsme.co.nz", koh heard as KO, as wanted.)
+
+| Said (start) | Picture (re-timed to the words) | Caption on screen |
+|---|---|---|
+| 0.25 "Eighteen thousand dollar rewire, and our entire contract?" | The thread, readable; 👍 pulses 0.08 and on "contract?" (2.87) | A skit · names made up / Our entire contract: |
+| 3.72 "One thumbs up." | Dive into the 👍 on "One" (3.73–4.37), full frame + gavel squash on "thumbs" (4.37) | |
+| 5.46 "Clause one, thumbs up." | Paper in 5.41, CLAUSE 1 pops 5.46, the big 👍 flies 5.82 and docks on "thumbs up" (6.31) | (the contract) |
+| 7.52 "Two, heat-pump wiring, thumbs up." | CLAUSE 2 pops on "Two,", 👍 slams on "thumbs" (9.39), "(unclear)" 9.63 | |
+| 10.55 "Three, payment stages, thumbs up." | CLAUSE 3 pops, slam 12.37, "(also unclear)" 12.61 | |
+| 13.23 "Agreed, never signed." | "Signed:" line draws 13.18–13.52, paper eases back; whip 15.15 | Agreed. Never signed. |
+| 15.49 "Or, paste the thread into QSME and write it up as a proper agreement." | Bring in a document (recreated): paste 17.24 on "the thread", "Write it up as a proper agreement" ringed on "write" (18.52), "Write it up" on "a proper" (19.08), spinner (sped up) | Paste the thread into QSME. (16.24) |
+| 20.21 "What was said goes in, what wasn't stays a blank," | The draft lands 20.17; rings on Mel Turner, Jono Hale, $18,400 on "goes in" (21.14); the five [blank]s highlight on "stays a blank" (22.60) | What was said: in. / What wasn't: [blank] |
+| 23.40 "and it never makes up an amount, a date or a name." | Whip 23.41 to the REAL Knowledge Hub quote (chip live · qsme.co.nz Knowledge Hub); underlines "makes up an amount" 23.86, "a date" 24.98, "[blank]" 25.96; whip back 26.74 | (the live quote) |
+| 27.02 "The heat pump? That bit's on you." | Enter 27.74; "Heat-pump wiring: included." typed by hand on "That bit's on you" (27.81–28.44); ring 28.50 | The heat pump? / That bit's on you. |
+| 28.98 "Fill the blanks, send it," | Five blanks typed by hand 29.16–30.02 (sped up); "Send for signing" on "send" (30.24); whip up 30.74 | Fill the blanks. Send it. |
+| 30.90 "and Jono gets it by email and signs on his phone." | The phone (recreated): inbox row tapped on "by email" (31.70); page scrolls to the heat-pump term (ring 32.12); signature drawn on "signs on his phone" (32.60–32.98); tick 33.20; Sign 33.36 | Gets it by email. / Signs on his phone. |
+| 33.50 "Signed, before Monday." | Toast "Signed. Download a copy below and keep it." + ring 33.50; whip 35.17 | Signed. / Before Monday. |
+| 35.45 "Everyone's signed, that one's clear," | The Agreements list: card flips on "signed," (36.26); "👍 (clear)" fades in on "that one's clear" (36.89) | Everyone's signed. / 👍 (clear) |
+| 37.87 "plus a certificate." | Certificate page slides up on "plus" (37.81); whip 38.59 | Plus a certificate. |
+| 38.85 "Turn the thumbs up into a signature." | End card: headline on "Turn" (38.83), 👍 slams on "thumbs" (39.49), signature stroke on "signature" (40.23) | Turn the 👍 / into a signature. |
+| 41.33 "Sign up at Queue Ess Mee dot Co dot N Z." | [Sign up at qsme.co.nz] pops on "Sign up" (41.33), small print 41.49, the real sign-up page scrolls 41.79–43.29; take ends 44.88, page 46.38 | Sign up at qsme.co.nz |
+
+**Files:** master `outputs/thumbs-up-contract-9x16.mp4` (46.38 s, silent, QA passed on safe 65,300,1015,1250, contact sheet + word-moment frames checked; earlier cuts archived as `outputs/archive/thumbs-up-contract-9x16-v1.mp4` (31.64 s) and `-v2.mp4` (45.18 s, C-O take)); voiced `outputs/thumbs-up-contract-9x16-with-vo.mp4` (the take at 0.0 s, gain 1.15, no bed; AVFoundation probe: one audio track starting at 0.0, file 46.37 s = video); previews rebuilt from both masters; take + alignment + words + the exact text sent in `outputs/vo-take-cam-v3/`; contract `vo-script.json` / `vo-script.md` (14 phrases). Cover unchanged (its text "Our entire contract:" / "Full rewire · $18,400" is the same). This project has only the 9:16 cut.
+
+**Session B swap times (2026-10-10 take; the "Owner recordings to swap in" table below still quotes v1 times):** #1 Bring in a document 15.15–20.17 · #2 the draft 20.17–23.41 and 26.74–30.74 · #3 the phone 30.74–35.17 · #4 the list 35.17–37.81 · #5 the certificate 37.81–38.59.
+
+**What's below:** the Hook, Beat-by-beat, Music and Production status sections describe the 2026-10-04 silent 31.64 s cut (Mel as the voice, per-line takes). They are kept as the design record; the timeline above is the one that ships.
 
 ## Hook (0–1.8 s)
 
@@ -93,7 +143,7 @@ Why it works: everyone in NZ has a thread like this. The question that matters (
 - Title: *Our whole contract was a thumbs-up 👍 (a skit)*
 - Description: A skit: an $18,400 rewire agreed by text, and the heat-pump question answered with a thumbs-up. In QSME Agreements, paste the thread and choose "Write it up as a proper agreement": what was said goes in, anything that wasn't stays a [blank] for you to fill. Send it and they get the link by email and sign on their phone, with a certificate page for the record. Sign up at qsme.co.nz. Names and job made up. Templates and AI write-ups are a starting point, not legal advice. #Shorts #Sparky #NZRenovation
 
-**CTA (all):** Sign up at qsme.co.nz. (End card: "Turn the 👍 into a signature." + [Sign up at qsme.co.nz]; VO: "Sign up at Q-S-me dot co dot en zed.")
+**CTA (all):** Sign up at qsme.co.nz. (End card: "Turn the 👍 into a signature." + [Sign up at qsme.co.nz]; VO: "Sign up at Q-S-me dot Co dot N Z." (koh like KO, owner 2026-10-08))
 
 **Pinned reply for "is that legally binding?"**
 > QSME's templates and AI write-ups are a starting point, not legal advice. When someone signs, QSME records their name, the time, their consent and the exact wording they signed, and the signed copy comes with a certificate page. For anything big or unusual, get it checked by a lawyer. Sign up at qsme.co.nz to try Agreements.
@@ -123,7 +173,7 @@ Link destination: https://www.qsme.co.nz/sign-up (public page, captured 2026-10-
 | Motion page (9:16, body.nz, 31.64 s) | ✅ Review pass 2 applied (see Discussion history) | `motion/thumbs-up-contract.html` |
 | Silent master MP4, burned-in captions | ✅ Re-rendered 2026-10-04, 31.64 s, 30 fps, QA passed (all text inside 65,300,1015,1250); contact sheet read and the fixed moments spot-checked with `tools/motion/frames` | `outputs/thumbs-up-contract-9x16.mp4` · `outputs/thumbs-up-contract-9x16-frames.png` |
 | Cover | ✅ Frame at 1.62 s + "Full rewire · $18,400" under the thumb | `motion/cover.html` (base: `motion/cover-base.png`) → `outputs/thumbs-up-contract-cover-1080x1920.png` |
-| VO (Mel, Kiwi) | 🟡 Timed script ready; generate after the ElevenLabs upgrade (or a real voice memo) | `vo-script.md`, `vo-script.json` (`tools/vo_status.py`: ok, five lines tight) |
+| VO | ✅ Superseded 2026-10-06: ONE unbroken Cam S eleven_v3 take, laid at 0.0 (see "Audio-first remake" above). Mel's per-line plan is retired | `outputs/vo-take-cam-v3/` · `outputs/thumbs-up-contract-9x16-with-vo.mp4` · `vo-script.json` / `vo-script.md` |
 | Music + SFX | ⬜ Needs a licensed bed and SFX | see Music above |
 | Owner recordings (Session B) | ⬜ Due Fri 16 Oct. **Publication gate:** don't post until #1–#5 replace 7.06–27.42 and the captions match what the real write-up returned, unless the owner explicitly approves posting the recreated screens (already labelled "Recreated screen · demo data") | see the table below |
 
@@ -214,3 +264,7 @@ Source: `research/2026-10-02-qsme-platform-truth.md` (feature IDs in brackets).
 - 2026-10-03: First (interrupted) run built most of the motion page (thread, contract, Agreements, phone signing, list, certificate) and captured the public Knowledge Hub stills, but rendered nothing final and wrote no post.md.
 - 2026-10-04: Resumed and finished. Applied the owner CTA rule: removed "No account needed", "No account. No printer." and the "Agreements is free on every plan" capture, and deleted the capture. New end card with a real capture of the public sign-up page and [Sign up at qsme.co.nz]. Product captions moved to second person. Story dates fixed to one consistent week, with a "Signed. Before Monday." callback. Rendered the 29.8 s master, QA passed; cover exported; VO script written (vo_status ok).
 - 2026-10-04 (review pass 2, verdict "fix"): **Must-fix:** captions cut and retimed to about 2.5 words/s ("Agreed. Never signed." 1.44 s, "Paste the thread into QSME." 2.0 s with "Write it up as a proper agreement" ringed in the dialog instead, "What we said / didn't" 2.6 s, "The thumbs-up didn't say. So you do." 2.4 s, "He signs on his phone." 1.8 s, "Plus a certificate." 1.2 s); the real Knowledge Hub quote held 3.6 s, framed tight from the start, behind whips instead of a dissolve; the "Heat-pump wiring: included." ring held 1.4 s, then a new beat where every blank is typed by hand and "Send for signing" is pressed ("Fill the blanks. Send."), with "Fill them in with AI" left out; stand-in labels changed to the viewer-facing "Recreated screen · demo data" and a publication gate added (Session B first, or explicit owner approval). **Should-fix:** thread re-ordered so Jono's 👍 answers the heat-pump question; "A skit · names made up" chip from frame 0, captions led with "A skit:" and the Facebook opener rewritten; end card complete for 3.5 s, its sign-up capture scrolls down to "I provide services · Trades & specialists" (still checked for "free"; the real-estate card stays out) and the live chip sits above the card; the VO CTA speaks the domain; the dive starts at 0.42 s and is a pure zoom (thumb centred by 1.3 s, no navy strip). **Nice:** the paper, the desktop windows and the certificate now run off the bottom of the frame (no letterbox); the inbox e-mail row shows the link arrives by e-mail (TikTok caption says so too); a cover with "Full rewire · $18,400" under the thumb; "sped up" moved into the title bar; all clause thumbs one size. Re-rendered 31.64 s, QA passed; vo_status ok.
+- 2026-10-06/07 (audio-first remake, N01 standard): script rewritten as one continuous story with the hook spoken ("Eighteen thousand dollar rewire, and our entire contract? One thumbs up."), one dry narrator playing both sides, the product payoff in words and the NZ CTA spoken; Cam S eleven_v3, ONE unbroken with-timestamps take (attempt 2: 43.68 s, 118 words, 2.70 w/s, longest silence 0.70 s; attempt 1 had 1 s+ holes at its tags), STT every word. The page's `T` timeline re-derived from the alignment (dive on "One", slams on each "thumbs", the live quote on "it never makes up…", Send on "send", signature on "signs on his phone", end card on "Turn", button on "Sign up"); 9:16 master re-rendered 31.64 → 45.18 s, QA passed, 32 word-moment frames checked, v1 archived; muxed clean to `outputs/thumbs-up-contract-9x16-with-vo.mp4`. vo-script.json/.md rewritten (14 phrases, `take` block). The run was cut by the usage limit after the render and finished 2026-10-07 (mux, contract, post.md, log). Open: the owner's verdict on the read; Session B at the new times.
+- 2026-10-10: producer re-run checked the remake (nothing to redo: one 9:16 cut, one take, voiced master = video length, 1 audio track); refreshed the stale preview MP4s for the Studio.
+- 2026-10-10: CTA re-voiced 'koh' per the owner fix of 2026-10-08: the whole Cam S eleven_v3 take regenerated in one request ending "dot Co dot N Z" (44.88 s, 118 words, longest silence 0.70 s, STT every word, CTA heard as qsme.co.nz); every `T` value and literal beat in the page re-timed to the new words; 9:16 master re-rendered 45.18 → 46.38 s with --safe (v2 archived), re-muxed clean at 0.0@1.15; vo-script.json/.md, this remake section and the Session B swap times rewritten; attempt-1 and C-O take files moved to outputs/archive/vo-take-cam-v3-attempts/; preview MP4s rebuilt.
+- 2026-10-10 CTA swap: owner said "koh" sounded wrong; only the final "Sign up at qsme.co.nz" line was replaced (spoken "dot Co dot N Z", tools/fix_cta.py), rest of the take and picture untouched. Old take in outputs/archive/vo-koh-2026-10-10/.

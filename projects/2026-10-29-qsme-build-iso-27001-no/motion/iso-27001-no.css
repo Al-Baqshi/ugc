@@ -52,5 +52,6 @@
 
   /* H · end card (the questionnaire row above stays where it was in the hook) */
   #eLogo { position: absolute; left: 38px; top: 124px; width: 250px; }   /* the SVG has ~22 px of side bearing: the wordmark lines up with the text edge */
+  #eTag { left: 320px; top: 138px; width: 700px; font: 600 34px/1.2 var(--body); color: var(--ink); letter-spacing: -0.005em; }   /* the payoff, lifted from the narration */
   #eCta { position: absolute; left: 60px; top: 1148px; font-size: 40px; padding: 22px 40px; }
   #eCta b { font-weight: 800; }

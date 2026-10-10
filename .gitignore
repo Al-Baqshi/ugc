@@ -29,3 +29,6 @@ projects/*/motion-src/frames/
 # Local-only
 .claude/settings.local.json
 studio/synced.txt
+
+# Scratch caches
+.cache/

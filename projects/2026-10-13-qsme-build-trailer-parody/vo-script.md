@@ -1,94 +1,51 @@
-# VO script: Kiwi trailer read
+# The Transposition — voice script (G04, audio-first remake 2026-10-06)
 
-**Character:** The QS, the same mid-career Kiwi quantity surveyor who narrates "Six bids. Six formats." and "Column H", so the series sounds like one person. He has a general urban professional New Zealand accent (an Auckland or Wellington office): not broad, not Australian, never American. On the trailer cards he does his best movie-trailer voice. It's low, slow (about 2 words a second), gravelly and completely committed, and every line falls at the end. That's a parody of the read, not an announcer: no lift, no hype, no exclamation marks, and the Kiwi vowels never leave. On the product lines he drops the act and is just himself again: dry, matter-of-fact, quietly pleased, normal pace. The gap between the two registers is part of the joke. It's an AI voice, so it never speaks as the founder or as a customer.
+**Voice:** Cam S (ElevenLabs, eleven_v3, stability 0.5). **Take:** `outputs/vo-take-cam-v3/take.mp3`, one unbroken 40.96 s request, laid at 0.0 s on `outputs/trailer-parody-4x5.mp4` (LinkedIn) and `outputs/trailer-parody-9x16.mp4` (YouTube Shorts), both 42.5 s on one timeline → `outputs/trailer-parody-4x5-with-vo.mp4` and `outputs/trailer-parody-9x16-with-vo.mp4`. Longest silence 0.91 s, 97 words, 2.37 words/s. QSME is said "Queue Ess Mee".
 
-**Model & settings:** `eleven_multilingual_v2` · stability 0.45 · similarity 0.75 · style 0 · speed 1 · speaker boost on. Fallback for the trailer register only: Eleven v3, one continuous request.
+**Character:** one dry Kiwi storyteller doing the movie-trailer bit with a straight face. The trailer lines carry weight but stay at talking pace; on the product lines he drops the act and is just a QS pointing at a screen. No announcer lift, no exclamation marks, one voice for the whole piece.
 
-**Voice:** use whichever QS voice wins casting in `projects/2026-10-02-qsme-voice-casting` (shortlist ⭐ Arnold `bISW1PJRBPT7aRbtPJlB`, ⭐ James `QlZn2MPaf2jDn0461bnj`). It's the same voice as Six bids and Column H. Test the casting line in both registers before committing: the voice has to go low and slow without turning American.
-
-**Video:** `outputs/trailer-parody-4x5.mp4` (LinkedIn) and `outputs/trailer-parody-9x16.mp4` (YouTube Shorts), both 34.4s on **one timeline**: the same clips go at the same times on both. Times below are seconds on those files. `vo-script.json` is the machine-readable twin for `tools/make_vo.py`.
-
-**Casting line:** "In a world… seventy-one three. Nobody retyped it. Now showing… Q-S-me dot build."
-
-## Timing contract (v2)
-
-- Trailer lines are sized for about **2.1 spoken words/s**, plain lines for about **2.5** ('seventy-one' counts as 2 words, Q-S-me as 3). Each line's `max_s` is at least its words ÷ pace.
-- **No overlaps:** every line is out at least 0.15s before the next one starts.
-- Don't speed a take up to make it fit (make_vo.py retries up to 1.15x on v2; that kills a trailer read). If a take overruns `max_s`, use another take.
-- `vo-script.json` carries `register`, `pace_wps` and `spoken_words` on every line so a checker can test this before any credits are spent.
-
-## Lines
-
-| Start | Max | Register | Words | Line (v2) | v3 alt | On screen | Delivery |
-|---|---|---|---|---|---|---|---|
-| 0.10s | 2.90s | trailer voice | 6 | **In a world… seventy-one three.** | [slowly] In a world… seventy-one three. | IN A WORLD… (frame 1) / WHERE THE BID SAID (0.32) / 71,300 slams in (0.74) · chip 'BID F · THE WHITEBOARD' (1.25) · dawn frame b-roll in letterbox bars | The full trailer read, played straight: low, slow, gravelly. 'In a world…' then a real pause (the 71,300 slam and its braam land in it, at 0.74), then 'seventy-one three' like a revelation, falling. The card carries 'where the bid said'. 'Seventy-one three' is how a QS says 71,300 out loud. Kiwi vowels stay put: 'world' is not American. No lift, no smile. Out by 3.0. |
-| 3.25s | 2.90s | trailer voice | 6 | **The contract said… seventy-three one.** | The contract said… [pause] seventy-three one. | …AND THE / CONTRACT SAID (3.2–3.56) · the 1 and the 3 swap places (3.7–4.4) · the figure turns red and is circled (4.4–5.0) · chip 'CONTRACT · CLAUSE 4 · CONTRACT SUM' (4.95) | Same trailer weight, one notch more ominous. 'The contract said…' rides the swap (the digits travel 3.7–4.4); 'seventy-three one' lands after they do, at about 4.9, so the swap is audible. Keep it in exactly the rhythm of 'seventy-one three' in vo01 so the ear catches the swap. Flat and final on 'one'. Out by 6.15. |
-| 6.30s | 1.45s | trailer voice | 3 | **From an email…** | From an email… | TYPED FROM / AN EMAIL… (6.25) · the sent email (6.4): 'Recommend we award to Bidder F at 73,100 + tax. Cheers.', 73,100 marked red | First step down a staircase. Trailer gravity, trailing off on the ellipsis: no full stop in the voice. Out by 7.75. |
-| 7.90s | 1.00s | trailer voice | 2 | **…a spreadsheet…** | …a spreadsheet… | …FROM A / SPREADSHEET… (7.85) · Plasterboard_comparison_FINAL.xlsx, Bidder F's cell B7 71,300 selected (7.95) | One step lower than vo03a, the same trailing ellipsis. Out by 8.9. |
-| 9.25s | 1.00s | trailer voice | 2 | **…a whiteboard.** | …a [pause] whiteboard. | …FROM A PHOTO / OF A WHITEBOARD. (9.2) · the Bid F whiteboard, 'TOTAL 71,300 + TAX' | The laugh, and the lowest step: the tiniest hesitation before 'whiteboard', said with total gravity, as if naming the villain. The card carries 'a photo of'. The ticking clock stops dead on the last syllable, then 0.55s of silence before the slam. Out by 10.25. |
-| 10.85s | 1.10s | trailer voice | 2 | **One transposition.** | One transposition. | ONE / TRANSPOSITION. (slams 10.8) · 71,300 → 73,100 (11.2) | Two words, heavy and slow, just after the slam's braam (10.8), not on top of it. Say 'transposition' the plain Kiwi way, no syllable stretched. Out by 11.95. |
-| 12.10s | 1.95s | trailer voice | 4 | **Seven months of correspondence.** | Seven months of correspondence. | SEVEN MONTHS OF / CORRESPONDENCE. (12.0) · inbox: 'RE: FW: …' (Month 2), 'RE: RE: FW: …' (Month 4, 12.2), 'RE: RE: RE: FW: Contract sum query' (Month 7, unread, 12.4) · the WITHOUT PREJUDICE letter cuts in at 13.6 | The weariest line in the trailer. Trailer gravity, but you can hear seven months of email in it. 'Correspondence' falls all the way down and may ride 0.45s over the cut to the letter. Then silence: the letter and the red-pen circle (14.05–15.7) play with no voice. Out by 14.05. |
-| 15.70s | 4.30s | trailer voice | 9 | **This season… the contract is made from the bid.** | This season… [pause] the contract is made from the bid. | THIS SEASON… (15.6) / THE CONTRACT IS (slams 16.02) / MADE FROM THE BID. (16.1–16.2, holds to 18.35) · the bars open at 18.35 on the Compare bids table | The turn. Still the trailer voice, but the doom lifts: warmer, a hint of resolve, no triumph. A real pause after 'season'. Even weight on 'made from the bid', falling. It runs on as the bars open and the table appears; that's fine. Out by 20.0, before the click (20.1). |
-| 21.35s | 2.40s | his own voice | 6 | **The contract says seventy-one three.** | The contract says seventy-one three. | Active Work card (21.05): Contract value 71,300 (ringed green 21.6) · Paid to date 0 · Retention 5% · Milestones 0 / 3 confirmed · caption '…and the contract says 71,300.' (21.35) | He drops the trailer voice completely: his normal dry QS voice, a colleague pointing at a screen. A tiny, satisfied lean on 'seventy-one three' (the callback to the hook). The silence before it (20.0–21.35: the click and the dialog closing) is deliberate. Out by 23.75. |
-| 23.90s | 1.20s | his own voice | 3 | **Nobody retyped it.** | Nobody retyped it. | caption 'Nobody retyped it.' (23.85, holds to 24.65) · the Schedule card arrives at 24.65 | Deadpan aside, almost under his breath, the driest line in the piece. Falling. It rides 0.45s into the Schedule card; that's fine. Get the smile by choosing takes, never with a tag. Out by 25.1. |
-| 25.25s | 1.60s | his own voice | 4 | **Same task. Same figure.** | Same task. Same figure. | Schedule (24.65): the Plasterboard & ceilings row flips from '— · ~74,000' to 'Bidder F · 71,300' (25.1) · caption 'Same task on the programme. Same figure.' (25.25) · bar detail '3–18 Nov · 12 days · Bidder F · 71,300 · not paid yet / On a contract · Bidder F' (25.4) | Two short, even beats, plain and matter-of-fact. No sell. Then silence while the bar detail is read and the bars close (26.85–27.8). Out by 26.85. |
-| 27.80s | 2.40s | trailer voice | 5 | **Contains scenes of mild reconciliation.** | Contains scenes of mild reconciliation. | Rating card (fades in from the cut under the closing bars, 27.55–27.7): RATED T / for Tender / Contains scenes of mild reconciliation. (holds to 30.65) | Back into the trailer voice, now as the rating card's small print: flatter, legal gravity, still slow. 'Mild reconciliation' gets the faintest weight. Out by 30.2. |
-| 30.80s | 3.35s | trailer voice | 7 | **Now showing… Q-S-me dot build.** | Now showing… [pause] Q-S-me dot build. | NOW SHOWING AT (30.65) / QSME logo (30.9) / qsme.build (31.2) / pill 'Book a 30-minute demo' (31.6) · end card held to 34.4 | Last trailer line, slow and grand: a beat after 'showing' while the logo lands, then 'Q-S-me dot build' evenly, 'cue ess mee', no rise on 'build'. Regenerate any take that says 'kiss me' or spells out four letters. Out by 34.15; the card holds 0.25s after it. |
-
-**Silent on purpose:** 14.05 to 15.7: the WITHOUT PREJUDICE letter, then the red-pen circle round the scrawl '71,300?? 73,100??' over the b-roll (low pulses, a marker squeak) · 20.0 to 21.35: the 'Award bid' click (20.1) and the dialog closing: click SFX only · 26.85 to 27.8: the Schedule bar detail holds, the bars close and the rating card fades in (a short low sting).
-
-**Cut in v2 (kept here for a longer re-cut):** `vo06-prejudice` "Without prejudice." (12.30–13.40 on the 32.6s cut): Cut in v2. At the 2.1 words/s trailer pace 'Seven months of correspondence.' needs 1.9s and runs to 14.0, past the cut to the letter, so the old window overlapped it. Holding it until vo05 is out pushes the cut past 34.5s. The WITHOUT PREJUDICE letter reads itself in the silence. If the cut ever gets longer, it goes back at 14.15 for 1.0s (and the letter beat grows to 1.6s). `vo13-demo` "Book a thirty-minute demo." (31.15–32.50 on the 32.6s cut): Cut in v2. A 2.1 words/s 'Now showing… Q-S-me dot build.' needs 3.35s of the end card, and there's no room for a second line inside 34.5s. The pill 'Book a 30-minute demo' holds 2.8s on screen and the caption and first comment carry the link.
-
-**Why "seventy-one three":** it's how a QS says 71,300 out loud, and it lets the swap be heard: "seventy-one three" in the hook, "seventy-three one" in the contract, then "seventy-one three" again on the real contract. Keep the three readings identical in rhythm so the ear catches it.
-
-## Continuous reads (two registers; slice in the edit)
-
-Trailer voice:
+## As spoken (one take)
 
 ```
-In a world… seventy-one three.
+In a world where the bid said seventy-one three, and the contract said seventy-three one.
 
-The contract said… seventy-three one.
+Typed from an email, from a spreadsheet, from a photo of a whiteboard. One transposition. Seven months of correspondence. Without prejudice.
 
-From an email…
+This season, the contract is made from the bid.
 
-…a spreadsheet…
+[dry] You award the bid in Queue Ess Mee, and it creates the payment contract. So the contract says seventy-one three, and nobody retyped it. Same task on the programme, same figure.
 
-…a whiteboard.
-
-One transposition.
-
-Seven months of correspondence.
-
-This season… the contract is made from the bid.
-
-Contains scenes of mild reconciliation.
-
-Now showing… Q-S-me dot build.
+Rated T, for Tender. Contains scenes of mild reconciliation. Now showing. Book a thirty-minute demo at Queue Ess Mee dot build.
 ```
 
-His own voice:
+## Lines (caption phrases, timed from the alignment)
 
-```
-The contract says seventy-one three.
+| # | Start | Max | Said | On screen | Delivery |
+|---|---|---|---|---|---|
+| vo00-hook-bid | 0.00 | 2.8 | In a world where the bid said seventy-one three, | IN A WORLD… (frame 1) / WHERE THE BID SAID (0.41, on 'where') / 71,300 slams in on 'seventy-one' (1.35) · chip 'BID F · THE WHITEBOARD' on 'three' (2.17) · dawn frame b-roll in letterbox bars | The hook: the whole joke in one breath. Trailer gravity but at talking pace, 'seventy-one three' the way a QS says 71,300. Kiwi vowels, no announcer lift. |
+| vo01-hook-contract | 2.82 | 3.4 | and the contract said seventy-three one. | …AND THE (2.82) / CONTRACT SAID (3.26, on 'contract') · the 1 and the 3 travel under 'said' (3.85) and land red on 'seventy-three' (4.55) · red-pen ring 4.77–5.17 on 'one' · chip 'CONTRACT · CLAUSE 4 · CONTRACT SUM' (5.1) | Same rhythm as the first number so the ear catches the swap. Flat and final on 'one'. Out by 5.60; the card holds to 6.30. |
+| vo02-chain | 6.30 | 3.9 | Typed from an email, from a spreadsheet, from a photo of a whiteboard. | TYPED FROM / AN EMAIL… (6.30) + the sent email (6.45) · …FROM A / SPREADSHEET… (7.62, on 'from') + the sheet (7.72) · …FROM A PHOTO / OF A WHITEBOARD. (8.74, on 'from') + the Bid F whiteboard | One staircase, no stops between the steps; each card cuts on its 'from'. Out by 10.08. |
+| vo03-one | 10.32 | 2.3 | One transposition. | ONE (slams 10.32, flash) / TRANSPOSITION. (slams on the word 11.10) · 71,300 → 73,100 pops 11.5 | Two words, heavy. 'Transposition' the plain Kiwi way. Out by 12.60. |
+| vo04-months | 12.69 | 2.2 | Seven months of correspondence. | SEVEN MONTHS OF / CORRESPONDENCE. (12.69) · inbox rows pop on the words: 'RE: FW: …' Month 2 (12.69), 'RE: RE: FW: …' Month 4 (13.19, on 'months'), 'RE: RE: RE: FW: Contract sum query' Month 7 unread (13.82, on 'correspondence') | Weary. You can hear seven months of email in it. Out by 14.80. |
+| vo05-prejudice | 14.90 | 1.6 | Without prejudice. | The WITHOUT PREJUDICE letter cuts in on 'Without' (14.90) · at 16.25 the th-4-structure b-roll with the scrawl '71,300?? 73,100??' and the red-pen ring (16.55–16.93), filling the 0.9 s breath before 'This season' | Dry, as the letter's heading. Out by 16.40. |
+| vo06-season | 17.31 | 3.1 | This season, the contract is made from the bid. | THIS SEASON… (17.31) / THE CONTRACT IS (slams on 'the contract' 18.26, flash) / MADE FROM THE BID. (slams on 'made' 18.93; holds to 20.45 when the bars open) | The turn: the doom lifts, a hint of resolve, no triumph. Out by 19.80. |
+| vo07-award | 20.62 | 3.6 | You award the bid in Q-S-me, and it creates the payment contract. | Bars open 20.45–20.85 on the Compare bids table (Bidder F 'Received by you' · 'Lowest' · 71,300) · caption 'Award the bid…' pops on 'award' (20.69) · 'Award this bid?' dialog 21.05 · cursor from 21.2 · click on 'creates' (22.62) · dialog closes 23.12–23.37, table holds | He drops the act: a colleague pointing at a screen. Plain, normal pace. Out by 24.08. |
+| vo08-says | 24.24 | 2.8 | So the contract says seventy-one three, | Active Work card rises 24.24 · caption 'The contract says 71,300.' pops on 'the contract says' (24.60) · green ring on 'Contract value 71,300' on 'seventy-one' (25.44) | A tiny satisfied lean on 'seventy-one three' (the callback). Out by 26.96. |
+| vo09-retyped | 26.98 | 1.3 | and nobody retyped it. | caption 'Nobody retyped it.' pops on 'nobody' (27.10); holds to 28.34 | Deadpan, almost under his breath. Out by 28.16. |
+| vo10-programme | 28.34 | 2.7 | Same task on the programme, same figure. | Schedule (Timeline) card 28.34 · caption 'Same task on the programme. / Same figure.' 28.44 · the Plasterboard & ceilings row loses its '~' on 'programme' (29.64: '— · ~74,000' → 'Bidder F · 71,300', bar turns blue) · bar detail '3–18 Nov · 12 days · Bidder F · 71,300 · not paid yet / On a contract · Bidder F' pops on 'same figure' (30.21) | Two even beats, no sell. Out by 30.88. |
+| vo11-rated | 31.35 | 4.6 | Rated T, for Tender. Contains scenes of mild reconciliation. | The bars close 31.35–31.70 over our own rating card: T tile / RATED T / for Tender / 'Contains scenes of mild reconciliation.' (fades in from 31.35, holds to 36.04) | Back into the small print: flat legal gravity, 'mild reconciliation' with the faintest weight. Out by 35.84. |
+| vo12-now-showing | 36.04 | 5.0 | Now showing. Book a thirty-minute demo at Q-S-me dot build. | End card: NOW SHOWING AT (36.04) / QSME logo (36.29) / pill 'Book a 30-minute demo' pops on 'Book' (37.42) / qsme.build pops on 'Queue Ess Mee' (39.43) · card holds to 42.5 | The last trailer line, even and unhurried; 'Queue Ess Mee dot build', no rise on 'build'. Out by 40.96; the card holds 1.5 s after. |
 
-Nobody retyped it.
+## Mix and rules
 
-Same task. Same figure.
-```
+- Time base: every start_s is a word start on the take, which is laid at 0.0 s on outputs/trailer-parody-4x5.mp4 and outputs/trailer-parody-9x16.mp4 (both 42.5 s). The page was re-timed to this take (motion/trailer-parody.html, the W / T tables, 2026-10-06), so picture follows audio: never re-time the voice to the picture.
+- Mix: the whole take as ONE clip at 0.0 s, gain 1.15, no music bed (tools/mux). Outputs outputs/trailer-parody-4x5-with-vo.mp4 and outputs/trailer-parody-9x16-with-vo.mp4 (one audio track each, 42.5 s).
+- If the script changes, regenerate the whole take (python3 tools/el.py is the key reader; outputs/vo-take-cam-v3/take-text.txt is the exact text and tags), STT-check it, then re-derive the W table in motion/trailer-parody.html from the new alignment, run motion/sync-9x16.sh and re-render both cuts.
+- Never 'free' or any pricing line (owner CTA rule 2026-10-03). Global CTA shown as qsme.build, spoken 'Queue Ess Mee dot build'. No 'sign up at qsme.build'.
+- Music and SFX (braams, ticking clock, UI click) are still to come once the design's sounds exist; the trailer plays clean under the voice for now.
 
-That's 59 spoken words and 352 characters across 13 lines. The longest window is the turn (vo07): 9 words in 4.3s.
+## Changelog
 
-## Make it sound recorded, not synthesised
-
-- Two registers, one voice: render the trailer lines (vo01–vo07, vo11, vo12) and the plain lines (vo08–vo10) as two separate continuous reads, so the trailer register never bleeds into the product lines. Slice each and place every piece at its start_s. Use per-line renders only as patches, on v2 with previous_text/next_text set to the neighbouring line of the same register.
-- Pace: the windows are sized for the read the direction asks for (trailer about 2.1 spoken words/s, plain about 2.5; 'seventy-one' counts as 2 words, Q-S-me as 3) and no two windows overlap. Don't speed a take up to fit (tools/make_vo.py's automatic retry up to 1.15x kills a trailer read): if a take runs past max_s, use another take.
-- Trailer register: if the base QS voice won't go low and slow enough on v2, use Eleven v3 for those lines only (one continuous request, max 1–2 tags per line, check the current tag list) rather than pitch-shifting. Never pitch-shift more than 1 semitone or time-stretch more than about 4%.
-- Room tone bed (60s of a real quiet office on a phone) under the whole 34.4s at about -50 dBFS so silences never drop to digital zero.
-- EQ: high-pass 80 Hz for trailer lines (keep the chest), 90 to 100 Hz for plain lines; -2 dB high shelf above 10 kHz; light de-ess. Compression 2:1 to 3:1, 3 to 4 dB GR. VO about -16 LUFS integrated, -1 dBTP. A short, dark plate reverb (0.8s, 8% wet) on the trailer lines ONLY, so the act sounds like a cinema and the product lines sound like a person in a room. No reverb on vo08–vo10.
-- Music and SFX are separate tracks (see post.md, Music): trailer braams on 0.74 (number slam), 4.4 (digits land), 10.8 (ONE TRANSPOSITION) and 16.02 (the turn); a ticking-clock bed 6.25 to 10.25 that stops dead on 'whiteboard'; dead stop at 18.35 when the bars open; one UI click at 20.1; a soft confirm at 21.05; a short low sting as the rating card lands (27.6); a final braam into the end-card logo at 30.9, ringing out to 34.4. Duck everything 10 to 12 dB under any word.
-- Bounce a mono VO stem and mux it with tools/mux as its own track onto BOTH cuts: outputs/trailer-parody-4x5.mp4 (LinkedIn) and outputs/trailer-parody-9x16.mp4 (YouTube Shorts) share one timeline, so the same clips go at the same times.
-- **Kiwi, not cinema-American:** the trailer read is where AI voices drift American. Reject any take with an American R in 'world', 'correspondence' or 'transposition'. KIT vowel in 'build'; DRESS in 'seven', 'months' is fine.
-- **Timing:** start each line 0 to 4 frames after its start_s, varying it by a frame so the sync doesn't look quantised. vo02's number must land after the digits do (4.4), never before.
-- **Mux:** `python3 tools/make_vo.py projects/2026-10-13-qsme-build-trailer-parody <voice_id>` after the ElevenLabs upgrade (it lays the VO on the 4:5), then the same clips onto the 9:16: `tools/mux outputs/trailer-parody-9x16.mp4 outputs/trailer-parody-9x16-with-vo.mp4 vo01.mp3@0.1 …` (every line at its start_s).
-- **Disclosure:** if the VO is ElevenLabs, set LinkedIn's and YouTube's AI-content labels where they apply. A consenting real Kiwi QS, or the founder's own cloned voice, needs no label.
+- 2026-10-02 first version, timed on the rendered 32.6s 4:5 MP4. No API was called.
+- 2026-10-02 v2 after review: retimed to the new 34.4s cut; two-register per-line plan (trailer voice 2.1 words/s, own voice 2.5), vo06 and vo13 cut. No API was called.
+- 2026-10-06 audio-first remake (supersedes the per-line plan; the 2026-10-02 script is archived in post.md's discussion history): continuous narration with the joke as the spoken hook ('In a world where the bid said seventy-one three, and the contract said seventy-three one.'), 13 caption phrases lifted from one take, Cam S on eleven_v3, one unbroken 40.96 s take, longest silence 0.91 s, 2.37 words/s (trailer words run long). 'Without prejudice.' and 'Book a thirty-minute demo' are back in. Page extended to 42.5 s; both cuts re-rendered from the one master page.

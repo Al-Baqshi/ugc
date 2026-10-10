@@ -1,19 +1,34 @@
 /* "Wednesday: As above." — QSME Global · one timeline, markup built here.
- * Scenes. OUTPUT seconds on the MP4 first; [authored seconds] after (the edit list at the bottom maps output -> authored):
- *   0.00–8.50  S1  desk: the week's diary written at Friday 4:52pm (owner films this; Kalam fallback here)     [-1.20–7.30, see S1()]
- *   8.50–11.80 S2  "Nine months later." over QSME b-roll (finished townhouses, reframed) → plain email        [7.30–10.60]
- *  11.80–13.30 S3  back to the diary's Tuesday: "It was. Probably." + red ring + "?" in the blank weather box  [10.60–12.40]
- *  13.30–18.55 S4  QSME (recreated): Rain day → Push these tasks → hard cut to the Daily log                   [12.40–18.15]
- *  18.55–20.85 S5  QSME (recreated): chat photo → Mark as proof of work → hard cut to the Daily log            [18.15–20.45]
- *  20.85–22.90 S5b phone browser at app.qsme.build: Add photo → a wet-site photo lands on Tue 13 Oct           [20.45–22.30]
- *  22.90–25.50 S6  close: paper Tuesday vs QSME Tuesday                                                         [22.30–25.20]
- *  25.50–29.25 S7  end card (fades in under the close)                                                          [25.20–28.95]
+ * 2026-10-06 AUDIO-FIRST REMAKE (the N01 "Which Dave?" standard: no gaps, no breath cuts, a real hook, continuous speech):
+ * the Cam S eleven_v3 take (outputs/vo-take-cam-v3/take.mp3, 43.92 s, ONE unbroken /with-timestamps request, laid at 0.0)
+ * is the clock. Every time below is a word in alignment.json; the page runs 45.4 s (take + ~1.5 s tail). The old authored
+ * clock + edit list (PRE / EDL / warp) is gone: one output clock. Design unchanged (2026-10-04 review build).
+ *   0.00–3.95  S1 hook: "Confession. Friday, four fifty-two. Writing Monday's site diary." — "For Monday." slams on "Monday's"
+ *              (2.77); the pen writes Monday's four lines under the hook (0–3.4)
+ *   4.00–13.9  S1 the week shrinks on the words: "Monday gets a paragraph." (caption 4.0), "Tuesday got rained off" (rain 6.6,
+ *              caption 6.0), the pen writes "Works progressed." on the words (8.2–9.3), "Wednesday 'As above'" (caption 9.55,
+ *              pen 10.36), "Thursday too" (11.32), "Friday, ditto." (pen 12.66, underline on "ditto." 13.2), pull-back 13.3–13.72
+ *  13.90–18.8  S2 "Nine months later." (slam on "Nine" 13.92) over the b-roll → the email arrives on "head office" (15.1);
+ *              the yellow marker on "thirteenth" (17.3)
+ *  18.80–21.9  S3 hard cut back to Tuesday: the red ring on "It was." (18.9), "?" + "Probably." on the word (20.25)
+ *  21.60–27.45 S4 swipe lands on "Or." (21.84): Schedule; Rain day click on "log" (24.6), caption "Log the rain day once." (24.5),
+ *              tick Tue 13 on "once" (25.54), Push on "programme" (26.35), the chain slides 26.5–26.9
+ *  27.45–29.6  S4 hard cut to the Daily log on "the rain day writes itself" (27.45): marker, Rain day (27.95) + Schedule change
+ *              (28.25) write themselves in; caption "It writes itself into the diary." on "writes" (27.95)
+ *  29.60–33.95 S5 hard cut to Messages on "Tag" (29.6): click the photo on "photo" (30.62), "Mark as proof of work" on the
+ *              words (31.3), hard cut to the Daily log on "photos land" (31.9), the entry lands 31.95–32.2, caption "Photos land
+ *              on the day / you post them." (32.05)
+ *  33.95–36.8  S5b phone swipes in on "even from your phone" (33.95): Add photo (34.45), Take a photo (34.87), shutter (35.05),
+ *              "Site photo" lands 35.11–35.37, "Not on Friday." slams on "Not" (35.25)
+ *  36.50–40.75 S6 close on "It doesn't write the whole diary." (36.72): paper Tuesday vs the QSME Tuesday card; "It writes the
+ *              bits / you'd forget by Friday." on "It writes" (38.56)
+ *  40.45–45.4  S7 end card fades in on "Book" (40.7): logo, pill "Book a 30-minute demo" (40.72), qsme.build on "Queue Ess Mee
+ *              dot build" (42.3); page ends 45.4
  */
 (function () {
   'use strict';
-  var DUR = 28.95;  // authored timeline end; the EDL at the bottom makes the MP4 29.25 s
-  var PRE = 1.2;    // S1 is written in OUTPUT seconds through S1(): it starts 1.2 s before authored 0, so S2+ keep their authored clock
-  function S1(t) { return +(t - PRE).toFixed(3); }
+  var DUR = 45.4;   // take ends 43.92 + ~1.5 s tail (one output clock; no edit list)
+  var PRE = 0;      // kept for the rain streak field (tt = t + PRE)
   var root = document.getElementById('root');
   var I = {
     cloud: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M7.5 18.5h9.5a4 4 0 0 0 .6-7.95 5.5 5.5 0 0 0-10.7 1.2A3.4 3.4 0 0 0 7.5 18.5z"/></svg>',
@@ -221,48 +236,48 @@
   '<div id="end" class="fill"><img id="logoEnd" src="qsme-logo-nor.svg" alt="QSME"><div id="cta"><span class="pill">Book a 30-minute demo</span></div><div id="url">qsme.build</div></div>' +
   '<div id="line2" style="top:1064px">It writes the bits<br>you’d forget <span class="amb">by Friday.</span></div>';
 
-  /* ------------------------------------------------------------------ timeline */
+  /* ------------------------------------------------------------------ timeline (take clock) */
   var K = Kit;
   var $ = function (s) { return document.querySelector(s); };
 
   // scene visibility
-  K.add('#desk', 'opacity', [[S1(0), 1], [7.3, 0, 'hold'], [10.6, 1, 'hold'], [12.7, 0, 'hold']]);
-  K.scene('#s2', 7.3, 10.6).scene('#prod', 12.35, 20.75).scene('#ph', 20.4, 22.6).scene('#close', 22.25, 25.65).scene('#end', 25.2, DUR + 1);
+  K.add('#desk', 'opacity', [[0, 1], [13.9, 0, 'hold'], [18.8, 1, 'hold'], [21.9, 0, 'hold']]);
+  K.scene('#s2', 13.9, 18.8).scene('#prod', 21.55, 34.3).scene('#ph', 33.9, 36.9).scene('#close', 36.45, 40.9).scene('#end', 40.4, DUR + 1);
 
-  /* S1 — hook + the week shrinking. Every S1 time is OUTPUT seconds, wrapped in S1(). Captions hold >= 1.6 s (Tuesday 1.7 s). */
-  K.add('#hook', 'opacity', [[S1(0), 1], [S1(2.45), 1], [S1(2.6), 0, 'in']]);
-  K.add('#hookscrim', 'opacity', [[S1(0), 1], [S1(2.45), 1], [S1(2.7), 0, 'in']]);
-  K.slam('#formon', S1(0.55), { from: 1.25, dur: 0.16 });
-  K.add('#clock', 'opacity', [[S1(0), 0], [S1(2.55), 0], [S1(2.7), 1, 'out'], [S1(8.4), 1], [S1(8.5), 0, 'hold']]);
-  K.add('#topscrim', 'opacity', [[S1(0), 0], [S1(2.55), 0], [S1(2.7), 1, 'out'], [S1(8.4), 1], [S1(8.5), 0, 'hold']]);
-  K.count('#cm', [[S1(0), 52], [S1(4.4), 53, 'hold'], [S1(6.15), 55, 'hold'], [S1(6.7), 56, 'hold'], [S1(7.1), 57, 'hold'], [S1(7.7), 58, 'hold']], function (v) { return String(Math.round(v)); });
-  K.add('#clock', 'scale', [[S1(7.68), 1], [S1(7.8), 1.12, 'out'], [S1(8.05), 1, 'inOut']]);
-  K.pop('#capMon', S1(2.65), { dy: 24 }).out('#capMon', S1(4.25), 0.12);
-  K.pop('#capTue', S1(4.28), { dy: 24 }).out('#capTue', S1(5.98), 0.12);
-  K.pop('#capWed', S1(6.0), { dy: 24 }).out('#capWed', S1(7.6), 0.12);
+  /* S1 — hook + the week shrinking, on the words */
+  K.add('#hook', 'opacity', [[0, 1], [3.85, 1], [4.0, 0, 'in']]);
+  K.add('#hookscrim', 'opacity', [[0, 1], [3.85, 1], [4.1, 0, 'in']]);
+  K.slam('#formon', 2.77, { from: 1.25, dur: 0.16 });                      // "Monday's"
+  K.add('#clock', 'opacity', [[0, 0], [3.95, 0], [4.1, 1, 'out'], [13.8, 1], [13.9, 0, 'hold']]);
+  K.add('#topscrim', 'opacity', [[0, 0], [3.95, 0], [4.1, 1, 'out'], [13.8, 1], [13.9, 0, 'hold']]);
+  K.count('#cm', [[0, 52], [8.2, 53, 'hold'], [10.36, 55, 'hold'], [11.32, 56, 'hold'], [12.1, 57, 'hold'], [12.66, 58, 'hold']], function (v) { return String(Math.round(v)); });
+  K.add('#clock', 'scale', [[12.64, 1], [12.76, 1.12, 'out'], [13.0, 1, 'inOut']]);
+  K.pop('#capMon', 4.0, { dy: 24 }).out('#capMon', 5.9, 0.12);             // "Monday gets a paragraph." 4.00–5.92
+  K.pop('#capTue', 6.0, { dy: 24 }).out('#capTue', 8.1, 0.12);             // "Tuesday got rained off" 5.99–7.28; out before the pen writes
+  K.pop('#capWed', 9.55, { dy: 24 }).out('#capWed', 11.3, 0.12);           // "Wednesday 'As above'" 9.52–11.20
 
   // camera over the page (desk coordinates = page coordinates; origin top-left)
-  K.add('#cam', 'x', [[S1(0), 95], [S1(7.8), 95], [S1(8.22), 193, 'inOut'], [S1(8.49), 197], [10.6, -2, 'hold'], [12.4, -12]]);
-  K.add('#cam', 'y', [[S1(0), 470], [S1(2.5), 452], [S1(3.0), 250, 'inOut'], [S1(4.05), 236], [S1(4.3), 60, 'inOut'], [S1(5.75), 50], [S1(6.0), -300, 'inOut'], [S1(7.8), -308], [S1(8.22), 124, 'inOut'], [S1(8.49), 120], [10.6, -214, 'hold'], [12.4, -232]]);
-  K.add('#cam', 'scale', [[S1(0), 1], [S1(2.5), 1.01], [S1(3.0), 1, 'inOut'], [S1(7.8), 1], [S1(8.22), 0.78, 'inOut'], [S1(8.49), 0.775], [10.6, 1.4, 'hold'], [12.4, 1.43]]);
-  K.add('#desk', 'x', [[12.4, 0], [12.7, -1080, 'swipe']]);
+  K.add('#cam', 'x', [[0, 95], [13.3, 95], [13.72, 193, 'inOut'], [13.9, 197], [18.8, -2, 'hold'], [21.9, -12]]);
+  K.add('#cam', 'y', [[0, 470], [3.8, 452], [4.4, 250, 'inOut'], [5.85, 236], [6.3, 60, 'inOut'], [9.3, 50], [9.7, -300, 'inOut'], [13.3, -308], [13.72, 124, 'inOut'], [13.9, 120], [18.8, -214, 'hold'], [21.9, -232]]);
+  K.add('#cam', 'scale', [[0, 1], [3.8, 1.01], [4.4, 1, 'inOut'], [13.3, 1], [13.72, 0.78, 'inOut'], [13.9, 0.775], [18.8, 1.4, 'hold'], [21.9, 1.43]]);
+  K.add('#desk', 'x', [[21.6, 0], [21.9, -1080, 'swipe']]);
 
-  // handwriting: clip reveal + pen follows
+  // handwriting: clip reveal + pen follows (each line on its word)
   var W = [
-    { id: 'm1', t0: S1(0.0), t1: S1(0.5), p0: 0.16 }, { id: 'm2', t0: S1(0.58), t1: S1(1.12) }, { id: 'm3', t0: S1(1.2), t1: S1(1.74) }, { id: 'm4', t0: S1(1.82), t1: S1(2.36) },
-    { id: 't1', t0: S1(4.4), t1: S1(5.0) },
-    { id: 'wdw', t0: S1(6.05), t1: S1(6.1) }, { id: 'w1', t0: S1(6.15), t1: S1(6.5) },
-    { id: 'thw', t0: S1(6.6), t1: S1(6.65) }, { id: 'h1', t0: S1(6.7), t1: S1(7.0) },
-    { id: 'frw', t0: S1(7.1), t1: S1(7.15) }, { id: 'f1', t0: S1(7.7), t1: S1(7.95) }   // "Ditto." only after the Wednesday caption has gone
+    { id: 'm1', t0: 0.0, t1: 0.72, p0: 0.16 }, { id: 'm2', t0: 0.85, t1: 1.6 }, { id: 'm3', t0: 1.75, t1: 2.5 }, { id: 'm4', t0: 2.65, t1: 3.4 },
+    { id: 't1', t0: 8.2, t1: 9.3 },                                          // "Works progressed" 8.20–9.44
+    { id: 'wdw', t0: 10.28, t1: 10.33 }, { id: 'w1', t0: 10.36, t1: 11.15 },  // "As above" 10.36–11.20
+    { id: 'thw', t0: 11.25, t1: 11.3 }, { id: 'h1', t0: 11.32, t1: 12.0 },    // "Thursday too" 11.28–12.56
+    { id: 'frw', t0: 12.1, t1: 12.15 }, { id: 'f1', t0: 12.66, t1: 13.1 }     // "Friday," 12.63–13.12; underline on "ditto." 13.2
   ];
   W.forEach(function (w) { K.add('#' + w.id, 'clipX', [[w.t0, w.p0 || 0], [w.t1, 1, [0.3, 0.1, 0.7, 0.9]]]); });
-  K.add('#fu', 'trim', [[S1(7.95), 0], [S1(8.08), 1, 'out']]);
+  K.add('#fu', 'trim', [[13.2, 0], [13.36, 1, 'out']]);
   var page = $('#page'), pen = $('#pen');
   function pagePos(el) { var x = 0, y = 0; while (el && el !== page) { x += el.offsetLeft; y += el.offsetTop; el = el.offsetParent; } return { x: x, y: y }; }
   function linePt(w, p) { var el = document.getElementById(w.id), o = pagePos(el); return { x: o.x + el.offsetWidth * p, y: o.y + el.offsetHeight * 0.74 }; }
   function ease(p) { return p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2; }
   K.each(function (t) {
-    if (t > 7.3) { pen.style.visibility = 'hidden'; return; }
+    if (t > 13.9) { pen.style.visibility = 'hidden'; return; }
     pen.style.visibility = 'visible';
     var x, y, lift = 0, i;
     if (t <= W[0].t0) { var a0 = linePt(W[0], W[0].p0); x = a0.x; y = a0.y; }
@@ -278,32 +293,33 @@
     pen.style.transform = 'translate(' + x.toFixed(1) + 'px,' + (y - lift).toFixed(1) + 'px)';
   });
 
-  // rain over Tuesday (deterministic streaks)
+  // rain over Tuesday (deterministic streaks) — "rained off" 6.68
   var rain = $('#rain'), NS = 'http://www.w3.org/2000/svg', streaks = [];
   function hash(n) { var s = Math.sin(n * 127.1 + 311.7) * 43758.5453; return s - Math.floor(s); }
   for (var r = 0; r < 120; r++) { var ln = document.createElementNS(NS, 'line'); ln.setAttribute('stroke', 'rgba(215,232,255,' + (0.45 + hash(r + 7) * 0.4).toFixed(2) + ')'); ln.setAttribute('stroke-width', (2.2 + hash(r + 3) * 2.4).toFixed(1)); ln.setAttribute('stroke-linecap', 'round'); rain.appendChild(ln); streaks.push(ln); }
   var tint = document.createElementNS(NS, 'rect'); tint.setAttribute('width', 1080); tint.setAttribute('height', 1350); tint.setAttribute('fill', 'rgba(30,70,135,.26)'); rain.insertBefore(tint, rain.firstChild);
-  K.add('#rain', 'opacity', [[S1(0), 0], [S1(4.15), 0], [S1(4.35), 1, 'out'], [S1(5.75), 1], [S1(5.95), 0, 'in']]);
+  K.add('#rain', 'opacity', [[0, 0], [6.55, 0], [6.8, 1, 'out'], [9.3, 1], [9.55, 0, 'in']]);
   K.each(function (t) {
-    if (t < S1(4.1) || t > S1(6.0)) return;
-    var tt = t + PRE;   // output clock keeps the streak field identical to the first build
+    if (t < 6.5 || t > 9.6) return;
+    var tt = t + PRE;
     for (var i = 0; i < streaks.length; i++) {
       var v = 1500 + hash(i + 1) * 900, L = 50 + hash(i + 2) * 90, y = ((hash(i + 5) * 1500 + v * tt) % 1560) - 120, x = hash(i + 9) * 1300 - 60 - y * 0.22;
       streaks[i].setAttribute('x1', x.toFixed(1)); streaks[i].setAttribute('y1', y.toFixed(1)); streaks[i].setAttribute('x2', (x - L * 0.22).toFixed(1)); streaks[i].setAttribute('y2', (y + L).toFixed(1));
     }
   });
 
-  /* S2 — nine months later (b-roll scaled from its right edge so the lit left window, with a figure in it, stays out of frame) */
-  K.clip('#done', { dir: 'clips/done', t0: 7.3, t1: 10.6, fps: 30, frames: 99, ext: '.jpg' });
-  K.add('#done', 'scale', [[7.3, 1.16], [10.6, 1.23, 'linear']]);
-  K.add('#done', 'blur', [[7.85, 0], [8.2, 6, 'out']]);
-  K.add('#s2shade', 'opacity', [[7.3, 0.8], [7.85, 0.8], [8.2, 1, 'out']]);
-  K.add('#nine', 'opacity', [[7.3, 0], [7.36, 1]]).add('#nine', 'scale', [[7.3, 1.12], [7.5, 1, 'slam'], [7.85, 0.985], [8.15, 0.62, 'inOut']]);
-  K.add('#nine', 'y', [[7.85, 0], [8.15, -392, 'inOut']]);
-  K.add('#mail', 'opacity', [[7.9, 0], [8.08, 1, 'out']]).add('#mail', 'y', [[7.9, 140], [8.25, 0, 'out']]);
-  K.add('#mail mark', 'background', [[8.3, '#FFFFFF'], [8.6, '#FDE68A', 'out']]);
+  /* S2 — nine months later (b-roll scaled from its right edge so the lit left window, with a figure in it, stays out of frame).
+     The 99-frame clip is played at 0.67× so it covers the 4.9 s scene (it is blurred under the email from 15.4 anyway). */
+  K.clip('#done', { dir: 'clips/done', t0: 13.9, t1: 18.8, fps: 30, frames: 99, ext: '.jpg', speed: 0.67 });
+  K.add('#done', 'scale', [[13.9, 1.16], [18.8, 1.23, 'linear']]);
+  K.add('#done', 'blur', [[15.05, 0], [15.4, 6, 'out']]);
+  K.add('#s2shade', 'opacity', [[13.9, 0.8], [15.05, 0.8], [15.4, 1, 'out']]);
+  K.add('#nine', 'opacity', [[13.9, 0], [13.96, 1]]).add('#nine', 'scale', [[13.9, 1.12], [14.1, 1, 'slam'], [15.05, 0.985], [15.35, 0.62, 'inOut']]);   // "Nine" 13.92
+  K.add('#nine', 'y', [[15.05, 0], [15.35, -392, 'inOut']]);                                                                                  // "head office" 15.15
+  K.add('#mail', 'opacity', [[15.1, 0], [15.28, 1, 'out']]).add('#mail', 'y', [[15.1, 140], [15.45, 0, 'out']]);
+  K.add('#mail mark', 'background', [[17.3, '#FFFFFF'], [17.6, '#FDE68A', 'out']]);                                                            // "thirteenth" 17.31
 
-  /* S3 — "It was. Probably." */
+  /* S3 — "It was. Probably." (hard cut back to Tuesday at 18.8; "It" 18.91, "Probably." 20.23) */
   var ringDone = false;
   K.each(function (t) {
     if (ringDone) return;
@@ -313,64 +329,64 @@
     for (var k = 1; k <= 40; k++) { var a = -0.55 + k / 40 * (Math.PI * 2 + 0.5), rr = 1 + Math.sin(k * 0.9) * 0.025; d += ' L ' + (cx + Math.cos(a) * rx * rr).toFixed(1) + ' ' + (cy - Math.sin(a) * ry * rr * 1.0 + k * 0.35).toFixed(1); }
     $('#ringp').setAttribute('d', d); ringDone = true;
   });
-  K.add('#ringp', 'trim', [[S1(0), 0], [10.72, 0], [11.12, 1, 'out']]);
-  K.add('#tq', 'opacity', [[S1(0), 0], [11.1, 0], [11.12, 1, 'hold']]).add('#tq', 'clipY', [[11.1, 0], [11.3, 1, 'out']]);
-  K.add('#capWas', 'opacity', [[S1(0), 0], [10.6, 0], [10.62, 1, 'hold'], [12.7, 1], [12.72, 0, 'hold']]);
-  K.slam('#was', 10.85, { from: 1.2 }).slam('#prob', 11.35, { from: 1.25 });
-  K.add('#capWas', 'x', [[12.4, 0], [12.7, -1080, 'swipe']]);
-  K.add('#wasScrim', 'opacity', [[S1(0), 0], [10.6, 0], [10.62, 1, 'hold'], [12.7, 1], [12.72, 0, 'hold']]).add('#wasScrim', 'x', [[12.4, 0], [12.7, -1080, 'swipe']]);
+  K.add('#ringp', 'trim', [[0, 0], [18.9, 0], [19.3, 1, 'out']]);
+  K.add('#tq', 'opacity', [[0, 0], [20.2, 0], [20.22, 1, 'hold']]).add('#tq', 'clipY', [[20.2, 0], [20.4, 1, 'out']]);
+  K.add('#capWas', 'opacity', [[0, 0], [18.8, 0], [18.82, 1, 'hold'], [21.9, 1], [21.92, 0, 'hold']]);
+  K.slam('#was', 19.0, { from: 1.2 }).slam('#prob', 20.3, { from: 1.25 });
+  K.add('#capWas', 'x', [[21.6, 0], [21.9, -1080, 'swipe']]);
+  K.add('#wasScrim', 'opacity', [[0, 0], [18.8, 0], [18.82, 1, 'hold'], [21.9, 1], [21.92, 0, 'hold']]).add('#wasScrim', 'x', [[21.6, 0], [21.9, -1080, 'swipe']]);
 
-  /* S4 — product: rain day → push → (hard cut) daily log */
-  K.add('#prod', 'x', [[12.4, 1080], [12.7, 0, 'swipe'], [20.45, 0], [20.75, -1080, 'swipe']]);
-  K.count('#tc', [[0, 0], [18.15, 1, 'hold']], function (v) { return ['11:06', '11:42'][Math.round(v)]; });
+  /* S4 — product: the swipe lands on "Or." (21.84); Rain day → push → (hard cut) Daily log */
+  K.add('#prod', 'x', [[21.6, 1080], [21.9, 0, 'swipe'], [33.95, 0], [34.25, -1080, 'swipe']]);
+  K.count('#tc', [[0, 0], [29.6, 1, 'hold']], function (v) { return ['11:06', '11:42'][Math.round(v)]; });
   // pages: hard cuts (a dissolve of two dense screens reads as mush). The Daily log comes back after the proof-of-work tag.
-  K.add('#pgS', 'opacity', [[16.45, 1], [16.46, 0, 'hold']]);
-  K.add('#pgL', 'opacity', [[0, 0], [16.46, 1, 'hold'], [18.15, 0, 'hold'], [19.45, 1, 'hold']]).add('#pgL', 'y', [[16.46, 26], [16.66, 0, 'out'], [19.45, 26, 'hold'], [19.65, 0, 'out']]);
-  K.add('#pgM', 'opacity', [[0, 0], [18.15, 1, 'hold'], [19.45, 0, 'hold']]).add('#pgM', 'y', [[18.15, 26], [18.35, 0, 'out']]);
-  // dialog
-  K.add('#dimS', 'opacity', [[0, 0], [12.98, 0], [13.12, 1, 'out'], [14.42, 1], [14.56, 0, 'in']]);
-  K.add('#dlg', 'opacity', [[0, 0], [12.98, 0], [13.1, 1, 'out'], [14.42, 1], [14.54, 0, 'in']]).add('#dlg', 'scale', [[12.98, 0.95], [13.18, 1, 'out'], [14.42, 1], [14.54, 0.97]]);
-  K.add('#dc1', 'background', [[13.46, '#FFFFFF'], [13.5, '#EEF6FF', 'hold']]).add('#dc1', 'borderColor', [[13.46, '#DDE3E0'], [13.5, '#2B7BC8', 'hold']]);
-  K.add('#dc1 .bx', 'background', [[13.46, '#FFFFFF'], [13.5, '#2B7BC8', 'hold']]).add('#dc1 .bx', 'borderColor', [[13.46, '#A8B3AD'], [13.5, '#2B7BC8', 'hold']]);
-  K.add('#tick', 'opacity', [[0, 0], [13.48, 0], [13.52, 1]]);
-  K.add('#wmSum', 'opacity', [[0, 0], [13.56, 0], [13.68, 1]]);
-  ['#wr0', '#wr1', '#wr2', '#wr3'].forEach(function (s, i) { K.pop(s, 13.62 + i * 0.08, { dy: 12, fade: 0.12 }); });
-  K.add('#bPush', 'scale', [[14.3, 1], [14.36, 0.94], [14.46, 1]]);
-  K.add('#bRD', 'scale', [[12.93, 1], [12.99, 0.94], [13.08, 1]]);
-  // the programme moves
-  K.add('#bF', 'width', [[14.52, 98], [14.92, 151, 'inOut']]);
-  K.add('#bI', 'x', [[14.52, 0], [14.92, 159, 'inOut']]);
-  K.add('#bS', 'opacity', [[14.52, 1], [14.75, 0.32]]).add('#bP', 'opacity', [[14.52, 1], [14.75, 0.32]]);
-  K.add('#bSw', 'opacity', [[0, 0], [14.6, 0], [14.75, 1]]).add('#bSw', 'x', [[14.6, -53], [14.92, 0, 'inOut']]);
-  K.add('#bPw', 'opacity', [[0, 0], [14.6, 0], [14.75, 1]]).add('#bPw', 'x', [[14.6, -53], [14.92, 0, 'inOut']]);
-  K.add('#gdTue', 'background', [[14.55, '#F5F7F6'], [14.7, '#2B7BC8', 'out']]).add('#gdTue', 'color', [[14.55, '#7A8794'], [14.7, '#FFFFFF', 'out']]);
-  K.add('#gdTue b', 'color', [[14.55, '#1E293B'], [14.7, '#FFFFFF', 'out']]);
-  K.count('#wN', [[0, 0], [14.9, 2, 'hold']], function (v) { return String(Math.round(v)); });
-  K.add('#chW', 'background', [[14.88, '#FFFFFF'], [14.92, '#FFF8E6', 'hold']]).add('#chW', 'borderColor', [[14.88, '#E1E7E3'], [14.92, '#F7D58B', 'hold']]).add('#chW', 'color', [[14.88, '#334155'], [14.92, '#92400E', 'hold']]);
-  // (15.4–16.4 authored is the old "What happened" beat: cut by the EDL; the schedule is still there)
-  // daily log entries write themselves in; the day header gets the email's yellow marker (question → answer)
-  K.add('#dmk', 'background', [[16.6, '#F5F7F6'], [16.9, '#FDE68A', 'out']]);
-  K.pop('#eR', 16.78, { dy: 18 }).pop('#eS', 17.0, { dy: 18 });
-  K.add('#eR', 'borderColor', [[16.78, '#16A34A'], [17.6, '#E1E7E3', 'inOut']]).add('#eS', 'borderColor', [[17.0, '#16A34A'], [17.8, '#E1E7E3', 'inOut']]);
+  K.add('#pgS', 'opacity', [[27.45, 1], [27.46, 0, 'hold']]);
+  K.add('#pgL', 'opacity', [[0, 0], [27.46, 1, 'hold'], [29.6, 0, 'hold'], [31.9, 1, 'hold']]).add('#pgL', 'y', [[27.46, 26], [27.66, 0, 'out'], [31.9, 26, 'hold'], [32.1, 0, 'out']]);
+  K.add('#pgM', 'opacity', [[0, 0], [29.6, 1, 'hold'], [31.9, 0, 'hold']]).add('#pgM', 'y', [[29.6, 26], [29.8, 0, 'out']]);
+  // dialog: Rain day click on "log" (24.56), tick on "once" (25.55), Push on "programme" (26.38)
+  K.add('#dimS', 'opacity', [[0, 0], [24.63, 0], [24.77, 1, 'out'], [26.42, 1], [26.56, 0, 'in']]);
+  K.add('#dlg', 'opacity', [[0, 0], [24.63, 0], [24.75, 1, 'out'], [26.42, 1], [26.54, 0, 'in']]).add('#dlg', 'scale', [[24.63, 0.95], [24.83, 1, 'out'], [26.42, 1], [26.54, 0.97]]);
+  K.add('#dc1', 'background', [[25.54, '#FFFFFF'], [25.58, '#EEF6FF', 'hold']]).add('#dc1', 'borderColor', [[25.54, '#DDE3E0'], [25.58, '#2B7BC8', 'hold']]);
+  K.add('#dc1 .bx', 'background', [[25.54, '#FFFFFF'], [25.58, '#2B7BC8', 'hold']]).add('#dc1 .bx', 'borderColor', [[25.54, '#A8B3AD'], [25.58, '#2B7BC8', 'hold']]);
+  K.add('#tick', 'opacity', [[0, 0], [25.56, 0], [25.6, 1]]);
+  K.add('#wmSum', 'opacity', [[0, 0], [25.64, 0], [25.76, 1]]);
+  ['#wr0', '#wr1', '#wr2', '#wr3'].forEach(function (s, i) { K.pop(s, 25.7 + i * 0.08, { dy: 12, fade: 0.12 }); });
+  K.add('#bPush', 'scale', [[26.33, 1], [26.39, 0.94], [26.49, 1]]);
+  K.add('#bRD', 'scale', [[24.58, 1], [24.64, 0.94], [24.73, 1]]);
+  // the programme moves (26.5–26.9), then holds until the cut to the Daily log at 27.45
+  K.add('#bF', 'width', [[26.5, 98], [26.9, 151, 'inOut']]);
+  K.add('#bI', 'x', [[26.5, 0], [26.9, 159, 'inOut']]);
+  K.add('#bS', 'opacity', [[26.5, 1], [26.73, 0.32]]).add('#bP', 'opacity', [[26.5, 1], [26.73, 0.32]]);
+  K.add('#bSw', 'opacity', [[0, 0], [26.58, 0], [26.73, 1]]).add('#bSw', 'x', [[26.58, -53], [26.9, 0, 'inOut']]);
+  K.add('#bPw', 'opacity', [[0, 0], [26.58, 0], [26.73, 1]]).add('#bPw', 'x', [[26.58, -53], [26.9, 0, 'inOut']]);
+  K.add('#gdTue', 'background', [[26.53, '#F5F7F6'], [26.68, '#2B7BC8', 'out']]).add('#gdTue', 'color', [[26.53, '#7A8794'], [26.68, '#FFFFFF', 'out']]);
+  K.add('#gdTue b', 'color', [[26.53, '#1E293B'], [26.68, '#FFFFFF', 'out']]);
+  K.count('#wN', [[0, 0], [26.88, 2, 'hold']], function (v) { return String(Math.round(v)); });
+  K.add('#chW', 'background', [[26.86, '#FFFFFF'], [26.9, '#FFF8E6', 'hold']]).add('#chW', 'borderColor', [[26.86, '#E1E7E3'], [26.9, '#F7D58B', 'hold']]).add('#chW', 'color', [[26.86, '#334155'], [26.9, '#92400E', 'hold']]);
+  // daily log entries write themselves in on "writes itself" (27.95 / 28.22); the day header gets the email's yellow marker
+  K.add('#dmk', 'background', [[27.6, '#F5F7F6'], [27.9, '#FDE68A', 'out']]);
+  K.pop('#eR', 27.95, { dy: 18 }).pop('#eS', 28.25, { dy: 18 });
+  K.add('#eR', 'borderColor', [[27.95, '#16A34A'], [28.8, '#E1E7E3', 'inOut']]).add('#eS', 'borderColor', [[28.25, '#16A34A'], [29.1, '#E1E7E3', 'inOut']]);
 
-  /* S5 — chat photo → Mark as proof of work → hard cut to the Daily log, where it lands under Tue 13 Oct */
-  K.add('#pmenu', 'opacity', [[0, 0], [18.86, 0], [18.96, 1, 'out'], [19.34, 1], [19.42, 0, 'in']]).add('#pmenu', 'scale', [[18.86, 0.94], [19.0, 1, 'out']]);
-  K.add('#miProof', 'background', [[19.1, '#FFFFFF'], [19.2, '#ECF7EF', 'out']]);
+  /* S5 — "Tag a chat photo as proof of work" (29.62): click the photo on "photo" (30.61), the menu item on "proof of work" (31.01–31.84),
+     hard cut to the Daily log on "and photos land" (31.9), where the entry lands under Tue 13 Oct */
+  K.add('#pmenu', 'opacity', [[0, 0], [30.66, 0], [30.76, 1, 'out'], [31.38, 1], [31.46, 0, 'in']]).add('#pmenu', 'scale', [[30.66, 0.94], [30.8, 1, 'out']]);
+  K.add('#miProof', 'background', [[31.2, '#FFFFFF'], [31.3, '#ECF7EF', 'out']]);
   var ePH = $('#eP').offsetHeight + 10;
-  K.add('#ePW', 'height', [[19.58, 0], [19.8, ePH, 'out']]);
-  K.add('#eP', 'opacity', [[0, 0], [19.6, 0], [19.76, 1, 'out']]).add('#eP', 'borderColor', [[19.6, '#16A34A'], [20.4, '#E1E7E3', 'inOut']]);
+  K.add('#ePW', 'height', [[31.96, 0], [32.18, ePH, 'out']]);
+  K.add('#eP', 'opacity', [[0, 0], [31.98, 0], [32.14, 1, 'out']]).add('#eP', 'borderColor', [[31.98, '#16A34A'], [32.8, '#E1E7E3', 'inOut']]);
 
   // cursor path (targets resolved from the layout)
   var app = $('#app'), cur = $('#cur'), cfx = $('#cfx');
   function centerOf(sel, dx, dy) { var A = app.getBoundingClientRect(), B = $(sel).getBoundingClientRect(); return { x: B.left - A.left + B.width / 2 + (dx || 0), y: B.top - A.top + B.height / 2 + (dy || 0) }; }
   var CP = [
-    [12.55, [640, 520]], [12.95, '#bRD', 6, 4], [13.2, '#bRD', 6, 4], [13.46, '#dc1', 10, 6], [13.9, '#dc1', 14, 10], [14.32, '#bPush', 8, 6],
-    [14.6, '#bPush', 14, 30], [15.2, [640, 660]], [16.4, [640, 660]],
-    [18.2, [520, 560]], [18.62, '#ppic', 40, 20], [18.84, '#ppic', 40, 20], [19.06, '#miProof', -60, 2], [19.28, '#miProof', -60, 2], [19.45, '#miProof', -60, 2]
+    [21.95, [640, 520]], [24.3, '#bRD', 6, 4], [24.6, '#bRD', 6, 4], [25.3, '#dc1', 10, 6], [25.6, '#dc1', 14, 10], [26.1, '#bPush', 8, 6],
+    [26.5, '#bPush', 14, 30], [27.0, [640, 660]], [27.45, [640, 660]],
+    [29.65, [520, 560]], [30.4, '#ppic', 40, 20], [30.62, '#ppic', 40, 20], [30.95, '#miProof', -60, 2], [31.3, '#miProof', -60, 2], [31.9, '#miProof', -60, 2]
   ];
-  var CLICKS = [12.95, 13.46, 14.32, 18.84, 19.28];
+  var CLICKS = [24.6, 25.54, 26.35, 30.62, 31.3];
   K.each(function (t) {
-    if (t < 12.4 || t > 19.45 || (t > 16.45 && t < 18.15)) { cur.style.visibility = 'hidden'; cfx.style.visibility = 'hidden'; return; }
+    if (t < 21.6 || t > 31.9 || (t > 27.45 && t < 29.6)) { cur.style.visibility = 'hidden'; cfx.style.visibility = 'hidden'; return; }
     var i, pt;
     var res = function (k) { var c = CP[k]; return typeof c[1] === 'string' ? centerOf(c[1], c[2], c[3]) : { x: c[1][0], y: c[1][1] }; };
     if (t <= CP[0][0]) pt = res(0);
@@ -382,18 +398,18 @@
     cfx.style.visibility = 'visible'; cfx.style.left = pt.x + 'px'; cfx.style.top = pt.y + 'px'; cfx.style.opacity = (1 - fx).toFixed(2); cfx.style.transform = 'scale(' + (0.5 + fx * 0.9).toFixed(2) + ')';
   });
 
-  /* phone — Add photo lands on today */
-  K.add('#ph', 'x', [[20.45, 1080], [20.75, 0, 'swipe'], [22.3, 0], [22.6, -1080, 'swipe']]);
-  K.add('#tap1', 'opacity', [[0, 0], [21.18, 0], [21.2, 1], [21.45, 0]]).add('#tap1', 'scale', [[21.18, 0.5], [21.45, 1.2, 'out']]);
-  K.add('#tap2', 'opacity', [[0, 0], [21.6, 0], [21.62, 1], [21.86, 0]]).add('#tap2', 'scale', [[21.6, 0.5], [21.86, 1.2, 'out']]);
-  K.add('#pAdd', 'background', [[21.2, '#FFFFFF'], [21.26, '#ECF7EF'], [21.5, '#FFFFFF']]);
-  K.add('#pdim', 'opacity', [[0, 0], [21.25, 0], [21.38, 1, 'out'], [21.66, 1], [21.76, 0, 'in']]);
-  K.add('#psheet', 'y', [[0, 260], [21.25, 260], [21.42, 0, 'out'], [21.66, 0], [21.78, 260, 'in']]);
-  K.add('#pflash', 'opacity', [[0, 0], [21.76, 0], [21.8, 0.9], [21.98, 0, 'out']]);
-  K.add('#pNewW', 'height', [[21.86, 0], [22.12, 252, 'out']]);
-  K.add('#pNew', 'opacity', [[0, 0], [21.9, 0], [22.08, 1, 'out']]);
+  /* phone — "even from your phone" (33.97–35.04): Add photo lands on today; "Not on Friday." on the word (35.24) */
+  K.add('#ph', 'x', [[33.95, 1080], [34.25, 0, 'swipe'], [36.5, 0], [36.8, -1080, 'swipe']]);
+  K.add('#tap1', 'opacity', [[0, 0], [34.43, 0], [34.45, 1], [34.7, 0]]).add('#tap1', 'scale', [[34.43, 0.5], [34.7, 1.2, 'out']]);
+  K.add('#tap2', 'opacity', [[0, 0], [34.85, 0], [34.87, 1], [35.11, 0]]).add('#tap2', 'scale', [[34.85, 0.5], [35.11, 1.2, 'out']]);
+  K.add('#pAdd', 'background', [[34.45, '#FFFFFF'], [34.51, '#ECF7EF'], [34.75, '#FFFFFF']]);
+  K.add('#pdim', 'opacity', [[0, 0], [34.5, 0], [34.63, 1, 'out'], [34.91, 1], [35.01, 0, 'in']]);
+  K.add('#psheet', 'y', [[0, 260], [34.5, 260], [34.67, 0, 'out'], [34.91, 0], [35.03, 260, 'in']]);
+  K.add('#pflash', 'opacity', [[0, 0], [35.01, 0], [35.05, 0.9], [35.23, 0, 'out']]);
+  K.add('#pNewW', 'height', [[35.11, 0], [35.37, 252, 'out']]);
+  K.add('#pNew', 'opacity', [[0, 0], [35.15, 0], [35.33, 1, 'out']]);
   K.each(function (t) {
-    if (t < 20.4 || t > 22.6) return;
+    if (t < 33.9 || t > 36.9) return;
     var S = $('#pscr').getBoundingClientRect();
     [['#tap1', '#pAdd'], ['#tap2', '#pTake']].forEach(function (p) {
       var B = $(p[1]).getBoundingClientRect(), el = $(p[0]);
@@ -401,33 +417,33 @@
     });
   });
 
-  /* captions for the product */
+  /* captions for the product (phrases lifted from the narration, on their words) */
   var capA = document.createElement('div'); capA.className = 'cap'; capA.id = 'capA'; capA.style.cssText = 'top:1066px;font-size:66px'; capA.innerHTML = 'Log the rain day <span class="grn">once.</span>'; root.appendChild(capA);
   var capB = document.createElement('div'); capB.className = 'cap'; capB.id = 'capB'; capB.style.cssText = 'top:1136px;font-size:62px'; capB.innerHTML = 'It writes itself into <span class="grn">the diary.</span>'; root.appendChild(capB);
   var capC = document.createElement('div'); capC.className = 'cap'; capC.id = 'capC'; capC.style.cssText = 'top:1068px;font-size:58px;line-height:1.08'; capC.innerHTML = '<div>Photos land on the day</div><div>you post them.</div><div id="nof" class="amb">Not on Friday.</div>'; root.appendChild(capC);
-  K.pop('#capA', 12.62, { dy: 20 });
-  K.add('#capA', 'y', [[16.42, 0], [16.62, -22, 'out']]).add('#capA', 'scale', [[16.42, 1], [16.62, 0.86, 'out']]).add('#capA', 'opacity', [[16.42, 1], [16.62, 0.62, 'out'], [18.06, 0.62], [18.18, 0, 'in']]);
-  K.pop('#capB', 16.46, { dy: 20 }).out('#capB', 18.06, 0.12);   // pops on the cut to the Daily log: 2.1 s on screen
-  K.pop('#capC', 18.2, { dy: 20 }).out('#capC', 22.3, 0.12);
-  K.add('#nof', 'opacity', [[0, 0], [21.92, 0], [22.0, 1]]).add('#nof', 'scale', [[21.92, 1.2], [22.08, 1, 'slam']]);
+  K.pop('#capA', 24.5, { dy: 20 });                                                                                                     // "log the rain day once" 24.56–26.12
+  K.add('#capA', 'y', [[27.42, 0], [27.62, -22, 'out']]).add('#capA', 'scale', [[27.42, 1], [27.62, 0.86, 'out']]).add('#capA', 'opacity', [[27.42, 1], [27.62, 0.62, 'out'], [29.5, 0.62], [29.62, 0, 'in']]);
+  K.pop('#capB', 27.95, { dy: 20 }).out('#capB', 29.5, 0.12);                                                                          // "writes itself into the diary" 27.95–29.44
+  K.pop('#capC', 32.05, { dy: 20 }).out('#capC', 36.55, 0.12);                                                                         // "photos land on the day you post them" 32.06–33.92
+  K.add('#nof', 'opacity', [[0, 0], [35.22, 0], [35.3, 1]]).add('#nof', 'scale', [[35.22, 1.2], [35.38, 1, 'slam']]);                   // "Not" 35.24
 
-  /* S6 close + S7 end */
-  K.add('#close', 'x', [[22.3, 1080], [22.6, 0, 'swipe']]);
-  K.pop('#line1', 22.42, { dy: 24 });
-  K.add('#scrap', 'opacity', [[22.48, 0], [22.49, 1, 'hold']]).add('#scrap', 'rotate', [[22.5, -9], [22.85, -4, 'out']]).add('#scrap', 'y', [[22.5, 60], [22.85, 0, 'out']]);
-  K.add('#qcard', 'opacity', [[22.56, 0], [22.57, 1, 'hold']]).add('#qcard', 'y', [[22.56, 70], [22.86, 0, 'out']]).add('#qcard', 'scale', [[22.56, 0.94], [22.86, 1, 'out']]);   // solid cards (a fading white card reads grey)
-  ['#q1', '#q2', '#q3', '#q4'].forEach(function (s, i) { K.pop(s, 22.68 + i * 0.1, { dy: 10, fade: 0.1 }); });
-  K.add('#qmk', 'background', [[22.9, '#FFFFFF'], [23.2, '#FDE68A', 'out']]);
-  K.fade('#qlab', 22.9, 23.1);
-  K.add('#line2', 'opacity', [[0, 0], [23.0, 0], [23.16, 1, 'out']]).add('#line2', 'y', [[23.0, 24], [23.24, 0, 'out'], [25.22, 0], [25.62, -444, 'inOut']]);
-  // the end card fades in UNDER the close (no near-empty frame): logo from 25.25, the payoff line rises into it
-  K.add('#close', 'opacity', [[25.25, 1], [25.5, 0, 'in']]);
-  K.add('#end', 'opacity', [[25.2, 0], [25.45, 1, 'out']]);
-  K.add('#logoEnd', 'opacity', [[0, 0], [25.25, 0], [25.55, 1, 'out']]).add('#logoEnd', 'y', [[25.25, 24], [25.6, 0, 'out']]);
-  K.pop('#cta', 25.55, { dy: 20 });
-  K.pop('#url', 25.65, { dy: 16 });   // qsme.build holds 3.3 s
+  /* S6 close ("It doesn't write the whole diary." 36.72) + S7 end card ("Book" 40.70) */
+  K.add('#close', 'x', [[36.5, 1080], [36.8, 0, 'swipe']]);
+  K.pop('#line1', 36.72, { dy: 24 });
+  K.add('#scrap', 'opacity', [[36.78, 0], [36.79, 1, 'hold']]).add('#scrap', 'rotate', [[36.8, -9], [37.15, -4, 'out']]).add('#scrap', 'y', [[36.8, 60], [37.15, 0, 'out']]);
+  K.add('#qcard', 'opacity', [[36.86, 0], [36.87, 1, 'hold']]).add('#qcard', 'y', [[36.86, 70], [37.16, 0, 'out']]).add('#qcard', 'scale', [[36.86, 0.94], [37.16, 1, 'out']]);   // solid cards (a fading white card reads grey)
+  ['#q1', '#q2', '#q3', '#q4'].forEach(function (s, i) { K.pop(s, 36.98 + i * 0.1, { dy: 10, fade: 0.1 }); });
+  K.add('#qmk', 'background', [[37.4, '#FFFFFF'], [37.7, '#FDE68A', 'out']]);                                                            // "whole diary" 37.79
+  K.fade('#qlab', 37.2, 37.4);
+  K.add('#line2', 'opacity', [[0, 0], [38.5, 0], [38.66, 1, 'out']]).add('#line2', 'y', [[38.5, 24], [38.74, 0, 'out'], [40.5, 0], [40.9, -444, 'inOut']]);   // "It writes the bits" 38.56
+  // the end card fades in UNDER the close (no near-empty frame): logo from 40.5, the payoff line rises into it, pill on "Book" (40.70)
+  K.add('#close', 'opacity', [[40.5, 1], [40.75, 0, 'in']]);
+  K.add('#end', 'opacity', [[40.45, 0], [40.7, 1, 'out']]);
+  K.add('#logoEnd', 'opacity', [[0, 0], [40.5, 0], [40.8, 1, 'out']]).add('#logoEnd', 'y', [[40.5, 24], [40.85, 0, 'out']]);
+  K.pop('#cta', 40.72, { dy: 20 });
+  K.pop('#url', 42.3, { dy: 16 });   // "Queue Ess Mee dot build" 42.44–43.92; qsme.build holds 3.1 s
 
-  /* Thumbnail B (as-above-thumb.html sets window.AS_ABOVE_THUMB): the hook over the pulled-back shrinking week */
+  /* Thumbnail B (as-above-thumb.html sets window.AS_ABOVE_THUMB): the hook over the pulled-back shrinking week (render at 13.6) */
   if (window.AS_ABOVE_THUMB) K.each(function () {
     ['#hook', '#hookscrim'].forEach(function (s) { var e = $(s); e.style.opacity = 1; e.style.visibility = 'visible'; });
     ['#formon', '#clock', '#topscrim', '#capWed'].forEach(function (s) { $(s).style.visibility = 'hidden'; });
@@ -435,22 +451,5 @@
     $('#cam').style.transform = 'translate(246px,430px) scale(0.66)';   // the whole week, below the hook
   });
 
-  /* ---- Edit decision list. Everything above is authored on one clock (S1 on its own, offset by PRE); these cuts and holds
-   * are applied at render time (output t -> authored t). Cuts only sit in still holds; holds only freeze still frames.
-   *   cut 0.30 s at 11.95 ("It was. Probably." hold)
-   *   cut 1.00 s at 15.40 (the schedule after the push: the old "What happened" beat, removed)
-   *   hold 0.50 s at 17.85 (Daily log, so the stacked caption reads: 2.1 s) · cut 0.20 s at 20.80 (idle phone before the tap)
-   *   hold 0.40 s at 22.16 (the photo has landed on Tue 13 Oct) · cut 0.30 s at 24.40 (close hold, so the VO payoff + CTA fit)
-   * Output = authored + 1.2 for t < 11.95; +0.9 (12.25–15.4); -0.1 (16.4–17.85); +0.4 (17.85–20.8); +0.2 (21.0–22.16);
-   * +0.6 (22.16–24.4); +0.3 after 24.7. So the MP4 is DUR + 0.3 s long. Times in post.md / vo-script are OUTPUT times. */
-  var EDL = [{ at: 11.95, cut: 0.3 }, { at: 15.4, cut: 1.0 }, { at: 17.85, hold: 0.5 }, { at: 20.8, cut: 0.2 }, { at: 22.16, hold: 0.4 }, { at: 24.4, cut: 0.3 }];
-  var SEG = [], o = 0, g = -PRE;
-  EDL.forEach(function (e) { SEG.push({ o: o, g: g, r: 1 }); o += e.at - g; g = e.at; if (e.cut) g += e.cut; if (e.hold) { SEG.push({ o: o, g: g, r: 0 }); o += e.hold; } });
-  SEG.push({ o: o, g: g, r: 1 });
-  var OUT_DUR = +(DUR + o - g).toFixed(3);
-  function warp(t) { var sg = SEG[0]; for (var i = 0; i < SEG.length; i++) if (SEG[i].o <= t + 1e-9) sg = SEG[i]; return sg.g + (t - sg.o) * sg.r; }
-  var RAW = K.render; K.render = function (t) { return RAW(warp(t)); };
-  window.__warp = warp;
-
-  K.ready({ duration: OUT_DUR, fonts: ['400 40px Kalam', '700 60px Kalam', '700 64px "Space Grotesk"', '600 20px Inter', '600 28px "JetBrains Mono"'] });
+  K.ready({ duration: DUR, fonts: ['400 40px Kalam', '700 60px Kalam', '700 64px "Space Grotesk"', '600 20px Inter', '600 28px "JetBrains Mono"'] });
 })();

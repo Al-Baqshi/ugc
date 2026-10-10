@@ -1,150 +1,176 @@
 {
  "venture": "qsme-nz",
  "video": "outputs/ccc-hunt-9x16.mp4",
- "character": "Mel: everyday Kiwi woman, late 30s, the owner-builder in this skit (fictional, as are the roofer, the house and the Hamilton job; the video carries an 'A skit · names made up' chip until the thread ends). Dry and quietly amused at the paperwork and a little at herself (the third text says 'sorry, me again'), never at the roofer: he is busy on a job in Queenstown and 'fair enough' is meant. The hunt is read like a flat incident report, each place shorter and flatter than the last. General NZ accent, never a caricature, no announcer lift, no exclamation marks. Product lines are second-person or neutral tips ('You check it. You tick it.'), never 'I use it' or a result claim, so an AI voice can never read as a customer testimonial.",
+ "vid": "N13",
+ "character": "One dry Kiwi storyteller (Cam S, ElevenLabs voice 53CG2aO2HU48thT3QnMl) telling the owner-builder's hunt as a flat incident report, quietly amused at the paperwork and a little at the owner ('sorry, me again'), never at the roofer ('fair enough' is meant). General NZ accent, never a caricature, no announcer lift, no exclamation marks. Product lines are second-person tips ('You check it, you tick it'), never 'I use it' or a result claim, so an AI voice never reads as a customer. Continuous speech: the narration never stops for more than 1 s.",
  "settings": {
-  "model": "eleven_multilingual_v2",
-  "stability": 0.45,
-  "similarity_boost": 0.75,
-  "style": 0,
-  "speed": 1,
-  "use_speaker_boost": true
+  "model": "eleven_v3",
+  "stability": 0.5,
+  "note": "v3 only accepts stability 0.0 / 0.5 / 1.0; no style/speed/similarity"
  },
+ "take": {
+  "model": "eleven_v3",
+  "voice": "Cam S (53CG2aO2HU48thT3QnMl)",
+  "file": "outputs/vo-take-cam-v3/take.m4a",
+  "alignment": "outputs/vo-take-cam-v3/alignment.json",
+  "words_heard": "outputs/vo-take-cam-v3/words-heard.json",
+  "text_sent": "outputs/vo-take-cam-v3/take-text.txt",
+  "duration_s": 54.56,
+  "words": 130,
+  "words_per_s": 2.38,
+  "method": "ONE unbroken request to /v1/text-to-speech/53CG2aO2HU48thT3QnMl/with-timestamps?output_format=mp3_44100_128 (model eleven_v3, stability 0.5); never sliced; laid onto the master at 0.0 s at gain 1.15 with tools/mux, no music bed. 2026-10-10 re-take (attempt 4) for the owner's CTA fix 'dot Co dot N Z' (2026-10-08); the 2026-10-07 take (attempt 3, 57.60 s, CTA 'dot co') is kept as take-attempt3.mp3. Line start_s are the HEARD onsets (alignment starts corrected with the audio energy, words-heard.json).",
+  "stt_check": "tools/el.py stt (outputs/vo-take-cam-v3/stt.txt): every word heard; QSME heard as 'QS Me' (twice); the CTA heard as 'qsme.co.nz' (koh = the KO the owner asked for, 'dot en zed' = .nz)",
+  "max_gap_s": 1.08,
+  "max_gap_where": "after 'So where is it?' (6.50 → 7.58, 'Inbox.'): the beat the whip to Search 1 lands in; every other pause ≤ 0.96 s (energy measure, -40 dBFS)",
+  "tags": [
+   "[amused]"
+  ]
+ },
+ "continuous_read_v3": "Everything's finished. Except one bit of paper. The roofer's Record of Work. So where is it? Inbox. No results. Garage, box three of seven. Not it. Search fourteen, the ute. A pie receipt. Not it. [amused] Good pie, though.\n\nText the roofer. Monday. Wednesday. Friday, sorry, me again. He's on a job in Queenstown. Fair enough.\n\nNext build, the paper goes in while they're still on site. On Queue Ess Mee, the roofer records his certificate on your project before he leaves. You check it, you tick it. And the CCC pack is every certificate plus the council index, in one zip.\n\nYou still lodge it with council. Queue Ess Mee just ends the hunt.\n\nEverything's finished. Even the paper. Sign up at Queue Ess Mee dot Co dot N Z.",
  "lines": [
   {
-   "id": "vo01-finished",
-   "start_s": 0.05,
-   "max_s": 0.9,
-   "on_screen": "Dusk still of the finished house ('Illustrative footage', slow push); headline 'Everything's finished.' from frame 0; the move-in list 'MOVE IN BY CHRISTMAS · HAMILTON' is up by 0.15 and ticks Painted, Carpets down, Final inspection passed, Electrical CoC (0.25–0.84)",
-   "text_v2": "Everything's finished.",
-   "text_v3": "[satisfied] Everything's finished.",
-   "delivery": "Quietly pleased, like telling a mate over the fence; it says exactly what the headline says. Small lift on 'finished', no announcer energy. Out by 0.95, just as the last line goes red (0.85)."
+   "id": "vo00-hook",
+   "start_s": 0.0,
+   "max_s": 5.84,
+   "on_screen": "Dusk still of the finished house ('Illustrative footage', slow push); 'Everything's finished.' from frame 0; the move-in list 'MOVE IN BY CHRISTMAS · HAMILTON' ticks Painted, Carpets down, Final inspection passed, Electrical CoC on 'finished.' (0.26–0.94); 'Record of Work — Roofing' goes red with the ✗ and the red box 'Except one bit of paper.' slams on 'Except' (1.69–1.75); red marker ring 1.79–2.14; the red row pulses on 'Record of Work' (4.21)",
+   "text_v2": "Everything's finished. Except one bit of paper. The roofer's Record of Work.",
+   "text_v3": "Everything's finished. Except one bit of paper. The roofer's Record of Work.",
+   "delivery": "Quietly pleased for three words, then the turn: 'Except' dead level, 'one bit of paper' flat, the roofer's line like reading the label. No announcer lift. Ends by 4.88"
   },
   {
-   "id": "vo02-paper",
-   "start_s": 1.0,
-   "max_s": 1.45,
-   "on_screen": "'Record of Work — Roofing' turns red with an ✗ (0.85), shakes and gets a marker ring (0.95–1.30); red box 'Except one bit of paper.' slams in (0.91–1.05) and holds",
-   "text_v2": "Except one bit of paper.",
-   "text_v3": "[flat] Except one bit of paper.",
-   "delivery": "The turn. Same voice, all the pleasure drained out. Tiny pause after 'Except', 'one bit of paper' dead level. Out by 2.45, before the whip (2.42–2.62)."
+   "id": "vo01-where",
+   "start_s": 5.84,
+   "max_s": 1.74,
+   "on_screen": "The dusk still holds with the red row and the red box; whip left at 6.75 after 'it?' (6.87)",
+   "text_v2": "So where is it?",
+   "text_v3": "So where is it?",
+   "delivery": "A small shrug of a question, the Kiwi 'so'. Ends by 6.50"
   },
   {
-   "id": "vo03-inbox",
-   "start_s": 2.8,
-   "max_s": 0.9,
-   "on_screen": "'SEARCH 1 · Inbox.'; a generic mail search types 'record of work' (2.80–3.36) and comes back 'No results' (3.48)",
-   "text_v2": "Inbox.",
-   "text_v3": "Inbox.",
-   "delivery": "Incident-report flat. One word, falling. Leave the 'No results' to land in silence."
+   "id": "vo02-inbox",
+   "start_s": 7.58,
+   "max_s": 2.71,
+   "on_screen": "'SEARCH 1 · Inbox.' (in by 7.15); a generic mail search types 'record of work' (7.9–8.59); 'No results / for “record of work”' pops on 'No' (8.97); the card shakes 'no' on 'results.' (9.12); whip out 9.94",
+   "text_v2": "Inbox. No results.",
+   "text_v3": "Inbox. No results.",
+   "delivery": "Incident-report flat. 'Inbox.' one word, falling; 'No results.' read off the screen. Ends by 9.76"
   },
   {
-   "id": "vo04-garage",
-   "start_s": 4.45,
-   "max_s": 1.6,
-   "on_screen": "'SEARCH 2 · Garage.'; a cardboard box marked 'HOUSE STUFF / BOX 3 OF 7' wobbles, opens and throws out 'Oven warranty', 'Tile samples', 'Kitchen quote v3', 'Paint colours' (4.88–5.60); 'Not it.' stamp (5.60)",
-   "text_v2": "Garage. Box three of seven.",
-   "text_v3": "Garage. [sighs] Box three of seven.",
-   "delivery": "'Garage' flat, a beat, then 'box three of seven' a touch wearier, as if boxes one and two were a long afternoon. Out by 6.05."
+   "id": "vo03-garage",
+   "start_s": 10.29,
+   "max_s": 3.36,
+   "on_screen": "'SEARCH 2 · Garage.' (in by 10.29); the cardboard box 'HOUSE STUFF / BOX 3 OF 7' wobbles (10.49), the flaps open (10.81) and four papers fly out on 'box three of seven' (10.9–12.09: Oven warranty, Tile samples, Kitchen quote v3, Paint colours); 'Not it.' stamp on 'Not' (12.6); whip out 13.22",
+   "text_v2": "Garage, box three of seven. Not it.",
+   "text_v3": "Garage, box three of seven. Not it.",
+   "delivery": "'Garage' a touch wearier, as if boxes one and two were a long afternoon; 'Not it.' a flat stamp. Ends by 13.11"
   },
   {
-   "id": "vo05-ute",
-   "start_s": 6.15,
-   "max_s": 0.9,
-   "on_screen": "'SEARCH 14 · The ute.'; the glovebox drops open (6.36–6.60)",
-   "text_v2": "The ute.",
-   "text_v3": "The ute.",
-   "delivery": "Lowest and shortest of the three: she knows it's a long shot. Out by 7.05, as the receipt settles (6.96)."
+   "id": "vo04-ute",
+   "start_s": 13.65,
+   "max_s": 4.64,
+   "on_screen": "'SEARCH 14 · The ute.' (in by 13.57); the glovebox drops open on 'ute.' (14.72–14.96); a bakery receipt rises out on 'A pie receipt.' (15.79–16.21): '1 x MINCE & CHEESE PIE $5.50'; 'Not it.' stamp on 'Not' (17.22)",
+   "text_v2": "Search fourteen, the ute. A pie receipt. Not it.",
+   "text_v3": "Search fourteen, the ute. A pie receipt. Not it.",
+   "delivery": "Lowest and shortest of the three: she knows it's a long shot. The jump from search 2 to 14 is the joke; don't lean on it. Ends by 17.60"
   },
   {
-   "id": "vo06-pie",
-   "start_s": 7.85,
-   "max_s": 0.95,
-   "on_screen": "A bakery receipt rises out of the glovebox and holds clean: '1 x MINCE & CHEESE PIE $5.50' (6.54–6.96); 'Not it.' stamp (7.50); handwritten '(good pie though)' (7.80), held to the whip (8.50)",
+   "id": "vo05-pie",
+   "start_s": 18.29,
+   "max_s": 1.57,
+   "on_screen": "Handwritten '(good pie though)' pops under the receipt on the words (18.27); the hunt whips out at 19.65",
    "text_v2": "Good pie, though.",
-   "text_v3": "[wistful] Good pie, though.",
-   "delivery": "The only warm line in the hunt. A small fond smile, under the breath, like remembering it. Out by 8.80, across the whip to the phone."
+   "text_v3": "[amused] Good pie, though.",
+   "delivery": "The only warm line in the hunt: a small fond smile, under the breath. Ends by 18.91"
   },
   {
-   "id": "vo07-texts",
-   "start_s": 9.0,
-   "max_s": 1.6,
-   "on_screen": "Generic text thread to 'Roofer · usually replies Sundays': Mon 9:12 am 'Need your Record of Work for the CCC, cheers' (8.82), Wed 4:40 pm 'Just bumping this' (9.44), Fri 7:05 am 'Any chance? (sorry, me again)' (10.10), 'Delivered' (10.36)",
-   "text_v2": "Monday. Wednesday. Friday.",
-   "text_v3": "Monday... Wednesday... Friday.",
-   "delivery": "One word per bubble: 'Monday' just after the first lands, then 'Wednesday', 'Friday', about 0.6 s apart. Patient, a bit sheepish by Friday, never annoyed. Out by 10.60."
+   "id": "vo06-texts",
+   "start_s": 19.86,
+   "max_s": 5.37,
+   "on_screen": "Generic text thread to 'Roofer · usually replies Sundays' slides up on 'Text the roofer.' (19.67–19.91); bubbles pop on the days: Mon 9:12 am 'Need your Record of Work for the CCC, cheers' (21.06), Wed 4:40 pm 'Just bumping this' (22.08), Fri 7:05 am 'Any chance? (sorry, me again)' (23.09); 'Delivered' after 'again.' (24.88)",
+   "text_v2": "Text the roofer. Monday. Wednesday. Friday, sorry, me again.",
+   "text_v3": "Text the roofer. Monday. Wednesday. Friday, sorry, me again.",
+   "delivery": "One day per bubble, patient, a bit sheepish by Friday ('sorry, me again' is her text, read flat), never annoyed. Ends by 24.64"
   },
   {
-   "id": "vo08-queenstown",
-   "start_s": 10.8,
-   "max_s": 1.75,
-   "on_screen": "Caption 'He's on a job in Queenstown. / Fair enough.' (10.72–12.68) under the thread",
-   "text_v2": "He's in Queenstown. Fair enough.",
-   "text_v3": "He's in Queenstown. [chuckles] Fair enough.",
-   "delivery": "Genuinely fair, no sarcasm: the roofer is not the joke, the paperwork is. 'Fair enough' warm and a little rueful. Out by 12.55, before the whip (12.68)."
+   "id": "vo07-queenstown",
+   "start_s": 25.23,
+   "max_s": 3.08,
+   "on_screen": "Caption 'He's on a job in Queenstown. / Fair enough.' pops under the thread on the words (25.23) and holds; whip out 28.07",
+   "text_v2": "He's on a job in Queenstown. Fair enough.",
+   "text_v3": "He's on a job in Queenstown. Fair enough.",
+   "delivery": "Genuinely fair, no sarcasm: the roofer is not the joke, the paperwork is. 'Fair enough' warm and a little rueful. Ends by 27.53"
   },
   {
-   "id": "vo09-next",
-   "start_s": 12.95,
-   "max_s": 2.95,
-   "on_screen": "'NEXT BUILD · IN QSME / The paper goes in while they're still on site.' (12.86) over the live public qsme.co.nz Knowledge Hub guide 'For the council (consent → CCC)'; the 'LBP Record of Work · Licensed Building Practitioner (LBP)' row is outlined (13.50) as the table scrolls gently",
-   "text_v2": "Next build, the paper goes in while they're on site.",
-   "text_v3": "Next build, the paper goes in while they're on site.",
-   "delivery": "The lesson, said to a mate, not a pitch. Even pace, a slight lean on 'Next build'. Out by 15.90, before the whip (15.95)."
+   "id": "vo08-next",
+   "start_s": 28.31,
+   "max_s": 3.29,
+   "on_screen": "'NEXT BUILD · IN QSME / The paper goes in while they're still on site.' pops on 'Next build,' (28.28) over the live public qsme.co.nz Knowledge Hub guide 'For the council (consent → CCC)' (slides up 28.28–28.58); the 'LBP Record of Work · Licensed Building Practitioner (LBP)' row is outlined on 'paper' (28.94) and the table scrolls gently to the column headers + the outlined row (28.79–30.81); whip out 31.39",
+   "text_v2": "Next build, the paper goes in while they're still on site.",
+   "text_v3": "Next build, the paper goes in while they're still on site.",
+   "delivery": "The lesson, said to a mate, not a pitch. Even pace, a slight lean on 'Next build'. Ends by 30.93"
   },
   {
-   "id": "vo10-roofer",
-   "start_s": 16.15,
-   "max_s": 2.0,
-   "on_screen": "Caption 'The roofer records it before he leaves site.' (16.09–19.00); recreated 'Issue Certificate' dialog (window 'QSME · Demo house, Hamilton', 'Illustrative · demo data'): LBP Record of Work, ROW-DEMO-0042, roof cladding (demo), Record-of-Work-Roofing-DEMO.pdf; 'Issue Certificate' clicked (17.81); his Site Certificates card gets the new row (18.27); toast 'Certificate issued' (18.33)",
-   "text_v2": "Roofer records it before he leaves.",
-   "text_v3": "Roofer records it before he leaves.",
-   "delivery": "Practical, matter-of-fact. Out by 18.15, so the new row and the toast land in quiet."
+   "id": "vo09-roofer",
+   "start_s": 31.6,
+   "max_s": 5.49,
+   "on_screen": "Caption 'The roofer records his certificate before he leaves.' (31.61–37.09) over the recreated 'Issue Certificate' dialog (window 'QSME · Demo house, Hamilton', 'Illustrative · demo data'): Certificate type 'LBP Record of Work' (31.77), number 'ROW-DEMO-0042' types 32.3–32.74, work covered types on 'the roofer records' (33.34–33.92), 'Record-of-Work-Roofing-DEMO.pdf' on 'his certificate' (34.35); the dialog scrolls to the button on 'certificate' (34.33–36.03); pointer clicks 'Issue Certificate' on 'before' (35.7); his Site Certificates card gets the new row and the toast 'Certificate issued' on 'leaves.' (36.44 / 36.53)",
+   "text_v2": "On Q-S-me, the roofer records his certificate on your project before he leaves.",
+   "text_v3": "On Queue Ess Mee, the roofer records his certificate on your project before he leaves.",
+   "delivery": "The first time the brand is said: 'Queue Ess Mee' clear (kyoo-ess-mee), never 'kiss me'. Practical, matter-of-fact; 'before he leaves' lands as the point. Ends by 36.67"
   },
   {
-   "id": "vo11-tick",
-   "start_s": 19.15,
-   "max_s": 2.2,
-   "on_screen": "Caption 'You check it. Then you tick it.' (19.00–21.48); the Compliance & process checklist pushes in on 'Lead trades are LBPs; Records of Work collected' and it's ticked by hand (20.04): Phase 2 4/5 → 5/5",
-   "text_v2": "You check it. You tick it.",
-   "text_v3": "You check it. You tick it.",
-   "delivery": "Two small steps, same weight each, a tiny satisfied smile on the second 'tick'. Out by 21.35."
+   "id": "vo10-tick",
+   "start_s": 37.09,
+   "max_s": 1.74,
+   "on_screen": "Hard cut on the whip to caption 'You check it. You tick it.' (37.09–38.84); the owner's Compliance & process checklist pushes in on 'Lead trades are LBPs; Records of Work collected' (37.39–37.87) and it's ticked on 'tick' (37.96): strike-through, Phase 2 4/5 → 5/5, the bar fills",
+   "text_v2": "You check it, you tick it.",
+   "text_v3": "You check it, you tick it.",
+   "delivery": "Two small steps, same weight each, a tiny satisfied smile on 'tick'. Ends by 38.28"
   },
   {
-   "id": "vo12-zip",
-   "start_s": 21.65,
-   "max_s": 3.05,
-   "on_screen": "Caption 'Every certificate + the council index. One zip.' (21.48); 'CCC Pack' hovered (title text 'Download every certificate plus the council index, as one zip'), clicked (22.56); CCC_Pack.zip opens: 00_INDEX.pdf, EnergyCerts, Other, ROW / Record-of-Work-Roofing-DEMO.pdf (23.34–24.26)",
-   "text_v2": "Every certificate, plus the council index, in one zip.",
-   "text_v3": "Every certificate, plus the council index, in one zip.",
-   "delivery": "Unhurried list, landing 'one zip' as a quiet relief, not a reveal. Out by 24.70."
+   "id": "vo11-zip",
+   "start_s": 38.83,
+   "max_s": 5.32,
+   "on_screen": "Hard cut on the whip to caption 'Every certificate plus the council index. One zip.' (38.84) over the owner's 'Site Certificates (3)'; the pointer hovers 'CCC Pack' (39.5) and its tooltip 'Download every certificate plus the council index, as one zip' reads with the words (40.2–42.0); click on 'index,' (42.02), spinner; 'CCC_Pack.zip' flies out (42.4) and opens on 'one zip.' (42.79): 00_INDEX.pdf, EnergyCerts, Other, ROW / Record-of-Work-Roofing-DEMO.pdf (highlighted 43.25); whip out 43.57",
+   "text_v2": "And the CCC pack is every certificate plus the council index, in one zip.",
+   "text_v3": "And the CCC pack is every certificate plus the council index, in one zip.",
+   "delivery": "Unhurried list; 'C-C-C' as three letters; land 'one zip' as a quiet relief, not a reveal. Ends by 43.32"
   },
   {
-   "id": "vo13-lodge",
-   "start_s": 25.68,
-   "max_s": 1.35,
-   "on_screen": "The dummy 00_INDEX.pdf ('CCC Document Pack … Form 6', 'CCC applied for (Form 6) — pending') dims; caption 'You still lodge it with council.' (25.59)",
-   "text_v2": "You still lodge it.",
-   "text_v3": "You still lodge it.",
-   "delivery": "Plain and honest, a small shrug in the voice. Out by 27.03."
+   "id": "vo12-lodge",
+   "start_s": 44.15,
+   "max_s": 1.96,
+   "on_screen": "The dummy 00_INDEX.pdf ('CCC Document Pack … Form 6', 'Compliance checklist status') slides up (43.55–43.93), dims (43.98–44.18); white caption 'You still lodge it with council.' pops on the words (44.15)",
+   "text_v2": "You still lodge it with council.",
+   "text_v3": "You still lodge it with council.",
+   "delivery": "Plain and honest, a small shrug in the voice. Ends by 45.44"
   },
   {
-   "id": "vo14-hunt",
-   "start_s": 27.12,
-   "max_s": 1.4,
-   "on_screen": "'QSME just ends the hunt.' slams in (27.09) and holds to 28.49",
+   "id": "vo13-hunt",
+   "start_s": 46.11,
+   "max_s": 2.81,
+   "on_screen": "'QSME just / ends the hunt.' slams in on 'Queue Ess Mee' (46.1) and holds; the scene fades at 48.66",
    "text_v2": "Q-S-me just ends the hunt.",
-   "text_v3": "Q-S-me just ends the hunt.",
-   "delivery": "The payoff, dry and warm, and the first time the brand is said out loud. 'Q-S-me' clear (kyoo-ess-mee); light lean on 'ends', 'the hunt' falls. Out by 28.52."
+   "text_v3": "Queue Ess Mee just ends the hunt.",
+   "delivery": "The payoff, dry and warm; light lean on 'ends', 'the hunt' falls. Ends by 48.04"
+  },
+  {
+   "id": "vo14-even",
+   "start_s": 48.92,
+   "max_s": 2.49,
+   "on_screen": "End card from 48.66: QSME logo (48.68), 'NEXT BUILD' (48.72), 'Everything's finished. / Even the paper.' pops (48.76) as 'Everything's' starts (48.92); the hook's 'Record of Work — Roofing' row (48.86) flips from ✗ to ✓ on 'Even' (50.07), 'in the CCC pack' (50.17)",
+   "text_v2": "Everything's finished. Even the paper.",
+   "text_v3": "Everything's finished. Even the paper.",
+   "delivery": "The callback, same words as the hook but settled this time; 'Even the paper' with the tick. Ends by 50.74"
   },
   {
    "id": "vo15-cta",
-   "start_s": 28.75,
-   "max_s": 2.8,
-   "on_screen": "End card: QSME logo, 'NEXT BUILD', 'Everything's finished. / Even the paper.', the hook's 'Record of Work — Roofing' row flips from ✗ to ✓ (29.03) 'in the CCC pack', [Sign up at qsme.co.nz] (29.19), small print (29.29); held to 32.20",
-   "text_v2": "Sign up at Q-S-me dot co dot en zed.",
-   "text_v3": "Sign up at Q-S-me dot co dot en zed.",
-   "delivery": "Same friendly voice, not an ad read. 'Q-S-me' clear (kyoo-ess-mee), never 'kiss me'. Out by 31.55, leaving a 0.65 s tail."
+   "start_s": 51.41,
+   "max_s": 4.69,
+   "on_screen": "Green button 'Sign up at qsme.co.nz' slams on 'Sign' (51.4); small print pops 51.58 (skit disclosure, licence approval, 'you lodge the pack', paid plan); held to 56.1",
+   "text_v2": "Sign up at Q-S-me dot Co dot N Z.",
+   "text_v3": "Sign up at Queue Ess Mee dot Co dot N Z.",
+   "delivery": "Same friendly voice, not an ad read; 'en zed' the Kiwi way, no rise at the end. Ends by 54.56, 1.5 s tail. \"co\" is said like KO (\"dot koh\"), never spelled C-O (owner 2026-10-08)."
   }
  ],
  "male_alt_lines": []

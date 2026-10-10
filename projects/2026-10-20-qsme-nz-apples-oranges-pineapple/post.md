@@ -3,18 +3,21 @@ vid: N08
 title: "Which one's cheapest?"
 venture: qsme-nz
 idea: qsme-nz-apples-oranges-pineapple
-status: "rendered — awaiting approval"
+status: "audio-first remake rendered (Cam S take) — awaiting approval"
 publish_date: 2026-10-20
 publish_time_nzt: "19:30"
 created: 2026-10-02
 calendar_week: 3
 format: short
 kind: skit (relatable)
-length_s: 31.6
+length_s: 39.4
 aspect: "9:16 (+4:5 Facebook feed cut)"
 platforms: ["Instagram Reels", "TikTok", "Facebook Reels", "Facebook feed (4:5)", "YouTube Shorts"]
 video: outputs/which-ones-cheapest-9x16.mp4
+video_with_vo: outputs/which-ones-cheapest-9x16-with-vo.mp4
 video_4x5: outputs/which-ones-cheapest-4x5.mp4
+video_4x5_with_vo: outputs/which-ones-cheapest-4x5-with-vo.mp4
+voice: "Cam S (ElevenLabs eleven_v3), one unbroken 38.00 s take (CTA \"dot koh\", re-take 2026-10-10)"
 cover: outputs/which-ones-cheapest-cover.png
 features: ["compare-bids", "add-received-bid"]
 ---
@@ -27,6 +30,58 @@ features: ["compare-bids", "add-received-bid"]
 **Twist:** A shell game. The "cheapest" ball is under a different cup every time you lift one, and the partner who asked would have picked the $7,400 one.
 **Job:** Organic first (pricing week opener, homeowner prime slot, Tue 7:30pm). Paid later only on the owner's say-so.
 **Replaces:** the old "Apples, oranges, pineapple" plan (AI character with fruit props, "line-by-line comparison" payoff). Both are retired: no people, HTML props, and a GST-basis payoff that matches what the screen really does. This also merges the bench card `nz-which-ones-cheapest`. *(This run did not touch `ideas/`. The card and INBOX updates are still pending; see Open questions.)*
+
+## Audio-first remake (2026-10-06) — the current masters (CTA re-take 2026-10-10)
+
+**Why:** the owner signed off the N01 "Which Dave?" pilot as the standard: the script is continuous speech with a real hook in the first 2 s, the voice is ONE unbroken eleven_v3 take (Cam S), and the picture is re-timed to the words. This cut applies it. One voice tells the whole thing as the partner who asked the question, so the "Him" bubbles are his own asides and the white captions are phrases lifted from the same narration. The joke (GST picks the winner if you let it), the bench, the cups, the illustrative app, the callback and the real sign-up still are unchanged.
+
+**2026-10-10 fix:** the owner's pronunciation rule (2026-10-08) says the CTA is "dot Co dot N Z": "co" is said like KO, never spelled C-O. The 2026-10-06 take said "dot co", so the WHOLE take was regenerated with only that word changed (one request, not a patch). It passed STT on the first try, which is attempt 4 overall; the 2026-10-06 take is kept as `take-attempt3.*`. Every beat in `motion/aop.js` was re-derived from the new alignment, both cuts were re-rendered at 39.4 s (take 38.00 s + 1.4 s tail) and both were re-muxed.
+
+**Hook (0–2.48 s, spoken):** "Which one's cheapest? Trick question." On screen from frame 1: "3 quotes. Same bathroom." + the green slab "Which one's cheapest?" over the three props slapping down; the red loop on "7400 + gst mate" lands under "cheapest?" (0.87–1.23), the "?" slaps at 1.28, "…Trick question." pops on the word (1.46).
+
+**The script as spoken (one take, 38.00 s, 101 words, 2.66 words/s, longest silence 0.62 s; one v3 tag):**
+
+```
+Which one's cheapest? Trick question. Looks like the seventy-four hundred, or this one, or this. Depends how you read them.
+
+The emailed one goes in too, once I've checked it. One table: bold's what they wrote, grey's the maths.
+
+Excluding GST, Steamline's lowest. Flip it and, hang on, it moved. Trev. That's what we pay.
+
+Seventy-four hundred plus GST is eighty-five ten. Never the cheapest. [amused] I'd have picked that one.
+
+Open one, see what it covers. Queue Ess Mee doesn't pick the winner. It stops GST picking it for you. Sign up at Queue Ess Mee dot Co dot N Z.
+```
+
+| Said (start) | Picture (re-timed to the words) | Caption on screen |
+|---|---|---|
+| 0.00 "Which one's cheapest?" | props slam 0.0 / 0.18 / 0.38; loop on "7400 + gst mate" 0.87–1.23; "?" 1.28 | 3 quotes. Same bathroom. / Which one's cheapest? |
+| 1.46 "Trick question." | "3 quotes…" out 1.40, "…Trick question." pops 1.46; hard cut to the cups 2.47 | …Trick question. |
+| 2.57 "Looks like the seventy-four hundred," | cups drop 2.59–2.67; the $7,400 + GST cup lifts on "seventy-four" (3.27), down 4.02; swap 4.18–4.56 | Looks like this one… |
+| 4.59 "or this one," | the $8,298 incl. GST cup lifts 4.58, down 5.07; swap 5.28–5.54 | …or this one, |
+| 5.63 "or this." | the $7,900 no GST cup lifts 5.64 and stays up | …or this. |
+| 6.24 "Depends how you read them." | caption on the words; swipe into the app 7.47–7.62 | Depends how you read them. |
+| 7.74 "The emailed one goes in too," | window in 7.54; PDF dragged onto the drop zone 7.64–8.38; "Reading the quote…" (Sped up) 8.40–8.90; the draft beside the original 8.98 | The emailed one goes in too. |
+| 9.50 "once I've checked it." | push in on the honesty notice 9.00–9.25; scroll 9.74–10.09; tick on "checked" (10.24); "Add to the bids" on "it." (10.50); dialog closes 10.56; the new row flashes 10.68 | Once I've checked it. |
+| 10.74 "One table:" | the whole Compare bids table 10.80–11.61, push in on the figure columns 12.07 | One table. |
+| 12.19 "bold's what they wrote," | green loop on the bold $8,298 12.38–12.73 | Bold's what they wrote. |
+| 13.33 "grey's the maths." | amber loop on "$7,215.65 calc." 13.49–13.75 | Grey's the maths. |
+| 14.77 "Excluding GST, Steamline's lowest." | close-up on the toggle + Bidder + Excl. GST 14.76; green loop on Steamline's "Lowest" 16.17–16.47 | Excl. GST: Steamline's lowest. |
+| 17.30 "Flip it and," | pointer to "Incl. GST" 17.00–17.64, click on "it" (17.70); the "Lowest" tag hops to Trev's row 17.75–18.00; rows stay put | — |
+| 18.37 "hang on, it moved." | green bubble 18.36–19.47 | Hang on, it moved. (Him) |
+| 19.58 "Trev." | pull back to the whole table 19.93; green loop on Trev's "Lowest" 19.98–20.37 | Incl. GST: Trev's lowest. |
+| 20.37 "That's what we pay." | second caption line | That's what we pay. |
+| 21.86 "Seventy-four hundred plus GST is eighty-five ten." | punch in on the figures 21.87; red loop on "$8,510 calc." 24.23–24.54; the phone prop lights | $7,400 + GST = $8,510. |
+| 25.47 "Never the cheapest." | red second line | Never the cheapest. |
+| 26.95 "I'd have picked that one." | cut to the bench 26.65 under the [amused] beat; arrow 26.76, "= $8,510" scribbled 26.86–27.18; bubble 26.95–28.24; cut back 28.35 | I'd have picked that one. (Him) |
+| 28.38 "Open one, see what it covers." | click Steamline's row 28.69; card opens whole 28.97; Type/Qty/Rate fold away 29.19–29.54; green loop on the Total on "covers" 29.63–29.94 | Open one, see what it covers. |
+| 30.20 "QSME doesn't pick the winner." | end card cut 30.15; line pops on "Queue"; the real sign-up still rises 30.98–31.24, chip 31.20, "I hire" loop 31.32–31.64 | QSME doesn't pick the winner. |
+| 32.21 "It stops GST picking it for you." | second line pops on "It" | It stops GST picking it for you. |
+| 34.51 "Sign up at qsme.co.nz" (said "Q-S-me dot Co dot N Z") | logo + green button pop on "Sign" (34.51), pulse on "koh" (36.32) and "zed" (37.52); page ends 39.4 | Sign up at qsme.co.nz |
+
+**Files:** masters `outputs/which-ones-cheapest-9x16.mp4` and `outputs/which-ones-cheapest-4x5.mp4` (both 39.4 s, silent, QA passed on their safe boxes; the 31.6 s v1 masters are archived as `outputs/archive/which-ones-cheapest-{9x16,4x5}-v1.mp4` with their contact sheets); voiced `outputs/which-ones-cheapest-9x16-with-vo.mp4` and `outputs/which-ones-cheapest-4x5-with-vo.mp4` (the one take at 0.0 s, gain 1.15, no bed, one audio track); take + alignment + words + the exact text sent in `outputs/vo-take-cam-v3/`. Earlier attempts are kept there as `*-attempt1/2/3.*`: 43.4 s (too slow), 41.7 s (tag gaps over 1 s) and 38.24 s (the 2026-10-06 take, which said "dot co"). The contract is `vo-script.json` / `vo-script.md`. The cover (`outputs/which-ones-cheapest-cover.png`, t = 1.75 of v1) still matches: its three lines, the loop and the "?" are unchanged and all on screen by 1.46 in the new timeline. The `.preview.mp4` files are from v1 and are rebuilt by `npm run publish`.
+
+**What's below:** the Hook layers, Beat-by-beat script, Music and Production status sections describe the 2026-10-04 silent 31.6 s cut (Mel + Him as two voices, per-line takes). They are kept as the design record; the timeline above is the one that ships. The Owner recordings table (B1–B4) still applies, with the times shifted to this timeline (B1 → 7.54–10.7, B2 → 10.7–14.8, B3 → 14.8–26.6, B4 → 28.35–30.15).
 
 ## Hook layers (0–3.0 s)
 
@@ -198,7 +253,7 @@ Expected table: Excl. GST $7,215.65 calc. / $7,400 / $7,900 and Incl. GST $8,298
 1. **Session B by Fri 16 Oct:** please confirm what the real table does on the flip. Do rows re-order, or does only the "Lowest" tag move (the stand-in now shows only the tag move)? Where do "Lowest" and "No GST" sit in a row?
 2. **Idea card + INBOX:** this run was told not to touch `ideas/`. Still to do: update `ideas/qsme-nz/apples-oranges-pineapple.md` (retire the fruit/AI-character format and the "line-by-line" beat; set the status to produced and link this project) and mark the bench card `nz-which-ones-cheapest` as merged.
 3. **Facebook feed timing:** post the 4:5 at the same 19:30 slot as the Reel, or the next morning for the older-renovator audience?
-4. **VO CTA:** the VO says "Sign up at Q-S-me." with the address on the button. Voicing "Sign up at Q-S-me dot co dot en zed" would push the video to about 33 s; say if you'd rather have the full address spoken.
+4. ~~**VO CTA:** the VO says "Sign up at Q-S-me." with the address on the button. Voicing the full address would push the video to about 33 s; say if you'd rather have the full address spoken.~~ Answered: the address is voiced in full since the 2026-10-06 remake, said "Q-S-me dot Co dot N Z" since the 2026-10-10 re-take (owner rule 2026-10-08).
 
 ## Discussion history
 
@@ -206,3 +261,6 @@ Expected table: Excl. GST $7,215.65 calc. / $7,400 / $7,900 and Incl. GST $8,298
 - 2026-10-03: The interrupted first build (motion/aop.js) used a /pricing capture and "Free to join." on the end card. That was retired under the owner CTA rule.
 - 2026-10-04: Rebuilt and rendered (9:16 + 4:5, 35.0 s). Fixed the camera framing (offsets were counted twice), the dialog sitting under the table rows, the marker on the wrong text bubble, the green-column/flex bug, and the blank breakdown. Added the "That price is: Including GST" moment. New end card on a real still of the public sign-up page with "Sign up at qsme.co.nz". Two-voice VO script written. Fictional PDF quote made for Session B. Demo names re-checked on the Companies Register (no results).
 - 2026-10-04 (review pass, v3): applied the review. Must-fix: removed the "New to you… they don't need a QSME account" line from the stand-in (owner CTA rule) and from the approved wording, and told the owner to keep it out of frame in B1; the flip is now a close-up on the toggle + Bidder + Excl. GST (names ≈ 32 px) where the "Lowest" tag visibly hops from Steamline to Trev; the breakdown shows the whole card, then frames Item + Line total and ends on the Total. Should-fix: Duration/Status left out so no column is sliced, clean column edges with soft white fades on every close-up; the Excl. caption is gone before the click; rows no longer re-order (only the confirmed tag move); shell-game tags only ask ("looks cheapest…" / "…or this one?" / "…or this?!") and the cups tip back off the ball; end card builds in 1.2 s (both lines at the cut, still +0.6 s, CTA +1.2 s); add-a-bid detour cut to 3.6 s with one spinner, the whole draft beside the original and the honesty notice at ≈ 31 px; Him's punchline is a 2 s cut back to the bench phone with the hook's loop and "= $8,510"; "…Trick question." moved off Trev's note; end-card chip moved under the whole "I hire" card and the loop shrunk. Nice: bench props light up with their bids; GST never marked "calc." (dialog matches table); card title "Steamline Bathrooms Ltd"; line totals in ink, only the Total green; caption "Open one: see what it covers." matches the VO. Runtime 35.0 → 31.6 s; VO re-timed (vo13 is a J-cut). The address is not voiced (would add ~1.4 s): see Open questions.
+- 2026-10-06 (audio-first remake, the N01 standard): rewritten as continuous speech for ONE voice (Cam S, eleven_v3, stability 0.5): the partner tells it on himself, hook "Which one's cheapest? Trick question." in the first 2.5 s, product payoff in plain words, CTA spoken in full ("Sign up at Queue Ess Mee dot co dot en zed", so Open question 4 is answered: the address is voiced). One unbroken 38.24 s take with timestamps (third attempt: the first two were 43.4 s and 41.7 s, too slow and with tag gaps over 1 s); STT heard every word. Every beat in motion/aop.js re-derived from the alignment (cups lift on "seventy-four hundred / or this one / or this", tick on "checked", click on "Flip it", the tag hops under "hang on", callback under the [amused] beat, end card lines and the button on their words); captions lifted from the narration ("Once I've checked it.", "One table.", "Bold's what they wrote." / "Grey's the maths.", "Hang on, it moved.", "That's what we pay.", "Open one, see what it covers."; cup tags "Looks like this one… / …or this one, / …or this."). Both cuts re-rendered at 39.8 s (QA passed), v1 masters archived, voiced masters muxed (one audio track, no bed). Runtime 31.6 → 39.8 s: the trade for continuous speech with the CTA address spoken.
+- 2026-10-10 (CTA pronunciation fix, owner rule 2026-10-08): the 2026-10-06 take said "dot co dot en zed" and the rule is "dot Co dot N Z" (co said like KO, never C-O). The WHOLE take was regenerated as one Cam S eleven_v3 request with only that word changed, keeping the single [amused] tag. It passed first try (38.00 s, first word at 0.00, longest silence 0.62 s; STT heard every word and the CTA as "qsme.koh.enz"). The 2026-10-06 take is kept as *-attempt3. Every beat in motion/aop.js was re-derived from the new alignment, mapping each old word time to its new word time (cups, captions, tick, toggle and hop, $8,510 loop, callback, Total loop, end-card lines, "Sign", and pill pulses on "koh" 36.32 and "zed" 37.52). Both cuts were re-rendered at 39.4 s (take + 1.4 s tail, which fixes the 1.56 s tail) with QA passed, and re-muxed (one audio track at 0.0). vo-script.json/.md and the remake section were updated. vid N08 unchanged.
+- 2026-10-10 CTA swap: owner said "koh" sounded wrong; only the final "Sign up at qsme.co.nz" line was replaced (spoken "dot Co dot N Z", tools/fix_cta.py), rest of the take and picture untouched. Old take in outputs/archive/vo-koh-2026-10-10/.

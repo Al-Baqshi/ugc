@@ -1,83 +1,43 @@
-# VO script: Kiwi performance
+# Wednesday: As above. — voice script (G09, audio-first remake 2026-10-06)
 
-**Character:** Sam, a fictional Kiwi site manager in his late 30s to 40s. He's the "Sam" in the email and "Sam K." in the daily log. General urban New Zealand accent (an Auckland or Wellington site office), not broad and not Australian. He's dry, low and a bit sheepish: this is a confession to a mate in the site office, not a performance, so the joke is on the speaker and never on other site managers. The diary lines are read flat with a natural downstep (Monday gets a full sentence, Wednesday is flatter, "Ditto" is the flattest). The product lines are the same person, a touch more awake, still with no announcer lift and no tagline cadence.
+**Voice:** Cam S (ElevenLabs, eleven_v3, stability 0.5, no audio tags). **Take:** `outputs/vo-take-cam-v3/take.mp3`, one unbroken 43.92 s request, laid at 0.0 s on `outputs/as-above-4x5.mp4` (45.4 s) → `outputs/as-above-4x5-with-vo.mp4`. Longest silence 1.08 s measured on the audio (RMS, 10 ms windows, -45 dBFS; 22.53–23.61 between "Or." and "In"), 2.62 words/s. QSME is written "Queue Ess Mee" in the text sent.
 
-**Not a testimonial:** Sam never says he uses QSME or that it saved him anything. The product lines are plain instructions and observations ("Log the rain day once."), and the payoff says "you'd", matching the caption. It's an AI voice, so it never speaks as the founder and never says "we built". QSME is said only in the CTA.
+**Status (review 2026-10-10): STT fails on the brand. Do not ship this take.** tools/el.py stt hears "QS May" mid-script and "qsmay.build" in the CTA. A same-text re-roll (attempt 4, `take-attempt4.mp3`, 45.60 s) was heard the same way. The fix is one more take with the spelling changed (attempt 2 sent "Queue Ess Mee," with a comma and was heard as "QSME" / "qsme.build"). That needs the owner's OK because it goes over the max-3 rule. Then re-time, re-render and re-mux.
 
-**Model & settings:** `eleven_multilingual_v2` · stability 0.45 · similarity 0.75 · style 0 · speed 1 · speaker boost on
+## As spoken (one take)
 
-**Voice:** use the same Kiwi QS voice as "Six bids", "Column H" and "Day 23" (shortlist ⭐ Arnold `bISW1PJRBPT7aRbtPJlB`, ⭐ James `QlZn2MPaf2jDn0461bnj`, see `projects/2026-10-02-qsme-voice-casting`). Worth an A/B with a Kiwi woman's voice: "Sam" works either way, and it breaks the default-bloke pattern on a site-management post.
+```
+Confession. Friday, four fifty-two. Writing Monday's site diary.
+Monday gets a paragraph. Tuesday got rained off, so Tuesday gets "Works progressed", Wednesday "As above", Thursday too, Friday, ditto.
+Nine months later, head office asks: was Tuesday the thirteenth a rain day? It was. Probably.
+Or. In Queue Ess Mee you log the rain day once, on the programme, and the rain day writes itself into the diary.
+Tag a chat photo as proof of work, and photos land on the day you post them, even from your phone. Not on Friday.
+It doesn't write the whole diary. It writes the bits you'd forget by Friday. Book a thirty-minute demo at Queue Ess Mee dot build.
+```
 
-**Video:** `outputs/as-above-4x5.mp4` (LinkedIn, 1080×1350, 29.25 s, re-rendered 2026-10-04 after the review). Times below are seconds on that file. They are **output** times, after the edit list at the bottom of `motion/as-above.js` (a few cuts and holds applied at render). `vo-script.json` is the machine-readable twin for `tools/make_vo.py`.
+## Lines (caption phrases, timed from the alignment)
 
-**Word choice (Global):** the hook says "Friday afternoon", not "arvo". The accent stays natural Kiwi, but the words are international English for UK and Gulf contractors and QS practices (venture file: qsme-build).
-
-**Owner rule (2026-10-03):** the VO pushes the demo and never says "free", "no account", "no login", "no sign-up" or any pricing line. CTA: "Book a thirty-minute demo at Q-S-me dot build."
-
-**Casting line:** "Confession. Site diary gets done Friday afternoon. Wednesday gets as above. Ditto."
-
-**Silent cut:** the MP4 ships silent, with every line already on screen as a burned-in caption (hook, diary captions, "Nine months later.", the email, "It was. Probably.", product captions, close and end card), so it works with the sound off. This VO is added after the ElevenLabs upgrade.
-
-## Lines
-
-| Start | Max | Line (v2) | v3 alt | On screen | Delivery |
+| # | Start | Max | Said | On screen | Delivery |
 |---|---|---|---|---|---|
-| 0.15s | 2.5s | **Confession. Site diary gets done Friday afternoon.** | [sighs] Confession. Site diary gets done Friday afternoon. | CONFESSION pill · "Site diary." / "Written Friday, 4:52pm." (frame 0) · "For Monday." slams in amber (0.55) · the pen writing Monday | Low, dry, a little sheepish, like owning up across the desk. A tiny pause after "Confession." Dropped subject, natural Kiwi accent; "afternoon" said plainly. Falls. Out by 2.65. |
-| 2.70s | 1.45s | **Monday gets a paragraph.** | same | "Monday gets a paragraph." (2.65–4.25) · clock FRI 16 OCT · 4:52 PM | Matter-of-fact, almost proud of Monday. Light lean on "paragraph". Cut 02, 03 and 04 from one take so the week drops a step with each line. Out by 4.15, as the rain comes in. |
-| 6.05s | 1.45s | **Wednesday gets as above.** | same | "Wednesday gets "As above."" (6.0–7.6) · the pen writes "As above." on Wed (6.15) and Thu (6.7) | Lower and flatter than Monday, a shrug in the voice. "As above" said as a quote, slightly slower. Out by 7.5. |
-| 7.75s | 0.6s | **Ditto.** | same | Friday "Ditto." written (7.7–7.95) and underlined (7.95–8.08) after the Wednesday caption has gone · the camera pulls back on the whole week (7.8–8.22) · clock 4:58 PM | The flattest, lowest word in the piece. Dead stop. Out by 8.35 so "Nine months later." (8.5) lands in silence. |
-| 8.55s | 0.95s | **Nine months later.** | same | "Nine months later." over the finished townhouses (8.5), rising as the email arrives (9.1) | Plain narrator aside, slightly slower, a hint of dread. Falls. Out by 9.5, before the mail chime (9.5). |
-| 12.00s | 1.3s | **It was. I think.** | It was. [pause] I think. | Hard cut back to the diary's Tuesday (11.8): red ring round "Works progressed." (11.92–12.32), red "?" in the blank WEATHER box (12.3) · "It was." (12.05) / "Probably." (12.55) | "It was." confident, a beat, then "I think." smaller and less sure. The caption says "Probably." on purpose (as briefed). Out by 13.3, before the swipe. |
-| 13.85s | 1.8s | **Log the rain day once.** | same | Recreated Schedule (demo data): "Rain day" clicked (13.85), Tue 13 ticked (14.36), "Push these tasks" (15.2), the chain slides a day (15.42–15.82) · caption "Log the rain day once." (13.52) | A touch brighter, like showing a mate the trick. Light lean on "once", falling. Not a sell. Out by 15.65. |
-| 16.50s | 1.7s | **It's already in the diary.** | same | Hard cut to the Daily log (16.36): "Tue 13 Oct" gets the email's yellow marker (16.5), "Rain day" (16.68) and "Schedule change" (16.9) write themselves in · captions "Log the rain day once." (dimmed) / "It writes itself into the diary." (16.36–18.46) | Mild, pleased surprise, kept small. Lean on "already". "It" is the rain day, never "it writes the diary". Out by 18.2. |
-| 18.65s | 2.9s | **Photos land on the day you post them.** | same | Project chat (18.55): Mia T. "Rained off. Packing up." then her photo "Where we got to before the rain." → click the photo (19.24) → "Mark as proof of work" (19.68) → hard cut to the Daily log (19.85): "Proof of work · Mia T. · 11:42" lands under Tue 13 Oct (19.98–20.2) · caption from 18.6 | Even and unhurried, one phrase, light lean on "day". Out by 21.55 (it can run under the phone swipe at 20.85). |
-| 22.15s | 0.95s | **Not on Friday.** | same | Phone browser at app.qsme.build: Add photo (21.38) → Take a photo (21.8) → shutter (21.96) → "Site photo · Sam K. · 11:51" (standing water on site) lands under Tue 13 Oct (22.06–22.32) · "Not on Friday." in amber (22.12) | Dry callback, a half-smile, lean on "Friday". Out by 23.1; it may tail under the swipe (22.9–23.2). |
-| 23.60s | 2.8s | **It writes the bits you'd forget by Friday.** | same | "It doesn't write the whole diary." (23.02, read in silence) · paper Tuesday ("PAPER · WRITTEN FRI 4:53 PM") beside the QSME Tuesday card ("Tue 13 Oct" in yellow marker, 23.5) · "It writes the bits / you'd forget by Friday." (23.6) | Honest and low-key, a tip, not a slogan. Lean on "bits" (the qualifier: only some entries write themselves) and a small dry lean on "Friday". Out by 26.4; the line rises into the end card under it (25.52–25.92). |
-| 26.40s | 2.8s | **Book a thirty-minute demo at Q-S-me dot build.** | same | End card fades in under the close (25.5): QSME logo (25.55) · payoff line · pill "Book a 30-minute demo" (25.8) · "qsme.build" (25.95–29.25) | One easy breath, a plain invitation, not a sell. Light lean on "book" and "demo". Q-S-me evenly (kyoo-ess-mee), no rise on "build". Regenerate any take that says "kiss me" or spells four letters. Never add "free" or pricing. Out by 29.2. |
+| vo00-hook | 0.00 | 3.9 | Confession. Friday, four fifty-two. Writing Monday's site diary. | Hook 0–3.95: CONFESSION pill · 'Site diary.' / 'Written Friday, 4:52pm.' (frame 0) · 'For Monday.' slams in amber on 'Monday's' (2.77); the pen writes Monday's four lines under the hook (0–3.4); hook out 3.85–4.0 | Dry and a bit sheepish, owning up to a mate. The time stamp is the sting. Ends by 3.84. |
+| vo01-monday | 4.00 | 1.95 | Monday gets a paragraph. | Clock chip FRI 16 OCT · 4:52 PM in at 4.1; camera eases down to Monday (3.8–4.4); caption 'Monday gets a paragraph.' 4.0–5.9 | Matter-of-fact, almost proud of Monday. Ends by 5.92. |
+| vo02-tuesday | 5.99 | 3.5 | Tuesday got rained off, so Tuesday gets 'Works progressed', | Camera to Tuesday (5.85–6.3); caption 'Tuesday: rained off.' 6.0–8.1; rain + blue cast 6.55–9.55 (on 'rained'); the pen writes 'Works progressed.' on the words (8.2–9.3); clock 4:53 at 8.2 | Flat, a shrug. 'Works progressed' read as a quote. Ends by 9.44. |
+| vo03-wednesday | 9.52 | 4.3 | Wednesday 'As above', Thursday too, Friday, ditto. | Camera to Wednesday (9.3–9.7); caption 'Wednesday gets “As above.”' 9.55–11.3; pen: ditto marks + WED 'As above.' 10.28–11.15 (clock 4:55), THU 'As above.' 11.25–12.0 (4:56), FRI 'Ditto.' 12.66–13.1 (4:58, chip bump 12.64), underline on 'ditto.' 13.2–13.36; pull-back on the whole week 13.3–13.72; hold to 13.9 | Each day lower and flatter; 'ditto' the flattest word in the piece, dead stop. Ends by 13.76. |
+| vo04-nine-months | 13.92 | 4.75 | Nine months later, head office asks: was Tuesday the thirteenth a rain day? | Hard cut to the b-roll (13.9): 'Nine months later.' slams on 'Nine' (13.92), rises on 'head office' (15.05–15.35) as the email arrives (15.1–15.45): 'Head office · to Sam · Hi Sam, / Was Tue 13 Oct a rain day?'; yellow marker on 'thirteenth' (17.3–17.6); email holds to 18.8 | Plain narrator aside, a hint of dread; the question read evenly, like an email. Ends by 18.64. |
+| vo05-it-was | 18.91 | 2.65 | It was. Probably. | Hard cut back to the diary's Tuesday (18.8): red ring round 'Works progressed.' 18.9–19.3 (on 'It was'); 'It was.' slams 19.0; red '?' in the blank WEATHER box 20.2 + 'Probably.' slams 20.3 (on the word); holds to the swipe 21.6 | 'It was.' confident, a beat, 'Probably.' smaller: the whole joke in two words. Ends by 21.52. |
+| vo06-or | 21.84 | 5.15 | Or. In Q-S-me you log the rain day once, on the programme, | Swipe into QSME 21.6–21.9 landing on 'Or.' (21.84): recreated Schedule (logo, chip TUE 13 OCT · 11:06 AM, label 'Recreated screen · demo data'); cursor to 'Rain day', click on 'log' (24.6), caption 'Log the rain day once.' 24.5; dialog 24.63; tick Tue 13 on 'once' (25.54); 'What moves' rows 25.7–25.94; 'Push these tasks' on 'programme' (26.35); the chain slides 26.5–26.9, 'Waiting for OK' counts 2; holds to 27.45 | 'Or.' as a dry full stop, then one easy instruction, no sell. Ends by 26.96. |
+| vo07-writes-itself | 27.06 | 2.4 | and the rain day writes itself into the diary. | Hard cut to the recreated Daily log (27.45): 'Tue 13 Oct' gets the email's yellow marker 27.6–27.9; 'Rain day' writes itself in on 'writes' (27.95), 'Schedule change' on 'itself' (28.25); caption 'Log the rain day once.' dims and 'It writes itself into the diary.' pops on 'writes' (27.95–29.5) | Even, a little pleased; 'it' is the rain day (the line says so). Ends by 29.44. |
+| vo08-tag | 29.62 | 2.25 | Tag a chat photo as proof of work, | Hard cut to Messages → Project chat on 'Tag' (29.6; chip → 11:42): Mia T. 'Rained off. Packing up.' and her photo 'Where we got to before the rain.'; click the photo on 'photo' (30.62) → menu 'Mark as proof of work / Flag as change request / Flag a problem' → click on 'proof of work' (31.3); menu closes 31.46 | Instruction, unhurried. Ends by 31.84. |
+| vo09-photos-land | 31.88 | 3.2 | and photos land on the day you post them, even from your phone. | Hard cut to the Daily log on 'photos' (31.9): 'Proof of work · Mia T. · 11:42' lands at the top of Tue 13 Oct 31.96–32.18; caption 'Photos land on the day / you post them.' 32.05–36.55; the phone (browser at app.qsme.build) swipes in on 'even from your phone' 33.95–34.25: tap Add photo 34.45, sheet 'Take a photo / Choose from library' 34.5, tap 34.87, shutter 35.05 | One phrase, light lean on 'day'. Ends by 35.04. |
+| vo10-not-friday | 35.24 | 1.35 | Not on Friday. | 'Site photo · Sam K. · 11:51' (standing water) lands under Tue 13 Oct 35.11–35.37; 'Not on Friday.' slams in amber on 'Not' (35.25); holds to the swipe 36.5 | Dry callback, a half-smile. Ends by 36.56. |
+| vo11-whole-diary | 36.72 | 1.8 | It doesn't write the whole diary. | Swipe to the close 36.5–36.8: 'It doesn't write the whole diary.' pops on 'It' (36.72); paper Tuesday ('Works progressed.', weather blank, 'PAPER · WRITTEN FRI 4:53 PM') slides in 36.8 beside the QSME Tuesday card 36.86 (Rain day 11:06 · Schedule change 11:06 · Proof of work 11:42 · Site photo 11:51, rows 36.98–37.28); 'Tue 13 Oct' yellow marker on 'whole diary' (37.4–37.7); label fades 37.2 | Honest, low-key: the qualifier said plainly. Ends by 38.48. |
+| vo12-the-bits | 38.56 | 2.05 | It writes the bits you'd forget by Friday. | 'It writes the bits / you'd forget by Friday.' pops on 'It writes' (38.56–38.74); holds; rises into the end card 40.5–40.9 | The payoff said like a tip, not a slogan; lean on 'bits', a small dry lean on 'Friday'. Ends by 40.56. |
+| vo13-cta | 40.70 | 3.3 | Book a thirty-minute demo at Q-S-me dot build. | End card fades in under the close on 'Book' (40.45–40.7): QSME logo (no ®) 40.5–40.8, pill 'Book a 30-minute demo' pops on 'Book' (40.72), 'qsme.build' pops on 'Q-S-me dot build' (42.3) and holds to 45.4 | A plain invitation to a colleague, no rise on 'build'. Ends by 43.92. |
 
-**Silent on purpose:** 4.15–6.05 (Tuesday: rain on a tin roof and the pen writing "Works progressed." under "Tuesday: rained off." — the rain says it) · 9.5–12.0 (the email, time to read it, one generic mail chime at 9.5, then the hard cut back to the diary at 11.8) · 13.3–13.85 (the swipe into QSME, music in at 13.3) · 15.65–16.5 (the chain slides, hard cut to the Daily log) · 23.1–23.6 ("It doesn't write the whole diary." read in silence) · 29.2–29.25 (music tail).
+## Notes
 
-**Dropped in the review pass:** "On the day." (was line 08). Its "What happened" screen is cut from the video, and the VO line had nothing on screen. "Photos land on the day you post them. Not on Friday." and the TUE 13 OCT clock chips carry the same point.
-
-## One continuous read (the most natural take; slice it in the edit)
-
-```
-Confession. Site diary gets done Friday afternoon.
-
-Monday gets a paragraph.
-
-Wednesday gets as above.
-
-Ditto.
-
-Nine months later.
-
-It was. I think.
-
-Log the rain day once.
-
-It's already in the diary.
-
-Photos land on the day you post them.
-
-Not on Friday.
-
-It writes the bits you'd forget by Friday.
-
-Book a thirty-minute demo at Q-S-me dot build.
-```
-
-## Make it sound recorded, not synthesised
-
-- **Generation:** render the continuous read three times on the chosen voice, slice it and place each piece at its start time. Lines 02–04 must come from one take so the week has a natural downstep. Use per-line renders only as patches, with previous_text/next_text so the intonation carries over. Keep the least polished take. Fixed seed per take, logged.
-- **Never time-stretch** more than about 4%. If a take runs past its max, use another take.
-- **Room tone:** 60 s of a real quiet site office (fridge hum, distant traffic) recorded on a phone, under the whole 29.25 s at about -50 dBFS so silences never drop to digital zero.
-- **EQ and dynamics:** high-pass 90 Hz, -2 dB shelf above 10 kHz, light de-ess; compression 2:1 to 3:1 with 3–4 dB of gain reduction. No reverb. Master at about -14 LUFS integrated, -1 dBTP.
-- **SFX** (ducked 10–12 dB under any word they overlap): pen scratch 0.0–2.36, 4.4–5.0, 6.15–6.5, 6.7–7.0, 7.7–7.95 (harder, "Ditto"), ditto-mark ticks 6.05, 6.6, 7.1 and an underline flick 7.95–8.08 · a kettle clicking off at 1.6 · rain on a tin roof 4.15–5.95 · a low soft hit on "Nine months later." at 8.5 · one generic mail chime at 9.5 (nothing like Outlook or Gmail) · marker squeaks 11.92–12.32 (the ring) and 12.3–12.5 (the "?") · soft thuds on "It was." 12.05 and "Probably." 12.55 · swipe whoosh 13.3–13.6 · trackpad clicks 13.85, 14.36, 15.2, 19.24, 19.68 · soft ticks as the log entries write in, 16.68 and 16.9 · a light pop when the proof-of-work entry lands in the log (20.0) · phone taps 21.38 and 21.8 · a soft camera shutter at 21.96 · swipe 22.9–23.2 · paper slide 23.1. No OS-branded sounds.
-- **Music:** none under the skit (0–13.3): pen, rain and room tone carry it. Music enters on the swipe into QSME at 13.3, sits about 18 dB under the VO, dips for the shutter at 21.96 and resolves on one held chord at about 29.05.
-- **Mux:** bounce a mono VO stem and lay it onto `outputs/as-above-4x5.mp4` with `tools/mux` as a separate track, so music and SFX stay adjustable. If a 9:16 cut is built later on the same timeline, the same stem fits it.
-
-## Changelog
-
-- 2026-10-04: first version, timed on the rendered 29.25 s 4:5 MP4. Product lines are instructions, not a testimonial, and the payoff line says "you'd" to match the caption. `python3 tools/vo_status.py` reports ok (13 lines, 331 characters). No API was called.
-- 2026-10-04 (review pass): retimed on the re-rendered 29.25 s cut. The desk runs 1.2 s longer (diary captions 1.6–1.7 s each, "Ditto." written after the Wednesday caption), the "What happened" beat is cut and its line "On the day." dropped (12 lines, 325 characters), and the Daily log caption now holds 2.1 s. Hook now says "Friday afternoon" (international English; accent unchanged). Tuesday is now rained off on screen; no VO change was needed for that. `python3 tools/vo_status.py` reports ok. No API was called.
+- Time base: every start_s is take time = MP4 time on outputs/as-above-4x5.mp4 (45.4 s). The page was re-timed to this take (motion/as-above.js, 2026-10-06, one output clock, the old edit list removed), so picture follows audio: do not re-time the voice to the picture.
+- Mix: the whole take as ONE clip at 0.0 s, gain 1.15, no music bed (tools/mux). Output outputs/as-above-4x5-with-vo.mp4 (one audio track, 45.40 s).
+- If the script changes, regenerate the whole take (python3 tools/el.py is the key reader; outputs/vo-take-cam-v3/take-text.txt is the exact text sent), STT-check it, then re-derive every beat in motion/as-above.js from the new alignment and re-render.
+- Never 'free' or any pricing line (owner CTA rule 2026-10-03). CTA shown as qsme.build, spoken 'Queue Ess Mee dot build' (PRON map in tools/make_vo.py). Claims: 7.8 rain-days (log the rain day once on the programme), daily-log (rain days and schedule changes write themselves in; tagged chat photos and phone photos land on the day). 'It doesn't write the whole diary' keeps the DO-NOT-CLAIM 'fully writes itself'.
+- SFX and music (later, on a commercial plan): the 2026-10-04 cue list in post.md's Music section still applies, re-timed to the take (pen 0–3.4 / 8.2–9.3 / 10.3–13.1, kettle 1.6, rain 6.55–9.55, hit 13.9, mail chime 15.1, marker 18.9–20.4, swipe 21.6, clicks 24.6 / 25.54 / 26.35 / 30.62 / 31.3, taps 34.45 / 34.87, shutter 35.05, swipe 36.5). Music, if any, enters on the swipe at 21.6 about 18 dB under the voice.

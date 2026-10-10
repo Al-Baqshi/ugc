@@ -10,7 +10,17 @@
      a lower third; captions = VO lines; 12 s end card with clear end-screen zones; no dip to navy before the end card.
      2026-10-03 (owner CTA rule): no "free" / "no account" / pricing lines anywhere; step 1 = sign up + search your address,
      step 2 = Site research in your account; Pro view line reframed; end card CTA "sign up at qsme.co.nz"; the live
-     homepage's own "Free to join." line is painted out of the capture (#hm-clip / #hm-still). -->
+     homepage's own "Free to join." line is painted out of the capture (#hm-clip / #hm-still).
+     2026-10-06 AUDIO-FIRST REMAKE (owner-approved N01 standard: continuous speech, hook in the first 2 s, no gap over
+     1 s, ONE unbroken Cam S eleven_v3 take, picture follows audio): outputs/vo-take-cam-v3/take.mp3 (152.5 s, laid at 0.0)
+     is the clock. The page runs 154.0 s (take + 1.5 s tail). Design unchanged. The v2 timeline below is kept as written
+     and re-timed through MAP (old time → the word it belongs to, from alignment.json, piecewise linear between anchors);
+     chapter 01 (the live homepage tour) is re-laid outright on the words, and every caption is placed on its phrase at
+     the new time (cap() takes new times). The lower third "Shorts linked below" is dropped (no room in the spoken
+     decision beat; the YouTube cards + end screen carry the links). Narrator is now first person over Cam S (one voice).
+     2026-10-10 CTA FIX (owner 2026-10-08: "dot koh dot en zed", never C-O): the whole take was regenerated in one call with only
+     the CTA changed; new take 152.48 s, page 154.0 s; every NEW-time value (MAP's second column, cap(), RAW blocks, DUR) was moved
+     through a word-anchored warp from the old take's alignment to the new one. -->
 <link rel="stylesheet" href="../../../tools/motion/kit.css">
 <link rel="stylesheet" href="site-ui.css">
 <style>
@@ -244,7 +254,37 @@
   var $ = function (id) { return document.getElementById(id); };
   var root = $('root'), camEl = $('cam');
   var UI = window.SiteUI;
-  var DUR = 145.5;
+  var DUR = 154.0;   // take 152.48 s + ~1.5 s tail
+
+  /* ---------- audio-first re-timing: v2 timeline (old) → the Cam S take (new), word-anchored ----------
+     [old, new] anchors; linear between them. Every Kit call below passes through T() unless RAW is set. */
+  var MAP = [[0, 0], [2.62, 2.316], [3.1, 2.893], [3.95, 3.580], [5.45, 3.860], [7.8, 6.294], [7.9, 6.428], [8.05, 6.451], [8.5, 7.480], [9.2, 8.407], [9.9, 8.800],
+    [11.0, 9.711], [13.2, 13.160], [13.45, 13.544], [15.65, 15.933], [15.75, 16.051], [15.95, 16.310], [18.0, 20.350], [31.0, 33.629],
+    [34.35, 36.651], [34.6, 37.084], [36.6, 39.573], [39.3, 43.450], [39.5, 43.610], [40.1, 44.040], [43.85, 46.640], [44.0, 46.722], [44.6, 47.140], [45.9, 48.680],
+    [48.5, 51.300], [48.6, 51.360], [49.3, 52.530], [50.2, 53.911], [51.95, 55.030], [52.0, 55.186], [52.5, 55.880], [53.6, 57.071], [54.2, 58.120], [54.8, 58.790],
+    [55.95, 60.746], [56.0, 60.892], [56.7, 61.461], [57.3, 62.073], [57.9, 63.280], [58.4, 63.801], [58.85, 65.083], [58.95, 65.197], [59.4, 65.722], [60.9, 67.560],
+    [61.4, 68.109], [61.45, 68.272], [63.9, 72.296], [64.0, 72.341], [64.55, 72.700], [66.1, 74.190], [67.8, 75.689], [67.9, 75.780], [68.2, 76.080], [71.3, 77.770],
+    [71.5, 77.917], [72.0, 78.427], [74.6, 80.570], [74.7, 80.612], [76.95, 83.970], [77.0, 84.070], [79.35, 86.512], [79.4, 86.592], [81.3, 88.066], [81.4, 88.170],
+    [83.7, 91.414], [83.8, 91.580], [84.2, 92.432], [84.9, 93.040], [86.2, 94.238], [87.95, 95.520], [88.0, 95.575], [88.5, 96.152], [88.95, 96.825], [89.45, 97.197],
+    [90.0, 97.802], [90.9, 99.280], [91.4, 99.612], [92.45, 99.972], [94.4, 100.240], [95.0, 100.873], [95.6, 101.540], [97.0, 102.700], [97.8, 103.200], [98.0, 103.320],
+    [98.95, 104.053], [99.9, 104.772], [100.85, 105.350], [101.2, 105.640], [102.3, 106.912], [102.4, 106.960], [103.0, 107.840], [103.8, 109.980], [105.9, 111.749],
+    [106.1, 111.980], [107.0, 113.173], [109.1, 114.910], [109.7, 115.360], [112.3, 117.692], [112.4, 117.800], [112.9, 118.317], [113.35, 118.649], [116.2, 120.742],
+    [116.9, 121.459], [118.5, 124.360], [119.35, 124.880], [119.8, 125.760], [120.55, 126.580], [121.35, 127.702], [123.5, 130.687], [124.4, 132.720], [124.5, 132.870],
+    [125.2, 135.180], [125.3, 135.330], [126.1, 137.874], [127.4, 138.283], [129.0, 139.270], [129.65, 139.859], [133.2, 141.013], [133.6, 141.280], [133.7, 141.347],
+    [135.9, 142.820], [136.8, 144.142], [145.5, 154.0]];
+  for (var mi = 1; mi < MAP.length; mi++) if (!(MAP[mi][0] > MAP[mi - 1][0] && MAP[mi][1] > MAP[mi - 1][1])) throw new Error('MAP not monotonic at ' + MAP[mi]);
+  function T(t) {
+    if (t <= MAP[0][0]) return MAP[0][1];
+    for (var i = 1; i < MAP.length; i++) if (t <= MAP[i][0]) { var a = MAP[i - 1], b = MAP[i]; return a[1] + (b[1] - a[1]) * (t - a[0]) / (b[0] - a[0]); }
+    var l = MAP[MAP.length - 1]; return l[1] + (t - l[0]);
+  }
+  var RAW = false;
+  var _add = Kit.add, _scene = Kit.scene, _type = Kit.type, _clip = Kit.clip;
+  Kit.add = function (target, prop, keys) { if (!RAW) keys = keys.map(function (k) { var c = k.slice(); c[0] = T(c[0]); return c; }); return _add.call(Kit, target, prop, keys); };
+  Kit.scene = function (target, t0, t1) { return RAW ? _scene.call(Kit, target, t0, t1) : _scene.call(Kit, target, T(t0), T(t1)); };
+  Kit.type = function (target, t0, t1) { return RAW ? _type.call(Kit, target, t0, t1) : _type.call(Kit, target, T(t0), T(t1)); };
+  Kit.clip = function (target, o) { if (!RAW) { o = Object.assign({}, o); o.t0 = T(o.t0); if (o.t1 != null) o.t1 = T(o.t1); } return _clip.call(Kit, target, o); };
+  function TR(rs) { return RAW ? rs : rs.map(function (r) { return [T(r[0]), T(r[1])]; }); }
 
   /* ---------- build the recreated screens ---------- */
   var P1 = UI.simplePage('s1', 'pg-s1'), P2 = UI.simplePage('s2', 'pg-s2'), P3 = UI.simplePage('s3', 'pg-s3'), PR = UI.proPage('s1', 'pro');
@@ -281,10 +321,12 @@
     Kit.add(sel, 'var:--cs', keys.map(function (k) { return [k[0], k[3], k[4]]; }));
   }
   var caps = [];
-  function cap(t0, t1, html) {
+  function cap(t0, t1, html) {   // t0/t1 are NEW times (the word the phrase is lifted from, per alignment.json)
     var d = document.createElement('div'); d.className = 'caption box'; d.innerHTML = '<span>' + html + '</span>'; root.appendChild(d);
+    var was = RAW; RAW = true;
     if (t0 <= 0) Kit.add(d, 'opacity', [[0, 1]]); else Kit.pop(d, t0, { dy: 16 });
     Kit.out(d, t1 - 0.14, 0.14); caps.push([t0, t1, html]);
+    RAW = was;
   }
   var cx = [[0, 1300]], cy = [[0, 640]], co = [[0, 0]], rings = 0;
   function curTo(t0, t1, x, y) { cx.push([t0, cx[cx.length - 1][1]], [t1, x, 'inOut']); cy.push([t0, cy[cy.length - 1][1]], [t1, y, 'inOut']); }
@@ -303,9 +345,9 @@
   function hide(sel) { Kit.add(sel, 'opacity', [[0, 0]]); }
 
   /* ---------- scene ranges ---------- */
-  var frameRanges = [[0, 11.0], [18.0, 83.8], [94.4, 119.8]];
+  var frameRanges = TR([[0, 11.0], [18.0, 83.8], [94.4, 119.8]]);
   Kit.each(function (t) { $('frame').style.display = frameRanges.some(function (r) { return t >= r[0] && t < r[1]; }) ? '' : 'none'; });
-  function ranges(id, rs) { Kit.each(function (t) { $(id).style.display = rs.some(function (r) { return t >= r[0] && t < r[1]; }) ? '' : 'none'; }); }
+  function ranges(id, rs) { rs = TR(rs); Kit.each(function (t) { $(id).style.display = rs.some(function (r) { return t >= r[0] && t < r[1]; }) ? '' : 'none'; }); }
   ranges('cam', [[0, 11.0], [31.0, 83.8], [94.4, 119.8]]);
   ranges('hcam', [[18.0, 31.0]]);
   ranges('pg-s1', [[0, 11.0], [52.55, 79.45], [94.4, 95.6]]);
@@ -352,7 +394,7 @@
   Kit.add('#fdim', 'opacity', [[0, 0], [7.9, 0], [8.4, 0.82, 'out'], [11.0, 0.82], [11.01, 0, 'hold'], [48.6, 0], [48.9, 0.6, 'out'], [51.95, 0.6], [52.25, 0, 'in']]);
   Kit.add('#cam', 'blur', [[7.9, 0], [8.4, 5, 'out'], [11.0, 5], [11.01, 0, 'hold']]);
   Kit.slam('#t1', 8.05, { from: 1.12 }); Kit.slam('#t2', 8.5, { from: 1.12 }); Kit.pop('#t3', 9.2, { dy: 20 }); Kit.pop('#t4', 9.9, { dy: 12 });
-  cap(5.45, 7.85, 'Road widening. On the one I liked.');
+  cap(3.86, 6.4, 'Road widening. On the one I liked.');   // "Road" 3.86 … "liked." ends 6.4
 
   /* =====================================================================
      B · THE SHORTLIST (11–18): b-roll card, then the sticky + chapter strip together
@@ -360,7 +402,7 @@
   Kit.clip('#bclip', { dir: 'clips/site', t0: 11.0, t1: 13.2, fps: 30, ext: '.jpg', frames: 138 });
   Kit.add('#bclip', 'scale', [[11.0, 1.0], [13.2, 1.05, 'linear']]);
   Kit.add('#broll', 'opacity', [[11.0, 0], [11.25, 1, 'out']]);
-  cap(11.2, 13.1, 'Three sections. Shortlisted. Not bought.');
+  cap(9.88, 13.06, 'Three sections. Shortlisted. Not bought.');   // "Three sections on the shortlist, none of them bought" 9.71–13.06
   Kit.add('#laptop', 'y', [[13.2, 60], [13.8, 0, 'out']]); Kit.fade('#lap', 13.2, 13.5);
   Kit.add('#sticky', 'x', [[13.2, 1420], [13.35, 1230, 'out'], [18.0, 1230], [48.6, 1380], [48.95, 1250, 'out'], [51.9, 1250], [52.2, 1980, 'in'], [88.0, 1980], [88.35, 700, 'out'], [94.0, 700], [94.3, -700, 'in']]);
   Kit.add('#sticky', 'y', [[13.2, 240], [48.6, 200], [88.0, 212]]);
@@ -376,8 +418,8 @@
   Kit.add('#sa1', 'opacity', [[90.0, 0], [90.01, 1, 'hold']]); Kit.type('#sa1', 90.0, 90.8);
   hide('#circ1'); Kit.add('#circ1', 'opacity', [[90.9, 0], [90.91, 1, 'hold']]); Kit.add('#circ1', 'trim', [[90.9, 0], [91.35, 1, 'out']]);
   Kit.add('#sa4', 'opacity', [[91.4, 0], [91.41, 1, 'hold']]); Kit.type('#sa4', 91.4, 91.85);
-  cap(13.35, 15.65, 'One planner. Monday. By the hour.');
-  cap(15.75, 17.95, 'So: one address. The right questions.');
+  cap(13.34, 15.93, 'One planner. Monday. By the hour.');        // "one planner on Monday morning, by the hour" 13.34–15.85
+  cap(16.05, 20.24, 'So: one address. The right questions.');   // "So: one address, and the right questions before I pay for any" 16.05–20.24
   var labels = ['Address', 'Zone', 'Overlays', 'Services', 'Verdict', 'Pro view', 'One pager'];
   labels.forEach(function (l, i) {
     $('strip').insertAdjacentHTML('beforeend', '<span class="sc" id="sc' + i + '"><b>0' + (i + 1) + '</b>' + l + '</span>');
@@ -389,9 +431,13 @@
      ===================================================================== */
   chip(1, 'Address', 18.0, 31.0);
   var H = window.__HOME;
-  Kit.clip('#hclip', { dir: 'clips/home', t0: 18.0, t1: 20.2, stamps: H, from: 43, speed: 1.47, ext: '.jpg' });
-  Kit.clip('#hclip', { dir: 'clips/home', t0: 20.2, t1: 21.8, stamps: H, from: 209, speed: 1.0, ext: '.jpg' });
-  Kit.add('#hstillw', 'opacity', [[21.4, 0], [21.8, 1, 'inOut']]);   // still + its mask fade in as one layer
+  // 2026-10-06: this chapter is re-laid outright on the words (RAW = new times). "Step one" 20.35 · "Boundary, zone, pipes,
+  // hazards, in seconds" 23.57–26.99 · "Zoning works in four councils" 27 · "pipes and hazards, Auckland" 28.66 ·
+  // "That's the council's building. Mine stay blurred." 30.53–33.34 · "Step two" 33.63
+  RAW = true;
+  Kit.clip('#hclip', { dir: 'clips/home', t0: 20.35, t1: 22.22, stamps: H, from: 43, speed: 1.47, ext: '.jpg' });
+  Kit.clip('#hclip', { dir: 'clips/home', t0: 22.22, t1: 23.87, stamps: H, from: 209, speed: 1.0, ext: '.jpg' });
+  Kit.add('#hstillw', 'opacity', [[23.67, 0], [23.87, 1, 'inOut']]);   // still + its mask fade in as one layer
   // owner rule 2026-10-03: the real homepage prints "Free to join." under "Get started"; paint it out frame by frame.
   // Text top per capture frame (measured from clips/home: button bottom + 30 px) and the page colour behind it.
   var FTJ = [[0, 28, 758, 'rgb(14,16,13)', 'rgb(16,18,13)'], [29, 170, 711, 'rgb(14,16,13)', 'rgb(16,18,13)'], [207, 230, 758, 'rgb(13,15,13)', 'rgb(21,22,24)'],
@@ -402,20 +448,23 @@
     el.style.display = hit ? '' : 'none';
     if (hit) { el.style.top = (hit[2] - 7) + 'px'; el.style.background = 'linear-gradient(to bottom right,' + hit[3] + ',' + hit[4] + ')'; }
   });
-  // boundary first (the green parcel outline on the map), then the zone, services, hazards, footer column by column
-  cam('#hcam', [[18.0, 700, 480, 1.16], [20.1, 720, 500, 1.18, 'inOut'], [20.2, 960, 540, 0.80, 'hold'], [21.6, 960, 552, 0.82, 'inOut'], [21.85, 960, 552, 0.82],
-    [22.5, 1240, 262, 1.45, 'inOut'], [23.7, 1240, 264, 1.47], [24.3, 1242, 545, 1.5, 'inOut'], [25.1, 1242, 547, 1.5], [25.7, 1242, 650, 1.6, 'inOut'], [26.9, 1242, 652, 1.62],
-    [27.5, 1242, 845, 1.6, 'inOut'], [31.0, 1242, 845, 1.64]]);
+  // boundary first (the green parcel outline on the map, on "Boundary"), a medium view of the result column while the list is
+  // said, then the zone on "Zoning works in four councils", services + hazards on "pipes and hazards, Auckland", footer on
+  // "That's the council's building. Mine stay blurred."
+  cam('#hcam', [[20.35, 700, 480, 1.16], [22.12, 720, 500, 1.18, 'inOut'], [22.22, 960, 540, 0.80, 'hold'], [23.52, 960, 552, 0.82, 'inOut'], [23.64, 960, 552, 0.82],
+    [23.89, 1240, 262, 1.45, 'inOut'], [24.8, 1240, 264, 1.47], [25.37, 1242, 560, 1.15, 'inOut'], [26.91, 1242, 562, 1.16], [27.32, 1242, 545, 1.5, 'inOut'], [28.31, 1242, 547, 1.5],
+    [28.84, 1242, 650, 1.6, 'inOut'], [30, 1242, 652, 1.62], [30.57, 1242, 845, 1.6, 'inOut'], [33.63, 1242, 845, 1.64]]);
   ['#hl-parcel', '#hl-zone', '#hl-svc', '#hl-hz', '#hl-foot'].forEach(hide);
-  Kit.add('#hl-parcel', 'opacity', [[22.55, 0], [22.75, 1], [23.7, 1], [23.9, 0]]);
-  Kit.add('#hl-zone', 'opacity', [[24.35, 0], [24.55, 1], [25.3, 1], [25.5, 0]]);
-  Kit.add('#hl-svc', 'opacity', [[25.75, 0], [25.95, 1], [26.9, 1], [27.1, 0]]);
-  Kit.add('#hl-hz', 'opacity', [[27.45, 0], [27.65, 1], [28.5, 1], [28.7, 0]]);
-  Kit.add('#hl-foot', 'opacity', [[28.75, 0], [28.95, 1], [30.7, 1], [30.9, 0]]);
-  cap(18.2, 21.85, 'Step 1: sign up. Search your address.');
-  cap(21.95, 25.6, 'Boundary, zone, pipes, hazards. In seconds.');
-  cap(25.7, 28.6, 'Zoning: four councils. Pipes and hazards: <span class="g">Auckland</span>.');
-  cap(28.7, 30.9, 'That’s the council’s building. Mine stay blurred.');
+  Kit.add('#hl-parcel', 'opacity', [[23.89, 0], [23.99, 1], [24.72, 1], [24.89, 0]]);
+  Kit.add('#hl-zone', 'opacity', [[27.15, 0], [27.32, 1], [28.31, 1], [28.45, 0]]);
+  Kit.add('#hl-svc', 'opacity', [[28.84, 0], [29.22, 1], [30.1, 1], [30.3, 0]]);
+  Kit.add('#hl-hz', 'opacity', [[29.56, 0], [29.79, 1], [30.4, 1], [30.63, 0]]);
+  Kit.add('#hl-foot', 'opacity', [[30.74, 0], [30.96, 1], [33.24, 1], [33.44, 0]]);
+  RAW = false;
+  cap(20.54, 23.52, 'Step 1: sign up. Search your address.');
+  cap(23.57, 26.91, 'Boundary, zone, pipes, hazards. In seconds.');
+  cap(27, 30.4, 'Zoning: four councils. Pipes and hazards: <span class="g">Auckland</span>.');
+  cap(30.53, 33.53, 'That’s the council’s building. Mine stay blurred.');
 
   /* =====================================================================
      D · 02 ZONE — Site research on site 2 (31–52)
@@ -440,11 +489,12 @@
   Kit.add('#pg-s2-legend', 'opacity', [[45.6, 0], [45.9, 1, 'out']]);
   var hlWo = hl('hl-wo', [747, 552 - 200, 1094, 671 - 200], '');
   Kit.add(hlWo, 'opacity', [[36.6, 0], [36.8, 1], [39.1, 1], [39.3, 0]]);
-  cap(31.2, 34.4, 'Step 2: Site research, in your account.');
-  cap(34.6, 39.35, 'What the zone allows. In plain words.');
-  cap(39.5, 43.85, 'Height. Coverage. Yards. One grid.');
-  cap(44.0, 48.5, 'The whole street, in zone colours. (Auckland, anyway.)');
-  cap(48.65, 51.95, 'Site 2: tidy. Up to three. Bit boring.');
+  cap(33.78, 36.93, 'Step 2: Site research, in your account.');
+  cap(37.08, 39.36, 'What the zone allows. In plain words.');
+  cap(39.57, 43.49, 'Up to three dwellings, if they meet the standards.');   // the "Without resource consent" line is boxed meanwhile
+  cap(43.61, 46.64, 'Height. Coverage. Yards. One grid.');
+  cap(46.72, 51.3, 'The whole street, in zone colours. (Auckland, anyway.)');
+  cap(51.39, 55.03, 'Site 2: tidy. Up to three. Bit boring.');
 
   /* =====================================================================
      E · 03 OVERLAYS — back to site 1 (52–64): credit the chip, keep the red line, amber, green
@@ -460,11 +510,11 @@
   Kit.add('#mk-r0', 'opacity', [[0, 1], [11.0, 1], [11.01, 0, 'hold'], [56.0, 0], [56.01, 1, 'hold']]);   // the cold-open underline is still there
   Kit.add('#mk-r1', 'opacity', [[58.95, 0], [58.96, 1, 'hold']]); Kit.add('#mk-r1', 'trim', [[58.95, 0], [59.4, 1, 'out']]);
   Kit.add('#mk-r2', 'opacity', [[61.45, 0], [61.46, 1, 'hold']]); Kit.add('#mk-r2', 'trim', [[61.45, 0], [61.9, 1, 'out']]);
-  cap(52.15, 53.85, 'Back to the “Strong” one.');
-  cap(53.95, 55.95, 'To be fair, it said. <span style="color:#B45309">In amber.</span>');
-  cap(56.05, 58.75, 'Auckland overlays, on the parcel. <span style="color:#B91C1C">Red</span>, we’ve met.');
-  cap(58.85, 61.25, '<span style="color:#B45309">Amber:</span> a viewshaft over the top.');
-  cap(61.35, 63.9, '<span class="g">Green</span> says 21 m. <span style="color:#B45309">Amber</span> says maybe not.');
+  cap(55.25, 57.02, 'Back to the “Strong” one.');
+  cap(57.07, 60.75, 'To be fair, it did say. <span style="color:#B45309">In amber.</span> I skimmed.');
+  cap(60.92, 64.98, 'Auckland overlays, on the parcel. <span style="color:#B91C1C">Red</span>, we’ve met.');
+  cap(65.08, 68.05, '<span style="color:#B45309">Amber:</span> a volcanic viewshaft over the top.');
+  cap(68.16, 72.3, '<span class="g">Green</span> says 21 m. <span style="color:#B45309">Amber</span> says maybe not.');
 
   /* =====================================================================
      F · 04 SERVICES (64–77)
@@ -486,10 +536,10 @@
   var hlHz = hl('hl-hz2', [747, 1438 - 904, 1457, 1519 - 904], 'amber');
   Kit.add(hlFoot, 'opacity', [[72.0, 0], [72.2, 1], [74.5, 1], [74.65, 0]]);
   Kit.add(hlHz, 'opacity', [[74.7, 0], [74.9, 1], [76.8, 1], [76.95, 0]]);
-  cap(64.2, 67.8, 'Where the pipes run. Roughly.');
-  cap(67.9, 71.4, 'Pipe positions are approximate.');
-  cap(71.5, 74.6, 'It even tells you to lodge a beforeUdig.');
-  cap(74.7, 76.95, '“Clear” is a map, not a promise.');
+  cap(72.38, 75.69, 'Where the pipes run. Roughly.');
+  cap(75.78, 77.83, 'Pipe positions are approximate.');
+  cap(77.92, 80.57, 'It even tells you to lodge a beforeUdig.');
+  cap(80.61, 83.97, '“Clear” is a map, not a promise.');
 
   /* =====================================================================
      G · 05 VERDICT (77–94.4): flick the saved sites, the quote board, the decision
@@ -502,9 +552,9 @@
     Kit.add('#' + p + '-v', 'opacity', [[t - 0.01, 1], [t, 0, 'hold'], [t + 0.3, 0], [t + 0.5, 1, 'out']]);
     Kit.add('#' + p + '-v-pill', 'scale', [[0, 1], [t + 0.39, 1], [t + 0.4, 0.6, 'hold'], [t + 0.7, 1, 'outBack']]);
   });
-  cap(77.2, 79.35, 'Saved all three. Flick between them.');
-  cap(79.5, 81.3, 'Site 2: <span class="g">Good</span>.');
-  cap(81.45, 83.7, 'Site 3: <span style="color:#B45309">Limited</span>. The villa usually stays.');
+  cap(84.22, 86.51, 'Saved all three. Flick between them.');
+  cap(86.67, 88.07, 'Site 2: <span class="g">Good</span>.');
+  cap(88.22, 91.41, 'Site 3: <span style="color:#B45309">Limited</span>. The villa usually stays.');
   // quote board: each card quotes only verbatim strings; the hedge on every page gets the marker
   var QB = [
     { v: 'strong', w: 'STRONG', h: 'Strong development potential', q: 'Business - Mixed Use Zone — indicatively 2–5 homes here; 2 things to design around.', src: 'Development potential' },
@@ -520,11 +570,11 @@
   });
   Kit.add('#triSrc', 'opacity', [[83.9, 0], [84.2, 1, 'out']]);
   Kit.add('#tri', 'opacity', [[88.0, 1], [88.3, 0.22, 'out']]);
-  cap(84.2, 87.95, '“Indicative only.” It says that every time.');
+  cap(92.43, 95.52, '“Indicative only.” Every single time.');
   // the decision, made explicit
-  cap(88.15, 89.45, 'Site 3’s off.');
-  cap(89.55, 92.45, 'Site 2 doesn’t need a planner. Site 1 does.');
-  Kit.pop('#lt', 92.55, { dy: 16 }); Kit.out('#lt', 94.2, 0.15);
+  cap(95.66, 97.2, 'Site 3’s off.');
+  cap(97.34, 100.03, 'Site 2 doesn’t need a planner. Site 1 does.');
+  hide('#lt');   // 2026-10-06: the lower third is dropped from the spoken cut (YouTube cards + end screen link the Shorts)
 
   /* =====================================================================
      H · 06 PRO VIEW (94.4–112.4)
@@ -555,11 +605,11 @@
   Kit.add(hlCv, 'opacity', [[106.7, 0], [106.9, 1], [108.9, 1], [109.1, 0]]);
   Kit.add(hlLic, 'opacity', [[107.0, 0], [107.2, 1], [108.9, 1], [109.1, 0]]);
   Kit.add(hlFee, 'opacity', [[109.7, 0], [109.9, 1], [112.1, 1], [112.3, 0]]);
-  cap(94.6, 97.8, 'Pro view. Same site. Much bigger map.');
-  cap(97.95, 102.3, 'Zoning. Buildings. Services. Flood. <span class="g">In Auckland.</span>');
-  cap(102.6, 106.0, 'Title facts from LINZ. How many owners. Not who.');
-  cap(106.1, 109.1, 'The rest? “Available with a data licence.”');
-  cap(109.2, 112.3, '“Reads as a freehold (fee simple) lot.” That’s something.');
+  cap(100.35, 103.2, 'Pro view. Same site. Much bigger map.');
+  cap(103.3, 106.91, 'Zoning. Buildings. Services. Flood. <span class="g">In Auckland.</span>');
+  cap(107.07, 111.81, 'Title facts from LINZ. How many owners. Not who.');
+  cap(111.98, 114.91, 'The rest? “Available with a data licence.”');
+  cap(114.99, 117.69, '“Reads as a freehold (fee simple) lot.” That’s something.');
 
   /* =====================================================================
      I · 07 ONE PAGER (112.4–127.4)
@@ -578,10 +628,10 @@
   Kit.add('#sticky2', 'opacity', [[121.35, 0], [121.4, 1]]); Kit.add('#sticky2', 'scale', [[121.35, 1.25], [121.52, 1, 'slam']]); Kit.add('#sticky2', 'rotate', [[121.35, 8], [121.52, 4, 'out']]);
   Kit.type('#q1', 123.5, 124.4); Kit.type('#q2', 124.5, 125.2); Kit.type('#q3', 125.3, 126.1);
   cam('#dcam', [[119.8, 960, 540, 1.0], [123.0, 990, 540, 1.04, 'linear'], [123.8, 1420, 470, 1.42, 'inOut'], [127.4, 1420, 476, 1.46, 'linear']]);
-  cap(112.6, 116.2, '“One pager.” Print it, or save a PDF.');
-  cap(116.3, 119.7, 'Map, title, zone, overlays, services, hazards.');
-  cap(119.9, 123.15, 'One page. That’s what goes to the planner.');
-  cap(123.3, 127.25, 'And three questions worth paying for.');
+  cap(117.9, 120.74, '“One pager.” Print it, or save a PDF.');
+  cap(120.92, 125.6, 'Map, title, zone, overlays, services, hazards. One page.');
+  cap(125.83, 128.15, 'That’s what goes to the planner.');
+  cap(128.26, 130.6, 'And three questions worth paying for.');   // then the sticky types the three questions as they are said (130.69–137.87)
 
   /* =====================================================================
      J · CLOSE (127.4–145.5): the tool's last word, then the end card cross-fades in
@@ -589,11 +639,16 @@
   Kit.pop('#discCard', 127.45, { dy: 30 });
   Kit.add('#discMk', 'trim', [[129.0, 0], [129.65, 1, 'out']]);
   Kit.add('#discCard', 'scale', [[127.45, 0.98], [133.6, 1.03, 'linear']]);
-  cap(127.8, 131.05, 'It even tells you to ring the planner.');
-  cap(131.2, 133.25, 'Fair enough.');
-  Kit.add('#end', 'opacity', [[133.2, 0], [133.6, 1, 'out']]);
-  Kit.add('#elogo', 'scale', [[133.2, 0.94], [133.8, 1, 'out']]);
-  Kit.pop('#eh', 133.7, { dy: 24 }); Kit.pop('#es', 135.9, { dy: 18 }); Kit.pop('#ef', 136.8, { dy: 10 });
+  cap(138.7, 140.04, 'It even tells you to ring the planner.');
+  cap(140.17, 141.01, 'Fair enough.');
+  // end card on the words (RAW): fade in on "Start with your address." 141.01, subline on "Full depth in Auckland" 142.82,
+  // small print on "public council data, not AI" 144.14, the sign-up line pulses on "Sign up at" 148.14
+  RAW = true;
+  Kit.add('#end', 'opacity', [[141.01, 0], [141.28, 1, 'out']]);
+  Kit.add('#elogo', 'scale', [[141.01, 0.94], [141.41, 1, 'out']]);
+  Kit.pop('#eh', 141.35, { dy: 24 }); Kit.pop('#es', 142.82, { dy: 18 }); Kit.pop('#ef', 144.14, { dy: 10 });
+  Kit.add('#es', 'scale', [[148.06, 1], [148.31, 1.05, 'out'], [148.93, 1, 'inOut']]);
+  RAW = false;
 
   window.__CAPS = caps;
   Kit.ready({ duration: DUR, fonts: ['800 40px Manrope', '700 30px Manrope', '500 20px Inter', '600 20px Inter', '700 20px Inter', '400 36px Kalam', '700 36px Kalam', '400 27px "Permanent Marker"', '500 20px "JetBrains Mono"', '700 18px "JetBrains Mono"', '600 16px "JetBrains Mono"'] });

@@ -1,8 +1,9 @@
 /* A programme a lender can read — QSME Global, 16:9 long-form. One timeline, pure function of t.
    Product screens are recreations built from the truth sheet's exact wording and the product's own UI strings
    (read 2026-10-04), with fictional demo data from programme.js. See post.md → "Owner recordings to swap in".
-   Every Kit key below is on the AUTHORED clock; the edit list at the bottom (EDL: holds and skips) maps the real file
-   time onto it. window.__toReal(authored) gives the real time of any key. */
+   Every Kit key below is on the AUTHORED clock; since the 2026-10-06 audio-first remake ANCH (after the timing constants)
+   pins the authored beats to the words of the one Cam S take, and maps the real file time onto the authored clock.
+   Captions and the hook marks are written in real time (A() converts). window.__toReal(authored) gives the real time of any key. */
 (function () {
 'use strict';
 /* The label on every recreated screen: a quiet tag in the app window's title bar (and over the printout).
@@ -23,11 +24,6 @@ const C1 = 17.0, C2 = 34.4, C3 = 55.4, C4 = 69.8, C5 = 85.4, C6 = 102.6, CTA = 1
 const CARDS = [C1, C2, C3, C4, C5, C6];
 const IN = c => c + 1.8;                     // content of a chapter slides in here
 const TITLE = 12.0;
-/* The edit list. Skips cut authored time where nothing moves (the title's hold, the middle of every chapter card,
-   two long holds in chapter 5); holds freeze a still frame where a caption needs longer (chapter 3). */
-const SKIPS = [[15.0, 16.0]].concat(CARDS.map(c => [c + 0.75, c + 1.35]), [[96.3, 97.0], [100.6, 102.1]]);
-const HOLDS = [[60.75, 0.6], [62.35, 1.0], [64.45, 0.8]];
-
 /* ============================================================ shared bits */
 const CURSOR = '<svg class="cursor" id="cur" viewBox="0 0 34 48"><path d="M4 3 L4 37 L12.5 29 L18 42.5 L24 40 L18.5 27 L29.5 27 Z" fill="#111" stroke="#fff" stroke-width="2.6" stroke-linejoin="round"/></svg>';
 const TICK = (c, s) => `<svg width="${s || 14}" height="${s || 14}" viewBox="0 0 16 16"><path d="M3 8.5l3.2 3.2L13 4.8" fill="none" stroke="${c || '#fff'}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
@@ -442,7 +438,7 @@ root.innerHTML = `
   <img id="bgend" src="clips/lockup/f_00000.jpg" alt="">
   <div id="enddim" class="fill"></div>
   <img id="elogo" class="abs" src="qsme-logo-nor.svg" style="left:110px;top:150px;height:120px" alt="QSME">
-  <div id="eLine" class="abs disp" style="left:122px;top:316px;width:920px;font-size:66px;line-height:1.08">Bring your current programme to a <span class="g">30-minute demo.</span></div>
+  <div id="eLine" class="abs disp" style="left:122px;top:316px;width:920px;font-size:66px;line-height:1.08">Bring your current <span class="g">programme.</span></div>
   <div id="ePill" class="abs" style="left:122px;top:560px"><span class="pill" style="font-size:40px;padding:20px 40px">Book a 30-minute demo</span></div>
   <div id="eUrl" class="abs" style="left:126px;top:676px;font:600 64px/1 var(--display);letter-spacing:-0.02em">qsme.build</div>
   <div id="eAsk" class="abs" style="left:126px;top:800px;width:820px;font:500 32px/1.35 var(--body);color:var(--ink-70)">What does your lender ask for first? Tell us in the comments.</div>
@@ -502,6 +498,47 @@ const CONF = 47.3;              // Demo Linings presses "Confirm dates"
 const RAIN = { open: 49.75, tick: 50.55, push: 53.05, a0: 53.3, a1: 53.75 };
 const STR = { grab: 65.6, s0: 65.75, s1: 66.2, f0: 66.22, f1: 66.62 };
 const DAYS = { open: 75.55, add: 76.15, type0: 76.5, type1: 77.4, from: 77.75, to: 78.1, addit: 78.75, close: 79.55, a0: 79.85, a1: 80.75 };
+/* 2026-10-06 AUDIO-FIRST REMAKE: the clock is the voice. ONE unbroken Cam S eleven_v3 take
+   (outputs/vo-take-cam-v3/take.mp3, 146.1 s, laid at 0.0) drives the picture. The old edit list (skips + holds) is gone;
+   instead ANCH pins each authored beat to the word it belongs to in outputs/vo-take-cam-v3/alignment.json
+   ([real file time, authored time]); between pins the authored clock runs linearly (a static hold where the voice is
+   longer, a little faster where it is shorter). The page runs REAL_DUR = 147.2 s (take ends 145.68 + ~1.5 s tail).
+   Captions and the hook marks are written in REAL time and converted with A(). */
+const ANCH = [
+  [0, 0], [14.45, TITLE], [16.8, 13.4],                                                   // hook (keys below use A()), title on "A programme…", "Six fixes."
+  [19.1, C1], [20.75, IN(C1)], [21.3, 19.33], [22.75, 19.95], [23.95, 21.93],             // 1: "One." · "Start from what you priced" (Import tasks) · "tick the pockets" (ticks)
+  [24.35, 22.5], [24.65, 23.0], [26.45, 26.0], [27.3, 27.5], [27.9, 28.0], [29.0, 28.85],  //    untick, import · bars on "each job brings its own days" · "No retyping." · rain flag
+  [29.95, 30.7], [30.3, 31.0], [32.5, 32.6],                                              //    "Then you link what waits for what" · rows re-sort on "the rows fall into date order"
+  [33.65, C2], [35.55, IN(C2)], [35.9, 36.55], [37.3, 36.95], [37.85, 37.45],             // 2: "Two." · "Three months in" (Today sticky) · push on "one slip moves"
+  [39.25, DRAG.grab], [40.85, DRAG.m1], [41.1, DRAG.f0], [42.3, DRAG.f1],                  //    "drag insulation three days" · "and everything after it slides"
+  [42.85, 41.5], [44.1, 42.0], [44.95, 42.7], [45.45, 44.4], [45.9, 44.8],                //    "Anyone booked is asked, not told." (live page) · "Nothing changes for them…"
+  [49.2, CONF], [50.0, CONF + 1.0], [50.4, 48.7],                                         //    "The linings crew confirm, and they're in."
+  [50.85, RAIN.open], [51.8, 50.9], [52.95, RAIN.push], [53.6, RAIN.a1],                  //    "Rained off? See what moves before you push."
+  [54.05, C3], [56.5, IN(C3)], [57.15, 57.98], [58.9, CH_ON], [60.4, 60.5],                 // 3: "Three." · "Show what drives the finish date, and purple decides it."
+  [61.4, 61.6], [61.6, 61.74], [62.25, 61.76], [63.2, 62.1], [65.75, 62.95],                               //    "Grey has room: yesterday's rain pushed the driveways…"
+  [66.1, 63.0], [66.85, 63.45], [67.35, 63.5], [68.7, 64.9],                               //    "The painter everyone chased? Never purple."
+  [69.15, STR.grab], [70.5, STR.s1], [71.7, STR.f1],                                       //    "Stretch a purple job a day, and the finish slips a day."
+  [72.75, C4], [75.2, IN(C4)], [75.5, 71.9], [76.4, 72.6], [78.5, 75.25],                  // 4: "Four." · "This one runs straight through the site's own shutdown."
+  [78.75, DAYS.open], [81.2, DAYS.add], [82.35, DAYS.type0], [83.0, DAYS.type1],          //    "Your holidays and shutdowns? Add them as days off. Year-end shutdown,"
+  [83.6, DAYS.from], [85.2, DAYS.to], [86.3, DAYS.addit], [87.3, DAYS.a0], [88.7, DAYS.a1], //    "twenty-first of December to the eighth of January. Add it. Eight jobs step over it."
+  [91.5, 82.15],                                                                          //    "Mid-January was never real."
+  [94.45, C5], [97.15, IN(C5)], [98.45, 88.5], [99.05, 88.95], [99.9, 89.9],               // 5: "Five." · "Add the Cost and Paid columns."
+  [101.1, 90.4], [101.85, 91.1], [103.5, 92.9], [105.0, 93.9],                             //    squiggle · agreed prices · "And a contract counts once…"
+  [108.5, 95.0], [108.9, 95.35], [109.6, 97.95], [111.0, 98.6],                            //    "Two point seven million never happens." · "Paid is what's been recorded as paid."
+  [112.45, C6], [114.55, IN(C6)], [115.0, 105.08], [116.1, 106.0], [116.65, 106.6], [117.3, 107.25], // 6: "Six. Print it. Download the PDF." · the A4 lands
+  [119.0, 107.55], [120.6, 108.75], [120.95, 109.05], [121.1, 110.1], [121.6, 110.6],      //    "The task list follows." (flick) · "Dates in words, on every bar."
+  [123.3, 111.55], [123.9, 112.15], [126.5, 115.2], [127.1, 115.8], [129.9, 117.0],         //    "When, how long, how much. Up top." · "And the lender's question…"
+  [130.5, 117.6], [131.6, 117.75], [134.1, 119.2], [135.0, 119.6], [135.6, 120.2],          //    "seven linked tasks, ringed in purple, ending with handover…" (the pen)
+  [136.0, 120.4], [137.2, 120.9], [138.7, 123.4], [139.2, 124.0], [140.1, CTA], [140.15, ENDC], //    "Any one of them running late…" · "On your letterhead."
+  [147.2, DUR],                                                                           //    end card on "Bring your current programme, and book a thirty-minute demo…"
+];
+const REAL_DUR = ANCH[ANCH.length - 1][0];
+function interp(t, i, j) {
+  if (t <= ANCH[0][i]) return ANCH[0][j];
+  for (let k = 1; k < ANCH.length; k++) if (t <= ANCH[k][i]) { const a = ANCH[k - 1], b = ANCH[k]; return a[j] + (b[j] - a[j]) * (t - a[i]) / (b[i] - a[i]); }
+  return ANCH[ANCH.length - 1][j];
+}
+const toAuth = t => interp(t, 0, 1), toReal = a => interp(a, 1, 0), A = toAuth;
 const PHASES = [
   ['C', P.B, P.C, DRAG.f0, DRAG.f1], ['D', P.C, P.D, RAIN.a0, RAIN.a1], ['E', P.D, P.E, STR.f0, STR.f1], ['F', P.E, P.F, DAYS.a0, DAYS.a1],
 ];
@@ -607,23 +644,30 @@ function put(sel, x, y, frame) {       // place a sticky (frame coords go throug
   return Math.hypot(cx - sx, cy - sy);
 }
 
-/* ============================================================ captions (= VO, word for word) */
+/* ============================================================ captions: phrases lifted from the narration, REAL times on the words */
 const CAPS = [
-  [1.95, 4.3, 'No dates on the bars.'], [4.35, 6.7, 'It runs off the page.'], [6.8, 9.6, 'One contract, counted <b>six times.</b>'],
-  [19.1, 23.6, 'Start from what you priced.'], [23.9, 27.5, 'Each job brings its <b>own days.</b>'], [27.75, 30.6, 'Even the rain flag comes across.'],
-  [30.75, 34.3, 'Then you link what waits for what.'],
-  [36.9, 41.5, 'One slip moves what’s linked.'], [41.75, 44.5, 'Anyone booked is <b>asked, not told.</b>'], [44.75, 49.2, 'Nothing changes for them until they say yes.'],
-  [50.0, 54.6, 'Rained off? See what moves <b>before</b> you push.'],
-  [59.7, 61.3, '<i>Purple</i> decides the finish date.'], [61.45, 62.95, '<u>Grey</u> has room.'], [63.05, 64.95, 'The painter everyone chased? <u>Never purple.</u>'],
-  [65.2, 69.6, '<i>Purple</i> slips a day, the finish slips a day.'],
-  [71.75, 75.3, 'This one runs straight through the site’s own shutdown.'], [75.45, 79.8, 'Your holidays and shutdowns? Add them as <b>days off.</b>'],
-  [80.2, 82.4, 'Work moves later. <b>Never earlier.</b>'], [82.55, 85.2, 'Mid-January was never real.'],
-  [89.2, 92.3, 'Estimates carry a squiggle. Agreed prices don’t.'], [92.6, 97.8, 'And a contract counts <b>once,</b> not six times.'], [98.1, 102.4, 'Paid is what’s been recorded as paid.'],
-  [104.6, 107.25, 'The whole chart fits across the A4.'], [107.4, 109.15, 'The task list follows.'], [109.3, 111.55, 'Dates in words, on every bar.'],
-  [111.75, 115.25, 'When, how long, how much. Up top.'], [115.4, 119.8, 'And the lender’s question, answered <b>in one sentence.</b>'], [123.55, 125.35, 'On your letterhead.'],
+  [0.05, 2.25, 'One contract, counted <b>six times.</b>'],
+  [4.95, 6.45, 'No dates on the bars.'], [6.5, 8.15, 'It runs off the page.'], [8.2, 12.3, 'One 450k contract, reading as <b>2.7 million.</b>'],
+  [21.05, 24.05, 'Start from what you priced: tick the pockets.'], [24.1, 27.1, 'Each job brings its <b>own days.</b>'],
+  [27.15, 29.45, 'Even the rain flag comes across.'], [29.5, 31.85, 'Then you link what waits for what,'], [31.85, 33.6, 'and the rows fall into date order.'],
+  [35.8, 39.2, 'Three months in, one slip moves what’s linked.'], [39.25, 41.05, 'Drag insulation three days,'], [41.05, 42.8, 'and everything after it <b>slides.</b>'],
+  [42.85, 45.3, 'Anyone booked is <b>asked, not told.</b>'], [45.35, 48.1, 'Nothing changes for them until they say yes.'],
+  [48.15, 50.7, 'The linings crew confirm, and they’re in.'], [50.75, 53.95, 'Rained off? See what moves <b>before</b> you push.'],
+  [56.75, 59.15, 'Show what drives the finish date,'], [59.2, 60.5, 'and <i>purple</i> decides it.'], [60.55, 62.15, '<u>Grey</u> has room:'],
+  [62.2, 64.2, 'yesterday’s rain pushed the driveways,'], [64.2, 65.85, 'and the finish didn’t move.'],
+  [66.0, 68.75, 'The painter everyone chased? <u>Never purple.</u>'], [69.05, 70.9, 'Stretch a <i>purple</i> job a day,'], [70.9, 72.65, 'and the finish slips a day.'],
+  [75.35, 78.45, 'This one runs straight through the site’s own shutdown.'], [78.5, 80.4, 'Your holidays and shutdowns?'], [80.4, 82.3, 'Add them as <b>days off.</b>'],
+  [82.35, 86.2, 'Year-end shutdown: 21 December to 8 January.'], [86.25, 87.0, 'Add it.'], [87.05, 89.1, 'Eight jobs step over it.'],
+  [89.1, 91.55, 'Work moves later, <b>never earlier.</b>'], [91.6, 94.35, 'Mid-January was never real.'],
+  [97.35, 99.95, 'Add the Cost and Paid columns.'], [99.95, 101.8, 'Estimates carry a squiggle.'], [101.8, 103.35, 'Agreed prices don’t.'],
+  [103.4, 106.9, 'And a contract counts <b>once,</b> not six times.'], [106.9, 109.6, '2.7 million never happens.'], [109.65, 112.35, 'Paid is what’s been recorded as paid.'],
+  [114.8, 116.6, 'Download the PDF.'], [116.6, 119.05, 'The whole chart fits across the A4.'], [119.05, 121.2, 'The task list follows.'],
+  [121.25, 123.45, 'Dates in words, on every bar.'], [123.45, 126.65, 'When, how long, how much. Up top.'],
+  [126.7, 130.1, 'And the lender’s question, answered <b>in one sentence:</b>'], [130.1, 133.25, 'seven linked tasks, ringed in <i>purple</i>,'],
+  [133.3, 135.85, 'ending with Handover on 5 February.'], [135.85, 138.75, 'Any one of them running late moves the whole finish.'], [138.8, 140.05, 'On your letterhead.'],
 ];
 $('#caps').innerHTML = CAPS.map((c, i) => `<div class="cap" id="cap${i}"><span>${c[2]}</span></div>`).join('');
-CAPS.forEach((c, i) => Kit.add('#cap' + i, 'opacity', [[0, 0], [c[0], 0], [c[0] + 0.14, 1, 'out'], [c[1] - 0.12, 1], [c[1], 0]]).add('#cap' + i, 'y', [[c[0], 14], [c[0] + 0.2, 0, 'out']]));
+CAPS.forEach((c, i) => Kit.add('#cap' + i, 'opacity', [[0, 0], [A(c[0]), 0], [A(c[0] + 0.12), 1, 'out'], [A(c[1] - 0.1), 1], [A(c[1]), 0]]).add('#cap' + i, 'y', [[A(c[0]), 14], [A(c[0] + 0.18), 0, 'out']]));
 
 /* ============================================================ scenes */
 Kit.scene('#sH', 0, TITLE + 0.3).scene('#sT', TITLE + 0.28, C1 + 0.3);
@@ -662,13 +706,16 @@ Kit.each(t => {
 
 /* ============================================================ HOOK (0–12): mid-action, one marker note per caption */
 Kit.add('#hPaper', 'rotate', [[0, -1.6]]).add('#hPaper', 'scale', [[0, 1], [12.0, 1.03]]);
-Kit.add('#hT1', 'opacity', [[0, 1], [9.5, 1], [9.65, 0]]);
-Kit.pop('#hT3', 9.7, { dy: 24 });
-Kit.add('#mk1p', 'trim', [[0.25, 0], [0.7, 1, 'inOut']]).fade('#mkt1', 0.62, 0.77);
-Kit.add('#mk2p', 'trim', [[4.2, 0], [4.6, 1, 'inOut']]).fade('#mkt2', 4.5, 4.65);
-Kit.add('#mk3p', 'trim', [[6.7, 0], [7.1, 1, 'inOut']]);
-Kit.add('#mk4p', 'trim', [[7.0, 0], [7.25, 1, 'inOut']]).fade('#mkt3', 7.15, 7.3);
-Kit.add('#shTot', 'color', [[0, '#222222'], [6.85, '#222222'], [7.0, '#D92D20']]);
+// real times, on the words: "One contract, counted six times." (0.2) → the bracket + "one 450k contract × 6?";
+// "No dates on the bars." (5.0) → DATES?; "It runs off the page." (6.5) → arrow + ENDS WHERE?;
+// "…reading as two point seven million." (10.6) → the ring round 2,700,000 (turns red); "So what's actually…" (12.43)
+Kit.add('#hT1', 'opacity', [[0, 1], [A(12.15), 1], [A(12.3), 0]]);
+Kit.pop('#hT3', A(12.33), { dy: 24 });
+Kit.add('#mk4p', 'trim', [[A(0.3), 0], [A(0.75), 1, 'inOut']]).fade('#mkt3', A(0.65), A(0.85));
+Kit.add('#mk1p', 'trim', [[A(5.0), 0], [A(5.5), 1, 'inOut']]).fade('#mkt1', A(5.4), A(5.6));
+Kit.add('#mk2p', 'trim', [[A(6.85), 0], [A(7.3), 1, 'inOut']]).fade('#mkt2', A(7.2), A(7.4));
+Kit.add('#mk3p', 'trim', [[A(10.5), 0], [A(10.95), 1, 'inOut']]);
+Kit.add('#shTot', 'color', [[0, '#222222'], [A(10.6), '#222222'], [A(10.8), '#D92D20']]);
 
 /* ============================================================ TITLE (12–17 authored; 15–16 is cut) */
 Kit.pop('#tT', TITLE + 0.4).pop('#tS', 13.4, { dy: 14 });
@@ -714,7 +761,7 @@ Kit.add('#hl2a', 'clipX', [[42.0, 0], [42.25, 1, 'inOut']]).add('#hl2b', 'clipX'
 /* ============================================================ CHAPTER 2 (34.4–55.4) */
 Kit.add('#sTime', 'opacity', [[0, 0], [36.55, 0], [36.7, 1, 'out'], [39.4, 1], [39.6, 0]]).add('#sTime', 'scale', [[36.55, 0.85], [36.75, 1, 'outBack']]);
 Kit.show('#chW0', 0, DRAG.f0 + 0.3).show('#chW2', DRAG.f0 + 0.3, CONF + 1.0).show('#chW1', CONF + 1.0);
-Kit.pop('#tDrag', 38.75, { dy: 20 }).out('#tDrag', 41.3);
+Kit.pop('#tDrag', 38.45, { dy: 20 }).out('#tDrag', 41.3);
 Kit.add('#site2', 'opacity', [[41.5, 0], [41.7, 1, 'out'], [44.6, 1], [44.8, 0]]).add('#site2', 'y', [[41.5, 30], [41.75, 0, 'out']]);
 Kit.add('#w3', 'opacity', [[44.3, 0], [44.55, 1, 'out'], [48.45, 1], [48.7, 0]]).add('#w3', 'x', [[44.3, 120], [44.6, 0, 'out']]);
 Kit.add('#w2', 'opacity', [[41.45, 1], [41.65, 0.25], [44.6, 0.25], [44.75, 0.3], [48.45, 0.3], [48.65, 1]]);
@@ -724,7 +771,7 @@ Kit.add('#w2scrim', 'opacity', [[0, 0], [RAIN.open - 0.05, 0], [RAIN.open + 0.1,
 Kit.add('#dRain', 'opacity', [[0, 0], [RAIN.open, 0], [RAIN.open + 0.15, 1, 'out'], [RAIN.push + 0.05, 1], [RAIN.push + 0.2, 0]]).add('#dRain', 'scale', [[RAIN.open, 0.97], [RAIN.open + 0.2, 1, 'out']]);
 Kit.add('#rChip', 'opacity', [[0, 0], [RAIN.tick + 0.05, 0], [RAIN.tick + 0.12, 1]]);
 Kit.add('#rEmpty', 'opacity', [[0, 1], [RAIN.tick + 0.3, 1], [RAIN.tick + 0.32, 0]]).add('#rList', 'opacity', [[0, 0], [RAIN.tick + 0.38, 0], [RAIN.tick + 0.55, 1, 'out']]);
-Kit.pop('#tRain', RAIN.a1 - 0.1, { dy: 20 }).out('#tRain', 55.1);
+Kit.pop('#tRain', RAIN.a0 - 0.05, { dy: 20 }).out('#tRain', 55.1);
 // rain-day calendar: October 2026
 (function () {
   let h = '<div style="font:600 16px/1 Inter;text-align:center;margin:14px 0 12px">October 2026</div><div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;padding:0 12px;font:500 13px/1 Inter;color:#94A3B8;text-align:center">' + 'Mo Tu We Th Fr Sa Su'.split(' ').map(d => `<span>${d}</span>`).join('') + '</div><div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;padding:8px 12px 0;text-align:center">';
@@ -741,8 +788,8 @@ Kit.add('#miChainHl', 'opacity', [[0, 0], [58.45, 0], [58.52, 1]]);
 Kit.add('#cbChain', 'opacity', [[0, 0], [CH_ON, 0], [CH_ON + 0.04, 1]]).add('#cbChain', 'scale', [[CH_ON, 0.6], [CH_ON + 0.12, 1, 'outBack']]);
 Kit.show('#legStatus', 0, CH_ON + 0.3).show('#legPurple', CH_ON + 0.3, C5 + 0.3);
 Kit.add('#sRainOk', 'opacity', [[0, 0], [61.6, 0], [61.72, 1, 'out'], [62.95, 1], [63.1, 0]]).add('#sRainOk', 'scale', [[61.6, 0.8], [61.76, 1, 'outBack']]);
-Kit.add('#sPaint', 'opacity', [[0, 0], [63.2, 0], [63.32, 1, 'out'], [64.9, 1], [65.05, 0]]).add('#sPaint', 'scale', [[63.2, 0.8], [63.36, 1, 'outBack']]);
-Kit.pop('#tStretch', 68.5, { dy: 20 }).out('#tStretch', 69.45);
+Kit.add('#sPaint', 'opacity', [[0, 0], [63.5, 0], [63.62, 1, 'out'], [64.9, 1], [65.05, 0]]).add('#sPaint', 'scale', [[63.5, 0.8], [63.66, 1, 'outBack']]);   // pops on "Never purple."
+Kit.pop('#tStretch', 67.7, { dy: 20 }).out('#tStretch', 69.45);
 
 /* ============================================================ CHAPTER 4 (69.8–85.4) */
 Kit.add('#sXmas', 'opacity', [[0, 0], [72.6, 0], [72.72, 1, 'out'], [75.3, 1], [75.45, 0]]).add('#sXmas', 'scale', [[72.6, 0.8], [72.76, 1, 'outBack']]);
@@ -868,9 +915,10 @@ const CAMS = [
   [107.3, WHOLE], [110.1, WHOLE],
   [110.6, BARS], [111.55, BARS],
   [112.15, BOXES], [115.2, BOXES],
-  [115.8, SENT], [121.0, SENT],                    // the highlighted sentence holds about 6 s before the pen
-  [121.6, RINGS], [123.4, RINGS],
-  [124.0, LETTER], [125.6, LETTER],
+  [115.8, SENT], [117.0, SENT],                    // "And the lender's question, answered in one sentence:"
+  [117.6, RINGS], [119.6, RINGS],                  // "seven linked tasks, ringed in purple, ending with handover…" (the pen)
+  [120.2, SENT], [123.4, SENT],                    // "Any one of them running late moves the whole finish." (highlighter)
+  [124.0, LETTER], [125.6, LETTER],                // "On your letterhead." 
 ];
 ['s', 'x', 'y'].forEach(k => Kit.add('#pcam', k === 's' ? 'scale' : k, CAMS.map(([t, c], i) => [t, c[k], i ? 'inOut' : undefined])));
 Kit.add('#pwrap', 'x', [[106.6, 1200], [107.25, 0, 'out']]).add('#pwrap', 'rotate', [[106.6, 8], [107.25, -1.2, 'out'], [107.4, -1.2], [107.9, 0, 'inOut']]).add('#pwrap', 'y', [[106.6, 40], [107.25, 0, 'out']]);
@@ -878,14 +926,15 @@ Kit.add('#pwrap', 'x', [[106.6, 1200], [107.25, 0, 'out']]).add('#pwrap', 'rotat
 Kit.add('#paper', 'x', [[107.55, 0], [107.85, -1250, 'in'], [108.75, -1250], [109.05, 0, 'out']])
   .add('#paper', 'y', [[107.55, 0], [107.85, -50, 'in'], [108.75, -50], [109.05, 0, 'out']])
   .add('#paper', 'rotate', [[107.55, 0], [107.85, -7, 'in'], [108.75, -7], [109.05, 0, 'out']]);
-Kit.add('#hlbar', 'clipX', [[116.05, 0], [116.55, 1, 'inOut']]);
+Kit.add('#hlbar', 'clipX', [[120.4, 0], [120.9, 1, 'inOut']]);
 Kit.add('#pcam', 'opacity', [[0, 1], [CTA, 1], [CTA + 0.3, 0.6]]);
 
 /* ============================================================ END CARD */
 Kit.clip('#bgend', { dir: 'clips/lockup', t0: ENDC, fps: 30, frames: 240, ext: '.jpg' });
 Kit.fade('#sE', ENDC, ENDC + 0.35);
 Kit.add('#bgend', 'scale', [[ENDC, 1.06], [DUR, 1]]);
-Kit.fade('#elogo', ENDC + 0.2, ENDC + 0.5).pop('#eLine', ENDC + 0.35).pop('#ePill', ENDC + 0.75).pop('#eUrl', ENDC + 0.9).pop('#eAsk', ENDC + 2.2, { dy: 14 });
+// on the words: "Bring your current programme," (140.24) · "and book a thirty-minute demo" (142.2) · "at Queue Ess Mee dot build" (143.6)
+Kit.fade('#elogo', ENDC + 0.05, ENDC + 0.35).pop('#eLine', A(140.25)).pop('#ePill', A(142.2)).pop('#eUrl', A(143.6)).pop('#eAsk', A(145.3), { dy: 14 });
 
 /* ============================================================ per-frame: camera, gantts, cursor, notes */
 const cur = $('#cur');
@@ -1019,35 +1068,25 @@ Kit.each(function (t) {
     cur.style.transform = `translate(${p[0].toFixed(1)}px,${p[1].toFixed(1)}px) scale(${sc.toFixed(3)})`;
   }
   /* ch6: the pen tracing the purple rings */
-  if (t > 121.5 && t < 123.6 && window.__ringPts) {
-    const pts = window.__ringPts, k = ez(t, 121.75, 123.2, 'inOut') * (pts.length - 1), i = Math.min(pts.length - 2, Math.floor(k)), f = k - i;
+  if (t > 117.5 && t < 119.6 && window.__ringPts) {
+    const pts = window.__ringPts, k = ez(t, 117.75, 119.2, 'inOut') * (pts.length - 1), i = Math.min(pts.length - 2, Math.floor(k)), f = k - i;
     const x = lerp(pts[i][0], pts[i + 1][0], f), y = lerp(pts[i][1], pts[i + 1][1], f);
     $('#tpenG').setAttribute('transform', `translate(${x.toFixed(1)} ${y.toFixed(1)})`);
-    $('#tpen').style.opacity = clamp((t - 121.55) / 0.2) * (1 - clamp((t - 123.4) / 0.2));
+    $('#tpen').style.opacity = clamp((t - 117.55) / 0.2) * (1 - clamp((t - 119.35) / 0.2));
     let d = `M${pts[0][0]} ${pts[0][1]}`; for (let j = 1; j <= i; j++) d += ` L${pts[j][0]} ${pts[j][1]}`; d += ` L${x.toFixed(1)} ${y.toFixed(1)}`;
     $('#traceP').setAttribute('d', d); $('#trace').style.opacity = 1;
-  } else { $('#tpen').style.opacity = 0; if (t < 121.5 || t > 123.7) $('#trace').style.opacity = 0; }
+  } else { $('#tpen').style.opacity = 0; if (t < 117.5 || t > 119.75) $('#trace').style.opacity = 0; }
 });
 $('#tpenG').innerHTML = `<g transform="scale(.6) rotate(58)"><path d="M0 0 L16 -6.5 L16 6.5 Z" fill="#8E8E8E"/><path d="M0 0 L5 -2 L5 2 Z" fill="#2747A0"/><rect x="15" y="-9.5" width="50" height="19" rx="5" fill="#2747A0" opacity=".9"/><rect x="62" y="-9" width="196" height="18" rx="6" fill="#F4F3EF" stroke="#CFCDC6" stroke-width="1.5"/><rect x="246" y="-10.5" width="24" height="21" rx="6" fill="#2747A0"/></g>`;
 $('#tpen').style.filter = 'drop-shadow(6px 10px 6px rgba(0,0,0,.3))';
 
-/* ============================================================ the edit list: real file time → authored time */
-const EV = SKIPS.map(([a0, a1]) => ({ a: a0, to: a1 })).concat(HOLDS.map(([a, d]) => ({ a, hold: d }))).sort((x, y) => x.a - y.a);
-const SEG = []; let rr = 0, aa = 0;
-EV.forEach(e => {
-  SEG.push({ r0: rr, a0: aa, r1: rr + (e.a - aa), a1: e.a }); rr += e.a - aa; aa = e.a;
-  if (e.hold) { SEG.push({ r0: rr, a0: aa, r1: rr + e.hold, a1: aa, hold: 1 }); rr += e.hold; } else aa = e.to;
-});
-SEG.push({ r0: rr, a0: aa, r1: rr + (DUR - aa), a1: DUR });
-const REAL_DUR = +(rr + (DUR - aa)).toFixed(3);
-function toAuth(t) { for (const s of SEG) if (t < s.r1) return s.hold ? s.a0 : s.a0 + Math.max(0, t - s.r0); return DUR; }
-function toReal(a) { for (const s of SEG) if (!s.hold && a >= s.a0 && a <= s.a1) return s.r0 + (a - s.a0); for (const s of SEG) if (s.a0 >= a) return s.r0; return REAL_DUR; }
+/* ============================================================ the clock: real file time (the voice) → authored time, see ANCH */
 let REALT = 0;
 Kit.ready({ duration: REAL_DUR, fonts: ['700 60px "Space Grotesk"', '500 20px Inter', '600 20px Inter', '700 20px Inter', '800 30px Inter', '500 20px "JetBrains Mono"', '700 36px Caveat', '400 40px "Permanent Marker"'] });
 window.render = t => { REALT = t; Kit.render(toAuth(t)); };
 // make.mjs's text QA samples real time too, so it checks exactly what the file shows
 const overflow0 = Kit.overflow;
 Kit.overflow = (t, safe) => { REALT = t; return overflow0(toAuth(t), safe); };
-window.__toAuth = toAuth; window.__toReal = toReal; window.__SEG = SEG;
-window.__TIMES = { CAPS: CAPS.map(c => [c[0], c[1], c[2].replace(/<[^>]+>/g, '')]), CARDS, TITLE, CTA, ENDC, DUR, REAL_DUR };
+window.__toAuth = toAuth; window.__toReal = toReal; window.__ANCH = ANCH;
+window.__TIMES = { CAPS: CAPS.map(c => [c[0], c[1], c[2].replace(/<[^>]+>/g, '')]), CARDS: CARDS.map(toReal), TITLE: toReal(TITLE), CTA: toReal(CTA), ENDC: toReal(ENDC), DUR, REAL_DUR };   // real times
 })();

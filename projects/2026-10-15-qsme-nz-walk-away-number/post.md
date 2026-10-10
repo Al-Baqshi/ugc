@@ -3,17 +3,18 @@ vid: N06
 title: "The walk-away number"
 venture: qsme-nz
 idea: nz-walk-away-number
-status: "re-rendered for the owner CTA rule — awaiting approval"
+status: "audio-first remake 2026-10-06, CTA re-voiced 'dot koh' 2026-10-10 (Cam S, eleven_v3) — awaiting the owner's verdict"
 publish_date: 2026-10-15
 publish_time: "19:30 NZDT (Thursday)"
 created: 2026-10-02
 calendar_week: 2
 format: short
 kind: situation-demo (relatable)
-length_s: 36.6
+length_s: 45.3
 aspect: "9:16"
 platforms: ["Instagram Reels", "TikTok", "Facebook Reels", "YouTube Shorts"]
 video: outputs/walk-away-number-9x16.mp4
+video_vo: outputs/walk-away-number-9x16-with-vo.mp4
 cover: outputs/walk-away-number-cover.png
 features: ["Rough feasibility calculator (“Your numbers, our arithmetic.”)"]
 ---
@@ -25,6 +26,51 @@ features: ["Rough feasibility calculator (“Your numbers, our arithmetic.”)"]
 **The insight:** At an auction you set your limit with your heart, and your margin finds out later. QSME's Rough feasibility works backwards: the green box "What you could pay for the land to keep a 20% margin" is a walk-away number you can stick on the paddle the night before, before the room gets loud.
 
 **Job:** Organic, week 2, Thursday 7:30pm, so it lands the night before the weekend's on-site auctions in peak Auckland spring auction season and is easy to save for Saturday morning. It's a different feature from Tuesday's post (the calculator, not the checklist). The joke is our own auction FOMO, never bidders, agents or auction houses.
+
+## Audio-first remake (2026-10-06; CTA re-voiced 2026-10-10) — the current master
+
+**Why:** the owner approved the N01 "Which Dave?" pilot ("this is what I mean by a voiceover… keep it like this") and asked for the same treatment across every video: continuous speech with a real hook in the first 2 s, no gaps or breath cuts, ONE unbroken eleven_v3 take (Cam S), the picture re-timed to the words, the design kept. Mel's per-line script (18 lines, below) is retired; one dry Kiwi narrator tells our own auction story.
+
+**Hook (0.20–2.40 s, spoken):** "Our auction budget? A vibe." — on screen: the kicker "Night before the auction." (frame 0), "Our budget:" pops on "Our", "a vibe." slams in yellow marker on "vibe", then the sticky note "$1.1m-ish? (felt right in the car)" slaps on. The confession is the funniest line, so it goes first; the laptop whips in on "So we ran the numbers."
+
+**The script as spoken (one take, 43.8 s, ~2.27 words/s, longest silence 0.75 s; v3 tags in brackets, 2 of them; re-voiced 2026-10-10 so the CTA says 'dot koh', sent to ElevenLabs as one paragraph):**
+
+```
+[dry] Our auction budget? A vibe.
+So we ran the numbers. Sale price, one-point-two. Land price? The vibe.
+[amused] Twenty-four percent. Sweet as.
+Then the builder's real rate. Margin goes red. Ouch.
+Queue Ess Mee works backwards: to keep twenty percent, the most we can pay for the land is nine-seventeen. The walk-away number.
+Next morning, note's on the paddle. Going once. Paddle stays down.
+Lost the auction, kept the margin. Bid with a number, not a feeling.
+Small print: not financial advice.
+Run your numbers before the room does. Sign up at Queue Ess Mee dot Co dot N Z.
+```
+
+| Said (start) | Picture (re-timed to the words) | Caption on screen |
+|---|---|---|
+| 0.20 "Our auction budget? A vibe." | "Our budget:" pops 0.20; "a vibe." slams 2.02 (underline 2.12–2.39); note slaps 2.52; tag "Illustrative numbers" 2.60; whip up 3.39–3.81 | Night before the auction. / Our budget: / a vibe. |
+| 2.80 "So we ran the numbers." | laptop lands 3.81; Rough feasibility card, green underline under the title 4.17–4.45; pointer drifts to Sale price 4.59–4.78, click 4.79 | So we ran the numbers. |
+| 4.83 "Sale price, one-point-two." | zoom on "Sale price per home" 4.84–5.40; 1200000 typed 5.91–6.49 on "one-point-two" | Sale price: $1.2m. |
+| 7.15 "Land price? The vibe." | zoom on "Land price" 6.71–7.14, click 7.08; 1100000 typed 8.13–8.69 on "The vibe" | Land price? The vibe. |
+| 9.95 "Twenty-four percent. Sweet as." | pull back to the results 9.34–9.73: Profit $698,000, Margin on cost 24.1% green, ring 9.95–12.24 | 24%. Sweet as. |
+| 12.34 "Then the builder's real rate." | zoom on "Build cost per m²" 12.04–12.32; double-click selects 4000 (12.32); 4900 typed 13.63–13.95 on "real rate" | Then the builder's real rate. |
+| 14.34 "Margin goes red. Ouch." | results 14.09–14.34: Margin on cost 10.1% red; red marker loop on "red." 15.38–15.84; "Ouch." slams on the word 16.14 | Margin goes red. |
+| 17.07 "QSME works backwards:" | pan to the green box at 1.10× 17.05–17.99: "What you could pay for the land to keep a 20% margin: $917,000" + the app's grey disclaimer | QSME works backwards. |
+| 19.89 "to keep twenty percent, the most we can pay for the land is nine-seventeen." | the value ringed green on "nine-seventeen" 22.69–23.13; the window steps back and dims 23.17–23.48 | Most we can pay: $917k. |
+| 23.78 "The walk-away number." | old note slides in 23.25–23.48, crossed out 23.52–23.67; new note slaps 23.73; WALK-AWAY (24.12) / NUMBER (24.54) / $917k (24.81) written on the words, underline 25.08–25.22; whip left 25.24–25.49 | The walk-away number. |
+| 25.20 "Next morning, note's on the paddle." | car: windscreen, 9:40 AM SAT, indicator ticks to 27.24; bidder card "27" + the note on the seat | Next morning. / Note's on the paddle. |
+| 27.49 "Going once." | dash → room 27.31–27.73; BID IN THE ROOM 27.46, $925,000 slams 27.55; the paddle shoots up on the tail of "once" (28.55–28.68), freezes to 29.05 | Going once… |
+| 29.12 "Paddle stays down." | slow drop 29.05–29.63 | Paddle stays down. |
+| 30.74 "Lost the auction, kept the margin." | the $925,000 fades back 30.75–31.15 | Lost the auction. / Kept the margin. |
+| 32.86 "Bid with a number, not a feeling." | hold on the paddle and the faded bid | Bid with a number, not a feeling. |
+| 35.35 "Small print: not financial advice." | navy card: title 35.38, bullet 1 35.74, "Not financial advice." on "not" 36.46, bullet 3 36.75 | Small print, big letters: + the three bullets |
+| 37.74 "Run your numbers before the room does." | end card: logo 37.74, headline on "Run" 37.90, homepage still on "numbers" 38.40, sub-line on "does." 39.43 | Run your numbers / before the room does. · Site research comes with your account. / Auckland first. |
+| 39.92 "Sign up at Queue Ess Mee dot Co dot N Z." (said like KO) | pill pops on "Sign" 39.93, green ring on "Get started" 41.01; page ends 45.30 | Sign up at qsme.co.nz |
+
+**Files:** master `outputs/walk-away-number-9x16.mp4` (45.3 s, silent, QA passed on safe 65,300,1015,1250; the 36.6 s master archived as `outputs/archive/walk-away-number-9x16-v1.mp4` with its contact sheet, and the 42.3 s 'dot co' master of 2026-10-06 as `outputs/archive/walk-away-number-9x16-v2-dotco.mp4` + its voiced mix and contact sheet); voiced `outputs/walk-away-number-9x16-with-vo.mp4` (the take at 0.0 s, gain 1.15, no bed, one audio track); take + alignment + words + the exact text sent in `outputs/vo-take-cam-v3/` (earlier attempts kept beside it: 1 = 43.3 s with two `[short pause]` tags that opened 1.0 s holes; 2 = 47.0 s, read slow from blank-line paragraphs; 3 = the 40.8 s 'dot co' take, `*-attempt3-dotco.*`; 4 = 43.4 s line-broken 'dot koh' text, STT 'Cue SME'; 5 = 45.7 s, slower; the current take is attempt 6); contract `vo-script.json` / `vo-script.md`. Captions changed to phrases lifted from the narration: "Sale price: $1.2m.", "Land price? The vibe.", "24%. Sweet as.", new "QSME works backwards.", and "That's the paddle limit." became "The walk-away number." The cover (hook frame with the note) is unchanged in content and was not re-exported. Length: 45.3 s (was 42.3 s with the 2026-10-06 take, 36.6 s before the remake). Cam S reads this script at ~2.27 words/s on eleven_v3 (three 'dot koh' takes came out at 2.18–2.29), under the 2.6–2.9 target; the only way to get nearer is to cut a beat-filler such as 'Ouch.' or 'The walk-away number.', which is the owner's call (open item).
+
+**What's below:** the Production status, Hook layers, Beat-by-beat script, Music and VO sections describe the 2026-10-03 silent 36.6 s cut (Mel as the voice, 18 per-line captions). They are kept as the design record; the timeline above is the one that ships.
 
 ## Production status (2026-10-03, after the owner CTA rule)
 
@@ -195,3 +241,6 @@ When A1–A7 are in, delete the stand-in's "Illustrative recreation · demo data
 - 2026-10-02: Built from the approved calendar slot (2026-10-15, week 2, nz-walk-away-number, which merges nz-auction-eve's "night before" framing, "budget: a vibe" hook and sticky note). Read the feasibility component and its arithmetic on origin/main (read-only) and recreated the card faithfully, with numbers from the same formula. Captured the public qsme.co.nz homepage (no login). Picky-CD passes before the final render: the hook's section image opened up in the lower half; the dashboard clock changed from a seven-segment drawing that read "8:48" to a clean digital "9:40"; the green-box shot reframed at full width with the value ringed and the app's real disclaimer filling the space below (a 1.45× zoom had clipped the table values); "Ouch." and the red loop moved inside the window; the 2-line "Max land price for a 20% margin" caption cut to "Most we can pay: $917k."; the paddle lifted clear of its caption; the small print evenly spaced; the end card given room to breathe. Rendered at 33.0s, QA passed. Mel VO script written for later (ElevenLabs upgrade pending). Status: rendered — awaiting approval.
 - 2026-10-02 (review pass): Applied the review (verdict "fix"). Must-fix: the production note on the calculator strip now reads "Illustrative recreation · demo data" (24px mono), so the master ships without Session A; the thesis "Bid with a number, not a feeling." now holds 2.8s and arrives only after the paddle has come back down. Should-fix: hook note slaps on at 1.10 and holds to 3.2s, "$1.1m-ish?" 8% smaller and inside the safe box; "So we ran the numbers." held 1.8s with a green marker underline on "Rough feasibility"; sale and land captions ~1.9s each with faster typing (0.45s per entry); the FOMO twitch is now a ~150px motion-blurred lift, a 0.3s freeze and a slow drop, followed by "Paddle stays down." and the punchline "Lost the auction. Kept the margin."; the car caption is "Next morning. / Note's on the paddle." (2.4s) and the car now reads as a car (windscreen with a morning sky, A-pillars, rear-view mirror); the green-box frame shows the app's disclaimer in full, inset to the card's content edge; the small-print mono footer is cut and the stack centred; the walk-away notes are faster, with "That's the paddle limit." landing on the $917k stroke; "Margin goes red / Ouch" tightened. Nice: the red loop stays inside the window (x ≤ 1000); the old note slides in only after "Most we can pay" leaves; the end card has the homepage at 1.15× with the ring on "Get started" + "Free to join.", the stack centred and the hook's section as a dim floor; the wordmark drops the ®. Post copy: IG and YouTube bodies now in second person ("The bit most people miss: it works backwards."), pinned comment and FB quote the app's exact green-box label with "(finance on the land not included)". Session A: no "owner's own property", residential-zone site that prefills 3, start each take below the header and map, never type 917000. New length 36.6s (ceiling 36.8). VO re-timed (18 lines, two new). Re-rendered, QA passed, contact sheet and 19 MP4 frames checked. Status: re-rendered after review — awaiting approval.
 - 2026-10-03: owner CTA rule — removed free/no-sign-up, CTA now "Sign up at qsme.co.nz". End card: the homepage still is cropped just below the "Get started" button (the line under it no longer shows) and the green ring sits on "Get started" only; the sub-line "Site research: free account, Auckland first." became "Site research comes with your account. / Auckland first."; the pill "qsme.co.nz" became "Sign up at qsme.co.nz". VO: the last line "Q-S-me dot co dot en zed." became "Sign up at Q-S-me." (same 34.75s slot; the full sign-up URL wouldn't fit 1.75s, so the pill carries it). Post copy: IG, TikTok, FB and YouTube CTAs, the CTA line and the pinned comment now push the sign-up ("Site research comes with your QSME account… sign up at qsme.co.nz"); integrity notes updated; capture spec no longer measures the pricing line. Re-rendered the 9:16 master (QA ok), contact sheet and end-card frames checked; cover (2.4s hook) unaffected. Status: re-rendered for the owner CTA rule — awaiting approval.
+- 2026-10-06 (audio-first remake, the N01 standard applied): script rewritten as continuous speech with the funniest line first ("Our auction budget? A vibe."), the auction story told by one dry Kiwi narrator (Cam S on eleven_v3, stability 0.5), the product payoff said plainly ("QSME works backwards: to keep twenty percent, the most we can pay for the land is nine-seventeen."), the small print spoken ("not financial advice"), CTA "Sign up at Queue Ess Mee dot co dot en zed". ONE unbroken /with-timestamps take, never sliced: attempt 1 ran 43.3 s with two `[short pause]` tags that opened 1.0 s holes; attempt 2 (blank-line paragraphs) read slow at 47.0 s; attempt 3 (single lines, 2 tags) is 40.8 s, longest silence 0.32 s, STT hears every word (QSME as "QSme" / "qsme.co.nz"). Picture re-timed to the alignment (motion/walk-away-number.html in reel time: hook 0–3.23, laptop 3.23–23.38, car/room 23.38–33.44, small print 33.40–35.84, end card 35.78–42.3), captions lifted from the narration, re-rendered (QA ok), old master archived as outputs/archive/walk-away-number-9x16-v1.mp4, muxed clean (no bed) to outputs/walk-away-number-9x16-with-vo.mp4. Mel's VO plan retired. Open: the owner's verdict on the read; the 42.3 s length (vs 36.6); SFX/bed once the design's sounds exist.
+- 2026-10-10 (CTA re-voiced 'dot koh', review fix): the take's CTA said 'dot co dot en zed', which breaks the owner's 2026-10-08 pronunciation rule ('co' is said like KO). Changed the text sent to ElevenLabs to 'Sign up at Queue Ess Mee dot Co dot N Z.' (rest unchanged, same [dry]/[amused] tags) and regenerated the WHOLE take as one Cam S eleven_v3 /with-timestamps call, never sliced. Attempt 4 (line-broken text) 43.4 s, STT 'Cue SME' / 'qsme.koh.enz'; attempt 5 45.7 s; attempt 6 (same text as one paragraph) kept: 43.8 s, longest silence 0.75 s (the [amused] beat), ~2.27 words/s, STT hears every word with QSME as 'QSme' and the CTA as 'qsme.co.nz'. Every beat in motion/walk-away-number.html re-timed from the new alignment (word-anchored; hook 0–3.81, laptop 3.81–25.49, car/room 25.49–35.41, small print 35.35–37.85, end card 37.72–45.3; pill on 'Sign' 39.93, ring on 'Queue' 41.01), re-rendered (QA ok), the 42.3 s master archived as outputs/archive/walk-away-number-9x16-v2-dotco.mp4, re-muxed clean to outputs/walk-away-number-9x16-with-vo.mp4. vo-script.json/.md rewritten from the alignment. Open: pace is under the 2.6 words/s target and the video is now 45.3 s; trimming 'Ouch.' or 'The walk-away number.' needs the owner's OK.
+- 2026-10-10 CTA swap: owner said "koh" sounded wrong; only the final "Sign up at qsme.co.nz" line was replaced (spoken "dot Co dot N Z", tools/fix_cta.py), rest of the take and picture untouched. Old take in outputs/archive/vo-koh-2026-10-10/.

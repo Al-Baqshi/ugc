@@ -57,7 +57,8 @@ Pricing facts are internal context only (research/2026-10-02-qsme-pricing.md). D
 Full verified feature list, on-screen wording and red list: `research/2026-10-02-qsme-platform-truth.md`. Read it before writing any claim.
 
 ## Voice
-- **Pronunciation (confirmed by user 2026-10-02):** QSME is said "Cue Ess Me" (kyoo-ess-mee). For TTS write it as "Q-S-me"; qsme.build = "Q-S-me dot build"; qsme.co.nz = "Q-S-me dot co dot en zed". Never "kiss me", never four spelled-out letters.
+- **Approved voice (owner 2026-10-06):** Cam S (ElevenLabs 53CG2aO2HU48thT3QnMl) on eleven_v3, one unbroken take per cut, clean background. Standard: CLAUDE.md "Audio-first standard".
+- **Pronunciation (confirmed by user 2026-10-02):** QSME is said "Cue Ess Me" (kyoo-ess-mee). For TTS write it as "Q-S-me"; qsme.build = "Q-S-me dot build"; qsme.co.nz = "Queue Ess Mee dot Co dot N Z" (owner: "co" is said like KO, never spelled C-O). Never "kiss me", never four spelled-out letters.
 - **Accent (user 2026-10-02):** Kiwi, very natural, must not sound like AI. Applies to both QSME NZ and qsme.build.
 - Sounds like: a straight-talking Kiwi mate who knows construction
 - Never sounds like: corporate SaaS, American hype

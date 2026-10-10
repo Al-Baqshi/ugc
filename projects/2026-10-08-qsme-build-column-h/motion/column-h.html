@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>Column H (hidden, not deleted) — QSME Global, 4:5</title>
-<!-- Motion kit page. Render: node tools/motion/make.mjs projects/2026-10-08-qsme-build-column-h/motion/column-h.html projects/2026-10-08-qsme-build-column-h/outputs/column-h-4x5.mp4 --safe 60,60,1020,1290 -->
+<!-- Motion kit page. AUDIO-FIRST REMAKE 2026-10-06: the timeline is cut to the Cam S eleven_v3 take (outputs/vo-take-cam-v3), 43.2 s. Render: node tools/motion/make.mjs projects/2026-10-08-qsme-build-column-h/motion/column-h.html projects/2026-10-08-qsme-build-column-h/outputs/column-h-4x5.mp4 --safe 60,60,1020,1290 -->
 <link rel="stylesheet" href="../../../tools/motion/kit.css">
 <style>
   /* ---------- shared ---------- */
@@ -323,15 +323,35 @@ Object.assign(document.getElementById('spot').style, sAt([48, 3981, 1074, 540]))
 [[607, 4221, 349, 60], [123, 4298, 878, 60], [123, 4375, 895, 60]].forEach((r, i) => Object.assign(document.getElementById('mk' + (i + 1)).style, sAt([r[0] - 6, r[1] + 2, r[2] + 12, r[3]])));
 const AFTER_INTERFACE = [1036, 4405];               // just right of "interface." (end of line 3), so the cursor covers no word
 
-/* ===================== timeline ===================== */
-// Every scene change after the hook is a hard cut: the outgoing scene ends on the same frame the incoming one starts (no double exposures).
-const T = { s1: [0, 3.5], s2: [3.4, 10.0], s3: [10.0, 12.9], s4: [12.9, 18.2], s5: [18.2, 24.3], end: [24.3, 28.0] };
+/* ===================== timeline — AUDIO-FIRST REMAKE (2026-10-06) ===================== */
+// Owner standard (N01 pilot, 2026-10-06): the voice is the clock. The Cam S eleven_v3 take (outputs/vo-take-cam-v3/take.mp3,
+// 41.68 s, ONE unbroken request laid onto the master at 0.0 s) was recorded first; every beat below sits on its word in
+// outputs/vo-take-cam-v3/alignment.json (words.json = the word list). The page runs 43.2 s (take + ~1.5 s tail). Design unchanged.
+//   0.00–5.25  hook: "Six joinery bids, all one to two percent under our estimate." (six totals land 0.75–2.05 under "bids, all one
+//              to two percent"; the estimate row lights on "our estimate" 2.9); "(Weird.)" pops on "Weird." (3.6). Fade to the sheet 5.25.
+//   5.25–18.55 the sheet: caption "What a well-informed market." on "What" (5.48); push to F | G | I on "open the sheet we sent them"
+//              (8.0–8.9); cursor to G on "G" (10.1), drag to I on "I" (10.65–11.05); red "H?" on "Where's H?" (11.45 / 12.0);
+//              right-click on "Right-click" (12.6), hover to Unhide, click on "unhide" (14.05), column H opens 14.1–14.75;
+//              caption "Column H. Hidden. / Not deleted." on "column H" (15.25); ring around 486,200 on "our estimate" (16.05–16.5).
+//   18.55–24.4 the email (hard cut before "They"): "They did nothing wrong." on "They" (18.62), "We hit send." on "We" (20.24),
+//              push-in on "Have a good weekend." as it is said (22.8–23.1).
+//   24.4–31.75 product (hard cut before "In a QSME tender"): "In a QSME tender:" 24.45; "Bidders get your lines." on "bidders" (26.2),
+//              "Your quantities." on "quantities" (27.3), "They price them." on "they price" (28.1), tag 28.6; slam "Never your
+//              rates. / Never your budget." on "Never" (29.0).
+//   31.75–38.15 proof (hard cut before "The security page says it"): page settles 31.75–32.3, spotlight 32.25; the highlighter sweeps
+//              the quoted sentence with the voice (32.8–36.3: "stripped out" 33.5, "server-side … interface" 33.95–36.3);
+//              caption "Stripped. Not hidden." 33.5–36.9; right-click after "interface." in the beat before "Nothing" (36.75),
+//              greyed-out "Unhide columns"; caption "Nothing to unhide." on "Nothing" (37.05).
+//   38.15–43.2 end card (hard cut before "Book"): logo + "Private tenders, by invitation." (on screen, not voiced) 38.2;
+//              pill "Book a 30-minute demo" on "Book" (38.2); "qsme.build" on "Queue Ess Mee dot build" (40.0), held 3.2 s.
+const DUR = 43.2;                                   // take ends 41.68 + ~1.5 s tail
+const T = { s1: [0, 5.25], s2: [5.25, 18.55], s3: [18.55, 24.4], s4: [24.4, 31.75], s5: [31.75, 38.15], end: [38.15, DUR] };
 Object.entries(T).forEach(([id, [a, b]]) => Kit.scene('#' + id, a, b));
 
-// S1 hook (0–3.5): title and subline are on screen from frame 1; bids land one by one
+// S1 hook (0–5.25): title and subline are on screen from frame 1; bids land one by one under "bids, all one to two percent"
 Kit.add('#h-title', 'opacity', [[0, 1]]);
 BIDS.forEach(([, amt], i) => {
-  const t = 0.35 + i * 0.24;                       // six rows wait from frame 1; each total lands with a flash
+  const t = 0.75 + i * 0.26;                       // six rows wait from frame 1; each total lands with a flash (0.75 … 2.05)
   Kit.add('#hr' + i, 'opacity', [[0, 0.4], [t, 0.4], [t + 0.1, 1, 'out']]);
   Kit.count('#ha' + i, [[0, 0], [t, amt, 'hold']], v => v ? fmt(v) : '—');
   Kit.add('#ha' + i, 'scale', [[t, 1.16], [t + 0.2, 1, 'out']]);
@@ -339,57 +359,55 @@ BIDS.forEach(([, amt], i) => {
   Kit.add('#hp' + i, 'scale', [[t + 0.08, 0.6], [t + 0.3, 1, 'outBack']]);
   Kit.add('#hp' + i, 'opacity', [[t + 0.08, 0], [t + 0.16, 1]]);
 });
-Kit.add('#h-est', 'borderColor', [[0, '#3E5A48'], [1.95, '#3E5A48'], [2.15, '#4BCD32', 'out'], [3.3, '#4BCD32']]);
-Kit.pop('#h-weird', 2.3, { dy: 18 });
-Kit.add('#s1', 'opacity', [[3.28, 1], [3.38, 0, 'in']]);
+Kit.add('#h-est', 'borderColor', [[0, '#3E5A48'], [2.75, '#3E5A48'], [2.95, '#4BCD32', 'out'], [5.2, '#4BCD32']]);   // "our estimate"
+Kit.pop('#h-weird', 3.6, { dy: 18 });                                                                               // "Weird."
+Kit.add('#s1', 'opacity', [[5.13, 1], [5.23, 0, 'in']]);
 
-// S2 the sheet (3.4–10.1)
-Kit.pop('#sh-chip', 3.45); Kit.fade('#sh-tag', 3.45, 3.6);
-Kit.add('#stage', 'opacity', [[3.4, 0], [3.52, 1, 'out']]);
-Kit.add('#stage', 'y', [[3.4, 50], [3.65, 0, 'out']]);
-cam(3.4, F1, F1, 4.35);
-cam(4.35, F1, F2, 5.0, 'inOut');
-cam(6.85, F2, F3, 7.5, 'inOut');
-Kit.add('#win', 'var:--hw', [[6.85, 0], [7.5, HW, 'inOut']]);
-Kit.add('#hidmark', 'opacity', [[0, 1], [6.85, 1], [6.95, 0]]);
-Kit.pop('#c-market', 3.65, { dy: 20 }); Kit.out('#c-market', 6.5, 0.2);
-// red marker: where's H?
-Kit.add('#hq-path', 'trim', [[5.05, 0], [5.4, 1, 'out']]);
-Kit.add('#hq-arrow', 'opacity', [[0, 1], [6.0, 1], [6.15, 0]]);
-Kit.pop('#hq', 5.25, { dy: 0, fade: 0.08 }); Kit.add('#hq', 'opacity', [[6.0, 1], [6.15, 0]]);
-// cursor: up to G, drag to I, right-click, Unhide
+// S2 the sheet (5.25–18.55)
+Kit.pop('#sh-chip', 5.3); Kit.fade('#sh-tag', 5.3, 5.45);
+Kit.add('#stage', 'opacity', [[5.25, 0], [5.37, 1, 'out']]);
+Kit.add('#stage', 'y', [[5.25, 50], [5.5, 0, 'out']]);
+cam(5.25, F1, F1, 8.0);
+cam(8.0, F1, F2, 8.9, 'inOut');                     // "open the sheet we sent them" → the column letters
+cam(14.1, F2, F3, 14.75, 'inOut');                  // column H opens on "unhide"
+Kit.add('#win', 'var:--hw', [[14.1, 0], [14.75, HW, 'inOut']]);
+Kit.add('#hidmark', 'opacity', [[0, 1], [14.1, 1], [14.2, 0]]);
+Kit.pop('#c-market', 5.45, { dy: 20 }); Kit.out('#c-market', 9.3, 0.2);   // "What a well-informed market." (5.48), out before "F"
+// red marker: where's H? ("Where's H?" 11.43–12.40)
+Kit.add('#hq-path', 'trim', [[11.45, 0], [11.8, 1, 'out']]);
+Kit.add('#hq-arrow', 'opacity', [[0, 1], [12.5, 1], [12.62, 0]]);
+Kit.pop('#hq', 12.0, { dy: 0, fade: 0.08 }); Kit.add('#hq', 'opacity', [[12.5, 1], [12.62, 0]]);
+// cursor: up to G ("G" 10.18), drag to I ("I" 10.68), right-click ("Right-click" 12.56), Unhide ("unhide" 14.00)
 const [gx, gy] = scr(F2, X.G + 65, LET_Y + 22), [ix, iy] = scr(F2, X.I + 68, LET_Y + 22);
 const [bx, by] = scr(F2, X.H, LET_Y + LET_H);
 Object.assign(document.getElementById('hq-arrow').style, { left: (bx - 112) + 'px', top: (by + 10 - 16) + 'px' });
 Object.assign(document.getElementById('hq').style, { left: (bx - 70) + 'px', top: (by + 196) + 'px' });
 const [rx, ry] = scr(F3, X.H + HW - 14 - 50, ROW_Y0 + 7 * ROW_H + 24);   // centre of the H total
 Object.assign(document.getElementById('ring').style, { left: (rx - 135) + 'px', top: (ry - 58) + 'px' });
-Kit.add('#cur', 'opacity', [[3.9, 0], [4.0, 1], [7.05, 1], [7.2, 0]]);
-Kit.add('#cur', 'x', [[3.9, 760], [4.35, 700], [5.15, gx - 4, 'inOut'], [5.6, gx - 4], [5.95, ix - 4, 'inOut'], [6.25, ix - 4], [6.6, 640, 'inOut'], [20.0, 640]]);
 const UNHIDE_Y = iy + 14 + 6 + 6 * 56 + 26 + 28;   // centre of 'Unhide columns'
-Kit.add('#cur', 'y', [[3.9, 760], [4.35, 700], [5.15, gy - 3, 'inOut'], [5.6, gy - 3], [5.95, iy - 3, 'inOut'], [6.25, iy - 3], [6.6, UNHIDE_Y - 3, 'inOut'], [20.0, UNHIDE_Y - 3]]);
-Kit.add('#cur', 'scale', [[5.55, 1], [5.6, 0.86], [5.95, 0.86], [6.0, 1], [6.24, 1], [6.27, 0.86], [6.33, 1], [6.74, 1], [6.77, 0.86], [6.84, 1]]);
-Kit.add('#selG', 'opacity', [[5.6, 0], [5.64, 1], [6.8, 1], [6.95, 0]]);
-Kit.add('#selI', 'opacity', [[5.85, 0], [5.9, 1], [6.8, 1], [6.95, 0]]);
-// context menu at the cursor
+Kit.add('#cur', 'opacity', [[9.3, 0], [9.4, 1], [14.3, 1], [14.45, 0]]);
+Kit.add('#cur', 'x', [[9.3, 760], [9.6, 700], [10.1, gx - 4, 'inOut'], [10.6, gx - 4], [11.05, ix - 4, 'inOut'], [12.7, ix - 4], [13.35, 640, 'inOut'], [T.s2[1], 640]]);
+Kit.add('#cur', 'y', [[9.3, 760], [9.6, 700], [10.1, gy - 3, 'inOut'], [10.6, gy - 3], [11.05, iy - 3, 'inOut'], [12.7, iy - 3], [13.35, UNHIDE_Y - 3, 'inOut'], [T.s2[1], UNHIDE_Y - 3]]);
+Kit.add('#cur', 'scale', [[10.55, 1], [10.6, 0.86], [11.05, 0.86], [11.1, 1], [12.57, 1], [12.6, 0.86], [12.66, 1], [14.02, 1], [14.05, 0.86], [14.12, 1]]);
+Kit.add('#selG', 'opacity', [[10.6, 0], [10.64, 1], [14.1, 1], [14.25, 0]]);
+Kit.add('#selI', 'opacity', [[10.95, 0], [11.0, 1], [14.1, 1], [14.25, 0]]);
+// context menu at the cursor (opens on "Right-click", the hover walks down to Unhide, click on "unhide")
 const m1 = document.getElementById('menu1');
 Object.assign(m1.style, { left: (ix - 432) + 'px', top: (iy + 14) + 'px' });
-Kit.add('#menu1', 'opacity', [[6.28, 0], [6.32, 1], [6.8, 1], [6.86, 0]]);
-Kit.add('#menu1', 'scale', [[6.28, 0.96], [6.36, 1, 'out']]);
-const hov = document.getElementById('hov1');
-Kit.add('#hov1', 'opacity', [[6.4, 0], [6.42, 1]]);
-Kit.add('#hov1', 'y', [[6.4, 6 + 3 * 56 + 13], [6.58, 6 + 6 * 56 + 26, 'out']]);
-// column H opens: circle the total that matches 'our estimate'
-Kit.add('#ring-path', 'trim', [[7.75, 0], [8.2, 1, 'out']]);
-Kit.pop('#c-colh', 7.75, { dy: 20 });
+Kit.add('#menu1', 'opacity', [[12.61, 0], [12.65, 1], [14.1, 1], [14.16, 0]]);
+Kit.add('#menu1', 'scale', [[12.61, 0.96], [12.69, 1, 'out']]);
+Kit.add('#hov1', 'opacity', [[12.95, 0], [12.97, 1]]);
+Kit.add('#hov1', 'y', [[12.95, 6 + 3 * 56 + 13], [13.35, 6 + 6 * 56 + 26, 'out']]);
+// column H opens: caption on "column H" (15.25), ring the total that matches 'our estimate' on "our estimate" (16.04)
+Kit.pop('#c-colh', 15.25, { dy: 20 });
+Kit.add('#ring-path', 'trim', [[16.05, 0], [16.5, 1, 'out']]);
 
-// S3 the email (hard cut at 10.0 → 12.9): the self-own. The bidders did nothing wrong; we hit send.
-// The chip and the email are on screen from the cut frame; only a small settle moves.
-Kit.add('#mailvp', 'y', [[10.0, 16], [10.22, 0, 'out']]);
-Kit.pop('#c-w1', 10.45, { dy: 20 });
-Kit.pop('#c-w2', 11.3, { dy: 20 });
-// the punch: a short push-in on "Have a good weekend." (Friday, 4:40 pm)
-const PUSH = { t0: 11.95, t1: 12.25, s: 1.5 };
+// S3 the email (hard cut at 18.55 → 24.4, before "They did nothing wrong."): the self-own.
+Kit.add('#mailvp', 'y', [[18.55, 16], [18.77, 0, 'out']]);
+Kit.pop('#c-w1', 18.62, { dy: 20 });                // "They did nothing wrong."
+Kit.pop('#c-w2', 20.24, { dy: 20 });                // "We hit send."
+// the punch: a short push-in on "Have a good weekend." as it is said (22.83–23.76)
+const PUSH = { t0: 22.8, t1: 23.1, s: 1.5 };
 Kit.each(t => {
   const g = document.getElementById('gw'), m = document.getElementById('mail'), vp = document.getElementById('mailvp');
   const cx = g.offsetLeft + g.offsetWidth / 2, cy = g.offsetTop + g.offsetHeight / 2;        // the line, in card px
@@ -399,47 +417,51 @@ Kit.each(t => {
   m.style.transform = `translate(0px, ${Y - sc * cy}px) scale(${sc})`;
 });
 
-// S4 bidder's form (hard cut at 12.9 → 18.2)
-Kit.add('#p-card', 'scale', [[12.9, 1], [16.15, 1.02]]);
-Kit.pop('#p-head', 12.93, { dy: 16 });
-const NEVER_T = 16.15;                              // hard cut to a clean background: no rates readable under the claim
-const beatsP = [['#hl-line', '#p-l1', 13.35], ['#hl-qty', '#p-l2', 14.45], ['#hl-rate', '#p-l3', 15.1]];
+// S4 bidder's form (hard cut at 24.4 → 31.75, before "In a QSME tender")
+const NEVER_T = 29.0;                               // "Never your rates" (29.01): hard cut to a clean background, no rates readable under the claim
+Kit.add('#p-card', 'scale', [[24.4, 1], [NEVER_T, 1.02]]);
+Kit.pop('#p-head', 24.45, { dy: 16 });
+const beatsP = [['#hl-line', '#p-l1', 26.2], ['#hl-qty', '#p-l2', 27.3], ['#hl-rate', '#p-l3', 28.1]];   // "bidders" / "quantities" / "they price them"
 beatsP.forEach(([h, l, t], i) => {
   const tEnd = beatsP[i + 1] ? beatsP[i + 1][2] : NEVER_T;
   Kit.add(h, 'opacity', [[t, 0], [t + 0.12, 1], [tEnd, 1], [tEnd + (i === 2 ? 0 : 0.12), 0, i === 2 ? 'hold' : 'linear']]);
   Kit.pop(l, t, { dy: 26 });
   Kit.add(l, 'opacity', [[NEVER_T, 0, 'hold']]);
 });
-Kit.pop('#p-own', 15.22, { dy: 12 }); Kit.add('#p-own', 'opacity', [[NEVER_T, 0, 'hold']]);
+Kit.pop('#p-own', 28.6, { dy: 12 }); Kit.add('#p-own', 'opacity', [[NEVER_T, 0, 'hold']]);
 ['#p-card', '#p-ill'].forEach(s => Kit.show(s, 0, NEVER_T));
 Kit.add('#p-head', 'opacity', [[NEVER_T, 0, 'hold']]);
 Kit.slam('#p-never', NEVER_T, { from: 1.12, dur: 0.18 });
 
-// S5 the live security page (hard cut at 18.2 → 24.3), opening just above 'Bidder visibility rules'
-Kit.add('#s-page', 'y', [[18.2, -SCROLL_FROM * SK], [18.75, -SCROLL * SK, 'out']]);
-Kit.add('#spot', 'opacity', [[18.72, 0], [18.95, 1, 'out']]);
+// S5 the live security page (hard cut at 31.75 → 38.15, before "The security page says it"), opening just above 'Bidder visibility rules'
+Kit.add('#s-page', 'y', [[31.75, -SCROLL_FROM * SK], [32.3, -SCROLL * SK, 'out']]);
+Kit.add('#spot', 'opacity', [[32.25, 0], [32.5, 1, 'out']]);
 Kit.add('#spot', 'y', [[0, 0]]);
-['#mk1', '#mk2', '#mk3'].forEach((m, i) => Kit.add(m, 'clipX', [[18.95 + i * 0.5, 0], [18.95 + (i + 1) * 0.5, 1, i === 2 ? 'out' : 'linear']]));
-['#mk1', '#mk2', '#mk3'].forEach(m => Kit.add(m, 'opacity', [[18.94, 0], [18.95, 1]]));
-Kit.pop('#c-strip', 20.55, { dy: 20 }); Kit.out('#c-strip', 21.85, 0.12);
-// callback: right-click just after "interface." — the menu flips below-left (screen edge), under the highlight, and Unhide is greyed out
+// the highlighter follows the voice: "Rates, amounts" + "and the tender budget are stripped out" land on "says it: stripped out"
+// (32.8–33.9), "server-side, not hidden in the interface." sweeps word for word with the voice (33.95–36.3)
+Kit.add('#mk1', 'clipX', [[32.8, 0], [33.1, 1, 'linear']]);
+Kit.add('#mk2', 'clipX', [[33.1, 0], [33.9, 1, 'linear']]);
+Kit.add('#mk3', 'clipX', [[33.95, 0], [36.3, 1, 'out']]);
+['#mk1', '#mk2', '#mk3'].forEach(m => Kit.add(m, 'opacity', [[32.79, 0], [32.8, 1]]));
+Kit.pop('#c-strip', 33.5, { dy: 20 }); Kit.out('#c-strip', 36.9, 0.12);   // "Stripped. Not hidden." lifted from the quote
+// callback: right-click just after "interface." in the beat before "Nothing to unhide" (36.32–37.08); menu flips below-left, Unhide greyed out
 const nhx = 60 + AFTER_INTERFACE[0] * SK, nhy = 140 + 76 + (AFTER_INTERFACE[1] - SCROLL) * SK;
-Kit.add('#cur', 'opacity', [[21.0, 0], [21.08, 1], [24.3, 0, 'hold']]);
-Kit.add('#cur', 'x', [[21.0, 860], [21.6, nhx - 4, 'inOut']]);
-Kit.add('#cur', 'y', [[21.0, 1000], [21.6, nhy - 3, 'inOut']]);
-Kit.add('#cur', 'scale', [[21.78, 1], [21.81, 0.86], [21.87, 1]]);
+Kit.add('#cur', 'opacity', [[36.0, 0], [36.08, 1], [T.s5[1], 0, 'hold']]);
+Kit.add('#cur', 'x', [[36.0, 860], [36.6, nhx - 4, 'inOut']]);
+Kit.add('#cur', 'y', [[36.0, 1000], [36.6, nhy - 3, 'inOut']]);
+Kit.add('#cur', 'scale', [[36.73, 1], [36.76, 0.86], [36.82, 1]]);
 Object.assign(document.getElementById('menu2').style, { left: (nhx - 380) + 'px', top: (nhy + 30) + 'px' });
-Kit.add('#menu2', 'opacity', [[21.85, 0], [21.89, 1]]);
-Kit.add('#menu2', 'scale', [[21.85, 0.96], [21.93, 1, 'out']]);
-Kit.pop('#c-none', 22.1, { dy: 20 });
+Kit.add('#menu2', 'opacity', [[36.8, 0], [36.84, 1]]);
+Kit.add('#menu2', 'scale', [[36.8, 0.96], [36.88, 1, 'out']]);
+Kit.pop('#c-none', 37.05, { dy: 20 });              // "Nothing to unhide." (37.08)
 
-// S6 end card (hard cut at 24.3 → 28.0): whole card in by ~24.7, qsme.build held 3.3 s
-Kit.add('#e-logo', 'scale', [[24.3, 0.96], [24.6, 1, 'out']]);
-Kit.pop('#e-line', 24.36);
-Kit.pop('#e-cta', 24.46);
-Kit.pop('#e-url', 24.56);
+// S6 end card (hard cut at 38.15 → 43.2, before "Book"): pill on "Book" (38.19), qsme.build on "Queue Ess Mee dot build" (39.97), held 3.2 s
+Kit.add('#e-logo', 'scale', [[38.15, 0.96], [38.45, 1, 'out']]);
+Kit.pop('#e-line', 38.2);
+Kit.pop('#e-cta', 38.25);
+Kit.pop('#e-url', 40.0);
 
-Kit.ready({ duration: 28, fonts: ['700 60px "Space Grotesk"', '600 30px Inter', '800 21px Inter', '600 30px "JetBrains Mono"', '500 22px "JetBrains Mono"', '400 60px "Permanent Marker"'] });
+Kit.ready({ duration: DUR, fonts: ['700 60px "Space Grotesk"', '600 30px Inter', '800 21px Inter', '600 30px "JetBrains Mono"', '500 22px "JetBrains Mono"', '400 60px "Permanent Marker"'] });
 </script>
 </body>
 </html>

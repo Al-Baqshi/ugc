@@ -2,7 +2,7 @@
 <html lang="en-NZ">
 <head>
 <meta charset="utf-8">
-<title>How a programme survives Christmas (16:9 master)</title>
+<title>How a programme survives Christmas (16:9 master, audio-first)</title>
 <!-- QSME NZ · "How a programme survives Christmas" · 16:9 long-form, 120.4 s, silent master with burned-in captions.
      Cold open: a GENERIC spreadsheet (no brand UI) cast as the keenest worker on the job.
      QSME screens are ILLUSTRATIVE recreations (story.js / sched.js / psc.css) with verbatim truth-sheet wording and demo data,
@@ -11,7 +11,13 @@
      (to match the spreadsheet), then back on; days off only ever move work later, and only when you press the button.
      Two real captures of the PUBLIC Knowledge Hub (no login). B-roll = QSME's own brand b-roll, labelled.
      Owner CTA rule 2026-10-03: no "free" anywhere; CTA = Sign up at qsme.co.nz.
-     Review fixes 2026-10-04: see post.md "Discussion history". -->
+     Review fixes 2026-10-04: see post.md "Discussion history".
+     2026-10-06 AUDIO-FIRST REMAKE (owner standard from the N01 pilot: continuous speech, a spoken hook, no silence over 1 s,
+     ONE unbroken Cam S eleven_v3 take, picture follows audio). The take is the clock: outputs/vo-take-cam-v3/take.mp3,
+     135.61 s (2026-10-10 take, CTA "dot koh dot en zed"), laid at 0.0 -> this page runs 137.11 s (take + 1.5 s tail). The page is still AUTHORED on the 120.4 s timeline
+     below and re-timed by W(): a piecewise-linear map from authoring time to take time through ANCHORS, each pinned to the
+     start of the word it belongs to (vo-words-16x9.js = outputs/vo-take-cam-v3/words.json). Captions are phrases lifted from
+     the narration, placed in take time. Design unchanged. -->
 <link rel="stylesheet" href="../../../tools/motion/kit.css">
 <link rel="stylesheet" href="psc.css">
 <style>
@@ -89,6 +95,7 @@
 <script src="sched.js"></script>
 <script src="story.js"></script>
 <script src="kb-stamps.js"></script>
+<script src="vo-words-16x9.js"></script>
 <script>
 (function () {
   'use strict';
@@ -101,6 +108,116 @@
      cold 0–12.4 · title 12.4–15.6 · 01 same job 15.6–31.0 · 02 shut the site 31.0–52.8 (celebration 44.6, b-roll 49.4)
      03 public holidays 52.8–70.4 · 04 asked, not told 70.4–84.8 · 05 what drives the finish 84.8–102.6 · 06 print it 102.6–113.0 · end 113.0–120.4 */
   var TT = 12.4, C1 = 15.6, C2 = 31.0, CEL = 44.6, BR = 49.4, C3 = 52.8, OCT = 56.8, ANN = 65.8, C4 = 70.4, Q4 = C4 + 1.0, C5 = 84.8, KB2 = 97.0, C6 = 102.6, TE = 113.0, D = 120.4;
+
+  /* ================= authoring time -> take time (the take is the clock) =================
+     [authoring t, take t]: take t = the start of the word named on the right (vo-words-16x9.js, index:word). Between anchors
+     the design plays as authored, stretched or squeezed. Every Kit call below goes through W(); Kit.each hooks get authoring
+     time back (Winv), so G.run / Story.textAt / the custom hooks keep their authored keys. Captions are placed in take time. */
+  var VO = window.VO_WORDS, ws = function (i) { return VO[i][1]; }, we = function (i) { return VO[i][2]; };
+  var TAKE = we(VO.length - 1), OUT_D = Math.round((TAKE + 1.5) * 100) / 100;   // 135.61 + 1.5 = 137.11
+  var ANCHORS = [
+    [0, 0],                      // 0 "Only one on your job working Christmas Day?" (hook on from frame 0)
+    [1.45, ws(8)],               // 8 "Your spreadsheet." slams
+    [3.2, ws(10) - 0.6],         // hook fades, sheet pulls back ahead of "Worked"
+    [4.1, ws(11)],               // 11 ring "Labour Day"
+    [5.0, ws(14)],               // 14 "Boxing Day"
+    [5.8, ws(17)],               // 17 "New Year's"
+    [7.1, ws(19)],               // 19 "Didn't even go to the bach."
+    [9.3, ws(25)],               // 25 "Handover's" push to the Handover cell
+    [9.75, ws(27)],              // 27 ring on "fifteenth"
+    [10.0, ws(30)],              // 30 "She'll be right." scrawl
+    [TT, ws(33) - 0.15],         // 33 title on "Here's how a programme survives Christmas."
+    [TT + 0.55, ws(39)],         // 39 "Same job, now in QSME."
+    [C1, ws(46) - 0.45],         // chapter 01, window in
+    [C1 + 0.4, ws(46)],          // 46 Days off dialog on "QSME shuts the site…"
+    [C1 + 4.5, ws(65)],          // 65 toggle off on "switched"
+    [C1 + 6.5, ws(71)],          // 71 dialog closes on "spreadsheet."
+    [C1 + 7.0, ws(72)],          // 72 Templates on "Same job, from the Townhouses programme."
+    [C1 + 7.9, ws(76)],          // 76 click "Townhouses"
+    [C1 + 9.75, we(77) - 0.2],   // chart laid out as "programme." ends
+    [C1 + 10.4, ws(78)],         // 78 "Public holidays are built in."
+    [C1 + 12.9, ws(83)],         // 83 "Finishes Wednesday the twentieth…" push on FINISHES
+    [C2, ws(91) - 0.3],          // 91 chapter 02 "Now switch the shutdown back on."
+    [C2 + 1.5, ws(94)],          // 94 toggle on, on "shutdown"
+    [C2 + 3.8, ws(97)],          // 97 "Only four of those days are public holidays."
+    [C2 + 6.4, ws(105)],         // 105 "Your spreadsheet called the rest…" rings draw on the jobs
+    [C2 + 6.7, ws(107)],         // 107 rings drawn by "called"
+    [C2 + 6.9, ws(114)],         // 114 the amber notice on "there's jobs standing…"
+    [C2 + 8.2, ws(124)],         // 124 push in on "nothing moves until you press the button"
+    [C2 + 9.9, ws(131)],         // 131 button pressed on "Move"
+    [C2 + 10.6, ws(138)],        // 138 FINISHES -> Wed 3 Feb on "finish."
+    [CEL, ws(144) - 0.2],        // 144 celebration on "Congratulations."
+    [CEL + 0.75, ws(145)],       // 145 "Your finish date just got later."
+    [CEL + 1.1, ws(149)],        // 149 the struck-through card on "got"
+    [CEL + 1.8, ws(153)],        // 153 "It was always February."
+    [BR, ws(157) - 0.1],         // 157 b-roll "Nobody's painting on Christmas Day."
+    [C3, ws(166) - 0.15],        // 166 chapter 03 live page "National holidays are built in"
+    [C3 + 2.35, ws(171)],        // 171 underline on "Labour Day included"
+    [OCT, ws(174) - 0.2],        // 174 "Drop a job on Labour Day"
+    [OCT + 1.6, ws(182)],        // 182 the bar snaps to Tuesday on "lands"
+    [OCT + 4.9, ws(186)],        // 186 task card on "The pour is your call"
+    [OCT + 6.0, ws(191)],        // 191 toggle on "works public holidays"
+    [OCT + 6.55, ws(193)],       // 193 the pour is dragged on "holidays,"
+    [OCT + 7.3, ws(195)],        // 195 it stays on the holiday on "that job only"
+    [ANN, ws(198) - 0.15],       // 198 "Regional ones aren't built in"
+    [ANN + 1.0, ws(205)],        // 205 typing "Auckland Anniversary"
+    [ANN + 2.3, ws(208)],        // 208 notice "1 job…" on "One more day off"
+    [ANN + 2.9, ws(214)],        // 214 button on "the finish"
+    [ANN + 3.2, ws(215)],        // 215 FINISHES -> Thu 4 Feb on "moves a day"
+    [C4, ws(218) - 0.2],         // 218 chapter 04 "Anyone booked on QSME is asked, not told."
+    [Q4 + 4.9, ws(236) - 0.1],   // 236 the phone slides in on "They get it on QSME"
+    [Q4 + 5.35, ws(240)],        // 240 phone in place by "QSME"
+    [Q4 + 5.6, ws(244)],         // 244 push on "by email"
+    [Q4 + 5.9, ws(246)],         // 246 card "New dates — can you make them?"
+    [Q4 + 7.9, ws(252)],         // 252 tap Confirm dates on "Confirm."
+    [Q4 + 9.5, ws(253)],         // 253 phone away on "One yes"
+    [Q4 + 9.7, ws(254)],         // 254 the bar turns blue from "yes,"
+    [C5, ws(260) - 0.25],        // 260 chapter 05 "Tick what drives the finish date"
+    [C5 + 0.9, ws(261)],         // 261 View menu on "what"
+    [C5 + 1.4, ws(265)],         // 265 tick on "date,"
+    [C5 + 1.6, ws(270)],         // 270 the purple chain draws on "purple"
+    [C5 + 4.3, ws(272)],         // 272 "Slide a grey job"
+    [C5 + 5.3, ws(277)],         // 277 it snaps back, FINISHES stays, on "the finish doesn't budge"
+    [C5 + 7.9, ws(280)],         // 280 "Slip a purple one a day"
+    [C5 + 8.6, ws(287)],         // 287 landed on "the finish"
+    [C5 + 8.95, ws(288)],        // 288 FINISHES -> Fri 5 Feb on "moves"
+    [C5 + 11.5, Math.min(we(291) - 0.1, ws(292) - 0.35)],  // 291 Undo pressed as "Undo." ends (the 2026-10-10 take runs "Undo." straight into "Want")
+    [KB2, ws(292) - 0.2],        // 292 live page "Want to finish sooner?"
+    [KB2 + 2.5, ws(296)],        // 296 underline on "Don't hurry the grey ones."
+    [KB2 + 3.4, ws(301)],        // 301 underline on "Shorten a purple one."
+    [C6, ws(305) - 0.2],         // 305 chapter 06 "Then print it."
+    [C6 + 0.9, ws(308)],         // 308 Export menu on "The chart and the task list"
+    [C6 + 1.4, ws(312)],         // 312 "As a PDF" clicked on "task list"
+    [C6 + 2.5, ws(316)],         // 316 the PDF on "letterhead."
+    [C6 + 2.9, ws(317)],         // 317 "Purple rings on paper too."
+    [C6 + 4.2, ws(322)],         // 322 highlight sweep on "Any one of them running late…"
+    [C6 + 5.1, ws(330)],         // 330 sweep done on "whole finish."
+    [C6 + 6.3, ws(332)],         // 332 pull back on "That's the date you give the buyer."
+    [C6 + 7.0, ws(338)],         // 338 FINISHES box highlighted on "buyer."
+    [TE, ws(342) - 0.3],         // 342 end card
+    [TE + 0.6, ws(342)],         // 342 "A finish date you can still say out loud in January."
+    [TE + 1.3, ws(353)],         // 353 button pops on "Sign up"
+    [D, OUT_D]                   // take 135.61 + 1.5 s tail
+  ];
+  for (var ai = 1; ai < ANCHORS.length; ai++) if (!(ANCHORS[ai][0] > ANCHORS[ai - 1][0] && ANCHORS[ai][1] > ANCHORS[ai - 1][1])) throw new Error('ANCHORS not increasing at ' + ai + ': ' + ANCHORS[ai - 1] + ' -> ' + ANCHORS[ai]);
+  function W(t) {
+    var n = ANCHORS.length; if (t <= ANCHORS[0][0]) return ANCHORS[0][1] + (t - ANCHORS[0][0]);
+    for (var i = 1; i < n; i++) { var a = ANCHORS[i - 1], b = ANCHORS[i]; if (t <= b[0]) return a[1] + (b[1] - a[1]) * (t - a[0]) / (b[0] - a[0]); }
+    return ANCHORS[n - 1][1] + (t - ANCHORS[n - 1][0]);
+  }
+  function Winv(o) {
+    var n = ANCHORS.length; if (o <= ANCHORS[0][1]) return ANCHORS[0][0] + (o - ANCHORS[0][1]);
+    for (var i = 1; i < n; i++) { var a = ANCHORS[i - 1], b = ANCHORS[i]; if (o <= b[1]) return a[0] + (b[0] - a[0]) * (o - a[1]) / (b[1] - a[1]); }
+    return ANCHORS[n - 1][0] + (o - ANCHORS[n - 1][1]);
+  }
+  var _add = Kit.add, _scene = Kit.scene, _type = Kit.type, _clip = Kit.clip, _count = Kit.count, _each = Kit.each;
+  Kit.add = function (target, prop, keys) { return _add.call(Kit, target, prop, keys.map(function (k) { var c = k.slice(); c[0] = W(k[0]); return c; })); };
+  Kit.scene = function (target, t0, t1) { return _scene.call(Kit, target, W(t0), W(t1)); };
+  Kit.type = function (target, t0, t1) { return _type.call(Kit, target, W(t0), W(t1)); };
+  Kit.clip = function (target, o) { var c = {}; for (var k in o) c[k] = o[k]; c.t0 = W(o.t0); if (o.t1 != null) c.t1 = W(o.t1); return _clip.call(Kit, target, c); };
+  Kit.count = function (target, keys, fmt) { return _count.call(Kit, target, keys.map(function (k) { var c = k.slice(); c[0] = W(k[0]); return c; }), fmt); };
+  Kit.each = function (fn) { return _each.call(Kit, function (t) { fn(Winv(t)); }); };
+  window.PSC_W = W; window.PSC_WINV = Winv;
 
   /* ---------------- COLD OPEN: the keenest worker on the job ---------------- */
   var sg = Story.sheetGeo();
@@ -174,35 +291,41 @@
   add('<div id="tg2" class="ftag l pu">Purple — This task drives the finish date.</div>');
   add('<div id="tg3" class="ftag r">A few days later: all four confirmed (demo)</div>');
 
-  /* ---------------- captions (target ≤ ~2.6 words/s with the sound off) ---------------- */
-  cap(4.0, 6.9, 'Worked Labour Day. Worked Boxing Day. Worked New Year\'s.');
-  cap(7.1, 9.1, 'Didn\'t even go to the bach.');
-  cap(9.3, 12.2, 'Handover 15 Jan. She\'ll be right.');
-  cap(C1 + 0.4, C1 + 4.2, 'QSME shuts the site 23 Dec – 11 Jan by default.');
-  cap(C1 + 4.4, C1 + 6.8, 'Switch it off, like the spreadsheet.');
-  cap(C1 + 7.0, C1 + 9.8, 'Same job, from the Townhouses programme.');
-  cap(C1 + 10.4, C1 + 12.6, 'Public holidays: built in.');
-  cap(C1 + 12.9, C1 + 15.2, 'Finishes Wed 20 Jan. Mid-January. Lovely.');
-  cap(C2 + 0.4, C2 + 2.9, 'Switch it back on.');
-  cap(C2 + 3.8, C2 + 6.2, 'Only 4 are public holidays.');
-  cap(C2 + 6.4, C2 + 9.6, 'Your spreadsheet called the rest working days.');
-  cap(C2 + 10.2, C2 + 13.4, 'Move them off. There\'s your real finish.');
-  cap(CEL + 1.8, CEL + 4.6, 'It was always February.');
-  cap(BR + 0.2, BR + 3.3, 'Nobody\'s painting on Christmas Day. Now the programme knows.');
-  cap(C3 + 0.3, C3 + 3.8, 'National holidays are built in. Labour Day included.');
-  cap(OCT + 0.2, OCT + 4.6, 'Drop a job on Labour Day and it lands on the Tuesday.');
-  cap(OCT + 4.9, OCT + 8.8, 'The pour\'s your call: ‘Works public holidays’, for that job only.');
-  cap(ANN + 0.1, ANN + 4.4, 'Regional holidays aren\'t built in. Add Auckland Anniversary yourself.');
-  cap(C4 + 0.2, C4 + 5.6, 'Anyone booked on QSME is asked. Nothing changes for them till they say yes.');
-  cap(Q4 + 5.3, Q4 + 9.2, 'On QSME and by email.');
-  cap(Q4 + 9.5, Q4 + 13.2, 'One yes, and that bar turns blue.');
-  cap(C5 + 0.3, C5 + 4.0, 'Tick ‘What drives the finish date’: the <span class="p">purple</span> chain.');
-  cap(C5 + 4.3, C5 + 7.6, 'Slide a grey job: the finish doesn\'t budge.');
-  cap(C5 + 7.9, C5 + 11.4, 'Slip a <span class="p">purple</span> one a day: the finish moves a day.');
-  cap(KB2 + 0.2, KB2 + 5.4, 'Want to finish sooner? Don\'t hurry the grey ones. Shorten a <span class="p">purple</span> one.');
-  cap(C6 + 0.2, C6 + 2.5, 'Then print it.');
-  cap(C6 + 2.9, C6 + 6.0, '<span class="p">Purple</span> rings on paper too.');
-  cap(C6 + 6.3, C6 + 10.2, 'The date you give the buyer. On one page.');
+  /* ---------------- captions: short phrases lifted from the narration, placed on the words (take time) ---------------- */
+  function capW(i0, i1, html, tmax) { caps.push([ws(i0) - 0.05, we(i1) + 0.6, html, tmax]); }
+  capW(10, 18, 'Worked Labour Day. Worked Boxing Day. Worked New Year\'s.');
+  capW(19, 24, 'Didn\'t even go to the bach.');
+  capW(25, 32, 'Handover\'s the fifteenth of January. She\'ll be right.', W(TT) - 0.3);
+  capW(46, 63, 'QSME shuts the site 23 Dec – 11 Jan by default.');
+  capW(64, 71, 'We switched it off, to match the spreadsheet.');
+  capW(72, 77, 'Same job, from the Townhouses programme.');
+  capW(78, 82, 'Public holidays are built in.');
+  capW(83, 90, 'Finishes Wed 20 Jan. Mid-January. Lovely.');
+  capW(91, 96, 'Now switch the shutdown back on.');
+  capW(97, 104, 'Only four of those days are public holidays.');
+  capW(105, 112, 'Your spreadsheet called the rest ordinary working days.');
+  capW(124, 130, 'Nothing moves until you press the button.');
+  capW(131, 143, 'Move them off, and there\'s your real finish.', W(CEL) - 0.05);
+  capW(153, 156, 'It was always February.', W(BR) - 0.05);
+  capW(157, 165, 'Nobody\'s painting on Christmas Day. Now the programme knows.', W(C3) - 0.05);
+  capW(166, 173, 'National holidays are built in. Labour Day included.', W(OCT) - 0.05);
+  capW(174, 185, 'Drop a job on Labour Day and it lands on the Tuesday.');
+  capW(186, 197, 'The pour is your call: ‘Works public holidays’, for that job only.');
+  capW(198, 207, 'Regional ones aren\'t built in. Add Auckland Anniversary yourself.');
+  capW(208, 217, 'One more day off, and the finish moves a day.');
+  capW(218, 227, 'Anyone booked on QSME is asked, not told.');
+  capW(228, 235, 'Nothing changes for them till they say yes.');
+  capW(236, 245, 'On QSME, and by email.');
+  capW(246, 252, 'New dates — can you make them? Confirm.');
+  capW(253, 259, 'One yes, and that bar turns blue.');
+  capW(260, 271, 'Tick ‘What drives the finish date’: the <span class="p">purple</span> chain.');
+  capW(272, 279, 'Slide a grey job: the finish doesn\'t budge.');
+  capW(280, 291, 'Slip a <span class="p">purple</span> one a day: the finish moves a day. Undo.');
+  capW(292, 304, 'Want to finish sooner? Don\'t hurry the grey ones. Shorten a <span class="p">purple</span> one.', W(C6) - 0.05);
+  capW(305, 316, 'Then print it. The chart and the task list, on your letterhead.');
+  capW(317, 321, '<span class="p">Purple</span> rings on paper too.');
+  capW(332, 341, 'That\'s the date you give the buyer. On one page.', W(TE) - 0.05);
+  caps.forEach(function (c, i) { var nx = caps[i + 1]; if (nx) c[1] = Math.min(c[1], nx[0] - 0.08); if (c[3] != null) c[1] = Math.min(c[1], c[3]); });
   caps.forEach(function (c, i) { add('<div id="cap' + i + '" class="caption box"><span>' + c[2] + '</span></div>'); });
   R.innerHTML = H;
 
@@ -243,7 +366,7 @@
   Kit.add('#cold', 'opacity', [[TT - 0.25, 1], [TT, 0]]);
 
   /* ---------- title ---------- */
-  Kit.clip('#timg', { dir: 'clips/lockup', t0: TT, fps: 30, ext: '.jpg', frames: 120 });
+  Kit.clip('#timg', { dir: 'clips/lockup', t0: TT, fps: 30, ext: '.jpg', frames: 120, speed: 0.65 });   // 6.15 s of footage for the 5.95 s title
   Kit.add('#tcam', 'scale', [[TT, 1.04], [C1, 1.1]]);
   Kit.pop('#t1', TT + 0.15, { dy: 30 }).pop('#t2', TT + 0.55, { dy: 24 }).fade('#t3', TT + 0.95, TT + 1.3);
   Kit.add('#title', 'opacity', [[C1 - 0.25, 1], [C1, 0]]);
@@ -347,7 +470,7 @@
   Kit.add('#aogd_drive', 'x', [[OCT + 6.55, 0], [OCT + 7.2, -dw, 'inOut'], [OCT + 7.3, -dw], [OCT + 7.55, 0, 'out']]);
   Kit.add('#aogd_drive', 'y', [[OCT + 6.45, 0], [OCT + 6.55, -5], [OCT + 7.3, -5], [OCT + 7.4, 0]]);
   document.getElementById('aotstT').textContent = 'Mon 26 Oct is Labour Day, and this task doesn\'t work public holidays';
-  Kit.add('#aotst', 'opacity', [[0, 0], [OCT + 1.75, 0, 'hold'], [OCT + 2.0, 1, 'out'], [OCT + 4.6, 1], [OCT + 4.8, 0, 'in']]).add('#aotst', 'y', [[OCT + 1.75, 20], [OCT + 2.0, 0, 'out']]);
+  Kit.add('#aotst', 'opacity', [[0, 0], [OCT + 1.75, 0, 'hold'], [OCT + 2.0, 1, 'out'], [OCT + 6.3, 1], [OCT + 6.5, 0, 'in']]).add('#aotst', 'y', [[OCT + 1.75, 20], [OCT + 2.0, 0, 'out']]);
   Kit.add('#aoC', 'opacity', [[0, 0], [OCT + 5.0, 0, 'hold'], [OCT + 5.2, 1, 'out']]).add('#aoC', 'x', [[OCT + 5.0, 30], [OCT + 5.25, 0, 'out']]);
   Kit.add('#aoCtg', 'background', [[0, '#CBD5E1'], [OCT + 5.95, '#CBD5E1'], [OCT + 6.1, '#16A34A']]).add('#aoCtgk', 'x', [[OCT + 5.95, 0], [OCT + 6.12, 22, 'out']]);
   Kit.add('#aoCoff', 'opacity', [[0, 1], [OCT + 6.0, 1], [OCT + 6.2, 0]]);   // the 'Off: …' helper goes once the switch is on
@@ -419,7 +542,7 @@
   }
 
   /* ---------- b-roll: fit-out ---------- */
-  Kit.clip('#brimg', { dir: 'clips/fitout', t0: BR, fps: 30, ext: '.jpg', frames: 90 });
+  Kit.clip('#brimg', { dir: 'clips/fitout', t0: BR, fps: 30, ext: '.jpg', frames: 90, speed: 0.7 });   // 4.3 s of footage for the 4.24 s cutaway
   Kit.add('#brcam', 'scale', [[BR, 1.04], [C3, 1.1]]);
 
   /* ---------- live pages ---------- */
@@ -459,12 +582,13 @@
   Kit.add('#pdf1fb', 'background', [[0, '#FAF5FF'], [C6 + 6.8, '#FAF5FF'], [C6 + 7.0, '#E9D5FF'], [C6 + 9.0, '#F3E8FF', 'inOut']]);
 
   /* ---------- end card ---------- */
-  Kit.clip('#eimg', { dir: 'clips/complete', t0: TE, fps: 30, ext: '.jpg', frames: 192, speed: 0.75, from: 45 });
+  Kit.clip('#eimg', { dir: 'clips/complete', t0: TE, fps: 30, ext: '.jpg', frames: 192, speed: 0.6, from: 45 });   // 8.2 s of footage for the 7.9 s end card
   // soften the two small UI tiles baked into this brand b-roll (they sit under the text gradient)
-  [['vA', [[TE, 396, 640], [TE + 3.33, 296, 642], [TE + 6.49, 179, 645]]], ['vB', [[TE, 823, 586], [TE + 3.33, 770, 566], [TE + 6.49, 700, 549]]]].forEach(function (v) {
+  var TE_O = W(TE), F18 = 75 / 18, F36 = 146 / 18;   // the clip plays at 18 fps from frame 45: frames 120 and 191 land at TE_O + 4.17 / + 8.11 (take time)
+  [['vA', [[TE_O, 396, 640], [TE_O + F18, 296, 642], [TE_O + F36, 179, 645]]], ['vB', [[TE_O, 823, 586], [TE_O + F18, 770, 566], [TE_O + F36, 700, 549]]]].forEach(function (v) {
     var e = document.createElement('div'); e.id = v[0]; e.className = 'abs'; e.style.cssText = 'left:-90px;top:-75px;width:180px;height:150px;border-radius:40px;backdrop-filter:blur(16px) brightness(.55);-webkit-backdrop-filter:blur(16px) brightness(.55)';
     document.getElementById('end').insertBefore(e, document.querySelector('#end .ov'));
-    Kit.add('#' + v[0], 'x', v[1].map(function (k, i) { return [k[0], k[1], i ? 'linear' : undefined]; })).add('#' + v[0], 'y', v[1].map(function (k, i) { return [k[0], k[2], i ? 'linear' : undefined]; }));
+    _add.call(Kit, '#' + v[0], 'x', v[1].map(function (k, i) { return [k[0], k[1], i ? 'linear' : undefined]; })); _add.call(Kit, '#' + v[0], 'y', v[1].map(function (k, i) { return [k[0], k[2], i ? 'linear' : undefined]; }));
   });
   Kit.add('#ecam', 'scale', [[TE, 1.0], [D, 1.06, 'linear']]);
   Kit.add('#end', 'opacity', [[TE, 0], [TE + 0.35, 1]]);
@@ -479,12 +603,15 @@
   Kit.add('#lbL', 'opacity', [[0, 0], [C3, 1, 'hold'], [OCT, 0, 'hold'], [KB2, 1, 'hold'], [C6, 0, 'hold']]);
   // the spreadsheet is labelled from frame 0 (bottom right under the hook, then the usual top-right slot)
   Kit.scene('#lbS0', 0, 3.6).scene('#lbS', 3.6, TT);
-  Kit.scene('#tg1', C2 + 10.4, C2 + 13.5).scene('#tg2', C5 + 2.2, KB2).scene('#tg3', C5 + 0.1, C5 + 4.0);
+  Kit.scene('#tg1', 0, 0).scene('#tg2', C5 + 2.2, KB2).scene('#tg3', C5 + 0.1, C5 + 4.0);
 
   // captions
-  caps.forEach(function (c, i) { Kit.pop('#cap' + i, c[0], { dy: 18 }); Kit.out('#cap' + i, c[1] - 0.12, 0.12); });
+  caps.forEach(function (c, i) {   // take time: raw tracks
+    _add.call(Kit, '#cap' + i, 'opacity', [[c[0], 0], [c[0] + 0.16, 1, 'out'], [c[1] - 0.12, 1], [c[1], 0, 'in']]);
+    _add.call(Kit, '#cap' + i, 'y', [[c[0], 18], [c[0] + 0.24, 0, 'out']]);
+  });
 
-  Kit.ready({ duration: D, fonts: ['800 60px Manrope', '400 20px Inter', '500 20px Inter', '600 20px Inter', '700 20px Inter', '800 20px Inter', '400 40px "Permanent Marker"', '500 20px "JetBrains Mono"', '700 20px "JetBrains Mono"'] });
+  Kit.ready({ duration: OUT_D, fonts: ['800 60px Manrope', '400 20px Inter', '500 20px Inter', '600 20px Inter', '700 20px Inter', '800 20px Inter', '400 40px "Permanent Marker"', '500 20px "JetBrains Mono"', '700 20px "JetBrains Mono"'] });
 })();
 </script>
 </body>

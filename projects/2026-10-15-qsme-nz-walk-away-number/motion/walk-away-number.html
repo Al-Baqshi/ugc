@@ -3,7 +3,24 @@
 <head>
 <meta charset="utf-8">
 <title>The walk-away number</title>
-<!-- QSME NZ · "The walk-away number" · 9:16 · 36.6 s · silent master with burned-in captions (Mel VO script for later).
+<!-- QSME NZ · "The walk-away number" · 9:16 · 45.3 s · AUDIO-FIRST REMAKE 2026-10-06, CTA RE-VOICED 2026-10-10 ("dot koh dot en zed"):
+     the Cam S eleven_v3 take (outputs/vo-take-cam-v3/take.mp3, 43.8 s, ONE unbroken /with-timestamps request, laid at 0.0 s)
+     is the clock. Every beat below is placed on its word in outputs/vo-take-cam-v3/alignment.json (words.json); the page runs
+     45.3 s (take + 1.5 s tail). Design unchanged (b-roll hook, laptop + feasibility card, car, room, small print, end card).
+       0.00–3.81  hook: "Night before the auction." (kicker, frame 1), "Our budget:" pops on "Our" (0.20), "a vibe." slams on "vibe"
+                  (2.02, underline 2.12–2.39), the "$1.1m-ish?" note slaps on after the word (2.52); whip on "So" (3.39–3.81)
+       3.81–25.49 the laptop: "So we ran the numbers." (3.85), sale zoom on "Sale" (4.84), 1200000 types on "one-point-two" (5.91),
+                  land zoom on "Land" (6.71–7.14), 1100000 types on "The vibe" (8.13), results on "Twenty-four" (ring 9.95),
+                  build zoom on "Then" (12.04–12.32), 4900 types on "real rate" (13.63), results + red loop on "red." (15.38),
+                  "Ouch." on the word (16.14), green box on "Queue Ess Mee works backwards" (17.05–17.99, caption 17.16),
+                  "Most we can pay: $917k." on "to keep twenty percent…" (19.92), ring on "nine-seventeen" (22.69), notes
+                  23.17–25.22 with WALK-AWAY / NUMBER / $917k written on "The walk-away number." (24.12–25.08); whip on "Next" (25.24)
+       25.49–35.41 car on "Next morning, note's on the paddle." (25.53), room on "Going once." (27.31–27.73, bid 27.46/27.55,
+                  caption 27.69), lift on the tail of "once" (28.55–28.68), freeze, drop on "Paddle stays down." (29.05–29.63,
+                  caption 29.14), "Lost the auction. / Kept the margin." (30.75), "Bid with a number, not a feeling." (32.92)
+       35.35–37.85 small print: title on "Small print:" (35.38), "Not financial advice." bullet on "not" (36.46)
+       37.72–45.30 end card: logo + "Run your numbers / before the room does." on "Run" (37.90), homepage still on "numbers" (38.40),
+                  sub-line on "does." (39.43), pill "Sign up at qsme.co.nz" pops on "Sign" (39.93), ring on "Get started" (41.01)
      Render (from the studio root):
        node tools/motion/make.mjs projects/2026-10-15-qsme-nz-walk-away-number/motion/walk-away-number.html projects/2026-10-15-qsme-nz-walk-away-number/outputs/walk-away-number-9x16.mp4 --safe 65,300,1015,1250
      Footage:
@@ -267,13 +284,14 @@
     </div>
 
     <div id="capA" class="cap"><span>So we ran the numbers.</span></div>
-    <div id="capB" class="cap"><span>Sale price: <em>$1.2m</em> a home.</span></div>
-    <div id="capC" class="cap"><span>Land price: the vibe. <em>$1.1m.</em></span></div>
-    <div id="capD" class="cap"><span><em>24%</em> margin. Sweet as.</span></div>
+    <div id="capB" class="cap"><span>Sale price: <em>$1.2m.</em></span></div>
+    <div id="capC" class="cap"><span>Land price? The vibe.</span></div>
+    <div id="capD" class="cap"><span><em>24%.</em> Sweet as.</span></div>
     <div id="capE" class="cap"><span>Then the builder's real rate.</span></div>
     <div id="capF" class="cap"><span>Margin goes <span class="r">red.</span></span></div>
+    <div id="capG0" class="cap"><span>QSME works backwards.</span></div>
     <div id="capG" class="cap"><span>Most we can pay: <em>$917k.</em></span></div>
-    <div id="capH" class="cap"><span>That's the paddle limit.</span></div>
+    <div id="capH" class="cap"><span>The walk-away number.</span></div>
   </div>
 
   <!-- ================= S3 · NEXT MORNING ================= -->
@@ -396,12 +414,12 @@
 
   /* ---------- what gets typed, and when (fictional inputs; ~0.45 s per 7-digit entry) ---------- */
   const TY = {
-    sale:  { full: '1200000', t0: 5.64, t1: 6.09 },
-    land:  { full: '1100000', t0: 7.38, t1: 7.83 },
-    build: { full: '4900', sel: 11.27, t0: 11.46, t1: 11.76 }
+    sale:  { full: '1200000', t0: 5.91, t1: 6.49 },     // "one-point-two" 5.88–7.00
+    land:  { full: '1100000', t0: 8.13, t1: 8.69 },     // "The vibe." 8.08–9.31
+    build: { full: '4900', sel: 12.32, t0: 13.63, t1: 13.95 }   // "real rate." 13.65–14.31
   };
   function typed(o, t) { if (t < o.t0) return ''; const dt = (o.t1 - o.t0) / o.full.length; return o.full.slice(0, clamp(Math.floor((t - o.t0) / dt + 1e-6) + 1, 0, o.full.length)); }
-  const FOCUS = [['sale', 5.30, 7.18], ['land', 7.18, 11.22], ['build', 11.22, 99]];
+  const FOCUS = [['sale', 4.84, 7.11], ['land', 7.11, 12.29], ['build', 12.29, 99]];
 
   /* ---------- camera over the card (card px; viewport 950 x 634) ---------- */
   const VW = 950, VH = 634, GS = 1.10;
@@ -424,13 +442,13 @@
     gbox:  () => { const half = VH / (2 * GS), top = P.total.y - 8, need = P.disc.y + P.disc.h + 14; return { x: 420, y: Math.max(top + half, need - half) }; }
   };
   const CAM = [
-    [3.20, 'top', 1.00, 'out'], [4.60, 'top', 1.10, 'out'], [5.30, 'top', 1.10],
-    [5.68, 'sale', 1.75, 'inOut'], [6.84, 'sale', 1.75],
-    [7.22, 'land', 1.75, 'inOut'], [8.84, 'land', 1.75],
-    [9.26, 'res', 1.20, 'inOut'], [10.74, 'res', 1.20],
-    [11.16, 'build', 1.75, 'inOut'], [12.08, 'build', 1.75],
-    [12.48, 'res', 1.20, 'inOut'], [14.28, 'res', 1.20],
-    [14.72, 'gbox', GS, 'inOut'], [99, 'gbox', GS]
+    [3.39, 'top', 1.00, 'out'], [4.59, 'top', 1.10, 'out'], [4.84, 'top', 1.10],
+    [5.40, 'sale', 1.75, 'inOut'], [6.71, 'sale', 1.75],
+    [7.14, 'land', 1.75, 'inOut'], [9.34, 'land', 1.75],
+    [9.73, 'res', 1.20, 'inOut'], [12.04, 'res', 1.20],
+    [12.32, 'build', 1.75, 'inOut'], [14.09, 'build', 1.75],
+    [14.34, 'res', 1.20, 'inOut'], [17.05, 'res', 1.20],
+    [17.99, 'gbox', GS, 'inOut'], [99, 'gbox', GS]
   ];
   function camAt(t) {
     let i = 0; while (i + 1 < CAM.length && CAM[i + 1][0] <= t) i++;
@@ -448,11 +466,11 @@
     const start = { x: 640, y: 540 };
     const seg = (a, b, t0, t1) => { const p = E.inOut(clamp((t - t0) / (t1 - t0), 0, 1)); return { x: a.x + (b.x - a.x) * p, y: a.y + (b.y - a.y) * p }; };
     let pos, vis = 0, click = 0;
-    if (t < 5.36) { pos = seg(start, S, 4.92, 5.24); vis = 1; click = t > 5.26 && t < 5.34 ? 1 : 0; }
-    else if (t < 6.74) { pos = S; vis = 0; }
-    else if (t < 7.24) { pos = seg(S, L, 6.74, 7.10); vis = 1; click = t > 7.13 && t < 7.21 ? 1 : 0; }
-    else if (t < 10.74) { pos = L; vis = 0; }
-    else if (t < 11.40) { pos = seg(L, B, 10.74, 11.10); vis = 1; click = (t > 11.15 && t < 11.21) || (t > 11.25 && t < 11.31) ? 1 : 0; }
+    if (t < 4.87) { pos = seg(start, S, 4.59, 4.78); vis = 1; click = t > 4.79 && t < 4.86 ? 1 : 0; }
+    else if (t < 6.68) { pos = S; vis = 0; }
+    else if (t < 7.17) { pos = seg(S, L, 6.68, 7.03); vis = 1; click = t > 7.07 && t < 7.16 ? 1 : 0; }
+    else if (t < 11.94) { pos = L; vis = 0; }
+    else if (t < 12.55) { pos = seg(L, B, 11.94, 12.17); vis = 1; click = (t > 12.21 && t < 12.26) || (t > 12.29 && t < 12.34) ? 1 : 0; }
     else { pos = B; vis = 0; }
     return { pos, vis, click };
   }
@@ -524,12 +542,12 @@
   });
 
   /* ---------- S3 timing (car → room → twitch) ---------- */
-  const TW = { up0: 23.00, up1: 23.12, down0: 23.42, down1: 24.02 };   // lift 0.12 s, freeze 0.30 s, slow drop 0.60 s
+  const TW = { up0: 28.55, up1: 28.68, down0: 29.05, down1: 29.63 };   // lift on the tail of "once." (0.12 s), freeze 0.34 s, slow drop under "Paddle stays down." (0.68 s)
   const s3 = $('#s3');
   Kit.each(function (t) {
     if (s3.style.display === 'none') return;
     // indicator ticks (0.75 s cycle), then stops once she's parked
-    const on = t < 21.80 && Math.floor((t - 19.7) / 0.375) % 2 === 0;
+    const on = t < 27.24 && Math.floor((t - 25.37) / 0.375) % 2 === 0;
     $('#arL').setAttribute('fill', on ? '#3BE36A' : '#1F2A1F');
     $('#arL').style.filter = on ? 'drop-shadow(0 0 12px rgba(59,227,106,.9))' : 'none';
     $('#colon').style.opacity = Math.floor(t * 1) % 2 ? .35 : 1;
@@ -541,112 +559,113 @@
     $('#paddle').style.filter = vb > 0.25 ? 'url(#vblur)' : 'none';
   });
 
-  /* ================= TIMELINE (36.6 s) ================= */
+  /* ================= TIMELINE (45.3 s, reel time = the take's word times) ================= */
   // scenes
-  Kit.scene('#s1', 0, 3.50).scene('#s2', 3.15, 19.90).scene('#s3', 19.55, 29.42).scene('#s4', 29.40, 32.85).scene('#s5', 32.82, 36.6);
+  Kit.scene('#s1', 0.00, 3.85).scene('#s2', 3.39, 25.51).scene('#s3', 25.24, 35.41).scene('#s4', 35.35, 37.85).scene('#s5', 37.72, 45.30);
 
-  // ---- S1 hook (0–3.2): frame 0 already reads
+  // ---- S1 hook (0–3.39): "Night before the auction." reads on frame 0; "Our budget:" on "Our", "a vibe." on "vibe"
   Kit.clip('#secImg', { dir: 'clips/section', t0: 0, fps: 30, frames: 120, ext: '.jpg' });
-  Kit.add('#secImg', 'scale', [[0, 1.0], [3.5, 1.075]]);
-  Kit.pop('#h2', 0.42, { dy: 26 });
-  Kit.slam('#h3', 0.70, { from: 1.35, dur: 0.16 });
+  Kit.add('#secImg', 'scale', [[0, 1.0], [3.85, 1.075]]);
+  Kit.pop('#h2', 0.20, { dy: 26 });
+  Kit.slam('#h3', 2.02, { from: 1.35, dur: 0.16 });
   Kit.add('#h3', 'rotate', [[0, -3]]);
-  Kit.add('#h3path', 'trim', [[0.86, 0], [1.10, 1, 'out']]);
-  Kit.add('#vibeNote', 'opacity', [[0, 0], [1.10, 0, 'hold'], [1.14, 1]]);
-  Kit.add('#vibeNote', 'scale', [[1.10, 1.32], [1.27, 1, 'slam']]);
-  Kit.add('#vibeNote', 'rotate', [[1.10, 12], [1.27, 6, 'out']]);
-  // whip up into the laptop
-  Kit.add('#s1', 'y', [[3.20, 0], [3.48, -1920, 'swipe']]);
-  Kit.add('#s1', 'blur', [[3.20, 0], [3.36, 14], [3.48, 20]]);
+  Kit.add('#h3path', 'trim', [[2.12, 0], [2.39, 1, 'out']]);
+  Kit.add('#vibeNote', 'opacity', [[0, 0], [2.52, 0, 'hold'], [2.56, 1]]);
+  Kit.add('#vibeNote', 'scale', [[2.52, 1.32], [2.69, 1, 'slam']]);
+  Kit.add('#vibeNote', 'rotate', [[2.52, 12], [2.69, 6, 'out']]);
+  // whip up into the laptop on "So" (2.80–3.63)
+  Kit.add('#s1', 'y', [[3.39, 0], [3.81, -1920, 'swipe']]);
+  Kit.add('#s1', 'blur', [[3.39, 0], [3.62, 14], [3.81, 20]]);
 
-  // ---- S2 the laptop (3.2–19.86)
-  Kit.add('#s2', 'y', [[3.20, 1920], [3.48, 0, 'swipe']]);
-  Kit.add('#win', 'blur', [[3.20, 10], [3.52, 0, 'out']]);
-  // captions
-  Kit.pop('#capA', 3.52).out('#capA', 5.30, 0.1);
-  Kit.pop('#capB', 5.38).out('#capB', 7.26, 0.1);
-  Kit.pop('#capC', 7.34).out('#capC', 9.26, 0.1);
-  Kit.pop('#capD', 9.34).out('#capD', 10.78, 0.1);
-  Kit.pop('#capE', 10.86).out('#capE', 12.46, 0.1);
-  Kit.pop('#capF', 12.54).out('#capF', 14.30, 0.1);
-  Kit.pop('#capG', 14.76).out('#capG', 16.54, 0.12);
-  Kit.pop('#capH', 18.10).out('#capH', 19.56, 0.1);
+  // ---- S2 the laptop (3.39–25.49)
+  Kit.add('#s2', 'y', [[3.39, 1920], [3.81, 0, 'swipe']]);
+  Kit.add('#win', 'blur', [[3.39, 10], [3.89, 0, 'out']]);
+  // captions = phrases lifted from the narration, each on its first word
+  Kit.pop('#capA', 3.85).out('#capA', 4.81, 0.1);          // "So we ran the numbers." 2.80–4.79
+  Kit.pop('#capB', 4.87).out('#capB', 7.11, 0.1);          // "Sale price, one-point-two." 4.84–7.00
+  Kit.pop('#capC', 7.17).out('#capC', 9.34, 0.1);          // "Land price? The vibe." 7.15–9.31
+  Kit.pop('#capD', 9.98).out('#capD', 12.29, 0.1);         // "Twenty-four percent. Sweet as." 9.95–12.27
+  Kit.pop('#capE', 12.38).out('#capE', 14.34, 0.1);        // "Then the builder's real rate." 12.34–14.31
+  Kit.pop('#capF', 14.40).out('#capF', 17.05, 0.1);        // "Margin goes red. Ouch." 14.34–17.00
+  Kit.pop('#capG0', 17.16).out('#capG0', 19.88, 0.1);      // "QSME works backwards:" 17.07–19.84
+  Kit.pop('#capG', 19.92).out('#capG', 23.09, 0.12);       // "to keep twenty percent, the most we can pay for the land is nine-seventeen." 19.89–23.76
+  Kit.pop('#capH', 23.98).out('#capH', 25.22, 0.1);        // "The walk-away number." 23.78–25.03
   // the feature's name gets a green marker underline before the pointer moves
-  Kit.add('#ttlU', 'trim', [[3.95, 0], [4.32, 1, 'out']]);
-  Kit.add('#ttlU', 'opacity', [[0, 1], [5.16, 1], [5.32, 0]]);
-  // "24%" ring, then the red marker + Ouch.
-  Kit.add('#ring24', 'opacity', [[0, 0], [9.40, 0, 'hold'], [9.55, 1], [10.70, 1], [10.80, 0]]);
-  Kit.add('#redRing', 'trim', [[12.60, 0], [13.00, 1, 'out']]);
-  Kit.add('#redRing', 'opacity', [[0, 1], [14.24, 1], [14.38, 0]]);
-  Kit.add('#ouch', 'opacity', [[0, 0], [13.08, 0, 'hold'], [13.12, 1], [14.24, 1], [14.36, 0]]);
-  Kit.add('#ouch', 'scale', [[13.08, 1.4], [13.25, 1, 'slam']]);
+  Kit.add('#ttlU', 'trim', [[4.17, 0], [4.45, 1, 'out']]);
+  Kit.add('#ttlU', 'opacity', [[0, 1], [4.73, 1], [4.84, 0]]);
+  // "24%" ring on "Twenty-four", then the red marker on "red." + Ouch. on the word
+  Kit.add('#ring24', 'opacity', [[0, 0], [9.95, 0, 'hold'], [10.09, 1], [12.24, 1], [12.32, 0]]);
+  Kit.add('#redRing', 'trim', [[15.38, 0], [15.84, 1, 'out']]);
+  Kit.add('#redRing', 'opacity', [[0, 1], [17.00, 1], [17.16, 0]]);
+  Kit.add('#ouch', 'opacity', [[0, 0], [16.14, 0, 'hold'], [16.17, 1], [17.00, 1], [17.16, 0]]);
+  Kit.add('#ouch', 'scale', [[16.14, 1.4], [16.28, 1, 'slam']]);
   Kit.add('#ouch', 'rotate', [[0, -9]]);
-  // green box spotlight
-  Kit.add('#gRing', 'opacity', [[0, 0], [14.86, 0, 'hold'], [15.00, 1], [16.30, 1], [16.52, 0]]);
-  // window steps back for the sticky notes
-  Kit.add('#win', 'scale', [[16.40, 1], [16.80, 0.94, 'inOut']]);
-  Kit.add('#wdim', 'opacity', [[0, 0], [16.40, 0], [16.80, 0.55, 'inOut']]);
+  // green box spotlight on "nine-seventeen" (22.69–23.76)
+  Kit.add('#gRing', 'opacity', [[0, 0], [22.69, 0, 'hold'], [22.81, 1], [23.13, 1], [23.25, 0]]);
+  // window steps back for the sticky notes while "nine-seventeen" is still being said
+  Kit.add('#win', 'scale', [[23.17, 1], [23.48, 0.94, 'inOut']]);
+  Kit.add('#wdim', 'opacity', [[0, 0], [23.17, 0], [23.48, 0.55, 'inOut']]);
   // the old vibe note slides in (after "Most we can pay" has gone) and gets crossed out
-  Kit.add('#vn2', 'x', [[16.64, -520], [16.94, 0, 'out']]);
-  Kit.add('#vn2', 'rotate', [[16.64, -14], [16.94, -6, 'out']]);
-  Kit.add('#strike', 'trim', [[16.98, 0], [17.18, 1, 'out']]);
-  // the walk-away note slaps on, marker writes; "That's the paddle limit." lands on the $917k stroke
-  Kit.add('#wn', 'opacity', [[0, 0], [17.22, 0, 'hold'], [17.26, 1]]);
-  Kit.add('#wn', 'scale', [[17.22, 1.3], [17.37, 1, 'slam']]);
-  Kit.add('#wn', 'rotate', [[17.22, 9], [17.37, 3, 'out']]);
-  Kit.add('#wnL1', 'clipX', [[17.40, 0], [17.76, 1]]);
-  Kit.add('#wnL2', 'clipX', [[17.78, 0], [18.04, 1]]);
-  Kit.add('#wnL3', 'clipX', [[18.06, 0], [18.42, 1]]);
-  Kit.add('#wnU', 'trim', [[18.42, 0], [18.60, 1, 'out']]);
-  // whip out
-  Kit.add('#s2', 'x', [[19.58, 0], [19.86, -1080, 'swipe']]);
+  Kit.add('#vn2', 'x', [[23.25, -520], [23.48, 0, 'out']]);
+  Kit.add('#vn2', 'rotate', [[23.25, -14], [23.48, -6, 'out']]);
+  Kit.add('#strike', 'trim', [[23.52, 0], [23.67, 1, 'out']]);
+  // the walk-away note slaps on; the marker writes WALK-AWAY / NUMBER / $917k on "The walk-away number." (23.78–25.03)
+  Kit.add('#wn', 'opacity', [[0, 0], [23.73, 0, 'hold'], [23.76, 1]]);
+  Kit.add('#wn', 'scale', [[23.73, 1.3], [24.08, 1, 'slam']]);
+  Kit.add('#wn', 'rotate', [[23.73, 9], [24.08, 3, 'out']]);
+  Kit.add('#wnL1', 'clipX', [[24.12, 0], [24.50, 1]]);
+  Kit.add('#wnL2', 'clipX', [[24.54, 0], [24.77, 1]]);
+  Kit.add('#wnL3', 'clipX', [[24.81, 0], [25.08, 1]]);
+  Kit.add('#wnU', 'trim', [[25.08, 0], [25.22, 1, 'out']]);
+  // whip out on "Next" (25.20)
+  Kit.add('#s2', 'x', [[25.24, 0], [25.49, -1080, 'swipe']]);
 
-  // ---- S3 next morning (19.58–29.42)
-  Kit.add('#s3', 'x', [[19.58, 1080], [19.86, 0, 'swipe']]);
-  Kit.pop('#capI', 19.90).out('#capI', 22.30, 0.1);
-  // car → the room
-  Kit.add('#dash', 'opacity', [[22.28, 1], [22.58, 0, 'in']]);
-  Kit.add('#dash', 'y', [[22.28, 0], [22.58, -60, 'in']]);
-  Kit.add('#wscr', 'opacity', [[22.28, 1], [22.62, 0, 'in']]);
-  Kit.add('#dashTop', 'opacity', [[22.28, 1], [22.62, 0, 'in']]);
-  Kit.add('#room', 'opacity', [[0, 0], [22.28, 0], [22.68, 1, 'out']]);
-  Kit.add('#seat', 'opacity', [[22.28, 1], [22.68, 0.0, 'out']]);
-  Kit.add('#s3bg', 'opacity', [[22.28, 1], [22.68, 0.0]]);
-  Kit.pop('#bidL', 22.54, { dy: 20 });
-  Kit.slam('#bidV', 22.62, { from: 1.25 });
-  Kit.pop('#capJ', 22.76).out('#capJ', 23.48, 0.1);
+  // ---- S3 next morning (25.24–35.41)
+  Kit.add('#s3', 'x', [[25.24, 1080], [25.49, 0, 'swipe']]);
+  Kit.pop('#capI', 25.53).out('#capI', 27.45, 0.1);        // "Next morning, note's on the paddle." 25.20–27.45
+  // car → the room, landing as "Going once." starts (27.50)
+  Kit.add('#dash', 'opacity', [[27.31, 1], [27.55, 0, 'in']]);
+  Kit.add('#dash', 'y', [[27.31, 0], [27.55, -60, 'in']]);
+  Kit.add('#wscr', 'opacity', [[27.31, 1], [27.62, 0, 'in']]);
+  Kit.add('#dashTop', 'opacity', [[27.31, 1], [27.62, 0, 'in']]);
+  Kit.add('#room', 'opacity', [[0, 0], [27.31, 0], [27.73, 1, 'out']]);
+  Kit.add('#seat', 'opacity', [[27.31, 1], [27.73, 0.0, 'out']]);
+  Kit.add('#s3bg', 'opacity', [[27.31, 1], [27.73, 0.0]]);
+  Kit.pop('#bidL', 27.46, { dy: 20 });
+  Kit.slam('#bidV', 27.55, { from: 1.25 });
+  Kit.pop('#capJ', 27.69).out('#capJ', 28.92, 0.1);        // "Going once." 27.50–28.77
   // the paddle: settles on the seat, rides into the room, then the FOMO twitch:
-  // a fast blurred lift (~170 px), a 0.3 s freeze, a slow drop
-  Kit.add('#paddle', 'y', [[19.62, -4], [20.18, -44, 'out'], [22.28, -44], [22.72, -20, 'out'],
+  // a fast blurred lift (~170 px) on the tail of "once.", a freeze, a slow drop under "Paddle stays down."
+  Kit.add('#paddle', 'y', [[25.28, -4], [25.78, -44, 'out'], [27.31, -44], [27.80, -20, 'out'],
                            [TW.up0, -20], [TW.up1, -172, 'out'], [TW.down0, -172], [TW.down1, -20, 'inOut']]);
-  Kit.add('#paddle', 'x', [[22.28, 0], [22.72, -20, 'out']]);
-  Kit.add('#paddle', 'scale', [[22.28, 1], [22.72, 1.06, 'out'], [TW.up0, 1.06], [TW.up1, 1.09, 'out'], [TW.down0, 1.09], [TW.down1, 1.06, 'inOut']]);
+  Kit.add('#paddle', 'x', [[27.31, 0], [27.80, -20, 'out']]);
+  Kit.add('#paddle', 'scale', [[27.31, 1], [27.80, 1.06, 'out'], [TW.up0, 1.06], [TW.up1, 1.09, 'out'], [TW.down0, 1.09], [TW.down1, 1.06, 'inOut']]);
   Kit.add('#paddle', 'rotate', [[TW.up0, 0], [TW.up1, -6, 'out'], [TW.down0, -6], [TW.down1, 0, 'inOut']]);
-  Kit.pop('#capP', 23.56).out('#capP', 24.50, 0.1);
-  Kit.pop('#capQ', 24.58).out('#capQ', 26.42, 0.1);
+  Kit.pop('#capP', 29.14).out('#capP', 30.71, 0.1);        // "Paddle stays down." 29.12–30.64
+  Kit.pop('#capQ', 30.75).out('#capQ', 32.85, 0.1);        // "Lost the auction, kept the margin." 30.74–32.83
   // the bid fades back once we've let it go
-  Kit.add('#bidV', 'opacity', [[24.58, 1], [24.95, 0.38, 'out']]);
-  Kit.add('#bidL', 'opacity', [[24.58, 1], [24.95, 0.38, 'out']]);
-  Kit.pop('#capK', 26.50).out('#capK', 29.32, 0.1);
+  Kit.add('#bidV', 'opacity', [[30.75, 1], [31.15, 0.38, 'out']]);
+  Kit.add('#bidL', 'opacity', [[30.75, 1], [31.15, 0.38, 'out']]);
+  Kit.pop('#capK', 32.92).out('#capK', 35.31, 0.1);        // "Bid with a number, not a feeling." 32.86–35.31
 
-  // ---- S4 small print (29.40–32.85)
-  Kit.pop('#spT', 29.44).pop('#sp1', 29.64).pop('#sp2', 29.86).pop('#sp3', 30.06);
+  // ---- S4 small print (35.35–37.85): "Small print: not financial advice." 35.35–37.71
+  Kit.pop('#spT', 35.38).pop('#sp1', 35.74).pop('#sp2', 36.46).pop('#sp3', 36.75);
 
-  // ---- S5 end card (32.82–36.6)
-  Kit.fade('#logo', 32.86, 33.10).add('#logo', 'scale', [[32.86, 0.94], [33.20, 1, 'out']]);
-  Kit.pop('#eHead', 32.94);
-  Kit.pop('#eShot', 33.12, { dy: 40, dur: 0.32 });
-  Kit.add('#eShot img', 'scale', [[33.12, 1.0], [36.6, 1.03]]);
-  Kit.add('#eRing', 'opacity', [[0, 0], [33.85, 0, 'hold'], [34.05, 1]]);
-  Kit.pop('#eSub', 33.52).pop('#ePillW', 33.70, { dy: 24 });
+  // ---- S5 end card (37.72–45.30): "Run your numbers before the room does." 37.74–39.89, "Sign up at…" 39.93–43.76
+  Kit.fade('#logo', 37.74, 38.24).add('#logo', 'scale', [[37.74, 0.94], [38.32, 1, 'out']]);
+  Kit.pop('#eHead', 37.90);
+  Kit.pop('#eShot', 38.40, { dy: 40, dur: 0.32 });
+  Kit.add('#eShot img', 'scale', [[38.40, 1.0], [45.30, 1.03]]);
+  Kit.add('#eRing', 'opacity', [[0, 0], [41.01, 0, 'hold'], [41.26, 1]]);
+  Kit.pop('#eSub', 39.43).pop('#ePillW', 39.93, { dy: 24 });
 
   // honesty tag on every money frame: hook note → laptop → paddle
-  Kit.add('#tagNum', 'opacity', [[0, 0], [1.18, 0, 'hold'], [1.28, 1], [29.30, 1], [29.40, 0]]);
+  Kit.add('#tagNum', 'opacity', [[0, 0], [2.60, 0, 'hold'], [2.70, 1], [35.26, 1], [35.35, 0]]);
 
   // ring around the "Get started" button on the live homepage still (hi-res px → inset px); the shot is cropped above the line under it
   (function () { const k = 3180 / 3840, ox = 790, oy = 1040; const ring = $('#eRing'); const x0 = 832, y0 = 1363, x1 = 1130, y1 = 1459; Object.assign(ring.style, { left: ((x0 - ox) * k - 12) + 'px', top: ((y0 - oy) * k - 12) + 'px', width: ((x1 - x0) * k + 24) + 'px', height: ((y1 - y0) * k + 24) + 'px' }); })();
 
-  Kit.ready({ duration: 36.6, fonts: ['800 60px Manrope', '400 28px Inter', '500 22px Inter', '600 32px Inter', '700 52px Inter', '400 60px "Permanent Marker"', '400 34px Kalam', '500 24px "JetBrains Mono"', '600 30px "JetBrains Mono"'] });
+  Kit.ready({ duration: 45.3, fonts: ['800 60px Manrope', '400 28px Inter', '500 22px Inter', '600 32px Inter', '700 52px Inter', '400 60px "Permanent Marker"', '400 34px Kalam', '500 24px "JetBrains Mono"', '600 30px "JetBrains Mono"'] });
 })();
 </script>
 </body>

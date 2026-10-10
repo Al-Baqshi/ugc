@@ -3,16 +3,17 @@ vid: G03
 title: "Column H (hidden, not deleted)"
 venture: qsme-build
 idea: gl-column-h
-status: "rendered — awaiting approval"
+status: "audio-first remake rendered + voiced (2026-10-06) — awaiting approval"
 publish_date: 2026-10-08
 publish_time: "19:30 NZDT (Thu 07:30 London BST, 10:30 Dubai, 09:30 Riyadh)"
 week: 1
 format: short
 kind: situation-demo
-length_s: 28
+length_s: 43.2
 aspect: "4:5"
 platforms: ["LinkedIn (founder profile + page repost)", "YouTube Shorts (9:16 re-export)"]
 video: outputs/column-h-4x5.mp4
+video_with_vo: outputs/column-h-4x5-with-vo.mp4
 created: 2026-10-02
 ---
 
@@ -23,6 +24,46 @@ created: 2026-10-02
 **The insight:** In a spreadsheet, "hidden" is one right-click away from "unhidden". In QSME, rates and the tender budget never reach the bidder at all, because they're stripped out on the server, not hidden on screen.
 
 **Job:** This is organic week 1, the second funny short of tender week, two days after "Six bids. Six formats." It goes out from the founder's LinkedIn profile, the QSME page reposts it, and it's re-exported 9:16 for YouTube Shorts. It's a different package (joinery, not plasterboard & ceilings), so it doesn't contradict that QS's "drawings attached, please price" email. From week 2 there's a paid cut with the owner's real split-screen recording (see Paid cut).
+
+## Audio-first remake (2026-10-06) — the current master
+
+**Why:** the owner signed off the N01 "Which Dave?" pilot as the standard for every QSME video: a real hook in the first seconds, continuous speech with no gaps, ONE unbroken voice take, and the picture re-timed to the words. This cut applies it to Column H. The joke, the beats and the design are unchanged; only the clock changed.
+
+**Hook (0–3.4 s, spoken):** "Six joinery bids, all one to two percent under our estimate." — on screen from frame 1: "Six joinery bids." / "All 1–2% under our estimate."; the six totals land under "bids, all one to two percent" (0.75–2.05), the estimate row lights on "our estimate" (2.9), "(Weird.)" pops on "Weird." (3.6).
+
+**The script as spoken (one take, 41.68 s, 2.42 words/s, longest silence 1.0 s after "Weird."; v3 tags in brackets, 3 of them):**
+
+```
+Six joinery bids, all one to two percent under our estimate. Weird. [dry] What a well-informed market.
+So we open the sheet we sent them: F, G, I. Where's H? Right-click, unhide, and there's column H, our estimate. Hidden, not deleted.
+They did nothing wrong. We hit send, Friday four-forty, have a good weekend.
+[confident] In a Queue Ess Mee tender, bidders get your lines and quantities, and they price them. Never your rates, never your budget. The security page says it: stripped out server-side, not hidden in the interface. [amused] Nothing to unhide.
+Book a thirty-minute demo at Queue Ess Mee dot build.
+```
+
+| Said (start) | Picture (re-timed to the words) |
+|---|---|
+| 0.00 "Six joinery bids, all one to two percent under our estimate." | Hook 0–5.25: 'Six joinery bids.' / 'All 1–2% under our estimate.' + chip 'Joinery package · bids closed' + tag 'example figures' on frame 1; the six totals land 0.75 / 1.01 / 1.27 / 1.53 / 1.79 / 2.05 under 'bids, all one to two percent'; the estimate row lights green on 'our estimate' (2.9) |
+| 3.60 "Weird. [dry]" | '(Weird.)' pops at 3.6 on the word; the hook holds to 5.13, fades to the sheet 5.25 |
+| 5.48 "[dry] What a well-informed market." | Sheet 'Joinery_BoQ_FOR_PRICING.xlsx' + chip 'The BoQ we sent them'; caption 'What a well-informed market.' pops on 'What' (5.45) and leaves at 9.3 |
+| 7.15 "So we open the sheet we sent them: F, G, I. Where's H? Right-click, unhide," | Camera pushes to the column letters F / G / I on 'open the sheet we sent them' (8.0–8.9); cursor to G on 'G' (10.1), drag to I on 'I' (10.65–11.05); red 'H?' arrow on 'Where's' (11.45) and 'H?' (12.0); right-click on 'Right-click' (12.6, generic menu), hover walks to Unhide, click on 'unhide' (14.05), column H slides open 14.1–14.75 |
+| 14.66 "and there's column H, our estimate. Hidden, not deleted." | Caption 'Column H. Hidden. / Not deleted.' pops on 'column H' (15.25); column H header 'OUR ESTIMATE (DO NOT SEND)' in red, every line priced; the red ring draws around 486,200 on 'our estimate' (16.05–16.5); hard cut to the email at 18.55 |
+| 18.62 "They did nothing wrong." | Hard cut 18.55 to the sent email (chip 'Two weeks earlier · Friday 4:40 pm', Bcc 6 recipients, Joinery_BoQ_FOR_PRICING.xlsx); caption 'They did nothing wrong.' pops on 'They' (18.62) |
+| 20.24 "We hit send, Friday four-forty, have a good weekend." | Caption 'We hit send.' (green) pops on 'We' (20.24); the push-in on 'Have a good weekend.' plays as it is said (22.8–23.1) and holds to the cut at 24.4 |
+| 24.55 "[confident] In a Queue Ess Mee tender," | Hard cut 24.4 to the product beat: QSME logo + chip 'Tendering & estimating software'; 'In a QSME tender:' pops 24.45 over the qsme.build bid-form mock-up (labelled 'Illustrative · qsme.build mock-up') |
+| 26.20 "bidders get your lines" | Caption 'Bidders get your lines.' + green outline on the LINE column, both on 'bidders' (26.2) |
+| 27.22 "and quantities," | Caption 'Your quantities.' + outline on the QTY column on 'quantities' (27.3) |
+| 28.02 "and they price them." | Caption 'They price them.' (green) + outline on the YOUR RATE column on 'they price' (28.1); tag '↑ the bidder's own' under the rate column at 28.6 |
+| 29.01 "Never your rates, never your budget." | Hard cut to a clean background on 'Never' (29.0): 'Never your rates. / Never your budget.' slams in, no mock-up and no rates behind it; holds to the cut at 31.75 |
+| 31.76 "The security page says it: stripped out server-side, not hidden in the interface." | Hard cut 31.75 to the live qsme.build/security page (chip 'qsme.build/security · live page, 2 Oct 2026'), already scrolled to just above 'Bidder visibility rules'; settles 31.75–32.3, spotlight 32.25; the green highlighter covers 'Rates, amounts and the tender budget are stripped out' on 'says it: stripped out' (32.8–33.9) and sweeps 'server-side, not hidden in the interface.' word for word with the voice (33.95–36.3); caption 'Stripped. Not hidden.' pops on 'stripped' (33.5) and leaves 36.9 |
+| 37.08 "[amused] Nothing to unhide." | In the beat before the line the cursor right-clicks just after 'interface.' (36.75) and the generic menu opens below the highlight with 'Unhide columns' greyed out; caption 'Nothing to unhide.' pops on 'Nothing' (37.05); hard cut to the end card 38.15 |
+| 38.19 "Book a thirty-minute demo at Queue Ess Mee dot build." | End card: QSME logo (38.15), 'Private tenders, / by invitation.' (38.2, on screen, not voiced), pill 'Book a 30-minute demo' pops on 'Book' (38.25), 'qsme.build' pops on 'Queue Ess Mee dot build' (40.0) and holds to 43.2 |
+
+**Files:** master `outputs/column-h-4x5.mp4` (43.2 s, silent, 1080×1350, QA passed on safe 60,60,1020,1290; the 28.0 s v2 master is archived as `outputs/archive/column-h-4x5-v1.mp4` with its contact sheet); voiced `outputs/column-h-4x5-with-vo.mp4` (the take at 0.0 s, gain 1.15, no bed; probe: 1 video + 1 audio track, 43.2 s); take + alignment + words + the exact text sent in `outputs/vo-take-cam-v3/` (attempts 1 and 2 ran 47 s and are kept as `take-attempt1/2.*`); contract `vo-script.json` / `vo-script.md`; thumbnail `outputs/column-h-4x5-thumb.png` re-exported from the new hook at 4.3 s (same content: six totals + "(Weird.)"). Captions on screen are unchanged word for word; each is now a phrase lifted from the narration ("Stripped. Not hidden." is lifted from the quoted sentence). "Private tenders, by invitation." stays on screen and is not voiced.
+
+**Pace note:** Cam S on eleven_v3 reads this script at 2.42 words/s (the standard asks ~2.6–2.9). Three attempts were made (47.5 s / 47.1 s / 41.7 s), each shorter; the third is continuous (no gap over 1.0 s) and every word is heard, so it ships. A fourth, shorter script would need to cut beats the owner liked.
+
+**What's below:** the Production status, Beat-by-beat script and the old VO plan describe the 28.0 s silent v2 cut (times no longer apply). They are kept as the design record; the timeline above is the one that ships. The 9:16 Shorts re-layout is still not rendered.
 
 ## Production status (2026-10-02)
 
@@ -156,3 +197,6 @@ Captions are 62px (the stack lines 70px, the claim 88px) at 1080 wide, well abov
 - 2026-10-02: v2 after the creative review (verdict "fix"). Must-fix: the product beat no longer clashes with the mock-up's YOUR RATE column. The stack is now "Bidders get your lines. / Your quantities. / They price them." with a "↑ the bidder's own" tag on the rate column, and "Never your rates. Never your budget." sits on a clean background. Should-fix: the self-own is on screen ("They did nothing wrong. / We hit send." replaces "Hidden isn't the same as gone."); a descriptor chip "Tendering & estimating software" next to the logo and the pivot "In a QSME tender:"; real hard cuts at 10.0, 12.9, 16.15, 18.2 and 24.3 (no double exposures); the security beat opens just above the card (no hero, no backups line), so "Stripped. Not hidden." lands at 20.55; the callback right-clicks just after "interface." with the menu below the highlight and holds 2.2s; VO = captions word for word; the founder caption is generic and presents the video as a skit. Nice: column H says "OUR ESTIMATE (DO NOT SEND)" to match the hook; Bcc on the email plus a push-in on "Have a good weekend."; the mock-up's "Structure package" title row is cropped out; the whole end card is in by 24.72 (qsme.build held 3.3s); a 7 Oct re-check of both live pages is on the open list. Re-rendered to the same path, QA passed, contact sheet and MP4 frames checked. Still 28.0s.
 - 2026-10-02: VO v3 fit pass. Re-timed vo-script.json/.md against the rendered master (outputs/column-h-4x5.mp4, the only cut; the 9:16 re-layout isn't rendered) so every line fits at a natural Kiwi pace. Three captions are too long to say in their windows, so the VO says a shorter version: 01 "All just under our estimate", 04 "Not them. We hit send.", 05 "Your lines. Your quantities. They price them." Burned-in captions unchanged. No API was called.
 - 2026-10-03: owner CTA rule — removed free/no-sign-up, CTA now "Book a 30-minute demo at qsme.build" on every surface. Audit of the whole project (post.md, vo-script.json/.md, motion/column-h.html, the rendered frames incl. the live security-page and bid-form captures, the thumbnail): no pricing or generosity line was on screen, in the VO, captions, hashtags or titles. Tightened anyway: LinkedIn profile + page repost CTA lines now say "Book a 30-minute demo at qsme.build" (were "30-minute demo: qsme.build"), the YouTube description names qsme.build before the link, and VO 09 now says the ask, "Book a thirty-minute demo at Q-S-me dot build." (was "Private tenders, by invitation. Q-S-me dot build.", which stays on screen). Internal production notes reworded to match (capture notes now say "public pages"; music and VO notes reworded). Picture unchanged, so no re-render; thumbnail still valid. `tools/vo_status.py` ok.
+- 2026-10-06: AUDIO-FIRST REMAKE to the owner's N01 standard. Script rewritten as continuous speech with the hook first (101 words, 3 v3 tags); ONE unbroken Cam S eleven_v3 take (outputs/vo-take-cam-v3/take.mp3, 41.68 s, 2.42 w/s, longest gap 1.0 s; attempts 1–2 at 47 s kept); STT: every word heard. motion/column-h.html re-timed to alignment.json (page 43.2 s), re-rendered to outputs/column-h-4x5.mp4 (QA ok, contact sheet + 29 MP4 frames checked at the word moments), v2 archived as outputs/archive/column-h-4x5-v1.mp4; muxed outputs/column-h-4x5-with-vo.mp4 (take at 0.0, gain 1.15, no bed, 1 audio track); thumbnail re-exported at 4.3 s; vo-script.json/.md rewritten to the take. Design and captions unchanged. No deploy, no git.
+- 2026-10-07: Verification pass after the session was interrupted: AVFoundation probe (master 43.200 s silent; column-h-4x5-with-vo.mp4 43.200 s, 1 video + 1 audio; take 41.72 s), words.json re-checked (101 words, 2.42 w/s, longest silence 1.0 s after "Weird."), QA re-run on motion/column-h.html (ok), 14 frames pulled from the voiced MP4 at the word moments (all land). Studio previews (outputs/*.preview.mp4) refreshed from the new masters; they were still the 28 s v1. No deploy, no git.
+- 2026-10-10: Audio-first batch re-check: the 2026-10-06 remake stands (4:5 is the only master; AVFoundation probe: master 43.200 s silent, with-vo 43.200 s 1 video + 1 audio, take 41.72 s; take-text uses 'Queue Ess Mee'; no stray with-vo-*/vo-* slice files). Nothing regenerated, no ElevenLabs calls. Open: 9:16 Shorts re-layout still not built; pace 2.42 w/s is under the 2.6–2.9 target.

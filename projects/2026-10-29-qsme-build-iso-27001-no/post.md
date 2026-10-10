@@ -3,18 +3,20 @@ vid: G12
 title: "Is QSME ISO 27001 certified? No."
 venture: qsme-build
 idea: gl-iso-27001-no
-status: "rendered — awaiting approval"
+status: "voiced (audio-first remake 2026-10-06) — awaiting approval"
 publish_date: 2026-10-29
 publish_time: "20:30 NZDT (Thu 07:30 London GMT, 11:30 Dubai, 10:30 Riyadh)"
 created: 2026-10-02
 calendar_week: 4
 format: short
 kind: kinetic
-length_s: 30
+length_s: 48
 aspect: "4:5"
 platforms: ["LinkedIn (founder profile + page repost)", "YouTube Shorts (9:16 re-export)"]
 video: outputs/iso-27001-no-4x5.mp4
 video_9x16: outputs/iso-27001-no-9x16.mp4
+video_vo: outputs/iso-27001-no-4x5-with-vo.mp4
+video_vo_9x16: outputs/iso-27001-no-9x16-with-vo.mp4
 thumbnail: outputs/iso-27001-no-4x5-thumb.png
 ---
 
@@ -27,6 +29,53 @@ thumbnail: outputs/iso-27001-no-4x5-thumb.png
 **Job:** Organic, week 4 (decision stage). It closes the month by answering the first question procurement and IT/risk reviewers at main contractors and developers ask. It goes out from the founder's LinkedIn profile, the QSME page reposts it, and there's a 9:16 cut for YouTube Shorts. No login footage is needed, so if a Session C owner recording slips, this slot can move earlier as a buffer without posting any mocked-up product screen.
 
 **Needs owner sign-off:** the video deliberately leads with "No." That's the point of it, but some enterprise buyers may read it as a weakness before they read the rest. Please confirm you're happy to lead with it (see Open questions).
+
+## Audio-first remake (2026-10-06) — the current masters
+
+**Why:** the owner signed off the N01 "Which Dave?" pilot as the standard for every QSME video: a real hook in the first seconds, continuous speech with no silence over 1 s, ONE unbroken eleven_v3 take (Cam S) as the clock, and the picture re-timed to the words. This cut applies it to G12 without touching the design: the questionnaire row, the giant "No.", the real page, the language flick, the quote card and the bookend end card are the same; they now land on the narration.
+
+**Hook (0–3.7 s, spoken):** "ISO twenty-seven-oh-oh-one certified? No." — the hook card asks it in type, N ticks green at 3.2 s, and the hard cut to the giant "No." lands on the word (3.41 s).
+
+**The script as spoken (one take, 46.32 s, 105 words, 2.27 words/s, longest silence 0.56 s; one v3 tag):**
+
+```
+ISO twenty-seven-oh-oh-one certified? No.
+
+Row one of every security questionnaire, answered in one word, on our security page. Same answer in all fifteen languages. Nein. Non. Nyet.
+
+Sock two report? Also no. We do not claim one.
+
+Here's what is in place. Your rates and budget, stripped out server-side, not hidden in the interface. And the status: being built now. In progress. Not certified. Said plainly.
+[dry] We do not display badges, logos or ratings we have not earned.
+
+Queue Ess Mee is estimating and tendering software for construction organisations. Need this in writing for procurement? Book a thirty-minute demo at Queue Ess Mee dot build.
+```
+
+**The product payoff, in words:** "Queue Ess Mee is estimating and tendering software for construction organisations." (the truth sheet's own one-liner), spoken over the end card before the CTA. Captions are phrases lifted from the narration; caption 1 is now "Same answer. All 15 languages."
+
+| Said (start) | Picture (re-timed to the words) | Caption on screen |
+|---|---|---|
+| 0.00 "ISO twenty-seven-oh-oh-one certified?" | hook card (the thumbnail frame at 1.0 s is unchanged); N ticks 3.2 | Is QSME / ISO 27001 / certified? |
+| 3.41 "No." | hard cut to the giant "No." on the word; it holds 3.41–8.2 | No. |
+| 4.06 "Row one of every security questionnaire, answered in one word," | the hold; "qsme.build/security" fades in under the word on "answered" (6.76) | qsme.build/security |
+| 7.95 "on our security page." | the word flies onto the page's own "No." (8.20–8.58), crossfade 8.53–8.63, green tint + underline; URL chip 8.5 | (the page) |
+| 9.20 "Same answer in all fifteen languages." | caption pops 9.25 | Same answer. All 15 languages. |
+| 12.11 "Nein." · 13.58 "Non." · 14.59 "Nyet." (heard 12.46 · 13.52 · 14.74–15.18) | timed on the audio onsets (rev 2026-10-10): /de 12.11, /fr 13.50, /ru 14.70–15.22 under "Nyet.", then /ar 15.22, /ja 15.42, /hi 15.62, English 15.82; caption out 15.97 | |
+| 15.68 "Sock two report?" (heard 16.06) | scroll to the SOC 2 row 15.82–16.10, its answer masked | |
+| 17.22 "Also no. We do not claim one." (heard 17.70) | answer wipes open 17.45–17.65, "Also no." slams on "Also" (17.66), the page line underlined 17.68–17.98; out 20.1 | Also no. |
+| 20.30 "Here's what is in place." | whip (real screencast, blurred) 20.0–20.3 in the gap before the line; lands on the heading + TLS card; caption 20.35 | Here's what is in place. |
+| 21.76 "Your rates and budget, stripped out server-side, not hidden in the interface." | hard cut to "Bidder visibility rules" on "Your"; underline on "stripped" (23.48–23.93); caption + underline out 26.2 | |
+| 26.44 "And the status:" | scroll to PROGRAMME 26.45–27.65 | |
+| 27.71 "being built now." | the page sentence underlined 27.71–28.6 | |
+| 28.75 "In progress." · 29.70 "Not certified." · 31.01 "Said plainly." | each phrase lands on its word and tints its own words on the page; out 32.25 | In progress. Not certified. / Said plainly. |
+| 33.09 "We do not display badges, logos or ratings we have not earned." | badges setup scroll 32.3–32.65 + underline; hard cut to the quote card on "We"; "ratings we have" 35.0, "not earned." 35.72, underline 36.0, source 36.4 | the quote |
+| 37.07 "Queue Ess Mee is estimating and tendering software for construction organisations." | end card on the word: logo 37.05, the answered row (N ticked), Evidence empty; the payoff caption pops beside the logo on "estimating" (37.8) and stays to the end | Estimating and tendering software / for construction organisations. |
+| 41.49 "Need this in writing for procurement?" | "Evidence: qsme.build/security" types on "in writing" (41.95–42.5) | Evidence: qsme.build/security |
+| 43.54 "Book a thirty-minute demo at Queue Ess Mee dot build." | pill pops on "Book", pulses on "build." (45.8); page ends 47.8 | Book a 30-minute demo at qsme.build |
+
+**Files:** masters `outputs/iso-27001-no-4x5.mp4` and `outputs/iso-27001-no-9x16.mp4` (47.8 s, silent, one shared timeline, QA passed on 60,60,1020,1290 and 65,300,1015,1250; the 30 s rev 2 masters are archived as `outputs/archive/iso-27001-no-4x5-v1.mp4` and `outputs/archive/iso-27001-no-9x16-v1.mp4`); voiced `outputs/iso-27001-no-4x5-with-vo.mp4` and `outputs/iso-27001-no-9x16-with-vo.mp4` (the take at 0.0 s, gain 1.15, no bed, one audio track); take + alignment + the exact text sent in `outputs/vo-take-cam-v3/` (attempt 1 kept for the record); contract `vo-script.json` / `vo-script.md`. The thumbnail `outputs/iso-27001-no-4x5-thumb.png` (frame at 1.0 s, nothing ticked) is unchanged. Re-render with the commands under Production status (the pages run 47.8 s now).
+
+**What's below:** Production status, Hook layers, the Beat-by-beat script and Music describe the 2026-10-04 silent 30 s rev 2 (per-clip VO plan, SFX-first sound design). They are kept as the design record; the timeline above is the one that ships. The Music section's SFX and bed are optional extras under the voice now, not a condition for posting the Short.
 
 ## Production status (2026-10-04, rev 2 after the review)
 
@@ -164,3 +213,6 @@ The only owner jobs are the sign-off on leading with "No.", the pre-publish re-c
 
 - 2026-10-04: Built from the approved calendar slot (2026-10-29, week 4, idea gl-iso-27001-no). Checked the live page first: the FAQ is no longer an accordion, the "We publish what is in place and nothing more." line has gone, and the ISO answer now continues "…and not before." The arc was adapted to fit: a questionnaire-row type hook, a hard cut to a giant "No.", which flies into the page's own "No."; the same answer on six of the 15 language pages; SOC 2 "Also no."; a real live whip to "What is in place today?" (backups card scroll-past only, a 1.4 s Column H callback on the bidder rule); the programme sentence, with "In progress. Not certified. Said plainly." tinting its own words; the badges line as a full-frame quote; the page's own CTA band; and the end card "Book a 30-minute demo at qsme.build". Rendered 4:5 (LinkedIn) and 9:16 (Shorts) at 30.0 s from one shared timeline; QA passed on both safe boxes; contact sheets and MP4 frames checked. Picky-CD fixes before the final render: a centred, bigger question card; the morph's window fade moved later so the flying "No." doesn't smear over page text; no empty frame at the 21.3 cut; the backups card leaves on a flick scroll with motion blur; "Said plainly." on its own caption line; the badges quote centred; the CTA pill spacing fixed; a soft light pool under the 9:16 safe box. VO script written (11 lines, vo_status ok). No paid API called. Status: rendered — awaiting approval.
 - 2026-10-04 (rev 2, review fixes): Applied the review ("fix, nearly ready"). Must-fixes: (1) "Here's what is in place." now fades out at 12.8, and the scroll to PROGRAMME only starts at 13.0, so the caption never sits over the ISO 27001 status; (2) the "Encrypted daily backups" and "Access follows project roles" cards are never legible: the whip is cut under a 12 px blur before they scroll in, the landing frames only the heading and the TLS card, then a hard cut to the bidder rule. Should-fixes: the match cut now lands the flying "No." on the page word's baseline and cap height (measured on the 4x still) and crossfades into it over 3 frames, with the page at 30% until the word clears the question line (the old scene also ended mid-flight, which caused the smear); the hook is 3.0 s with "ISO twenty-seven-oh-oh-one certified?" (about 12 syllables in 2.5 s); the badges setup is 0.8 s; the page's CTA band and its "Talk to sales" button are gone, and the end card is now a bookend (the same questionnaire row, N ticked, "Evidence: qsme.build/security", the demo pill held 4 s); the Y/N boxes are 118 px with full-contrast labels, and N ticks green at 2.78. Nice-to-haves: the SOC 2 answer masked in the language stills (and on the 9:16, the Arabic still's SOC 2 question, which the window edge would cut in half, is hidden); the VO reads the badges quote exactly; the "Also no." hold is 0.6 s shorter; every camera position ends the window between lines; the 9:16 captions clear the window by about 28 px. Re-rendered both aspects from the shared timeline; QA passed; contact sheets and MP4 frames checked; vo_status ok. Note: `tools/vo_status.py` paces by words (3.2 a second), not syllables, so it can't catch a line like the old hook; check syllables by hand. No paid API, no deploy. Status: rendered — awaiting approval.
+- 2026-10-06 (audio-first remake, to the N01 standard the owner signed off): the script is continuous speech with the question as the hook ("ISO twenty-seven-oh-oh-one certified? No." by 3.7 s), the page's exact sentences for every claim, the product payoff said plainly ("Queue Ess Mee is estimating and tendering software for construction organisations.") and the Global CTA spoken. ONE unbroken Cam S eleven_v3 take (46.32 s, 105 words, longest silence 0.56 s; attempt 1 was 51.6 s with a 1.02 s gap and "No." at 5.6 s, so the hook lost its "Is Queue Ess Mee" prefix and the [short pause] tag; attempt 3 of the final text was slower and discarded), STT clean. The shared timeline (motion/iso-27001-no.js) was re-timed to the alignment: cut on "No.", the flight on "security page", the flick on "Nein. / Non. / Nyet.", "Also no." on "Also", the whip in the gap before "Here's what is in place.", the bidder cut on "Your", the programme captions on their words, the quote card on "We", the end card on the product line, Evidence typing on "in writing", the pill on "Book". Both cuts re-rendered at 47.8 s (QA passed, contact sheets + MP4 frames checked), v1 masters archived, voiced -with-vo.mp4 for both; vo-script rewritten (9 caption lines, take block). Open questions above still stand (lead with "No."; the pre-publish page re-check; "15 languages" wording). No deploy, no git.
+- 2026-10-10 (voice-over rollout, finishing pass): the 2026-10-06 remake's voiced files were missing (the masters had been re-rendered at 47.8 s after the mux), so nothing was re-generated: the existing Cam S take was re-checked (STT hears every word; QSME as "QS Me" / "qsme.build"; longest real silence 1.0 s at -50 dB, after "No.", the laugh beat) and laid whole at 0.0 s, gain 1.15, no bed onto both current masters → `outputs/iso-27001-no-4x5-with-vo.mp4` and `outputs/iso-27001-no-9x16-with-vo.mp4` (AVFoundation probe: 1 audio track, 47.8 s = video). QA re-run in check mode on both pages (ok); 31 frames from the masters spot-checked on the words (cut on "No.", flight on "security page", de/fr/ru on "Nein./Non./Nyet.", "Also no.", bidder cut on "Your", underline on "stripped", programme captions, quote on "We", end card on "Queue Ess Mee", Evidence on "in writing", pill on "Book"). Stale 30 s previews refreshed. Note: the take runs 2.27 words/s, slower than the 2.6–2.9 target, but every gap is at or under 1 s; owner to judge the pace. No deploy, no git.
+- 2026-10-10 (review fixes, no new take, 0 chars): the review measured the audio itself and found the alignment runs early over silences. Must-fix: "Nyet." is heard 14.74–15.18 but the Russian page left at 14.84, so the word played over the Arabic/Japanese pages; the flick is now timed on the audio onsets (de 12.11, fr 13.50, ru 14.70–15.22, ar 15.22, ja 15.42, hi 15.62, English 15.82) and the SOC 2 scroll moved to 15.82–16.10 ("Sock" heard 16.06). Should-fixes: "Also no." slammed 0.48 s before it was said; the answer wipe is now 17.45–17.65 and the slam 17.66 (heard 17.70), underline 17.68–17.98. For sound-off LinkedIn viewers the end card now shows the payoff, lifted from the narration, beside the logo: "Estimating and tendering software for construction organisations." (pops on "estimating", 37.8). Both pages re-rendered to the same paths (QA ok on both safe boxes, contact sheets refreshed), the same take re-muxed whole at 0.0 s, gain 1.15, no bed (AVFoundation: 1 audio track, 47.8 s = video), 26 frames spot-checked on the words (12.5–18.2 flick and slam, 37.6–47.7 end card), previews refreshed; the hook frame and thumbnail are unchanged. Owner call still open (not done, needs paid credits; all 3 attempts used): the pace is 2.27 words/s vs the 2.6–2.9 target, with audio silences of 0.98 s after "certified?", 1.10 s after "No." and 1.44 s after "Said plainly." (-42 dB). A faster re-take would drop [dry] and join "Not certified, and said plainly." (~40–41 s). No deploy, no git.

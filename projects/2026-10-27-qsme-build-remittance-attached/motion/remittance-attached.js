@@ -6,7 +6,31 @@
    Session C recordings replace them; see post.md → "Owner recordings to swap in".
    v2 (2026-10-04, review pass): hook turns by 1.2 s, "0 attachments" target, header clipped under the toolbar,
    push-ins + quote captions on both dialog warnings, payer attaches October's remittance, role colours
-   (payer blue / receiver amber → green), flip on each change of screen, longer split, new end-card crop. */
+   (payer blue / receiver amber → green), flip on each change of screen, longer split, new end-card crop.
+   v3 (2026-10-06, AUDIO-FIRST REMAKE to the owner's N01 standard): first Cam S take; superseded by v4.
+   v4 (2026-10-10, review fix): the v3 take's with-timestamps alignment ran ~0.8 s ahead of the real audio (up to 1.6 s at
+   pauses) and the take had five ~1-1.46 s silences at the blank-line paragraph breaks, read low-energy at 2.39 words/s.
+   New take: outputs/vo-take-cam-v3/take.mp3 (attempt 6), Cam S, eleven_v3, ONE unbroken with-timestamps request, the
+   script sent as one paragraph with [confident]; 39.97 s, 116 words, 2.92 words/s, longest gap 0.90 s. The clock below is
+   the FORCED ALIGNMENT of that take (outputs/vo-take-cam-v3/forced-alignment.json -> words.json), not the with-timestamps
+   alignment (which drifts up to ~0.5 s on this take too). Page = 41.5 s (take + ~1.5 s tail). Word anchors (word start):
+     0.10 "Paid" · 1.22 "remittance" · 1.60 "attached," · 2.66 "it" · 2.80 "wasn't." · 4.04 "Nothing" · 5.40 "Reattached."
+     6.38 "That's the March one." · 7.50 "Which" · 8.46 "Can" (call? ends 9.32) · 10.06 "Both" · 10.32 "correct," · 10.74 "according"
+     11.18 "themselves." (ends 11.68) · 12.30 "So on" · 12.70 "Queue Ess Mee" · 13.86 "subcontractor" · 14.90 "proof" · 15.26 "invoice"
+     16.84 "not in an inbox." · 18.44 "Only" · 18.86 "payer" · 19.34 "mark" · 21.08 "honest" · 22.16 "this goes on your word," (ends 23.30)
+     23.78 "remittance?" · 24.68 "Actually" · 25.04 "attached." · 26.08 "Only" · 26.42 "receiver" · 27.10 "confirm" · 28.04 "once"
+     29.54 "Don't" · 30.38 "promise," · 31.44 "Queue Ess Mee never" · 32.66 "money." (ends 32.90) · 33.34 "It" · 34.08 "record"
+     34.50 "both" · 34.78 "ticked." (ends 35.06) · 35.64 "Book" · 35.96 "thirty-minute" · 37.04 "Queue Ess Mee dot build"
+     38.54 "the one call" · 39.88 end of speech · 39.97 end of the take.
+   A 0–3.85 hook ("(It wasn't.)" slams on "wasn't" 2.80) · B 3.93–9.62 thread (replies pop on their words) · C 9.62–11.85 sheets
+   ("Both correct." 10.06, PAID 10.32 / OUTSTANDING 10.55, "According to themselves." 10.74, lean 11.18) · D 11.85–18.25 subcontractor
+   (note types 12.2, photo 13.1, flies 13.9, Submit on "proof" 14.9, Upload invoice on "invoice" 15.45, "Not in an inbox." 16.84)
+   · E 18.25–26.05 payer (caption on "Only" 18.44, click on "payer" 18.9, reference on "mark" 19.34, push-in on "honest" 21.0,
+   "so this goes on your word." 22.16, file on "remittance?" 23.85, "(Actually attached.)" 24.7, tick 24.95, Mark as paid 25.25,
+   pill 25.52) · F 26.05–33.05 receiver (caption 26.1, click on "confirm" 27.12, push-in on "once" 28.0, "don't confirm on a promise."
+   29.54, pull back on "promise" 30.4, Confirm 31.0, settled 31.35, "QSME never touches the money." 31.44) · G 33.05–35.15 split
+   ("It keeps the one record…" 33.34, SETTLED on "record" 34.08 / "both" 34.5) · H 35.15–41.5 end card (starts after "ticked."
+   ends 35.06; pill on "Book" 35.64, qsme.build 37.04, "(the one call worth jumping on)" 38.54, pulse 39.9). */
 (function () {
 'use strict';
 const R9 = document.body.classList.contains('r9x16');
@@ -21,13 +45,21 @@ const $ = s => document.querySelector(s);
 
 /* ------------------------------------------------------------------ the clock */
 const T = {
-  /* A hook */ scroll0: 0.15, scroll1: 0.70, circ0: 0.75, circ1: 1.10, q: 1.05, wasnt: 1.20, A1: 2.50,
-  /* B thread */ B: 2.58, r: [2.78, 3.63, 4.48, 5.33, 6.18], B1: 7.53,
-  /* C sheets */ C: 7.53, c1: 7.85, callL: 8.13, callR: 8.38, c2: 8.83, lean: 9.63, C1: 10.63,
-  /* P product */ D: 10.63, E: 14.43, F: 19.58, G: 23.58,
-  /* H end */ H: 27.48, END: 30.73
+  /* A hook */ scroll0: 0.15, scroll1: 0.70, circ0: 1.25, circ1: 2.00, q: 2.25, wasnt: 2.80, A1: 3.85,
+  /* B thread */ B: 3.93, r: [4.04, 5.40, 6.38, 7.50, 8.46], B1: 9.62,
+  /* C sheets */ C: 9.62, c1: 10.06, callL: 10.32, callR: 10.55, c2: 10.74, lean: 11.18, C1: 11.85,
+  /* P product */ D: 11.85, E: 18.25, F: 26.05, G: 33.05,
+  /* H end */ H: 35.15, END: 41.50
 };
 const D = T.D, Ep = T.E, F = T.F, G = T.G, H = T.H;
+/* word-anchored beats inside the product scenes (absolute seconds on the take) */
+const DB = { type0: 12.20, type1: 12.80, photo: 13.10, fly0: 13.90, fly1: 14.28, submit: 14.90, t1: 15.02, t1out: 15.40, inv: 15.45, chip: 15.67, t2: 15.70, cap1: 14.90, cap2: 16.84 };
+const EB = { click: 18.90, dlg: 18.98, type0: 19.34, type1: 19.84, push0: 21.00, push1: 21.24, hl0: 22.16, hl1: 22.76, pull0: 23.32, pull1: 23.52,
+  file: 23.85, note: 24.70, tick: 24.95, go: 25.25, close: 25.40, pill: 25.52, cap1: 18.44, cap2: 22.16 };
+const FB = { click: 27.12, dlg: 27.22, push0: 28.00, push1: 28.24, hl0: 29.54, hl1: 30.14, pull0: 30.40, pull1: 30.64, tick: 30.75, go: 31.00, close: 31.15,
+  settle: 31.35, cap1: 26.10, cap2: 29.54, capG1: 31.44 };
+const GB = { cap2: 33.34, callL: 34.08, callR: 34.50 };
+const HB = { pill: 35.64, url: 37.04, note: 38.54, pulse: 39.90 };
 
 /* layout numbers that differ between the cuts (everything else is CSS) */
 const L = R9 ? {
@@ -81,7 +113,7 @@ const CARDS = [
   { who: 'mc', nm: 'Accounts', side: 'Main contractor', tm: 'Wed 09:12', msg: 'Paid on the 14th. Remittance attached.' },
   { who: 'sc', nm: 'Accounts', side: 'Subcontractor', tm: 'Wed 09:47', msg: 'Nothing attached?' },
   { who: 'mc', nm: 'Accounts', side: 'Main contractor', tm: 'Wed 11:03', msg: 'Reattached.', file: 'Remittance_14-03.pdf' },
-  { who: 'sc', nm: 'Accounts', side: 'Subcontractor', tm: 'Wed 13:20', msg: 'That’s March’s.' },
+  { who: 'sc', nm: 'Accounts', side: 'Subcontractor', tm: 'Wed 13:20', msg: 'That’s the March one.' },
   { who: 'mc', nm: 'Accounts', side: 'Main contractor', tm: 'Wed 15:41', msg: 'Which account?' },
   { who: 'sc', nm: 'Accounts', side: 'Subcontractor', tm: 'Thu 08:58', msg: 'Can we jump on a call?' },
 ];
@@ -257,7 +289,7 @@ Kit.out('#hunt-q', T.A1, 0.15);
 Kit.slam('#a-wasnt', T.wasnt, { from: 1.45, dur: 0.16 }).add('#a-wasnt', 'rotate', [[T.wasnt, -10], [T.wasnt + 0.16, -5, 'out']]);
 ['#a-kick', '#a-head', '#a-wasnt'].forEach((s, i) => { Kit.add(s, 'opacity', [[T.A1 + i * 0.03, 1], [T.A1 + 0.2 + i * 0.03, 0, 'in']]); Kit.add(s, 'y', [[T.A1 + i * 0.03, 0], [T.A1 + 0.24 + i * 0.03, -30, 'in']]); });
 /* the hook cursor hunts round the empty attachment strip (mail-window coords) */
-const MCUR = [[0.1, 760, 760], [0.62, 300, 512], [0.74, 430, 516], [0.86, 210, 510], [0.98, 380, 518], [1.1, 320, 512]];
+const MCUR = [[0.1, 760, 760], [0.7, 300, 512], [1.0, 430, 516], [1.3, 210, 510], [1.6, 380, 518], [1.9, 320, 512]];
 Kit.add('#mcur', 'opacity', [[0, 1], [T.A1, 1], [T.A1 + 0.12, 0]]);
 /* mail → thread */
 Kit.add('#mail', 'opacity', [[T.A1 + 0.02, 1], [T.B + 0.16, 0]]);
@@ -286,7 +318,7 @@ Kit.scene('#sP', T.D, G + 0.4);
 Kit.add('#sP', 'x', [[T.D, 1080], [T.D + 0.32, 0, 'swipe'], [G, 0], [G + 0.32, -1080, 'swipe']]);
 Kit.scene('#sS', G, T.H + 0.4);
 Kit.add('#sS', 'x', [[G, 1080], [G + 0.32, 0, 'swipe'], [T.H, 0], [T.H + 0.32, -1080, 'swipe']]);
-Kit.slam('#callL2', G + 0.45, { from: 1.35 }).slam('#callR2', G + 0.6, { from: 1.35 });
+Kit.slam('#callL2', GB.callL, { from: 1.35 }).slam('#callR2', GB.callR, { from: 1.35 });
 /* overlays that stay put across the swipe to the split */
 Kit.add('#lab', 'opacity', [[0, 0], [D, 0], [D + 0.2, 1], [T.H, 1], [T.H + 0.15, 0]]);
 /* who is looking: the role chip swaps at the edge-on moment of each flip */
@@ -294,75 +326,75 @@ Kit.add('#role-sc', 'opacity', [[0, 1], [Ep - 0.06, 1], [Ep + 0.02, 0], [F - 0.0
 Kit.add('#role-mc', 'opacity', [[0, 0], [Ep - 0.02, 0], [Ep + 0.08, 1], [F - 0.06, 1], [F + 0.02, 0]]);
 ['#role-sc', '#role-mc'].forEach(s => Kit.add(s, 'scale', [[Ep - 0.06, 1], [Ep + 0.02, 0.88], [Ep + 0.22, 1, 'outBack'], [F - 0.06, 1], [F + 0.02, 0.88], [F + 0.22, 1, 'outBack']]));
 /* captions */
-Kit.pop('#capD1', D + 0.2).out('#capD1', Ep - 0.12);
-Kit.pop('#capD2', D + 2.5).out('#capD2', Ep - 0.12);
-Kit.pop('#capE', Ep + 0.12).out('#capE', F - 0.1);
-Kit.pop('#capE2', Ep + 1.86, { dy: 16 }).out('#capE2', F - 0.1);
-Kit.pop('#capF', F + 0.12).out('#capF', F + 2.98);
-Kit.pop('#capF2', F + 1.12, { dy: 16 }).out('#capF2', F + 2.98);
-Kit.pop('#capG1', F + 3.1).out('#capG1', T.H, 0.15);
-Kit.pop('#capG2', G + 0.75).out('#capG2', T.H, 0.15);
+Kit.pop('#capD1', DB.cap1).out('#capD1', Ep - 0.12);
+Kit.pop('#capD2', DB.cap2).out('#capD2', Ep - 0.12);
+Kit.pop('#capE', EB.cap1).out('#capE', F - 0.1);
+Kit.pop('#capE2', EB.cap2, { dy: 16 }).out('#capE2', F - 0.1);
+Kit.pop('#capF', FB.cap1).out('#capF', FB.close);
+Kit.pop('#capF2', FB.cap2, { dy: 16 }).out('#capF2', FB.close);
+Kit.pop('#capG1', FB.capG1).out('#capG1', T.H, 0.15);
+Kit.pop('#capG2', GB.cap2).out('#capG2', T.H, 0.15);
 /* views: hard cuts inside one account; when the account changes the whole window flips (see Kit.each) */
-const VIEWS = [['#v1', D, D + 1.62], ['#v2', D + 1.62, Ep], ['#v3', Ep, Ep + 4.1], ['#v4', Ep + 4.1, F], ['#v5', F, F + 2.9], ['#v6', F + 2.9, G + 0.5]];
+const VIEWS = [['#v1', D, DB.submit + 0.1], ['#v2', DB.submit + 0.1, Ep], ['#v3', Ep, EB.close], ['#v4', EB.close, F], ['#v5', F, FB.close], ['#v6', FB.close, G + 0.5]];
 VIEWS.forEach(([s, a, b]) => Kit.show(s, a, b));
 /* D · the subcontractor submits proof + invoice */
-Kit.type('#tatxt', D + 0.35, D + 0.95);
-Kit.add('#taph', 'opacity', [[D + 0.34, 1], [D + 0.35, 0]]);
-Kit.add('#fin0', 'opacity', [[D + 1.2, 1], [D + 1.21, 0]]);
-Kit.add('#fin1', 'opacity', [[D + 1.2, 0], [D + 1.21, 1]]);
-Kit.clip('#photoimg', { dir: 'clips/frame', t0: D + 0.1, fps: 30, frames: 53, t1: Ep, ext: '.jpg' });
-Kit.add('#photo', 'opacity', [[D + 0.1, 0], [D + 0.26, 1, 'out'], [D + 1.12, 1], [D + 1.24, 0]]);
-Kit.add('#photo', 'scale', [[D + 0.1, 0.92], [D + 0.4, 1, 'out']]);
-Kit.pop('#t1', D + 1.66, { dy: 24 }).out('#t1', D + 2.38);
-Kit.pop('#t2', D + 2.45, { dy: 24 }).out('#t2', Ep - 0.15, 0.12);
-Kit.pop('#invchip', D + 2.42, { dy: 10 });
+Kit.type('#tatxt', DB.type0, DB.type1);
+Kit.add('#taph', 'opacity', [[DB.type0 - 0.01, 1], [DB.type0, 0]]);
+Kit.add('#fin0', 'opacity', [[DB.fly1, 1], [DB.fly1 + 0.01, 0]]);
+Kit.add('#fin1', 'opacity', [[DB.fly1, 0], [DB.fly1 + 0.01, 1]]);
+Kit.clip('#photoimg', { dir: 'clips/frame', t0: DB.photo, fps: 30, frames: 53, t1: Ep, ext: '.jpg' });
+Kit.add('#photo', 'opacity', [[DB.photo, 0], [DB.photo + 0.16, 1, 'out'], [DB.fly1 - 0.08, 1], [DB.fly1 + 0.04, 0]]);
+Kit.add('#photo', 'scale', [[DB.photo, 0.92], [DB.photo + 0.3, 1, 'out']]);
+Kit.pop('#t1', DB.t1, { dy: 24 }).out('#t1', DB.t1out);
+Kit.pop('#t2', DB.t2, { dy: 24 }).out('#t2', Ep - 0.15, 0.12);
+Kit.pop('#invchip', DB.chip, { dy: 10 });
 /* E · the payer marks it paid outside QSME: reference → the warning (push-in) → attaches October's remittance → tick → Mark as paid */
-Kit.add('#scrim1', 'opacity', [[0, 0], [Ep + 0.88, 0], [Ep + 1.04, 1], [Ep + 3.96, 1], [Ep + 4.08, 0]]);
-Kit.add('#dlg1', 'opacity', [[0, 0], [Ep + 0.88, 0], [Ep + 1.04, 1, 'out'], [Ep + 3.96, 1], [Ep + 4.04, 0]]);
-Kit.add('#dlg1', 'scale', [[Ep + 0.88, 0.95], [Ep + 1.12, 1, 'out'], [Ep + 3.96, 1], [Ep + 4.04, 0.96]]);
-Kit.add('#inp1ph', 'opacity', [[Ep + 1.14, 1], [Ep + 1.15, 0]]);
-Kit.add('#inp1', 'borderColor', [[Ep + 1.08, '#CBD5E1'], [Ep + 1.1, '#16A34A', 'hold'], [Ep + 1.72, '#16A34A'], [Ep + 1.74, '#CBD5E1', 'hold']]);
-Kit.type('#inp1txt', Ep + 1.15, Ep + 1.62);
-Kit.add('#hl1', 'var:--hl-p', [[Ep + 1.86, 0], [Ep + 2.46, 1, 'inOut']]);
-Kit.add('#fin2a', 'opacity', [[Ep + 3.1, 1], [Ep + 3.11, 0]]);
-Kit.add('#fin2b', 'opacity', [[Ep + 3.1, 0], [Ep + 3.11, 1]]);
-Kit.add('#attnote', 'opacity', [[Ep + 3.14, 0], [Ep + 3.18, 1]]).add('#attnote', 'scale', [[Ep + 3.14, 1.4], [Ep + 3.3, 1, 'slam']]).add('#attnote', 'rotate', [[Ep + 3.14, -8], [Ep + 3.3, -3, 'out']]);
-Kit.add('#cbx1on', 'opacity', [[Ep + 3.45, 0], [Ep + 3.46, 1]]).add('#cbx1on', 'scale', [[Ep + 3.45, 0.5], [Ep + 3.6, 1, 'outBack']]);
-Kit.add('#go1dis', 'opacity', [[Ep + 3.47, 1], [Ep + 3.55, 0]]);
-Kit.add('#pillwaitP', 'opacity', [[Ep + 4.16, 0], [Ep + 4.2, 1]]).add('#pillwaitP', 'scale', [[Ep + 4.16, 0.8], [Ep + 4.3, 1.2, 'out'], [Ep + 4.52, 1, 'inOut']]);
-Kit.add('#ringwaitP', 'opacity', [[Ep + 4.2, 0], [Ep + 4.24, 0.9], [Ep + 4.85, 0, 'out']]).add('#ringwaitP', 'scaleX', [[Ep + 4.2, 1], [Ep + 4.85, 1.22, 'out']]).add('#ringwaitP', 'scaleY', [[Ep + 4.2, 1], [Ep + 4.85, 1.9, 'out']]);
-Kit.pop('#t3', Ep + 4.2, { dy: 24 }).out('#t3', F - 0.15, 0.12);
+Kit.add('#scrim1', 'opacity', [[0, 0], [EB.dlg, 0], [EB.dlg + 0.16, 1], [EB.close, 1], [EB.close + 0.12, 0]]);
+Kit.add('#dlg1', 'opacity', [[0, 0], [EB.dlg, 0], [EB.dlg + 0.16, 1, 'out'], [EB.close, 1], [EB.close + 0.08, 0]]);
+Kit.add('#dlg1', 'scale', [[EB.dlg, 0.95], [EB.dlg + 0.24, 1, 'out'], [EB.close, 1], [EB.close + 0.08, 0.96]]);
+Kit.add('#inp1ph', 'opacity', [[EB.type0 - 0.01, 1], [EB.type0, 0]]);
+Kit.add('#inp1', 'borderColor', [[EB.type0 - 0.07, '#CBD5E1'], [EB.type0 - 0.05, '#16A34A', 'hold'], [EB.type1 + 0.1, '#16A34A'], [EB.type1 + 0.12, '#CBD5E1', 'hold']]);
+Kit.type('#inp1txt', EB.type0, EB.type1);
+Kit.add('#hl1', 'var:--hl-p', [[EB.hl0, 0], [EB.hl1, 1, 'inOut']]);
+Kit.add('#fin2a', 'opacity', [[EB.file, 1], [EB.file + 0.01, 0]]);
+Kit.add('#fin2b', 'opacity', [[EB.file, 0], [EB.file + 0.01, 1]]);
+Kit.add('#attnote', 'opacity', [[EB.note, 0], [EB.note + 0.04, 1]]).add('#attnote', 'scale', [[EB.note, 1.4], [EB.note + 0.16, 1, 'slam']]).add('#attnote', 'rotate', [[EB.note, -8], [EB.note + 0.16, -3, 'out']]);
+Kit.add('#cbx1on', 'opacity', [[EB.tick, 0], [EB.tick + 0.01, 1]]).add('#cbx1on', 'scale', [[EB.tick, 0.5], [EB.tick + 0.15, 1, 'outBack']]);
+Kit.add('#go1dis', 'opacity', [[EB.tick + 0.02, 1], [EB.tick + 0.1, 0]]);
+Kit.add('#pillwaitP', 'opacity', [[EB.pill, 0], [EB.pill + 0.04, 1]]).add('#pillwaitP', 'scale', [[EB.pill, 0.8], [EB.pill + 0.14, 1.2, 'out'], [EB.pill + 0.36, 1, 'inOut']]);
+Kit.add('#ringwaitP', 'opacity', [[EB.pill + 0.04, 0], [EB.pill + 0.08, 0.9], [EB.pill + 0.69, 0, 'out']]).add('#ringwaitP', 'scaleX', [[EB.pill + 0.04, 1], [EB.pill + 0.69, 1.22, 'out']]).add('#ringwaitP', 'scaleY', [[EB.pill + 0.04, 1], [EB.pill + 0.69, 1.9, 'out']]);
+Kit.pop('#t3', EB.pill + 0.04, { dy: 24 }).out('#t3', F - 0.15, 0.12);
 /* F · the receiver confirms */
-Kit.add('#scrim2', 'opacity', [[0, 0], [F + 0.82, 0], [F + 0.98, 1], [F + 2.76, 1], [F + 2.88, 0]]);
-Kit.add('#dlg2', 'opacity', [[0, 0], [F + 0.82, 0], [F + 0.98, 1, 'out'], [F + 2.76, 1], [F + 2.84, 0]]);
-Kit.add('#dlg2', 'scale', [[F + 0.82, 0.95], [F + 1.06, 1, 'out'], [F + 2.76, 1], [F + 2.84, 0.96]]);
-Kit.add('#hl2', 'var:--hl-p', [[F + 1.12, 0], [F + 1.72, 1, 'inOut']]);
-Kit.add('#cbx2on', 'opacity', [[F + 2.34, 0], [F + 2.35, 1]]).add('#cbx2on', 'scale', [[F + 2.34, 0.5], [F + 2.49, 1, 'outBack']]);
-Kit.add('#go2dis', 'opacity', [[F + 2.36, 1], [F + 2.44, 0]]);
-Kit.add('#n2done', 'scale', [[F + 2.9, 0.6], [F + 3.12, 1, 'outBack']]);
-Kit.pop('#setl', F + 2.98, { dy: 18 });
-Kit.pop('#t4', F + 3.0, { dy: 24 }).out('#t4', G, 0.12);
+Kit.add('#scrim2', 'opacity', [[0, 0], [FB.dlg, 0], [FB.dlg + 0.16, 1], [FB.close, 1], [FB.close + 0.12, 0]]);
+Kit.add('#dlg2', 'opacity', [[0, 0], [FB.dlg, 0], [FB.dlg + 0.16, 1, 'out'], [FB.close, 1], [FB.close + 0.08, 0]]);
+Kit.add('#dlg2', 'scale', [[FB.dlg, 0.95], [FB.dlg + 0.24, 1, 'out'], [FB.close, 1], [FB.close + 0.08, 0.96]]);
+Kit.add('#hl2', 'var:--hl-p', [[FB.hl0, 0], [FB.hl1, 1, 'inOut']]);
+Kit.add('#cbx2on', 'opacity', [[FB.tick, 0], [FB.tick + 0.01, 1]]).add('#cbx2on', 'scale', [[FB.tick, 0.5], [FB.tick + 0.15, 1, 'outBack']]);
+Kit.add('#go2dis', 'opacity', [[FB.tick + 0.02, 1], [FB.tick + 0.1, 0]]);
+Kit.add('#n2done', 'scale', [[FB.settle, 0.6], [FB.settle + 0.22, 1, 'outBack']]);
+Kit.pop('#setl', FB.settle + 0.08, { dy: 18 });
+Kit.pop('#t4', FB.settle + 0.1, { dy: 24 }).out('#t4', G, 0.12);
 /* the photo flying into the file input + the app cursor + click ripples: positions measured from the layout */
-const CLICKS = [['#rp1', D + 1.5, 'btnSubmit'], ['#rp2', D + 2.2, 'lnkInv'], ['#rp3', Ep + 0.8, 'btnPaid'], ['#rp9', Ep + 3.02, 'fin2'], ['#rp4', Ep + 3.45, 'cbx1'], ['#rp5', Ep + 3.84, 'go1'],
-  ['#rp6', F + 0.72, 'btnConfirm'], ['#rp7', F + 2.34, 'cbx2'], ['#rp8', F + 2.64, 'go2']];
+const CLICKS = [['#rp1', DB.submit, 'btnSubmit'], ['#rp2', DB.inv, 'lnkInv'], ['#rp3', EB.click, 'btnPaid'], ['#rp9', EB.file - 0.08, 'fin2'], ['#rp4', EB.tick, 'cbx1'], ['#rp5', EB.go, 'go1'],
+  ['#rp6', FB.click, 'btnConfirm'], ['#rp7', FB.tick, 'cbx2'], ['#rp8', FB.go, 'go2']];
 CLICKS.forEach(([s, t]) => { Kit.add(s, 'opacity', [[0, 0], [t, 0], [t + 0.02, 1], [t + 0.4, 0, 'out']]); Kit.add(s, 'scale', [[t, 0.3], [t + 0.4, 1.3, 'out']]); });
 const ACUR = [ // [time, target id or [x, y] in #cam coords]
-  [D + 0.95, [720, 760]], [D + 1.45, 'btnSubmit'], [D + 1.75, 'btnSubmit'], [D + 2.15, 'lnkInv'],
-  [Ep + 0.3, 'lnkInv'], [Ep + 0.7, 'btnPaid'], [Ep + 0.85, 'btnPaid'], [Ep + 1.1, 'inp1R'], [Ep + 2.7, 'inp1R'], [Ep + 2.98, 'fin2'], [Ep + 3.1, 'fin2'], [Ep + 3.4, 'cbx1'], [Ep + 3.52, 'cbx1'], [Ep + 3.78, 'go1'], [Ep + 4.05, 'go1'], [Ep + 4.5, [960, 690]],
-  [F + 0.25, [960, 690]], [F + 0.65, 'btnConfirm'], [F + 0.8, 'btnConfirm'], [F + 1.1, 'cbx2R'], [F + 2.1, 'cbx2R'], [F + 2.3, 'cbx2'], [F + 2.4, 'cbx2'], [F + 2.58, 'go2'], [F + 2.9, 'go2'], [F + 3.5, [900, 830]]
+  [DB.fly1 + 0.1, [720, 760]], [DB.submit - 0.3, 'btnSubmit'], [DB.submit + 0.2, 'btnSubmit'], [DB.inv - 0.05, 'lnkInv'],
+  [Ep + 0.3, 'lnkInv'], [EB.click - 0.1, 'btnPaid'], [EB.click + 0.05, 'btnPaid'], [EB.type0 - 0.05, 'inp1R'], [EB.pull1 + 0.1, 'inp1R'], [EB.file - 0.2, 'fin2'], [EB.file, 'fin2'], [EB.tick - 0.3, 'cbx1'], [EB.tick + 0.07, 'cbx1'], [EB.go - 0.2, 'go1'], [EB.go + 0.1, 'go1'], [EB.pill + 0.3, [960, 690]],
+  [F + 0.25, [960, 690]], [FB.click - 0.1, 'btnConfirm'], [FB.click + 0.05, 'btnConfirm'], [FB.dlg + 0.3, 'cbx2R'], [FB.pull0, 'cbx2R'], [FB.tick - 0.2, 'cbx2'], [FB.tick + 0.07, 'cbx2'], [FB.go - 0.15, 'go2'], [FB.go + 0.15, 'go2'], [FB.settle + 0.5, [900, 830]]
 ];
-Kit.add('#acur', 'opacity', [[0, 0], [D + 0.95, 0], [D + 1.05, 1], [Ep + 4.3, 1], [Ep + 4.6, 0], [F + 0.15, 0], [F + 0.3, 1], [F + 3.2, 1], [F + 3.45, 0]]);
+Kit.add('#acur', 'opacity', [[0, 0], [DB.fly1 + 0.1, 0], [DB.fly1 + 0.2, 1], [EB.pill + 0.1, 1], [EB.pill + 0.4, 0], [F + 0.15, 0], [F + 0.3, 1], [FB.settle + 0.2, 1], [FB.settle + 0.45, 0]]);
 
 /* ================================================================== H · end card */
 Kit.scene('#sH', T.H, T.END + 0.1);
 Kit.add('#sH', 'x', [[T.H, 1080], [T.H + 0.32, 0, 'swipe']]);
 Kit.pop('#logoE', H + 0.25, { dy: 0 }).add('#logoE', 'scale', [[H + 0.25, 0.92], [H + 0.55, 1, 'out']]);
 Kit.add('#webcard', 'opacity', [[H + 0.25, 0], [H + 0.45, 1, 'out']]).add('#webcard', 'y', [[H + 0.25, 40], [H + 0.6, 0, 'out']]);
-Kit.add('#webhl', 'clipX', [[H + 0.85, 0], [H + 1.25, 1, 'inOut']]);
-Kit.slam('#endpill', H + 0.5, { from: 1.2, dur: 0.18 });
-Kit.pop('#endurl', H + 0.66);
-Kit.pop('#endnote', H + 1.3, { dy: 0 }).add('#endnote', 'scale', [[H + 1.3, 1.35], [H + 1.46, 1, 'slam']]).add('#endnote', 'rotate', [[H + 1.3, -6], [H + 1.46, -2.5, 'out']]);
-Kit.add('#endpill', 'scale', [[H + 2.0, 1], [H + 2.15, 1.05, 'out'], [H + 2.35, 1, 'inOut']]);
+Kit.add('#webhl', 'clipX', [[H + 1.0, 0], [H + 1.5, 1, 'inOut']]);
+Kit.slam('#endpill', HB.pill, { from: 1.2, dur: 0.18 });
+Kit.pop('#endurl', HB.url);
+Kit.pop('#endnote', HB.note, { dy: 0 }).add('#endnote', 'scale', [[HB.note, 1.35], [HB.note + 0.16, 1, 'slam']]).add('#endnote', 'rotate', [[HB.note, -6], [HB.note + 0.16, -2.5, 'out']]);
+Kit.add('#endpill', 'scale', [[HB.pulse, 1], [HB.pulse + 0.15, 1.05, 'out'], [HB.pulse + 0.35, 1, 'inOut']]);
 
 /* ------------------------------------------------------------------ measured layout + per-frame hooks */
 let M = null;
@@ -424,7 +456,7 @@ Kit.each(t => {
   const sc = L.appS !== 1 ? `scale(${L.appS})` : '';
   appEl.style.transform = Math.abs(a) > 0.001 ? `${sc} perspective(2600px) rotateY(${a.toFixed(3)}deg)` : (sc || 'none');
   /* camera push inside the window (the URL bar stays put) */
-  const p1 = ez(t, Ep + 1.7, Ep + 1.94) - ez(t, Ep + 2.62, Ep + 2.86), p2 = ez(t, F + 1.02, F + 1.26) - ez(t, F + 1.92, F + 2.16);
+  const p1 = ez(t, EB.push0, EB.push1) - ez(t, EB.pull0, EB.pull1), p2 = ez(t, FB.push0, FB.push1) - ez(t, FB.pull0, FB.pull1);
   const p = Math.max(p1, p2), Z = p1 >= p2 ? M.z1 : M.z2;
   /* while pushed in, the zoomed layer's text runs past the window and is clipped by #app (overflow:hidden). Kit's QA can't see
      clipping, so the layer is skipped by QA only during the push; those frames are checked by eye (post.md → QA). */
@@ -438,7 +470,7 @@ Kit.each(t => {
   let press = 1; CLICKS.forEach(([, tc]) => { if (t >= tc - 0.06 && t < tc + 0.12) press = 0.86; });
   $('#acur').style.transform = `translate(${ac[0] - 6}px,${ac[1] - 4}px) scale(${press})`;
   /* the proof photo: big card → flies into the file input */
-  const ph = $('#photo'), f = ez(t, D + 0.82, D + 1.2, 'swipe');
+  const ph = $('#photo'), f = ez(t, DB.fly0, DB.fly1, 'swipe');
   if (f > 0) {
     const s1 = (M.fin.h - 6 * L.appS) / 506, x1 = M.fin.x, y1 = M.fin.y + 3 * L.appS, Y0 = L.photoY;
     const s = 1 + (s1 - 1) * f, x = 90 + (x1 - 90) * f, y = Y0 + (y1 - Y0) * f;

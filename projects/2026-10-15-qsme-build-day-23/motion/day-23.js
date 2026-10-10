@@ -1,7 +1,29 @@
 /* Day 23 of one signature: QSME Global. One timeline, two cuts.
    day-23.html       → body.build.r4x5  (LinkedIn 4:5, safe box 60,60,1020,1290)
    day-23-9x16.html  → body.build.r9x16 (YouTube Shorts 9:16, safe box 65,300,1015,1250)
-   Timings are identical in both, so vo-script.json fits both MP4s. */
+   Timings are identical in both, so vo-script.json fits both MP4s.
+   2026-10-06 AUDIO-FIRST REMAKE (owner-approved N01 standard: a spoken hook in the first 2 s, continuous speech, no gap over
+   1 s, ONE unbroken eleven_v3 take, picture follows audio): the Cam S take outputs/vo-take-cam-v3/take.mp3 (39.9 s, one
+   with-timestamps request laid at 0.0) is the clock. Every beat below sits on its word in alignment.json; the page runs
+   41.4 s (take + ~1.5 s tail). Design unchanged; captions are phrases lifted from the narration.
+     0.00–3.0   hook "Day twenty-three of chasing one signature." over the giant DAY 23 (pill pulses on "signature."); the counter
+                rewinds 23 → 01 under "Sent it day one" (2.16–3.18) and shrinks into the header
+     2.85–11.8  the thread: Day 1 attachment on "one." (3.18), then each reply pops as the narrator reads it: "Will sign tonight"
+                4.56 → DAY 4, "Went to junk" 5.82 → DAY 9, "Out of toner" 7.43 → DAY 15, "Signed and scanned" 8.47 → DAY 22,
+                "Day twenty-three," 10.35 → the Scan_0001.pdf attachment; it opens on "the scan" (11.42)
+     11.4–17.75 the scan: the viewer lands under "lands sideways" (11.75), "11 pages" pulses on "Eleven pages" (13.05), caption
+                "Scanner skipped page 7." (14.43), red ring on the 6 | 8 seam under "skipped page" (14.95), "7?" on "seven"
+                (15.5), caption "Retention." (16.43)
+     17.65–20.6 the 23-day grid fills under "Crew's been" (17.85), caption "On site since Day 2." on "site" (18.6)
+     20.55–25.65 S5a: QSME logo on "Or." (20.7); caption "Your own subcontract PDF." on "your own" (21.95); the cursor ticks
+                "Sign it as it is" on "as it is" (24.37) with "Sent as it is." (24.37); "Send for signing" clicked on "is." (24.95);
+                the list row "Out for signing" (25.24)
+     25.55–28.15 S5b: the phone lands on "link" (25.73); "One link." (25.62) / "On their phone." (26.23) / "Nothing to install."
+                (26.85); tick 25.95, name types 26.15–26.65, signature 26.72–27.28, Sign 27.4, "Signed." 27.55
+     28.05–32.35 S5c: the row flips to "Everyone has signed" on "signed" (28.61); certificate slides in on "copy has" (29.1);
+                "Every page you sent." (29.49); the strip lays out 29.8–30.1; green ring + "Page 7 included." on "Page seven" (30.98)
+     32.3–36.0  close: "Still can't fix junk folders." (32.45) / "No printer needed, though." (34.59)
+     35.9–41.4  end card: logo 35.93, "Book a 30-minute demo" pops on "Book" (36.08), qsme.build on screen 36.0–41.4 (5.4 s) */
 (function () {
 const R9 = document.body.classList.contains('r9x16');
 /* layout numbers the script needs (everything else is CSS in day-23.css) */
@@ -56,8 +78,8 @@ document.getElementById('root').innerHTML = `
     </div>
     <svg id="ring7" class="abs" width="200" height="110" viewBox="0 0 200 110"><path id="ring7p" d="M150 14 C 92 2, 14 18, 12 56 C 10 96, 130 104, 178 82 C 204 68, 196 30, 150 16 C 136 12, 118 10, 100 12" fill="none" stroke="#E0302A" stroke-width="7" stroke-linecap="round"/></svg>
     <div id="p7q" class="abs">7?</div>
-    <div id="c-p7a" class="cap m">The scanner skipped one page.</div>
-    <div id="c-p7" class="cap">Page 7: <span class="r">retention.</span></div>
+    <div id="c-p7a" class="cap m">Scanner skipped page 7.</div>
+    <div id="c-p7" class="cap"><span class="r">Retention.</span></div>
   </div>
 
   <!-- S4 ON SITE SINCE DAY 2 -->
@@ -65,7 +87,7 @@ document.getElementById('root').innerHTML = `
     <div class="rowlbl" id="lblA">ON SITE · CEILINGS CREW</div>
     <div class="rowlbl" id="lblB">SUBCONTRACT · SIGNED</div>
     <div id="cellsA"></div><div id="cellsB"></div><div id="daynums"></div>
-    <div id="c-site" class="cap">They’ve been on site<br>since <span style="color:var(--amber-ink)">Day 2.</span></div>
+    <div id="c-site" class="cap">On site since<br><span style="color:var(--amber-ink)">Day 2.</span></div>
   </div>
 
   <!-- S5a PRODUCT: our own subcontract PDF → Sign it as it is → Send for signing (recreated) -->
@@ -184,18 +206,18 @@ const $ = s => document.querySelector(s);
 const rootRect = $('#root').getBoundingClientRect();
 const rect = s => { const r = $(s).getBoundingClientRect(); return { l: r.left - rootRect.left, t: r.top - rootRect.top, r: r.right - rootRect.left, b: r.bottom - rootRect.top, w: r.width, h: r.height }; };
 
-/* ===================== timeline map (seconds) ===================== */
-const T = { s1: [0, 2.5], hdr: [2.2, 14.36], s2: [2.3, 8.45], s3: [7.98, 11.46], s4: [11.35, 14.36], s5a: [14.25, 16.81], s5b: [16.7, 19.51], s5c: [19.4, 22.31], s6: [22.2, 25.15], end: [25.05, 28.71] };
-const DURATION = 28.7;
+/* ===================== timeline map (seconds) — AUDIO-FIRST: every beat sits on its word in outputs/vo-take-cam-v3/alignment.json ===================== */
+const T = { s1: [0, 3.0], hdr: [2.75, 20.6], s2: [2.85, 11.8], s3: [11.4, 17.75], s4: [17.65, 20.6], s5a: [20.55, 25.65], s5b: [25.55, 28.15], s5c: [28.05, 32.35], s6: [32.3, 36.0], end: [35.9, 41.41] };
+const DURATION = 41.4;                                   // take ends 39.92 + ~1.5 s tail
 Object.entries(T).forEach(([id, [a, b]]) => Kit.scene('#' + id, a, b));
-Kit.scene('#ctr', 0, 14.36);
+Kit.scene('#ctr', 0, 20.6);
 
 /* ===================== the day counter: an odometer driven by one value track ===================== */
 ['#st10', '#st1'].forEach((s, k) => { $(s).innerHTML = Array.from({ length: k ? 11 : 10 }, (_, i) => `<div>${i % 10}</div>`).join(''); });
-// day value: 23 on frame 1, rewind to 01, then roll to each reply's day as it lands
-const MSG_T = [2.5, 3.55, 4.6, 5.65, 6.7, 7.75];               // Day 1, 4, 9, 15, 22, 23 (1.05 s apart)
+// day value: 23 on frame 1, rewind to 01 under "Sent it day one" (2.16–3.18), then roll to each reply's day as its words are said
+const MSG_T = [3.18, 4.56, 5.82, 7.43, 8.47, 10.35];     // "one." · "Will sign tonight" · "Went to junk" · "Out of toner" · "Signed and scanned" · "Day twenty-three,"
 const DAYS = [1, 4, 9, 15, 22, 23];
-const CK = [[0, 23], [1.95, 23], [2.42, 1, 'inOut']];
+const CK = [[0, 23], [2.15, 23], [2.95, 1, 'inOut']];
 for (let i = 1; i < DAYS.length; i++) CK.push([MSG_T[i] - 0.3, DAYS[i - 1]], [MSG_T[i], DAYS[i], 'out']);
 const ck = CK.map(k => ({ t: k[0], v: k[1], e: k[2] ? Kit.ease[k[2]] : (x => x) }));
 function dayAt(t) { if (t <= ck[0].t) return ck[0].v; for (let i = 1; i < ck.length; i++) { const a = ck[i - 1], b = ck[i]; if (t < b.t) return a.v + (b.v - a.v) * b.e((t - a.t) / (b.t - a.t)); } return ck[ck.length - 1].v; }
@@ -210,20 +232,20 @@ Kit.each(t => {
 });
 // big (hook) → header (thread); origin top-left. 440 px digits → ~168 px.
 const HS = 0.382;
-Kit.add('#ctr', 'scale', [[0, 1], [2.0, 1], [2.45, HS, 'inOut']]);
-Kit.add('#ctr', 'y', [[0, 0], [2.0, 0], [2.45, L.hdrY - L.ctrTop, 'inOut']]);
-Kit.add('#ctr', 'opacity', [[0, 1], [14.2, 1], [14.35, 0]]);
+Kit.add('#ctr', 'scale', [[0, 1], [2.2, 1], [2.8, HS, 'inOut']]);
+Kit.add('#ctr', 'y', [[0, 0], [2.2, 0], [2.8, L.hdrY - L.ctrTop, 'inOut']]);
+Kit.add('#ctr', 'opacity', [[0, 1], [20.45, 1], [20.6, 0]]);
 
-/* ===================== S1 HOOK (0–2.5): complete on frame 0, pill included ===================== */
-Kit.add('#k1', 'opacity', [[0, 1], [1.95, 1], [2.15, 0]]);
-Kit.add('#pill1', 'opacity', [[0, 1], [1.95, 1], [2.1, 0]]);
-Kit.add('#pill1', 'scale', [[0, 1], [0.4, 1], [0.52, 1.08, 'out'], [0.72, 1, 'inOut']]);
-Kit.add('#rw', 'opacity', [[0, 0], [1.97, 0], [2.0, 1, 'hold'], [2.12, 0.35, 'hold'], [2.2, 1, 'hold'], [2.36, 0, 'hold']]);
-Kit.add('#rw', 'x', [[1.97, 0], [2.36, -40]]);
-Kit.add('#chip', 'opacity', [[0, 1], [14.2, 1], [14.35, 0]]);
-Kit.fade('#hk', 2.35, 2.55); Kit.fade('#hp', 2.42, 2.6);
+/* ===================== S1 HOOK (0–3.0): complete on frame 0, pill included; "Day twenty-three of chasing one signature." 0.00–1.96 ===================== */
+Kit.add('#k1', 'opacity', [[0, 1], [2.15, 1], [2.35, 0]]);
+Kit.add('#pill1', 'opacity', [[0, 1], [2.15, 1], [2.3, 0]]);
+Kit.add('#pill1', 'scale', [[0, 1], [1.3, 1], [1.42, 1.08, 'out'], [1.62, 1, 'inOut']]);      // pulses on "signature."
+Kit.add('#rw', 'opacity', [[0, 0], [2.17, 0], [2.2, 1, 'hold'], [2.36, 0.35, 'hold'], [2.46, 1, 'hold'], [2.66, 0, 'hold']]);
+Kit.add('#rw', 'x', [[2.17, 0], [2.66, -40]]);
+Kit.add('#chip', 'opacity', [[0, 1], [20.45, 1], [20.6, 0]]);
+Kit.fade('#hk', 2.7, 2.9); Kit.fade('#hp', 2.77, 2.95);
 
-/* ===================== S2 THE THREAD (2.3–8.45) ===================== */
+/* ===================== S2 THE THREAD (2.85–11.8): each reply pops as the narrator reads it ===================== */
 const M = [
   { side: 'out', y: 116, h: 150, html: `<div class="att"><div class="ic"><i style="top:14px"></i><i style="top:24px"></i><i style="top:34px"></i></div><div><b>Subcontract_Ceilings.pdf</b><small>12 pages · please sign</small></div></div>`, stamp: 'DAY 1' },
   { side: 'in', y: 324, h: 92, html: `<div class="bub">Will sign tonight 👍</div>`, stamp: 'DAY 4' },
@@ -240,10 +262,10 @@ M.forEach((m, i) => {
   msgs.insertAdjacentHTML('beforeend', `<div class="stamp ${m.side === 'out' ? 'sL' : 'sR'}" id="sp${i}" style="${sx};top:${m.y + m.h / 2 - 30}px">${m.stamp}</div>`);
 });
 msgs.insertAdjacentHTML('beforeend', `<div class="sent" id="sent0" style="right:34px;top:${116 + 150 + 8}px">Sent</div>`);
-Kit.add('#thread', 'opacity', [[2.3, 0], [2.45, 1, 'out']]);
-Kit.add('#thread', 'y', [[2.3, 60], [2.55, 0, 'out']]);
+Kit.add('#thread', 'opacity', [[2.85, 0], [3.0, 1, 'out']]);
+Kit.add('#thread', 'y', [[2.85, 60], [3.1, 0, 'out']]);
 // the card grows with the conversation; once it reaches its max height (9:16), the messages scroll up like a real chat
-const HK = [[2.3, 116 + 150 + 62]], SK = [[0, 0]];
+const HK = [[2.85, 116 + 150 + 62]], SK = [[0, 0]];
 let prevScroll = 0;
 M.forEach((m, i) => {
   if (!i) return;
@@ -262,12 +284,12 @@ M.forEach((m, i) => {
   Kit.add('#sp' + i, 'scale', [[t + 0.16, 1.3], [t + 0.3, 1, 'slam']]);   // anchored to the card's inner edge: never spills past it
   Kit.add('#sp' + i, 'rotate', [[0, i % 2 ? -6 : 5]]);
 });
-Kit.fade('#sent0', 2.75, 2.9);
-// open the Day 23 attachment
-Kit.add('#m5', 'scale', [[7.95, 1], [8.0, 0.96], [8.08, 1]]);
-Kit.add('#thread', 'opacity', [[8.05, 1], [8.25, 0.25]]);
+Kit.fade('#sent0', 3.5, 3.65);                                             // "Twelve pages." 3.51
+// open the Day 23 attachment on "the scan" (11.42)
+Kit.add('#m5', 'scale', [[11.35, 1], [11.4, 0.96], [11.48, 1]]);
+Kit.add('#thread', 'opacity', [[11.45, 1], [11.65, 0.25]]);
 
-/* ===================== S3 THE SCAN (7.98–11.46) ===================== */
+/* ===================== S3 THE SCAN (11.4–17.75): "lands sideways" 11.75 · "Eleven pages" 13.05 · "Scanner skipped page seven" 14.43 · "Retention" 16.43 ===================== */
 const strip2 = $('#strip2');
 const PAGES = [1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12];
 const X0 = (960 - PAGES.length * 80) / 2 + 8;
@@ -281,19 +303,19 @@ PAGES.forEach((p, i) => {
   Object.assign($('#ring7').style, { left: (seamX - 100) + 'px', top: (seamY - 55) + 'px' });
   Object.assign($('#p7q').style, { left: (seamX + 70) + 'px', top: (seamY - 190) + 'px' });
 }
-Kit.add('#viewer', 'opacity', [[8.02, 0], [8.14, 1, 'out']]);
-Kit.add('#viewer', 'scale', [[8.02, 0.82], [8.32, 1, 'out']]);
+Kit.add('#viewer', 'opacity', [[11.42, 0], [11.54, 1, 'out']]);
+Kit.add('#viewer', 'scale', [[11.42, 0.82], [11.75, 1, 'out']]);
 Kit.add('#page', 'rotate', [[0, -90.8]]);
 Kit.add('#page', 'scale', [[0, L.pageK]]);
-Kit.add('#pgc', 'scale', [[8.3, 1], [8.42, 1.14, 'out'], [8.62, 1, 'inOut']]);
-Kit.add('#ring7p', 'trim', [[8.38, 0], [8.78, 1, 'out']]);
-Kit.pop('#p7q', 8.72, { dy: 0, fade: 0.06 });
-Kit.add('#p7q', 'scale', [[8.72, 1.25], [8.87, 1, 'out']]);
-Kit.pop('#c-p7a', 8.45, { dy: 18 });
-Kit.pop('#c-p7', 9.1, { dy: 22 });
-Kit.add('#s3', 'opacity', [[11.3, 1], [11.45, 0]]);
+Kit.add('#pgc', 'scale', [[13.05, 1], [13.17, 1.14, 'out'], [13.4, 1, 'inOut']]);           // "Eleven pages"
+Kit.add('#ring7p', 'trim', [[14.95, 0], [15.4, 1, 'out']]);                               // ring the seam on "skipped page"
+Kit.pop('#p7q', 15.5, { dy: 0, fade: 0.06 });                                              // "seven"
+Kit.add('#p7q', 'scale', [[15.5, 1.25], [15.65, 1, 'out']]);
+Kit.pop('#c-p7a', 14.43, { dy: 18 });                                                      // "Scanner skipped page 7."
+Kit.pop('#c-p7', 16.43, { dy: 22 });                                                       // "Retention."
+Kit.add('#s3', 'opacity', [[17.6, 1], [17.75, 0]]);
 
-/* ===================== S4 ON SITE SINCE DAY 2 (11.35–14.36) ===================== */
+/* ===================== S4 ON SITE SINCE DAY 2 (17.65–20.6): "Crew's been on site since day two." 17.84–19.84 ===================== */
 const cellsA = $('#cellsA'), cellsB = $('#cellsB'), dn = $('#daynums');
 const CW = 36, GAP = (L.gw - 23 * CW) / 22;
 for (let d = 1; d <= 23; d++) {
@@ -303,55 +325,56 @@ for (let d = 1; d <= 23; d++) {
   if (d === 1 || d === 2) dn.insertAdjacentHTML('beforeend', `<div class="daynum" style="top:${L.dayNum}px;left:${x + CW / 2 - 40}px;${d === 2 ? 'color:var(--amber-ink)' : ''}">${d}</div>`);
   if (d === 23) dn.insertAdjacentHTML('beforeend', `<div class="daynum" style="top:${L.dayNum}px;left:${L.gx0 + L.gw - 80}px;text-align:right">23</div>`);
 }
-Kit.add('#s4', 'opacity', [[11.35, 0], [11.5, 1, 'out']]);
-for (let d = 2; d <= 23; d++) { const t = 11.5 + (d - 2) * 0.028; Kit.add('#fa' + d, 'opacity', [[t, 0], [t + 0.08, 1]]); }
-Kit.pop('#c-site', 11.62, { dy: 24 });
-Kit.add('#s4', 'opacity', [[14.2, 1], [14.35, 0]]);
-Kit.add('#hdr', 'opacity', [[14.2, 1], [14.35, 0]]);
+Kit.add('#s4', 'opacity', [[17.65, 0], [17.8, 1, 'out']]);
+for (let d = 2; d <= 23; d++) { const t = 17.85 + (d - 2) * 0.028; Kit.add('#fa' + d, 'opacity', [[t, 0], [t + 0.08, 1]]); }   // the bar fills under "Crew's been"
+Kit.pop('#c-site', 18.6, { dy: 24 });                                                      // "on site since day two" (site 18.70)
+Kit.add('#s4', 'opacity', [[20.45, 1], [20.6, 0]]);
+Kit.add('#hdr', 'opacity', [[20.45, 1], [20.6, 0]]);
 
-/* ===================== S5a OUR OWN PDF → Sign it as it is → Send for signing (14.25–16.81) ===================== */
-Kit.add('#p-logo', 'opacity', [[0, 0], [14.27, 0], [14.5, 1, 'out'], [22.12, 1], [22.27, 0]]);
-Kit.add('#app1', 'opacity', [[14.25, 0], [14.4, 1, 'out']]);
-Kit.add('#app1', 'y', [[14.25, 50], [14.5, 0, 'out']]);
-Kit.add('#opt-sel', 'opacity', [[0, 0], [14.77, 0], [14.81, 1]]);
-Kit.add('#opt-tick', 'opacity', [[0, 0], [14.79, 0], [14.85, 1]]);
-Kit.add('#opt-tick', 'scale', [[14.79, 0.4], [14.97, 1, 'outBack']]);
-Kit.add('#btn-off', 'opacity', [[0, 1], [14.85, 1], [14.97, 0]]);
-Kit.add('#btn-send', 'scale', [[15.55, 1], [15.59, 0.95], [15.67, 1]]);
-Kit.add('#dlg', 'opacity', [[16.0, 1], [16.13, 0]]);
-Kit.add('#dlg', 'scale', [[16.0, 1], [16.13, 0.97]]);
-Kit.add('#shade1', 'opacity', [[0, 1], [16.0, 1], [16.16, 0]]);
-Kit.add('#row-a', 'opacity', [[0, 0], [16.14, 0], [16.28, 1, 'out']]);
-Kit.add('#row-a', 'y', [[16.14, 20], [16.32, 0, 'out']]);
-Kit.add('#row-a-sub', 'opacity', [[0, 0], [16.16, 0], [16.3, 1]]);
-Kit.pop('#c-own', 14.37, { dy: 22 });
-Kit.add('#c-own2', 'opacity', [[0, 0], [14.8, 0], [14.92, 1, 'out']]);
+/* ===================== S5a OUR OWN PDF → Sign it as it is → Send for signing (20.55–25.65): "Or." 20.71 · "your own subcontract PDF" 21.95 · "as it is" 24.37 ===================== */
+Kit.add('#p-logo', 'opacity', [[0, 0], [20.57, 0], [20.8, 1, 'out'], [32.16, 1], [32.31, 0]]);
+Kit.add('#app1', 'opacity', [[20.55, 0], [20.7, 1, 'out']]);
+Kit.add('#app1', 'y', [[20.55, 50], [20.8, 0, 'out']]);
+Kit.add('#opt-sel', 'opacity', [[0, 0], [24.33, 0], [24.37, 1]]);
+Kit.add('#opt-tick', 'opacity', [[0, 0], [24.35, 0], [24.41, 1]]);
+Kit.add('#opt-tick', 'scale', [[24.35, 0.4], [24.53, 1, 'outBack']]);
+Kit.add('#btn-off', 'opacity', [[0, 1], [24.41, 1], [24.53, 0]]);
+Kit.add('#btn-send', 'scale', [[24.92, 1], [24.96, 0.95], [25.04, 1]]);
+Kit.add('#dlg', 'opacity', [[25.1, 1], [25.23, 0]]);
+Kit.add('#dlg', 'scale', [[25.1, 1], [25.23, 0.97]]);
+Kit.add('#shade1', 'opacity', [[0, 1], [25.1, 1], [25.26, 0]]);
+Kit.add('#row-a', 'opacity', [[0, 0], [25.24, 0], [25.38, 1, 'out']]);
+Kit.add('#row-a', 'y', [[25.24, 20], [25.42, 0, 'out']]);
+Kit.add('#row-a-sub', 'opacity', [[0, 0], [25.26, 0], [25.4, 1]]);
+Kit.pop('#c-own', 21.95, { dy: 22 });                                                      // "your own subcontract PDF"
+Kit.add('#c-own2', 'opacity', [[0, 0], [24.37, 0], [24.49, 1, 'out']]);                   // "as it is"
 { // cursor targets measured from the dialog as laid out in this cut (cursor tip = element's x/y)
   const o = rect('#opt-sign'), bt = rect('#btn-send');
   const optSign = { x: o.l + o.w * 0.5, y: o.t + o.h * 0.58 }, btnSend = { x: bt.l + bt.w * 0.55, y: bt.t + bt.h * 0.6 };
-  const [cx0, cy0] = L.curStart;
-  Kit.add('#cur', 'opacity', [[0, 0], [14.35, 0], [14.45, 1], [15.9, 1], [16.05, 0]]);
-  Kit.add('#cur', 'x', [[14.35, cx0], [14.67, optSign.x, 'inOut'], [14.95, optSign.x], [15.35, btnSend.x, 'inOut'], [16.05, btnSend.x]]);
-  Kit.add('#cur', 'y', [[14.35, cy0], [14.67, optSign.y, 'inOut'], [14.95, optSign.y], [15.35, btnSend.y, 'inOut'], [16.05, btnSend.y]]);
-  Kit.add('#cur', 'scale', [[14.7, 1], [14.73, 0.86], [14.8, 1], [15.55, 1], [15.58, 0.86], [15.65, 1]]);
+  // start inside the dialog (gap under the options, right column), never on the caption below it (2026-10-10 review: L.curStart sat on "PDF.")
+  const cx0 = bt.l + bt.w * 0.5, cy0 = (o.t + o.h + bt.t) / 2;
+  Kit.add('#cur', 'opacity', [[0, 0], [23.15, 0], [23.3, 1], [25.0, 1], [25.15, 0]]);   // hidden until it moves (was 20.75: sat on "PDF.")
+  Kit.add('#cur', 'x', [[23.3, cx0], [23.95, optSign.x, 'inOut'], [24.5, optSign.x], [24.85, btnSend.x, 'inOut'], [25.15, btnSend.x]]);
+  Kit.add('#cur', 'y', [[23.3, cy0], [23.95, optSign.y, 'inOut'], [24.5, optSign.y], [24.85, btnSend.y, 'inOut'], [25.15, btnSend.y]]);
+  Kit.add('#cur', 'scale', [[24.3, 1], [24.33, 0.86], [24.4, 1], [24.92, 1], [24.95, 0.86], [25.02, 1]]);
 }
-Kit.add('#s5a', 'opacity', [[16.66, 1], [16.8, 0]]);
+Kit.add('#s5a', 'opacity', [[25.5, 1], [25.64, 0]]);
 
-/* ===================== S5b THE PHONE (16.7–19.51) ===================== */
-Kit.clip('#bg-site', { dir: 'clips/site', t0: 16.7, t1: 19.55, fps: 30, frames: 96, ext: '.jpg' });
-Kit.add('#phone', 'opacity', [[16.7, 0], [16.85, 1, 'out']]);
-Kit.add('#phone', 'y', [[16.7, 70], [17.0, 0, 'out']]);
-Kit.add('#phone', 'rotate', [[16.7, -2.5], [17.05, -1.2, 'out'], [19.45, -0.6]]);
-Kit.add('#bg-site', 'scale', [[16.7, 1.04], [19.5, 1.0]]);
-Kit.add('#box-on', 'opacity', [[0, 0], [17.1, 0], [17.16, 1]]);
-Kit.add('#box-on', 'scale', [[17.1, 0.6], [17.26, 1, 'outBack']]);
-Kit.type('#nm', 17.32, 17.82);
-Kit.add('#sigp', 'trim', [[0, 0], [17.86, 0], [18.4, 1, 'inOut']]);
-Kit.add('#sbtn', 'scale', [[18.48, 1], [18.52, 0.96], [18.6, 1]]);
-Kit.add('#done', 'opacity', [[0, 0], [18.62, 0], [18.76, 1, 'out']]);
-Kit.add('#done', 'y', [[18.62, 30], [18.83, 0, 'out']]);
+/* ===================== S5b THE PHONE (25.55–28.15): "One link" 25.20 · "on their phone" 26.23 · "nothing to install" 26.85 ===================== */
+Kit.clip('#bg-site', { dir: 'clips/site', t0: 25.55, t1: 28.4, fps: 30, frames: 96, ext: '.jpg' });
+Kit.add('#phone', 'opacity', [[25.55, 0], [25.7, 1, 'out']]);
+Kit.add('#phone', 'y', [[25.55, 70], [25.85, 0, 'out']]);
+Kit.add('#phone', 'rotate', [[25.55, -2.5], [25.9, -1.2, 'out'], [28.1, -0.6]]);
+Kit.add('#bg-site', 'scale', [[25.55, 1.04], [28.15, 1.0]]);
+Kit.add('#box-on', 'opacity', [[0, 0], [25.95, 0], [26.01, 1]]);
+Kit.add('#box-on', 'scale', [[25.95, 0.6], [26.11, 1, 'outBack']]);
+Kit.type('#nm', 26.15, 26.65);
+Kit.add('#sigp', 'trim', [[0, 0], [26.72, 0], [27.28, 1, 'inOut']]);
+Kit.add('#sbtn', 'scale', [[27.4, 1], [27.44, 0.96], [27.52, 1]]);
+Kit.add('#done', 'opacity', [[0, 0], [27.55, 0], [27.69, 1, 'out']]);
+Kit.add('#done', 'y', [[27.55, 30], [27.76, 0, 'out']]);
 // taps: placed on the real element centres once fonts have loaded (screen-local coordinates)
-const TAPS = [['#tap1', '#scr .box', 17.08], ['#tap2', '#scr .inp', 17.28], ['#tap3', '#sbtn', 18.46]];
+const TAPS = [['#tap1', '#scr .box', 25.93], ['#tap2', '#scr .inp', 26.11], ['#tap3', '#sbtn', 27.38]];
 let tapsPlaced = false;
 Kit.each(() => {
   if (tapsPlaced) return;
@@ -363,51 +386,51 @@ TAPS.forEach(([id, , t]) => {
   Kit.add(id, 'opacity', [[0, 0], [t, 0], [t + 0.03, 1], [t + 0.32, 0, 'out']]);
   Kit.add(id, 'scale', [[t, 0.5], [t + 0.32, 1.25, 'out']]);
 });
-Kit.pop('#k-l1', 16.9, { dy: 26 });
-Kit.pop('#k-l2', 17.45, { dy: 26 });
-Kit.pop('#k-l3', 18.0, { dy: 26 });
-Kit.add('#s5b', 'opacity', [[19.36, 1], [19.5, 0]]);
+Kit.pop('#k-l1', 25.62, { dy: 26 });                                                       // "One link" (the scene lands on "link" 25.73)
+Kit.pop('#k-l2', 26.23, { dy: 26 });                                                       // "on their phone"
+Kit.pop('#k-l3', 26.85, { dy: 26 });                                                       // "nothing to install"
+Kit.add('#s5b', 'opacity', [[28.0, 1], [28.14, 0]]);
 
-/* ===================== S5c EVERYONE HAS SIGNED + CERTIFICATE + PAGE 7 (19.4–22.31) ===================== */
-Kit.add('#app2', 'opacity', [[19.4, 0], [19.55, 1, 'out']]);
-Kit.add('#app2', 'y', [[19.4, 40], [19.65, 0, 'out']]);
-Kit.add('#b-amb', 'opacity', [[0, 1], [19.78, 1], [19.84, 0]]);
-Kit.add('#b-grn', 'opacity', [[0, 0], [19.81, 0], [19.88, 1]]);
-Kit.add('#b-grn', 'scale', [[19.81, 0.8], [20.01, 1, 'outBack']]);
-Kit.add('#r2-flash', 'opacity', [[0, 0], [19.82, 0], [19.86, 1], [20.4, 0, 'out']]);
-Kit.add('#app2', 'opacity', [[20.25, 1], [20.45, 0.35]]);
-Kit.add('#cert', 'opacity', [[0, 0], [20.3, 0], [20.42, 1, 'out']]);
-Kit.add('#cert', 'y', [[20.3, 160], [20.6, 0, 'out']]);
-Kit.add('#cert', 'rotate', [[20.3, 2.5], [20.6, -1, 'out']]);
+/* ===================== S5c EVERYONE HAS SIGNED + CERTIFICATE + PAGE 7 (28.05–32.35): "The signed copy" 28.08 · "every page you sent" 29.49 · "Page seven included" 30.98 ===================== */
+Kit.add('#app2', 'opacity', [[28.05, 0], [28.2, 1, 'out']]);
+Kit.add('#app2', 'y', [[28.05, 40], [28.3, 0, 'out']]);
+Kit.add('#b-amb', 'opacity', [[0, 1], [28.58, 1], [28.64, 0]]);
+Kit.add('#b-grn', 'opacity', [[0, 0], [28.61, 0], [28.68, 1]]);                           // "signed" 28.61
+Kit.add('#b-grn', 'scale', [[28.61, 0.8], [28.81, 1, 'outBack']]);
+Kit.add('#r2-flash', 'opacity', [[0, 0], [28.62, 0], [28.66, 1], [29.2, 0, 'out']]);
+Kit.add('#app2', 'opacity', [[29.05, 1], [29.25, 0.35]]);
+Kit.add('#cert', 'opacity', [[0, 0], [29.1, 0], [29.22, 1, 'out']]);                      // "copy has" → the certificate slides in
+Kit.add('#cert', 'y', [[29.1, 160], [29.4, 0, 'out']]);
+Kit.add('#cert', 'rotate', [[29.1, 2.5], [29.4, -1, 'out']]);
 const ps = $('#pstrip');
 const PSW = 56, PSG = 14, PSN = 13, PSX0 = (1080 - (PSN * PSW + (PSN - 1) * PSG)) / 2;
 for (let p = 1; p <= 13; p++) {
   const x = PSX0 + (p - 1) * (PSW + PSG);
   ps.insertAdjacentHTML('beforeend', `<div class="ps ${p === 13 ? 'cert' : ''}" id="ps${p}" style="left:${x}px">${p === 13 ? '<svg width="56" height="76" viewBox="0 0 56 76"><path d="M17 39l7 7 14-15" fill="none" stroke="#16A34A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>' : '<i style="top:12px"></i><i style="top:20px"></i><i style="top:28px"></i><i style="top:36px;right:22px"></i>'}</div>`);
   ps.insertAdjacentHTML('beforeend', `<div class="psn" id="psn${p}" style="left:${x}px;${p === 7 ? 'color:var(--accent)' : ''}">${p === 13 ? '✓' : p}</div>`);
-  const t = 20.6 + (p - 1) * 0.025;
+  const t = 29.8 + (p - 1) * 0.025;                                                        // the strip lays out under "page you sent"
   Kit.add('#ps' + p, 'opacity', [[0, 0], [t, 0], [t + 0.08, 1]]);
   Kit.add('#ps' + p, 'y', [[t, 18], [t + 0.16, 0, 'out']]);
   Kit.add('#psn' + p, 'opacity', [[0, 0], [t + 0.04, 0], [t + 0.12, 1]]);
 }
 const p7x = PSX0 + 6 * (PSW + PSG) + PSW / 2;
 Object.assign($('#ring7g').style, { left: (p7x - 66) + 'px', top: (L.pstripTop - 22) + 'px' });
-Kit.add('#ring7gp', 'trim', [[0, 0], [21.0, 0], [21.35, 1, 'out']]);
-Kit.add('#ps7', 'y', [[20.95, 0], [21.1, -10, 'out'], [21.35, 0, 'out']]);
-Kit.pop('#c-pdf', 19.85, { dy: 22 });
-Kit.add('#c-pdf2', 'opacity', [[0, 0], [21.0, 0], [21.15, 1, 'out']]);
-Kit.add('#s5c', 'opacity', [[22.16, 1], [22.3, 0]]);
+Kit.add('#ring7gp', 'trim', [[0, 0], [31.0, 0], [31.35, 1, 'out']]);                     // "Page seven"
+Kit.add('#ps7', 'y', [[30.95, 0], [31.1, -10, 'out'], [31.35, 0, 'out']]);
+Kit.pop('#c-pdf', 29.49, { dy: 22 });                                                      // "every page you sent"
+Kit.add('#c-pdf2', 'opacity', [[0, 0], [30.98, 0], [31.13, 1, 'out']]);                   // "Page seven included"
+Kit.add('#s5c', 'opacity', [[32.2, 1], [32.34, 0]]);
 
-/* ===================== S6 CLOSE (22.2–25.15) ===================== */
-Kit.pop('#c-l1', 22.3, { dy: 24 });
-Kit.pop('#c-l2', 23.5, { dy: 24 });
-Kit.add('#s6', 'opacity', [[25.0, 1], [25.14, 0]]);
+/* ===================== S6 CLOSE (32.3–36.0): "Still can't fix junk folders." 32.45 · "No printer needed, though." 34.59 ===================== */
+Kit.pop('#c-l1', 32.45, { dy: 24 });
+Kit.pop('#c-l2', 34.59, { dy: 24 });
+Kit.add('#s6', 'opacity', [[35.85, 1], [35.99, 0]]);
 
-/* ===================== END CARD (25.05–28.7): qsme.build on screen ≥ 3.5 s ===================== */
-Kit.fade('#e-logo', 25.08, 25.35).add('#e-logo', 'scale', [[25.08, 0.94], [25.5, 1, 'out']]);
-Kit.pop('#e-line', 25.18);
-Kit.pop('#e-cta', 25.3);
-Kit.pop('#e-url', 25.18);
+/* ===================== END CARD (35.9–41.4): "Book a thirty-minute demo at Queue Ess Mee dot build." 36.06–39.92; qsme.build on screen 5.4 s ===================== */
+Kit.fade('#e-logo', 35.93, 36.2).add('#e-logo', 'scale', [[35.93, 0.94], [36.35, 1, 'out']]);
+Kit.pop('#e-line', 36.0);
+Kit.pop('#e-cta', 36.08);                                                                  // pops on "Book"
+Kit.pop('#e-url', 36.0);
 
 Kit.ready({ duration: DURATION, fonts: ['700 60px "Space Grotesk"', '500 30px Inter', '600 30px Inter', '700 30px Inter', '800 30px Inter', '700 60px "JetBrains Mono"', '600 30px "JetBrains Mono"', '500 22px "JetBrains Mono"', '400 60px "Permanent Marker"'] });
 })();

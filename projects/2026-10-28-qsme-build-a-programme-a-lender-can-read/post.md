@@ -3,18 +3,19 @@ vid: G11
 title: "A programme a lender can read"
 venture: qsme-build
 idea: gl-a-programme-a-lender-can-read
-status: "re-rendered after review — awaiting approval"
+status: "audio-first remake (Cam S take) — awaiting approval; publish blocked on Session C"
 publish_date: 2026-10-28
 publish_time: "20:30 NZDT (Wed 07:30 London GMT, 11:30 Dubai, 10:30 Riyadh)"
 created: 2026-10-02
 calendar_week: 4
 format: long
 kind: long-form
-length_s: 128.1
+length_s: 147.2
 aspect: "16:9"
 platforms: ["LinkedIn (native video, founder profile; page reposts Thu 08:30 Sydney)", "YouTube (chapters from the chapter cards)"]
 video: outputs/a-programme-a-lender-can-read-16x9.mp4
 thumbnail: outputs/a-programme-a-lender-can-read-thumb.png
+video_vo: outputs/a-programme-a-lender-can-read-16x9-with-vo.mp4
 follows: projects/2026-10-20-qsme-build-chase-the-painter
 ---
 
@@ -25,6 +26,86 @@ follows: projects/2026-10-20-qsme-build-chase-the-painter
 **The joke (light, always on us):** the PM's own screenshot, "Programme_Rev4_FINAL.xlsx", printed for the lender and marked up in red: "dates?", "ends where?", "one 450k contract × 6?". Then the deadpan asides: "The painter everyone chased? Never purple." (a nod to week 3 that works cold) and "Mid-January was never real."
 
 **Job:** Week 4 long-form, the deep-dive payoff to week 3's "Action: chase painter" short (the same way "Why six bids never compare" paid off "Six bids"). It goes out in money week, framed around the funder's drawdown review: prime Wednesday morning UK/Gulf on LinkedIn (founder's profile, the page reposts Thu 08:30 Sydney) and YouTube, where the chapter cards become chapters and the video becomes the standing link for demo follow-ups. Silent-first: every beat reads with the sound off; the Kiwi VO is scripted for later. Since the 2026-10-04 review it no longer depends on week 3 being live: the title kicker is gone and the painter line works cold.
+
+## Audio-first remake (2026-10-06) — the current master
+
+**Why:** the owner's audio-first standard (signed off on the N01 "Which Dave?" pilot): continuous speech with a real hook in the first 2 s, ONE unbroken eleven_v3 take (Cam S), and the picture re-timed to the words. Design unchanged (same pages, same screens, same printout); only the clock, the captions, the hook's mark order, the chapter-6 camera order and the end-card line changed.
+
+**Hook (0–2.2 s, spoken):** "One contract, counted six times." — the funniest, stingiest line first. On screen from frame 1: the marked-up printout, big type "Your programme. / As the lender sees it.", caption "One contract, counted six times." and the red bracket + "one 450k contract × 6?" drawing in on the words (0.3–0.85). Then each mark lands on its line: "DATES?" on "No dates on the bars" (5.0), the arrow + "ENDS WHERE?" on "It runs off the page" (6.85), the ring round 2,700,000 on "two point seven million" (10.5), and "So what's actually holding this build up?" pops on the question (12.33).
+
+**The script as spoken (one take, 146.1 s, ~2.4 words/s, longest silence 0.36 s; v3 tags in brackets, 2 of them):**
+
+```
+[dry] One contract, counted six times. Your programme, as the lender sees it. No dates on the bars. It runs off the page. One four-fifty contract, reading as two point seven million. So what's actually holding this build up?
+A programme a lender can read. Six fixes. One printout.
+One. From the estimate. Start from what you priced: tick the pockets, and each job brings its own days. No retyping. Even the rain flag comes across. Then you link what waits for what, and the rows fall into date order.
+Two. Slips and rain. Three months in, one slip moves what's linked: drag insulation three days, and everything after it slides. Anyone booked is asked, not told. Nothing changes for them until they say yes. The linings crew confirm, and they're in. Rained off? See what moves before you push.
+Three. What drives the finish. Show what drives the finish date, and purple decides it. Grey has room: yesterday's rain pushed the driveways, and the finish didn't move. [amused] The painter everyone chased? Never purple. Stretch a purple job a day, and the finish slips a day.
+Four. Your days off. This one runs straight through the site's own shutdown. Your holidays and shutdowns? Add them as days off. Year-end shutdown, twenty-first of December to the eighth of January. Add it. Eight jobs step over it. Work moves later, never earlier. Mid-January was never real.
+Five. Money, once. Add the Cost and Paid columns. Estimates carry a squiggle. Agreed prices don't. And a contract counts once, not six times. Two point seven million never happens. Paid is what's been recorded as paid.
+Six. Print it. Download the PDF. The whole chart fits across the A4. The task list follows. Dates in words, on every bar. When, how long, how much. Up top. And the lender's question, answered in one sentence: seven linked tasks, ringed in purple, ending with handover on the fifth of February. Any one of them running late moves the whole finish. On your letterhead.
+Bring your current programme, and book a thirty-minute demo at Queue Ess Mee dot build.
+```
+
+**What QSME does, said plainly:** import the jobs you priced (each brings its own days and rain flag), link what waits for what, booked crews are asked not told, rain days show what moves before you push, purple shows what drives the finish, add your own days off, Cost/Paid columns count a contract once, and the PDF prints the chart across the A4 with the task list and the one-sentence answer. CTA spoken "book a thirty-minute demo at Queue Ess Mee dot build" (shown: button "Book a 30-minute demo" + qsme.build). No "free", no pricing line, no takeoff/measuring, no "line by line", no "tradie".
+
+**Timing (said → picture; captions are phrases lifted from the narration, real times in `motion/lender.js` → CAPS):**
+
+| Said (start, s) | Picture (re-timed to the words) |
+|---|---|
+| 0.20 "One contract, counted six times." | Frame 1: the printed A4 on the desk ('Programme_Rev4_FINAL.xlsx — Gantt', chip 'Example figures'), big type 'Your programme. / As the lender sees it.'; caption 'One contract, counted six times.'; red bracket down the six 450,000s + 'one 450k contract × 6?' lands 0.3–0.85 |
+| 2.30 "Your programme, as the lender sees it." | Big type 'Your programme. / As the lender sees it.' (no caption) |
+| 5.01 "No dates on the bars." | Caption 'No dates on the bars.' · red ring round the bars + 'DATES?' (5.0–5.6) |
+| 6.53 "It runs off the page." | Caption 'It runs off the page.' · red arrow off the right edge + 'ENDS WHERE?' (6.85–7.4) |
+| 8.26 "One four-fifty contract, reading as two point seven million." | Caption 'One 450k contract, reading as 2.7 million.' · ring round the 2,700,000 subtotal, which turns red (10.5–10.95) |
+| 12.43 "So what's actually holding this build up?" | Big type 'So what’s actually holding this build up?' pops 12.33 (no caption) |
+| 14.76 "A programme a lender can read. Six fixes. One printout." | Title card from 14.45: 'A programme a lender can read.' (15.1), 'Six fixes. One printout.' + the chapter list 1–6 on 'Six fixes' (16.9) |
+| 19.36 "One. From the estimate." | Card '1 · Fix 1 of 6 · From the estimate. · No retyping.' (wipe 19.1) |
+| 21.12 "Start from what you priced: tick the pockets," | Caption 'Start from what you priced: tick the pockets.' · 'Import tasks' clicked 21.3, 'Import jobs from SOQ' dialog, the seven pockets ticked 22.75–23.95, 'Link them one after the other' unticked 24.3, 'Import 23 tasks' 24.65 |
+| 24.12 "and each job brings its own days. No retyping." | Caption 'Each job brings its own days.' as 23 bars land end to end (24.9–26.2) · sticky 'No retyping.' on the words (26.45) |
+| 27.18 "Even the rain flag comes across." | Live page qsme.build/platform from 27.3, highlighted 'they arrive with their durations and whether weather stops them' (27.9–29.0) |
+| 29.54 "Then you link what waits for what, and the rows fall into date order." | Captions 'Then you link what waits for what,' / 'and the rows fall into date order.' · arrows draw in 30.3–32.5, rows re-sort and renumber 32.5–33.0 |
+| 33.88 "Two. Slips and rain." | Card '2 · Slips and rain. · Asked, not told.' (wipe 33.65) |
+| 35.83 "Three months in, one slip moves what's linked:" | Sticky 'Today: Wed 14 Oct · 3 months in' (35.9) · caption 'Three months in, one slip moves what’s linked.' · camera pushes in 37.3–37.85 |
+| 39.28 "drag insulation three days, and everything after it slides." | Captions 'Drag insulation three days,' / 'and everything after it slides.' · Insulation dragged 39.25–40.85, the linked work slides 41.1–42.3, booked bars go amber 'proposed · waiting', toast '9 moved · 2 sent for OK…' 41.2 |
+| 42.91 "Anyone booked is asked, not told." | Live page qsme.build/platform from 42.85: 'the people on it are asked, not told.' highlighted 44.1–44.95 |
+| 45.37 "Nothing changes for them until they say yes." | Second account (Demo Linings Ltd) slides in 45.45: 'New dates — can you make them?' |
+| 48.18 "The linings crew confirm, and they're in." | 'Confirm dates' pressed on 'confirm' (49.2) → 'Confirmed'; back to the chart, Plasterboard solid blue (50.0) |
+| 50.76 "Rained off? See what moves before you push." | 'Rain day' opens on 'Rained off?' (50.85), Tue 13 Oct ticked, 'What moves: 2 tasks move' (51.8), 'Push these tasks' on 'push' (52.95), toast 'Rain day logged…' 53.2 |
+| 54.00 "Three. What drives the finish." | Card '3 · What drives the finish. · Purple and grey.' (wipe 54.05) |
+| 56.82 "Show what drives the finish date, and purple decides it." | View → Show → 'What drives the finish date' ticked on 'finish date' (58.9); purple rings and arrows run down to Handover 59.0–60.0; sticky 'Finish: Thu 14 Jan' 60.4 |
+| 60.56 "Grey has room: yesterday's rain pushed the driveways, and the finish didn't move." | Camera to the names on 'Grey has room' (61.0–61.4); sticky on Driveways & landscaping 'pushed by yesterday's rain / finish didn't move ✓' (61.6), biro line 62.25–63.2 |
+| 66.06 "The painter everyone chased? Never purple." | Biro ring round Painting on 'The painter' (66.1–66.85), sticky 'never purple' on 'Never purple.' (67.35) |
+| 69.11 "Stretch a purple job a day, and the finish slips a day." | Kitchens & joinery stretched one day on 'Stretch' (69.15–70.5), Electrical fit-off, Final clean and Handover follow (70.55–71.7), '+1 day' on 'slips', 'Finish: Fri 15 Jan' |
+| 72.80 "Four. Your days off." | Card '4 · Your days off. · Later, never earlier.' (wipe 72.75) |
+| 75.39 "This one runs straight through the site's own shutdown." | Pushed in on the fit-out bars; dashed biro box over 21 Dec – 8 Jan (75.5–76.4), sticky 'site's shut · planned as working days' |
+| 78.58 "Your holidays and shutdowns? Add them as days off." | 'Days off' opens 78.75; '+ Add a day off' on 'days off' (81.2) |
+| 82.38 "Year-end shutdown, twenty-first of December to the eighth of January. Add it." | 'What is it?' types 'Year-end shutdown' on the words (82.35–83.0), first day 21 Dec (83.6), last day 8 Jan (85.2), 'Add it' on 'Add it.' (86.3) |
+| 87.08 "Eight jobs step over it. Work moves later, never earlier." | Band 'Year-end shutdown' appears; eight jobs step over it 87.3–88.7; toast 'Year-end shutdown added — 8 jobs moved' |
+| 91.64 "Mid-January was never real." | Pushed in on the band and the new finish (91.5), sticky 'Finish: Fri 5 Feb', '+3 weeks' |
+| 94.62 "Five. Money, once." | Card '5 · Money, once. · Estimates vs agreed prices.' (wipe 94.45) |
+| 97.40 "Add the Cost and Paid columns." | View → 'Columns beside each task': Cost ticked on 'Cost' (98.45), Paid on 'Paid' (99.05) |
+| 100.01 "Estimates carry a squiggle. Agreed prices don't." | Pushed in on the columns; biro ring on a '~' estimate on 'squiggle' (101.1), on an agreed price on 'Agreed prices' (101.85) |
+| 103.42 "And a contract counts once, not six times." | The six Frame & envelope rows highlight (103.5); only the first carries the figure; the hook's '2,700,000' chip; sticky '1 contract · 6 tasks / counted once' on 'once' (105.0) |
+| 106.96 "Two point seven million never happens." | The '2,700,000' chip struck through in red on 'never happens' (108.5–108.9) |
+| 109.70 "Paid is what's been recorded as paid." | Pushed in on 'Contracted 904,000 · Paid 601,000 · Still to contract ~574,300', highlighted; sticky 'Paid = recorded as paid' (111.0) |
+| 112.60 "Six. Print it." | Card '6 · Print it. · Never runs off the side.' (wipe 112.45) |
+| 114.84 "Download the PDF." | Download → 'As a PDF — the chart and the task list' clicked on 'PDF' (116.1) |
+| 116.66 "The whole chart fits across the A-four." | The recreated A4 landscape 'Construction programme' lands on the desk (116.65–117.3), whole page |
+| 119.10 "The task list follows." | Page 1 flicks aside to show page 2 'Task list' (119.0–120.95) |
+| 121.28 "Dates in words, on every bar." | Push onto the bars and their dates (121.1–121.6) |
+| 123.50 "When, how long, how much. Up top." | Push onto the boxes: ON SITE FROM · FINISHES · HOW LONG · TASKS · NEXT MILESTONE · CONTRACT VALUE · PAID TO DATE · STILL TO PAY (123.3–123.9) |
+| 126.72 "And the lender's question, answered in one sentence:" | Push onto 'What drives the finish date: 7 linked tasks, ringed in purple, ending with Handover on 5 February 2027.' (126.5–127.1) |
+| 130.15 "seven linked tasks, ringed in purple, ending with handover on the fifth of February." | The biro traces the purple rings on 'ringed in purple' down to Handover (131.6–134.1) |
+| 135.88 "Any one of them running late moves the whole finish." | Back on the sentence; highlighter under 'Any one of them running late moves the whole finish.' (136.0–137.2) |
+| 138.85 "On your letterhead." | Push onto the title and 'Demo Developments · Demo letterhead · fictional' (138.7–139.2) |
+| 140.24 "Bring your current programme, and book a thirty-minute demo at Q-S-me dot build." | End card from 140.15: QSME logo, 'Bring your current programme.' (140.25), button 'Book a 30-minute demo' on 'book' (142.2), 'qsme.build' on 'Queue Ess Mee' (143.6), 'What does your lender ask for first? Tell us in the comments.' (145.3); page ends 147.2 |
+
+**How the re-time works:** `motion/lender.js` → `ANCH` pins each authored beat (132.5 s authored clock) to its word in `outputs/vo-take-cam-v3/alignment.json`; between pins the authored clock runs linearly (static holds where the voice is longer, a little faster where it's shorter). The old edit list (SKIPS/HOLDS) is gone. Small authored changes so the picture can follow the words: the hook marks re-ordered (×6 first, the 2.7M ring on "two point seven million"); the painter's "never purple" sticky pops on "Never purple."; the drag, rain and stretch toasts pop earlier so they read before the next card; chapter 6 now goes sentence → the pen on the purple rings ("ringed in purple") → back to the sentence with the highlighter on "Any one of them running late…" → letterhead; end card "Bring your current programme." with the button on "book" and qsme.build on "Queue Ess Mee dot build".
+
+**Files:** master `outputs/a-programme-a-lender-can-read-16x9.mp4` (147.2 s, 1920×1080, silent, QA passed on safe 96,54,1824,1026; contact sheet `outputs/a-programme-a-lender-can-read-16x9-frames.png`; previous 128.1 s master archived as `outputs/archive/a-programme-a-lender-can-read-16x9-v1.mp4`); voiced `outputs/a-programme-a-lender-can-read-16x9-with-vo.mp4` (the take at 0.0 s, gain 1.15, no bed; probe: video 1, audio 1, 147.20 s); take + alignment + words + the exact text sent + STT in `outputs/vo-take-cam-v3/` (attempt 1 kept as `take-attempt1.mp3`); contract `vo-script.json` / `vo-script.md`; thumbnail re-exported from the new master at 13.8 s (old one archived as `outputs/archive/a-programme-a-lender-can-read-thumb-v1.png`); Studio previews refreshed. 44 frames spot-checked on the words (0.6, 1.6, 5.6, 7.6, 11.2, 13.5 … 139.5, 143.0, 147.1). Only one cut exists (16:9); the planned 1:1/4:5 LinkedIn cut is still after Session C.
+
+**Still true:** publishing stays blocked on the Session C owner recordings (see "Publish condition"). The beat-by-beat table, hook layers and VO notes below describe the 2026-10-04 silent 128.1 s cut; they're kept as the design record — the timeline above is the one that ships.
 
 ## Publish condition (read first)
 
@@ -304,3 +385,4 @@ Until these arrive the stand-ins carry the beats with the quiet "Recreated scree
 - 2026-10-02: Idea `gl-a-programme-a-lender-can-read` generated and fact-checked in the content-programme workflow; slot Wed 28 Oct, week 4 (money week), Global 16:9 long-form, ~122 s, the payoff to week 3's "Action: chase painter".
 - 2026-10-04: Built and rendered from the calendar slot (no earlier partial work existed). Read the truth sheet's Schedule section, the Knowledge Hub's "The schedule" and "Reading the schedule" articles and the product's schedule UI strings and services (read-only) so every recreated screen uses real wording. Fact-check findings: a grey hand drag carries what's linked after it (so no grey drag in the cut), the import has an optional linking checkbox, adding a day off re-dates work at once, the status key says "Booked tradie", money prints with the currency code (all under "Fact-check notes"). Wrote a small programme model (`motion/programme.js`) so every date, toast count, finish date and PDF box is computed from working days, links and days off; rebased it to 2026 so "today" (Wed 14 Oct 2026) sits in the recording weeks and the printout isn't dated after the post. Captured two public qsme.build/platform paragraphs as element crops (the second cropped after "asked, not told."). Picky-CD passes: hook type no longer clipped by the screenshot; marker colour fixed (a CSS variable clash had made it invisible); "Example figures" chip moved off the caption band; arrows now go down first and along the waiting task's row so no date words are struck through; toasts moved bottom-left so the finish bars stay visible; project line shortened so it doesn't run under the view switch; money figures no longer red (a class clash); sticky notes moved off the money and status keys; the Days off dialog grows with its form; invented helper text removed from the empty state, the subcontractor's view and the download menu; the pen tracing the rings made smaller and the camera widened so task names stay in frame; a dark band behind the top bar on the printout; the hook played over 13.6 s so every hook line can be read and said; "Your holidays and shutdowns?" caption fits one line. VO written (40 lines, word for word, Kiwi, "Q-S-me"), `tools/vo_status.py` ok. Status: rendered — awaiting approval.
 - 2026-10-04 (review pass): Applied the review (verdict "fix"). Must-fixes: (1) "One A4 page" was false (the PDF writes the task list on its own pages, `programmeListSection` → `pdf.AddPage`): now "Six fixes. One printout.", card "6 · Print it. · Never runs off the side.", captions "The whole chart fits across the A4." + "The task list follows." over a page flick to a recreated page 2 "Task list"; post copy and YouTube title changed to "one printout". (2) The dashed "Illustrative — swap for real QSME screen" note was the loudest thing in frame: now a quiet 18 px muted tag in each app window's title bar ("Recreated screen · demo data") and over the desk shots ("Recreated printout · demo data"); publishing stays blocked on Session C. Should-fixes: the hook opens mid-action (printout on the desk at frame 1, "Your programme. As the lender sees it." as one block, first red ring by 0.8 s, "Example figures" from frame 1, monitor-to-printer transition cut); problem beats 2.35/2.35/2.8 s; "ENDS WHERE?" moved inside the frame, the 2.7M ring separated from the "DATES?" ring, the × 6 note moved under the six rows with a bracket so all six 450,000s read; a camera now pushes 1.45–1.7× on every product beat in chapters 2–6 and pulls back only between beats, with the captions on the desk under the window so toasts and buttons stay readable; "Grey has room" now sits on Driveways & landscaping (the grey task the rain pushed) and the painter line is "The painter everyone chased? Never purple." (cold, no drag promise; title kicker removed); 2.5 s / 2.7 s for those beats via held frames; CTA "Bring your current programme to a 30-minute demo." (no "spreadsheet"); end-card b-roll dimmed to about 30% and blurred (no "Tyvek" legible); chapter cards 1.2 s, title 4 s, recap cut; "When, how long, how much. Up top." gets 3.5 s and the highlighted PDF sentence holds about 6 s before the pen; Session C rows #3, #5–#9 now say to mask "Booked tradie" and crop "AUD", #10 to note the real page count. Nice-to-haves: ch4 captions say "the site's own shutdown" and "Add them as days off"; rows re-sort and renumber in date order after linking; the import dialog shows "Link them one after the other" ticked by default and unticked on screen; the first live-page highlight shortened to "they arrive with their durations and whether weather stops them" (re-capture in publish week). The page now runs on an edit list (holds and skips) over the authored clock; QA samples the real clock. 128.1 s (was 132.6). VO rewritten to 39 lines on the new clock; `tools/vo_status.py` ok.
+- 2026-10-06 (audio-first remake, done 2026-10-10): rebuilt on the owner's audio-first standard. New continuous script with the hook first ("One contract, counted six times."), ONE Cam S eleven_v3 take (146.1 s, longest gap 0.36 s, STT clean), the page re-timed to the words via `ANCH` in `motion/lender.js` (edit list removed), captions re-lifted from the narration, hook marks re-ordered to the lines, chapter 6 camera re-ordered (sentence → pen on the rings → highlighter → letterhead), end card "Bring your current programme." + "Book a 30-minute demo" on "book". Re-rendered 147.2 s (QA ok), mixed → `-with-vo.mp4`, old master archived. Status: awaiting approval; publish still blocked on Session C.

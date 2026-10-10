@@ -9,6 +9,24 @@
      Trailer world (0–T.prod, T.rate–end) sits inside letterbox bars; the product beat opens the bars.
      Product screens are illustrative stand-ins (demo data) until the owner's Session A recording replaces them.
      v2 (2026-10-02 review): retimed to 34.4s for a ~2.1 words/s trailer read with no overlapping VO windows; pull-quote cut.
+     2026-10-06 AUDIO-FIRST REMAKE (owner standard from the N01 pilot: continuous speech, a spoken hook in the first 2 s, no gaps,
+     one unbroken take): the Cam S eleven_v3 take (outputs/vo-take-cam-v3/take.mp3, 40.96 s, ONE /with-timestamps request laid at
+     0.0 on both cuts) is the clock. Every T value below is a word start in outputs/vo-take-cam-v3/words.json; the page runs 42.5 s
+     (take + ~1.5 s tail). Design unchanged; only the times moved and the P2 caption now reads "The contract says 71,300."
+       0.00  "In a world"            s1 (frame b-roll)      "where the bid said" 0.41 · 71,300 slams on "seventy-one" 1.35 · chip on "three" 2.2
+       2.82  "and the contract said" s2                      digits swap on "said" 3.85 → land red on "seventy-three" 4.55 · ring 4.77–5.17 · chip 5.1
+       6.30  "Typed from an email"   s3a                     email body lands 6.45
+       7.62  "from a spreadsheet"    s3b                     sheet lands 7.72
+       8.74  "from a photo of a whiteboard"  s3c             whiteboard 8.74
+      10.32  "One"                   s4                      "transposition." slams on the word 11.10 · 71,300 → 73,100 pops 11.5
+      12.69  "Seven months of correspondence"  s5            inbox rows on "Seven" 12.69 / "months" 13.19 / "correspondence" 13.82
+      14.90  "Without prejudice"     s5b (letter)            b-roll scrawl + red ring 16.25–17.31 (the 0.9 s breath before "This season")
+      17.31  "This season"           s6                      "THE CONTRACT IS" slams on "the contract" 18.26 · "MADE FROM THE BID." on "made" 18.93
+      20.45  bars open               P1 Compare bids         "Award the bid…" caption on "award" 20.69 · dialog 21.05 · click on "creates" 22.62 · dialog closes 23.1–23.35
+      24.24  "So the contract says"  P2 Active Work          caption on "the contract says" 24.60 · green ring on "seventy-one" 25.44 · "Nobody retyped it." on "nobody" 27.10
+      28.34  "Same task"             P3 Schedule             row loses its "~" on "programme" 29.64 · bar detail on "same figure" 30.21
+      31.35  "Rated T"               rating card (bars close)
+      36.04  "Now showing"           end card                pill "Book a 30-minute demo" on "Book" 37.42 · qsme.build on "Queue Ess Mee" 39.43 · ends 42.5
      Render (studio root):
        node tools/motion/make.mjs projects/2026-10-13-qsme-build-trailer-parody/motion/trailer-parody.html projects/2026-10-13-qsme-build-trailer-parody/outputs/trailer-parody-4x5.mp4 --safe 60,60,1020,1290
        sh projects/2026-10-13-qsme-build-trailer-parody/motion/sync-9x16.sh && node tools/motion/make.mjs projects/2026-10-13-qsme-build-trailer-parody/motion/trailer-parody-9x16.html projects/2026-10-13-qsme-build-trailer-parody/outputs/trailer-parody-9x16.mp4 --safe 65,300,1015,1250 -->
@@ -351,7 +369,7 @@
           <div style="margin-top:26px; display:flex; gap:16px"><span class="btn ghost" style="height:62px; font-size:24px">Download contract PDF</span><span class="btn ghost" style="height:62px; font-size:24px">Award summary</span></div>
         </div>
       </div>
-      <div id="cap2" class="cap">…and the contract says <span class="accent">71,300.</span></div>
+      <div id="cap2" class="cap">The contract says <span class="accent">71,300.</span></div>
       <div id="cap2b" class="cap2">Nobody retyped it.</div>
     </div>
 
@@ -414,10 +432,15 @@
   const BT = V ? 275 : 175, BB = V ? 645 : 175;               // letterbox bars (top / bottom)
 
   // ---------------- timeline (seconds) ----------------
-  // v2 retime: every VO window in vo-script.json is sized for a ~2.1 words/s trailer read (2.5 for the plain lines)
-  // and ends >= 0.15s before the next one starts. Change a T value here → re-time vo-script.json / .md too.
-  const T = { s2: 3.2, s3a: 6.25, s3b: 7.85, s3c: 9.2, s4: 10.8, s5: 12.0, s5b: 13.6, s5c: 14.6, s6: 15.6,
-              prod: 18.35, p2: 21.05, p3: 24.65, rate: 27.55, end: 30.65, dur: 34.4 };
+  // 2026-10-06 audio-first: every value is a word start in outputs/vo-take-cam-v3/words.json (the Cam S eleven_v3 take,
+  // 40.96 s, laid at 0.0). Change the take → re-time this table and vo-script.json / .md together.
+  const W = { where: 0.41, seventyOne: 1.35, three: 2.17, and: 2.82, contract: 3.26, said2: 3.82, seventyThree: 4.17,
+              typed: 6.30, sheet: 7.62, photo: 8.74, one: 10.32, transposition: 11.10, seven: 12.69, months: 13.19,
+              correspondence: 13.82, without: 14.90, prejudiceEnd: 16.25, thisSeason: 17.31, theContract: 18.26, made: 18.93,
+              award: 20.69, creates: 22.62, so: 24.24, says: 24.60, seventyOne2: 25.44, nobody: 27.10, same: 28.34,
+              programme: 29.64, sameFigure: 30.21, rated: 31.35, now: 36.04, book: 37.42, queue: 39.43, end: 40.96 };
+  const T = { s2: W.and, s3a: W.typed, s3b: W.sheet, s3c: W.photo, s4: W.one, s5: W.seven, s5b: W.without, s5c: W.prejudiceEnd, s6: W.thisSeason,
+              prod: 20.45, p2: W.so, p3: W.same, rate: W.rated, end: W.now, dur: 42.5 };
 
   Kit.scene('#s1', 0, T.s2).scene('#s2', T.s2, T.s3a).scene('#numwrap', 0, T.s3a)
      .scene('#s3a', T.s3a, T.s3b).scene('#s3b', T.s3b, T.s3c).scene('#s3c', T.s3c, T.s4)
@@ -430,16 +453,17 @@
   Kit.clip('#bro1', { dir: 'clips/frame', t0: 0, t1: T.s2, fps: 30, from: 15, frames: 150, ext: '.jpg' });
   Kit.add('#bro1', 'scale', [[0, 1.0], [T.s2, 1.07]]);
   Kit.add('#s1l1', 'opacity', [[0, 1]]).add('#s1l1', 'scale', [[0, 1.0], [T.s2, 1.04]]);
-  Kit.add('#s1l2', 'opacity', [[0.32, 0], [0.5, 1, 'out']]).add('#s1l2', 'scale', [[0.32, 1.08], [0.6, 1, 'out'], [T.s2, 1.03]]);
-  Kit.add('#num', 'opacity', [[0.72, 0], [0.76, 1]]).add('#num', 'scale', [[0.72, 1.45], [0.88, 1, 'slam'], [T.s2, 1.03], [T.s2 + 0.42, 1.0, 'out']]);
-  Kit.pop('#s1chip', 1.25, { dy: 18 });
+  const SLAM = W.seventyOne;   // 71,300 slams in on "seventy-one"
+  Kit.add('#s1l2', 'opacity', [[W.where, 0], [W.where + 0.18, 1, 'out']]).add('#s1l2', 'scale', [[W.where, 1.08], [W.where + 0.28, 1, 'out'], [T.s2, 1.03]]);
+  Kit.add('#num', 'opacity', [[SLAM - 0.02, 0], [SLAM + 0.02, 1]]).add('#num', 'scale', [[SLAM - 0.02, 1.45], [SLAM + 0.14, 1, 'slam'], [T.s2, 1.03], [T.s2 + 0.42, 1.0, 'out']]);
+  Kit.pop('#s1chip', W.three, { dy: 18 });
   Kit.add('#flab', 'opacity', [[0, 1], [T.s2, 0, 'hold'], [T.s5c, 1, 'hold'], [T.s6, 0, 'hold']]);
 
   // ---------------- S2: the swap ----------------
   Kit.add('#s2l1', 'opacity', [[T.s2, 0], [T.s2 + 0.15, 1, 'out']]);
-  Kit.add('#s2l2', 'opacity', [[T.s2 + 0.18, 0], [T.s2 + 0.36, 1, 'out']]).add('#s2l2', 'scale', [[T.s2 + 0.18, 1.08], [T.s2 + 0.45, 1, 'out']]);
+  Kit.add('#s2l2', 'opacity', [[W.contract, 0], [W.contract + 0.18, 1, 'out']]).add('#s2l2', 'scale', [[W.contract, 1.08], [W.contract + 0.27, 1, 'out']]);
   Kit.add('#doc', 'y', [[T.s2, 30], [T.s3a, -20]]);
-  const SW0 = T.s2 + 0.5, SW1 = T.s2 + 1.2, DX = 216;
+  const SW0 = W.said2 + 0.03, SW1 = W.seventyThree + 0.38, DX = 216;   // the 1 and the 3 travel under "said", land red on "seventy-three"
   Kit.add('#n1', 'x', [[SW0, 0], [SW1, DX, 'inOut']]).add('#n1', 'y', [[SW0, 0], [SW0 + 0.35, -125, 'out'], [SW1, 0, 'in']]).add('#n1', 'rotate', [[SW0, 0], [SW0 + 0.35, -14, 'out'], [SW1, 0, 'in']]);
   Kit.add('#n3', 'x', [[SW0, 0], [SW1, -DX, 'inOut']]).add('#n3', 'y', [[SW0, 0], [SW0 + 0.35, 125, 'out'], [SW1, 0, 'in']]).add('#n3', 'rotate', [[SW0, 0], [SW0 + 0.35, 14, 'out'], [SW1, 0, 'in']]);
   ['#n0', '#n1', '#n2', '#n3', '#n4', '#n5'].forEach(id => Kit.add(id, 'color', [[0, '#EEF4EF'], [SW1 + 0.02, '#FF5A50', 'hold']]));
@@ -457,13 +481,13 @@
 
   // ---------------- S4: ONE TRANSPOSITION. ----------------
   Kit.add('#s4a', 'opacity', [[T.s4, 0], [T.s4 + 0.06, 1]]).add('#s4a', 'scale', [[T.s4, 1.25], [T.s4 + 0.16, 1, 'slam'], [T.s5, 1.04]]);
-  Kit.add('#s4b', 'opacity', [[T.s4 + 0.1, 0], [T.s4 + 0.16, 1]]).add('#s4b', 'scale', [[T.s4 + 0.1, 1.25], [T.s4 + 0.26, 1, 'slam'], [T.s5, 1.04]]);
-  Kit.pop('#s4c', T.s4 + 0.4, { dy: 16 });
+  Kit.add('#s4b', 'opacity', [[W.transposition, 0], [W.transposition + 0.06, 1]]).add('#s4b', 'scale', [[W.transposition, 1.25], [W.transposition + 0.16, 1, 'slam'], [T.s5, 1.04]]);
+  Kit.pop('#s4c', W.transposition + 0.4, { dy: 16 });
 
   // ---------------- S5: SEVEN MONTHS OF CORRESPONDENCE. ----------------
   Kit.add('#h5', 'opacity', [[T.s5, 0], [T.s5 + 0.15, 1]]).add('#h5', 'scale', [[T.s5, 1.05], [T.s5 + 0.4, 1, 'out'], [T.s6, 1.03]]);
   Kit.add('#ib', 'y', [[T.s5, 30], [T.s5 + 0.3, 0, 'out']]).add('#ib', 'opacity', [[T.s5, 0], [T.s5 + 0.12, 1]]);
-  Kit.pop('#ib2', T.s5 + 0.2, { dy: 0 }).pop('#ib3', T.s5 + 0.4, { dy: 0 });
+  Kit.pop('#ib2', W.months, { dy: 0 }).pop('#ib3', W.correspondence, { dy: 0 });
   Kit.add('#lt', 'scale', [[T.s5b, 1.1], [T.s5b + 0.3, 1, 'out'], [T.s5c, 1.03]]).add('#lt', 'opacity', [[T.s5b, 0], [T.s5b + 0.1, 1]]);
   Kit.clip('#bro2', { dir: 'clips/structure', t0: T.s5c, t1: T.s6, fps: 30, frames: 120, ext: '.jpg' });
   Kit.add('#bro2', 'scale', [[T.s5c, 1.0], [T.s6, 1.06]]);
@@ -472,8 +496,8 @@
 
   // ---------------- S6: THIS SEASON… (full line holds >= 2.1s after it lands) ----------------
   Kit.add('#s6a', 'opacity', [[T.s6, 0], [T.s6 + 0.2, 1]]).add('#s6a', 'scale', [[T.s6, 1.0], [T.prod, 1.04]]);
-  Kit.add('#s6b', 'opacity', [[T.s6 + 0.42, 0], [T.s6 + 0.5, 1]]).add('#s6b', 'scale', [[T.s6 + 0.42, 1.15], [T.s6 + 0.6, 1, 'slam'], [T.prod, 1.03]]);
-  Kit.add('#s6c', 'opacity', [[T.s6 + 0.5, 0], [T.s6 + 0.6, 1]]).add('#s6c', 'scale', [[T.s6 + 0.5, 1.15], [T.s6 + 0.7, 1, 'slam'], [T.prod, 1.03]]);
+  Kit.add('#s6b', 'opacity', [[W.theContract, 0], [W.theContract + 0.08, 1]]).add('#s6b', 'scale', [[W.theContract, 1.15], [W.theContract + 0.18, 1, 'slam'], [T.prod, 1.03]]);
+  Kit.add('#s6c', 'opacity', [[W.made, 0], [W.made + 0.1, 1]]).add('#s6c', 'scale', [[W.made, 1.15], [W.made + 0.2, 1, 'slam'], [T.prod, 1.03]]);
 
   // ---------------- letterbox bars: open for the product, close for the rating + end card ----------------
   Kit.add('#barTop', 'height', [[T.prod, BT], [T.prod + 0.4, 0, 'inOut'], [T.rate, 0], [T.rate + 0.35, BT, 'inOut']]);
@@ -483,30 +507,31 @@
   Kit.fade('#plogo', T.prod + 0.2, T.prod + 0.5).out('#plogo', T.rate - 0.2, 0.2);
   Kit.add('#ill', 'opacity', [[0, 0], [T.prod + 0.25, 1, 'hold']]).out('#ill', T.rate - 0.2, 0.2);
   // P1: Compare bids reads on its own for ~0.6s, then the dialog; cursor from +0.75, click at +1.75
+  const CLICK = W.creates;            // the 'Award bid' click lands on "creates"
+  const DOUT = CLICK + 0.5;           // the dialog closes after the click; the table (Bidder F awarded) holds until P2
   Kit.add('#app1', 'opacity', [[T.prod, 0], [T.prod + 0.3, 1, 'out']]);
-  Kit.add('#bk', 'opacity', [[T.prod + 0.55, 0], [T.prod + 0.75, 1, 'out']]);
-  Kit.add('#dlg', 'opacity', [[T.prod + 0.6, 0], [T.prod + 0.8, 1, 'out'], [T.p2 - 0.3, 1], [T.p2 - 0.1, 0, 'in']])
-     .add('#dlg', 'scale', [[T.prod + 0.6, 0.94], [T.prod + 0.9, 1, 'outBack'], [T.p2 - 0.3, 1], [T.p2 - 0.1, 0.96, 'in']]);
-  const CLICK = T.prod + 1.75;
+  Kit.add('#bk', 'opacity', [[T.prod + 0.55, 0], [T.prod + 0.75, 1, 'out'], [CLICK + 0.5, 1], [CLICK + 0.8, 0, 'out']]);
+  Kit.add('#dlg', 'opacity', [[T.prod + 0.6, 0], [T.prod + 0.8, 1, 'out'], [DOUT, 1], [DOUT + 0.25, 0, 'in']])
+     .add('#dlg', 'scale', [[T.prod + 0.6, 0.94], [T.prod + 0.9, 1, 'outBack'], [DOUT, 1], [DOUT + 0.25, 0.96, 'in']]);
   const BX = 831, BY = V ? 764 : 744;   // centre of the 'Award bid' button (measured per format)
   Kit.add('#cursor', 'x', [[T.prod + 0.75, 930], [CLICK - 0.15, BX - 10, 'inOut']]).add('#cursor', 'y', [[T.prod + 0.75, V ? 1110 : 1120], [CLICK - 0.15, BY - 6, 'inOut']])
-     .add('#cursor', 'opacity', [[T.prod + 0.7, 0], [T.prod + 0.85, 1], [T.p2 - 0.3, 1], [T.p2 - 0.12, 0]]).add('#cursor', 'scale', [[CLICK - 0.05, 1], [CLICK + 0.05, .85], [CLICK + 0.2, 1]]);
+     .add('#cursor', 'opacity', [[T.prod + 0.7, 0], [T.prod + 0.85, 1], [DOUT, 1], [DOUT + 0.2, 0]]).add('#cursor', 'scale', [[CLICK - 0.05, 1], [CLICK + 0.05, .85], [CLICK + 0.2, 1]]);
   Kit.add('#gobtn', 'scale', [[CLICK - 0.05, 1], [CLICK + 0.05, .95], [CLICK + 0.22, 1, 'out']]).add('#gobtn', 'background', [[0, '#16A34A'], [CLICK, '#15803D', 'hold']]);
   Kit.add('#ripple', 'x', [[0, BX - 60]]).add('#ripple', 'y', [[0, BY - 60]]).add('#ripple', 'opacity', [[CLICK, 0], [CLICK + 0.04, 1], [CLICK + 0.45, 0, 'out']]).add('#ripple', 'scale', [[CLICK, 0.3], [CLICK + 0.45, 1.6, 'out']]);
-  Kit.pop('#cap1', T.prod + 0.6);
-  // P2 Active Work: caption + VO at +0.3, 'Nobody retyped it.' at +2.8 (holds 0.8s on this card, its VO rides 0.4s into P3)
+  Kit.pop('#cap1', W.award);
+  // P2 Active Work: caption on "the contract says", the green ring on "seventy-one", 'Nobody retyped it.' on "nobody"
   Kit.add('#app2', 'y', [[T.p2, 60], [T.p2 + 0.35, 0, 'out']]).add('#app2', 'opacity', [[T.p2, 0], [T.p2 + 0.2, 1]]);
-  Kit.add('#ring2', 'opacity', [[T.p2 + 0.55, 0], [T.p2 + 0.75, 1, 'out']]).add('#ring2', 'scale', [[T.p2 + 0.55, 1.12], [T.p2 + 0.8, 1, 'out']]);
-  Kit.pop('#cap2', T.p2 + 0.3).pop('#cap2b', T.p2 + 2.8, { dy: 16 });
-  // P3 programme: the row flips from the '~' estimate to the contract figure, then the caption
+  Kit.add('#ring2', 'opacity', [[W.seventyOne2, 0], [W.seventyOne2 + 0.2, 1, 'out']]).add('#ring2', 'scale', [[W.seventyOne2, 1.12], [W.seventyOne2 + 0.25, 1, 'out']]);
+  Kit.pop('#cap2', W.says).pop('#cap2b', W.nobody, { dy: 16 });
+  // P3 programme: caption on "Same task", the row loses its '~' on "programme", the bar detail on "same figure"
   Kit.add('#app3', 'opacity', [[T.p3, 0], [T.p3 + 0.15, 1]]).add('#app3', 'scale', [[T.p3, 1.04], [T.p3 + 0.4, 1, 'out']]);
-  const FLIP = T.p3 + 0.45;
+  const FLIP = W.programme;
   Kit.add('#fB0', 'opacity', [[FLIP, 1], [FLIP + 0.1, 0]]).add('#fC0', 'opacity', [[FLIP, 1], [FLIP + 0.1, 0]]);
   Kit.add('#fB1', 'opacity', [[FLIP, 0], [FLIP + 0.14, 1, 'out']]).add('#fC1', 'opacity', [[FLIP, 0], [FLIP + 0.14, 1, 'out']]).add('#fC1', 'scale', [[FLIP, 1.18], [FLIP + 0.3, 1, 'out']]);
   Kit.add('#grF', 'background', [[0, '#FFFFFF'], [FLIP, '#FFFFFF'], [FLIP + 0.12, '#BBF7D0', 'out'], [FLIP + 0.7, '#F0FDF4']]);
   Kit.add('#barF', 'background', [[0, '#CBD5E1'], [FLIP, '#CBD5E1'], [FLIP + 0.2, '#2563EB', 'out']]);
-  Kit.pop('#cap3', T.p3 + 0.6);
-  Kit.pop('#tipF', T.p3 + 0.75, { dy: 16 });
+  Kit.pop('#cap3', T.p3 + 0.1);
+  Kit.pop('#tipF', W.sameFigure, { dy: 16 });
 
   // ---------------- RATING (fades in from the cut while the bars close over it: no black frames; legible ~3.0s) ----------------
   Kit.add('#rate', 'opacity', [[T.rate, 0], [T.rate + 0.15, 1, 'out']]).add('#rate', 'scale', [[T.rate, 1.04], [T.end, 1.0]]);
@@ -514,15 +539,15 @@
   // ---------------- END ----------------
   Kit.add('#e1', 'opacity', [[T.end, 0], [T.end + 0.3, 1, 'out']]);
   Kit.add('#endlogo', 'opacity', [[T.end + 0.25, 0], [T.end + 0.6, 1, 'out']]).add('#endlogo', 'scale', [[T.end + 0.25, 0.94], [T.end + 0.8, 1, 'out']]);
-  Kit.pop('#e2', T.end + 0.55).pop('#e3', T.end + 0.95);
+  Kit.pop('#e2', W.queue).pop('#e3', W.book);
   Kit.add('#eglow', 'opacity', [[T.end, 0], [T.end + 1.2, 1, 'out']]);
 
   // ---------------- trailer polish: flash frames, flares, shake, grain ----------------
-  const HITS = [0.74, SW1, T.s4, T.s6 + 0.42];
+  const HITS = [SLAM, SW1, T.s4, W.theContract];
   const flashKeys = [[0, 0]];
   HITS.forEach(h => { flashKeys.push([h, 0], [h + 0.02, 0.42], [h + 0.1, 0, 'out']); });
   Kit.add('#flash', 'opacity', flashKeys);
-  const FL = [[0.74, 700], [T.s4 + 0.12, 640], [T.s6 + 0.5, 690], [T.end + 0.25, 580]];
+  const FL = [[SLAM, 700], [T.s4 + 0.12, 640], [W.theContract + 0.08, 690], [T.end + 0.25, 580]];
   Kit.each(t => {
     const fl = document.getElementById('fl1');
     let o = 0, x = -300, y = 640;

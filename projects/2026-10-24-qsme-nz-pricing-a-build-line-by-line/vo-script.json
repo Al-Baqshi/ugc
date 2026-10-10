@@ -1,878 +1,759 @@
 {
  "venture": "qsme-nz",
+ "vid": "N10",
  "video": "outputs/pricing-a-build-16x9.mp4",
- "character": "Mel, the QSME NZ voice (same casting as 'Which Dave?'): everyday Kiwi woman, late 30s, General NZ accent, never a caricature. Here she narrates like a mate who has priced a few builds: calm quantity-surveyor common sense, dry, a little amused at the consent pack and the old spreadsheet, never a presenter. She talks ABOUT the owner-builder ('she', 'her'), never as her: no 'I', no testimonial. Product lines sound like the same person explaining how it works over a bench: no announcer lift, no tagline cadence, no exclamation marks. Optional A/B: a relaxed Kiwi bloke (low, flat, bone-dry) reads the same words.",
+ "with_vo": "outputs/pricing-a-build-16x9-with-vo.mp4",
+ "character": "One dry, funny Kiwi bloke telling the owner-builder's story (Cam S, ElevenLabs voice 53CG2aO2HU48thT3QnMl): she/her, never 'I', never a testimonial. General NZ accent, never a caricature, no announcer lift, no exclamation marks; amused at the paperwork, never at her, the designer, the brother-in-law or the trades. Continuous speech: the narration never stops for more than 1 s. Mel (2026-10-04 casting) is the design record only.",
  "settings": {
-  "model": "eleven_multilingual_v2",
-  "stability": 0.45,
-  "similarity_boost": 0.75,
-  "style": 0,
-  "speed": 1,
-  "use_speaker_boost": true
+  "model": "eleven_v3",
+  "stability": 0.5,
+  "note": "v3 only accepts stability 0.0 / 0.5 / 1.0; no style/speed/similarity"
  },
+ "pronunciation": {
+  "QSME": "Queue Ess Mee (heard back as 'QS Me' / 'qsme.co.nz')",
+  "qsme.co.nz": "Queue Ess Mee dot Co dot N Z (owner 2026-10-08: 'co' said like KO, never spelled C-O)",
+  "GST": "G S T",
+  "2024": "twenty twenty-four",
+  "30-30-40": "thirty, thirty, forty"
+ },
+ "take": {
+  "model": "eleven_v3",
+  "voice": "Cam S (53CG2aO2HU48thT3QnMl)",
+  "file": "outputs/vo-take-cam-v3/take.m4a",
+  "alignment": "outputs/vo-take-cam-v3/alignment.json",
+  "words": 370,
+  "text_sent": "outputs/vo-take-cam-v3/take-text.txt",
+  "stt": "outputs/vo-take-cam-v3/stt.txt",
+  "duration_s": 144.96,
+  "words_per_s": 2.55,
+  "max_gap_s": 0.53,
+  "tags": [
+   "[amused]",
+   "[confident]"
+  ],
+  "stability": 0.5,
+  "method": "ONE unbroken request to /v1/text-to-speech/53CG2aO2HU48thT3QnMl/with-timestamps?output_format=mp3_44100_128 (eleven_v3, stability 0.5); never sliced; laid onto outputs/pricing-a-build-16x9.mp4 at 0.0 s, gain 1.15, with tools/mux, no music bed.",
+  "note": "2026-10-10 retake for the 'koh' CTA (owner 2026-10-08) and the audio-first remake: attempt 1 (152.56 s, 2.43 w/s, 0.95 s gap before 'Step five', STT heard 'Import it' as 'Imported') kept as *-attempt1.*; attempt 2 is the take. The 2026-10-06 'dot co' takes of all four cuts are archived in outputs/archive/vo-co-2026-10-06/.",
+  "words_file": "outputs/vo-take-cam-v3/words.json"
+ },
+ "continuous_read_v3": "Forty-eight pages of consent drawings. Not one of them is drainage. Found before the tender... not in a trench.\n\nPrice it once. Here's how.\n\nChristchurch owner-builder. Consent pack thick enough to prop a door open. And her brother-in-law's spreadsheet. From two years ago. Neither one mentions drainage.\n\nStep one. Read the pack. Queue Ess Mee splits it into its real sections. Floor plans, bracing, foundations, schedules. It reads what the drawings say, it doesn't measure them. And it takes a few minutes, so this bit's sped up. Tables come out as tables. And it says what it didn't find. Heads up: no drainage in this pack. Found before anyone priced it. So she asks the designer.\n\nDays later, the drainage sheets turn up. Their own PDF. Read in. Drainage, found.\n\nStep two. Price it. A pocket per trade. Plumbing and drainage. It starts as a Draft. She makes it Active. A quantity, a rate, and the line, the job, the pocket and the Grand total tick up together. Her own columns too. Waste percent, then a formula. And the brother-in-law's spreadsheet? Import it. In it comes as drafts. [amused] Twenty twenty-four rates, mind.\n\nStep three. Fill the gaps. Draft with AI adds the pockets she hasn't got, as AI drafts. Keep one. Bin the other. Then Estimate with AI prices only the empty lines. Indicative, not quotes. Every AI number stays marked until a person edits it. She swaps one for her supplier's figure, and its mark goes. The other two stay marked. She still has to check them.\n\nStep four. Make it a tender. Private, so only who she invites. Select the whole pocket: its jobs and lines are the scope. Three of three. Point them at the drainage pages. The ones that exist now. Thirty, thirty, forty, with five percent retention. Then invite the trades she picks. [confident]\n\nStep five. What the drainlayer sees. The same lines, for every bidder. They can itemise, or quote one total. Her rates and her budget are stripped before they see it. Comparing the totals on the same G S T basis? That video's linked here.\n\nPrice it once. Tender the same lines. Sign up at Queue Ess Mee dot Co dot N Z.",
  "lines": [
   {
-   "id": "vo01-hook",
-   "start_s": 0.2,
-   "max_s": 4.0,
-   "on_screen": "Headline 'Found before the tender.' over the printed demo pack, already down on the bench at frame 0; the notice 'Heads up: no drainage found in this pack.' slides in by 0.3 s, red marker under 'no drainage' (1.0–1.5)",
-   "text_v2": "No drainage sheet in the pack. Found before the tender…",
-   "text_v3": "No drainage sheet in the pack. Found before the tender…",
-   "delivery": "Dry and specific, like the first line of a story to a mate. Small lean on 'No drainage'; a real beat at the ellipsis so the next line lands on the cut to the trench. No lift, nothing sold. Out by 4.2, before the cut to the trench (4.6)."
+   "id": "f00-hook",
+   "start_s": 0.0,
+   "max_s": 4.76,
+   "on_screen": "0–7.1: bench, pack down at frame 0, 'Found before the tender.'; notice 'Heads up: no drainage found in this pack.' in by 0.3; red underline on 'drainage.' 3.9–4.4",
+   "text_v2": "Forty-eight pages of consent drawings. Not one of them is drainage.",
+   "text_v3": "Forty-eight pages of consent drawings. Not one of them is drainage.",
+   "delivery": "A stinging number, then the punchline flat. Energy up, no announcer lift."
   },
   {
-   "id": "vo02-trench",
-   "start_s": 4.7,
-   "max_s": 2.0,
-   "on_screen": "Trench b-roll: 'Not in a trench.' ('Not' in green)",
-   "text_v2": "…not in a trench.",
-   "text_v3": "…not in a trench.",
-   "delivery": "Finishes the thought, a touch lower, almost under her breath. Out by 6.7 so the title lands clean."
+   "id": "f01-not-in-a-trench",
+   "start_s": 4.76,
+   "max_s": 3.71,
+   "on_screen": "trench b-roll on 'not' 7.06: 'Not in a trench.'",
+   "text_v2": "Found before the tender... not in a trench.",
+   "text_v3": "Found before the tender... not in a trench.",
+   "delivery": "The trailing pause is the joke; land 'trench' dry."
   },
   {
-   "id": "vo03-title",
-   "start_s": 7.2,
-   "max_s": 3.0,
-   "on_screen": "Title card 'Price it once.' / 'From the consent pack to one scope every trade prices.'",
+   "id": "f02-title",
+   "start_s": 8.47,
+   "max_s": 2.74,
+   "on_screen": "title 'Price it once.' pops on 'Price' 8.47",
    "text_v2": "Price it once. Here's how.",
    "text_v3": "Price it once. Here's how.",
-   "delivery": "Plain and warm. 'Price it once' flat, not a slogan; 'Here's how' like turning the laptop round. Out by 10.2."
+   "delivery": "Plain, a mate getting on with it."
   },
   {
-   "id": "vo04-setup",
-   "start_s": 10.9,
-   "max_s": 4.2,
-   "on_screen": "Bench: the pack, sticky 'CHCH build'; caption 'Christchurch owner-builder. Consent pack thick enough to prop a door open.'",
+   "id": "f03-setup",
+   "start_s": 11.21,
+   "max_s": 4.67,
+   "on_screen": "bench: CHCH build sticky; caption 'Christchurch owner-builder. Consent pack thick enough to prop a door open.'",
    "text_v2": "Christchurch owner-builder. Consent pack thick enough to prop a door open.",
    "text_v3": "Christchurch owner-builder. Consent pack thick enough to prop a door open.",
-   "delivery": "Amused deadpan. 'Christchurch' said the Kiwi way (Chryst-church, not 'Christ-church' with a big pause). Lean on 'prop a door open', falling. Out by 15.1."
+   "delivery": "Amused at the paperwork, never at her."
   },
   {
-   "id": "vo05-spreadsheet",
-   "start_s": 15.4,
-   "max_s": 3.1,
-   "on_screen": "The printed 'Build costs — 2024' spreadsheet slides in; '2024' circled in red; caption 'And her brother-in-law's spreadsheet. From two years ago.'",
+   "id": "f04-spreadsheet",
+   "start_s": 15.88,
+   "max_s": 3.63,
+   "on_screen": "'Build costs — 2024' slides in 15.8; '2024' circled on 'two years ago' 18.46",
    "text_v2": "And her brother-in-law's spreadsheet. From two years ago.",
    "text_v3": "And her brother-in-law's spreadsheet. From two years ago.",
-   "delivery": "A small knowing pause before 'From two years ago', which is the joke: flat, falling, no wink. Out by 18.5."
+   "delivery": "Dry beat before 'From two years ago.'"
   },
   {
-   "id": "vo06-neither",
-   "start_s": 18.8,
-   "max_s": 1.9,
-   "on_screen": "Marker 'drainage??' on the bench; caption 'Neither one mentions drainage.'",
-   "text_v2": "Neither mentions drainage.",
-   "text_v3": "Neither mentions drainage.",
-   "delivery": "Short and dry, the setup's punchline. Out by 20.7."
+   "id": "f05-no-drainage",
+   "start_s": 19.51,
+   "max_s": 2.12,
+   "on_screen": "marker 'drainage??' on 'mentions drainage' 20.28; chapter strip 20.95",
+   "text_v2": "Neither one mentions drainage.",
+   "text_v3": "Neither one mentions drainage.",
+   "delivery": "Flat, the gap noted."
   },
   {
-   "id": "vo07-step1",
-   "start_s": 21.0,
-   "max_s": 2.2,
-   "on_screen": "Lead-in on the illustrative Plan index (nothing read yet), chapter pill '01 Read the pack', caption 'Step 1: read the pack.'",
+   "id": "f06-step1",
+   "start_s": 21.63,
+   "max_s": 1.94,
+   "on_screen": "app window 21.45, chapter pill '01 Read the pack'; caption 'Step 1: read the pack.'",
    "text_v2": "Step one. Read the pack.",
    "text_v3": "Step one. Read the pack.",
-   "delivery": "Brisk and practical, like reading off a list. Out by 23.2."
+   "delivery": "Brisk signpost."
   },
   {
-   "id": "vo08-sections",
-   "start_s": 23.3,
-   "max_s": 4.4,
-   "on_screen": "'Read a document' → 'Finding the sections…' → section chips with page ranges (illustrative, demo data); chips '▸▸ sped up' and 'Can take a few minutes' while it reads; tag 'Paid plans · uses AI credits'",
-   "text_v2": "Q-S-me splits it into its real sections. Floor plans, bracing, schedules.",
-   "text_v3": "Q-S-me splits it into its real sections. Floor plans, bracing, schedules.",
-   "delivery": "Say 'Q-S-me' (kyoo-ess-mee) plainly, never 'kiss me'. The list is easy and even, a slight downstep on each. Out by 27.7."
+   "id": "f07-sections",
+   "start_s": 23.57,
+   "max_s": 3.09,
+   "on_screen": "Read a document → Demo pack.pdf; caption 'QSME splits it into its real sections.'; 11 chips pop 25.9–29.6",
+   "text_v2": "Q-S-me splits it into its real sections.",
+   "text_v3": "Q-S-me splits it into its real sections.",
+   "delivery": "Plain product line."
   },
   {
-   "id": "vo09-tables",
-   "start_s": 28.6,
-   "max_s": 2.4,
-   "on_screen": "'Window schedule' chip opens to a real table",
+   "id": "f08-list",
+   "start_s": 26.67,
+   "max_s": 3.25,
+   "on_screen": "chips keep popping; caption 'Floor plans, bracing, foundations, schedules.'",
+   "text_v2": "Floor plans, bracing, foundations, schedules.",
+   "text_v3": "Floor plans, bracing, foundations, schedules.",
+   "delivery": "Quick list, not a tagline."
+  },
+  {
+   "id": "f09-reads-not-measures",
+   "start_s": 29.92,
+   "max_s": 3.0,
+   "on_screen": "tag 'Reads what the drawings say. Doesn't measure them.' (no caption)",
+   "text_v2": "It reads what the drawings say, it doesn't measure them.",
+   "text_v3": "It reads what the drawings say, it doesn't measure them.",
+   "delivery": "Matter-of-fact disclaimer."
+  },
+  {
+   "id": "f10-sped-up",
+   "start_s": 32.92,
+   "max_s": 2.79,
+   "on_screen": "'▸▸ sped up · Can take a few minutes' held to 35.35; caption 'It takes a few minutes, so this bit's sped up.'",
+   "text_v2": "And it takes a few minutes, so this bit's sped up.",
+   "text_v3": "And it takes a few minutes, so this bit's sped up.",
+   "delivery": "Honest aside."
+  },
+  {
+   "id": "f11-tables",
+   "start_s": 35.71,
+   "max_s": 2.16,
+   "on_screen": "window-schedule drawer slides in on 'Tables' 35.55",
    "text_v2": "Tables come out as tables.",
    "text_v3": "Tables come out as tables.",
-   "delivery": "A small dry smile in the voice: it's a low bar and it clears it. Out by 31."
+   "delivery": "Slight satisfaction."
   },
   {
-   "id": "vo10-didnt-find",
-   "start_s": 31.7,
-   "max_s": 2.9,
-   "on_screen": "The notice slides in: 'Your plans have been read — 11 sections ready to explore. Heads up: no drainage found in this pack.'",
+   "id": "f12-didnt-find",
+   "start_s": 37.87,
+   "max_s": 1.69,
+   "on_screen": "the notice slides in 37.6; zoom 1.62x",
    "text_v2": "And it says what it didn't find.",
    "text_v3": "And it says what it didn't find.",
-   "delivery": "Lean on 'didn't'. Unhurried. Out by 34.6."
+   "delivery": "Set up the reveal."
   },
   {
-   "id": "vo11-found-early",
-   "start_s": 34.9,
-   "max_s": 3.1,
-   "on_screen": "Red marker under 'no drainage'; caption 'No drainage. Found before anyone priced it.'",
-   "text_v2": "No drainage. Found before anyone priced it.",
-   "text_v3": "No drainage. Found before anyone priced it.",
-   "delivery": "The quiet payoff. 'No drainage' flat; 'before anyone priced it' with relief, falling. Out by 38."
+   "id": "f13-heads-up",
+   "start_s": 39.56,
+   "max_s": 4.89,
+   "on_screen": "red underline on 'no drainage' 40.59; caption 'Heads up: no drainage. Found before anyone priced it.'",
+   "text_v2": "Heads up: no drainage in this pack. Found before anyone priced it.",
+   "text_v3": "Heads up: no drainage in this pack. Found before anyone priced it.",
+   "delivery": "Quote the notice plainly, then the point."
   },
   {
-   "id": "vo12-designer",
-   "start_s": 38.25,
-   "max_s": 2.4,
-   "on_screen": "Sticky note 'ask designer: drainage sheets!'",
-   "text_v2": "So she asks the designer.",
-   "text_v3": "So she asks the designer.",
-   "delivery": "Matter-of-fact, a shrug. Out by 40.6."
-  },
-  {
-   "id": "vo30-drainage-arrives",
-   "start_s": 41.1,
-   "max_s": 3.5,
-   "on_screen": "Bench (straight after 'she asks the designer'): the designer's drainage sheets slide over the pack; tick on the sticky; label 'Dramatised'",
-   "text_v2": "Days later, the drainage sheets. Their own PDF.",
-   "text_v3": "Days later, the drainage sheets. Their own PDF.",
-   "delivery": "A small 'finally' in the voice, not a sigh. Out by 44.6."
-  },
-  {
-   "id": "vo31-read-in",
-   "start_s": 45.1,
-   "max_s": 3.6,
-   "on_screen": "'Read a document' → 'Drainage — demo.pdf' (chips '▸▸ sped up', 'Can take a few minutes') → chips 'Drainage layout p.1–2', 'Drainage details p.3'",
-   "text_v2": "Read in. Drainage, found.",
-   "text_v3": "Read in. Drainage, found.",
-   "delivery": "Callback to the hook: 'found' lands with quiet satisfaction. Leave room. Out by 48.7."
-  },
-  {
-   "id": "vo13-step2",
-   "start_s": 49.15,
-   "max_s": 1.8,
-   "on_screen": "Lead-in on the empty SOQ ('Nothing here yet'), chapter pill '02 Price it', caption 'Step 2: price it.'",
-   "text_v2": "Step two. Price it.",
-   "text_v3": "Step two. Price it.",
-   "delivery": "Same list voice as step one. Out by 50.9."
-  },
-  {
-   "id": "vo14-pocket",
-   "start_s": 51.0,
-   "max_s": 2.5,
-   "on_screen": "'Add a pocket' → 'Plumbing & drainage'",
-   "text_v2": "A pocket per trade.",
-   "text_v3": "A pocket per trade.",
-   "delivery": "Plain, explanatory. Out by 53.5."
-  },
-  {
-   "id": "vo15-active",
-   "start_s": 53.65,
-   "max_s": 2.7,
-   "on_screen": "Badge flips Draft (blue) → Active (green)",
-   "text_v2": "Draft first. She makes it active.",
-   "text_v3": "Draft first. She makes it active.",
-   "delivery": "Even, a light lean on 'active'. Out by 56.4."
-  },
-  {
-   "id": "vo16-tick",
-   "start_s": 56.4,
-   "max_s": 3.3,
-   "on_screen": "Quantity and rate typed; line, job, pocket and Grand total tick up together",
-   "text_v2": "Line, job, pocket, grand total. All tick up together.",
-   "text_v3": "Line, job, pocket, grand total. All tick up together.",
-   "delivery": "The list rises gently, then 'All tick up together' lands satisfied but understated. Out by 59.7."
-  },
-  {
-   "id": "vo17-columns",
-   "start_s": 59.9,
-   "max_s": 4.6,
-   "on_screen": "'Add a column': Waste % (Percent), then 'Qty + waste' (Formula)",
-   "text_v2": "Her own columns too. Waste percent, then a formula.",
-   "text_v3": "Her own columns too. Waste percent, then a formula.",
-   "delivery": "Conversational, as if showing a mate a trick. 'Waste percent' clearly (not 'waste per cent' with a gap). Out by 64.5."
-  },
-  {
-   "id": "vo18-old",
-   "start_s": 64.9,
-   "max_s": 2.2,
-   "on_screen": "'Import a schedule from Excel or CSV'; caption 'And the brother-in-law's spreadsheet?'",
-   "text_v2": "And the old spreadsheet?",
-   "text_v3": "And the old spreadsheet?",
-   "delivery": "A small callback grin, rising slightly on the question, the only rise in the read. Out by 67.1."
-  },
-  {
-   "id": "vo19-drafts",
-   "start_s": 67.4,
-   "max_s": 4.3,
-   "on_screen": "Toast 'Imported 3 pockets and 11 lines as drafts'; three Draft pockets from build-costs-2024.xlsx",
-   "text_v2": "In it comes as drafts. Twenty twenty-four rates, mind.",
-   "text_v3": "In it comes as drafts. Twenty twenty-four rates, mind.",
-   "delivery": "'In it comes' easy; 'Twenty twenty-four rates, mind' dry and knowing, the Kiwi 'mind' tacked on. Out by 71.7."
-  },
-  {
-   "id": "vo20-step3",
-   "start_s": 72.05,
-   "max_s": 1.6,
-   "on_screen": "Caption 'Step 3: fill the gaps.'",
-   "text_v2": "Step three: the gaps.",
-   "text_v3": "Step three: the gaps.",
-   "delivery": "Quick list voice. Out by 73.6."
-  },
-  {
-   "id": "vo21-ai-drafts",
-   "start_s": 73.75,
-   "max_s": 2.6,
-   "on_screen": "'Draft SOQ with AI' dialog: 'The assistant drafts a measured Schedule of Quantities… keep, edit or discard them.'; caption 'AI drafts. She checks.'",
-   "text_v2": "AI drafts. She checks.",
-   "text_v3": "AI drafts. She checks.",
-   "delivery": "Two even beats, 'She checks' slightly firmer. 'AI' as two letters. Out by 76.3."
-  },
-  {
-   "id": "vo22-keep-bin",
-   "start_s": 76.7,
-   "max_s": 2.4,
-   "on_screen": "'AI draft · Keep' on Windows & joinery; Landscaping binned",
-   "text_v2": "Keep one. Bin the other.",
-   "text_v3": "Keep one. Bin the other.",
-   "delivery": "Brisk, a little decisive. Out by 79.1."
-  },
-  {
-   "id": "vo23-estimate",
-   "start_s": 79.5,
-   "max_s": 3.0,
-   "on_screen": "'Estimate with AI': finish level Standard, 'Christchurch, New Zealand'",
-   "text_v2": "Then it prices only the empty lines.",
-   "text_v3": "Then it prices only the empty lines.",
-   "delivery": "Lean on 'only'. Out by 82.5."
-  },
-  {
-   "id": "vo24-marked",
-   "start_s": 82.9,
-   "max_s": 3.3,
-   "on_screen": "Three empty rates fill with ✦; banner '3 lines priced by AI and not yet reviewed…'; caption 'Every AI number stays marked ✦ until a person edits it.'",
-   "text_v2": "Every AI number stays marked till a person edits it.",
-   "text_v3": "Every AI number stays marked till a person edits it.",
-   "delivery": "Reassuring, plain. 'till' the Kiwi way; a light lean on 'edits' (the mark goes when a person edits the line, not when someone looks at it). Out by 86.2."
-  },
-  {
-   "id": "vo25-swap",
-   "start_s": 86.5,
-   "max_s": 3.6,
-   "on_screen": "She types 4,300.00 over the ✦ rate; the ✦ goes; banner 3 → 2",
-   "text_v2": "She swaps one for her supplier's price. The mark goes.",
-   "text_v3": "She swaps one for her supplier's price. The mark goes.",
-   "delivery": "Light satisfaction on 'The mark goes', falling. Out by 90.1."
-  },
-  {
-   "id": "vo26-two-left",
-   "start_s": 90.5,
-   "max_s": 3.4,
-   "on_screen": "Banner '2 lines priced by AI and not yet reviewed…'; caption 'The other two stay marked. She still has to check them.'",
-   "text_v2": "The other two stay marked. She still has to check them.",
-   "text_v3": "The other two stay marked. She still has to check them.",
-   "delivery": "Even, unhurried; a small beat after 'marked'. Out by 93.9."
-  },
-  {
-   "id": "vo32-tender",
-   "start_s": 94.2,
-   "max_s": 3.5,
-   "on_screen": "'Create New Tender' → 'Who can find it' → Private",
-   "text_v2": "The pocket becomes a private tender.",
-   "text_v3": "The pocket becomes a private tender.",
-   "delivery": "Explanatory, even. Out by 97.7."
-  },
-  {
-   "id": "vo33-scope",
-   "start_s": 97.9,
-   "max_s": 4.0,
-   "on_screen": "'SOQ jobs to include (optional)' → 'Select whole pocket' → '3 of 3 selected'",
-   "text_v2": "Whole pocket: its lines are the scope.",
-   "text_v3": "Whole pocket: its lines are the scope.",
-   "delivery": "Light lean on 'lines'. Out by 101.9."
-  },
-  {
-   "id": "vo34-sheets",
-   "start_s": 102.3,
-   "max_s": 4.4,
-   "on_screen": "'Point them at the right sheets' → Drainage layout and Drainage details ticked",
-   "text_v2": "Point them at the drainage pages. Ones that exist now.",
-   "text_v3": "Point them at the drainage pages. Ones that exist now.",
-   "delivery": "The dry callback: 'Ones that exist now' a touch slower and lower. Never say they 'jump to' pages. Out by 106.7."
-  },
-  {
-   "id": "vo35-payment",
-   "start_s": 107.1,
-   "max_s": 4.0,
-   "on_screen": "'Suggested payment setup' 30-30-40, Retention 5%; 'Do your prices include GST?'",
-   "text_v2": "Thirty, thirty, forty. Five percent retention.",
-   "text_v3": "Thirty, thirty, forty. Five percent retention.",
-   "delivery": "Read like numbers off a form, even. Out by 111.1."
-  },
-  {
-   "id": "vo36-invite",
-   "start_s": 111.6,
-   "max_s": 3.0,
-   "on_screen": "'Send Tender Invitations' to three demo contacts",
-   "text_v2": "Then invite the trades she picks.",
-   "text_v3": "Then invite the trades she picks.",
-   "delivery": "Easy, falling. Out by 114.6."
-  },
-  {
-   "id": "vo37-same-lines",
-   "start_s": 115.2,
-   "max_s": 4.6,
-   "on_screen": "Split screen: her SOQ with rates / the drainlayer's form with the rate column empty; caption 'Same lines for every bidder. Her rates never shown.'",
-   "text_v2": "Every bidder prices the same lines. And never sees hers.",
-   "text_v3": "Every bidder prices the same lines. And never sees hers.",
-   "delivery": "The film's thesis, but understated. Small pause before 'And never sees hers'; lean on 'hers'. Out by 119.8."
-  },
-  {
-   "id": "vo38-stripped",
-   "start_s": 120.2,
-   "max_s": 3.5,
-   "on_screen": "Caption 'Rates and budget are stripped before a bidder sees it.'",
-   "text_v2": "Rates and budget are stripped before they see it.",
-   "text_v3": "Rates and budget are stripped before they see it.",
-   "delivery": "Plain and factual. Out by 123.7."
-  },
-  {
-   "id": "vo39-linked",
-   "start_s": 124.0,
-   "max_s": 4.2,
-   "on_screen": "Caption 'Comparing the totals on the same GST basis? / That video's linked here ↗' over a slow push on the split (a YouTube info card links the comparing-bids video at 124 s)",
-   "text_v2": "Comparing the totals on the same GST basis? That video's linked here.",
-   "text_v3": "Comparing the totals on the same GST basis? That video's linked here.",
-   "delivery": "A friendly pointer, light rise on the question then flat. 'G-S-T' as letters; 'linked here' plain, no day or date (the video is evergreen). Out by 128.2."
-  },
-  {
-   "id": "vo40-cta",
-   "start_s": 128.8,
-   "max_s": 6.0,
-   "on_screen": "End card: QSME wordmark, 'Price it once.' / 'Tender the same lines.' / green button 'Sign up at qsme.co.nz'",
-   "text_v2": "Price it once. Tender the same lines. Sign up at Q-S-me dot co dot en zed.",
-   "text_v3": "Price it once. Tender the same lines. Sign up at Q-S-me dot co dot en zed.",
-   "delivery": "A friendly nudge across the bench, not a sales pitch. 'Sign up' lands as the button pops (130.0); the URL the Kiwi way ('en zed'), no spelling-bee pauses, no rise at the end. Never 'free' or any pricing line (owner CTA rule 2026-10-03). Out by 134.8."
-  }
- ],
- "male_alt_lines": [
-  {
-   "id": "vo01-hook_m",
-   "start_s": 0.2,
-   "max_s": 4.0,
-   "text_v2": "No drainage sheet in the pack. Found before the tender…",
-   "text_v3": "No drainage sheet in the pack. Found before the tender…",
-   "delivery": "Relaxed Kiwi bloke, low, flat and bone-dry, same timing and out-points as the main read."
-  },
-  {
-   "id": "vo02-trench_m",
-   "start_s": 4.7,
-   "max_s": 2.0,
-   "text_v2": "…not in a trench.",
-   "text_v3": "…not in a trench.",
-   "delivery": "Relaxed Kiwi bloke, low, flat and bone-dry, same timing and out-points as the main read."
-  },
-  {
-   "id": "vo03-title_m",
-   "start_s": 7.2,
-   "max_s": 3.0,
-   "text_v2": "Price it once. Here's how.",
-   "text_v3": "Price it once. Here's how.",
-   "delivery": "Relaxed Kiwi bloke, low, flat and bone-dry, same timing and out-points as the main read."
-  },
-  {
-   "id": "vo04-setup_m",
-   "start_s": 10.9,
-   "max_s": 4.2,
-   "text_v2": "Christchurch owner-builder. Consent pack thick enough to prop a door open.",
-   "text_v3": "Christchurch owner-builder. Consent pack thick enough to prop a door open.",
-   "delivery": "Relaxed Kiwi bloke, low, flat and bone-dry, same timing and out-points as the main read."
-  },
-  {
-   "id": "vo05-spreadsheet_m",
-   "start_s": 15.4,
-   "max_s": 3.1,
-   "text_v2": "And her brother-in-law's spreadsheet. From two years ago.",
-   "text_v3": "And her brother-in-law's spreadsheet. From two years ago.",
-   "delivery": "Relaxed Kiwi bloke, low, flat and bone-dry, same timing and out-points as the main read."
-  },
-  {
-   "id": "vo06-neither_m",
-   "start_s": 18.8,
+   "id": "f14-asks-designer",
+   "start_s": 44.45,
    "max_s": 1.9,
-   "text_v2": "Neither mentions drainage.",
-   "text_v3": "Neither mentions drainage.",
-   "delivery": "Relaxed Kiwi bloke, low, flat and bone-dry, same timing and out-points as the main read."
-  },
-  {
-   "id": "vo07-step1_m",
-   "start_s": 21.0,
-   "max_s": 2.2,
-   "text_v2": "Step one. Read the pack.",
-   "text_v3": "Step one. Read the pack.",
-   "delivery": "Relaxed Kiwi bloke, low, flat and bone-dry, same timing and out-points as the main read."
-  },
-  {
-   "id": "vo08-sections_m",
-   "start_s": 23.3,
-   "max_s": 4.4,
-   "text_v2": "Q-S-me splits it into its real sections. Floor plans, bracing, schedules.",
-   "text_v3": "Q-S-me splits it into its real sections. Floor plans, bracing, schedules.",
-   "delivery": "Relaxed Kiwi bloke, low, flat and bone-dry, same timing and out-points as the main read."
-  },
-  {
-   "id": "vo09-tables_m",
-   "start_s": 28.6,
-   "max_s": 2.4,
-   "text_v2": "Tables come out as tables.",
-   "text_v3": "Tables come out as tables.",
-   "delivery": "Relaxed Kiwi bloke, low, flat and bone-dry, same timing and out-points as the main read."
-  },
-  {
-   "id": "vo10-didnt-find_m",
-   "start_s": 31.7,
-   "max_s": 2.9,
-   "text_v2": "And it says what it didn't find.",
-   "text_v3": "And it says what it didn't find.",
-   "delivery": "Relaxed Kiwi bloke, low, flat and bone-dry, same timing and out-points as the main read."
-  },
-  {
-   "id": "vo11-found-early_m",
-   "start_s": 34.9,
-   "max_s": 3.1,
-   "text_v2": "No drainage. Found before anyone priced it.",
-   "text_v3": "No drainage. Found before anyone priced it.",
-   "delivery": "Relaxed Kiwi bloke, low, flat and bone-dry, same timing and out-points as the main read."
-  },
-  {
-   "id": "vo12-designer_m",
-   "start_s": 38.25,
-   "max_s": 2.4,
+   "on_screen": "sticky 'ask designer: drainage sheets!' slams on 'So' 44.45",
    "text_v2": "So she asks the designer.",
    "text_v3": "So she asks the designer.",
-   "delivery": "Relaxed Kiwi bloke, low, flat and bone-dry, same timing and out-points as the main read."
+   "delivery": "Practical."
   },
   {
-   "id": "vo30-drainage-arrives_m",
-   "start_s": 41.1,
-   "max_s": 3.5,
-   "text_v2": "Days later, the drainage sheets. Their own PDF.",
-   "text_v3": "Days later, the drainage sheets. Their own PDF.",
-   "delivery": "Relaxed Kiwi bloke, low, flat and bone-dry, same timing and out-points as the main read."
+   "id": "f15-sheets-arrive",
+   "start_s": 46.35,
+   "max_s": 3.58,
+   "on_screen": "bench: DRAINAGE sheets slide in 46.4; green tick on 'turn up' 47.98",
+   "text_v2": "Days later, the drainage sheets turn up. Their own PDF.",
+   "text_v3": "Days later, the drainage sheets turn up. Their own PDF.",
+   "delivery": "A small win."
   },
   {
-   "id": "vo31-read-in_m",
-   "start_s": 45.1,
-   "max_s": 3.6,
+   "id": "f16-read-in",
+   "start_s": 49.94,
+   "max_s": 2.74,
+   "on_screen": "Drainage — demo.pdf read; chips on 'Drainage, found.' 51.6",
    "text_v2": "Read in. Drainage, found.",
    "text_v3": "Read in. Drainage, found.",
-   "delivery": "Relaxed Kiwi bloke, low, flat and bone-dry, same timing and out-points as the main read."
+   "delivery": "Pleased, understated."
   },
   {
-   "id": "vo13-step2_m",
-   "start_s": 49.15,
-   "max_s": 1.8,
+   "id": "f17-step2",
+   "start_s": 52.67,
+   "max_s": 1.97,
+   "on_screen": "lead-in on the empty SOQ, pill '02 Price it'",
    "text_v2": "Step two. Price it.",
    "text_v3": "Step two. Price it.",
-   "delivery": "Relaxed Kiwi bloke, low, flat and bone-dry, same timing and out-points as the main read."
+   "delivery": "Brisk signpost."
   },
   {
-   "id": "vo14-pocket_m",
-   "start_s": 51.0,
-   "max_s": 2.5,
-   "text_v2": "A pocket per trade.",
-   "text_v3": "A pocket per trade.",
-   "delivery": "Relaxed Kiwi bloke, low, flat and bone-dry, same timing and out-points as the main read."
+   "id": "f18-pocket",
+   "start_s": 54.64,
+   "max_s": 3.07,
+   "on_screen": "Add a pocket; 'Plumbing & drainage' types as said 56.3–57.4",
+   "text_v2": "A pocket per trade. Plumbing and drainage.",
+   "text_v3": "A pocket per trade. Plumbing and drainage.",
+   "delivery": "Plain."
   },
   {
-   "id": "vo15-active_m",
-   "start_s": 53.65,
-   "max_s": 2.7,
-   "text_v2": "Draft first. She makes it active.",
-   "text_v3": "Draft first. She makes it active.",
-   "delivery": "Relaxed Kiwi bloke, low, flat and bone-dry, same timing and out-points as the main read."
+   "id": "f19-active",
+   "start_s": 57.71,
+   "max_s": 3.17,
+   "on_screen": "pocket pops 57.75 (Draft); badge flips to Active on 'Active' 60.05",
+   "text_v2": "It starts as a Draft. She makes it Active.",
+   "text_v3": "It starts as a Draft. She makes it Active.",
+   "delivery": "Plain."
   },
   {
-   "id": "vo16-tick_m",
-   "start_s": 56.4,
-   "max_s": 3.3,
-   "text_v2": "Line, job, pocket, grand total. All tick up together.",
-   "text_v3": "Line, job, pocket, grand total. All tick up together.",
-   "delivery": "Relaxed Kiwi bloke, low, flat and bone-dry, same timing and out-points as the main read."
+   "id": "f20-tick",
+   "start_s": 60.88,
+   "max_s": 5.74,
+   "on_screen": "qty on 'quantity' 61.1, rate on 'rate' 62.0; line, job, pocket and Grand total tick from 62.98",
+   "text_v2": "A quantity, a rate, and the line, the job, the pocket and the Grand total tick up together.",
+   "text_v3": "A quantity, a rate, and the line, the job, the pocket and the Grand total tick up together.",
+   "delivery": "Even rhythm through the list."
   },
   {
-   "id": "vo17-columns_m",
-   "start_s": 59.9,
-   "max_s": 4.6,
+   "id": "f21-columns",
+   "start_s": 66.62,
+   "max_s": 4.18,
+   "on_screen": "Columns → Waste % (Percent) on 'percent' 68.9; formula column 69.3–70.5",
    "text_v2": "Her own columns too. Waste percent, then a formula.",
    "text_v3": "Her own columns too. Waste percent, then a formula.",
-   "delivery": "Relaxed Kiwi bloke, low, flat and bone-dry, same timing and out-points as the main read."
+   "delivery": "Light."
   },
   {
-   "id": "vo18-old_m",
-   "start_s": 64.9,
-   "max_s": 2.2,
-   "text_v2": "And the old spreadsheet?",
-   "text_v3": "And the old spreadsheet?",
-   "delivery": "Relaxed Kiwi bloke, low, flat and bone-dry, same timing and out-points as the main read."
+   "id": "f22-import",
+   "start_s": 70.8,
+   "max_s": 2.99,
+   "on_screen": "Import a schedule → build-costs-2024.xlsx; Import on 'Import it' 73.0",
+   "text_v2": "And the brother-in-law's spreadsheet? Import it.",
+   "text_v3": "And the brother-in-law's spreadsheet? Import it.",
+   "delivery": "Callback to the brother-in-law, warm not mocking."
   },
   {
-   "id": "vo19-drafts_m",
-   "start_s": 67.4,
-   "max_s": 4.3,
+   "id": "f23-drafts",
+   "start_s": 73.79,
+   "max_s": 4.1,
+   "on_screen": "toast 'Imported 3 pockets and 11 lines as drafts' on 'In it comes' 73.75; draft pockets on 'as drafts'",
    "text_v2": "In it comes as drafts. Twenty twenty-four rates, mind.",
-   "text_v3": "In it comes as drafts. Twenty twenty-four rates, mind.",
-   "delivery": "Relaxed Kiwi bloke, low, flat and bone-dry, same timing and out-points as the main read."
+   "text_v3": "In it comes as drafts. [amused] Twenty twenty-four rates, mind.",
+   "delivery": "Then the aside, amused."
   },
   {
-   "id": "vo20-step3_m",
-   "start_s": 72.05,
-   "max_s": 1.6,
-   "text_v2": "Step three: the gaps.",
-   "text_v3": "Step three: the gaps.",
-   "delivery": "Relaxed Kiwi bloke, low, flat and bone-dry, same timing and out-points as the main read."
+   "id": "f24-step3",
+   "start_s": 77.89,
+   "max_s": 2.36,
+   "on_screen": "pill '03 Fill the gaps'",
+   "text_v2": "Step three. Fill the gaps.",
+   "text_v3": "Step three. Fill the gaps.",
+   "delivery": "Brisk signpost."
   },
   {
-   "id": "vo21-ai-drafts_m",
-   "start_s": 73.75,
-   "max_s": 2.6,
-   "text_v2": "AI drafts. She checks.",
-   "text_v3": "AI drafts. She checks.",
-   "delivery": "Relaxed Kiwi bloke, low, flat and bone-dry, same timing and out-points as the main read."
+   "id": "f25-draft-ai",
+   "start_s": 80.25,
+   "max_s": 4.42,
+   "on_screen": "AI ▾ on 'Draft with AI' 80.25; Draft SOQ with AI dialog; AI-draft pockets on 'as AI drafts' 83.09",
+   "text_v2": "Draft with AI adds the pockets she hasn't got, as AI drafts.",
+   "text_v3": "Draft with AI adds the pockets she hasn't got, as AI drafts.",
+   "delivery": "Plain product line."
   },
   {
-   "id": "vo22-keep-bin_m",
-   "start_s": 76.7,
-   "max_s": 2.4,
+   "id": "f26-keep-bin",
+   "start_s": 84.67,
+   "max_s": 2.29,
+   "on_screen": "Keep on 'Keep' 84.67; LANDSCAPING binned on 'Bin' 85.79",
    "text_v2": "Keep one. Bin the other.",
    "text_v3": "Keep one. Bin the other.",
-   "delivery": "Relaxed Kiwi bloke, low, flat and bone-dry, same timing and out-points as the main read."
+   "delivery": "Crisp."
   },
   {
-   "id": "vo23-estimate_m",
-   "start_s": 79.5,
-   "max_s": 3.0,
-   "text_v2": "Then it prices only the empty lines.",
-   "text_v3": "Then it prices only the empty lines.",
-   "delivery": "Relaxed Kiwi bloke, low, flat and bone-dry, same timing and out-points as the main read."
+   "id": "f27-estimate",
+   "start_s": 86.96,
+   "max_s": 3.52,
+   "on_screen": "Estimate with AI on 'Estimate' 87.25; ✦ rates fill on 'the empty lines' 89.4",
+   "text_v2": "Then Estimate with AI prices only the empty lines.",
+   "text_v3": "Then Estimate with AI prices only the empty lines.",
+   "delivery": "Plain."
   },
   {
-   "id": "vo24-marked_m",
-   "start_s": 82.9,
-   "max_s": 3.3,
-   "text_v2": "Every AI number stays marked till a person edits it.",
-   "text_v3": "Every AI number stays marked till a person edits it.",
-   "delivery": "Relaxed Kiwi bloke, low, flat and bone-dry, same timing and out-points as the main read."
+   "id": "f28-indicative",
+   "start_s": 90.48,
+   "max_s": 1.91,
+   "on_screen": "tag 'AI rates are indicative, not quotes. QSME doesn't supply rates.'",
+   "text_v2": "Indicative, not quotes.",
+   "text_v3": "Indicative, not quotes.",
+   "delivery": "Honest, flat."
   },
   {
-   "id": "vo25-swap_m",
-   "start_s": 86.5,
-   "max_s": 3.6,
-   "text_v2": "She swaps one for her supplier's price. The mark goes.",
-   "text_v3": "She swaps one for her supplier's price. The mark goes.",
-   "delivery": "Relaxed Kiwi bloke, low, flat and bone-dry, same timing and out-points as the main read."
+   "id": "f29-marked",
+   "start_s": 92.39,
+   "max_s": 3.65,
+   "on_screen": "banner '3 lines priced by AI…' on 'Every AI number' 92.3",
+   "text_v2": "Every AI number stays marked until a person edits it.",
+   "text_v3": "Every AI number stays marked until a person edits it.",
+   "delivery": "Plain."
   },
   {
-   "id": "vo26-two-left_m",
-   "start_s": 90.5,
-   "max_s": 3.4,
+   "id": "f30-swap",
+   "start_s": 96.04,
+   "max_s": 3.72,
+   "on_screen": "rate edited on 'swaps' 96.45, types on 'supplier's figure', ✦ goes on 'mark goes' 98.75",
+   "text_v2": "She swaps one for her supplier's figure, and its mark goes.",
+   "text_v3": "She swaps one for her supplier's figure, and its mark goes.",
+   "delivery": "Plain."
+  },
+  {
+   "id": "f31-still-check",
+   "start_s": 99.76,
+   "max_s": 3.38,
+   "on_screen": "hold on the two ✦ lines",
    "text_v2": "The other two stay marked. She still has to check them.",
    "text_v3": "The other two stay marked. She still has to check them.",
-   "delivery": "Relaxed Kiwi bloke, low, flat and bone-dry, same timing and out-points as the main read."
+   "delivery": "The honest point, dry."
   },
   {
-   "id": "vo32-tender_m",
-   "start_s": 94.2,
-   "max_s": 3.5,
-   "text_v2": "The pocket becomes a private tender.",
-   "text_v3": "The pocket becomes a private tender.",
-   "delivery": "Relaxed Kiwi bloke, low, flat and bone-dry, same timing and out-points as the main read."
+   "id": "f32-step4",
+   "start_s": 103.14,
+   "max_s": 4.59,
+   "on_screen": "pill '04 Tender it'; Create New Tender; Private on 'Private' 105.3",
+   "text_v2": "Step four. Make it a tender. Private, so only who she invites.",
+   "text_v3": "Step four. Make it a tender. Private, so only who she invites.",
+   "delivery": "Brisk."
   },
   {
-   "id": "vo33-scope_m",
-   "start_s": 97.9,
-   "max_s": 4.0,
-   "text_v2": "Whole pocket: its lines are the scope.",
-   "text_v3": "Whole pocket: its lines are the scope.",
-   "delivery": "Relaxed Kiwi bloke, low, flat and bone-dry, same timing and out-points as the main read."
+   "id": "f33-whole-pocket",
+   "start_s": 107.73,
+   "max_s": 5.27,
+   "on_screen": "Select whole pocket 108.55; counter steps to 'Three of three' 111.55",
+   "text_v2": "Select the whole pocket: its jobs and lines are the scope. Three of three.",
+   "text_v3": "Select the whole pocket: its jobs and lines are the scope. Three of three.",
+   "delivery": "Plain."
   },
   {
-   "id": "vo34-sheets_m",
-   "start_s": 102.3,
-   "max_s": 4.4,
-   "text_v2": "Point them at the drainage pages. Ones that exist now.",
-   "text_v3": "Point them at the drainage pages. Ones that exist now.",
-   "delivery": "Relaxed Kiwi bloke, low, flat and bone-dry, same timing and out-points as the main read."
+   "id": "f34-drainage-pages",
+   "start_s": 112.99,
+   "max_s": 3.72,
+   "on_screen": "ticks on 'drainage pages' 113.73 and 'The ones that exist now' 115.0",
+   "text_v2": "Point them at the drainage pages. The ones that exist now.",
+   "text_v3": "Point them at the drainage pages. The ones that exist now.",
+   "delivery": "Dry callback."
   },
   {
-   "id": "vo35-payment_m",
-   "start_s": 107.1,
-   "max_s": 4.0,
-   "text_v2": "Thirty, thirty, forty. Five percent retention.",
-   "text_v3": "Thirty, thirty, forty. Five percent retention.",
-   "delivery": "Relaxed Kiwi bloke, low, flat and bone-dry, same timing and out-points as the main read."
+   "id": "f35-payment",
+   "start_s": 116.71,
+   "max_s": 3.53,
+   "on_screen": "30-30-40 on 'Thirty' 116.75; retention on 'five percent retention' 118.75; Excluding GST 119.6",
+   "text_v2": "Thirty, thirty, forty, with five percent retention.",
+   "text_v3": "Thirty, thirty, forty, with five percent retention.",
+   "delivery": "Even."
   },
   {
-   "id": "vo36-invite_m",
-   "start_s": 111.6,
-   "max_s": 3.0,
+   "id": "f36-invite",
+   "start_s": 120.24,
+   "max_s": 2.52,
+   "on_screen": "invite ticks on 'the trades she picks' 121.1–121.7; send 122.2",
    "text_v2": "Then invite the trades she picks.",
    "text_v3": "Then invite the trades she picks.",
-   "delivery": "Relaxed Kiwi bloke, low, flat and bone-dry, same timing and out-points as the main read."
+   "delivery": "Confident."
   },
   {
-   "id": "vo37-same-lines_m",
-   "start_s": 115.2,
-   "max_s": 4.6,
-   "text_v2": "Every bidder prices the same lines. And never sees hers.",
-   "text_v3": "Every bidder prices the same lines. And never sees hers.",
-   "delivery": "Relaxed Kiwi bloke, low, flat and bone-dry, same timing and out-points as the main read."
+   "id": "f37-step5",
+   "start_s": 122.76,
+   "max_s": 2.42,
+   "on_screen": "split 122.6: HER SOQ / WHAT THE DRAINLAYER SEES; pill '05 What bidders see'",
+   "text_v2": "Step five. What the drainlayer sees.",
+   "text_v3": "[confident] Step five. What the drainlayer sees.",
+   "delivery": "Brisk."
   },
   {
-   "id": "vo38-stripped_m",
-   "start_s": 120.2,
-   "max_s": 3.5,
-   "text_v2": "Rates and budget are stripped before they see it.",
-   "text_v3": "Rates and budget are stripped before they see it.",
-   "delivery": "Relaxed Kiwi bloke, low, flat and bone-dry, same timing and out-points as the main read."
+   "id": "f38-same-lines",
+   "start_s": 125.18,
+   "max_s": 2.24,
+   "on_screen": "caption 'The same lines, for every bidder.'",
+   "text_v2": "The same lines, for every bidder.",
+   "text_v3": "The same lines, for every bidder.",
+   "delivery": "Plain."
   },
   {
-   "id": "vo39-linked_m",
-   "start_s": 124.0,
-   "max_s": 4.2,
-   "text_v2": "Comparing the totals on the same GST basis? That video's linked here.",
-   "text_v3": "Comparing the totals on the same GST basis? That video's linked here.",
-   "delivery": "Relaxed Kiwi bloke, low, flat and bone-dry, same timing and out-points as the main read."
+   "id": "f39-itemise",
+   "start_s": 127.42,
+   "max_s": 2.81,
+   "on_screen": "Itemize clicked on 'itemise' 127.95",
+   "text_v2": "They can itemise, or quote one total.",
+   "text_v3": "They can itemise, or quote one total.",
+   "delivery": "Plain."
   },
   {
-   "id": "vo40-cta_m",
-   "start_s": 128.8,
-   "max_s": 6.0,
-   "text_v2": "Price it once. Tender the same lines. Sign up at Q-S-me dot co dot en zed.",
-   "text_v3": "Price it once. Tender the same lines. Sign up at Q-S-me dot co dot en zed.",
-   "delivery": "Relaxed Kiwi bloke, low, flat and bone-dry, same timing and out-points as the main read."
+   "id": "f40-stripped",
+   "start_s": 130.23,
+   "max_s": 2.86,
+   "on_screen": "rows travel, rates blur 130.1–131.95; green / dashed amber boxes",
+   "text_v2": "Her rates and her budget are stripped before they see it.",
+   "text_v3": "Her rates and her budget are stripped before they see it.",
+   "delivery": "The key point, plain."
+  },
+  {
+   "id": "f41-gst-link",
+   "start_s": 133.09,
+   "max_s": 4.95,
+   "on_screen": "caption 'Comparing the totals on the same GST basis? That video's linked here ↗' (YouTube info card)",
+   "text_v2": "Comparing the totals on the same G S T basis? That video's linked here.",
+   "text_v3": "Comparing the totals on the same G S T basis? That video's linked here.",
+   "delivery": "Light pointer."
+  },
+  {
+   "id": "f42-endcard",
+   "start_s": 138.04,
+   "max_s": 7.22,
+   "on_screen": "end card: 'Price it once.' 138.04, 'Tender the same lines.' 139.66, button 'Sign up at qsme.co.nz' on 'Sign' 141.2",
+   "text_v2": "Price it once. Tender the same lines. Sign up at Q-S-me dot Co dot N Z.",
+   "text_v3": "Price it once. Tender the same lines. Sign up at Q-S-me dot Co dot N Z.",
+   "delivery": "Plain tagline, then the address said 'dot Co dot N Z'."
   }
  ],
- "cut_downs": {
-  "outputs/pricing-a-build-9x16-found-before-the-tender.mp4": [
-   {
-    "id": "a01-hook",
-    "start_s": 0.2,
-    "max_s": 3.0,
-    "on_screen": "Frame 0: the demo pack already down on the bench + headline 'Found before the tender.'; the notice slides in by 0.3 s; 'Not on site.' pops at 1.5",
-    "text_v2": "Found before the tender. Not on site.",
-    "text_v3": "Found before the tender. Not on site.",
-    "delivery": "Dry, specific, the story's first line. Out by 3.3."
+ "cutdowns": [
+  {
+   "video": "outputs/pricing-a-build-9x16-found-before-the-tender.mp4",
+   "with_vo": "outputs/pricing-a-build-9x16-found-before-the-tender-with-vo.mp4",
+   "title": "Found before the tender. (9:16 chapter cut A, 35.1 s)",
+   "take": {
+    "model": "eleven_v3",
+    "voice": "Cam S (53CG2aO2HU48thT3QnMl)",
+    "file": "outputs/vo-take-cam-v3-a/take.m4a",
+    "alignment": "outputs/vo-take-cam-v3-a/alignment.json",
+    "words": 94,
+    "text_sent": "outputs/vo-take-cam-v3-a/take-text.txt",
+    "stt": "outputs/vo-take-cam-v3-a/stt.txt",
+    "duration_s": 33.6,
+    "words_per_s": 2.8,
+    "max_gap_s": 0.68,
+    "tags": [
+     "[dry]"
+    ],
+    "stability": 0.5,
+    "method": "ONE unbroken request to /v1/text-to-speech/53CG2aO2HU48thT3QnMl/with-timestamps?output_format=mp3_44100_128 (eleven_v3, stability 0.5); never sliced; laid onto outputs/pricing-a-build-9x16-found-before-the-tender.mp4 at 0.0 s, gain 1.15, with tools/mux, no music bed.",
+    "note": "First attempt, STT clean (CTA heard as 'qsme.co.nz' / 'qsme.koh.enz').",
+    "words_file": "outputs/vo-take-cam-v3-a/words.json"
    },
-   {
-    "id": "a02-sections",
-    "start_s": 3.6,
-    "max_s": 4.4,
-    "on_screen": "Read a document → sections; chips '▸▸ sped up' and 'Can take a few minutes'",
-    "text_v2": "Q-S-me splits it into its real sections. Floor plans, bracing, schedules.",
-    "text_v3": "Q-S-me splits it into its real sections. Floor plans, bracing, schedules.",
-    "delivery": "As vo08. Out by 8.1."
+   "continuous_read_v3": "Forty-eight pages of consent drawings. Not one of them is drainage. Found before the tender. Not on site.\n\nQueue Ess Mee reads the pack into its real sections, page numbers and all. Tables come out as tables. And it says what it didn't find. [dry] Heads up: no drainage. Found before anyone priced it.\n\nDays later, the drainage sheets turn up as their own PDF. Read in. Drainage, found. So the tender points the drainlayer at the drainage pages. The ones that exist now.\n\nSign up at Queue Ess Mee dot Co dot N Z.",
+   "lines": [
+    {
+     "id": "a00-hook",
+     "start_s": 0.0,
+     "max_s": 7.31,
+     "on_screen": "bench, pack down at frame 0, 'Found before the tender.'; red underline on 'drainage.' 3.34; 'Not on site.' pops on 'Not' 5.78",
+     "text_v2": "Forty-eight pages of consent drawings. Not one of them is drainage. Found before the tender. Not on site.",
+     "text_v3": "Forty-eight pages of consent drawings. Not one of them is drainage. Found before the tender. Not on site.",
+     "delivery": "Stinging number, then the punchline flat."
+    },
+    {
+     "id": "a01-sections",
+     "start_s": 7.31,
+     "max_s": 4.02,
+     "on_screen": "app 7.1; chips pop 9.17–10.95; caption 'QSME reads the pack into its real sections, page numbers and all.'",
+     "text_v2": "Q-S-me reads the pack into its real sections, page numbers and all.",
+     "text_v3": "Q-S-me reads the pack into its real sections, page numbers and all.",
+     "delivery": "Plain product line."
+    },
+    {
+     "id": "a02-tables",
+     "start_s": 11.34,
+     "max_s": 2.13,
+     "on_screen": "window-schedule drawer on 'Tables' 11.25",
+     "text_v2": "Tables come out as tables.",
+     "text_v3": "Tables come out as tables.",
+     "delivery": "Slight satisfaction."
+    },
+    {
+     "id": "a03-didnt-find",
+     "start_s": 13.47,
+     "max_s": 2.17,
+     "on_screen": "the notice slides in 13.3",
+     "text_v2": "And it says what it didn't find.",
+     "text_v3": "And it says what it didn't find.",
+     "delivery": "Set up the reveal."
+    },
+    {
+     "id": "a04-heads-up",
+     "start_s": 15.64,
+     "max_s": 3.77,
+     "on_screen": "red underline on 'no drainage' 16.21",
+     "text_v2": "Heads up: no drainage. Found before anyone priced it.",
+     "text_v3": "[dry] Heads up: no drainage. Found before anyone priced it.",
+     "delivery": "[dry], quote the notice, then the point."
+    },
+    {
+     "id": "a05-sheets",
+     "start_s": 19.41,
+     "max_s": 3.28,
+     "on_screen": "bench: DRAINAGE sheets 19.4; tick on 'turn up' 21.05",
+     "text_v2": "Days later, the drainage sheets turn up as their own PDF.",
+     "text_v3": "Days later, the drainage sheets turn up as their own PDF.",
+     "delivery": "A small win."
+    },
+    {
+     "id": "a06-read-in",
+     "start_s": 22.69,
+     "max_s": 2.89,
+     "on_screen": "Read the drainage PDF; chips on 'Drainage, found.' 24.45",
+     "text_v2": "Read in. Drainage, found.",
+     "text_v3": "Read in. Drainage, found.",
+     "delivery": "Pleased, understated."
+    },
+    {
+     "id": "a07-tender",
+     "start_s": 25.57,
+     "max_s": 4.75,
+     "on_screen": "Tender it: 'Point them at the right sheets'; ticks on 'drainage pages' 27.6 / 'The ones that exist now' 28.7",
+     "text_v2": "So the tender points the drainlayer at the drainage pages. The ones that exist now.",
+     "text_v3": "So the tender points the drainlayer at the drainage pages. The ones that exist now.",
+     "delivery": "Dry callback."
+    },
+    {
+     "id": "a08-cta",
+     "start_s": 30.32,
+     "max_s": 3.58,
+     "on_screen": "end card 29.85; button on 'Sign' 30.3",
+     "text_v2": "Sign up at Q-S-me dot Co dot N Z.",
+     "text_v3": "Sign up at Q-S-me dot Co dot N Z.",
+     "delivery": "Plain; 'dot Co dot N Z'."
+    }
+   ]
+  },
+  {
+   "video": "outputs/pricing-a-build-9x16-same-lines-every-bidder.mp4",
+   "with_vo": "outputs/pricing-a-build-9x16-same-lines-every-bidder-with-vo.mp4",
+   "title": "Same lines for every bidder. (9:16 chapter cut B, 37.4 s)",
+   "take": {
+    "model": "eleven_v3",
+    "voice": "Cam S (53CG2aO2HU48thT3QnMl)",
+    "file": "outputs/vo-take-cam-v3-b/take.m4a",
+    "alignment": "outputs/vo-take-cam-v3-b/alignment.json",
+    "words": 106,
+    "text_sent": "outputs/vo-take-cam-v3-b/take-text.txt",
+    "stt": "outputs/vo-take-cam-v3-b/stt.txt",
+    "duration_s": 35.84,
+    "words_per_s": 2.96,
+    "max_gap_s": 0.48,
+    "tags": [],
+    "stability": 0.5,
+    "method": "ONE unbroken request to /v1/text-to-speech/53CG2aO2HU48thT3QnMl/with-timestamps?output_format=mp3_44100_128 (eleven_v3, stability 0.5); never sliced; laid onto outputs/pricing-a-build-9x16-same-lines-every-bidder.mp4 at 0.0 s, gain 1.15, with tools/mux, no music bed.",
+    "note": "First attempt, STT clean (CTA heard as 'qsme.co.nz' / 'qsme.koh.enz').",
+    "words_file": "outputs/vo-take-cam-v3-b/words.json"
    },
-   {
-    "id": "a03-tables",
-    "start_s": 8.7,
-    "max_s": 2.4,
-    "on_screen": "Window schedule table",
-    "text_v2": "Tables come out as tables.",
-    "text_v3": "Tables come out as tables.",
-    "delivery": "As vo09. Out by 11.1."
+   "continuous_read_v3": "Every bidder on this job prices the same lines. And not one of them sees her rates. Here's how.\n\nA pocket per trade. Plumbing and drainage. Draft first; she makes it Active. A quantity, a rate, and the line, the job, the pocket and the Grand total tick up together.\n\nThen the pocket becomes the tender. Select the whole pocket: its jobs and lines are the scope. Three of three.\n\nWhat the drainlayer sees. The same lines. They can itemise, or quote one total. Her rates and her budget are stripped before they see it.\n\nSign up at Queue Ess Mee dot Co dot N Z.",
+   "lines": [
+    {
+     "id": "b00-hook",
+     "start_s": 0.0,
+     "max_s": 5.44,
+     "on_screen": "split held under 'Same lines for every bidder.' to 5.25",
+     "text_v2": "Every bidder on this job prices the same lines. And not one of them sees her rates. Here's how.",
+     "text_v3": "Every bidder on this job prices the same lines. And not one of them sees her rates. Here's how.",
+     "delivery": "Bold claim, energy up."
+    },
+    {
+     "id": "b01-pocket",
+     "start_s": 5.44,
+     "max_s": 5.6,
+     "on_screen": "Plumbing & drainage pocket 5.5 (Draft); badge flips to Active on 'Active' 10.0",
+     "text_v2": "A pocket per trade. Plumbing and drainage. Draft first; she makes it Active.",
+     "text_v3": "A pocket per trade. Plumbing and drainage. Draft first; she makes it Active.",
+     "delivery": "Plain."
+    },
+    {
+     "id": "b02-tick",
+     "start_s": 11.04,
+     "max_s": 5.82,
+     "on_screen": "qty on 'quantity' 11.3, rate 12.1; callouts pop on their words: line 12.80, job 13.54, pocket 14.14, Grand total 14.95",
+     "text_v2": "A quantity, a rate, and the line, the job, the pocket and the Grand total tick up together.",
+     "text_v3": "A quantity, a rate, and the line, the job, the pocket and the Grand total tick up together.",
+     "delivery": "Even rhythm."
+    },
+    {
+     "id": "b03-tender",
+     "start_s": 16.86,
+     "max_s": 2.12,
+     "on_screen": "Create New Tender pane on 'Then' 16.75",
+     "text_v2": "Then the pocket becomes the tender.",
+     "text_v3": "Then the pocket becomes the tender.",
+     "delivery": "Plain."
+    },
+    {
+     "id": "b04-whole-pocket",
+     "start_s": 18.98,
+     "max_s": 4.31,
+     "on_screen": "Select whole pocket on 'Select the whole pocket' 19.7; job ticks step to 'Three of three' 22.4",
+     "text_v2": "Select the whole pocket: its jobs and lines are the scope. Three of three.",
+     "text_v3": "Select the whole pocket: its jobs and lines are the scope. Three of three.",
+     "delivery": "Plain."
+    },
+    {
+     "id": "b05-drainlayer",
+     "start_s": 23.3,
+     "max_s": 2.93,
+     "on_screen": "split on 'What the drainlayer sees' 23.2",
+     "text_v2": "What the drainlayer sees. The same lines.",
+     "text_v3": "What the drainlayer sees. The same lines.",
+     "delivery": "Brisk."
+    },
+    {
+     "id": "b06-itemise",
+     "start_s": 26.22,
+     "max_s": 2.38,
+     "on_screen": "Itemize clicked on 'itemise' 26.68",
+     "text_v2": "They can itemise, or quote one total.",
+     "text_v3": "They can itemise, or quote one total.",
+     "delivery": "Plain."
+    },
+    {
+     "id": "b07-stripped",
+     "start_s": 28.6,
+     "max_s": 3.26,
+     "on_screen": "rows travel, rates blur 28.55–30.65; boxes on 'before they see it' 31.2",
+     "text_v2": "Her rates and her budget are stripped before they see it.",
+     "text_v3": "Her rates and her budget are stripped before they see it.",
+     "delivery": "The key point, plain."
+    },
+    {
+     "id": "b08-cta",
+     "start_s": 31.86,
+     "max_s": 4.28,
+     "on_screen": "end card 31.45; button on 'Sign' 31.9",
+     "text_v2": "Sign up at Q-S-me dot Co dot N Z.",
+     "text_v3": "Sign up at Q-S-me dot Co dot N Z.",
+     "delivery": "Plain; 'dot Co dot N Z'."
+    }
+   ]
+  },
+  {
+   "video": "outputs/pricing-a-build-9x16-ai-drafts-you-check.mp4",
+   "with_vo": "outputs/pricing-a-build-9x16-ai-drafts-you-check-with-vo.mp4",
+   "title": "AI drafts. You check. (9:16 chapter cut C, 32.7 s)",
+   "take": {
+    "model": "eleven_v3",
+    "voice": "Cam S (53CG2aO2HU48thT3QnMl)",
+    "file": "outputs/vo-take-cam-v3-c/take.m4a",
+    "alignment": "outputs/vo-take-cam-v3-c/alignment.json",
+    "words": 90,
+    "text_sent": "outputs/vo-take-cam-v3-c/take-text.txt",
+    "stt": "outputs/vo-take-cam-v3-c/stt.txt",
+    "duration_s": 31.2,
+    "words_per_s": 2.88,
+    "max_gap_s": 0.56,
+    "tags": [
+     "[dry]"
+    ],
+    "stability": 0.5,
+    "method": "ONE unbroken request to /v1/text-to-speech/53CG2aO2HU48thT3QnMl/with-timestamps?output_format=mp3_44100_128 (eleven_v3, stability 0.5); never sliced; laid onto outputs/pricing-a-build-9x16-ai-drafts-you-check.mp4 at 0.0 s, gain 1.15, with tools/mux, no music bed.",
+    "note": "First attempt, STT clean (CTA heard as 'qsme.co.nz' / 'qsme.koh.enz').",
+    "words_file": "outputs/vo-take-cam-v3-c/words.json"
    },
-   {
-    "id": "a04-didnt-find",
-    "start_s": 11.9,
-    "max_s": 2.5,
-    "on_screen": "The 'Heads up' notice",
-    "text_v2": "And it says what it didn't find.",
-    "text_v3": "And it says what it didn't find.",
-    "delivery": "As vo10. Out by 14.4."
-   },
-   {
-    "id": "a05-found",
-    "start_s": 14.7,
-    "max_s": 2.1,
-    "on_screen": "Marker under 'no drainage'",
-    "text_v2": "No drainage. Found early.",
-    "text_v3": "No drainage. Found early.",
-    "delivery": "Quiet payoff, falling. Out by 16.8."
-   },
-   {
-    "id": "a06-arrives",
-    "start_s": 17.2,
-    "max_s": 2.4,
-    "on_screen": "Bench: drainage sheets arrive (label 'Dramatised')",
-    "text_v2": "Days later, the drainage sheets turn up.",
-    "text_v3": "Days later, the drainage sheets turn up.",
-    "delivery": "As vo30, shorter. Out by 19.6."
-   },
-   {
-    "id": "a07-read-in",
-    "start_s": 20.0,
-    "max_s": 3.6,
-    "on_screen": "Drainage — demo.pdf read into two sections ('▸▸ sped up', 'Can take a few minutes')",
-    "text_v2": "Read in. Drainage, found.",
-    "text_v3": "Read in. Drainage, found.",
-    "delivery": "As vo31. Out by 23.6."
-   },
-   {
-    "id": "a08-pages",
-    "start_s": 24.2,
-    "max_s": 3.3,
-    "on_screen": "'Point them at the right sheets' ticked",
-    "text_v2": "Now the drainlayer gets the drainage pages.",
-    "text_v3": "Now the drainlayer gets the drainage pages.",
-    "delivery": "Dry satisfaction. Never 'jump to'. Out by 27.5."
-   },
-   {
-    "id": "a09-cta",
-    "start_s": 28.1,
-    "max_s": 3.2,
-    "on_screen": "End card, green button 'Sign up at qsme.co.nz'",
-    "text_v2": "Sign up at Q-S-me dot co dot en zed.",
-    "text_v3": "Sign up at Q-S-me dot co dot en zed.",
-    "delivery": "As vo40's URL. Out by 31.3."
-   }
-  ],
-  "outputs/pricing-a-build-9x16-same-lines-every-bidder.mp4": [
-   {
-    "id": "b01-hook",
-    "start_s": 0.2,
-    "max_s": 2.6,
-    "on_screen": "Headline over the split: her rates vs the empty rate column",
-    "text_v2": "Same lines for every bidder.",
-    "text_v3": "Same lines for every bidder.",
-    "delivery": "Plain, confident, understated. Out by 2.8."
-   },
-   {
-    "id": "b02-pocket",
-    "start_s": 3.2,
-    "max_s": 2.7,
-    "on_screen": "Pocket appears, Draft → Active",
-    "text_v2": "A pocket per trade. Made active.",
-    "text_v3": "A pocket per trade. Made active.",
-    "delivery": "Explanatory. Out by 5.9."
-   },
-   {
-    "id": "b03-tick",
-    "start_s": 6.2,
-    "max_s": 3.0,
-    "on_screen": "Rate typed, totals tick",
-    "text_v2": "Line, job, pocket, grand total. All tick up.",
-    "text_v3": "Line, job, pocket, grand total. All tick up.",
-    "delivery": "As vo16, shorter. Out by 9.2."
-   },
-   {
-    "id": "b04-scope",
-    "start_s": 9.6,
-    "max_s": 3.6,
-    "on_screen": "'Select whole pocket' → the counter steps 1, 2, 3 of 3 selected",
-    "text_v2": "Whole pocket: its lines are the scope.",
-    "text_v3": "Whole pocket: its lines are the scope.",
-    "delivery": "As vo33. Out by 13.2."
-   },
-   {
-    "id": "b05-same",
-    "start_s": 13.8,
-    "max_s": 4.2,
-    "on_screen": "Rows travel to the bid form; rates drop away",
-    "text_v2": "Every bidder prices the same lines. And never sees hers.",
-    "text_v3": "Every bidder prices the same lines. And never sees hers.",
-    "delivery": "As vo37. Out by 18."
-   },
-   {
-    "id": "b06-stripped",
-    "start_s": 18.3,
-    "max_s": 4.4,
-    "on_screen": "Highlight on the empty rate column",
-    "text_v2": "Rates and budget are stripped before they see it.",
-    "text_v3": "Rates and budget are stripped before they see it.",
-    "delivery": "As vo38. Out by 22.7."
-   },
-   {
-    "id": "b07-cta",
-    "start_s": 23.5,
-    "max_s": 3.2,
-    "on_screen": "End card",
-    "text_v2": "Sign up at Q-S-me dot co dot en zed.",
-    "text_v3": "Sign up at Q-S-me dot co dot en zed.",
-    "delivery": "As vo40's URL. Out by 26.7."
-   }
-  ],
-  "outputs/pricing-a-build-9x16-ai-drafts-you-check.mp4": [
-   {
-    "id": "c01-hook",
-    "start_s": 0.2,
-    "max_s": 2.4,
-    "on_screen": "Headline over the banner '2 lines priced by AI and not yet reviewed'",
-    "text_v2": "AI drafts. You check.",
-    "text_v3": "AI drafts. You check.",
-    "delivery": "Two even beats, the second firmer. Out by 2.6."
-   },
-   {
-    "id": "c02-draft",
-    "start_s": 3.65,
-    "max_s": 2.7,
-    "on_screen": "'Draft SOQ with AI' → 'AI draft' pockets",
-    "text_v2": "It drafts the pockets from the plans.",
-    "text_v3": "It drafts the pockets from the plans.",
-    "delivery": "Plain, explanatory. Out by 6.3."
-   },
-   {
-    "id": "c03-keep",
-    "start_s": 6.6,
-    "max_s": 2.5,
-    "on_screen": "Keep / bin",
-    "text_v2": "Keep one. Bin the other.",
-    "text_v3": "Keep one. Bin the other.",
-    "delivery": "As vo22. Out by 9.1."
-   },
-   {
-    "id": "c04-empty",
-    "start_s": 9.4,
-    "max_s": 3.1,
-    "on_screen": "'Estimate with AI'",
-    "text_v2": "Then it prices only the empty lines.",
-    "text_v3": "Then it prices only the empty lines.",
-    "delivery": "As vo23. Out by 12.5."
-   },
-   {
-    "id": "c05-marked",
-    "start_s": 12.8,
-    "max_s": 3.3,
-    "on_screen": "✦ rates, banner '3 lines…'; caption 'Every AI number stays marked ✦ until a person edits it.'",
-    "text_v2": "Every AI number stays marked till a person edits it.",
-    "text_v3": "Every AI number stays marked till a person edits it.",
-    "delivery": "As vo24. Out by 16.1."
-   },
-   {
-    "id": "c06-swap",
-    "start_s": 16.4,
-    "max_s": 3.7,
-    "on_screen": "Edit: ✦ goes, banner 3 → 2",
-    "text_v2": "She swaps one for her supplier's price. The mark goes.",
-    "text_v3": "She swaps one for her supplier's price. The mark goes.",
-    "delivery": "As vo25. Out by 20.1."
-   },
-   {
-    "id": "c07-two",
-    "start_s": 20.4,
-    "max_s": 3.4,
-    "on_screen": "Banner '2 lines…'; caption 'The other two stay marked. She still has to check them.'",
-    "text_v2": "The other two stay marked. She still has to check them.",
-    "text_v3": "The other two stay marked. She still has to check them.",
-    "delivery": "As vo26. Out by 23.8."
-   },
-   {
-    "id": "c08-cta",
-    "start_s": 24.2,
-    "max_s": 3.2,
-    "on_screen": "End card",
-    "text_v2": "Sign up at Q-S-me dot co dot en zed.",
-    "text_v3": "Sign up at Q-S-me dot co dot en zed.",
-    "delivery": "As vo40's URL. Out by 27.4."
-   }
-  ]
- },
- "casting_line": "Consent pack thick enough to prop a door open, and a spreadsheet from twenty twenty-four. Right. Let's price it once.",
- "continuous_read_v2": "No drainage sheet in the pack. Found before the tender…\n\n…not in a trench.\n\nPrice it once. Here's how.\n\nChristchurch owner-builder. Consent pack thick enough to prop a door open.\n\nAnd her brother-in-law's spreadsheet. From two years ago.\n\nNeither mentions drainage.\n\nStep one. Read the pack.\n\nQ-S-me splits it into its real sections. Floor plans, bracing, schedules.\n\nTables come out as tables.\n\nAnd it says what it didn't find.\n\nNo drainage. Found before anyone priced it.\n\nSo she asks the designer.\n\nDays later, the drainage sheets. Their own PDF.\n\nRead in. Drainage, found.\n\nStep two. Price it.\n\nA pocket per trade.\n\nDraft first. She makes it active.\n\nLine, job, pocket, grand total. All tick up together.\n\nHer own columns too. Waste percent, then a formula.\n\nAnd the old spreadsheet?\n\nIn it comes as drafts. Twenty twenty-four rates, mind.\n\nStep three: the gaps.\n\nAI drafts. She checks.\n\nKeep one. Bin the other.\n\nThen it prices only the empty lines.\n\nEvery AI number stays marked till a person edits it.\n\nShe swaps one for her supplier's price. The mark goes.\n\nThe other two stay marked. She still has to check them.\n\nThe pocket becomes a private tender.\n\nWhole pocket: its lines are the scope.\n\nPoint them at the drainage pages. Ones that exist now.\n\nThirty, thirty, forty. Five percent retention.\n\nThen invite the trades she picks.\n\nEvery bidder prices the same lines. And never sees hers.\n\nRates and budget are stripped before they see it.\n\nComparing the totals on the same GST basis? That video's linked here.\n\nPrice it once. Tender the same lines. Sign up at Q-S-me dot co dot en zed.",
- "post_processing": "Time base: seconds on outputs/pricing-a-build-16x9.mp4 (135.4 s). Cut-down lines are timed on their own files. Generate with request stitching (previous_text / next_text = neighbouring lines), 3 takes per line, fixed seed logged per take. Trim digital silence, lay over light room tone, never time-stretch more than about 4%; if a take overruns max_s use another take. Mix VO about 12–15 dB above the music bed. If an ElevenLabs voice is used, switch on YouTube's altered/synthetic content disclosure where it applies and Meta's AI label.",
- "total_characters": 1522,
+   "continuous_read_v3": "[dry] The AI priced three lines. She's fixed one. The other two still say so.\n\nDraft with AI adds the pockets she hasn't got, as AI drafts. Keep one. Bin the other. Then Estimate with AI prices only the empty lines. Indicative, not quotes. Every AI number stays marked until a person edits it. She swaps one for her supplier's figure, and its mark goes. The other two stay marked. She still has to check them.\n\nAI drafts. You check. Sign up at Queue Ess Mee dot Co dot N Z.",
+   "lines": [
+    {
+     "id": "c00-hook",
+     "start_s": 0.14,
+     "max_s": 4.9,
+     "on_screen": "'AI priced three. She's fixed one.' over the SOQ: rate edited 1.6, its ✦ goes on 'She's fixed one' 2.6; hold on the two ✦ lines",
+     "text_v2": "The AI priced three lines. She's fixed one. The other two still say so.",
+     "text_v3": "[dry] The AI priced three lines. She's fixed one. The other two still say so.",
+     "delivery": "[dry] The funniest line first."
+    },
+    {
+     "id": "c01-draft-ai",
+     "start_s": 5.04,
+     "max_s": 4.18,
+     "on_screen": "AI menu on 'Draft with AI' 5.0; AI-draft pockets on 'as AI drafts' 8.0",
+     "text_v2": "Draft with AI adds the pockets she hasn't got, as AI drafts.",
+     "text_v3": "Draft with AI adds the pockets she hasn't got, as AI drafts.",
+     "delivery": "Plain product line."
+    },
+    {
+     "id": "c02-keep-bin",
+     "start_s": 9.22,
+     "max_s": 1.9,
+     "on_screen": "Keep 9.2; Bin 10.05",
+     "text_v2": "Keep one. Bin the other.",
+     "text_v3": "Keep one. Bin the other.",
+     "delivery": "Crisp."
+    },
+    {
+     "id": "c03-estimate",
+     "start_s": 11.12,
+     "max_s": 3.58,
+     "on_screen": "Estimate with AI 11.75; ✦ rates fill on 'the empty lines' 13.65",
+     "text_v2": "Then Estimate with AI prices only the empty lines.",
+     "text_v3": "Then Estimate with AI prices only the empty lines.",
+     "delivery": "Plain."
+    },
+    {
+     "id": "c04-indicative",
+     "start_s": 14.7,
+     "max_s": 1.77,
+     "on_screen": "tag 'AI rates are indicative, not quotes.'",
+     "text_v2": "Indicative, not quotes.",
+     "text_v3": "Indicative, not quotes.",
+     "delivery": "Honest, flat."
+    },
+    {
+     "id": "c05-marked",
+     "start_s": 16.47,
+     "max_s": 3.09,
+     "on_screen": "banner on 'Every AI number' 16.4",
+     "text_v2": "Every AI number stays marked until a person edits it.",
+     "text_v3": "Every AI number stays marked until a person edits it.",
+     "delivery": "Plain."
+    },
+    {
+     "id": "c06-swap",
+     "start_s": 19.56,
+     "max_s": 3.42,
+     "on_screen": "edit on 'swaps' 19.7; ✦ goes on 'mark goes' 22.1",
+     "text_v2": "She swaps one for her supplier's figure, and its mark goes.",
+     "text_v3": "She swaps one for her supplier's figure, and its mark goes.",
+     "delivery": "Plain."
+    },
+    {
+     "id": "c07-still-check",
+     "start_s": 22.98,
+     "max_s": 3.13,
+     "on_screen": "hold on the two ✦ lines",
+     "text_v2": "The other two stay marked. She still has to check them.",
+     "text_v3": "The other two stay marked. She still has to check them.",
+     "delivery": "The honest point, dry."
+    },
+    {
+     "id": "c08-endcard",
+     "start_s": 26.11,
+     "max_s": 5.39,
+     "on_screen": "end card: 'AI drafts.' 26.1, 'You check.' 27.2, button on 'Sign' 27.85",
+     "text_v2": "AI drafts. You check. Sign up at Q-S-me dot Co dot N Z.",
+     "text_v3": "AI drafts. You check. Sign up at Q-S-me dot Co dot N Z.",
+     "delivery": "Tagline, then 'dot Co dot N Z'."
+    }
+   ]
+  }
+ ],
+ "post_processing": "Each take is laid as ONE clip at 0.0 s on its own master with tools/mux, gain 1.15, no music bed (clean). Picture follows audio: motion/pricing-a-build.html and motion/cut.js map their authored timelines onto the word timestamps through motion/warp.js. Switch on YouTube's altered/synthetic content disclosure and Meta's AI label (ElevenLabs voice).",
  "changelog": [
-  "2026-10-04: first script for the rendered 148 s master and three 9:16 cut-downs. Owner CTA rule 2026-10-03 applied: CTA 'Sign up at Q-S-me dot co dot en zed', no 'free' or pricing line anywhere. Narrated in the third person (no testimonial).",
-  "2026-10-04 (review pass): master re-cut to 135.4 s. Chat with AI beat cut (vo27–vo29 deleted: no confirmed source label). Drainage arrival + read-in (vo30, vo31) moved to straight after 'So she asks the designer', so Step 2 prices lines the sheets support. Homepage captures dropped: vo07/vo13 now sit on lead-ins to the app. Tender wizard beats +1 s each. vo24/vo26 (and cut C c05/c07): the ✦ stays until a person EDITS the line (truth 3.7). vo39 no longer dates the video ('That video's linked here'). Cut B lines after 13.3 s shift +0.5 s. All times re-derived from the new renders."
- ]
+  "2026-10-04: Mel per-line script for the 135.4 s film + three chapter cuts (superseded).",
+  "2026-10-10: audio-first remake to the N01 standard. Four continuous scripts, four unbroken Cam S eleven_v3 takes (CTA 'dot Co dot N Z'), pages re-timed to the words, all four masters re-rendered and voiced."
+ ],
+ "total_characters": 3666
 }

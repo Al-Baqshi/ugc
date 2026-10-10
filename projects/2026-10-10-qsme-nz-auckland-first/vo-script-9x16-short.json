@@ -1,128 +1,125 @@
 {
- "venture": "qsme-nz",
- "video": "outputs/auckland-first-9x16-short.mp4",
- "master_script": "vo-script.json",
- "how_to_voice": "No new takes: reuse the master take named in 'from' for each line and lay it at this file's start_s. Slices of the master timeline: short 0-22.7 = master 0-22.7; 22.7-31.36 = 48.28-56.94; 31.36-35.31 = 67.1-71.05; 35.31-40.6 = 71.05-76.35. Master lines vo06-vo12, vo14 and vo15 are not used.",
- "character": "Mel: everyday Kiwi woman, late 30s, the straight-talking one in the group chat who actually reads the small print. Talking for Q-S-me, owning up with a half-smile: we started in Auckland, here's exactly what you get everywhere else. General NZ accent, never a caricature. Dry, warm, under-played, like explaining it to a mate over a Saturday coffee. Facts flat and plain; the two jokes ('They knew.' and 'We know.') thrown away, never pushed.",
- "settings": {
-  "model": "eleven_multilingual_v2",
-  "stability": 0.45,
-  "similarity_boost": 0.75,
-  "style": 0,
-  "speed": 1,
-  "use_speaker_boost": true
- },
- "lines": [
-  {
-   "id": "svo01-hook",
-   "from": "vo01-hook",
-   "start_s": 0.3,
-   "max_s": 2.9,
-   "on_screen": "Hook: 'Not in Auckland?' / 'Here's exactly what site search shows you.' (kicker 'Council by council') (0.25). Pins + real result cards drop at 0.12 / 0.42 / 0.72; hook holds, fades 4.95-5.4",
-   "text_v2": "Straight answer for everyone outside Auckland.",
-   "text_v3": "Straight answer for everyone outside Auckland.",
-   "delivery": "Same take as the master; identical timing (0-22.7 is the same picture). Lands just after the first plink. Level and friendly, like answering a question someone just asked her. Slight lean on 'Straight', falling end on 'Auckland'. No smile-sell. Out by 3.2, then room tone under the cards."
+  "venture": "qsme-nz",
+  "video": "outputs/auckland-first-9x16-short.mp4",
+  "vid": "N04",
+  "master_script": "vo-script.json",
+  "how_to_voice": "Its OWN unbroken take (a different length is a different script): outputs/vo-take-cam-v3-short/take.m4a laid at 0.0 s. The page uses motion/af.js ANCHORS_SHORT (the unused stretches of the authored timeline are collapsed).",
+  "character": "One dry Kiwi storyteller for Q-S-me (Cam S, ElevenLabs voice 53CG2aO2HU48thT3QnMl, eleven_v3): the straight-talking mate who reads the small print out loud. General NZ accent, never a caricature, no announcer lift, no exclamation marks. Facts flat and plain; the two self-owns ('They knew.' and 'We know.') thrown away, never pushed. Continuous speech: the narration never stops for more than 1 s.",
+  "settings": {
+    "model": "eleven_v3",
+    "stability": 0.5,
+    "note": "v3 only accepts stability 0.0 / 0.5 / 1.0; no style/speed/similarity"
   },
-  {
-   "id": "svo02-fair-test",
-   "from": "vo02-fair-test",
-   "start_s": 5.95,
-   "max_s": 3.4,
-   "on_screen": "Caption 'Fair test: we typed in each council's own address.' (5.9-9.45); typing '50 The Octagon' into the real search box, cut to the result at 8.6",
-   "text_v2": "Fair test: we typed in each council's own address.",
-   "text_v3": "Fair test: we typed in each council's own address.",
-   "delivery": "Same take as the master; identical timing (0-22.7 is the same picture). Tiny pause after 'Fair test', then one easy phrase. Light lean on 'own', the faint amusement of someone who knows this gets funny later. Out by 9.35."
+  "pronunciation": {
+    "QSME": "written 'Queue Ess Mee' in the text sent to ElevenLabs (STT hears 'QS Me' / 'QSme'); in text_v2 it is 'Q-S-me'",
+    "qsme.co.nz": "Queue Ess Mee dot Co dot N Z (\"co\" said like KO, never C-O; owner 2026-10-08)",
+    "LIM / PIM": "said as words (lim, pim); STT hears them as LIM, PIM"
   },
-  {
-   "id": "svo03-basics",
-   "from": "vo03-basics",
-   "start_s": 9.7,
-   "max_s": 5.7,
-   "on_screen": "Caption 'Every address on the register gets the basics.' (9.65-15.55). Parcel outline pulses 10.95; boxes on land area 12.55, legal description 13.15, council 13.75; ladder ticks with them",
-   "text_v2": "Anywhere in the country: the boundary… land area, legal description and council.",
-   "text_v3": "Anywhere in the country: the boundary… [short pause] land area, legal description and council.",
-   "delivery": "Same take as the master; identical timing (0-22.7 is the same picture). Ticking a list. 'Anywhere in the country' easy, then 'the boundary' lands with the parcel pulse (about 11.0), then a real beat while the camera drops to the card. 'land area' about 12.5, 'legal description' about 13.2, 'and council' about 13.9: with or just behind each box, never ahead. Even, no list-sing (pitch must not climb). Out by 15.4."
+  "take": {
+    "model": "eleven_v3",
+    "voice": "Cam S 53CG2aO2HU48thT3QnMl",
+    "file": "outputs/vo-take-cam-v3-short/take.m4a",
+    "alignment": "outputs/vo-take-cam-v3-short/alignment.json",
+    "words": 109,
+    "text_sent": "outputs/vo-take-cam-v3-short/take-text.txt",
+    "duration_s": 46.29,
+    "page_duration_s": 47.8,
+    "method": "ONE unbroken request to /v1/text-to-speech/53CG2aO2HU48thT3QnMl/with-timestamps (model eleven_v3, stability 0.5); never sliced; laid onto outputs/auckland-first-9x16-short.mp4 at 0.0 s at gain 1.15 with tools/mux, no bed. Earlier takes (2026-10-06, CTA said \"dot co\") are archived in outputs/archive/vo-take-cam-v3-short-co/.",
+    "stt_check": "tools/el.py stt 2026-10-10: every word heard; QSME heard as 'QS Me' and 'qsme.co.nz' (the KO pronunciation the owner asked for) in the CTA",
+    "max_gap_s": 0.58,
+    "words_per_s": 2.35,
+    "tags": [
+      "[dry]"
+    ]
   },
-  {
-   "id": "svo04-not-yet",
-   "from": "vo04-not-yet",
-   "start_s": 15.85,
-   "max_s": 3.4,
-   "on_screen": "Caption 'Services and hazards? Not here yet. It says so.' (15.75-19.35). Amber underline on the card's own line 16.25; ladder NOT YET 16.3 / 16.5 / 16.7",
-   "text_v2": "Services and hazards? Not here yet. It says so.",
-   "text_v3": "Services and hazards? Not here yet. It says so.",
-   "delivery": "Same take as the master; identical timing (0-22.7 is the same picture). A plain question, then a flat honest answer. 'Not here yet' neither sorry nor defensive; 'It says so' with a slight nod of approval. Same words as the caption. Out by 19.25."
-  },
-  {
-   "id": "svo05-they-knew",
-   "from": "vo05-they-knew",
-   "start_s": 19.4,
-   "max_s": 3.25,
-   "on_screen": "Caption 'We told Dunedin City Council it's in Dunedin City. They knew.' (19.55-22.8). Punch-in on the boxed 'Dunedin City' from 19.95 (frame holds 20.9-21.5); the Dunedin card leaves at 23.0. Music ducks hard 21.3-23.0",
-   "text_v2": "We told the council it's in Dunedin City. They knew.",
-   "text_v3": "We told the council it's in Dunedin City. [short pause] They knew.",
-   "delivery": "Same take as the master. Hard cut to the table at 22.7, so 'They knew.' must be out by 22.65: pick a take of 3.25 s or less (only 14 syllables, about 4.3 syllables a second, so a relaxed read runs about 3.0 s even though the word rate looks high)."
-  },
-  {
-   "id": "svo13-summary",
-   "from": "vo13-summary",
-   "start_s": 22.92,
-   "max_s": 6.0,
-   "on_screen": "Hard cut at 22.7 into the 'Screenshot this' table (master 48.28-56.94); columns tick 24.12 / 25.62 / 27.32; complete 27.86; held to 31.36",
-   "text_v2": "So. Everywhere: the basics. Three more councils: plus the zone. Auckland: the lot.",
-   "text_v3": "So. [short pause] Everywhere: the basics. Three more councils: plus the zone. Auckland: the lot.",
-   "delivery": "Same take as the master, laid at 22.92 (master 48.5). Columns tick 24.12 / 25.62 / 27.32, so the pairs land about 24.2 / 25.7 / 27.4. Table complete 27.86, held to the cut at 31.36. Out by 28.92."
-  },
-  {
-   "id": "svo16-started",
-   "from": "vo16-started",
-   "start_s": 31.38,
-   "max_s": 1.8,
-   "on_screen": "Hard cut at 31.36 to the map (Auckland pin glows); 'We started in Auckland.' pops 31.56; music out 31.36-34.2",
-   "text_v2": "Yeah. We started in Auckland.",
-   "text_v3": "[exhales] Yeah. We started in Auckland.",
-   "delivery": "Same take as the master, laid just after the hard cut to the map at 31.36. 'We started in Auckland.' pops 31.56, 'We know.' slams 33.21. Out by 33.18."
-  },
-  {
-   "id": "svo17-we-know",
-   "from": "vo17-we-know",
-   "start_s": 33.25,
-   "max_s": 0.8,
-   "on_screen": "'We know.' slams in at 33.21",
-   "text_v2": "We know.",
-   "text_v3": "We know.",
-   "delivery": "Same take, on the slam. Out by 34.05."
-  },
-  {
-   "id": "svo18-card-says-so",
-   "from": "vo18-card-says-so",
-   "start_s": 34.1,
-   "max_s": 1.15,
-   "on_screen": "The card's own line '…Auckland first, more councils to come.' slides in at 33.81; hard cut at 35.31",
-   "text_v2": "Card says so.",
-   "text_v3": "Card says so.",
-   "delivery": "Same take. The card's own line is in from 33.81; hard cut to the end card at 35.31. Out by 35.25."
-  },
-  {
-   "id": "svo19-cta",
-   "from": "vo19-cta",
-   "start_s": 35.81,
-   "max_s": 4.5,
-   "on_screen": "End card from 35.31: 'Search your address.' 35.76, 'Sign up to see yours.' 36.36, qsme.co.nz pill 36.76, small line 37.36; ends 40.6",
-   "text_v2": "Search your address. Sign up at Q-S-me dot co dot en zed.",
-   "text_v3": "Search your address. Sign up at Q-S-me dot co dot en zed.",
-   "delivery": "Same take as the master, laid at 35.81 (master 71.55). 'Search your address.' 35.76, 'Sign up to see yours.' 36.36 (say 'Sign up' with it), pill 36.76. Out by 40.31 (file ends 40.6)."
-  }
- ],
- "silent_beats": [
-  "3.2-5.95: hook cards",
-  "28.92-31.36: the finished table holds (music only)"
- ],
- "post_processing": [
-  "tools/mux outputs/auckland-first-9x16-short.mp4 outputs/auckland-first-9x16-short-with-vo.mp4 vo/<from>.mp3@<start_s> ... music-short.mp3@0.9@0.35",
-  "Music: the same bed edited at the three hard cuts; drops out 31.36-34.2; resolves 40.2."
- ],
- "changelog": [
-  "2026-10-03 owner CTA rule: svo19 now 'Search your address. Sign up at Q-S-me dot co dot en zed.' (same take as the master vo19, same 35.81 start). Hook and end-card notes updated. No timings changed."
- ]
+  "continuous_read_v3": "Not in Auckland? Every nationwide property tool has an asterisk. Here's ours, read out loud.\n\nFair test: we typed each council's own address into Queue Ess Mee site search. Dunedin first. Anywhere in the country you get the basics: boundary, land area, legal description, and council. Services and hazards? Not here yet. It says so, right on the card. So we told Dunedin City Council it's in Dunedin City. They knew.\n\nScreenshot this. Everywhere: the basics. Three more councils: plus the zone. Auckland: the lot.\n\nYeah. We started in Auckland. We know. [dry] Card says so.\n\nSearch your address. Sign up at Queue Ess Mee dot Co dot N Z.",
+  "lines": [
+    {
+      "id": "svo00-hook",
+      "start_s": 0.0,
+      "max_s": 6.13,
+      "end_s": 5.84,
+      "on_screen": "Hook 0–5.84: title from frame 1, sub on 'Every' (0.98), cards 1.08 / 1.73 / 2.34, 'Real searches' on 'Here's' (4.08)",
+      "text_v2": "Not in Auckland? Every nationwide property tool has an asterisk. Here's ours, read out loud.",
+      "text_v3": "Not in Auckland? Every nationwide property tool has an asterisk. Here's ours, read out loud.",
+      "delivery": "A question to the viewer, then the claim said like a plain fact. Energy up, no announcer lift."
+    },
+    {
+      "id": "svo01-fair-test",
+      "start_s": 6.13,
+      "max_s": 7.47,
+      "end_s": 13.44,
+      "on_screen": "Caption on 'Fair' (6.13); typing 5.96–9.94; result on 'into Q-S-me' (9.94); camera on the card by 10.71; holds through 'Dunedin first.'",
+      "text_v2": "Fair test: we typed each council's own address into Q-S-me site search. Dunedin first.",
+      "text_v3": "Fair test: we typed each council's own address into Q-S-me site search. Dunedin first.",
+      "delivery": "Matter-of-fact, like explaining the test to a mate."
+    },
+    {
+      "id": "svo02-basics",
+      "start_s": 13.6,
+      "max_s": 6.13,
+      "end_s": 19.6,
+      "on_screen": "Caption on 'Anywhere' (13.6); parcel pulse on 'boundary' (16.21); boxes 'land area' 16.94 / 'legal description' 17.89 / 'council' 19.1",
+      "text_v2": "Anywhere in the country you get the basics: boundary, land area, legal description, and council.",
+      "text_v3": "Anywhere in the country you get the basics: boundary, land area, legal description, and council.",
+      "delivery": "A list read evenly, each item a small full stop."
+    },
+    {
+      "id": "svo03-not-yet",
+      "start_s": 19.73,
+      "max_s": 5.07,
+      "end_s": 24.56,
+      "on_screen": "Caption on 'Services' (19.74); amber underline on 'Not' (21.6); pills go NOT YET 21.56–22.49",
+      "text_v2": "Services and hazards? Not here yet. It says so, right on the card.",
+      "text_v3": "Services and hazards? Not here yet. It says so, right on the card.",
+      "delivery": "The question dry, the answer flat; 'right on the card' as a shrug."
+    },
+    {
+      "id": "svo04-they-knew",
+      "start_s": 24.8,
+      "max_s": 4.44,
+      "end_s": 28.84,
+      "on_screen": "Caption on 'So' (24.8); punch-in on 'Dunedin City' (27.18); hard cut to the table after 'knew.' (29.11)",
+      "text_v2": "So we told Dunedin City Council it's in Dunedin City. They knew.",
+      "text_v3": "So we told Dunedin City Council it's in Dunedin City. They knew.",
+      "delivery": "Set-up straight, a tiny beat, 'They knew.' thrown away."
+    },
+    {
+      "id": "svo11-summary",
+      "start_s": 29.24,
+      "max_s": 8.14,
+      "end_s": 36.8,
+      "on_screen": "Kicker + title on 'Screenshot' (29.24); column 1 on 'Everywhere:' (30.96), column 2 on 'Three' (32.76), Auckland column on 'Auckland:' (35.06); complete 36.02, held through 'the lot.'; out on 'Yeah.' (37.16)",
+      "text_v2": "Screenshot this. Everywhere: the basics. Three more councils: plus the zone. Auckland: the lot.",
+      "text_v3": "Screenshot this. Everywhere: the basics. Three more councils: plus the zone. Auckland: the lot.",
+      "delivery": "Slower, like reading a table out loud; 'the lot.' as a full stop."
+    },
+    {
+      "id": "svo14-we-know",
+      "start_s": 37.38,
+      "max_s": 4.21,
+      "end_s": 41.04,
+      "on_screen": "Map on 'Yeah.' (37.45); 'We started in Auckland.' on 'We' (38.08); 'We know.' slams on 'We' (39.23); the card's own line on 'Card' (40.33)",
+      "text_v2": "Yeah. We started in Auckland. We know. Card says so.",
+      "text_v3": "Yeah. We started in Auckland. We know. Card says so.",
+      "delivery": "'Yeah.' as an admission, 'We know.' flat and a bit amused, 'Card says so.' thrown away ([dry] tag)."
+    },
+    {
+      "id": "svo15-cta",
+      "start_s": 41.59,
+      "max_s": 5.0,
+      "end_s": 46.24,
+      "on_screen": "End card: 'Search your address.' on 'Search' (41.59), search box 42.23, 'Sign up to see yours.' on 'Sign up' (43.15), qsme.co.nz pill on 'Queue Ess Mee' (43.73), small line 44.5; page ends 47.8",
+      "text_v2": "Search your address. Sign up at Q-S-me dot Co dot N Z.",
+      "text_v3": "Search your address. Sign up at Q-S-me dot Co dot N Z.",
+      "delivery": "A friendly nudge, the URL the Kiwi way ('en zed'), no rise at the end."
+    }
+  ],
+  "notes": [
+    "Mix: tools/mux outputs/auckland-first-9x16-short.mp4 outputs/auckland-first-9x16-short-with-vo.mp4 outputs/vo-take-cam-v3-short/take.m4a@0.0@1.15 (no bed)."
+  ],
+  "changelog": [
+    "2026-10-06 audio-first remake: own continuous take (46.9 s, 109 words, longest gap 0.71 s); the old 40.6 s slice-of-master cut is archived as outputs/archive/auckland-first-9x16-short-v1.mp4.",
+    "2026-10-10 re-take for the owner pronunciation fix (2026-10-08): CTA said \"Queue Ess Mee dot Co dot N Z\". Whole take regenerated (46.29 s, 109 words, longest gap 0.58 s), anchors in motion/af.js moved onto the new word starts, all cuts re-rendered and re-muxed (page 47.8 s)."
+  ]
 }

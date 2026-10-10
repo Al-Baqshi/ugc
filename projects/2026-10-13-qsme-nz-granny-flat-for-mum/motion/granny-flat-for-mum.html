@@ -4,17 +4,32 @@
 <meta charset="utf-8">
 <title>Granny flat for Mum (Flat 2 gets a vote)</title>
 <!--
-  QSME NZ · 9:16 · 31.9 s · silent master with burned-in captions.
-  S1 0–3.0      hook: gf-3-placed b-roll (Illustrative) → REQUIRED stamp (2.15)
-  S2 3.0–15.75  "What this site would require" (recreated QSME screen, demo data): granny-flat row → Required filter → cross-lease row
-  S4 15.75–22.4 marker sketch: one section, two flats, the bins
-  S5 22.4–27.4  the LIM & Record of Title row (same recreation)
-  S6 27.4–31.9  end card: the live qsme.co.nz "Search your address" strip (captured 2 Oct 2026, nothing typed) + the sign-up path to Site research
-  v3 (owner CTA rule 2026-10-03): path line "Sign up → search your address → Site research", pill "Sign up at qsme.co.nz"; no free / no-sign-up wording.
+  QSME NZ · 9:16 · 37.8 s · master with burned-in captions (silent; the voice is laid on with tools/mux → *-with-vo.mp4).
+  2026-10-06 AUDIO-FIRST REMAKE (the owner's standard, approved on the N01 "Which Dave?" pilot); 2026-10-10 KOH FIX: the CTA
+  is now said "dot koh dot en zed" (owner rule 2026-10-08), so the WHOLE take was regenerated (Cam S, eleven_v3, ONE unbroken
+  request, outputs/vo-take-cam-v3/take.mp3, 36.28 s, laid at 0.0 s) and every beat below was re-timed to its words
+  (alignment.json / words.json; onsets after a pause = end of the measured silence). Page = 37.8 s (take + 1.5 s tail).
+  Design unchanged (b-roll hook, recreated RequirementsCard, marker sketch, LIM row, end card); captions are phrases lifted
+  from the narration. Spoken script (3 v3 tags): see outputs/vo-take-cam-v3/take-text.txt.
+  S1 0–3.82     hook: "Granny flat for Mum. Easy now, apparently." · pill "— every barbecue since winter" on "now" (1.99)
+                · b-roll freezes 2.74 · REQUIRED stamp 2.84 (holds 1.0 s in the [dry] beat) · cut before "So" (3.82)
+  S2 3.82–16.41 the card: "So we looked the section up first." (3.90) · scroll lands on the granny-flat row 5.25 · highlighter
+                on "can often" (5.93–6.46, the words) and "where the site meets the conditions" (7.27–8.64, the words) ·
+                "Righto." (9.35) · pull back 9.53–10.13 · "Then we clicked Required." (10.38) · click on "Required" (10.78) ·
+                collapse 10.83–11.23 · push-in 11.33–12.07 · badge pulse 12.07 · highlighter "must consent to any change of
+                footprint" on "owners must consent" (12.30–13.44) · "We're on a cross-lease." (14.05) · red circle on
+                "because: Cross-lease title" on the word "cross-lease" (14.29–14.91) · "Oh." 16.10
+  S4 16.41–23.88 the sketch: paper 16.41 · Flat 1 + us drawn by "Flat one's us" (17.07–17.92) · pan 18.25–18.82 to Flat 2 on
+                "Flat two's next door" · "Flat 2 gets a say." (19.82) · "We've only ever talked about bins." (21.76) · arrow +
+                lid hop on "bins" (22.83)
+  S5 23.88–28.73 the LIM row: "LIM, title, cuppa with next door." (24.81) · highlighter 24.81–25.76 · teacup on "cuppa" (25.84)
+                · "(might bake something)" writes on the words (27.26–27.98)
+  S6 28.73–37.8 end card: logo on "That's" (28.88) · live strip + ring on "Site research" (29.10) · "What your Auckland
+                section would require." on "What" (31.24) · path line 32.32 · pill "Sign up at qsme.co.nz" slams on "Sign"
+                (33.45; pulses 35.15, 36.75) · fine print 33.85. Owner CTA rule 2026-10-03: no free / no-sign-up wording.
   The product card copies RequirementsCard (origin/main DevelopmentCards.tsx) in the app's light theme:
   levels/colours/wording are the product's own; the site is fictional demo data (Auckland, Single House zone, cross-lease).
-  v2 (review fixes): relabelled stand-in, faster opening scroll, push-in right after the Required tap so the frame settles on the
-  cross-lease row, tighter + bigger sketch, bins label cut (arrow + caption carry it), path line on the end card, logo without ®.
+  Earlier design notes (v2 review fixes, v3 CTA rule) are in post.md; the 31.9 s silent v3 page is outputs/archive/granny-flat-for-mum-v1.html.
 -->
 <link rel="stylesheet" href="../../../tools/motion/kit.css">
 <style>
@@ -157,12 +172,13 @@
     <div id="chip2"><i></i><b>QSME</b> Site research</div>
     <div id="ill2" class="illustrative">Recreated QSME screen · demo data</div>
 
-    <div id="capA" class="cap"><span>So we looked up our section first.</span></div>
-    <div id="capB" class="cap"><span>“Can often.” <span class="g" style="background:none;padding:0;box-shadow:none">Read the conditions.</span></span></div>
+    <div id="capA" class="cap"><span>So we looked the section up first.</span></div>
+    <div id="capB" class="cap"><span>“Can often.” <span class="g" style="background:none;padding:0;box-shadow:none">Where the site meets the conditions.</span></span></div>
+    <div id="capB2" class="cap"><span>Righto.</span></div>
     <div id="capC" class="cap"><span>Then we clicked “Required”.</span></div>
-    <div id="capD" class="cap" style="bottom: 750px"><span>Because we're on a <span class="r" style="background:none;padding:0;box-shadow:none">cross-lease.</span></span></div>
+    <div id="capD" class="cap" style="bottom: 750px"><span>We're on a <span class="r" style="background:none;padding:0;box-shadow:none">cross-lease.</span></span></div>
     <div id="smD" class="small" style="top: 1192px">Read from the legal description: a clue, not a title search.</div>
-    <div id="capG" class="cap" style="bottom: 750px"><span>Next: the LIM, the title, and a cuppa with next door.</span></div>
+    <div id="capG" class="cap" style="bottom: 750px"><span>LIM, title, cuppa with next door.</span></div>
     <svg id="cuppa" viewBox="0 0 1080 1920">
       <path id="cup1" class="ink" style="stroke:#F8FAFC;stroke-width:6" d="M150 905 L156 968 Q162 992 186 992 L218 992 Q242 992 246 968 L252 905 Z"/>
       <path id="cup2" class="ink" style="stroke:#F8FAFC;stroke-width:6" d="M252 920 Q282 920 280 944 Q278 966 248 964"/>
@@ -227,7 +243,7 @@
   <!-- ================= S6: end card ================= -->
   <div id="s6" class="fill">
     <div id="e-logo"><img src="../../../tools/motion/qsme-logo.svg" alt="QSME"></div>
-    <div id="e-h">See what your <span class="g">Auckland section</span> would require.</div>
+    <div id="e-h">What your <span class="g">Auckland section</span> would require.</div>
     <div id="e-strip"><img src="clips/home-mobile/f_00000.jpg" alt=""></div>
     <div id="e-ring"></div>
     <div id="e-src">qsme.co.nz · live homepage, 2 Oct 2026</div>
@@ -273,8 +289,15 @@ GROUPS.forEach(([title, rows], gi) => {
   ct.appendChild(g);
 });
 
-/* ---------------- timeline ---------------- */
-const T = { stamp: 2.15, cut1: 3.0, tap: 10.05, xl: 11.45, sketch: 15.75, lim: 22.4, end: 27.4, dur: 31.9 };
+/* ---------------- timeline: every time below is a word start/end from outputs/vo-take-cam-v3/words.json ---------------- */
+// W = the words the picture lands on (take time = reel time; the take is laid at 0.0 s)
+const W = { now: 1.96, apparently: 2.38, apparentlyEnd: 2.72, so: 3.90, firstEnd: 5.29, can: 5.93, oftenEnd: 6.46, where: 7.27, conditionsEnd: 8.64,
+            righto: 9.35, rightoEnd: 9.60, then: 10.38, required: 10.78, other: 12.14, owners: 12.30, consentEnd: 13.44, were: 14.05, crossLease: 14.29,
+            crossLeaseEnd: 15.09, oh: 16.10, ohEnd: 16.32, flat1: 17.07, ones: 17.24, us: 17.57, usEnd: 17.92, flat2: 18.22, next: 18.62, doorEnd: 19.26,
+            flat2gets: 19.82, sayEnd: 20.83, weve: 21.76, bins: 22.83, binsEnd: 23.36, so2: 23.96, lim: 24.81, titleEnd: 25.76, cuppa: 25.84, might: 27.26,
+            somethingEnd: 27.98, thats: 28.88, site: 29.10, what: 31.24, requireEnd: 32.82, sign: 33.45, zedEnd: 36.24 };
+// onsets after a pause are the end of the measured silence (v3 alignment starts a word early after a beat); take = 36.28 s, page = take + 1.52 s
+const T = { stamp: W.apparentlyEnd + 0.12, cut1: W.so - 0.08, tap: W.required, xl: W.owners - 0.23, sketch: W.ohEnd + 0.09, lim: W.so2 - 0.08, end: W.thats - 0.15, dur: 37.8 };
 const E = Kit.ease;
 
 // S1 hook --------------------------------------------------------------------------------------
@@ -283,9 +306,9 @@ Kit.clip('#clip', { dir: 'clips/gf3', t0: 0, t1: T.stamp - 0.1, fps: 30, ext: '.
 Kit.clip('#bgclip', { dir: 'clips/gf3', t0: 0, t1: T.stamp - 0.1, fps: 30, ext: '.jpg' });
 Kit.add('#clip', 'scale', [[0, 1.0], [T.stamp - 0.1, 1.065, 'linear'], [T.stamp + 0.45, 1.10, 'out']]);
 Kit.add('#bubble', 'scale', [[0, 0.94], [0.45, 1, 'outBack']]);
-Kit.pop('#attrib', 0.5, { dy: 16 });
+Kit.pop('#attrib', W.now + 0.03, { dy: 16 });                       // "— every barbecue since winter" on "now,"
 Kit.add('#dim', 'opacity', [[T.stamp - 0.1, 0], [T.stamp, 0.6, 'out']]);
-Kit.slam('#stamp', T.stamp, { from: 1.9, dur: 0.16 });
+Kit.slam('#stamp', T.stamp, { from: 1.9, dur: 0.16 });              // right after "apparently." (the [dry] beat)
 const sh = T.stamp + 0.14;
 Kit.add('#s1', 'x', [[sh, 0], [sh + 0.04, -16], [sh + 0.08, 12], [sh + 0.12, -7], [sh + 0.16, 3], [sh + 0.2, 0]]);
 Kit.add('#s1', 'y', [[sh, 0], [sh + 0.04, 8], [sh + 0.08, -6], [sh + 0.12, 3], [sh + 0.2, 0]]);
@@ -297,35 +320,37 @@ Kit.add('#cardwrap', 'y', [[T.cut1, 70], [T.cut1 + 0.32, 0, 'out']]);
 Kit.pop('#chip2', T.cut1 + 0.1, { dy: 14 }).out('#chip2', T.end, 0.2);
 Kit.pop('#ill2', T.cut1 + 0.2, { dy: 0 }).out('#ill2', T.end, 0.2);
 
-Kit.pop('#capA', 3.15).out('#capA', 4.85, 0.12);
-Kit.pop('#capB', 5.0).out('#capB', 8.6, 0.12);
-Kit.add('#hl-often', 'var:--hl', [[4.45, 0], [4.85, 1, 'inOut']]);
-Kit.add('#hl-cond', 'var:--hl', [[5.15, 0], [5.95, 1, 'inOut']]);
-Kit.pop('#capC', 9.25).out('#capC', 10.95, 0.12);
-Kit.pop('#capD', T.xl + 0.05).out('#capD', T.sketch - 0.05, 0.1);
-Kit.pop('#smD', T.xl + 0.45, { dy: 0 }).out('#smD', T.sketch - 0.05, 0.1);
-Kit.add('#hl-fp', 'var:--hl', [[T.xl + 0.75, 0], [T.xl + 1.6, 1, 'inOut']]);
-Kit.add('#circ-path', 'trim', [[T.xl + 1.9, 0], [T.xl + 2.5, 1, 'out']]);
+Kit.pop('#capA', W.so).out('#capA', W.firstEnd, 0.12);                                   // "So we looked the section up first."
+Kit.pop('#capB', W.can).out('#capB', W.righto - 0.06, 0.1);                               // "Can often." Where the site meets the conditions.
+Kit.pop('#capB2', W.righto).out('#capB2', W.then - 0.12, 0.1);                            // "Righto."
+Kit.add('#hl-often', 'var:--hl', [[W.can, 0], [W.oftenEnd, 1, 'inOut']]);                 // highlighter rides the words
+Kit.add('#hl-cond', 'var:--hl', [[W.where, 0], [W.conditionsEnd, 1, 'inOut']]);
+Kit.pop('#capC', W.then).out('#capC', W.owners - 0.3, 0.12);                                 // "Then we clicked Required."
+Kit.pop('#capD', W.were).out('#capD', T.sketch - 0.05, 0.1);                              // "We're on a cross-lease."
+Kit.pop('#smD', W.were + 0.45, { dy: 0 }).out('#smD', T.sketch - 0.05, 0.1);
+Kit.add('#hl-fp', 'var:--hl', [[W.owners, 0], [W.consentEnd, 1, 'inOut']]);               // "must consent to any change of footprint" on "owners must consent"
+Kit.add('#circ-path', 'trim', [[W.crossLease, 0], [W.crossLease + 0.62, 1, 'out']]);     // red circle on the word "cross-lease"
 Kit.add('#bdg-cl', 'scale', [[T.xl - 0.05, 1], [T.xl + 0.13, 1.22, 'out'], [T.xl + 0.35, 1, 'out']]);
 Kit.add('#ring-cl', 'opacity', [[T.xl - 0.05, 0], [T.xl + 0.05, 1], [T.xl + 0.65, 0, 'in']]);
 Kit.add('#ring-cl', 'scale', [[T.xl - 0.05, 1], [T.xl + 0.65, 1.5, 'out']]);
 // S5 (the LIM row)
-Kit.pop('#capG', T.lim + 0.35).out('#capG', T.end - 0.05, 0.1);
-Kit.add('#hl-lim', 'var:--hl', [[T.lim + 0.55, 0], [T.lim + 1.35, 1, 'inOut']]);
-Kit.add('#cup1', 'trim', [[T.lim + 2.25, 0], [T.lim + 2.6, 1, 'out']]).add('#cup2', 'trim', [[T.lim + 2.5, 0], [T.lim + 2.7, 1, 'out']]).add('#cup3', 'trim', [[T.lim + 2.65, 0], [T.lim + 3.0, 1, 'out']]);
-Kit.add('#cuppa', 'opacity', [[0, 0], [T.lim + 2.2, 1, 'hold'], [T.end, 1], [T.end + 0.15, 0]]);
-Kit.add('#aside', 'clipX', [[T.lim + 2.8, 0], [T.lim + 3.5, 1, 'linear']]).show('#aside', T.lim + 2.8).out('#aside', T.end, 0.15);
+Kit.pop('#capG', W.lim).out('#capG', T.end - 0.05, 0.1);                                  // "LIM, title, cuppa with next door."
+Kit.add('#hl-lim', 'var:--hl', [[W.lim, 0], [W.titleEnd, 1, 'inOut']]);
+const CU = W.cuppa;
+Kit.add('#cup1', 'trim', [[CU, 0], [CU + 0.35, 1, 'out']]).add('#cup2', 'trim', [[CU + 0.25, 0], [CU + 0.45, 1, 'out']]).add('#cup3', 'trim', [[CU + 0.4, 0], [CU + 0.75, 1, 'out']]);
+Kit.add('#cuppa', 'opacity', [[0, 0], [CU - 0.05, 1, 'hold'], [T.end, 1], [T.end + 0.15, 0]]);
+Kit.add('#aside', 'clipX', [[W.might, 0], [W.somethingEnd, 1, 'linear']]).show('#aside', W.might).out('#aside', T.end, 0.15);   // "(might bake something)" writes on the words
 
 // camera: [t, focusElement, fy (0 top .. 1 bottom of that element), screenY, scale, ease, topAnchor]
 // topAnchor: the element whose top edge the top fade lands on (a row or a group header), so no half-lines sit under the chip.
 const CAM = [
-  [3.00, '#card', 0, 478, 2.45, null, null],
-  [3.40, '#card', 0, 474, 2.45, 'inOut', null],
-  [4.25, '#row-gf', 0.5, 652, 2.62, 'inOut', '#row-gf'],
-  [8.55, '#row-gf', 0.5, 646, 2.74, 'inOut', '#row-gf'],
-  [9.15, '#card', 0, 432, 1.6, 'inOut', null],
-  [10.60, '#card', 0, 432, 1.6, null, null],
-  [T.xl, '#row-cl', 0.5, 660, 2.55, 'inOut', '#grp1'],
+  [T.cut1, '#card', 0, 478, 2.45, null, null],
+  [T.cut1 + 0.40, '#card', 0, 474, 2.45, 'inOut', null],
+  [W.can - 0.68, '#row-gf', 0.5, 652, 2.62, 'inOut', '#row-gf'],          // lands on the granny-flat row before "Can often."
+  [W.rightoEnd - 0.07, '#row-gf', 0.5, 646, 2.74, 'inOut', '#row-gf'],   // slow push-in while the conditions are read
+  [W.rightoEnd + 0.53, '#card', 0, 432, 1.6, 'inOut', null],             // pull back for "Then we clicked Required."
+  [T.tap + 0.55, '#card', 0, 432, 1.6, null, null],
+  [T.xl, '#row-cl', 0.5, 660, 2.55, 'inOut', '#grp1'],                   // push-in settles on the cross-lease row before "owners must consent"
   [T.sketch, '#row-cl', 0.5, 655, 2.70, 'inOut', '#grp1'],
   [T.lim, '#row-lim', 0.5, 628, 2.55, 'hold', '#grp3'],
   [T.end - 0.05, '#row-lim', 0.5, 622, 2.66, 'inOut', '#grp3'],
@@ -382,7 +407,7 @@ function applyFilter(t) {
   });
 }
 
-// cursor: enters, lands on "Required", clicks, leaves before the push-in
+// cursor: enters on "we clicked", lands on "Required" and clicks on the word, leaves before the push-in
 const cursor = document.getElementById('cursor');
 function cursorAt(t, c) {
   const pill = document.getElementById('pf-req'); const pb = rel(pill);
@@ -412,50 +437,54 @@ Kit.each(t => {
   ring.style.left = (bb.x - 4) + 'px'; ring.style.top = (bb.y - 4) + 'px'; ring.style.width = (bb.w + 8) + 'px'; ring.style.height = (bb.h + 8) + 'px';
 });
 
-// S4 sketch (1.15x, two views: Flat 1 + us, then pan to the granny flat, bins and Flat 2) ---------
+// S4 sketch (1.15x, two views: Flat 1 + us on "Flat one's us", then the pan to the granny flat, bins and Flat 2 on "Flat two's next door") ---------
 const S = T.sketch, SC = 1.15, X0 = -35, X1 = -786, Y0 = -70;
+const PAN0 = W.flat2 + 0.03, PAN1 = W.next + 0.2;                       // the pan arrives on "next door"
 Kit.scene('#s4', S, T.lim);
 Kit.add('#paper-bg', 'y', [[S, 1920], [S + 0.32, 0, 'swipe']]);
 Kit.add('#paper', 'scale', [[0, SC]]);
 Kit.add('#paper', 'y', [[S, 1920 + Y0], [S + 0.32, Y0, 'swipe']]);
-Kit.add('#paper', 'x', [[S, X0], [S + 1.6, X0], [S + 2.4, X1, 'inOut'], [T.lim, X1 - 16, 'linear']]);
-Kit.add('#bnd', 'trim', [[S + 0.2, 0], [S + 0.7, 1, 'out']]);
-Kit.add('#gnd', 'trim', [[S + 0.3, 0], [S + 0.6, 1, 'out']]);
-Kit.add('#l-sec', 'clipX', [[S + 0.3, 0], [S + 0.7, 1, 'linear']]).show('#l-sec', S + 0.3);
-Kit.add('#f1', 'trim', [[S + 0.25, 0], [S + 0.75, 1, 'out']]);
-Kit.add('#l-xl', 'clipX', [[S + 0.65, 0], [S + 1.0, 1, 'linear']]).show('#l-xl', S + 0.65);
-Kit.add('#l-f1', 'clipX', [[S + 0.7, 0], [S + 0.9, 1, 'linear']]).show('#l-f1', S + 0.7);
-Kit.add('#us1', 'trim', [[S + 0.6, 0], [S + 0.9, 1, 'out']]).add('#us2', 'trim', [[S + 0.7, 0], [S + 1.0, 1, 'out']]);
-Kit.add('#l-us', 'clipX', [[S + 0.95, 0], [S + 1.1, 1, 'linear']]).show('#l-us', S + 0.95);
-Kit.add('#gf', 'trim', [[S + 1.1, 0], [S + 1.5, 1, 'out']]).add('#heart', 'trim', [[S + 1.4, 0], [S + 1.6, 1, 'out']]);
-Kit.add('#l-gf2', 'clipX', [[S + 1.65, 0], [S + 1.77, 1, 'linear']]).show('#l-gf2', S + 1.65);
-Kit.add('#l-gf', 'clipX', [[S + 1.7, 0], [S + 1.9, 1, 'linear']]).show('#l-gf', S + 1.7);
-Kit.add('#l-gf3', 'clipX', [[S + 1.85, 0], [S + 2.0, 1, 'linear']]).show('#l-gf3', S + 1.85);
-Kit.add('#bins', 'trim', [[S + 1.8, 0], [S + 2.2, 1, 'out']]);
-Kit.add('#lid1', 'opacity', [[S + 2.0, 0], [S + 2.1, 1]]).add('#lid1', 'y', [[S + 2.0, -30], [S + 2.18, 0, 'outBack']]);
-Kit.add('#lid2', 'opacity', [[S + 2.12, 0], [S + 2.22, 1]]).add('#lid2', 'y', [[S + 2.12, -30], [S + 2.3, 0, 'outBack']]);
-Kit.add('#wheels', 'opacity', [[S + 2.2, 0], [S + 2.3, 1]]);
-Kit.add('#f2', 'trim', [[S + 1.95, 0], [S + 2.5, 1, 'out']]);
-Kit.add('#l-f2', 'clipX', [[S + 2.35, 0], [S + 2.6, 1, 'linear']]).show('#l-f2', S + 2.35);
-Kit.pop('#capE1', S + 2.6).out('#capE1', S + 4.3, 0.1);
-// the punchline: caption + a red arrow up to the bins + both lids give a little hop
-const PB = S + 4.4;
+Kit.add('#paper', 'x', [[S, X0], [PAN0, X0], [PAN1, X1, 'inOut'], [T.lim, X1 - 16, 'linear']]);
+Kit.add('#bnd', 'trim', [[S + 0.15, 0], [S + 0.6, 1, 'out']]);
+Kit.add('#gnd', 'trim', [[S + 0.2, 0], [S + 0.5, 1, 'out']]);
+Kit.add('#l-sec', 'clipX', [[S + 0.2, 0], [S + 0.6, 1, 'linear']]).show('#l-sec', S + 0.2);
+Kit.add('#f1', 'trim', [[S + 0.2, 0], [W.ones - 0.1, 1, 'out']]);                                   // Flat 1 is drawn as "Flat one's" is said
+Kit.add('#l-xl', 'clipX', [[S + 0.5, 0], [S + 0.85, 1, 'linear']]).show('#l-xl', S + 0.5);
+Kit.add('#l-f1', 'clipX', [[W.ones - 0.15, 0], [W.ones + 0.05, 1, 'linear']]).show('#l-f1', W.ones - 0.15);
+Kit.add('#us1', 'trim', [[W.ones, 0], [W.us - 0.05, 1, 'out']]).add('#us2', 'trim', [[W.ones + 0.12, 0], [W.us + 0.1, 1, 'out']]);
+Kit.add('#l-us', 'clipX', [[W.us, 0], [W.us + 0.15, 1, 'linear']]).show('#l-us', W.us);         // "(us)" on "us"
+Kit.add('#gf', 'trim', [[W.us + 0.1, 0], [W.us + 0.5, 1, 'out']]).add('#heart', 'trim', [[W.us + 0.4, 0], [W.us + 0.6, 1, 'out']]);
+const GL = Math.max(W.usEnd, PAN0 + 0.1);                                                          // granny-flat labels write on once the pan has started (they sit off-frame right before it)
+Kit.add('#l-gf2', 'clipX', [[GL, 0], [GL + 0.12, 1, 'linear']]).show('#l-gf2', GL);
+Kit.add('#l-gf', 'clipX', [[GL + 0.05, 0], [GL + 0.25, 1, 'linear']]).show('#l-gf', GL + 0.05);
+Kit.add('#l-gf3', 'clipX', [[GL + 0.2, 0], [GL + 0.35, 1, 'linear']]).show('#l-gf3', GL + 0.2);
+const B = PAN0 + 0.35;                                                                              // bins + Flat 2 are drawn as the pan arrives
+Kit.add('#bins', 'trim', [[B, 0], [B + 0.4, 1, 'out']]);
+Kit.add('#lid1', 'opacity', [[B + 0.2, 0], [B + 0.3, 1]]).add('#lid1', 'y', [[B + 0.2, -30], [B + 0.38, 0, 'outBack']]);
+Kit.add('#lid2', 'opacity', [[B + 0.32, 0], [B + 0.42, 1]]).add('#lid2', 'y', [[B + 0.32, -30], [B + 0.5, 0, 'outBack']]);
+Kit.add('#wheels', 'opacity', [[B + 0.4, 0], [B + 0.5, 1]]);
+Kit.add('#f2', 'trim', [[B + 0.15, 0], [W.doorEnd - 0.12, 1, 'out']]);
+Kit.add('#l-f2', 'clipX', [[W.doorEnd - 0.2, 0], [W.doorEnd + 0.05, 1, 'linear']]).show('#l-f2', W.doorEnd - 0.2);   // "FLAT 2" on "door."
+Kit.pop('#capE1', W.flat2gets).out('#capE1', W.weve - 0.08, 0.1);                                  // "Flat 2 gets a say."
+// the punchline: caption on "We've", a red arrow up to the bins + both lids hop on "bins"
+const PB = W.weve;
 Kit.pop('#capE2', PB);
-Kit.add('#arr', 'trim', [[PB + 0.05, 0], [PB + 0.45, 1, 'out']]);
-Kit.add('#lid1', 'y', [[PB + 0.45, 0], [PB + 0.55, -14, 'out'], [PB + 0.7, 0, 'in']]);
-Kit.add('#lid2', 'y', [[PB + 0.55, 0], [PB + 0.65, -14, 'out'], [PB + 0.8, 0, 'in']]);
+Kit.add('#arr', 'trim', [[W.bins - 0.06, 0], [W.bins + 0.34, 1, 'out']]);
+Kit.add('#lid1', 'y', [[W.bins + 0.34, 0], [W.bins + 0.44, -14, 'out'], [W.bins + 0.59, 0, 'in']]);
+Kit.add('#lid2', 'y', [[W.bins + 0.44, 0], [W.bins + 0.54, -14, 'out'], [W.bins + 0.69, 0, 'in']]);
 
 // S6 end card ----------------------------------------------------------------------------------
 Kit.scene('#s6', T.end, T.dur + 1);
 Kit.add('#s6', 'opacity', [[T.end + 0.08, 0], [T.end + 0.3, 1, 'out']]);
-Kit.add('#e-logo', 'opacity', [[T.end + 0.1, 0], [T.end + 0.35, 1, 'out']]).add('#e-logo', 'scale', [[T.end + 0.1, 0.92], [T.end + 0.45, 1, 'out']]);
-Kit.pop('#e-h', T.end + 0.2);
-Kit.pop('#e-strip', T.end + 0.45, { dy: 30 }).pop('#e-src', T.end + 0.6, { dy: 0 });
-Kit.pop('#e-steps', T.end + 0.65, { dy: 20 });
-Kit.slam('#e-pill', T.end + 0.85, { from: 1.25, dur: 0.18 });
-Kit.add('#e-ring', 'opacity', [[T.end + 0.8, 0], [T.end + 1.0, 1, 'out'], [T.end + 2.2, 1], [T.end + 2.6, 0.55, 'inOut'], [T.end + 3.0, 1, 'inOut'], [T.end + 3.6, 1], [T.end + 4.0, 0.55, 'inOut']]);
-Kit.add('#e-ring', 'scale', [[T.end + 0.8, 1.06], [T.end + 1.05, 1, 'out']]);
-Kit.pop('#e-fine', T.end + 1.1, { dy: 0 });
+Kit.add('#e-logo', 'opacity', [[T.end + 0.1, 0], [T.end + 0.35, 1, 'out']]).add('#e-logo', 'scale', [[T.end + 0.1, 0.92], [T.end + 0.45, 1, 'out']]);   // logo on "That's"
+Kit.pop('#e-strip', W.site, { dy: 30 }).pop('#e-src', W.site + 0.15, { dy: 0 });                  // the live "Search your address" strip on "Site research"
+Kit.add('#e-ring', 'opacity', [[W.site + 0.2, 0], [W.site + 0.4, 1, 'out'], [W.site + 1.4, 1], [W.site + 1.8, 0.55, 'inOut'], [W.site + 2.2, 1, 'inOut'], [W.site + 3.6, 1], [W.site + 4.0, 0.55, 'inOut'], [W.site + 4.4, 1, 'inOut']]);
+Kit.add('#e-ring', 'scale', [[W.site + 0.2, 1.06], [W.site + 0.45, 1, 'out']]);
+Kit.pop('#e-h', W.what);                                                                            // "What your Auckland section would require." on "What"
+Kit.pop('#e-steps', W.requireEnd - 0.5, { dy: 20 });                                               // Sign up → search your address → Site research
+Kit.slam('#e-pill', W.sign, { from: 1.25, dur: 0.18 });                                            // "Sign up at qsme.co.nz" on "Sign"
+Kit.add('#e-pill', 'scale', [[W.sign + 1.7, 1], [W.sign + 1.85, 1.05, 'out'], [W.sign + 2.05, 1, 'in'], [W.sign + 3.3, 1], [W.sign + 3.45, 1.05, 'out'], [W.sign + 3.65, 1, 'in']]);
+Kit.pop('#e-fine', W.sign + 0.4, { dy: 0 });
 
 Kit.ready({ duration: T.dur, fonts: ['800 60px Manrope', '600 30px Inter', '700 58px Kalam', '400 46px "Permanent Marker"', '500 22px "JetBrains Mono"'] });
 </script>

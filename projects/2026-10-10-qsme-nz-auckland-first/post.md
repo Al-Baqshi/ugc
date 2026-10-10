@@ -3,15 +3,15 @@ vid: N04
 title: "Auckland first (we know)"
 venture: qsme-nz
 idea: nz-auckland-first
-status: "re-rendered for the owner CTA rule (3 Oct) — awaiting approval"
+status: "audio-first remake (6 Oct) + koh re-take (10 Oct): Cam S eleven_v3 takes, re-timed and re-rendered — awaiting review"
 publish_date: 2026-10-10
 publish_time_nzt: "09:00"
 week: 1
 format: long-form explainer (self-own) + short cut
-length_s: 76.35
-length_short_s: 40.61
+length_s: 80.1
+length_short_s: 47.8
 aspects: ["16:9 master (YouTube, Facebook)", "9:16 full version (Facebook Reels, pinned posts)", "9:16 short cut (Instagram Reels, TikTok, YouTube Shorts)"]
-outputs: ["outputs/auckland-first-16x9.mp4", "outputs/auckland-first-9x16.mp4", "outputs/auckland-first-9x16-short.mp4", "outputs/auckland-first-thumb-16x9.png"]
+outputs: ["outputs/auckland-first-16x9.mp4", "outputs/auckland-first-16x9-with-vo.mp4", "outputs/auckland-first-9x16.mp4", "outputs/auckland-first-9x16-with-vo.mp4", "outputs/auckland-first-9x16-short.mp4", "outputs/auckland-first-9x16-short-with-vo.mp4", "outputs/auckland-first-thumb-16x9.png"]
 owner_recordings_needed: []
 created: 2026-10-02
 ---
@@ -44,6 +44,89 @@ created: 2026-10-02
 - **Pacing:** the table holds 5s, the quote beat is folded under "We know." and the end card is 5.2s. The full version is now 76.35s, plus a 40.6s 9:16 short cut.
 - **® removed** from the end-card logo (`motion/qsme-logo-nor.svg`) until registration is confirmed.
 - **Nice ones:** the ladder resets per address, the table's NOT YET uses the same amber as the ladder (24–25px), Dunedin's boundary is the parcel's own outline pulsed (not a box), Taranaki and Banks Peninsula are re-plotted on the map, the gap in the 16:9 Auckland column is closed, and "Four councils add…" became "They add the planning zone."
+
+## Audio-first remake (2026-10-06) — the current masters (re-take 2026-10-10)
+
+**Why:** the owner's fundamental fix for every QSME video (signed off on the N01 "Which Dave?" pilot): no gaps or breath cuts in the voice, a real spoken hook in the first 2 s, scripts that are continuous speech rather than caption fragments. The design is unchanged; the picture was re-timed to the words.
+
+**2026-10-10 re-take (owner pronunciation fix, 2026-10-08):** the NZ CTA is now said "Queue Ess Mee dot **koh** dot en zed" ("co" like KO, never spelled C-O). The script is otherwise word-for-word the 6 Oct one. Because a take is never sliced, both takes were regenerated whole; every anchor in `motion/af.js` was moved onto the new takes' word starts (piecewise map old take → new take through all 187 / 109 words), and all three cuts were re-rendered and re-muxed. The 6 Oct "dot co" takes are in `outputs/archive/vo-take-cam-v3-co/` and `outputs/archive/vo-take-cam-v3-short-co/`; the 6 Oct masters are `outputs/archive/*-v2.mp4`.
+
+**Voice:** Cam S (ElevenLabs eleven_v3, stability 0.5), one dry Kiwi storyteller for the whole film. ONE unbroken `with-timestamps` take per cut-length, never sliced, laid at 0.0 s at gain 1.15, no music bed:
+- long film (16:9 master + full 9:16): `outputs/vo-take-cam-v3/take.m4a`, **78.60 s**, 187 words, 2.38 words/s, longest silence 0.58 s → pages 80.1 s
+- 9:16 short cut: `outputs/vo-take-cam-v3-short/take.m4a`, **46.29 s**, 109 words, 2.35 words/s, longest silence 0.58 s → page 47.8 s
+STT check (tools/el.py stt, 10 Oct): every word heard on both, first attempt; QSME → "QS Me"; the CTA → "qsme.co.nz" (long) and "qsme.co.nz" (short: the KO sound asked for); "zone too" → "zone two" (homophone).
+
+**Hook (0–5.9 s, spoken):** "Not in Auckland? Every nationwide property tool has an asterisk. Here's ours, read out loud." On screen: "Not in Auckland?" from frame 1, the sub pops on "Every" (0.98), the three real cards (Auckland long, Christchurch short, Dunedin shorter) drop on "nationwide property tool" (1.1–2.4), "Real searches" line on "Here's" (4.16).
+
+**The script as spoken (long film, one take; v3 tag in brackets, 1 of them):**
+
+```
+Not in Auckland? Every nationwide property tool has an asterisk. Here's ours, read out loud.
+
+Fair test: we typed each council's own address into Queue Ess Mee site search. Dunedin first. Anywhere in the country you get the basics: boundary, land area, legal description, and council. Services and hazards? Not here yet. It says so, right on the card. So we told Dunedin City Council it's in Dunedin City. They knew.
+
+Four councils add the planning zone: Auckland, Wellington City, Christchurch and Hamilton. Christchurch: Commercial Zone. Hamilton: Central City Zone. Wellington City: zone too. Hazards? Not yet. And Auckland gets the whole card: the zone, then pipes, power, flood and hazard checks. That lot's another video: The back corner.
+
+So, screenshot this. Everywhere: the basics. Three more councils: plus the zone. Auckland: the lot.
+
+Wherever you are, it's not a substitute for a LIM, PIM or engineering advice. So still order the LIM, check the title, and ask the council or a planner.
+
+Yeah. We started in Auckland. We know. [dry] Card says so.
+
+Search your address. Sign up at Queue Ess Mee dot Co dot N Z.
+```
+
+**Timing — long film (16:9 + full 9:16, 80.1 s):**
+
+| Said (start) | Picture and captions (re-timed to the words) |
+|---|---|
+| 0.00 "Not in Auckland? Every nationwide property tool has an asterisk. Here's ours, read out loud." | Hook 0–5.87: 'Not in Auckland?' on from frame 1 (kicker 'Council by council'); sub 'Every nationwide property tool has an asterisk.' pops on 'Every' (0.98); the three real cards drop on 'nationwide property tool' (1.13 / 1.84 / 2.44); 'Real searches' line on 'Here's' (4.16); fades under 'loud.' |
+| 6.19 "Fair test: we typed each council's own address into QSME site search. Dunedin first." | Caption 'Fair test: we typed each council's own address.' on 'Fair' (6.19); real typing in the homepage box 6.22–9.32 (others blurred), cut to the settled result on 'into' (9.32), camera on the map and card by 'site search' (10.16); the card holds through 'Dunedin first.'; caption out 11.55 |
+| 12.96 "Anywhere in the country you get the basics: boundary, land area, legal description, and council." | Caption 'Anywhere in the country you get the basics.' on 'Anywhere' (12.96); the parcel outline pulses on 'boundary' (15.57); boxes on 'land area' (16.38), 'legal description' (17.41), 'council' (18.79); ladder ticks the same four |
+| 19.48 "Services and hazards? Not here yet. It says so, right on the card." | Caption 'Services and hazards? Not here yet. It says so.' on 'Services' (19.49); amber underline on the card's own 'Auckland first, more councils to come' line on 'Not' (21.57); ladder Zone / Services / Hazards go NOT YET 21.57–22.13 |
+| 24.83 "So we told Dunedin City Council it's in Dunedin City. They knew." | Caption 'We told Dunedin City Council it's in Dunedin City. They knew.' on 'So' (24.83); punch-in on the boxed 'Dunedin City' with a vignette as it is said (27.1); S1 out after 'knew.' (28.83) |
+| 28.98 "Four councils add the planning zone: Auckland, Wellington City, Christchurch and Hamilton." | Chip '2 / 3 · Christchurch · Hamilton', title 'Four councils' on 'Four' (28.98), caption 'They add the planning zone.'; Christchurch typing (1.6x, others blurred) under 'add the planning zone: Auckland,'; result lands 32.03; the four names play over the card |
+| 34.93 "Christchurch: Commercial Zone." | Caption 'Christchurch: Commercial Zone.' on 'Christchurch:' (34.93); green box on 'Commercial Zone' on the word (36.35); ladder Zone ticks |
+| 37.61 "Hamilton: Central City Zone." | Caption 'Hamilton: Central City Zone.' and the 3x typing on 'Hamilton:' (37.61); result 38.48; box on 'Central City Zone - Precinct 1' on 'Zone.' (39.04) |
+| 39.80 "Wellington City: zone too. Hazards? Not yet." | Caption 'Wellington City: zone too. Hazards? Not yet.' on 'Wellington' (39.8); amber underline on Hamilton's 'Auckland first…' line on 'Hazards?' (41.8); Services / Hazards NOT YET on 'Not yet.' (42.19–43.18); S2 out 44.03 |
+| 44.10 "And Auckland gets the whole card: the zone, then pipes, power, flood and hazard checks." | Chip '3 / 3 · Auckland', title and caption 'Auckland gets the whole card.' on 'Auckland' (44.21); typing under 'gets the whole card:' (result 45.53); caption 'The zone, then pipes, power, flood and hazard checks.' on 'the zone,' (45.94); green box on 'Business - City Centre Zone' (46.77); wide shot of the services + hazards chips on 'flood and hazard checks' (48.32); ladder fills |
+| 50.61 "That lot's another video: The back corner." | Caption 'That lot's another video: "The back corner".' on 'That' (50.61) over the chips wide shot; S3 out 52.83 |
+| 53.04 "So, screenshot this. Everywhere: the basics. Three more councils: plus the zone. Auckland: the lot." | Summary scene: kicker 'Screenshot this' + title 'What site search shows you' on 'So,' (53.04); column 1 ticks on 'Everywhere:' (55.13), column 2 on 'Three more councils:' (57.0), the Auckland column on 'Auckland:' (59.56); complete 59.85 and held through 'the lot.' (fades 60.89) |
+| 60.77 "Wherever you are, it's not a substitute for a LIM, PIM or engineering advice." | Chip 'The small print', title 'What it's not' (61.33); green box on the Auckland card's own footer on 'it's not' (61.83); caption '"Not a substitute for a LIM, PIM or engineering advice."' + 'From the card itself' (61.89); camera pushes in through 'advice.' (64.94) |
+| 65.47 "So still order the LIM, check the title, and ask the council or a planner." | The window dims (64.94–65.86); checklist items pop and tick on their words: 'Still order the LIM.' (65.86), 'Check the title.' (67.08), 'Ask the council or a planner.' (68.22); list out 69.76 |
+| 70.00 "Yeah. We started in Auckland. We know. Card says so." | Map returns under 'Yeah.' (69.87): Auckland pin glows, the others grey; 'We started in Auckland.' pops on 'We' (70.83); 'We know.' slams on 'We' (72.19); the Dunedin card's own 'Auckland first, more councils to come.' line slides in on 'Card' (73.3) with 'On the card today, outside Auckland' |
+| 74.46 "Search your address. Sign up at QSME dot Co dot N Z." | End card: QSME logo (74.34), 'Search your address.' on 'Search' (74.46), the real search box on 'address.' (74.97), 'Sign up to see yours.' on 'Sign up' (75.57), the qsme.co.nz pill on 'Queue Ess Mee' (76.44), 'Your account unlocks Site research: full depth in Auckland.' on 'dot Co dot N Z' (77.37); page ends 80.1 |
+
+**Short cut (9:16, 47.8 s, its own take):**
+
+```
+Not in Auckland? Every nationwide property tool has an asterisk. Here's ours, read out loud.
+
+Fair test: we typed each council's own address into Queue Ess Mee site search. Dunedin first. Anywhere in the country you get the basics: boundary, land area, legal description, and council. Services and hazards? Not here yet. It says so, right on the card. So we told Dunedin City Council it's in Dunedin City. They knew.
+
+Screenshot this. Everywhere: the basics. Three more councils: plus the zone. Auckland: the lot.
+
+Yeah. We started in Auckland. We know. [dry] Card says so.
+
+Search your address. Sign up at Queue Ess Mee dot Co dot N Z.
+```
+
+| Said (start) | Picture and captions |
+|---|---|
+| 0.00 "Not in Auckland? Every nationwide property tool has an asterisk. Here's ours, read out loud." | Hook 0–5.84: title from frame 1, sub on 'Every' (0.98), cards 1.08 / 1.73 / 2.34, 'Real searches' on 'Here's' (4.08) |
+| 6.13 "Fair test: we typed each council's own address into QSME site search. Dunedin first." | Caption on 'Fair' (6.13); typing 5.96–9.94; result on 'into Q-S-me' (9.94); camera on the card by 10.71; holds through 'Dunedin first.' |
+| 13.60 "Anywhere in the country you get the basics: boundary, land area, legal description, and council." | Caption on 'Anywhere' (13.6); parcel pulse on 'boundary' (16.21); boxes 'land area' 16.94 / 'legal description' 17.89 / 'council' 19.1 |
+| 19.73 "Services and hazards? Not here yet. It says so, right on the card." | Caption on 'Services' (19.74); amber underline on 'Not' (21.6); pills go NOT YET 21.56–22.49 |
+| 24.80 "So we told Dunedin City Council it's in Dunedin City. They knew." | Caption on 'So' (24.8); punch-in on 'Dunedin City' (27.18); hard cut to the table after 'knew.' (29.11) |
+| 29.24 "Screenshot this. Everywhere: the basics. Three more councils: plus the zone. Auckland: the lot." | Kicker + title on 'Screenshot' (29.24); column 1 on 'Everywhere:' (30.96), column 2 on 'Three' (32.76), Auckland column on 'Auckland:' (35.06); complete 36.02, held through 'the lot.'; out on 'Yeah.' (37.16) |
+| 37.38 "Yeah. We started in Auckland. We know. Card says so." | Map on 'Yeah.' (37.45); 'We started in Auckland.' on 'We' (38.08); 'We know.' slams on 'We' (39.23); the card's own line on 'Card' (40.33) |
+| 41.59 "Search your address. Sign up at QSME dot Co dot N Z." | End card: 'Search your address.' on 'Search' (41.59), search box 42.23, 'Sign up to see yours.' on 'Sign up' (43.15), qsme.co.nz pill on 'Queue Ess Mee' (43.73), small line 44.5; page ends 47.8 |
+
+**How the picture follows the audio:** `motion/af.js` keeps the authored timeline and maps it to output time with a piecewise-linear anchor list (`ANCHORS_LONG` / `ANCHORS_SHORT`), one anchor per beat, each pinned to its word in `words.json` (derived from `alignment.json`). Keystroke playback follows the same map. The short cut uses the same authored timeline with the stretches it does not use collapsed.
+
+**Files:** masters `outputs/auckland-first-16x9.mp4` (80.1 s), `outputs/auckland-first-9x16.mp4` (80.1 s), `outputs/auckland-first-9x16-short.mp4` (47.8 s), all silent with burned-in captions, QA passed on their safe boxes, contact sheets read and 38 / 38 / 19 spot frames checked at the word moments; voiced `*-with-vo.mp4` (take at 0.0 s, gain 1.15, no bed; AVFoundation probe: 1 audio track, file duration = video). Takes + alignments + word lists + the exact text sent in `outputs/vo-take-cam-v3/` and `outputs/vo-take-cam-v3-short/`; contracts `vo-script.json` (long) and `vo-script-9x16-short.json` + `vo-script.md`. Previews refreshed 10 Oct. Thumbnail unchanged (its text did not change). Older masters: `outputs/archive/*-v1.mp4` (3 Oct), `*-v2.mp4` (6 Oct "dot co" take).
+
+**What's below:** the Hook layers, Script, Music and Production status sections describe the 3 Oct silent cut (Mel, per-line VO, 76.35 s / 40.61 s). They are kept as the design record; the timeline above is the one that ships.
 
 ## Hook layers
 
@@ -206,7 +289,7 @@ Wellington City is named but not demoed (truth sheet: no Wellington demos). **Pr
 | "Auckland gets the whole card: the zone, then pipes, power, flood and hazard checks" | 1.1 (zone + chips in Auckland), 1.7 `services-hazards` (9 checks, Auckland only) | "The whole card" means the whole homepage card, not "everything QSME knows". The chips are shown as a ~3s wide shot and pointed to "The back corner", not explained here. We never say Clear means it won't flood, or that pipe positions are exact. |
 | "Not a substitute for a LIM, PIM or engineering advice" | 1.1 footer wording (quoted from the Auckland card) | Shown as the real footer, boxed. |
 | "Still order the LIM. Check the title. Ask the council or a planner." | 1.4 / 1.5 disclaimers ("Confirm with a planner or the council"); red list: not a LIM, PIM, title search, valuation or advice | Advice to the viewer, not a product claim. The table footnote also ends "Indicative only, not a LIM." |
-| "Search your address." / "Sign up to see yours." / VO "Sign up at Q-S-me dot co dot en zed" | Owner CTA rule 2026-10-03 (`ventures/qsme-nz.md`, override at the top of the truth sheet) | Every CTA pushes sign-ups. No "free", "no sign-up", "no login", "without an account" or pricing line anywhere: on screen, VO, captions, hashtags, titles or thumbnail. |
+| "Search your address." / "Sign up to see yours." / VO "Sign up at Q-S-me dot Co dot N Z" (said KO, owner 2026-10-08) | Owner CTA rule 2026-10-03 (`ventures/qsme-nz.md`, override at the top of the truth sheet) | Every CTA pushes sign-ups. No "free", "no sign-up", "no login", "without an account" or pricing line anywhere: on screen, VO, captions, hashtags, titles or thumbnail. |
 | "Your account unlocks Site research: full depth in Auckland" | 1.4 `site-research` (needs an account; "full picture = Auckland only"); owner rule: site research is what you get when you sign up | Never describe what you get without signing up. Never voice Site research's headline "Type any New Zealand address". |
 | "What site search shows you" (hook sub, table title) | Footage log; the four results above | Describes what the search returned for each council's address, nothing more. |
 | "Real searches · qsme.co.nz · 2 Oct 2026" | Footage log | Every product image is the live public homepage: per-keystroke screenshots and settled stills of the same steps. No designed stand-ins, no `.replace` placeholders. The blur over other people's suggestions is a privacy redaction, not a change to the product. The homepage's own small "Free to join." line under "Get started" is hidden under the owner CTA rule (a soft patch of the hero background beside it); nothing is drawn or changed in its place. |
@@ -236,3 +319,6 @@ Wellington City is named but not demoed (truth sheet: no Wellington demos). **Pr
 - 2026-10-02: Built from the approved calendar slot (Sat 10 Oct, 09:00 NZT, week 1 long-form). Upgraded the 34s idea card to an 80s 16:9 master plus a 9:16 version. Added the council-buildings fair test, the "They knew." joke, the ladder and the "Screenshot this" summary table. Footage captured live on 2 Oct (public homepage, logged out). Rendered both versions, QA passed. Picky-CD pass fixed: underlines that didn't render, the 9:16 tag covering the card address, cramped 3-line captions, the hook card size, and the list and self-own layout. Then re-rendered (both 80.0s). Status: rendered, awaiting approval.
 - 2026-10-02 (review round 2, verdict "fix"): Other people's addresses in the live autocomplete are now blurred frame by frame, and the footage-log line was corrected. The 9:16 pills got their own band. The stale "Tuesday's video" / "next week's videos" references were removed. The joke punch-in was re-centred with a vignette and a self-contained caption. Wellington was checked live on 2 Oct (City Centre Zone), so the line was kept, shortened and added to the 9 Oct re-check. Typing shots were re-framed, the half-loaded live arrival was cut, and a spotlight was added. The table hold went to 5s, the quote beat was folded under "We know." and the end card was trimmed. The full version is now 76.35s, plus a new 40.6s short cut for Reels, TikTok and Shorts. The ® was removed from the end card. Nice fixes: the ladder resets per address, amber NOT YET in the table, the parcel outline pulses, the map coastline was touched up and the Auckland column gap closed. All three re-rendered, QA passed.
 - 2026-10-03: owner CTA rule — removed free/no-sign-up, CTA now "Search your address — sign up at qsme.co.nz". 19 publish-facing violations: 7 rendered strings in `motion/af.js` (hook kicker and sub in both aspects, the table title, the end card's "Free, no sign-up." and "A free account adds…"), the homepage's own "Free to join." line visible in the 16:9 typing shots, the VO line vo19 (with its male alt and the short cut's svo19), and 10 platform lines here (titles, descriptions, captions, pin, CTA). Internal notes in this file and the VO scripts were updated to match. The premise is reframed to "what site search shows you"; the end card is now "Search your address." / "Sign up to see yours." / qsme.co.nz / "Your account unlocks Site research: full depth in Auckland."; the VO is "Search your address. Sign up at Q-S-me dot co dot en zed." (same times, `vo_status.py` ok). The "Free to join." line is covered with a patch cloned from the hero background beside it (`hush-rows.swift` → `af-hush.js`). All three cuts and the thumbnail re-rendered, QA passed; the local `.preview.mp4` files were refreshed too (not published). New open question 8 (the homepage line itself).
+- 2026-10-06: audio-first remake (owner standard from the N01 pilot). Script rewritten as continuous speech with a spoken hook ("Not in Auckland? Every nationwide property tool has an asterisk. Here's ours, read out loud."); one dry voice (Cam S, eleven_v3) narrates everything, Mel retired. ONE unbroken take per cut-length: long 79.1 s (187 words, longest gap 0.53 s), short 46.9 s (109 words, 0.71 s); attempt 1 of the long ran 90.6 s with a 1.53 s gap at a [short pause] tag, so the pause tags went and 15 words were cut. STT clean. `motion/af.js` re-timed with per-word anchors (the old insert/cut remap and the short's slice remap replaced), captions re-lifted from the narration, all three cuts re-rendered (80.6 / 80.6 / 48.4 s, QA ok), muxed clean at 0.0 s, thumbnail re-exported, v1 masters archived. Open: SFX/bed (none, by the standard), the 9 Oct coverage re-check, and owner review of the new hook line.
+- 2026-10-10: CTA pronunciation fix (owner 2026-10-08): both Cam S eleven_v3 takes regenerated whole with "Queue Ess Mee dot Co dot N Z" (long 78.60 s, short 46.29 s; STT clean first time, longest gap 0.58 / 0.58 s); af.js anchors moved onto the new word starts, all three cuts re-rendered (80.1 / 80.1 / 47.8 s, QA ok, spot frames checked), re-muxed clean at 0.0 s/1.15 (1 audio track each), previews refreshed; 6 Oct masters archived as -v2, old takes in outputs/archive/*-co/. Script otherwise unchanged.
+- 2026-10-10 CTA swap: owner said "koh" sounded wrong; only the final "Sign up at qsme.co.nz" line was replaced (spoken "dot Co dot N Z", tools/fix_cta.py), rest of the take and picture untouched. Old take in outputs/archive/vo-koh-2026-10-10/.

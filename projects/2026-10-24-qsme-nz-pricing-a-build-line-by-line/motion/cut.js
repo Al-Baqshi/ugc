@@ -1,9 +1,15 @@
 /* cut.js: the 9:16 chapter cut-downs of "Price it once" (YouTube Shorts / Reels / TikTok).
    The page sets window.CUT = 'a' | 'b' | 'c' before loading this file. Screens come from story.js (same builders,
-   same verbatim wording, same demo data as the 16:9 master); framing uses portrait camera keys. */
+   same verbatim wording, same demo data as the 16:9 master); framing uses portrait camera keys.
+   AUDIO-FIRST RE-TIMING (2026-10-08, the N01 standard): each cut has its own Cam S eleven_v3 take
+   (outputs/vo-take-cam-v3-a|b|c/take.mp3, ONE unbroken request laid at 0.0). The cut is still authored on its 2026-10-04 clock
+   and mapped through Warp (warp.js) with AN = [[authored_s, output_s], …], each output time pinned to its word in that take's
+   alignment.json; captions (phrases lifted from the narration) and a few word-locked callouts are placed in OUTPUT time
+   after Warp.restore(). Page = take + 1.5 s tail. */
 (function () {
   'use strict';
-  var R = document.getElementById('root'), H = '', caps = [], after = [];
+  var R = document.getElementById('root'), H = '', caps = [], after = [], post = [], AN, DOUT;
+  function now(fn) { post.push(fn); }   // runs after Warp.restore(): times are OUTPUT seconds on the take
   function add(h) { H += h; }
   function cap(t0, t1, html) { caps.push([t0, t1, html]); }
   function later(fn) { after.push(fn); }
@@ -32,10 +38,10 @@
   }
 
   // the end card
-  function endCard(t0, D) {
+  function endCard(t0, D, l1, l2) {
     add('<div id="end" class="fill"><div id="ebg" class="bg" style="background-image:url(clips/dusk/f_00000.jpg)"></div><div class="ov"></div>' +
       '<div id="elogo" class="logo"><img src="qsme-logo.svg" alt="QSME" style="position:absolute;left:-35px;top:0;width:300px"></div>' +
-      '<div id="e1" class="e1">Price it once.</div><div id="e2" class="e2">Tender the same lines.</div>' +
+      '<div id="e1" class="e1">' + (l1 || 'Price it once.') + '</div><div id="e2" class="e2">' + (l2 || 'Tender the same lines.') + '</div>' +
       '<div id="ebtn" class="btnx">Sign up at qsme.co.nz</div><div id="efn" class="fn">Dramatised · illustrative screens · demo data</div></div>');
     later(function () {
       Kit.scene('#end', t0, D + 1); Kit.add('#end', 'opacity', [[t0, 0], [t0 + 0.3, 1]]); Kit.add('#ebg', 'scale', [[t0, 1.0], [D, 1.06, 'linear']]);
@@ -91,7 +97,22 @@
   later(function () { Kit.add('#bdi', 'scale', [[0, 1.0], [D, 1.08, 'linear']]); });
   if (cut === 'a') {
     /* ===== A · "Found before the tender." (drainage gap → read in → tender points at the pages) ===== */
-    D = 31.5;
+    D = 31.5; DOUT = 35.1;   // take A 33.60 s + 1.5 s tail
+    AN = [[0, 0], [0.3, 0.3],
+      [0.9, 3.34], [1.35, 3.79],      // red underline on "drainage." (not one of them is drainage)
+      [1.5, 5.78],                    // "Not on site." pops on "Not on site"
+      [3.4, 7.10], [3.7, 7.45],       // the app; Read on "Queue Ess Mee reads the pack"
+      [5.3, 9.17], [7.58, 10.95],     // chips pop through "its real sections, page numbers and all"
+      [8.5, 11.25],                   // the window-schedule drawer on "Tables come out as tables"
+      [11.7, 13.30], [12.0, 13.47],   // the notice on "And it says what it didn't find"
+      [15.15, 16.21],                 // red underline on "no drainage"
+      [17.0, 19.20], [17.15, 19.40],  // bench: the drainage sheets on "Days later"
+      [18.3, 21.05],                  // green tick on "turn up"
+      [19.8, 22.50], [22.0, 24.45],   // "Read in." ... chips on "Drainage, found."
+      [24.0, 25.45],                  // the tender pane on "So the tender points the drainlayer"
+      [24.72, 27.60], [25.22, 28.70], // ticks on "drainage pages" / "The ones that exist now"
+      [27.7, 29.85], [28.95, 30.30],  // end card; the button pops on "Sign up"
+      [D, DOUT]];
     bench('b1', 0, 3.4, { px: 90, py: 800, rot: -3 });
     add('<div id="n1o" class="abs" style="left:70px;top:1050px;z-index:30"><div style="transform:scale(1.38);transform-origin:0 0">' + UI.note('n1in', 'n1mk') + '</div></div>');
     add('<div id="h1" class="hk">Found before<br>the tender.<br><span id="h1b" class="a">Not on site.</span></div>');
@@ -108,8 +129,6 @@
     eyebrow(3.4, 27.7);
     chapter('c1', Story.ch1, 0.8, 14.4, 3.4, [[0, 1090, 310, 1.0], [1.6, 1090, 310, 1.0], [2.2, 560, 420, 0.92], [5.6, 560, 420, 0.92], [6.1, 1250, 330, 1.0], [8.8, 1250, 330, 1.0], [9.3, 1220, 470, 1.15], [14.4, 1220, 470, 1.2, 'linear']]);
     kicker(3.4, 17.0, 'Read the pack'); label(3.4, 17.0, ILL); ftag(3.6, 17.0, '<b>Paid plans</b> · uses AI credits');
-    cap(3.6, 8.1, 'It splits the pack into its real sections.'); cap(8.7, 11.3, 'Tables come out as tables.'); cap(11.9, 14.5, 'And it says what it didn\'t find.');
-    cap(14.7, 16.9, 'No drainage. Found before anyone priced it.');
     bench('b3', 17.0, 19.8, { px: 90, py: 960, rot: -3, sticky: [520, 470, 'ask designer:<br>drainage sheets!', -4], drain: [150, 680],
       extra: '<svg class="abs" style="left:850px;top:470px;width:120px;height:110px" viewBox="0 0 120 110"><path id="b3tkp" d="M10 60 L 44 92 L 110 12" fill="none" stroke="#15803D" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg>' });
     label(17.0, 19.8, 'Dramatised', 'drm');
@@ -117,17 +136,37 @@
       Kit.add('#b3dw', 'y', [[17.15, 900], [17.7, 0, 'out']]).add('#b3dw', 'opacity', [[17.15, 0], [17.25, 1]]).add('#b3dw', 'rotate', [[17.15, 6], [17.7, 0, 'out']]);
       Kit.add('#b3tkp', 'trim', [[18.3, 0], [18.7, 1, 'out']]); Kit.add('#b3cam', 'scale', [[17.0, 1], [19.8, 1.04, 'inOut']]);
     });
-    cap(17.2, 19.7, 'Days later: the drainage sheets, as their own PDF.');
     chapter('c5a', Story.ch5a, 0, 4.2, 19.8, [[0, 1090, 310, 1.0], [1.1, 1090, 310, 1.0], [1.7, 600, 400, 0.88], [4.2, 600, 400, 0.9, 'linear']]);
     kicker(19.8, 24.0, 'Read the drainage PDF'); label(19.8, 27.7, ILL); ftag(20.0, 24.0, '<b>Paid plans</b> · uses AI credits');
-    cap(20.0, 23.9, 'Read in. Drainage: found.');
     chapter('c5b', Story.ch5b, 8.3, 12.0, 24.0, [[8.3, 790, 400, 0.98], [12.0, 790, 400, 1.0, 'linear']]);   // pane 3 · Point them at the right sheets
     kicker(24.0, 27.7, 'Tender it');
-    cap(24.2, 27.6, 'Point the drainlayer at the drainage pages.');
     endCard(27.7, D);
+    [[7.31, 11.20, 'QSME reads the pack into its real sections, page numbers and all.'],   // "Queue Ess Mee reads"
+     [11.34, 13.35, 'Tables come out as tables.'],                                         // "Tables"
+     [13.47, 15.50, 'And it says what it didn\'t find.'],                                  // "And it says"
+     [15.64, 19.26, 'Heads up: no drainage. Found before anyone priced it.'],               // "Heads up"
+     [19.41, 22.55, 'Days later, the drainage sheets turn up as their own PDF.'],           // "Days later"
+     [22.69, 25.42, 'Read in. Drainage: found.'],                                          // "Read in"
+     [25.57, 28.58, 'So the tender points the drainlayer at the drainage pages.'],          // "So the tender"
+     [28.71, 29.85, 'The ones that exist now.']                                            // "The ones"
+    ].forEach(function (c) { cap(c[0], c[1], c[2]); });
   } else if (cut === 'b') {
     /* ===== B · "Same lines for every bidder." (price it → the pocket becomes the tender → what the bidder sees) ===== */
-    D = 26.9;
+    D = 26.9; DOUT = 37.4;   // take B 35.84 s + 1.5 s tail
+    AN = [[0, 0],
+      [3.0, 5.25], [3.15, 5.50],      // hook held through "...sees her rates. Here's how."; the pocket on "A pocket per trade"
+      [3.65, 6.20], [3.85, 10.00],    // cursor waits on the badge; Draft → Active on "she makes it Active"
+      [4.85, 11.30], [5.65, 12.10],   // qty typed on "A quantity", rate on "a rate"
+      [6.35, 12.75],                  // line, job, pocket and Grand total tick on "the line, the job, the pocket..."
+      [9.4, 16.75],                   // the tender pane on "Then the pocket becomes the tender"
+      [10.2, 19.70], [10.22, 19.75],  // Select whole pocket on "Select the whole pocket"
+      [10.76, 22.40],                 // the job ticks step through "its jobs and lines are the scope" to "Three of three"
+      [13.6, 23.20], [14.15, 24.00],  // split on "What the drainlayer sees"
+      [14.2, 25.95], [14.65, 26.68],  // Itemize clicked on "itemise"
+      [14.95, 28.55], [16.5, 30.65],  // rows travel, rates blur on "Her rates and her budget are stripped"
+      [17.0, 31.20],                  // boxes on "before they see it"
+      [23.1, 31.45], [24.35, 31.90],  // end card; the button pops on "Sign up"
+      [D, DOUT]];
     split9('h9', 0, 3.0, -4.0);
     add('<div id="hb" class="hk sm">Same lines for<br><span class="a">every bidder.</span></div>');
     later(function () { Kit.scene('#hb', 0, 3.0); Kit.add('#hb', 'scale', [[0, 1.04], [0.3, 1, 'out']]); });
@@ -136,24 +175,40 @@
     chapter('c2', Story.ch2, 2.6, 9.0, 3.0, [[2.6, 430, 250, 1.3], [4.0, 430, 250, 1.3], [4.4, 1150, 470, 1.15], [9.0, 1150, 470, 1.15]]);
     kicker(3.0, 9.4, 'Price it once'); label(3.0, 13.6, ILL);
     // editor callouts: in portrait the row names are off-frame, so name the four totals that tick together
-    [['pocket', 150, 482, 6.40], ['job', 150, 541, 6.50], ['line', 150, 596, 6.60], ['Grand total', 252, 1002, 6.70]].forEach(function (k, i) {
+    // (output time) each callout pops on its own word: "the line" 12.80, "the job" 13.54, "the pocket" 14.14, "the Grand total" 14.95
+    [['pocket', 150, 482, 14.14], ['job', 150, 541, 13.54], ['line', 150, 596, 12.80], ['Grand total', 252, 1002, 14.95]].forEach(function (k, i) {
       add('<div id="tk' + i + '" class="tk9" style="right:' + k[1] + 'px;top:' + k[2] + 'px">' + k[0] + ' →</div>');
-      later(function () { Kit.scene('#tk' + i, k[3], 9.3); Kit.pop('#tk' + i, k[3], { dy: 8 }); });
+      now(function () { Kit.scene('#tk' + i, k[3], 16.7); Kit.pop('#tk' + i, k[3], { dy: 8 }); });
     });
-    cap(3.2, 6.0, 'A pocket per trade. She makes it Active.'); cap(6.2, 9.3, 'Line, job, pocket and Grand total tick up together.');
     chapter('c5b', Story.ch5b, 3.9, 8.1, 9.4, [[3.9, 790, 400, 0.98], [8.1, 790, 400, 1.0, 'linear']]);   // pane 2 · Select whole pocket
     kicker(9.4, 13.6, 'The pocket is the tender');
-    cap(9.6, 13.5, 'Select the whole pocket: its jobs and lines are the scope.');
     split9('sp9', 13.6, 23.1, 13.6);
     label(13.6, 23.1, ILL); kicker(13.6, 23.1, 'What the drainlayer sees');
-    ftag(15.5, 23.1, 'They can itemise or quote one total.');
-    cap(13.8, 18.1, 'Same lines for every bidder. Her rates never shown.'); cap(18.3, 22.9, 'Rates and budget are stripped before a bidder sees it.');
     endCard(23.1, D);
+    [[5.44, 10.90, 'A pocket per trade. Draft first; she makes it Active.'],              // "A pocket"
+     [11.04, 16.70, 'Line, job, pocket and Grand total tick up together.'],              // "A quantity"
+     [16.86, 18.85, 'Then the pocket becomes the tender.'],                              // "Then the pocket"
+     [18.98, 23.15, 'Select the whole pocket: its jobs and lines are the scope.'],       // "Select"
+     [23.30, 26.08, 'What the drainlayer sees: the same lines.'],                        // "What the drainlayer"
+     [26.22, 28.46, 'They can itemise, or quote one total.'],                            // "They can"
+     [28.60, 31.45, 'Her rates and budget are stripped before they see it.']             // "Her rates"
+    ].forEach(function (c) { cap(c[0], c[1], c[2]); });
   } else {
     /* ===== C · "AI drafts. You check." (Draft SOQ with AI → keep / bin → Estimate with AI → ✦ until checked) ===== */
-    D = 27.6;
+    D = 27.6; DOUT = 32.7;   // take C 31.20 s + 1.5 s tail
+    AN = [[0, 0],
+      [0.9, 1.60], [2.1, 2.60],       // she edits the rate on "The AI priced three lines"; its ✦ goes on "She's fixed one"
+      [2.8, 4.70],                    // hold on the two ✦ lines through "The other two still say so."
+      [2.9, 5.00], [5.15, 8.00],      // AI menu on "Draft with AI"; the draft pockets on "as AI drafts"
+      [6.7, 9.20], [7.8, 10.05],      // "Keep one." / "Bin the other."
+      [9.5, 11.75], [13.0, 13.65],    // "Estimate with AI" / the ✦ rates fill on "the empty lines"
+      [14.1, 16.40],                  // the ✦ banner on "Every AI number stays marked"
+      [16.5, 19.70], [16.8, 20.60], [17.7, 22.10],   // "She swaps" / types on "supplier's figure" / ✦ goes on "its mark goes"
+      [20.4, 22.98],                  // "The other two stay marked."
+      [23.8, 25.80], [24.25, 26.10], [24.6, 27.20], [25.05, 27.85],   // end card: "AI drafts." / "You check." / button on "Sign up"
+      [D, DOUT]];
     chapter('h3', Story.ch3, 13.6, 16.4, 0, [[0, 610, 386, 0.88]]);
-    add('<div id="hc" class="hk">AI drafts.<br><span class="a">You check.</span></div>');
+    add('<div id="hc" class="hk">AI priced three.<br><span class="a">She\'s fixed one.</span></div>');
     later(function () { Kit.scene('#hc', 0, 2.8); Kit.add('#hc', 'scale', [[0, 1.04], [0.3, 1, 'out']]); });
     add('<style>#w_h3 { top: 560px; }</style>'); label(0, 2.8, ILL, '', 1192);
     eyebrow(2.8, 23.8);
@@ -162,13 +217,23 @@
       [16.2, 1010, 440, 1.2], [16.7, 610, 386, 0.88], [21.8, 610, 386, 0.9, 'linear']]);
     kicker(2.8, 23.8, 'Fill the gaps with AI'); label(2.8, 23.8, ILL);
     ftag(3.5, 9.4, '<b>Paid plans</b> · uses AI credits'); ftag(9.4, 23.8, 'AI rates are indicative, not quotes.');
-    Story.ch3.caps.slice(1).forEach(function (c) { cap(2.0 + c[0], 2.0 + c[1], c[2]); });
-    endCard(23.8, D);
+    endCard(23.8, D, 'AI drafts.', 'You check.');
+    [[5.04, 9.08, 'Draft with AI adds the pockets she hasn\'t got, as AI drafts.'],      // "Draft with AI"
+     [9.22, 10.98, 'Keep one. Bin the other.'],                                         // "Keep one"
+     [11.12, 14.55, 'Estimate with AI prices only the empty lines.'],                   // "Then Estimate"
+     [14.70, 16.33, 'Indicative, not quotes.'],                                         // "Indicative"
+     [16.47, 19.42, 'Every AI number stays marked&nbsp;✦ until a person edits it.'],    // "Every AI number"
+     [19.56, 22.84, 'She swaps one for her supplier\'s figure. Its mark goes.'],         // "She swaps"
+     [22.98, 25.80, 'The other two stay marked. She still has to check them.']          // "The other two"
+    ].forEach(function (c) { cap(c[0], c[1], c[2]); });
   }
 
   caps.forEach(function (c, i) { add('<div id="cap' + i + '" class="caption box"><span>' + c[2] + '</span></div>'); });
   R.innerHTML = H;
+  Warp.install(AN);
   after.forEach(function (fn) { fn(); });
+  Warp.restore();
+  post.forEach(function (fn) { fn(); });
   caps.forEach(function (c, i) { Kit.pop('#cap' + i, c[0], { dy: 16 }); Kit.out('#cap' + i, c[1] - 0.12, 0.12); });
-  Kit.ready({ duration: D, fonts: ['800 60px Manrope', '500 20px Inter', '600 20px Inter', '700 20px Inter', '800 20px Inter', '400 40px Kalam', '400 40px "Permanent Marker"', '500 20px "JetBrains Mono"', '700 20px "JetBrains Mono"'] });
+  Kit.ready({ duration: DOUT, fonts: ['800 60px Manrope', '500 20px Inter', '600 20px Inter', '700 20px Inter', '800 20px Inter', '400 40px Kalam', '400 40px "Permanent Marker"', '500 20px "JetBrains Mono"', '700 20px "JetBrains Mono"'] });
 })();
