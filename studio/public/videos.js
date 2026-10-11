@@ -66,6 +66,36 @@
       return;
     }
 
+    // Share: the phone's share sheet (WhatsApp, Messages, LinkedIn…) where there is one,
+    // else copy the link. /media links never expire: each visit signs a fresh one.
+    var sh = t.closest('[data-share]');
+    if (sh) {
+      var url = new URL(sh.getAttribute('data-share'), location.href).href;
+      var title = sh.getAttribute('data-share-title') || document.title;
+      var label = sh.querySelector('span');
+      var say = function (msg) {
+        if (!label) return;
+        if (!sh.hasAttribute('data-label')) sh.setAttribute('data-label', label.textContent);
+        clearTimeout(sh._t);
+        label.textContent = msg;
+        sh._t = setTimeout(function () { label.textContent = sh.getAttribute('data-label'); }, 1600);
+      };
+      var copyLink = function () {
+        copyText(url).then(
+          function () { say('Link copied'); if (status) status.textContent = 'Link copied: ' + url; },
+          function () { say('Copy failed'); if (status) status.textContent = 'Could not copy. The link is ' + url; }
+        );
+      };
+      if (navigator.share) {
+        navigator.share({ title: title, text: title, url: url }).catch(function (err) {
+          if (!err || err.name !== 'AbortError') copyLink();
+        });
+      } else {
+        copyLink();
+      }
+      return;
+    }
+
     var s = t.closest('[data-seek]');
     if (s) {
       var v = document.getElementById(s.getAttribute('data-seek'));

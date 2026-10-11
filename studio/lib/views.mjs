@@ -24,6 +24,7 @@ const ICON = {
   play: raw('<svg class="i" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false"><path d="M4.5 2.75v10.5l8.75-5.25z" fill="currentColor"/></svg>'),
   download: svg('<path d="M8 2.5v8M4.5 7 8 10.5 11.5 7M3 13.5h10"/>', 'i', 15, 16),
   image: svg('<rect x="2.5" y="3" width="11" height="10" rx="1.5"/><circle cx="6" cy="6.5" r="1.1"/><path d="m3 12 3.5-3.5 2.5 2.5 1.5-1.5 3 3"/>', 'i', 15, 16),
+  share: svg('<path d="M8 10V2.5M5 5.25 8 2.25l3 3"/><path d="M5.5 7.5H4a1.5 1.5 0 0 0-1.5 1.5v4A1.5 1.5 0 0 0 4 14.5h8a1.5 1.5 0 0 0 1.5-1.5V9A1.5 1.5 0 0 0 12 7.5h-1.5"/>', 'i', 15, 16),
   copy: svg('<rect x="5.5" y="5.5" width="8" height="8.5" rx="1.5"/><path d="M10.5 5.5V3.5A1.5 1.5 0 0 0 9 2H4A1.5 1.5 0 0 0 2.5 3.5V9A1.5 1.5 0 0 0 4 10.5h1.5"/>', 'i', 14, 16),
 };
 
@@ -714,6 +715,7 @@ function videoVersions(card, vid) {
       <button type="button" class="vbtn" data-play="${vid}" data-src="${v.playUrl}" data-aspect="${v.aspect}" aria-pressed="${v === card.main ? 'true' : 'false'}" aria-label="Play ${v.label}${v.matchesScript && card.script ? ' (script timing)' : ''}">${ICON.play}</button>
       <span class="vname"><span>${v.label}${v.matchesScript && card.script ? html`<span class="vnote">script timing</span>` : ''}${v.preview ? html`<span class="media-tag">preview only</span>` : ''}</span><small title="${v.master || v.rel}">${v.master || v.rel}</small></span>
       <a class="vdl" href="${v.downloadUrl}" download aria-label="Download ${v.master || v.rel}, full quality${v.size ? `, ${bytes(v.size)}` : ''}">${ICON.download}<span>${bytes(v.size) || 'Download'}</span></a>
+      <button type="button" class="vdl vshare" data-share="${v.downloadUrl}" data-share-title="${card.vid ? `${card.vid} · ` : ''}${card.title} (${v.label})" aria-label="Share the download link for ${v.master || v.rel}">${ICON.share}<span>Share</span></button>
     </li>`,
   );
   const stills = card.stills.map(
@@ -723,7 +725,7 @@ function videoVersions(card, vid) {
       <a class="vdl" href="${m.downloadUrl}" download aria-label="Download ${m.rel}${m.size ? `, ${bytes(m.size)}` : ''}">${ICON.download}<span>${bytes(m.size) || 'Download'}</span></a>
     </li>`,
   );
-  return html`<p class="vhint">${ICON.play} plays a light preview here · ${ICON.download} saves the full-quality file</p>
+  return html`<p class="vhint">${ICON.play} plays a light preview here · ${ICON.download} saves the full-quality file · ${ICON.share} shares a link anyone can download from</p>
     <ul class="versions" aria-label="Versions">${rows}${stills}</ul>`;
 }
 
@@ -775,7 +777,8 @@ function videoCard(snap, card, k) {
   return html`<section class="vcard${card.main.aspect === '16x9' ? ' vcard--land' : ''}" id="${cardId(card.folder)}" aria-labelledby="vt-${k}">
     <header class="vcard-head">
       <p class="vcard-meta">${card.venture ? vtag(snap, card.venture) : ''}${card.date ? dateTag(card.date) : ''}${card.status ? html`<span class="vcard-status">${truncate(card.status, 90)}</span>` : ''}</p>
-      <h2 class="vcard-title" id="vt-${k}"><a href="${p.url}">${card.title}</a></h2>
+      <h2 class="vcard-title" id="vt-${k}">${card.vid ? html`<span class="vcard-vid" id="${card.vid}">${card.vid}</span> ` : ''}<a href="${p.url}">${card.title}</a></h2>
+      <button type="button" class="pbtn vshare vshare--card" data-share="/videos#${card.vid || cardId(card.folder)}" data-share-title="${card.vid ? `${card.vid} · ` : ''}${card.title}" aria-label="Share a link to this video">${ICON.share}<span>Share this video</span></button>
     </header>
     <div class="vgrid">
       <div class="vleft">

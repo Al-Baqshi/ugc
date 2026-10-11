@@ -204,6 +204,8 @@ export function captionParts(md) {
 
 const STILL_SKIP = /-frames|contact|sheet/i;
 const VOICED = /-with-vo|-alt-vo/;
+// Old voice-casting copies (…-with-vo-campbell.mp4 etc.) are not versions of the video.
+const TEST_TAKE = /-(?:with|alt)-vo-[a-z0-9]+(?:\.preview)?\.mp4$/i;
 
 /**
  * Cards for every project with at least one top-level video in its gallery,
@@ -214,8 +216,8 @@ export function videoCards(projects) {
   const cards = [];
   for (const p of projects) {
     const top = p.media.filter((m) => !m.rel.includes('/'));
-    const videos = top.filter((m) => m.kind === 'video');
-    if (!videos.length) continue;
+    const videos = top.filter((m) => m.kind === 'video' && !TEST_TAKE.test(m.rel) && !TEST_TAKE.test(m.master || ''));
+    if (!videos.length || /\bkilled\b/i.test(fmt(p.meta?.status))) continue;  // killed ideas stay off the page
     const masters = videos.filter((m) => !VOICED.test(m.rel));
     const voiced = videos.filter((m) => VOICED.test(m.rel));
     const script = p.vo ? voScript(p.vo) : null;
@@ -236,6 +238,7 @@ export function videoCards(projects) {
     cards.push({
       project: p,
       folder: p.folder,
+      vid: fmt(p.meta?.vid).trim(),
       title: p.title,
       venture: p.venture,
       date,

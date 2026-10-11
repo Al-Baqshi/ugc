@@ -1293,6 +1293,20 @@ table.data { width: 100%; min-width: 820px; border-collapse: collapse; font-size
   white-space: nowrap;
 }
 .vdl:hover { background: var(--paper-2); color: var(--ink); }
+button.vdl { border: 0; background: none; font: inherit; font-size: 0.8rem; cursor: pointer; }
+.vcard-vid {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 1px 8px;
+  border: 1px solid var(--ink);
+  border-radius: 6px;
+  font-size: 0.7em;
+  font-variant-numeric: tabular-nums;
+  vertical-align: 0.15em;
+  scroll-margin-top: calc(var(--header-h) + 48px);
+}
+.vshare--card { margin-top: 12px; }
+@media (max-width: 520px) { .version .vshare span { display: none; } }
 
 .pbtn {
   flex: none;
