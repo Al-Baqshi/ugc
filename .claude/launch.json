@@ -9,6 +9,24 @@
         "dev"
       ],
       "port": 3000
+    },
+    {
+      "name": "qsme-build",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": [
+        "-c",
+        "cd /Users/brave/Dev/qsme.build && npx wrangler dev --port 8787 --ip 127.0.0.1 --local-protocol https"
+      ],
+      "port": 8787
+    },
+    {
+      "name": "qsme-build-static",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": [
+        "-c",
+        "cd /Users/brave/Dev/qsme.build && npx astro preview --port 4321"
+      ],
+      "port": 4321
     }
   ]
 }
