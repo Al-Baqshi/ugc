@@ -60,4 +60,7 @@ Score = idea test (Recognizable / Specific / Ownable / Shareable, 1–5 each, /2
 | 2026-10-02 | qsme-build | [Same document. Five names.](qsme-build/five-names-one-argument.md) | 15 | scored (bench) |
 | 2026-10-04 | qsme-build | [The QS Alphabet (what QSME stands for)](qsme-build/qs-is-the-project.md) | 18 | killed (owner: confusing) |
 
+| 2026-10-13 | consistent-ceo | [CEO of six things](consistent-ceo/ceo-of-six-things.md) | 17 | paused for B01 (C01) |
+| 2026-10-13 | bitregalo | [The edit button that isn't there](bitregalo/edit-button-that-isnt-there.md) | 17 | in production (B01) |
+
 Status: `raw` → `scored` → `agreed` → `in production` → `posted` → `killed`
