@@ -27,6 +27,15 @@
         "cd /Users/brave/Dev/qsme.build && npx astro preview --port 4321"
       ],
       "port": 4321
+    },
+    {
+      "name": "consistent-site",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": [
+        "-c",
+        "cd /Users/brave/Dev/Consistent-world/Consistent && npx next start -p 3100"
+      ],
+      "port": 3100
     }
   ]
 }
