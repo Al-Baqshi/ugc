@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>G14 · Who's the QS on your job?</title>
+<!-- One page, two cuts: r16x9 here, who-is-the-qs-9x16.html is a copy with the body class swapped.
+     Beats keyed to outputs/vo-take/words.json (take 3, 91.12 s). Script and visual rules from the 2026-10-14
+     research workflow (product code + qsme.build + role facts): subbies only connect to the main contractor
+     (until the developer beat); the client's QS recommends, the client decides; comparison = totals only;
+     no numbers as facts; app screens are simplified illustrations. -->
+<link rel="stylesheet" href="../../../tools/motion/kit.css">
+<style>
+  body.build { --k: 1.15; --ms: 1.18; }
+  body.build.r9x16 { --k: .95; --ms: .95; }
+  body.build #root { background: radial-gradient(1100px 700px at 50% -10%, #142519 0%, var(--bg) 62%); }
+  .stage { position: absolute; left: 96px; top: 54px; width: 1728px; height: 972px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: calc(22px * var(--k)); text-align: center; }
+  body.r9x16 .stage { left: 65px; top: 300px; width: 950px; height: 950px; }
+  .h { font-family: var(--display); font-weight: 700; letter-spacing: -0.03em; line-height: 1.04; font-size: calc(92px * var(--k)); text-wrap: balance; }
+  .h.s { font-size: calc(60px * var(--k)); }
+  .acc { color: var(--accent); } .muted { color: var(--ink-70); }
+  .label { font: 600 calc(19px * var(--k))/1.2 var(--mono); color: var(--ink-50); letter-spacing: .05em; text-transform: uppercase; }
+  .note { font: 500 calc(18px * var(--k))/1.4 var(--mono); color: var(--ink-50); }
+  .tag { position: absolute; right: 0; bottom: 0; padding: 5px 12px; border: 2px dashed var(--ink-50); border-radius: 8px; color: var(--ink-50); font: 500 calc(15px * var(--k))/1.2 var(--mono); }
+
+  /* hook */
+  .seat { width: calc(260px * var(--k)); height: calc(150px * var(--k)); border: 4px dashed var(--accent); border-radius: 22px; display: grid; place-items: center; font: 700 calc(64px * var(--k))/1 var(--display); color: var(--accent); }
+
+  /* caption over the map */
+  #cap { min-height: calc(96px * var(--k)); display: flex; align-items: center; justify-content: center; }
+  .cl { font-family: var(--display); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; font-size: calc(46px * var(--k)); max-width: calc(1400px * var(--k)); text-wrap: balance; }
+  body.r9x16 .cl { font-size: 52px; max-width: 950px; }
+
+  /* the map: designed in 1000 x 700 units, scaled per cut */
+  #mapwrap { width: calc(1000px * var(--ms)); height: calc(700px * var(--ms)); position: relative; }
+  #map { position: absolute; left: 0; top: 0; width: 1000px; height: 700px; transform: scale(var(--ms)); transform-origin: 0 0; }
+  .node { position: absolute; background: var(--bg-raised); border: 2px solid var(--line); border-radius: 14px; padding: 10px 14px; text-align: left; }
+  .node .n { font: 700 30px/1.12 var(--display); color: var(--ink); }
+  .node .r { font: 600 16px/1.2 var(--mono); color: var(--ink-50); letter-spacing: .04em; text-transform: uppercase; margin-top: 4px; }
+  .node.qs { border-color: var(--accent); }
+  .node.qs .r { color: var(--accent); }
+  .node.empty { border-style: dashed; background: transparent; }
+  .chip { display: inline-block; margin-top: 8px; padding: 4px 10px; border-radius: 999px; border: 2px solid var(--accent); color: var(--accent); font: 700 16px/1.2 var(--mono); }
+  #tagtrad { position: absolute; left: 0; top: 0; padding: 6px 14px; border-radius: 999px; background: var(--soft); color: var(--accent); font: 700 16px/1 var(--mono); letter-spacing: .05em; }
+  svg.lines { position: absolute; left: 0; top: 0; width: 1000px; height: 700px; overflow: visible; }
+  .boq { position: absolute; background: #eef4ef; color: #0c1310; border-radius: 6px; padding: 8px 10px; font: 600 13px/1.5 var(--mono); }
+  .boq b { display: block; font: 800 14px/1.2 var(--display); margin-bottom: 4px; }
+  #filler { position: absolute; left: 720px; top: 170px; width: 250px; height: 96px; display: grid; place-items: center; border-radius: 14px; background: #1b2a20; border: 2px solid var(--accent); font: 700 22px/1.15 var(--display); color: var(--ink); text-align: center; padding: 8px; overflow-wrap: anywhere; }
+  #filler small { display: block; font: 600 14px/1.2 var(--mono); color: var(--accent); margin-top: 4px; }
+  #congrats { position: absolute; left: 330px; top: 300px; padding: 8px 18px; border: 5px solid var(--accent); border-radius: 12px; font: 400 34px/1.1 var(--marker); color: var(--accent); transform: rotate(-6deg); background: rgba(12,19,16,.9); white-space: nowrap; }
+  .badge { position: absolute; padding: 4px 10px; border-radius: 8px; background: var(--accent); color: var(--on-accent); font: 800 15px/1.2 var(--display); }
+
+  /* feature run */
+  #screen { width: calc(1180px * var(--k)); padding: calc(26px * var(--k)); text-align: left; }
+  body.r9x16 #screen { width: 950px; }
+  .card { background: var(--bg-raised); border: 2px solid var(--line); border-radius: 18px; position: relative; }
+  .panel { display: flex; flex-direction: column; gap: calc(12px * var(--k)); }
+  .ptitle { font: 700 calc(34px * var(--k))/1.15 var(--display); }
+  .srcs { display: flex; gap: 12px; flex-wrap: wrap; }
+  .src { padding: 8px 14px; border-radius: 10px; border: 2px solid var(--line); font: 600 calc(22px * var(--k))/1.2 var(--display); color: var(--ink-70); }
+  .tbl { display: grid; gap: 0; border: 2px solid var(--line); border-radius: 12px; overflow: hidden; font: 500 calc(21px * var(--k))/1.25 var(--display); }
+  .tr { display: grid; grid-template-columns: 2.2fr 1fr 1fr 1.1fr; padding: 9px 14px; border-top: 2px solid var(--line); }
+  .tr:first-child { border-top: 0; color: var(--ink-50); font: 600 calc(16px * var(--k))/1.2 var(--mono); }
+  .tr.three { grid-template-columns: 2fr 1fr 1fr; }
+  .lock { color: var(--accent); }
+  .empty-rate { display: inline-block; width: 80%; height: 1.1em; border: 2px dashed var(--ink-50); border-radius: 6px; vertical-align: middle; }
+  .low { margin-left: 8px; padding: 2px 8px; border-radius: 6px; background: var(--soft); color: var(--accent); font: 700 calc(15px * var(--k))/1.2 var(--mono); }
+  .stages { display: flex; gap: 10px; flex-wrap: wrap; }
+  .stg { padding: 8px 12px; border-radius: 10px; border: 2px solid var(--line); font: 600 calc(20px * var(--k))/1.2 var(--display); color: var(--ink-70); }
+  .stg.ret { border-color: var(--accent); color: var(--accent); }
+  .gantt { display: flex; flex-direction: column; gap: 8px; }
+  .gbar { height: calc(22px * var(--k)); border-radius: 6px; background: var(--brand); }
+  .money { display: flex; flex-direction: column; gap: 10px; }
+  .mrow { display: grid; grid-template-columns: calc(170px * var(--k)) 1fr; align-items: center; gap: 12px; font: 600 calc(22px * var(--k))/1.2 var(--display); color: var(--ink-70); }
+  .mbar { height: calc(18px * var(--k)); border-radius: 6px; background: var(--brand); transform-origin: left center; }
+
+  /* end */
+  .row3 { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+  .pill3 { padding: 10px 22px; border-radius: 999px; border: 2px solid var(--line); font: 700 calc(30px * var(--k))/1 var(--display); color: var(--ink-70); }
+  .pill3.on { border-color: var(--accent); color: var(--accent); }
+  #logo { width: calc(560px * var(--k)); }
+  .cta { display: inline-flex; padding: 16px 32px; border-radius: 999px; background: var(--btn); color: var(--on-accent); font: 800 calc(40px * var(--k))/1 var(--display); }
+</style>
+</head>
+<body class="build r16x9">
+<div id="root">
+
+  <!-- S1 · 0–4.3 · hook -->
+  <div id="s1" class="stage">
+    <div id="seat" class="seat">QS ?</div>
+    <div id="h1" class="h">Who's the QS on your job?</div>
+    <div id="h1b" class="h s muted">Careful. <span class="acc">It might be you.</span></div>
+  </div>
+
+  <!-- S2–S5 · 4.3–60.6 · the map -->
+  <div id="sm" class="stage">
+    <div id="cap"><div id="cl" class="cl"></div></div>
+    <div id="mapwrap"><div id="map">
+      <svg class="lines" viewBox="0 0 1000 700">
+        <path id="l-cons" d="M500 100 V135 M160 135 H840 M160 135 V170 M500 135 V170 M840 135 V170" fill="none" stroke="#3a5144" stroke-width="3"/>
+        <path id="l-tender" d="M840 266 V330 M840 330 H330 V430 M840 330 H650 V430" fill="none" stroke="#4BCD32" stroke-width="4" stroke-dasharray="10 8"/>
+        <path id="l-subs" d="M330 526 V560 M150 560 H510 M150 560 V590 M330 560 V590 M510 560 V590" fill="none" stroke="#3a5144" stroke-width="3"/>
+        <path id="l-back" d="M410 430 V380 H880 V266" fill="none" stroke="#eef4ef" stroke-width="3" stroke-dasharray="4 8"/>
+        <path id="l-direct" d="M380 60 H18 V684 H510 M150 684 V664 M330 684 V664 M510 684 V664" fill="none" stroke="#F87171" stroke-width="3" stroke-dasharray="6 8"/>
+      </svg>
+      <div id="tagtrad">TRADITIONAL JOB</div>
+      <div id="client" class="node" style="left:380px; top:20px; width:240px;"><div class="n">Client</div><div class="r">Who's paying</div><div id="decides" class="chip">✓ decides</div></div>
+      <div id="arch" class="node" style="left:40px; top:170px; width:240px;"><div class="n">Architect</div><div class="r">Design</div></div>
+      <div id="eng" class="node" style="left:380px; top:170px; width:240px;"><div class="n">Engineers</div><div class="r">Structure</div></div>
+      <div id="pqs" class="node qs" style="left:720px; top:170px; width:250px;"><div class="n">Client's QS</div><div class="r">Money · often called a PQS</div><div id="recom" class="chip">✓ recommends</div></div>
+      <div id="boq" class="boq" style="left:860px; top:330px; width:130px;"><b>Bill of quantities</b>Concrete m³<br>Framing m<br>Roofing m²</div>
+      <div id="mca" class="node" style="left:200px; top:430px; width:260px;"><div class="n">Main contractor A</div><div id="est" class="chip">Estimator / QS prices it</div></div>
+      <div id="mcb" class="node" style="left:520px; top:430px; width:260px;"><div class="n">Main contractor B</div><div class="r">Bidding too</div></div>
+      <div id="sb1" class="node" style="left:60px; top:590px; width:180px;"><div class="n">Framing</div><div class="r">Subcontractor</div></div>
+      <div id="sb2" class="node" style="left:240px; top:590px; width:180px;"><div class="n">Electrical</div><div class="r">Subcontractor</div></div>
+      <div id="sb3" class="node" style="left:420px; top:590px; width:180px;"><div class="n">Plumbing</div><div class="r">Subcontractor</div></div>
+      <div id="filler"><span id="fill-t">Architect</span></div>
+      <div id="congrats">Congratulations: you're the QS</div>
+      <div id="bg1" class="badge" style="left:880px; top:160px;">QSME</div>
+      <div id="bg2" class="badge" style="left:420px; top:420px;">QSME</div>
+    </div></div>
+    <div class="tag">Illustration · example names</div>
+  </div>
+
+  <!-- S6 · 60.6–80.4 · the platform, one job from estimate to money (simplified illustration) -->
+  <div id="sf" class="stage">
+    <div id="screen" class="card">
+      <div id="p1" class="panel">
+        <div class="label">Estimate</div><div class="ptitle">One estimate, three ways in</div>
+        <div class="srcs"><span class="src" id="src1">Excel import</span><span class="src" id="src2">Template</span><span class="src" id="src3">AI draft · you check it</span></div>
+        <div class="tbl"><div class="tr three"><span>LINE</span><span>QTY</span><span>RATE</span></div>
+          <div class="tr three"><span>Concrete slab</span><span>42 m³</span><span>$ —</span></div>
+          <div class="tr three"><span>Wall framing</span><span>310 m</span><span>$ —</span></div>
+          <div class="tr three"><span>Roofing</span><span>180 m²</span><span>$ —</span></div></div>
+      </div>
+      <div id="p2" class="panel">
+        <div class="label">Tender · what the bidder sees</div><div class="ptitle">Your lines. <span class="acc">Never your rates.</span></div>
+        <div class="tbl"><div class="tr three"><span>LINE</span><span>QTY</span><span>THEIR PRICE</span></div>
+          <div class="tr three"><span>Concrete slab</span><span>42 m³</span><span><i class="empty-rate"></i></span></div>
+          <div class="tr three"><span>Wall framing</span><span>310 m</span><span><i class="empty-rate"></i></span></div>
+          <div class="tr three"><span>Roofing</span><span>180 m²</span><span><i class="empty-rate"></i></span></div></div>
+        <div class="note"><span class="lock">■</span> Your rates and budget stay on your side</div>
+      </div>
+      <div id="p3" class="panel">
+        <div class="label">Compare the bids</div><div class="ptitle">The client awards</div>
+        <div class="tbl"><div class="tr"><span>BIDDER</span><span>EXCL. TAX</span><span>INCL. TAX</span><span>DURATION</span></div>
+          <div class="tr"><span>Contractor A<span class="low">LOWEST</span></span><span>$412k</span><span>$474k</span><span>16 wks</span></div>
+          <div class="tr"><span>Contractor B</span><span>$438k</span><span>$504k</span><span>14 wks</span></div></div>
+        <div class="stages"><span class="stg">Stage 1</span><span class="stg">Stage 2</span><span class="stg">Stage 3</span><span class="stg ret">Retention (release)</span><span class="stg" id="sig">Agreement · signed from a link</span></div>
+      </div>
+      <div id="p4" class="panel">
+        <div class="label">Then the job</div><div class="ptitle">Programme · daily log · money</div>
+        <div class="gantt"><div class="gbar" style="width:30%"></div><div class="gbar" style="width:46%; margin-left:22%"></div><div class="gbar" style="width:38%; margin-left:52%"></div></div>
+        <div class="note" id="dlog">Daily log · Tue · slab poured · 6 photos</div>
+        <div class="money">
+          <div class="mrow"><span>Estimate</span><div id="mb1" class="mbar" style="width:100%"></div></div>
+          <div class="mrow"><span>Committed</span><div id="mb2" class="mbar" style="width:86%"></div></div>
+          <div class="mrow"><span>Paid</span><div id="mb3" class="mbar" style="width:41%"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="tag">Simplified illustration · example figures</div>
+  </div>
+
+  <!-- S7 · 80.4–87.9 · inspired by the QS, a whole platform, A to Z -->
+  <div id="sz" class="stage">
+    <div class="row3"><span class="pill3">Design</span><span class="pill3">Structure</span><span id="pm" class="pill3 on">Money</span></div>
+    <div id="z1" class="h s">Inspired by the QS. <span class="acc">A whole platform.</span></div>
+    <div id="z2" class="row3"><span class="pill3 on">QS</span><span class="pill3 on">Project manager</span><span class="pill3 on">Client</span></div>
+    <div id="z3" class="h s">A <span class="acc">→</span> Z</div>
+  </div>
+
+  <!-- S8 · 87.9–end -->
+  <div id="se" class="stage">
+    <img id="logo" src="../../../tools/motion/qsme-logo.svg" alt="QSME">
+    <div id="cta" class="cta">Book a 30-minute demo</div>
+    <div id="url" class="h s">qsme.build</div>
+  </div>
+</div>
+<script src="../../../tools/motion/kit.js"></script>
+<script>
+  var D = 93.0;
+  var show = function (s, on) { document.querySelector(s).style.display = on ? '' : 'none'; };
+  Kit.scene('#s1', 0, 4.3).scene('#sm', 4.3, 60.6).scene('#sf', 60.6, 80.4).scene('#sz', 80.4, 87.9).scene('#se', 87.9, D);
+
+  // S1 hook
+  Kit.pop('#seat', 0.05, { dy: 16 });
+  Kit.slam('#h1', 0.1, { from: 1.1 });
+  Kit.pop('#h1b', 2.2);
+  Kit.add('#seat', 'scale', [[3.2, 1], [3.4, 1.1, 'out'], [3.7, 1, 'out']]);
+
+  // captions over the map (phrases lifted from the narration)
+  var CAPS = [
+    [4.4, "Let's map a traditional job."], [6.1, "Up top, the client, who's paying."], [8.3, 'Beside them, the consultants.'],
+    [13.8, "The client's QS, often called a PQS, looks after the money."], [18.5, 'They build the tender: often a bill of quantities.'],
+    [22.5, 'One list every bidder prices.'], [24.8, 'Down it goes to the main contractors.'], [26.8, 'Their estimator or QS prices it.'],
+    [29.6, 'Trade packages go to subcontractors.'], [31.8, 'Back it comes.'], [33.0, "The client's QS recommends. The client decides."],
+    [36.9, 'A QS on each side. Lovely.'], [38.9, 'Now, real life.'], [40.3, "On lots of jobs, nobody's hired a QS."],
+    [44.2, 'So who does the QS job?'], [51.3, 'Whoever opened the spreadsheet last.'], [53.3, "Congratulations: you're the QS."],
+    [55.7, 'Got a QS? QSME is built for them.'], [58.7, "No QS? It's built for you."],
+  ];
+  Kit.each(function (t) {
+    var txt = '';
+    CAPS.forEach(function (c) { if (t >= c[0]) txt = c[1]; });
+    var el = document.getElementById('cl');
+    if (el.textContent !== txt) el.textContent = txt;
+  });
+  // each caption holds full strength until the next one, then a quick fade-in (no slow drift between them)
+  Kit.add('#cl', 'opacity', CAPS.reduce(function (k, c) { k.push([c[0] - 0.001, 1]); k.push([c[0], 0.2, 'hold']); k.push([c[0] + 0.15, 1, 'out']); return k; }, [[0, 1]]));
+
+  // the map, drawn as it is described
+  Kit.pop('#tagtrad', 4.9, { dy: 8 });
+  Kit.pop('#client', 6.8, { dy: 14 });
+  Kit.add('#l-cons', 'trim', [[9.0, 0], [9.6, 1, 'out']]);
+  Kit.pop('#arch', 10.4, { dy: 14 }).pop('#eng', 12.3, { dy: 14 }).pop('#pqs', 14.0, { dy: 14 });
+  Kit.add('#pqs', 'scale', [[17.5, 1], [17.7, 1.06, 'out'], [18.1, 1, 'out']]);
+  Kit.pop('#boq', 21.0, { dy: 10 });
+  Kit.add('#l-tender', 'trim', [[24.8, 0], [25.9, 1, 'out']]);
+  Kit.pop('#mca', 25.8, { dy: 14 }).pop('#mcb', 26.1, { dy: 14 });
+  Kit.pop('#est', 28.4, { dy: 6 });
+  Kit.add('#l-subs', 'trim', [[29.6, 0], [30.4, 1, 'out']]);
+  Kit.pop('#sb1', 30.1, { dy: 10 }).pop('#sb2', 30.4, { dy: 10 }).pop('#sb3', 30.7, { dy: 10 });
+  Kit.add('#l-back', 'trim', [[31.8, 0], [32.8, 1, 'inOut']]);
+  Kit.pop('#recom', 34.8, { dy: 6 }).pop('#decides', 35.6, { dy: 6 });
+  // a QS on each side
+  Kit.add('#pqs', 'scale', [[37.2, 1], [37.4, 1.06, 'out'], [37.9, 1, 'out']]);
+  Kit.add('#est', 'scale', [[37.2, 1], [37.4, 1.12, 'out'], [37.9, 1, 'out']]);
+  // real life: the QS seats empty out
+  Kit.each(function (t) {
+    var empty = t >= 42.8;
+    document.getElementById('pqs').classList.toggle('empty', empty);
+    document.querySelector('#pqs .n').textContent = empty ? 'QS ?' : "Client's QS";
+    document.querySelector('#pqs .r').textContent = empty ? 'Nobody hired' : 'Money · often called a PQS';
+    document.getElementById('est').textContent = empty ? 'QS ?' : 'Estimator / QS prices it';
+    show('#recom', t < 42.8); show('#boq', t < 42.8);
+    var dim = t >= 38.9 && t < 42.8;
+    document.getElementById('map').style.filter = dim ? 'brightness(.6)' : '';
+  });
+  // who fills the seat
+  var WHO = [[46.3, 'Architect'], [47.3, 'Engineer'], [48.3, 'Builder'], [49.1, 'Developer<small>signing every trade direct</small>'], [51.3, 'Estimate_v7_FINAL(2).xlsx']];
+  Kit.each(function (t) {
+    var cur = null;
+    WHO.forEach(function (w) { if (t >= w[0]) cur = w[1]; });
+    show('#filler', cur && t < 55.7);
+    if (cur) { var el = document.getElementById('fill-t'); if (el.innerHTML !== cur) el.innerHTML = cur; }
+  });
+  WHO.forEach(function (w) { Kit.add('#filler', 'scale', [[w[0], 0.9], [w[0] + 0.15, 1, 'outBack']]); });
+  Kit.add('#l-direct', 'trim', [[49.6, 0], [50.6, 1, 'out']]);
+  Kit.add('#l-direct', 'opacity', [[0, 1], [53.2, 1], [53.4, 0]]);
+  Kit.slam('#congrats', 53.3, { from: 1.6, dur: 0.12 });
+  Kit.out('#congrats', 55.6);
+  // built for them / for you
+  Kit.pop('#bg1', 56.8, { dy: -10 }).pop('#bg2', 57.2, { dy: -10 });
+  Kit.each(function (t) {
+    var back = t >= 55.7;
+    if (back) {
+      document.getElementById('pqs').classList.remove('empty');
+      document.querySelector('#pqs .n').textContent = t >= 58.7 ? 'You' : "Client's QS";
+      document.querySelector('#pqs .r').textContent = t >= 58.7 ? 'Doing the QS job' : 'Money';
+      document.getElementById('est').textContent = 'Estimator / QS';
+    }
+  });
+
+  // S6 feature run
+  var PANELS = [['#p1', 60.6, 64.9], ['#p2', 64.9, 68.7], ['#p3', 68.7, 75.8], ['#p4', 75.8, 80.4]];
+  Kit.each(function (t) { PANELS.forEach(function (p) { show(p[0], t >= p[1] && t < p[2]); }); });
+  PANELS.forEach(function (p) { Kit.pop(p[0], p[1], { dy: 16 }); });
+  Kit.pop('#src1', 61.9, { dy: 8 }).pop('#src2', 62.7, { dy: 8 }).pop('#src3', 63.7, { dy: 8 });
+  Kit.add('#sig', 'borderColor', [[74.4, '#213128'], [74.7, '#4BCD32', 'out']]);
+  Kit.add('#mb1', 'scaleX', [[78.6, 0], [79.0, 1, 'out']]).add('#mb2', 'scaleX', [[79.2, 0], [79.6, 1, 'out']]).add('#mb3', 'scaleX', [[80.0, 0], [80.4, 1, 'out']]);
+
+  // S7
+  Kit.pop('#z1', 80.6);
+  Kit.add('#pm', 'scale', [[81.7, 1], [81.9, 1.1, 'out'], [82.3, 1, 'out']]);
+  Kit.pop('#z2', 83.7, { dy: 12 });
+  Kit.slam('#z3', 87.2, { from: 1.2 });
+
+  // S8
+  Kit.fade('#logo', 87.9, 88.3).add('#logo', 'scale', [[87.9, 0.94], [88.6, 1, 'out']]);
+  Kit.pop('#cta', 88.0);
+  Kit.slam('#url', 89.6, { from: 1.1 });
+
+  Kit.ready({ duration: D });
+</script>
+</body>
+</html>

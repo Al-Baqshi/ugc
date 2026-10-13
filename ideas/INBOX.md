@@ -59,6 +59,7 @@ Score = idea test (Recognizable / Specific / Ownable / Shareable, 1–5 each, /2
 | 2026-10-02 | qsme-build | [Same rules as my first year](qsme-build/first-year-rules.md) | 16 | scored (bench) |
 | 2026-10-02 | qsme-build | [Same document. Five names.](qsme-build/five-names-one-argument.md) | 15 | scored (bench) |
 | 2026-10-04 | qsme-build | [The QS Alphabet (what QSME stands for)](qsme-build/qs-is-the-project.md) | 18 | killed (owner: confusing) |
+| 2026-10-14 | qsme-build | [Who's the QS on your job?](qsme-build/who-is-the-qs-on-your-job.md) | 17 | delivered (G14) |
 
 | 2026-10-13 | consistent-ceo | [CEO of six things](consistent-ceo/ceo-of-six-things.md) | 17 | delivered (C01) |
 | 2026-10-13 | consistent-ceo | [Why it remembers](consistent-ceo/why-it-remembers.md) | 16 | delivered (C02) |
