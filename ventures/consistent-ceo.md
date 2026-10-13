@@ -34,6 +34,9 @@ Everything you run keeps moving, even when you're not looking, and nothing goes 
 - Near-black #0a0908, warm amber #c98a4b / #e0a55e, cream #f2ede4. Logo mark: black icosahedron with glowing amber edges (Consistent/public/logo-mark.png).
 - Site: https://www.consistent.ceo — CTA: consistent.ceo/download (Mac). Public repo github.com/Al-Baqshi/consistent.ceo (MIT). The Consistent.world repo is private: never link it.
 
+## Pricing wording (owner 2026-10-13)
+The owner asked for "open source, free for everyone to use" in C02. MIT licence, no account, no billing on your own install. The QSME no-"free" rule does not apply here.
+
 ## Voice
 Confident, quick, a little self-mocking about founder life. Never mocks the viewer.
 

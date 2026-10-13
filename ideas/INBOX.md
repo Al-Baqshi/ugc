@@ -61,6 +61,7 @@ Score = idea test (Recognizable / Specific / Ownable / Shareable, 1–5 each, /2
 | 2026-10-04 | qsme-build | [The QS Alphabet (what QSME stands for)](qsme-build/qs-is-the-project.md) | 18 | killed (owner: confusing) |
 
 | 2026-10-13 | consistent-ceo | [CEO of six things](consistent-ceo/ceo-of-six-things.md) | 17 | delivered (C01) |
+| 2026-10-13 | consistent-ceo | [Why it remembers](consistent-ceo/why-it-remembers.md) | 16 | delivered (C02) |
 | 2026-10-13 | bitregalo | [The edit button that isn't there](bitregalo/edit-button-that-isnt-there.md) | 17 | in production (B01) |
 | 2026-10-13 | bitregalo | [The main contractor went bust](bitregalo/subbie-paid-when-main-goes-bust.md) | 18 | in production (B02) |
 

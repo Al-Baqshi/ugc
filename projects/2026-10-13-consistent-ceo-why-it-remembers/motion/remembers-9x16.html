@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>C02 · Why it's consistent</title>
+<!-- One page, two cuts: r16x9 here, remembers-9x16.html is a copy with the body class swapped.
+     Beats keyed to outputs/vo-take/words.json (take 1, 43.04 s). Script and comparison rows from the
+     2026-10-13 differentiation workflow (code + competitor research): contrasts are with "most AI", no
+     competitor named; nothing claims others lack memory, schedules, approvals or vector search. -->
+<link rel="stylesheet" href="../../../tools/motion/kit.css">
+<style>
+  body.cc {
+    --bg: #0a0908; --raised: #15120f; --line: #2a241d; --ink: #f2ede4; --ink-70: rgba(242,237,228,.7); --ink-50: rgba(242,237,228,.5);
+    --amber: #e0a55e; --copper: #c98a4b; --deep: #8a5a2e; --champ: #eed9ae; --green: #7fcf9a;
+    --display: Inter, sans-serif; --mono: "JetBrains Mono", ui-monospace, monospace;
+    --k: 1.3;
+  }
+  body.cc.r9x16 { --k: 1.15; }
+  body.cc #root { background: radial-gradient(1100px 700px at 50% -10%, #241a10 0%, var(--bg) 62%); color: var(--ink); font-family: var(--display); }
+  .stage { position: absolute; left: 96px; top: 54px; width: 1728px; height: 972px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: calc(26px * var(--k)); text-align: center; }
+  body.r9x16 .stage { left: 65px; top: 300px; width: 950px; height: 950px; }
+  .h { font-weight: 800; letter-spacing: -0.035em; line-height: 1.05; font-size: calc(88px * var(--k)); text-wrap: balance; }
+  .h.s { font-size: calc(56px * var(--k)); }
+  .amber { color: var(--amber); } .muted { color: var(--ink-70); }
+  .label { font: 600 calc(19px * var(--k))/1.2 var(--mono); color: var(--ink-50); letter-spacing: .05em; text-transform: uppercase; }
+  .note { font: 500 calc(19px * var(--k))/1.4 var(--mono); color: var(--ink-50); text-wrap: balance; max-width: calc(1200px * var(--k)); }
+  body.r9x16 .note { max-width: 950px; }
+  .tag { position: absolute; right: 0; bottom: 0; padding: 5px 12px; border: 2px dashed var(--ink-50); border-radius: 8px; color: var(--ink-50); font: 500 calc(15px * var(--k))/1.2 var(--mono); }
+  .card { background: var(--raised); border: 2px solid var(--line); border-radius: 16px; text-align: left; position: relative; }
+
+  /* hook */
+  #bubble { padding: 16px 24px; border-radius: 22px 22px 22px 6px; font: 500 calc(32px * var(--k))/1.3 var(--display); color: var(--ink-70); }
+  .grid6 { display: grid; grid-template-columns: repeat(3, calc(300px * var(--k))); gap: calc(14px * var(--k)); }
+  body.r9x16 .grid6 { grid-template-columns: repeat(2, 420px); }
+  .biz { padding: calc(14px * var(--k)) calc(18px * var(--k)); font: 700 calc(28px * var(--k))/1.2 var(--display); }
+
+  /* the comparison */
+  .vs { display: grid; grid-template-columns: 1fr 1fr; gap: calc(22px * var(--k)); width: calc(1300px * var(--k)); }
+  body.r9x16 .vs { grid-template-columns: 1fr; width: 950px; gap: 14px; }
+  .side { padding: calc(18px * var(--k)) calc(22px * var(--k)); }
+  .side .what { font: 800 calc(40px * var(--k))/1.15 var(--display); margin-top: 6px; letter-spacing: -0.02em; }
+  .side.most { opacity: .8; } .side.most .what { color: var(--ink-70); }
+  .side.ours { border-color: var(--amber); background: radial-gradient(circle at 20% 0%, #2a1e12, var(--raised) 70%); }
+  .side.ours .label { color: var(--amber); }
+  .chips { display: flex; gap: 10px; flex-wrap: wrap; margin-top: calc(14px * var(--k)); }
+  .chip { padding: 7px 14px; border-radius: 999px; border: 2px solid var(--copper); color: var(--champ); font: 700 calc(22px * var(--k))/1.2 var(--display); }
+  .chats { display: flex; flex-direction: column; gap: 8px; margin-top: calc(14px * var(--k)); }
+  .chatrow { padding: 8px 14px; border-radius: 10px; border: 2px solid var(--line); font: 500 calc(21px * var(--k))/1.2 var(--display); color: var(--ink-50); }
+  .flow { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: calc(14px * var(--k)); }
+  .arrow { color: var(--copper); font: 700 calc(24px * var(--k))/1 var(--mono); }
+  .mem { display: grid; grid-template-columns: 1fr 1fr; gap: calc(16px * var(--k)); width: calc(1100px * var(--k)); position: relative; padding: calc(20px * var(--k)); }
+  body.r9x16 .mem { width: 950px; grid-template-columns: 1fr; }
+  #vec { position: absolute; inset: 0; border-radius: 22px; border: 2px dashed var(--deep); background-image: radial-gradient(circle, rgba(224,165,94,.5) 1.6px, transparent 2px); background-size: 26px 26px; }
+  .row2 { font: 500 calc(22px * var(--k))/1.35 var(--display); color: var(--ink-70); margin-top: 8px; }
+  .row2 b { color: var(--ink); }
+  .beats { display: flex; flex-direction: column; gap: calc(12px * var(--k)); width: calc(900px * var(--k)); }
+  body.r9x16 .beats { width: 920px; }
+  .beat { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: calc(14px * var(--k)) calc(20px * var(--k)); font: 700 calc(30px * var(--k))/1.2 var(--display); }
+  .beat small { font: 600 calc(20px * var(--k))/1.2 var(--mono); color: var(--ink-50); }
+  .beat.chase { border-color: var(--amber); } .beat.chase small { color: var(--amber); }
+  .stack { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+  .big { padding: 12px 26px; border-radius: 999px; border: 2px solid var(--amber); color: var(--amber); font: 800 calc(40px * var(--k))/1 var(--display); }
+
+  /* end */
+  .pill { display: inline-flex; padding: 14px 30px; border-radius: 999px; background: var(--amber); color: #1b130a; font: 800 calc(36px * var(--k))/1 var(--display); }
+  #foot { position: absolute; left: 0; right: 0; bottom: 0; text-align: center; font: 500 calc(18px * var(--k))/1.45 var(--mono); color: var(--ink-50); }
+</style>
+</head>
+<body class="cc r9x16">
+<div id="root">
+
+  <!-- S1 · 0–4.1 · hook -->
+  <div id="s1" class="stage">
+    <div id="bubble" class="card">“Welcome back! I remember you.”</div>
+    <div id="h1" class="h s muted">Your AI remembers you.</div>
+    <div id="h1b" class="h s">But does it know your <span class="amber">six businesses?</span></div>
+    <div id="six" class="grid6">
+      <div class="biz card">Café</div><div class="biz card">App launch</div><div class="biz card">Agency</div>
+      <div class="biz card">Side hustle</div><div class="biz card">Podcast</div><div class="biz card">Rentals</div>
+    </div>
+    <div class="tag">Example businesses</div>
+  </div>
+
+  <!-- S2 · 4.1–13.4 · built around chats vs built around each business -->
+  <div id="s2" class="stage">
+    <div class="vs">
+      <div id="a1" class="side most card"><div class="label">Most AI</div><div class="what">Built around chats</div>
+        <div class="chats"><div class="chatrow">New chat</div><div class="chatrow">Untitled chat</div><div class="chatrow">Chat from Tuesday</div></div></div>
+      <div id="b1" class="side ours card"><div class="label">Consistent CEO</div><div class="what">Built around each business</div>
+        <div class="chips"><span id="b1a" class="chip">Its story</span><span id="b1b" class="chip">Its goals</span><span id="b1c" class="chip">Its house rules</span></div></div>
+    </div>
+  </div>
+
+  <!-- S3 · 13.4–19.75 · prompt in, answer out vs goal → missions → tasks -->
+  <div id="s3" class="stage">
+    <div class="vs">
+      <div id="a2" class="side most card"><div class="label">Most AI</div><div class="what">Prompt in, answer out</div></div>
+      <div id="b2" class="side ours card"><div class="label">Consistent CEO</div><div class="what">Takes a goal</div>
+        <div class="flow"><span id="f1" class="chip">Goal</span><span class="arrow">→</span><span id="f2" class="chip">Missions</span><span class="arrow">→</span><span id="f3" class="chip">Tasks</span></div></div>
+    </div>
+  </div>
+
+  <!-- S4 · 19.75–26.1 · short-term memory + long-term lessons, recalled by meaning, vector DB on your Mac -->
+  <div id="s4" class="stage">
+    <div id="h4" class="h s">Each business keeps its own memory.</div>
+    <div class="mem">
+      <div id="vec"></div>
+      <div id="m1" class="side ours card"><div class="label">Short-term memory</div>
+        <div class="row2">Menu page drafted · <b>Tue</b></div><div class="row2">Photos approved · <b>Wed</b></div></div>
+      <div id="m2" class="side ours card"><div class="label">Long-term lessons</div>
+        <div class="row2"><b>“Always cc the accountant”</b></div><div class="row2"><b>“Prices include GST”</b></div></div>
+    </div>
+    <div id="h4b" class="label" style="color:var(--amber); font-size:calc(24px * var(--k))">Recalled by meaning · vector database on your Mac</div>
+    <div id="n4" class="note">Recall by meaning uses a local Ollama model or your own API key · the database stays on your Mac; a cloud AI you connect still sees your prompts</div>
+  </div>
+
+  <!-- S5 · 26.1–30.6 · checks in on every business and chases what's open -->
+  <div id="s5" class="stage">
+    <div id="h5" class="h s">It checks in on <span class="amber">every business</span>.</div>
+    <div class="beats">
+      <div id="k1" class="beat card"><span>Daily pulse · Café</span><small>what needs you now</small></div>
+      <div id="k2" class="beat card"><span>Weekly review · App launch</span><small>is the goal moving?</small></div>
+      <div id="k3" class="beat card chase"><span>Still open: menu page</span><small>flagged again ↑</small></div>
+    </div>
+    <div id="n5" class="note">Check-ins run while the app is open in your menu bar</div>
+  </div>
+
+  <!-- S6 · 30.6–37.55 · same story, same rules, same goals → structure → consistent -->
+  <div id="s6" class="stage">
+    <div class="stack"><span id="x1" class="big">Same story</span><span id="x2" class="big">Same rules</span><span id="x3" class="big">Same goals</span></div>
+    <div id="x4" class="h s muted">Every chat. Every check-in.</div>
+    <div id="x5" class="h">That's structure.</div>
+    <div id="x6" class="h amber">That's why it's consistent.</div>
+  </div>
+
+  <!-- S7 · 37.55–end -->
+  <div id="s7" class="stage">
+    <div id="j1" class="h">Jump in.</div>
+    <div id="j2" class="h s">Open source. <span class="amber">Free for everyone to use.</span></div>
+    <img id="mark" src="logo-mark.png" alt="" style="width:calc(140px * var(--k)); mix-blend-mode:lighten">
+    <div id="cta" class="pill">consistent.ceo</div>
+    <div id="foot">Mac app today · MIT licence · bring your own AI: model costs depend on what you connect · examples simplified</div>
+  </div>
+</div>
+<script src="../../../tools/motion/kit.js"></script>
+<script>
+  // Your .13 · But 1.54 · six 2.96 · Most 4.19 · chats 5.92 · Consistent 6.51 · story 11.05 · goals 11.75 · rules 12.29
+  // A 13.44 · prompt 14.15 · Consistent 14.75 · goal 16.40 · missions 17.81 · tasks 18.40 · Each 19.82 · short-term 20.76
+  // long-term 22.22 · recalled 23.25 · vector 24.45 · Mac 25.52 · checks 26.53 · daily 27.99 · weekly 28.54 · chases 29.36
+  // Same 30.70 · rules 31.81 · goals 32.53 · every chat 33.64 · check-in 34.35 · structure 35.12 · consistent 36.18 · Jump 37.62
+  // open 38.45 · free 39.34 · Consistent 40.96 · end 43.04
+  var D = 44.8;
+  var show = function (s, on) { document.querySelector(s).style.display = on ? '' : 'none'; };
+  Kit.scene('#s1', 0, 4.1).scene('#s2', 4.1, 13.4).scene('#s3', 13.4, 19.75).scene('#s4', 19.75, 26.1)
+     .scene('#s5', 26.1, 30.6).scene('#s6', 30.6, 37.55).scene('#s7', 37.55, D);
+
+  // S1
+  Kit.pop('#bubble', 0.05, { dy: 14 }).pop('#h1', 0.13);
+  Kit.pop('#h1b', 1.54);
+  document.querySelectorAll('#six .biz').forEach(function (b, i) { Kit.pop(b, 2.7 + i * 0.1, { dy: 14 }); });
+  Kit.each(function (t) { var b = t >= 1.54; show('#bubble', !b); show('#h1', !b); show('#h1b', b); show('#six', t >= 2.7); });
+
+  // S2
+  Kit.pop('#a1', 4.19, { dy: 20 });
+  Kit.pop('#b1', 6.51, { dy: 20 });
+  Kit.pop('#b1a', 11.05, { dy: 10 }).pop('#b1b', 11.75, { dy: 10 }).pop('#b1c', 12.29, { dy: 10 });
+
+  // S3
+  Kit.pop('#a2', 13.44, { dy: 20 });
+  Kit.pop('#b2', 14.75, { dy: 20 });
+  Kit.pop('#f1', 16.40, { dy: 10 }).pop('#f2', 17.81, { dy: 10 }).pop('#f3', 18.40, { dy: 10 });
+
+  // S4
+  Kit.pop('#h4', 19.82);
+  Kit.pop('#m1', 20.76, { dy: 18 }).pop('#m2', 22.22, { dy: 18 });
+  Kit.fade('#vec', 24.3, 24.9);
+  Kit.pop('#h4b', 23.25, { dy: 10 });
+  Kit.fade('#n4', 24.6, 25.0);
+
+  // S5
+  Kit.pop('#h5', 26.14);
+  Kit.pop('#k1', 27.99, { dy: 14 }).pop('#k2', 28.54, { dy: 14 });
+  Kit.slam('#k3', 29.36, { from: 1.08 });
+  Kit.fade('#n5', 28.0, 28.4);
+
+  // S6
+  Kit.pop('#x1', 30.70, { dy: 14 }).pop('#x2', 31.81, { dy: 14 }).pop('#x3', 32.53, { dy: 14 });
+  Kit.pop('#x4', 33.64);
+  Kit.slam('#x5', 35.12, { from: 1.1 });
+  Kit.slam('#x6', 36.18, { from: 1.1 });
+  Kit.each(function (t) { show('#x4', t >= 33.64 && t < 35.12); show('#x5', t >= 35.12); show('#x6', t >= 36.18); });
+
+  // S7
+  Kit.slam('#j1', 37.62, { from: 1.15 });
+  Kit.pop('#j2', 38.27);
+  Kit.fade('#mark', 40.8, 41.2).pop('#cta', 40.96);
+  Kit.fade('#foot', 38.6, 39.0);
+  Kit.each(function (t) { var e = t >= 40.8; show('#mark', e); show('#cta', e); });
+
+  Kit.ready({ duration: D });
+</script>
+</body>
+</html>
