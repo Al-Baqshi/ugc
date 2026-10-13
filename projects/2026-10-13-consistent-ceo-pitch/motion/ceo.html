@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>C01 · CEO of six things</title>
+<!-- One page, two cuts: r16x9 here, ceo-9x16.html is a copy with the body class swapped.
+     Beats keyed to outputs/vo-take/words.json (take 3, 38.32 s). Claims fact-checked 2026-10-13 against the
+     repo and www.consistent.ceo: Mac only, no phone, approvals for outward actions, done-check flags unchanged files.
+     App screens here are simplified illustrations (labelled), not captures. -->
+<link rel="stylesheet" href="../../../tools/motion/kit.css">
+<style>
+  body.cc {
+    --bg: #0a0908; --raised: #15120f; --line: #2a241d; --ink: #f2ede4; --ink-70: rgba(242,237,228,.7); --ink-50: rgba(242,237,228,.5);
+    --amber: #e0a55e; --amber-2: #c98a4b; --deep: #8a5a2e; --red: #ff6a55; --green: #7fcf9a;
+    --display: Inter, sans-serif; --mono: "JetBrains Mono", ui-monospace, monospace;
+    --k: 1.3;
+  }
+  body.cc.r9x16 { --k: .95; }
+  body.cc #root { background: radial-gradient(1100px 700px at 50% -10%, #241a10 0%, var(--bg) 62%); color: var(--ink); font-family: var(--display); }
+  .stage { position: absolute; left: 96px; top: 54px; width: 1728px; height: 972px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: calc(30px * var(--k)); text-align: center; }
+  body.r9x16 .stage { left: 65px; top: 300px; width: 950px; height: 950px; }
+  .h { font-weight: 800; letter-spacing: -0.035em; line-height: 1.04; font-size: calc(96px * var(--k)); text-wrap: balance; }
+  .h.s { font-size: calc(68px * var(--k)); }
+  .amber { color: var(--amber); } .muted { color: var(--ink-70); } .red { color: var(--red); } .green { color: var(--green); }
+  .card { background: var(--raised); border: 2px solid var(--line); border-radius: 18px; text-align: left; position: relative; }
+  .label { font: 600 calc(21px * var(--k))/1.2 var(--mono); color: var(--ink-50); letter-spacing: .04em; text-transform: uppercase; }
+  .note { font: 500 calc(21px * var(--k))/1.4 var(--mono); color: var(--ink-50); max-width: calc(1150px * var(--k)); text-wrap: balance; }
+  body.r9x16 .note { max-width: 950px; }
+  .tag { position: absolute; right: 0; bottom: 0; padding: 5px 12px; border: 2px dashed var(--ink-50); border-radius: 8px; color: var(--ink-50); font: 500 calc(16px * var(--k))/1.2 var(--mono); }
+
+  /* six things */
+  .grid { display: grid; grid-template-columns: repeat(3, calc(330px * var(--k))); gap: calc(18px * var(--k)); }
+  body.r9x16 .grid { grid-template-columns: repeat(2, 440px); gap: 16px; }
+  .thing { padding: calc(18px * var(--k)) calc(22px * var(--k)); }
+  .thing .t { font: 700 calc(30px * var(--k))/1.2 var(--display); }
+  .bar { height: calc(10px * var(--k)); border-radius: 6px; background: var(--line); margin-top: calc(14px * var(--k)); overflow: hidden; }
+  .bar i { display: block; height: 100%; border-radius: 6px; background: var(--amber-2); transform-origin: left center; }
+  .pct { font: 600 calc(20px * var(--k))/1 var(--mono); color: var(--ink-50); margin-top: 8px; }
+
+  /* brand */
+  #mark { width: calc(260px * var(--k)); mix-blend-mode: lighten; }
+  .word { font: 800 calc(84px * var(--k))/1 var(--display); letter-spacing: -0.03em; }
+
+  /* app illustration */
+  #win { width: calc(1100px * var(--k)); padding: 0; overflow: hidden; transform-origin: 100% 0%; }
+  body.r9x16 #win { width: 950px; }
+  .chrome { display: flex; gap: 10px; align-items: center; padding: 14px 18px; border-bottom: 2px solid var(--line); font: 600 calc(20px * var(--k))/1 var(--mono); color: var(--ink-50); }
+  .chrome b { width: 14px; height: 14px; border-radius: 50%; background: #3a322a; display: inline-block; }
+  .body { padding: calc(22px * var(--k)) calc(26px * var(--k)); }
+  #ask { font: 500 calc(32px * var(--k))/1.35 var(--display); padding: 16px 20px; border: 2px solid var(--line); border-radius: 14px; }
+  #mission { margin-top: calc(18px * var(--k)); }
+  .mtitle { font: 800 calc(34px * var(--k))/1.2 var(--display); margin-top: 4px; }
+  .task { display: flex; gap: 16px; align-items: center; padding: 10px 0; font: 600 calc(28px * var(--k))/1.25 var(--display); color: var(--ink-70); }
+  .task .box { flex: none; width: calc(30px * var(--k)); height: calc(30px * var(--k)); border-radius: 8px; border: 3px solid var(--deep); display: grid; place-items: center; color: var(--bg); font-weight: 900; font-size: calc(20px * var(--k)); }
+  #menubar { position: absolute; left: 0; right: 0; top: 0; height: calc(44px * var(--k)); display: flex; justify-content: flex-end; align-items: center; gap: 18px; padding: 0 22px; background: rgba(42,36,29,.9); border-radius: 12px; font: 600 calc(20px * var(--k))/1 var(--mono); color: var(--ink-70); }
+  #tray { display: flex; align-items: center; gap: 10px; color: var(--amber); }
+  #tray img { width: calc(30px * var(--k)); mix-blend-mode: lighten; }
+
+  /* approval */
+  #appr { width: calc(900px * var(--k)); padding: 26px 30px; border-color: var(--amber-2); }
+  body.r9x16 #appr { width: 920px; }
+  #appr .q { font: 700 calc(38px * var(--k))/1.25 var(--display); margin-top: 8px; }
+  .btns { display: flex; gap: 16px; margin-top: 20px; }
+  .btn { padding: 12px 26px; border-radius: 12px; font: 700 calc(28px * var(--k))/1 var(--display); border: 2px solid var(--line); color: var(--ink-70); }
+  .btn.go { background: var(--amber); color: #1b130a; border-color: var(--amber); }
+  .chips { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .chip3 { padding: 10px 22px; border-radius: 999px; border: 2px solid var(--amber-2); color: var(--amber); font: 700 calc(30px * var(--k))/1 var(--display); }
+
+  /* done check */
+  #done { width: calc(900px * var(--k)); padding: 26px 30px; }
+  body.r9x16 #done { width: 920px; }
+  .rowx { display: flex; justify-content: space-between; align-items: center; gap: 20px; font: 700 calc(32px * var(--k))/1.25 var(--display); }
+  .st { padding: 8px 16px; border-radius: 999px; font: 700 calc(22px * var(--k))/1 var(--mono); white-space: nowrap; }
+  #st-said { background: #1c2a20; color: var(--green); }
+  #st-unv { background: #2e1714; color: var(--red); }
+  #why { font: 500 calc(24px * var(--k))/1.35 var(--mono); color: var(--ink-70); margin-top: 14px; }
+
+  /* end */
+  .pill4 { display: inline-flex; padding: 16px 32px; border-radius: 999px; background: var(--amber); color: #1b130a; font: 800 calc(36px * var(--k))/1 var(--display); }
+  #foot { position: absolute; left: 0; right: 0; bottom: 0; text-align: center; font: 500 calc(19px * var(--k))/1.45 var(--mono); color: var(--ink-50); }
+</style>
+</head>
+<body class="cc r16x9">
+<div id="root">
+
+  <!-- S1+S2 · 0–11.9 · six things, all half done -->
+  <div id="s1" class="stage">
+    <div id="h1" class="h s">You're the CEO of six things.</div>
+    <div id="grid" class="grid">
+      <div class="thing card" id="g1"><div class="t">Café website</div><div class="bar"><i style="width:40%"></i></div><div class="pct">40%</div></div>
+      <div class="thing card" id="g2"><div class="t">App launch</div><div class="bar"><i style="width:55%"></i></div><div class="pct">55%</div></div>
+      <div class="thing card" id="g3"><div class="t">Gym goal</div><div class="bar"><i style="width:30%"></i></div><div class="pct">30%</div></div>
+      <div class="thing card" id="g4"><div class="t">Side hustle</div><div class="bar"><i style="width:45%"></i></div><div class="pct">due: March</div></div>
+      <div class="thing card" id="g5"><div class="t">Newsletter</div><div class="bar"><i style="width:20%"></i></div><div class="pct">20%</div></div>
+      <div class="thing card" id="g6"><div class="t">Hiring</div><div class="bar"><i style="width:50%"></i></div><div class="pct">50%</div></div>
+    </div>
+    <div id="h1b" class="h s amber">And consistent at none of them.</div>
+    <div id="h1c" class="h s amber">All of it, half done.</div>
+  </div>
+
+  <!-- S3 · 11.9–14.55 · So: Consistent CEO -->
+  <div id="s3" class="stage">
+    <img id="mark" src="logo-mark.png" alt="">
+    <div id="word" class="word">Consistent <span class="amber">CEO</span></div>
+  </div>
+
+  <!-- S4 · 14.55–22.95 · a mission in plain words, plans, does what it safely can, keeps going in the menu bar -->
+  <div id="s4" class="stage">
+    <div id="menubar"><span>Tue 9:41</span><span id="tray"><img src="logo-mark.png" alt="">running on this Mac</span></div>
+    <div id="win" class="card">
+      <div class="chrome"><b></b><b></b><b></b><span style="margin-left:10px">Consistent CEO · Café website</span></div>
+      <div class="body">
+        <div id="ask"><span id="ask-t">Get the café's new website live by Friday.</span></div>
+        <div id="mission">
+          <div class="label">Mission · planned</div>
+          <div class="mtitle">Café website live by Friday</div>
+          <div class="task" id="k1"><span class="box" id="b1"></span>Draft the menu and opening-hours pages</div>
+          <div class="task" id="k2"><span class="box" id="b2"></span>Build the site in the project folder</div>
+          <div class="task" id="k3"><span class="box" id="b3"></span>Check every link and image</div>
+        </div>
+      </div>
+    </div>
+    <div id="n4" class="note">Hands-on work runs through Claude Code on your Mac · keeps running from the menu bar while your Mac is on</div>
+    <div class="tag">Simplified illustration</div>
+  </div>
+
+  <!-- S5 · 22.95–26.6 · sending, posting, paying? built to ask you first -->
+  <div id="s5" class="stage">
+    <div class="chips"><span class="chip3" id="c1">Sending</span><span class="chip3" id="c2">Posting</span><span class="chip3" id="c3">Paying</span></div>
+    <div id="appr" class="card">
+      <div class="label">Approval needed</div>
+      <div class="q">Send the launch email to the café's mailing list?</div>
+      <div class="btns"><span class="btn">Reject</span><span class="btn go" id="approve">Approve</span></div>
+    </div>
+    <div id="h5" class="h s">It's built to ask you first.</div>
+    <div id="n5" class="note">Outward actions are flagged for your approval by the planner</div>
+    <div class="tag">Simplified illustration</div>
+  </div>
+
+  <!-- S6 · 26.6–31.4 · it won't just say done -->
+  <div id="s6" class="stage">
+    <div id="h6" class="h s">It won't just say done.</div>
+    <div id="done" class="card">
+      <div class="label">Task · Build the site</div>
+      <div class="rowx" style="margin-top:10px"><span>Agent reported:</span><span id="st-said" class="st">DONE</span></div>
+      <div class="rowx" id="r-check" style="margin-top:14px"><span>Files actually changed?</span><span id="st-unv" class="st">UNVERIFIED</span></div>
+      <div id="why">Reported done, but nothing in the project folder changed. Needs a look.</div>
+    </div>
+    <div id="n6" class="note">Change checks work in git project folders</div>
+    <div class="tag">Simplified illustration</div>
+  </div>
+
+  <!-- S7 · 31.4–34.65 · your computer, your keys, your yes -->
+  <div id="s7" class="stage">
+    <div id="y1" class="h">Your computer.</div>
+    <div id="y2" class="h">Your keys.</div>
+    <div id="y3" class="h amber">Your yes.</div>
+    <div id="n7" class="note">Your data stays on your Mac · it thinks with the AI you choose: your Claude or ChatGPT plan, or a local model</div>
+  </div>
+
+  <!-- S8 · 34.65–end -->
+  <div id="s8" class="stage">
+    <img id="mark2" src="logo-mark.png" alt="" style="width:calc(200px * var(--k)); mix-blend-mode:lighten">
+    <div id="word2" class="word">Consistent <span class="amber">CEO</span></div>
+    <div id="cta" class="pill4">Download for Mac · consistent.ceo/download</div>
+    <div id="be" class="h s amber">Be consistent.</div>
+    <div id="foot">Early release v0.2.0 · open source (MIT) · Mac, Apple silicon &amp; Intel · app screens are simplified illustrations</div>
+  </div>
+</div>
+<script src="../../../tools/motion/kit.js"></script>
+<script>
+  // You're .07 · CEO .36 · things 1.36 · And 2.19 · café's 4.38 · app 5.66 · gym 6.46 · side 7.50 · March 9.28 · All 9.92 · So 12.00
+  // Consistent 13.12 · Give 14.64 · plain 15.99 · plans 17.28 · safely 18.78 · computer 20.29 · close 22.13 · Sending 23.07 · posting 23.98
+  // paying 24.53 · built 25.40 · won't 27.14 · checks 28.67 · flags 30.15 · Your 31.50/32.75/33.52 · Consistent 34.78 · Mac 36.56 · Be 37.15 · end 38.32
+  var D = 40.0;
+  var show = function (s, on) { document.querySelector(s).style.display = on ? '' : 'none'; };
+  Kit.scene('#s1', 0, 11.9).scene('#s3', 11.9, 14.55).scene('#s4', 14.55, 22.95).scene('#s5', 22.95, 26.6).scene('#s6', 26.6, 31.4).scene('#s7', 31.4, 34.65).scene('#s8', 34.65, D);
+
+  // S1
+  Kit.slam('#h1', 0.07, { from: 1.1 });
+  ['#g1', '#g2', '#g3', '#g4', '#g5', '#g6'].forEach(function (g, i) { Kit.pop(g, 0.36 + i * 0.17, { dy: 20 }); });
+  Kit.pop('#h1b', 2.19);
+  var spot = [['#g1', 4.38], ['#g2', 5.66], ['#g3', 6.46], ['#g4', 7.50]];
+  spot.forEach(function (s, i) {
+    var end = i < 3 ? spot[i + 1][1] : 9.9;
+    Kit.add(s[0], 'borderColor', [[s[1], '#2a241d'], [s[1] + 0.12, '#e0a55e', 'out'], [end, '#e0a55e'], [end + 0.2, '#2a241d', 'out']]);
+    Kit.add(s[0], 'scale', [[s[1], 1], [s[1] + 0.14, 1.06, 'out'], [end, 1.06], [end + 0.2, 1, 'out']]);
+  });
+  Kit.add('#g4 .pct', 'color', [[9.28, '#8a8378'], [9.45, '#ff6a55', 'out']]);
+  Kit.pop('#h1c', 9.92);
+  document.querySelectorAll('#grid .bar i').forEach(function (b, i) { Kit.add(b, 'scaleX', [[10.4, 1], [10.6 + i * 0.03, 0.82, 'out'], [10.9 + i * 0.03, 1, 'out'], [11.2, 0.92, 'out'], [11.5, 1, 'out']]); });
+  Kit.each(function (t) { show('#h1', t < 3.85); show('#h1b', t >= 2.19 && t < 9.92); show('#h1c', t >= 9.92); });
+
+  // S3
+  Kit.fade('#mark', 11.9, 12.15).add('#mark', 'scale', [[11.9, 0.9], [13.0, 1, 'out']]).add('#mark', 'rotate', [[11.9, -8], [13.4, 0, 'out']]);
+  Kit.pop('#word', 13.12);
+
+  // S4
+  Kit.pop('#win', 14.6);
+  Kit.type('#ask-t', 14.64, 16.4);
+  Kit.pop('#mission', 17.28);
+  Kit.pop('#k1', 17.4, { dy: 10 }).pop('#k2', 17.55, { dy: 10 }).pop('#k3', 17.7, { dy: 10 });
+  [['#b1', '#k1', 18.4], ['#b2', '#k2', 19.3], ['#b3', '#k3', 22.4]].forEach(function (b) {
+    Kit.add(b[0], 'background', [[b[2], '#15120f'], [b[2] + 0.15, '#e0a55e', 'out']]).add(b[0], 'borderColor', [[b[2], '#8a5a2e'], [b[2] + 0.15, '#e0a55e', 'out']]);
+    Kit.add(b[1], 'color', [[b[2], '#a7a196'], [b[2] + 0.15, '#f2ede4', 'out']]);
+  });
+  Kit.each(function (t) { ['#b1', '#b2', '#b3'].forEach(function (s, i) { document.querySelector(s).textContent = t >= [18.4, 19.3, 22.4][i] ? '✓' : ''; }); });
+  Kit.pop('#menubar', 19.57, { dy: -20 });
+  Kit.add('#win', 'scale', [[22.13, 1], [22.6, 0.06, 'swipe']]).add('#win', 'opacity', [[22.45, 1], [22.6, 0]]);
+  Kit.add('#tray', 'scale', [[22.6, 1], [22.75, 1.25, 'out'], [22.95, 1, 'out']]);
+  Kit.fade('#n4', 18.8, 19.2);
+
+  // S5
+  Kit.pop('#c1', 23.07, { dy: 16 }).pop('#c2', 23.98, { dy: 16 }).pop('#c3', 24.53, { dy: 16 });
+  Kit.pop('#appr', 23.3);
+  Kit.pop('#h5', 25.01);
+  Kit.add('#approve', 'scale', [[25.74, 1], [25.9, 1.1, 'out'], [26.1, 1, 'out']]);
+  Kit.fade('#n5', 25.4, 25.7);
+
+  // S6
+  Kit.pop('#h6', 26.74);
+  Kit.pop('#done', 27.3);
+  Kit.pop('#r-check', 28.67, { dy: 12 });
+  Kit.slam('#st-unv', 30.15, { from: 1.4 });
+  Kit.pop('#why', 30.5, { dy: 10 });
+  Kit.fade('#n6', 30.5, 30.8);
+  Kit.each(function (t) { show('#r-check', t >= 28.67); show('#why', t >= 30.5); show('#st-unv', t >= 30.15); });
+
+  // S7
+  Kit.slam('#y1', 31.5, { from: 1.12 }).slam('#y2', 32.75, { from: 1.12 }).slam('#y3', 33.52, { from: 1.2 });
+  Kit.fade('#n7', 32.0, 32.4);
+
+  // S8
+  Kit.fade('#mark2', 34.7, 35.1).pop('#word2', 34.78);
+  Kit.pop('#cta', 36.02);
+  Kit.slam('#be', 37.15, { from: 1.12 });
+  Kit.fade('#foot', 35.2, 35.6);
+
+  Kit.ready({ duration: D });
+</script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>B02 · The main contractor went bust</title>
+<!-- One page, two cuts: r16x9 here, subbie-paid-9x16.html is a copy with the body class swapped.
+     Beats keyed to outputs/vo-take/words.json (take 2, 40.88 s). Claims checked against the escrow
+     contracts and bitregalo.com (2026-10-13): release code held by the client pays the subcontractor
+     before the deadline; after it, the payment can only go back to the contractor. -->
+<link rel="stylesheet" href="../../../tools/motion/kit.css">
+<style>
+  body.br {
+    --bg: #0b0d10; --raised: #13161b; --line: #262a31; --ink: #f3eee3; --ink-70: rgba(243,238,227,.7); --ink-50: rgba(243,238,227,.5);
+    --gold: #d8b46a; --orange: #FA5914; --red: #ff5b4d; --green: #5cc58f;
+    --display: Inter, sans-serif; --mono: "JetBrains Mono", ui-monospace, monospace;
+    --k: 1.3;
+  }
+  body.br.r9x16 { --k: .95; }
+  body.br #root { background: radial-gradient(1200px 700px at 50% -10%, #1a1712 0%, var(--bg) 60%); color: var(--ink); font-family: var(--display); }
+  .stage { position: absolute; left: 96px; top: 54px; width: 1728px; height: 972px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: calc(30px * var(--k)); text-align: center; }
+  body.r9x16 .stage { left: 65px; top: 300px; width: 950px; height: 950px; }
+  .h { font-weight: 800; letter-spacing: -0.035em; line-height: 1.04; font-size: calc(96px * var(--k)); text-wrap: balance; }
+  .h.s { font-size: calc(70px * var(--k)); }
+  .gold { color: var(--gold); } .muted { color: var(--ink-70); } .red { color: var(--red); } .green { color: var(--green); }
+  .stamp { font-family: "Permanent Marker", cursive; color: var(--red); }
+  .row { display: flex; align-items: center; justify-content: center; gap: calc(40px * var(--k)); }
+  body.r9x16 .row.stack { flex-direction: column; gap: 22px; }
+  .card { background: var(--raised); border: 2px solid var(--line); border-radius: 18px; text-align: left; position: relative; }
+  .label { font: 600 calc(22px * var(--k))/1.2 var(--mono); color: var(--ink-50); letter-spacing: .04em; text-transform: uppercase; }
+  .note { font: 500 calc(21px * var(--k))/1.4 var(--mono); color: var(--ink-50); max-width: calc(1100px * var(--k)); text-wrap: balance; }
+  body.r9x16 .note { max-width: 950px; }
+  .tag { position: absolute; right: 0; bottom: 0; padding: 5px 12px; border: 2px dashed var(--ink-50); border-radius: 8px; color: var(--ink-50); font: 500 calc(16px * var(--k))/1.2 var(--mono); }
+
+  /* S1 site + invoice */
+  .job { width: calc(760px * var(--k)); padding: 24px 30px; }
+  body.r9x16 .job { width: 900px; }
+  .job .t { font: 800 calc(40px * var(--k))/1.2 var(--display); margin-top: 6px; }
+  .tick { display: flex; gap: 14px; align-items: center; font: 600 calc(30px * var(--k))/1.3 var(--display); margin-top: 12px; }
+  .tick b { color: var(--green); }
+  #liq { position: absolute; right: 24px; top: -28px; border: 6px solid var(--red); border-radius: 12px; padding: 2px 18px; font-size: calc(52px * var(--k)); transform: rotate(-6deg); background: #1a0f0e; }
+  #invoice { width: calc(760px * var(--k)); padding: 24px 30px; }
+  body.r9x16 #invoice { width: 900px; }
+  #invoice .amt { font: 800 calc(56px * var(--k))/1.1 var(--display); margin-top: 8px; }
+  #unpaid { position: absolute; right: 30px; top: 30px; border: 6px solid var(--red); border-radius: 12px; padding: 2px 18px; font-size: calc(56px * var(--k)); transform: rotate(-8deg); }
+
+  /* S2 / S3 escrow */
+  #brlogo { width: calc(700px * var(--k)); }
+  #escrow { width: calc(700px * var(--k)); padding: 26px 30px; }
+  body.r9x16 #escrow { width: 900px; }
+  #escrow .t { font: 700 calc(30px * var(--k))/1.25 var(--display); margin-top: 6px; }
+  #escrow .amt { font: 800 calc(64px * var(--k))/1.1 var(--display); margin-top: 8px; } #escrow .amt small { font-size: .5em; color: var(--ink-70); margin-left: 8px; }
+  .state { display: inline-block; margin-top: 12px; padding: 6px 14px; border-radius: 999px; font: 700 calc(24px * var(--k))/1 var(--mono); }
+  #held { background: #2a2416; color: var(--gold); } #released { background: #112a1f; color: var(--green); }
+  #check { font: 600 calc(28px * var(--k))/1.3 var(--mono); color: var(--green); }
+
+  .qr { width: calc(230px * var(--k)); height: calc(230px * var(--k)); background: #f3eee3; padding: calc(14px * var(--k)); border-radius: 14px; }
+  .who { font: 700 calc(30px * var(--k))/1.2 var(--display); margin-top: 12px; text-align: center; }
+  #timeline { width: calc(900px * var(--k)); height: 12px; border-radius: 6px; background: var(--line); position: relative; }
+  body.r9x16 #timeline { width: 900px; }
+  #tl-fill { position: absolute; left: 0; top: 0; bottom: 0; width: 100%; border-radius: 6px; background: var(--gold); transform-origin: left center; }
+  .tl-l { position: absolute; top: 24px; font: 600 calc(22px * var(--k))/1.2 var(--mono); color: var(--ink-70); white-space: nowrap; }
+  #scan { position: absolute; left: 6%; right: 6%; height: 6px; background: var(--green); box-shadow: 0 0 18px var(--green); top: 10%; }
+
+  /* S4 project record */
+  #proj { width: calc(980px * var(--k)); padding: 26px 32px; }
+  body.r9x16 #proj { width: 920px; }
+  .rec { display: grid; grid-template-columns: 1fr auto; gap: 18px; padding: 14px 0; border-top: 2px solid var(--line); font: 600 calc(30px * var(--k))/1.25 var(--display); }
+  .rec small { font: 500 calc(24px * var(--k))/1.25 var(--mono); color: var(--ink-50); align-self: center; }
+  #lock { color: var(--gold); font: 700 calc(28px * var(--k))/1 var(--mono); }
+
+  /* S5 end */
+  .chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; max-width: calc(1200px * var(--k)); }
+  .chip2 { padding: 12px 22px; border-radius: 999px; border: 2px solid var(--line); background: var(--raised); font: 600 calc(28px * var(--k))/1.1 var(--display); color: var(--ink-70); }
+  #wordmark { width: calc(900px * var(--k)); }
+  .pill2 { display: inline-flex; padding: 16px 34px; border-radius: 999px; background: var(--gold); color: #17130a; font: 800 calc(40px * var(--k))/1 var(--display); }
+  #foot { position: absolute; left: 0; right: 0; bottom: 0; text-align: center; font: 500 calc(20px * var(--k))/1.45 var(--mono); color: var(--ink-50); }
+</style>
+</head>
+<body class="br r16x9">
+<div id="root">
+
+  <!-- S1 · 0–7.65 · stage done, contractor bust, invoice unpaid -->
+  <div id="s1" class="stage">
+    <div id="job" class="card job">
+      <div class="label">Kauri Framing · subcontractor</div>
+      <div class="t">Roof framing, stage 2</div>
+      <div id="t1" class="tick"><b>✓</b> Stage done</div>
+      <div id="t2" class="tick"><b>✓</b> Framing's up</div>
+      <div id="liq" class="stamp">WENT BUST</div>
+    </div>
+    <div id="h1" class="h s">The main contractor just went bust.</div>
+    <div id="invoice" class="card">
+      <div class="label">Invoice #217 · to Harbour Build</div>
+      <div class="amt">$12,500.00</div>
+      <div id="unpaid" class="stamp">UNPAID</div>
+    </div>
+    <div id="h1b" class="h">You might never see a cent.</div>
+    <div class="tag">Example · made-up names</div>
+  </div>
+
+  <!-- S2 · 7.65–18.0 · same job: stage money locked in a public contract before work starts -->
+  <div id="s2" class="stage">
+    <div id="h2" class="h s">Same job on <img id="brlogo" src="bitregalo-logo.svg" alt="BitRegalo" style="display:inline-block;vertical-align:-0.18em;height:.9em;width:auto"></div>
+    <div id="h2b" class="h s muted">Before you lift a hammer</div>
+    <div id="escrow" class="card">
+      <div class="label">Escrow · held payment</div>
+      <div class="t">Roof framing, stage 2 · Kauri Framing</div>
+      <div class="amt">12,500.00<small>USDT</small></div>
+      <div id="held" class="state">HELD IN THE CONTRACT</div>
+      <div id="released" class="state">RELEASED → KAURI FRAMING</div>
+    </div>
+    <div id="check">✓ You can check it's there</div>
+    <div id="h2c" class="h s gold">Nobody can spend it on anything else.</div>
+    <div id="n2" class="note">Locked when the stage is awarded · held as a digital token in a smart contract · each stage is its own held payment</div>
+    <div class="tag">Example · made-up names</div>
+  </div>
+
+  <!-- S3 · 18.0–27.25 · the client holds the release code; scan before the deadline; paid, no contractor needed -->
+  <div id="s3" class="stage">
+    <div id="h3" class="h s">And the release code?</div>
+    <div class="row stack">
+      <div id="code"><div class="qr" style="position:relative"><svg id="qrsvg" viewBox="0 0 25 25" width="100%" height="100%" shape-rendering="crispEdges"></svg><div id="scan"></div></div><div class="who">The client holds it</div></div>
+      <div id="paid" class="card" style="padding:26px 30px; min-width:calc(560px * var(--k))">
+        <div class="label">Escrow · stage 2</div>
+        <div style="font:800 calc(60px * var(--k))/1.1 var(--display); margin-top:8px">12,500.00 <span style="font-size:.5em;color:var(--ink-70)">USDT</span></div>
+        <div id="paid-state" class="state" style="background:#112a1f;color:var(--green)">PAID TO KAURI FRAMING</div>
+      </div>
+    </div>
+    <div id="tlwrap" style="position:relative; padding-bottom:calc(46px * var(--k))">
+      <div id="timeline"><div id="tl-fill"></div>
+        <span class="tl-l" style="left:0">award</span>
+        <span id="tl-sign" class="tl-l" style="left:58%; transform:translateX(-50%); color:var(--green)">✓ signed off</span>
+        <span class="tl-l" style="right:0">deadline</span>
+      </div>
+    </div>
+    <div id="h3b" class="h green">No contractor needed.</div>
+    <div id="n3" class="note">Code made at award and given to the client · it can only pay the subcontractor · not released by the deadline? It can only go back to the contractor</div>
+  </div>
+
+  <!-- S4 · 27.25–36.05 · everything filed under the project, written once -->
+  <div id="s4" class="stage">
+    <div id="h4" class="h s">It's all filed under the project.</div>
+    <div id="proj" class="card">
+      <div class="label" style="margin-bottom:8px">Project · Harbour Street build</div>
+      <div id="rc1" class="rec"><span>Request for proposal · roof framing</span><small>posted</small></div>
+      <div id="rc2" class="rec"><span>Bid · Kauri Framing · 12,500</span><small>6 weeks</small></div>
+      <div id="rc3" class="rec"><span>Bid · Totara Roofing · 13,900</span><small>8 weeks</small></div>
+      <div id="rc4" class="rec"><span>Awarded · Kauri Framing</span><small>who won</small></div>
+      <div id="rc5" class="rec"><span>Payment · stage 2</span><small class="green">released</small></div>
+    </div>
+    <div class="row stack">
+      <div id="h4b" class="h s">Written once.</div>
+      <div id="h4c" class="h s gold">Nobody can edit it.</div>
+    </div>
+    <div class="tag">Example · made-up names</div>
+  </div>
+
+  <!-- S5 · 36.05–end · one use case of many; practice network; bitregalo.com -->
+  <div id="s5" class="stage">
+    <div id="h5" class="h s">One use case of many.</div>
+    <div id="chips" class="chips">
+      <span class="chip2">Marketplace orders</span><span class="chip2">Tenders</span><span class="chip2">Aid paid on delivery</span><span class="chip2">Gifts abroad</span><span class="chip2">Memberships &amp; credits</span>
+    </div>
+    <img id="wordmark" src="bitregalo-logo.svg" alt="BitRegalo">
+    <div id="cta" class="pill2">bitregalo.com</div>
+    <div id="h5b" class="h s muted">Try it on the practice network.</div>
+    <div id="foot">Public test network (BNB Smart Chain Testnet) · practice tokens have no value · not independently audited<br>Illustrations, not customers · not legal advice: how insolvency law treats held payments depends on your country</div>
+  </div>
+</div>
+<script src="../../../tools/motion/kit.js"></script>
+<script>
+  // Stage .27 · up 1.84 · And 2.24 · bust 4.16 · invoice 5.27 · You 6.11 · Same 7.73 · Before 9.85 · locks 12.21 · contract 13.90
+  // check 15.08 · Nobody 15.93 · release 18.60 · client 19.97 · Stage 20.92 · deadline 22.38 · scan 23.66 · paid 24.85 · No 25.79
+  // filed 27.89 · request 29.49 · bid 31.28 · won 32.08 · payment 32.93 · Written 33.52 · Nobody 34.66 · One 36.12 · Try 37.90 · Bit 39.74 · end 40.88
+  var D = 42.6;
+  (function qr() { // a QR-style pattern (illustrative, not a working code): deterministic, no randomness
+    var svg = document.getElementById('qrsvg'), out = '', seed = 7;
+    var rnd = function () { seed = (seed * 1103515245 + 12345) % 2147483648; return seed / 2147483648; };
+    var finder = function (x, y) { return x >= 0 && x < 7 && y >= 0 && y < 7; };
+    for (var y = 0; y < 25; y++) for (var x = 0; x < 25; x++) {
+      var inF = finder(x, y) || finder(x - 18, y) || finder(x, y - 18);
+      var on;
+      if (inF) { var fx = x >= 18 ? x - 18 : x, fy = y >= 18 ? y - 18 : y; on = fx === 0 || fx === 6 || fy === 0 || fy === 6 || (fx >= 2 && fx <= 4 && fy >= 2 && fy <= 4); }
+      else if ((x === 7 || y === 7) && (x < 8 && y < 8) || (x === 17 && y < 8) || (y === 17 && x < 8) || (x === 7 && y > 16)) on = false;
+      else on = rnd() > 0.52;
+      if (on) out += '<rect x="' + x + '" y="' + y + '" width="1" height="1" fill="#0b0d10"/>';
+    }
+    svg.innerHTML = out;
+  })();
+  var show = function (s, on) { document.querySelector(s).style.display = on ? '' : 'none'; };
+  Kit.scene('#s1', 0, 7.65).scene('#s2', 7.65, 18.0).scene('#s3', 18.0, 27.25).scene('#s4', 27.25, 36.05).scene('#s5', 36.05, D);
+
+  // S1
+  Kit.pop('#job', 0.2);
+  Kit.pop('#t1', 0.7, { dy: 12 }).pop('#t2', 1.84, { dy: 12 });
+  Kit.pop('#h1', 2.24);
+  Kit.slam('#liq', 4.16, { from: 1.7, dur: 0.12 });
+  Kit.pop('#invoice', 5.0);
+  Kit.slam('#unpaid', 6.6, { from: 1.7, dur: 0.12 });
+  Kit.slam('#h1b', 6.11, { from: 1.1 });
+  Kit.each(function (t) { var b = t >= 4.75; show('#job', !b); show('#h1', !b); show('#invoice', b); show('#h1b', b); });
+
+  // S2
+  Kit.pop('#h2', 7.73);
+  Kit.pop('#h2b', 9.85);
+  Kit.pop('#escrow', 12.21);
+  Kit.add('#held', 'scale', [[13.9, 1], [14.05, 1.12, 'out'], [14.3, 1, 'out']]);
+  Kit.pop('#check', 14.78, { dy: 12 });
+  Kit.pop('#h2c', 15.93);
+  Kit.fade('#n2', 12.6, 13.0);
+  Kit.each(function (t) {
+    show('#h2b', t < 12.1); show('#released', false);
+    show('#check', t >= 14.78); show('#h2c', t >= 15.93); show('#n2', t >= 12.6 && t < 15.93);
+  });
+
+  // S3
+  Kit.pop('#h3', 18.06);
+  Kit.pop('#code', 18.6);
+  Kit.pop('#tlwrap', 20.92);
+  Kit.add('#tl-fill', 'scaleX', [[20.92, 0], [22.3, 0.58, 'out']]);
+  Kit.pop('#tl-sign', 21.55, { dy: 10 });
+  Kit.add('#scan', 'y', [[23.66, 0], [24.3, calcScan(), 'inOut'], [24.6, 0, 'inOut']]);
+  Kit.pop('#paid', 24.58);
+  Kit.add('#paid-state', 'scale', [[24.85, 0.6], [25.05, 1, 'outBack']]);
+  Kit.slam('#h3b', 25.79, { from: 1.12 });
+  Kit.fade('#n3', 22.4, 22.8);
+  function calcScan() { return document.body.classList.contains('r9x16') ? 150 : 200; }
+  Kit.each(function (t) { show('#paid', t >= 24.58); show('#h3b', t >= 25.79); show('#n3', t >= 22.4); show('#tlwrap', t >= 20.92); });
+
+  // S4
+  Kit.pop('#h4', 27.31).pop('#proj', 27.7);
+  Kit.pop('#rc1', 29.38, { dy: 14 }).pop('#rc2', 30.73, { dy: 14 }).pop('#rc3', 31.28, { dy: 14 }).pop('#rc4', 31.82, { dy: 14 }).pop('#rc5', 32.48, { dy: 14 });
+  Kit.pop('#h4b', 33.52).pop('#h4c', 34.66);
+  Kit.add('#proj', 'borderColor', [[33.52, '#262a31'], [33.9, '#d8b46a', 'out']]);
+
+  // S5
+  Kit.pop('#h5', 36.12);
+  ['Marketplace', 'Tenders', 'Aid', 'Gifts', 'Memberships'].forEach(function (_, i) { Kit.pop(document.querySelectorAll('#chips .chip2')[i], 36.5 + i * 0.22, { dy: 16 }); });
+  Kit.pop('#h5b', 37.9);
+  Kit.fade('#wordmark', 39.6, 39.95).add('#wordmark', 'scale', [[39.6, 0.94], [40.2, 1, 'out']]);
+  Kit.pop('#cta', 40.2);
+  Kit.fade('#foot', 36.12, 36.5);
+  Kit.each(function (t) { var e = t >= 39.6; show('#h5', !e); show('#chips', !e); show('#wordmark', e); show('#cta', e); show('#h5b', t >= 37.9); });
+
+  Kit.ready({ duration: D });
+</script>
+</body>
+</html>

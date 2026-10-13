@@ -15,3 +15,9 @@ Spoken (take 1, 38.96 s): see outputs/vo-take/take-text.txt. On screen throughou
 
 ## Discussion history
 - 2026-10-13 Made urgently for the owner's submission; 16:9 + 9:16 delivered.
+
+## YouTube (2026-10-13)
+Title: Somebody Just Edited Production. Again. | BitRegalo
+Description: hook → records anyone with access can change; refund decided by whoever gains from no → BitRegalo written once, no edit function → three outcomes (released / handed back / returned) → "Records nobody can edit. Commitments nobody can break." → https://www.bitregalo.com → test network + not audited + example names line.
+Hashtags: #BitRegalo #Escrow #SmartContracts #Blockchain #Web3 #Fintech #Marketplace #Payments #Startup #DevLife (+ #Shorts on the 9:16)
+Tags: BitRegalo, escrow, smart contract escrow, immutable records, tamper-proof records, payment commitments, marketplace payments, held payments, refunds, blockchain infrastructure, BNB Smart Chain, testnet, web3 for business, fintech infrastructure, edited production
