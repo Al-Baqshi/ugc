@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en-NZ"><head><meta charset="utf-8"><title>QSME · Service providers flyer</title>
+<link rel="stylesheet" href="print.css">
+<style>@page{size:A5;margin:0}
+.a5 .band{padding:7mm 10mm 6mm}
+.a5 .hero{grid-template-columns:1fr}
+.a5 .hero > div:first-child{padding:5mm 0 0}
+.a5 h1{font-size:19pt}
+.a5 .lead{font-size:9.2pt}
+.a5 .photo-band{height:42mm;margin:0;border-radius:0}
+.a5 .body{padding:5mm 10mm;gap:3.5mm}
+.a5 ul.ticks li{font-size:8.6pt;margin-bottom:1.4mm}
+.a5 .cta{padding:4.5mm 10mm;grid-template-columns:1fr auto;gap:4mm}
+.a5 .cta .big{font-size:11pt}
+.a5 .cta .btn{font-size:10pt;padding:3mm 4.5mm}
+</style></head>
+<body class="a5">
+<section class="page">
+  <div class="band">
+    <div class="row"><img class="logo" src="../../../ventures/assets/qsme-logo.svg" alt="QSME" style="height:7.5mm"><div class="tag">Tradies · Consultants · Suppliers · Agents</div></div>
+    <div class="hero"><div>
+      <div class="kicker">The provider side of QSME</div>
+      <h1 style="margin:3mm 0 2.5mm">Get found by live projects. Price the same lines as everyone else.</h1>
+      <p class="lead" style="margin:0">Builders, sparkies, plumbers, architects, engineers, quantity surveyors, suppliers and real-estate agents all have a seat on the job.</p>
+    </div></div>
+  </div>
+  <div class="photo-band"><img src="../../../assets/qsme/broll/tradies-still.v1.jpg" alt="Tradies and consultants outside a new build"><div class="label">Illustrative</div></div>
+  <div class="body">
+    <ul class="ticks" style="color:var(--ink-2)">
+      <li><b>Tradies:</b> a profile in Find a Tradie, one Opportunities feed for public tenders and private invitations, bids with your own dates and terms, milestones paid on proof of work.</li>
+      <li><b>Consultants:</b> be invited under your profession, run clients' projects from one record, QS reports straight from the schedule, everything under your logo.</li>
+      <li><b>Suppliers:</b> publish a price list by spreadsheet. Your products become selectable inside estimators' schedules. Buyers get in touch through your shop page.</li>
+      <li><b>Real-estate agents:</b> list sections and development sites tied to their address, with the zoning and site data a click away for buyers.</li>
+      <li><b>Your track record:</b> ratings only from finished jobs between members, and they go both ways.</li>
+    </ul>
+  </div>
+  <div class="cta">
+    <div><div class="big">Sign up and choose "I provide services".</div><div class="contact">hello@qsme.co.nz · +64 9 920 8896 · your NZBN fills in the details</div></div>
+    <div class="btn">Sign up at qsme.co.nz</div>
+  </div>
+  <div class="foot">QSME is a New Zealand construction platform. Opportunities and bids describe how the platform works; they are not a promise of work or income. Directories are growing from a small base. Photo illustrative.</div>
+</section>
+<script>
+const p=new URLSearchParams(location.search).get("page");
+if(p){document.body.style.padding="0";document.body.style.background="#fff";document.querySelectorAll(".page").forEach(el=>{el.style.margin="0";el.style.boxShadow="none"})}
+document.querySelectorAll(".page").forEach((pg,i)=>{let h=0;for(const c of pg.children)h+=Math.max(c.getBoundingClientRect().height,c.scrollHeight);if(h>pg.getBoundingClientRect().height+4){pg.dataset.overflow=Math.round(h-pg.getBoundingClientRect().height)+"px";const f=document.createElement("div");f.className="overflow-flag";f.textContent="OVERFLOW page "+(i+1)+" by "+pg.dataset.overflow;pg.prepend(f)}});
+document.documentElement.dataset.qa=[...document.querySelectorAll(".page")].map(pg=>pg.dataset.overflow||"ok").join(",");
+</script>
+</body></html>

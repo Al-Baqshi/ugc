@@ -6,3 +6,4 @@
 - [GitHub backup](reference-github-backup.md) — private repo Al-Baqshi/ugc + monthly video Releases via tools/backup.sh
 - [Voice: energy, one take, plain](feedback-voice-energy-plain.md) — no deadpan AI reads, no per-line cuts, no alphabet gimmicks
 - [Founder-led GTM](project-founder-led-gtm.md) — owner is the founder, inbound only, no cold outreach; studio should also edit the owner's own recordings
+- [Review designs before finishing](feedback-review-design-before-finishing.md) — show previews, name the editable master (HTML/Figma), PNG is preview only

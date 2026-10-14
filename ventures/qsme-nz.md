@@ -77,3 +77,11 @@ Full verified feature list, on-screen wording and red list: `research/2026-10-02
 
 ## Goal / CTA
 ❓ organic vs paid mix. Owners: "Create a project, free." Tradies: "Join as a tradie."
+
+## Managed build service: granny flats & portable homes (owner, 2026-10-14)
+Owner's words: "we provide this as a service for consumers straight away… we manage everything for you; we act like you, like your consultant, not like the main contractor; we try to get you the best materials, we manage the site, we minimise the cost; we beat any price you could get." Granny flats and portable homes are one offer.
+- Model: QSME's team acts as the owner's QS/project manager (developer-led route from research/2026-10-14-procurement-routes-and-qs-roles.md): trades and suppliers tendered on one SOQ and contracted to the owner, site managed, record kept on the platform. Licensed building practitioners do the restricted work.
+- Content rule: this is a **service** sold on brochures; the software guardrail "don't claim QSME manages your build as a feature" (truth sheet §10.5) still applies to product videos.
+- ❓ service name ("QSME managed build" used on print) · ❓ lead route (print says: sign up, search your address, email hello@qsme.co.nz) · ❓ regions (Auckland first?) · ❓ price-beat policy wording (print uses "we'll beat it, or tell you exactly why we can't") · ❓ fee model (never in content).
+- Contact on print: hello@qsme.co.nz · +64 9 920 8896 ❓ confirm.
+- Real-estate agent mode is promoted on the providers brochure on the owner's instruction (no licence/verification claims).

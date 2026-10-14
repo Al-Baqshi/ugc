@@ -67,3 +67,4 @@ Score = idea test (Recognizable / Specific / Ownable / Shareable, 1–5 each, /2
 | 2026-10-13 | bitregalo | [The main contractor went bust](bitregalo/subbie-paid-when-main-goes-bust.md) | 18 | in production (B02) |
 
 Status: `raw` → `scored` → `agreed` → `in production` → `posted` → `killed`
+| 2026-10-14 | qsme-nz | [Print: brochures & flyers (granny flats managed build, developers, providers)](qsme-nz/print-brochures-2026-10.md) | n/a | drafted (print, awaiting review) |
