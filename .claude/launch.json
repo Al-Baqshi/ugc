@@ -36,6 +36,15 @@
         "cd /Users/brave/Dev/Consistent-world/Consistent && npx next start -p 3100"
       ],
       "port": 3100
+    },
+    {
+      "name": "qsme-nz-preview",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": [
+        "-c",
+        "cd /Users/brave/Dev/qsmenz-pro/wt-print-materials && node_modules/.bin/vite preview --port 4174 --strictPort"
+      ],
+      "port": 4174
     }
   ]
 }

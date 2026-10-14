@@ -30,3 +30,4 @@ See `projects/2026-10-14-qsme-print-brochures/brief.md`: no "free"/pricing lines
 
 ## Discussion history
 - 2026-10-14: owner asked for the three pieces (pasted brief). Drafted, rendered, overflow fixed; owner asked to see the design before finishing (worried PNGs aren't editable: they're previews, the HTML/PDF are the masters). Open: service name, lead route, phone number, price-beat wording, regions (brief.md).
+- 2026-10-14 (later): owner asked for the pieces on qsme.co.nz. Page /print-materials built under Resources with per-file downloads and the logo/icon pack: PR Al-Baqshi/baqshi-full-custom-go#247. Live URL once merged: https://www.qsme.co.nz/print-materials
