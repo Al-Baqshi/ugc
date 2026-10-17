@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>G15 · Takeoffs that land in the SOQ</title>
+<!-- One page, two cuts: r16x9 here, takeoffs-9x16.html is a copy with the body class swapped.
+     Beats keyed to outputs/vo-take/words.json (take 1, 65.28 s). Claims from the 2026-10-17 workflow
+     (origin/main only): Takeoffs Beta; Pick/Count/Read the drawing (rules, a person ticks — no AI claim);
+     Add to the SOQ keeps the line linked + ruler back to the drawing; Send to tender by trade = draft tenders;
+     main contractor on their OWN project (bidder workspaces are planned, not shown); Rev C carry-over + What changed.
+     The plan, the app and every figure are simplified illustrations / examples. -->
+<link rel="stylesheet" href="../../../tools/motion/kit.css">
+<style>
+  body.build { --k: 1.15; --ps: 1.55; }
+  body.build.r9x16 { --k: 1.0; --ps: 1.3; }
+  body.build #root { background: radial-gradient(1100px 700px at 50% -10%, #142519 0%, var(--bg) 62%); }
+  .stage { position: absolute; left: 96px; top: 54px; width: 1728px; height: 972px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: calc(20px * var(--k)); text-align: center; }
+  body.r9x16 .stage { left: 65px; top: 300px; width: 950px; height: 950px; }
+  .h { font-family: var(--display); font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; font-size: calc(88px * var(--k)); text-wrap: balance; }
+  .h.s { font-size: calc(58px * var(--k)); }
+  .acc { color: var(--accent); } .muted { color: var(--ink-70); } .bad { color: var(--red); }
+  .label { font: 600 calc(20px * var(--k))/1.2 var(--mono); color: var(--ink-50); letter-spacing: .05em; text-transform: uppercase; }
+  .tag { position: absolute; right: 0; bottom: 0; padding: 5px 12px; border: 2px dashed var(--ink-50); border-radius: 8px; color: var(--ink-50); font: 500 calc(15px * var(--k))/1.2 var(--mono); }
+  .card { background: var(--bg-raised); border: 2px solid var(--line); border-radius: 16px; text-align: left; position: relative; }
+
+  /* hook: three copies of one quantity */
+  .three { display: flex; gap: calc(18px * var(--k)); flex-wrap: wrap; justify-content: center; }
+  .copy { width: calc(360px * var(--k)); padding: calc(18px * var(--k)); }
+  body.r9x16 .copy { width: 290px; }
+  .copy .v { font: 700 calc(52px * var(--k))/1.1 var(--display); margin-top: 6px; font-variant-numeric: tabular-nums; }
+  .copy.wrong { border-color: var(--red); } .copy.wrong .v { color: var(--red); }
+  .copy.ok { border-color: var(--accent); } .copy.ok .v { color: var(--accent); }
+
+  /* the workspace */
+  #cap { min-height: calc(80px * var(--k)); display: flex; align-items: center; justify-content: center; }
+  .cl { font-family: var(--display); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; font-size: calc(44px * var(--k)); max-width: calc(1500px * var(--k)); text-wrap: balance; }
+  body.r9x16 .cl { font-size: 48px; max-width: 950px; }
+  .ws { display: grid; grid-template-columns: auto calc(600px * var(--k)); gap: calc(20px * var(--k)); align-items: start; }
+  body.r9x16 .ws { grid-template-columns: 1fr; gap: 14px; justify-items: center; }
+  .sheet { position: relative; width: calc(600px * var(--ps)); height: calc(420px * var(--ps)); background: #f3f6f2; border-radius: 12px; overflow: hidden; }
+  .sheet svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .sbar { position: absolute; left: 10px; top: 10px; display: flex; gap: 8px; }
+  .pill { padding: 4px 10px; border-radius: 999px; font: 700 calc(15px * var(--k))/1.2 var(--mono); background: #0c1310; color: #eef4ef; }
+  .pill.g { background: #1f6b17; color: #eaffe5; }
+  .pill.a { background: #8a5a12; color: #fff3df; }
+  .side { width: calc(600px * var(--k)); padding: calc(16px * var(--k)); display: flex; flex-direction: column; gap: calc(10px * var(--k)); }
+  body.r9x16 .side { width: 950px; }
+  .soq { display: grid; border: 2px solid var(--line); border-radius: 12px; overflow: hidden; font: 500 calc(25px * var(--k))/1.25 var(--display); }
+  .row { display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: center; padding: 8px 12px; border-top: 2px solid var(--line); }
+  .row:first-child { border-top: 0; }
+  .row .q { font-variant-numeric: tabular-nums; font-weight: 700; }
+  .link { padding: 2px 8px; border-radius: 6px; background: var(--soft); color: var(--accent); font: 700 calc(17px * var(--k))/1.2 var(--mono); }
+  .ruler { color: var(--accent); font: 700 calc(20px * var(--k))/1 var(--mono); }
+  .chip2 { display: inline-flex; align-self: flex-start; padding: 6px 14px; border-radius: 999px; border: 2px solid var(--accent); color: var(--accent); font: 700 calc(22px * var(--k))/1.1 var(--display); }
+  .pack { padding: 10px 14px; border-radius: 12px; border: 2px solid var(--line); font: 600 calc(25px * var(--k))/1.3 var(--display); color: var(--ink-70); }
+  .pack b { color: var(--ink); }
+  .bids { font: 700 calc(30px * var(--k))/1.1 var(--display); color: var(--accent); }
+  .cbox { padding: 10px 14px; border-radius: 12px; border: 2px solid var(--accent); font: 600 calc(25px * var(--k))/1.35 var(--display); color: var(--ink-70); }
+  .cbox b { color: var(--ink); }
+  .note { font: 500 calc(19px * var(--k))/1.4 var(--mono); color: var(--ink-50); }
+  #sticky { position: absolute; right: 16px; top: 54px; padding: 8px 12px; background: #ffe58a; color: #3a2e00; font: 400 calc(24px * var(--k))/1.1 var(--hand); transform: rotate(4deg); box-shadow: 0 6px 14px rgba(0,0,0,.25); }
+
+  /* end */
+  #logo { width: calc(520px * var(--k)); }
+  .cta { display: inline-flex; padding: 16px 32px; border-radius: 999px; background: var(--btn); color: var(--on-accent); font: 800 calc(38px * var(--k))/1 var(--display); }
+  .beta { padding: 6px 16px; border-radius: 999px; background: var(--soft); color: var(--accent); font: 700 calc(24px * var(--k))/1 var(--mono); }
+  #foot { position: absolute; left: 0; right: 0; bottom: 0; text-align: center; font: 500 calc(17px * var(--k))/1.45 var(--mono); color: var(--ink-50); }
+</style>
+</head>
+<body class="build r9x16">
+<div id="root">
+
+  <!-- S1 · 0–4.3 · measured once, typed three times -->
+  <div id="s1" class="stage">
+    <div id="h1" class="h s">Measured once. <span class="muted">Typed three times.</span></div>
+    <div class="three">
+      <div id="c1" class="copy card"><div class="label">Takeoff tool</div><div class="v">184.2 m²</div></div>
+      <div id="c2" class="copy card"><div class="label">Spreadsheet</div><div class="v">184.2 m²</div></div>
+      <div id="c3" class="copy card"><div class="label">Tender</div><div class="v">148.2 m²</div></div>
+    </div>
+    <div id="h1b" class="h s">Guess which one's <span class="bad">wrong.</span></div>
+    <div class="tag">Example figures</div>
+  </div>
+
+  <!-- S2–S7 · 4.3–55.6 · the workspace -->
+  <div id="sw" class="stage">
+    <div id="cap"><div id="cl" class="cl"></div></div>
+    <div class="ws">
+      <div id="sheet" class="sheet">
+        <svg viewBox="0 0 600 420">
+          <g fill="none" stroke="#24302a" stroke-width="7" stroke-linecap="square">
+            <rect x="20" y="20" width="560" height="380"/>
+            <path d="M240 20 V400 M20 220 H240 M240 280 H580 M400 280 V400"/>
+          </g>
+          <!-- windows on walls + tags -->
+          <g id="wins" stroke="#24302a" stroke-width="2" fill="#f3f6f2">
+            <rect x="100" y="15" width="60" height="10"/><rect x="15" y="290" width="10" height="60"/><rect x="390" y="15" width="60" height="10"/><rect x="575" y="120" width="10" height="60"/>
+          </g>
+          <g font-family="JetBrains Mono, monospace" font-size="13" font-weight="700" fill="#24302a">
+            <text x="122" y="44">W1</text><text x="34" y="324">W2</text><text x="412" y="44">W3</text><text x="548" y="154">W4</text>
+          </g>
+          <g font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#5b6a61" text-anchor="middle" letter-spacing="1">
+            <text x="130" y="125">BEDROOM 1</text><text x="130" y="320">BEDROOM 2</text><text x="410" y="155">LIVING / KITCHEN</text><text x="320" y="345">BATH</text><text x="490" y="345">LAUNDRY</text>
+          </g>
+          <!-- room fills (shown by the timeline) -->
+          <rect id="f-living" x="243" y="23" width="334" height="254" fill="#4BCD32" opacity="0"/>
+          <rect id="f-bed1" x="23" y="23" width="214" height="194" fill="#4BCD32" opacity="0"/>
+          <rect id="f-bed2" x="23" y="223" width="214" height="174" fill="#4BCD32" opacity="0"/>
+          <rect id="f-change" x="243" y="283" width="154" height="114" fill="#e0a43a" opacity="0"/>
+          <!-- wall run -->
+          <path id="run" d="M240 20 H580" stroke="#2f9e1f" stroke-width="12" fill="none" stroke-linecap="round"/>
+          <!-- downlights -->
+          <g id="lights" stroke="#24302a" stroke-width="2" fill="none">
+            <g id="dl0"><circle cx="330" cy="90" r="9"/><path d="M323 83 L337 97 M337 83 L323 97"/></g>
+            <g><circle cx="480" cy="90" r="9"/><path d="M473 83 L487 97 M487 83 L473 97"/></g>
+            <g><circle cx="330" cy="210" r="9"/><path d="M323 203 L337 217 M337 203 L323 217"/></g>
+            <g><circle cx="480" cy="210" r="9"/><path d="M473 203 L487 217 M487 203 L473 217"/></g>
+            <g><circle cx="130" cy="80" r="9"/><path d="M123 73 L137 87 M137 73 L123 87"/></g>
+            <g><circle cx="130" cy="270" r="9"/><path d="M123 263 L137 277 M137 263 L123 277"/></g>
+            <g><circle cx="320" cy="310" r="9"/><path d="M313 303 L327 317 M327 303 L313 317"/></g>
+            <g><circle cx="490" cy="310" r="9"/><path d="M483 303 L497 317 M497 303 L483 317"/></g>
+          </g>
+          <rect id="box" x="314" y="74" width="32" height="32" fill="none" stroke="#2f9e1f" stroke-width="3" stroke-dasharray="5 4"/>
+          <g id="rings" fill="none" stroke="#2f9e1f" stroke-width="4">
+            <circle cx="330" cy="90" r="15"/><circle cx="480" cy="90" r="15"/><circle cx="330" cy="210" r="15"/><circle cx="480" cy="210" r="15"/>
+            <circle cx="130" cy="80" r="15"/><circle cx="130" cy="270" r="15"/><circle cx="320" cy="310" r="15"/><circle cx="490" cy="310" r="15"/>
+          </g>
+          <g id="winmark" fill="none" stroke="#2f9e1f" stroke-width="5"><rect x="96" y="11" width="68" height="18"/><rect x="11" y="286" width="18" height="68"/><rect x="386" y="11" width="68" height="18"/><rect x="571" y="116" width="18" height="68"/></g>
+          <g font-family="JetBrains Mono, monospace" font-weight="700" font-size="17">
+            <text id="t-run" x="410" y="58" fill="#1f6b17" text-anchor="middle">8.40 m</text>
+            <text id="t-area" x="410" y="185" fill="#1f6b17" text-anchor="middle">42.6 m²</text>
+            <text id="t-count" x="410" y="245" fill="#1f6b17" text-anchor="middle">Counted 8 like this</text>
+          </g>
+        </svg>
+        <div class="sbar"><span class="pill">A-101 · Ground floor</span><span class="pill g">1:100 ✓ checked</span><span id="revc" class="pill a">Rev C</span></div>
+        <div id="sticky">there's always a Rev C</div>
+      </div>
+
+      <div class="side card">
+        <!-- intro: files + Beta -->
+        <div id="pan-in">
+          <div class="label">Takeoffs · Beta</div>
+          <div style="display:flex; gap:10px; margin-top:10px; flex-wrap:wrap"><span id="fx1" class="chip2">PDF</span><span id="fx2" class="chip2">DWG</span><span id="fx3" class="chip2">IFC</span></div>
+          <div id="tools" class="note" style="margin-top:14px">Pick · Count · Length · Area · Volume · Deduct</div>
+        </div>
+        <!-- read the drawing -->
+        <div id="pan-read">
+          <div class="label">Read the drawing · you tick</div>
+          <div class="soq" style="margin-top:8px">
+            <div class="row"><span>Rooms · Bedroom</span><span class="q">×2</span><span id="tk1" class="link">✓</span></div>
+            <div class="row"><span>Windows · by tag W1–W4</span><span class="q">×4</span><span id="tk2" class="link">✓</span></div>
+          </div>
+        </div>
+        <!-- the SOQ -->
+        <div id="pan-soq">
+          <div class="label">SOQ · schedule of quantities</div>
+          <div class="soq" style="margin-top:8px">
+            <div class="row"><span>Floor finish · Bedrooms</span><span id="q-bed" class="q">30.2 m²</span><span class="link">follows the takeoff</span></div>
+            <div class="row"><span>Downlights</span><span class="q">8 no</span><span class="ruler" id="rul">⌖</span></div>
+            <div class="row"><span>Windows</span><span class="q">4 no</span><span class="ruler">⌖</span></div>
+          </div>
+        </div>
+        <!-- client: tender packs -->
+        <div id="pan-client">
+          <span class="chip2">Client</span>
+          <div id="pk1" class="pack"><b>Plumbing</b> · its pages · its SOQ jobs · draft tender</div>
+          <div id="pk2" class="pack"><b>Electrical</b> · its pages · its SOQ jobs · draft tender</div>
+          <div id="bids" class="bids">Published · bids coming in</div>
+        </div>
+        <!-- main contractor: price + contract -->
+        <div id="pan-mc">
+          <span class="chip2">Main contractor · own job</span>
+          <div class="soq">
+            <div class="row"><span>Framing</span><span class="q">310 m</span><span id="r1" class="q">$ —</span></div>
+            <div class="row"><span>Roofing</span><span class="q">180 m²</span><span id="r2" class="q">$ —</span></div>
+          </div>
+          <div class="note">Price the job · from your rate book</div>
+          <div id="cbox" class="cbox"><b>New contract</b> · starts from the SOQ jobs it covers</div>
+        </div>
+        <!-- Rev C -->
+        <div id="pan-rev">
+          <div class="label">Rev C</div>
+          <div class="soq" style="margin-top:8px">
+            <div class="row"><span>Measurements</span><span class="q">carried over</span><span class="link">✓</span></div>
+            <div class="row"><span>What changed</span><span class="q">Bath</span><span id="flag" class="link" style="background:#3a2a10;color:#f0b84a">flagged</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tag">Simplified illustration · example figures</div>
+  </div>
+
+  <!-- S8 · 55.6–59.1 · typed zero times -->
+  <div id="s8" class="stage">
+    <div class="three">
+      <div class="copy card ok"><div class="label">Takeoff</div><div class="v">184.2 m²</div></div>
+      <div class="copy card ok"><div class="label">SOQ</div><div class="v">184.2 m²</div></div>
+      <div class="copy card ok"><div class="label">Tender</div><div class="v">184.2 m²</div></div>
+    </div>
+    <div id="h8" class="h s">Measured once. <span class="acc">Typed zero times.</span></div>
+  </div>
+
+  <!-- S9 · 59.1–end -->
+  <div id="se" class="stage">
+    <img id="logo" src="../../../tools/motion/qsme-logo.svg" alt="QSME">
+    <span id="beta" class="beta">Takeoffs · Beta</span>
+    <div id="cta" class="cta">Book a 30-minute demo</div>
+    <div id="url" class="h s">qsme.build</div>
+    <div id="foot">Takeoffs are in Beta and come with plans that include them · simplified illustration · example figures</div>
+  </div>
+</div>
+<script src="../../../tools/motion/kit.js"></script>
+<script>
+  var D = 67.2;
+  var show = function (s, on) { document.querySelector(s).style.display = on ? '' : 'none'; };
+  Kit.scene('#s1', 0, 4.3).scene('#sw', 4.3, 55.7).scene('#s8', 55.7, 59.1).scene('#se', 59.1, D);
+
+  // S1
+  Kit.pop('#h1', 0.1);
+  Kit.pop('#c1', 0.4, { dy: 14 }).pop('#c2', 1.3, { dy: 14 }).pop('#c3', 2.0, { dy: 14 });
+  Kit.pop('#h1b', 2.7);
+  Kit.each(function (t) { document.getElementById('c3').classList.toggle('wrong', t >= 3.5); });
+
+  // captions
+  var CAPS = [[4.4, 'Not here.'], [5.8, 'In QSME, takeoffs start on the drawing.'], [8.9, 'Drop in the PDF, DWG or IFC.'], [12.4, 'Point at a line: its run.'],
+    [15.1, 'Inside a room: its area.'], [17.2, 'Box one downlight. It counts every one drawn like it.'], [20.8, 'Tick every bedroom. Every window, by its tag.'],
+    [24.4, 'Add it to the SOQ. The line stays linked.'], [28.6, 'Re-measure, it follows.'], [30.3, "Tap the ruler: you're back on the drawing."],
+    [33.4, 'Client? Each trade gets a draft tender: its pages, its SOQ jobs.'], [39.4, 'Publish, and the bids come in.'],
+    [41.9, 'Main contractor? Take off your own job.'], [44.9, 'Price it from your rate book.'], [46.3, 'Start each contract from the SOQ jobs.'],
+    [49.1, "Rev C lands. There's always a Rev C."], [51.9, 'Measurements carry over. What changed gets flagged.']];
+  Kit.each(function (t) { var txt = ''; CAPS.forEach(function (c) { if (t >= c[0]) txt = c[1]; }); var el = document.getElementById('cl'); if (el.textContent !== txt) el.textContent = txt; });
+  Kit.add('#cl', 'opacity', CAPS.reduce(function (k, c) { k.push([c[0] - 0.001, 1]); k.push([c[0], 0.2, 'hold']); k.push([c[0] + 0.15, 1, 'out']); return k; }, [[0, 1]]));
+
+  // side panels, one at a time
+  var PANS = [['#pan-in', 4.3, 20.8], ['#pan-read', 20.8, 24.4], ['#pan-soq', 24.4, 33.4], ['#pan-client', 33.4, 41.9], ['#pan-mc', 41.9, 49.1], ['#pan-rev', 49.1, 55.8]];
+  Kit.each(function (t) { PANS.forEach(function (p) { show(p[0], t >= p[1] && t < p[2]); }); });
+  PANS.forEach(function (p) { Kit.pop(p[0], p[1], { dy: 14 }); });
+
+  // the drawing
+  Kit.pop('#sheet', 7.4, { dy: 20 });
+  Kit.pop('#fx1', 9.6, { dy: 8 }).pop('#fx2', 10.4, { dy: 8 }).pop('#fx3', 11.4, { dy: 8 });
+  Kit.add('#run', 'trim', [[13.2, 0], [13.9, 1, 'out']]).add('#run', 'opacity', [[0, 1], [15.0, 1], [15.3, 0]]);
+  Kit.add('#t-run', 'opacity', [[0, 0], [14.0, 0, 'hold'], [14.2, 1], [15.0, 1], [15.3, 0]]);
+  Kit.add('#f-living', 'opacity', [[0, 0], [15.6, 0, 'hold'], [16.0, 0.28, 'out'], [17.0, 0.28], [17.3, 0]]);
+  Kit.add('#t-area', 'opacity', [[0, 0], [16.2, 0, 'hold'], [16.4, 1], [17.0, 1], [17.3, 0]]);
+  Kit.add('#box', 'opacity', [[0, 0], [17.8, 0, 'hold'], [17.9, 1], [20.6, 1], [20.8, 0]]);
+  Kit.add('#rings', 'opacity', [[0, 0], [18.9, 0, 'hold'], [19.2, 1, 'out'], [20.6, 1], [20.8, 0]]);
+  Kit.add('#t-count', 'opacity', [[0, 0], [19.3, 0, 'hold'], [19.5, 1], [20.6, 1], [20.8, 0]]);
+  Kit.pop('#tk1', 21.6, { dy: 0 }).pop('#tk2', 22.6, { dy: 0 });
+  Kit.add('#f-bed1', 'opacity', [[0, 0], [21.6, 0, 'hold'], [21.9, 0.28, 'out'], [33.3, 0.28], [33.4, 0]]);
+  Kit.add('#f-bed2', 'opacity', [[0, 0], [21.6, 0, 'hold'], [21.9, 0.28, 'out'], [33.3, 0.28], [33.4, 0]]);
+  Kit.add('#winmark', 'opacity', [[0, 0], [22.6, 0, 'hold'], [22.9, 1, 'out'], [24.3, 1], [24.5, 0]]);
+  // re-measure: bedroom 2 grows, the SOQ line follows
+  // the room's top edge is dragged up into the hall: a small re-measure that stays inside the plan
+  Kit.add('#f-bed2', 'y', [[28.6, 0], [29.4, -12, 'inOut']]).add('#f-bed2', 'height', [[28.6, 174], [29.4, 186, 'inOut']]);
+  Kit.count('#q-bed', [[29.4, 30.2], [29.9, 32.4, 'out']], function (v) { return v.toFixed(1) + ' m²'; });
+  Kit.add('#q-bed', 'color', [[29.4, '#eef4ef'], [29.7, '#4BCD32', 'out'], [30.4, '#4BCD32'], [30.8, '#eef4ef', 'out']]);
+  Kit.add('#rul', 'scale', [[30.3, 1], [30.5, 1.4, 'out'], [30.9, 1, 'out']]);
+  Kit.add('#sheet', 'borderColor', [[0, '#213128']]);
+  Kit.add('#lights', 'opacity', [[0, 1]]);
+  Kit.add('#rings', 'opacity', [[31.9, 0], [32.1, 1, 'out'], [33.2, 1], [33.4, 0]]);
+  // client / main contractor
+  Kit.pop('#pk1', 35.1, { dy: 10 }).pop('#pk2', 36.6, { dy: 10 });
+  Kit.slam('#bids', 40.9, { from: 1.1 });
+  Kit.count('#r1', [[44.9, 0], [45.6, 14260, 'out']], function (v) { return v < 1 ? '$ —' : '$' + Math.round(v).toLocaleString('en-NZ'); });
+  Kit.count('#r2', [[45.2, 0], [45.9, 11880, 'out']], function (v) { return v < 1 ? '$ —' : '$' + Math.round(v).toLocaleString('en-NZ'); });
+  Kit.pop('#cbox', 46.4, { dy: 10 });
+  // Rev C
+  Kit.add('#revc', 'opacity', [[0, 0], [49.5, 0, 'hold'], [49.6, 1]]).add('#revc', 'scale', [[49.6, 1.6], [49.8, 1, 'slam']]);
+  Kit.add('#sticky', 'opacity', [[0, 0], [50.5, 0, 'hold'], [50.7, 1, 'out']]);
+  Kit.add('#f-change', 'opacity', [[0, 0], [53.9, 0, 'hold'], [54.2, 0.45, 'out']]);
+  Kit.add('#flag', 'scale', [[54.7, 1], [54.9, 1.3, 'out'], [55.2, 1, 'out']]);
+
+  // S8
+  Kit.pop('#h8', 55.9);
+  // S9
+  Kit.fade('#logo', 59.1, 59.5).add('#logo', 'scale', [[59.1, 0.94], [59.8, 1, 'out']]);
+  Kit.pop('#beta', 59.3, { dy: 8 }).pop('#cta', 61.2);
+  Kit.slam('#url', 63.3, { from: 1.1 });
+  Kit.fade('#foot', 59.6, 60.0);
+
+  Kit.ready({ duration: D });
+</script>
+</body>
+</html>
