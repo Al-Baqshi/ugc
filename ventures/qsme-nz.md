@@ -85,3 +85,5 @@ Owner's words: "we provide this as a service for consumers straight away… we m
 - ❓ service name ("QSME managed build" used on print) · ❓ lead route (print says: sign up, search your address, email hello@qsme.co.nz) · ❓ regions (Auckland first?) · ❓ price-beat policy wording (print uses "we'll beat it, or tell you exactly why we can't") · ❓ fee model (never in content).
 - Contact on print: hello@qsme.co.nz · +64 9 920 8896 ❓ confirm.
 - Real-estate agent mode is promoted on the providers brochure on the owner's instruction (no licence/verification claims).
+
+- Takeoffs: out of Beta (owner 2026-10-17). Don't call it Beta in content.

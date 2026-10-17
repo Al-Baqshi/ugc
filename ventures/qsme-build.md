@@ -71,3 +71,5 @@ Verified feature list and red list: `research/2026-10-02-qsme-platform-truth.md`
 
 ## Goal / CTA
 "Book a 30-minute demo." ❓ paid LinkedIn/Meta or organic founder-led?
+
+- Takeoffs: out of Beta (owner 2026-10-17). Don't call it Beta in content.

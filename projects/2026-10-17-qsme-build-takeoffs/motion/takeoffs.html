@@ -4,8 +4,9 @@
 <meta charset="utf-8">
 <title>G15 · Takeoffs that land in the SOQ</title>
 <!-- One page, two cuts: r16x9 here, takeoffs-9x16.html is a copy with the body class swapped.
-     Beats keyed to outputs/vo-take/words.json (take 1, 65.28 s). Claims from the 2026-10-17 workflow
-     (origin/main only): Takeoffs Beta; Pick/Count/Read the drawing (rules, a person ticks — no AI claim);
+     Beats keyed to outputs/vo-take/words.json (take 1, 65.28 s; one sentence cut out 59.04–61.19 on the owner's
+     word (2026-10-17) that Takeoffs is out of its early-access label, so the end card is 2.15 s earlier). Claims from the 2026-10-17 workflow
+     (origin/main only): Pick/Count/Read the drawing (rules, a person ticks — no AI claim);
      Add to the SOQ keeps the line linked + ruler back to the drawing; Send to tender by trade = draft tenders;
      main contractor on their OWN project (bidder workspaces are planned, not shown); Rev C carry-over + What changed.
      The plan, the app and every figure are simplified illustrations / examples. -->
@@ -137,9 +138,9 @@
       </div>
 
       <div class="side card">
-        <!-- intro: files + Beta -->
+        <!-- intro: files -->
         <div id="pan-in">
-          <div class="label">Takeoffs · Beta</div>
+          <div class="label">Takeoffs</div>
           <div style="display:flex; gap:10px; margin-top:10px; flex-wrap:wrap"><span id="fx1" class="chip2">PDF</span><span id="fx2" class="chip2">DWG</span><span id="fx3" class="chip2">IFC</span></div>
           <div id="tools" class="note" style="margin-top:14px">Pick · Count · Length · Area · Volume · Deduct</div>
         </div>
@@ -203,15 +204,14 @@
   <!-- S9 · 59.1–end -->
   <div id="se" class="stage">
     <img id="logo" src="../../../tools/motion/qsme-logo.svg" alt="QSME">
-    <span id="beta" class="beta">Takeoffs · Beta</span>
     <div id="cta" class="cta">Book a 30-minute demo</div>
     <div id="url" class="h s">qsme.build</div>
-    <div id="foot">Takeoffs are in Beta and come with plans that include them · simplified illustration · example figures</div>
+    <div id="foot">Simplified illustration · example figures</div>
   </div>
 </div>
 <script src="../../../tools/motion/kit.js"></script>
 <script>
-  var D = 67.2;
+  var D = 65.05;
   var show = function (s, on) { document.querySelector(s).style.display = on ? '' : 'none'; };
   Kit.scene('#s1', 0, 4.3).scene('#sw', 4.3, 55.7).scene('#s8', 55.7, 59.1).scene('#se', 59.1, D);
 
@@ -275,8 +275,8 @@
   Kit.pop('#h8', 55.9);
   // S9
   Kit.fade('#logo', 59.1, 59.5).add('#logo', 'scale', [[59.1, 0.94], [59.8, 1, 'out']]);
-  Kit.pop('#beta', 59.3, { dy: 8 }).pop('#cta', 61.2);
-  Kit.slam('#url', 63.3, { from: 1.1 });
+  Kit.pop('#cta', 59.1);
+  Kit.slam('#url', 61.15, { from: 1.1 });
   Kit.fade('#foot', 59.6, 60.0);
 
   Kit.ready({ duration: D });
