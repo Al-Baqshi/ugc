@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<title>N14 v2 · Which door is yours?</title>
+<!-- N14 v2 (owner 2026-10-19: v1 made main contractors look like service providers). Three doors, matching the app's
+     sign-up: do the work → "I provide services" → your trade; run the job → "I hire" → "Main Contractor"
+     (own projects + tenders + takeoffs, bid on others; GC Pro plan with the month's trial); build for yourself or
+     develop → "I hire" → "Client". r9x16 here; lbp-v2-16x9.html is a copy with the body class swapped.
+     Beats keyed to outputs/vo-take-v2/words.json (take 3, 58.56 s, John NZ). "Free" = owner exception for N14.
+     Screens are simplified illustrations with example data. -->
+<link rel="stylesheet" href="../../../tools/motion/kit.css">
+<style>
+  body.nz { --k: 1.35; --a: #3DC023; --b: #F2B53A; --c: #5AA9F5; }
+  body.nz.r16x9 { --k: 1.55; }
+  body.nz #root { background: radial-gradient(900px 700px at 50% -10%, #0e2a1c 0%, var(--bg) 62%); }
+  .stage { position: absolute; left: 65px; top: 300px; width: 950px; height: 950px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: calc(22px * var(--k)); text-align: center; }
+  body.r16x9 .stage { left: 96px; top: 54px; width: 1728px; height: 972px; }
+  .h { font-family: var(--display); font-weight: 800; letter-spacing: -0.025em; line-height: 1.04; font-size: calc(78px * var(--k)); text-wrap: balance; }
+  .h.s { font-size: calc(54px * var(--k)); }
+  .label { font: 600 calc(20px * var(--k))/1.2 var(--mono); color: var(--ink-50); letter-spacing: .05em; text-transform: uppercase; }
+  .tag { position: absolute; right: 0; bottom: 0; padding: 5px 12px; border: 2px dashed var(--ink-50); border-radius: 8px; color: var(--ink-50); font: 500 calc(15px * var(--k))/1.2 var(--mono); }
+  .phone { width: min(100%, calc(640px * var(--k))); padding: calc(20px * var(--k)); border-radius: 30px; border: 3px solid #1E293B; background: #0B1226; display: flex; flex-direction: column; gap: calc(12px * var(--k)); text-align: left; position: relative; }
+  .ptitle { font: 800 calc(32px * var(--k))/1.15 var(--display); }
+  .row { padding: calc(12px * var(--k)) calc(14px * var(--k)); border-radius: 12px; border: 2px solid var(--line); background: #020617; font: 600 calc(24px * var(--k))/1.25 var(--body); color: var(--ink); }
+  .row small { display: block; font: 500 calc(18px * var(--k))/1.3 var(--mono); color: var(--ink-50); margin-top: 4px; }
+  .door { display: grid; grid-template-columns: 1fr 1fr; gap: calc(10px * var(--k)); }
+  .door .row { min-height: calc(76px * var(--k)); }
+  .lane { display: inline-flex; align-items: center; gap: 12px; padding: 10px 20px; border-radius: 999px; font: 800 calc(30px * var(--k))/1.1 var(--display); border: 3px solid currentColor; }
+  .lane.a { color: var(--a); } .lane.b { color: var(--b); } .lane.c { color: var(--c); }
+  .chips { display: flex; gap: 10px; flex-wrap: wrap; }
+  .chip2 { padding: 8px 16px; border-radius: 999px; border: 2px solid var(--line); font: 700 calc(22px * var(--k))/1.1 var(--body); color: var(--ink-70); background: #020617; }
+  .tick { color: var(--a); font-weight: 800; }
+  .pend { padding: 5px 12px; border-radius: 999px; background: #3a2f12; color: #f2c14e; font: 700 calc(18px * var(--k))/1.1 var(--mono); }
+  .badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px; border-radius: 999px; background: #0f3a1e; color: #7ee46a; border: 2px solid var(--a); font: 800 calc(26px * var(--k))/1.1 var(--body); }
+  .free { padding: 10px 16px; border-radius: 12px; border: 2px solid var(--a); background: #0d2a1a; font: 800 calc(28px * var(--k))/1.2 var(--display); }
+  .free small { display: block; font: 600 calc(20px * var(--k))/1.3 var(--body); color: var(--ink-70); }
+  .feat { display: flex; flex-direction: column; gap: 8px; }
+  .feat span { font: 700 calc(24px * var(--k))/1.25 var(--body); }
+  .plan { padding: 10px 16px; border-radius: 12px; border: 2px solid var(--b); background: #2a2210; font: 800 calc(26px * var(--k))/1.2 var(--display); }
+  .plan small { display: block; font: 600 calc(20px * var(--k))/1.3 var(--body); color: var(--ink-70); }
+  /* the three-door summary */
+  .doors { display: grid; grid-template-columns: 1fr; gap: calc(12px * var(--k)); width: min(100%, calc(700px * var(--k))); }
+  body.r16x9 .doors { grid-template-columns: repeat(3, 1fr); width: 100%; }
+  .dcard { padding: calc(14px * var(--k)) calc(16px * var(--k)); border-radius: 16px; border: 3px solid currentColor; background: #0B1226; text-align: left; }
+  .dcard .w { font: 800 calc(28px * var(--k))/1.15 var(--display); }
+  .dcard .p { font: 700 calc(22px * var(--k))/1.35 var(--mono); color: var(--ink); margin-top: 6px; }
+  .dcard.a { color: var(--a); } .dcard.b { color: var(--b); } .dcard.c { color: var(--c); }
+  .doorico { display: flex; gap: calc(26px * var(--k)); }
+  .doorico span { width: calc(110px * var(--k)); height: calc(170px * var(--k)); border-radius: 12px 12px 4px 4px; border: 5px solid currentColor; position: relative; }
+  .doorico span::after { content: ''; position: absolute; right: 16%; top: 52%; width: 12px; height: 12px; border-radius: 50%; background: currentColor; }
+  #logo { width: calc(420px * var(--k)); }
+  .cta { display: inline-flex; padding: 16px 32px; border-radius: 12px; background: var(--btn); color: #fff; font: 800 calc(40px * var(--k))/1 var(--display); }
+</style>
+</head>
+<body class="nz r9x16">
+<div id="root">
+
+  <!-- S1 · 0–2.45 · which door is yours? -->
+  <div id="s1" class="stage">
+    <div class="doorico"><span id="i1" style="color:var(--a)"></span><span id="i2" style="color:var(--b)"></span><span id="i3" style="color:var(--c)"></span></div>
+    <div id="h1" class="h">Builders, which door is <span style="color:var(--a)">yours?</span></div>
+  </div>
+
+  <!-- S2 · 2.45–7.0 · what brings you here? -->
+  <div id="s2" class="stage">
+    <div id="h2" class="h s">The first question:</div>
+    <div class="phone">
+      <div class="ptitle">What brings you here?</div>
+      <div class="door">
+        <div id="q1" class="row">I hire</div><div id="q2" class="row">I provide services</div>
+        <div id="q3" class="row">I'm a real estate agent</div><div id="q4" class="row">I'm a supplier</div>
+      </div>
+    </div>
+    <div class="tag">Simplified illustration</div>
+  </div>
+
+  <!-- S3 · 7.0–27.8 · door 1: do the work -->
+  <div id="s3" class="stage">
+    <div id="l1" class="lane a">Do the work yourself?</div>
+    <div class="phone">
+      <div id="a1" class="chips"><span class="chip2">LBP</span><span class="chip2">Tradie</span><span class="chip2">Subbie</span></div>
+      <div class="door"><div class="row">I hire</div><div id="a2" class="row">I provide services</div></div>
+      <div id="a3" class="chips"><span class="chip2" style="border-color:var(--a);color:#fff;background:var(--brand)">Carpenter</span><span class="chip2">Roofer</span><span class="chip2">Bricklayer</span></div>
+      <div id="a4" class="row">Opportunities · My trades<small>Kitchen renovation · Tauranga · example</small></div>
+      <div id="a5" class="row" style="display:flex;justify-content:space-between;align-items:center;gap:10px"><span>LBP number<small>BP ••••••</small></span><span id="pend" class="pend">Pending review</span></div>
+      <div id="a6"><span class="badge">✓ Licensed: Carpenter</span></div>
+      <div id="a7" class="free">Your account's free<small>See tenders · bid</small></div>
+    </div>
+    <div class="tag">Simplified illustration</div>
+  </div>
+
+  <!-- S4 · 27.8–45.6 · door 2: run the job -->
+  <div id="s4" class="stage">
+    <div id="l2" class="lane b">Running the job?</div>
+    <div class="phone">
+      <div id="b1" class="label" style="color:var(--b)">Main contractor · work out to subbies</div>
+      <div class="door"><div id="b2" class="row">I hire</div><div class="row">I provide services</div></div>
+      <div id="b3" class="row" style="border-color:var(--b)">Main Contractor<small>You run your own projects and tenders, and can also browse and bid on other tenders.</small></div>
+      <div id="b4" class="feat"><span id="f1">✓ Your own projects &amp; tenders</span><span id="f2">✓ Takeoffs included</span><span id="f3">✓ Still bid on other jobs</span></div>
+      <div id="b5" class="plan">Main contractor plan<small>A free month to try it</small></div>
+    </div>
+    <div class="tag">Simplified illustration</div>
+  </div>
+
+  <!-- S5 · 45.6–53.8 · door 3: build for yourself, or develop -->
+  <div id="s5" class="stage">
+    <div id="l3" class="lane c">Building for yourself, or developing?</div>
+    <div class="phone">
+      <div class="door"><div id="c2" class="row">I hire</div><div class="row">I provide services</div></div>
+      <div id="c3" class="row" style="border-color:var(--c)">Client / Property Owner / Developer<small>Post the job · compare the bids</small></div>
+      <div id="c4" class="chips"><span class="chip2">Bid A · $412k</span><span class="chip2">Bid B · $438k</span><span class="chip2">Bid C · $451k</span></div>
+    </div>
+    <div class="tag">Simplified illustration · example figures</div>
+  </div>
+
+  <!-- S6 · 53.8–end · pick your door -->
+  <div id="s6" class="stage">
+    <div id="h6" class="h s">Pick your door.</div>
+    <div class="doors">
+      <div id="d1" class="dcard a"><div class="w">Do the work</div><div class="p">I provide services → your trade</div></div>
+      <div id="d2" class="dcard b"><div class="w">Run the job</div><div class="p">I hire → Main Contractor</div></div>
+      <div id="d3" class="dcard c"><div class="w">Build or develop</div><div class="p">I hire → Client</div></div>
+    </div>
+    <div id="cta" class="cta">Sign up at qsme.co.nz</div>
+  </div>
+</div>
+<script src="../../../tools/motion/kit.js"></script>
+<script>
+  // Builders .5 · door 1.1 · On 2.5 · what brings 5.5 · Do the work 7.1 · LBP 8.8 · tradie 9.7 · subbie 10.8 · Tap 11.6 · provide 12.5
+  // pick your trade 13.9 · Tenders 15.3 · Add 17.9 · checked 20.2 · Licensed 23.1 · free 25.3 · bid 27.1 · Running 27.9 · Main 29.2
+  // subbies 31.6 · I hire 33.0 · Main Contractor 34.4 · Run 35.9 · takeoffs 38.3 · bid 40.3 · plan 43.3 · free month 44.0
+  // Building 45.7 · developing 47.6 · I hire 48.7 · Client 50.2 · Post 51.3 · compare 52.5 · Pick 53.9 · Sign 55.0 · end 58.56
+  var D = 60.4;
+  var show = function (s, on) { document.querySelector(s).style.display = on ? '' : 'none'; };
+  Kit.scene('#s1', 0, 2.45).scene('#s2', 2.45, 7.0).scene('#s3', 7.0, 27.8).scene('#s4', 27.8, 45.6).scene('#s5', 45.6, 53.8).scene('#s6', 53.8, D);
+  var hi = function (sel, t, col) { Kit.add(sel, 'borderColor', [[t, '#1E293B'], [t + 0.2, col, 'out']]); Kit.add(sel, 'scale', [[t, 1], [t + 0.15, 1.04, 'out'], [t + 0.4, 1, 'out']]); };
+
+  // S1
+  Kit.pop('#i1', 0.3, { dy: 20 }).pop('#i2', 0.6, { dy: 20 }).pop('#i3', 0.9, { dy: 20 });
+  Kit.slam('#h1', 0.5, { from: 1.08 });
+  // S2
+  Kit.pop('#h2', 2.5);
+  Kit.pop('#q1', 5.5, { dy: 10 }).pop('#q2', 5.7, { dy: 10 }).pop('#q3', 5.9, { dy: 10 }).pop('#q4', 6.1, { dy: 10 });
+  // S3 door 1
+  Kit.pop('#l1', 7.1, { dy: 10 });
+  Kit.pop('#a1', 8.8, { dy: 8 });
+  hi('#a2', 12.3, '#3DC023');
+  Kit.pop('#a3', 13.9, { dy: 8 });
+  Kit.pop('#a4', 15.3, { dy: 8 });
+  Kit.pop('#a5', 17.9, { dy: 8 });
+  Kit.each(function (t) { var p = document.getElementById('pend'); var d = t >= 21.7; p.textContent = d ? 'Verified by QSME' : 'Pending review'; p.style.background = d ? '#0f3a1e' : '#3a2f12'; p.style.color = d ? '#7ee46a' : '#f2c14e'; });
+  Kit.slam('#a6', 23.1, { from: 1.2 });
+  Kit.pop('#a7', 24.2, { dy: 10 });
+  Kit.each(function (t) { show('#a1', t < 15.3); show('#a3', t >= 13.9 && t < 17.9); show('#a4', t >= 15.3 && t < 24.2); show('#a6', t >= 23.1); });
+  // S4 door 2
+  Kit.pop('#l2', 27.9, { dy: 10 }).pop('#b1', 29.2, { dy: 8 });
+  hi('#b2', 33.0, '#F2B53A');
+  Kit.pop('#b3', 34.4, { dy: 10 });
+  Kit.pop('#f1', 36.8, { dy: 6 }).pop('#f2', 38.3, { dy: 6 }).pop('#f3', 40.3, { dy: 6 });
+  Kit.pop('#b5', 42.4, { dy: 10 });
+  // S5 door 3
+  Kit.pop('#l3', 45.7, { dy: 10 });
+  hi('#c2', 48.7, '#5AA9F5');
+  Kit.pop('#c3', 49.7, { dy: 10 });
+  Kit.pop('#c4', 52.5, { dy: 8 });
+  // S6
+  Kit.pop('#h6', 53.9);
+  Kit.pop('#d1', 54.1, { dy: 12 }).pop('#d2', 54.3, { dy: 12 }).pop('#d3', 54.5, { dy: 12 });
+  Kit.slam('#cta', 55.0, { from: 1.1 });
+
+  Kit.ready({ duration: D });
+</script>
+</body>
+</html>

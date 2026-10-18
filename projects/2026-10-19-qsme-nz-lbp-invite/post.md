@@ -2,18 +2,24 @@
 vid: N14
 title: "LBPs: find jobs, get verified, bid"
 venture: qsme-nz
-status: "rendered + voiced (John NZ, eleven_v3, take 2) + music bed — delivered 2026-10-19"
+status: "v2 \"Which door is yours?\" delivered 2026-10-19 (owner disliked v1: main contractors looked like service providers). v1 kept as an alternate."
 publish_date: 2026-10-19
-length_s: 48
+length_s: 60.4
 aspect: "9:16"
 platforms: ["Facebook Reels", "Instagram Reels", "TikTok", "YouTube Shorts", "LinkedIn"]
-video: outputs/lbp-9x16.mp4
-video_with_vo: outputs/lbp-9x16-with-vo.mp4
-also: outputs/lbp-16x9-with-vo.mp4
-editable_master: motion/lbp.html (16:9 = lbp-16x9.html, same file with the body class swapped)
+video: outputs/lbp-v2-9x16.mp4
+video_with_vo: outputs/lbp-v2-9x16-with-vo.mp4
+also: outputs/lbp-v2-16x9-with-vo.mp4
+v1: outputs/lbp-9x16-with-vo.mp4 (not preferred)
+editable_master: motion/lbp-v2.html (16:9 = lbp-v2-16x9.html, same file with the body class swapped)
 ---
 
-# N14 · LBPs: find jobs, get verified, bid
+# N14 · Which door is yours? (LBPs, main contractors, clients)
+
+## v2 (current)
+Spoken: outputs/vo-take-v2/take-text.txt (58.6 s, John NZ, take 3). Three doors, matching the app sign-up: do the work (LBP, tradie, subbie) → "I provide services" → your trade → feed, LBP number (Pending review → Licensed), free account: see tenders, bid. Run the job (main contractor, work out to subbies) → "I hire" → "Main Contractor": own projects + tenders, takeoffs included, still bid on other jobs; main contractor plan with a free month. Build for yourself or develop → "I hire" → "Client": post the job, compare the bids. Ends on a three-door summary card.
+
+## v1
 
 Spoken: outputs/vo-take/take-text.txt (46.2 s), voice John (NZ, cheerful, bright), picked by the owner from three samples.
 "Free" used here only (owner exception 2026-10-19): "Your account's free" and "a free month to try it" (main contractor plan). No prices, no "bid free", no "unlimited".
@@ -30,3 +36,4 @@ Sign up at qsme.co.nz
 
 ## Discussion history
 - 2026-10-19 Brief; owner chose the free exception + John's voice; research corrected "LBP list", "verify to bid", provider upgrade/takeoffs and "first platform"; delivered.
+- 2026-10-19 Owner: v1 made main contractors look like service providers; wants each viewer to find their door. Made v2 "Which door is yours?" (60 s).
