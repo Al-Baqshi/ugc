@@ -1,5 +1,19 @@
 {
-  "_note": "Approved by the owner 2026-10-06 on the N01 pilot: ONE voice for everything, model eleven_v3, one unbroken take, clean background (no bed). Swap only if the owner says so.",
-  "qsme-nz":    { "voice_id": "53CG2aO2HU48thT3QnMl", "voice_name": "Cam S (Kiwi)", "model": "eleven_v3" },
-  "qsme-build": { "voice_id": "53CG2aO2HU48thT3QnMl", "voice_name": "Cam S (Kiwi)", "model": "eleven_v3" }
+ "_note": "Approved by the owner 2026-10-06 on the N01 pilot: ONE voice for everything, model eleven_v3, one unbroken take, clean background (no bed). Swap only if the owner says so.",
+ "qsme-nz": {
+  "voice_id": "53CG2aO2HU48thT3QnMl",
+  "voice_name": "Cam S (Kiwi)",
+  "model": "eleven_v3"
+ },
+ "qsme-build": {
+  "voice_id": "53CG2aO2HU48thT3QnMl",
+  "voice_name": "Cam S (Kiwi)",
+  "model": "eleven_v3"
+ },
+ "kiwi-accent": {
+  "voice_id": "jOEnNSVLOHUgmrNwfqQE",
+  "voice_name": "John - New Zealand, Cheerful, and Bright",
+  "model": "eleven_v3",
+  "note": "Owner picked 2026-10-19 for N14 (LBP invite) when asking for a clearly NZ voice. Cam S stays the default elsewhere."
+ }
 }

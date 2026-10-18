@@ -61,6 +61,7 @@ Score = idea test (Recognizable / Specific / Ownable / Shareable, 1–5 each, /2
 | 2026-10-04 | qsme-build | [The QS Alphabet (what QSME stands for)](qsme-build/qs-is-the-project.md) | 18 | killed (owner: confusing) |
 | 2026-10-14 | qsme-build | [Who's the QS on your job?](qsme-build/who-is-the-qs-on-your-job.md) | 17 | delivered (G14) |
 | 2026-10-17 | qsme-build | [Takeoffs that land in the SOQ](qsme-build/takeoffs-into-the-soq.md) | 17 | delivered (G15) |
+| 2026-10-19 | qsme-nz | [LBPs: find jobs, get verified, bid](qsme-nz/lbp-invite.md) | 16 | delivered (N14) |
 
 | 2026-10-13 | consistent-ceo | [CEO of six things](consistent-ceo/ceo-of-six-things.md) | 17 | delivered (C01) |
 | 2026-10-13 | consistent-ceo | [Why it remembers](consistent-ceo/why-it-remembers.md) | 16 | delivered (C02) |

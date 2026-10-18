@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8">
+<title>N14 · LBPs: find jobs, get verified, bid</title>
+<!-- One page, two cuts: r9x16 here (the reel), lbp-16x9.html is a copy with the body class swapped.
+     Beats keyed to outputs/vo-take/words.json (take 2, 46.16 s, voice John NZ). Facts from the 2026-10-19 workflow:
+     licence = 'Pending review' until a QSME reviewer checks the register, then 'Licensed: <trade>' on the profile
+     (no LBP list/ranking, not needed to bid); 'I provide services' → 'General Contractor' or a trade; service providers
+     can see tenders and bid on a free account; tenders + takeoffs = Main Contractor plan (GC Pro), with the month's
+     trial. "Free" used here only (owner exception, N14). Screens are simplified illustrations with example data. -->
+<link rel="stylesheet" href="../../../tools/motion/kit.css">
+<style>
+  body.nz { --k: 1.35; }
+  body.nz.r16x9 { --k: 1.3; }
+  body.nz #root { background: radial-gradient(900px 700px at 50% -10%, #0e2a1c 0%, var(--bg) 62%); }
+  .stage { position: absolute; left: 65px; top: 300px; width: 950px; height: 950px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: calc(26px * var(--k)); text-align: center; }
+  body.r16x9 .stage { left: 96px; top: 54px; width: 1728px; height: 972px; }
+  .h { font-family: var(--display); font-weight: 800; letter-spacing: -0.025em; line-height: 1.04; font-size: calc(84px * var(--k)); text-wrap: balance; }
+  .h.s { font-size: calc(60px * var(--k)); }
+  .acc { color: var(--accent); } .muted { color: var(--ink-70); }
+  .label { font: 600 calc(22px * var(--k))/1.2 var(--mono); color: var(--ink-50); letter-spacing: .05em; text-transform: uppercase; }
+  .tag { position: absolute; right: 0; bottom: 0; padding: 5px 12px; border: 2px dashed var(--ink-50); border-radius: 8px; color: var(--ink-50); font: 500 calc(16px * var(--k))/1.2 var(--mono); }
+  .card { background: var(--bg-raised); border: 2px solid var(--line); border-radius: 14px; text-align: left; position: relative; }
+  .phone { width: min(100%, calc(620px * var(--k))); padding: calc(22px * var(--k)); border-radius: 34px; border: 3px solid #1E293B; background: #0B1226; display: flex; flex-direction: column; gap: calc(14px * var(--k)); text-align: left; position: relative; }
+  .ptitle { font: 800 calc(34px * var(--k))/1.15 var(--display); }
+  .row { padding: calc(14px * var(--k)) calc(16px * var(--k)); border-radius: 12px; border: 2px solid var(--line); background: #020617; font: 600 calc(26px * var(--k))/1.25 var(--body); color: var(--ink); }
+  .row small { display: block; font: 500 calc(20px * var(--k))/1.3 var(--mono); color: var(--ink-50); margin-top: 4px; }
+  .seg { display: inline-flex; gap: 8px; }
+  .seg span { padding: 6px 14px; border-radius: 999px; border: 2px solid var(--line); font: 700 calc(20px * var(--k))/1.1 var(--body); color: var(--ink-70); }
+  .seg span.on { border-color: var(--btn); color: #fff; background: var(--brand); }
+  .toast { position: absolute; left: calc(14px * var(--k)); right: calc(14px * var(--k)); top: calc(14px * var(--k)); z-index: 2; padding: 14px 18px; border-radius: 16px; background: #F8FAFC; color: #0B1226; font: 700 calc(24px * var(--k))/1.25 var(--body); box-shadow: 0 16px 40px rgba(0,0,0,.45); }
+  .toast small { display: block; font: 500 calc(19px * var(--k))/1.2 var(--mono); color: #475569; }
+
+  /* licence card */
+  .lic { width: min(100%, calc(560px * var(--k))); padding: calc(26px * var(--k)); border-radius: 22px; background: linear-gradient(135deg, #e7eef7, #cfdcec); color: #0B1226; text-align: left; box-shadow: 0 30px 60px rgba(0,0,0,.45); }
+  .lic .t { font: 800 calc(30px * var(--k))/1.15 var(--display); }
+  .lic .r { font: 600 calc(22px * var(--k))/1.4 var(--mono); color: #334155; margin-top: 10px; }
+  .wallet { width: min(100%, calc(640px * var(--k))); height: calc(150px * var(--k)); border-radius: 24px; background: #3b2a1e; margin-top: calc(-70px * var(--k)); box-shadow: inset 0 6px 0 #4a3626; }
+
+  /* licence field + badge */
+  .field { display: flex; justify-content: space-between; align-items: center; }
+  .pend { padding: 6px 14px; border-radius: 999px; background: #3a2f12; color: #f2c14e; font: 700 calc(20px * var(--k))/1.1 var(--mono); }
+  .badge { display: inline-flex; align-items: center; gap: 10px; padding: 10px 18px; border-radius: 999px; background: #0f3a1e; color: #7ee46a; border: 2px solid var(--accent); font: 800 calc(30px * var(--k))/1.1 var(--body); }
+  .chips { display: flex; gap: 10px; flex-wrap: wrap; }
+  .chip2 { padding: 10px 18px; border-radius: 999px; border: 2px solid var(--line); font: 700 calc(26px * var(--k))/1.1 var(--body); color: var(--ink-70); background: #020617; }
+  .chip2.on { border-color: var(--btn); color: #fff; background: var(--brand); }
+  .door { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .door .row { min-height: calc(96px * var(--k)); }
+  .door .row.on { border-color: var(--btn); background: #0d2a1a; }
+  .stg { display: flex; gap: 10px; }
+  .stg span { flex: 1; text-align: center; padding: 10px; border-radius: 10px; border: 2px solid var(--line); font: 700 calc(24px * var(--k))/1.1 var(--body); color: var(--ink-70); }
+  .tick { color: var(--accent); font-weight: 800; }
+  .plan { width: min(100%, calc(700px * var(--k))); padding: calc(24px * var(--k)); text-align: left; }
+  .plan.free { border-color: var(--btn); }
+  .plan .t { font: 800 calc(40px * var(--k))/1.1 var(--display); }
+  .plan .r { font: 600 calc(26px * var(--k))/1.4 var(--body); color: var(--ink-70); margin-top: 8px; }
+
+  /* end */
+  #logo { width: calc(520px * var(--k)); }
+  .cta { display: inline-flex; padding: 18px 36px; border-radius: 12px; background: var(--btn); color: #fff; font: 800 calc(44px * var(--k))/1 var(--display); }
+</style>
+</head>
+<body class="nz r16x9">
+<div id="root">
+
+  <!-- S1 · 0–4.45 · the LBP card in your wallet -->
+  <div id="s1" class="stage">
+    <div id="h1" class="h s">That LBP card in your wallet?</div>
+    <div style="display:flex; flex-direction:column; align-items:center">
+      <div id="lic" class="lic"><div class="label" style="color:#475569">Licence card</div><div class="t">Licensed Building Practitioner</div><div class="r">Carpentry · BP ••••••</div></div>
+      <div class="wallet"></div>
+    </div>
+    <div id="h1b" class="h s acc">Put it where clients can see it.</div>
+    <div class="tag">Illustration</div>
+  </div>
+
+  <!-- S2 · 4.45–5.75 · kia ora -->
+  <div id="s2" class="stage">
+    <img id="logo1" src="../../../tools/motion/qsme-logo.svg" alt="QSME" style="width:calc(420px * var(--k))">
+    <div id="h2" class="h">Kia ora, <span class="acc">builders!</span></div>
+  </div>
+
+  <!-- S3 · 5.75–11.2 · tenders for your trade, one feed, you get pinged -->
+  <div id="s3" class="stage">
+    <div id="h3" class="h s">Tenders for your trade. <span class="acc">One feed.</span></div>
+    <div id="feed" class="phone">
+      <div id="toast" class="toast">New tender for your trade<small>Deck &amp; pergola · Hamilton</small></div>
+      <div class="ptitle">Opportunities</div>
+      <div class="seg"><span class="on">My trades</span><span>Everything</span></div>
+      <div id="t1" class="row">Kitchen renovation<small>Carpentry · Tauranga · example</small></div>
+      <div id="t2" class="row">Re-roof, 3-bed house<small>Roofing · Christchurch · example</small></div>
+      <div id="t3" class="row">Garage extension<small>Carpentry · Wellington · example</small></div>
+    </div>
+    <div class="tag">Simplified illustration · example tenders</div>
+  </div>
+
+  <!-- S4 · 11.2–16.95 · add your LBP number → checked → Licensed -->
+  <div id="s4" class="stage">
+    <div id="h4" class="h s">Add your LBP number.</div>
+    <div class="phone">
+      <div class="label">Trade &amp; professional licences</div>
+      <div class="row field"><span>Licence / registration no.<small>BP ••••••</small></span><span id="pend" class="pend">Pending review</span></div>
+      <div id="chk" class="row">Checked against the register <span class="tick">✓</span></div>
+    </div>
+    <div id="badge" class="badge">✓ Licensed: Carpenter</div>
+    <div class="tag">Simplified illustration</div>
+  </div>
+
+  <!-- S5 · 16.95–25.9 · sign-up doors -->
+  <div id="s5" class="stage">
+    <div id="h5" class="h s">Running the whole build?</div>
+    <div class="phone">
+      <div class="ptitle">What brings you here?</div>
+      <div class="door">
+        <div class="row">I hire</div>
+        <div id="d2" class="row">I provide services</div>
+        <div class="row">I'm a real estate agent</div>
+        <div class="row">I'm a supplier</div>
+      </div>
+      <div id="gc" class="row on" style="border-color:var(--btn)">General Contractor<small>I manage teams of tradies and deliver projects</small></div>
+      <div id="trades" class="chips"><span class="chip2 on">Carpenter</span><span class="chip2">Roofer</span><span class="chip2">Bricklayer</span></div>
+    </div>
+    <div id="h5b" class="h s acc">Subbie? Same door, pick your trade.</div>
+    <div class="tag">Simplified illustration</div>
+  </div>
+
+  <!-- S6 · 25.9–31.8 · win one: all in one place -->
+  <div id="s6" class="stage">
+    <div id="h6" class="h s">Win one. <span class="acc">All in one place.</span></div>
+    <div class="phone">
+      <div class="ptitle">Awarded work</div>
+      <div id="w1" class="row">Contract · Kitchen renovation<small>example</small></div>
+      <div id="w2" class="stg"><span>Stage 1</span><span>Stage 2</span><span>Stage 3</span></div>
+      <div id="w3" class="row">Site induction <span class="tick">✓</span></div>
+    </div>
+    <div class="tag">Simplified illustration</div>
+  </div>
+
+  <!-- S7 · 31.8–41.2 · free account; main contractor plan with a free month -->
+  <div id="s7" class="stage">
+    <div id="pl1" class="plan card free"><div class="label acc">Service provider</div><div class="t">Your account's free</div><div class="r">See tenders · bid</div></div>
+    <div id="pl2" class="plan card"><div class="label">Main contractor plan</div><div class="t">Your own tenders + takeoffs</div><div class="r">A free month to try it</div></div>
+  </div>
+
+  <!-- S8 · 41.2–end -->
+  <div id="s8" class="stage">
+    <div id="h8" class="h s">We'd love to have you.</div>
+    <img id="logo" src="../../../tools/motion/qsme-logo.svg" alt="QSME">
+    <div id="cta" class="cta">Sign up at qsme.co.nz</div>
+  </div>
+</div>
+<script src="../../../tools/motion/kit.js"></script>
+<script>
+  // That .1 · Put 2.0 · Kia 4.5 · builders 5.3 · On 5.8 · tenders 7.3 · feed 9.1 · pinged 10.4 · Add 11.3 · LBP 11.8 · checked 13.4
+  // Licensed 16.0 · Running 17.1 · Pick 18.7 · provide 19.5 · General 21.3 · Subbie 22.7 · trade 25.3 · Win 26.0 · contract 27.5
+  // stages 28.2 · induction 29.6 · place 31.2 · free 32.9 · tenders 33.7 · bid 34.6 · Want 35.1 · takeoffs 36.6 · plan 38.9
+  // free month 39.6 · We'd 41.3 · Sign 42.6 · N Z 45.8 · end 46.16
+  var D = 48.0;
+  var show = function (s, on) { document.querySelector(s).style.display = on ? '' : 'none'; };
+  Kit.scene('#s1', 0, 4.45).scene('#s2', 4.45, 5.75).scene('#s3', 5.75, 11.2).scene('#s4', 11.2, 16.95)
+     .scene('#s5', 16.95, 25.9).scene('#s6', 25.9, 31.8).scene('#s7', 31.8, 41.2).scene('#s8', 41.2, D);
+
+  // S1
+  Kit.pop('#h1', 0.1);
+  Kit.add('#lic', 'y', [[0.6, 140], [1.6, -10, 'out']]).add('#lic', 'opacity', [[0.6, 0], [0.9, 1]]);
+  Kit.add('#lic', 'rotate', [[0.6, -6], [1.6, 0, 'out']]);
+  Kit.pop('#h1b', 2.0);
+  // S2
+  Kit.fade('#logo1', 4.5, 4.8).slam('#h2', 4.5, { from: 1.12 });
+  // S3
+  Kit.pop('#h3', 5.8).pop('#feed', 6.2, { dy: 24 });
+  Kit.pop('#t1', 7.3, { dy: 10 }).pop('#t2', 7.7, { dy: 10 }).pop('#t3', 8.1, { dy: 10 });
+  Kit.add('#toast', 'y', [[10.2, -60], [10.5, 0, 'outBack']]).add('#toast', 'opacity', [[10.2, 0], [10.35, 1]]);
+  // S4
+  Kit.pop('#h4', 11.3);
+  Kit.pop('#chk', 13.4, { dy: 10 });
+  Kit.each(function (t) {
+    var p = document.getElementById('pend');
+    var done = t >= 15.4;
+    p.textContent = done ? 'Verified by QSME' : 'Pending review';
+    p.style.background = done ? '#0f3a1e' : '#3a2f12'; p.style.color = done ? '#7ee46a' : '#f2c14e';
+  });
+  Kit.slam('#badge', 16.0, { from: 1.25 });
+  // S5
+  Kit.pop('#h5', 17.1);
+  Kit.add('#d2', 'borderColor', [[19.2, '#1E293B'], [19.4, '#16A34A', 'out']]);
+  Kit.pop('#gc', 21.3, { dy: 12 });
+  Kit.pop('#trades', 24.7, { dy: 12 });
+  Kit.pop('#h5b', 22.7);
+  Kit.each(function (t) { show('#h5', t < 22.7); show('#h5b', t >= 22.7); show('#gc', t >= 21.3 && t < 22.7); show('#trades', t >= 22.7); });
+  // S6
+  Kit.pop('#h6', 26.0);
+  Kit.pop('#w1', 27.5, { dy: 10 }).pop('#w2', 28.2, { dy: 10 }).pop('#w3', 29.6, { dy: 10 });
+  // S7
+  Kit.pop('#pl1', 32.4, { dy: 16 });
+  Kit.pop('#pl2', 36.0, { dy: 16 });
+  Kit.add('#pl2', 'borderColor', [[39.6, '#1E293B'], [39.9, '#16A34A', 'out']]);
+  // S8
+  Kit.pop('#h8', 41.3);
+  Kit.fade('#logo', 42.4, 42.8).add('#logo', 'scale', [[42.4, 0.94], [43.0, 1, 'out']]);
+  Kit.slam('#cta', 42.6, { from: 1.12 });
+
+  Kit.ready({ duration: D });
+</script>
+</body>
+</html>

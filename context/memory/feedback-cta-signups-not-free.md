@@ -9,3 +9,5 @@ Never write "free", "free to join", "no sign-up", "no login", "without an accoun
 
 **Why:** the owner (2026-10-03) said the address check / site search requires sign-up and that being "very generous" with free/no-sign-up messaging undermines the goal: awareness that converts to sign-ups.
 **How to apply:** check every script/caption/end card for these words before rendering; the venture files carry the same rule. Related: [[project-qsme-content-programme]], [[user-ugc-goals]]
+
+Exception (owner 2026-10-19): the N14 LBP/builder invite may say the base account is free and mention the trial, because the owner wrote it that way and chose it explicitly. The rule still applies to every other QSME video unless the owner says otherwise.
