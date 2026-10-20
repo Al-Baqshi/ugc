@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="{{LANG}}" dir="{{DIR}}">
+<head>
+<meta charset="utf-8">
+<title>BQ01 · Baqshi: one consultant, every step of the route ({{LANG}})</title>
+<!-- TEMPLATE. Edit this file, then run: python3 motion/build.py  (writes baqshi-<lang>[-9x16].html + data-<lang>.js).
+     Every beat is keyed to a cue in script/<lang>.txt; cue times come from outputs/vo-<lang>/cues.json (the chosen take's
+     word timings), so each language's picture follows its own voice. Claims and on-screen notes from the 2026-10-20
+     research + verify workflow (baqshi.com2027 code, live site, white paper). Owner 2026-10-20: the payment side is described
+     generally as escrow (no BitRegalo, no network talk); escrow model footnote; feasibility figure illustrative with no numbers; network nodes
+     generic; QSME never shown holding money; '90+' static. -->
+<link rel="stylesheet" href="../../../tools/motion/kit.css">
+<link rel="stylesheet" href="parts.css">
+<style>
+  body.bq { --ds: 1.25; --pw: 1180px; }
+  body.bq.r9x16 { --ds: .95; --pw: 950px; }
+  html[lang=ar] body.bq { --display: "SF Arabic", "Geeza Pro", Geist, sans-serif; --mono: "SF Arabic", "Geeza Pro", "Geist Mono", monospace; }
+  html[lang=ar] .h, html[lang=ar] .label, html[lang=ar] .pl, html[lang=ar] .chip, html[lang=ar] .tag, html[lang=ar] * { letter-spacing: 0 !important; }
+  html[lang=ar] .h { line-height: 1.25; font-weight: 700; }
+  html[lang=ar] .label, html[lang=ar] .pl { text-transform: none; }
+
+  .stage.rail-pad { padding-top: calc(70px * var(--k)); }
+  body.r9x16 .stage.rail-pad { padding-top: 96px; }
+  .cap { font-weight: 600; letter-spacing: -0.02em; line-height: 1.12; font-size: calc(46px * var(--k)); max-width: calc(1400px * var(--k)); text-wrap: balance; }
+  body.r9x16 .cap { font-size: 54px; max-width: 950px; }
+  .note { font: 400 calc(17px * var(--k))/1.45 var(--mono); color: var(--muted); max-width: calc(1150px * var(--k)); text-wrap: balance; }
+  body.r9x16 .note { font-size: 22px; max-width: 950px; }
+  .ok { color: var(--signal); }
+
+  /* scaled design boxes: inner coordinates are fixed design units, the wrapper scales them per cut */
+  .sbox { position: relative; width: calc(1000px * var(--ds)); }
+  .sbox > .in { position: absolute; left: 0; top: 0; width: 1000px; transform: scale(var(--ds)); transform-origin: 0 0; }
+  .sbox svg.ov { position: absolute; left: 0; top: 0; overflow: visible; }
+  .ab { position: absolute; transform: translate(-50%, -50%); }
+
+  /* tangle (hook, problem, payoff) */
+  #tangle { position: absolute; left: 96px; top: 54px; width: 1728px; height: 972px; display: flex; align-items: center; justify-content: center; }
+  body.r9x16 #tangle { left: 65px; top: 300px; width: 950px; height: 950px; }
+  #tbox { height: calc(600px * var(--ds)); }
+  #tbox .in { height: 600px; }
+  .tn { display: grid; place-items: center; }
+  .tn > * { grid-area: 1 / 1; }
+  .tn .d { width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--hair-2); background: var(--space-3); }
+  .tn .l { padding: 8px 16px; border-radius: 10px; background: #0f1526; border: 1px solid var(--hair-2); font: 600 32px/1 var(--display); color: var(--bright); white-space: nowrap; }
+  .tn.money .d { border-color: var(--danger); }
+  .tn.money .l { color: var(--danger); border-color: rgba(255,107,122,.45); }
+  #hook { gap: calc(6px * var(--k)); }
+  #hook .h { font-size: calc(104px * var(--k)); }
+  body.r9x16 #hook .h { font-size: 112px; }
+  #cap2 { position: absolute; left: 0; right: 0; top: 0; }
+
+  /* who + map */
+  #s3 { gap: calc(36px * var(--k)); }
+  #maplayer { position: absolute; left: 0; top: 30px; width: 1920px; height: 1020px; }
+  body.r9x16 #maplayer { top: 0; width: 1080px; height: 1920px; }
+  #mtext { position: absolute; left: 70px; bottom: 50px; text-align: start; display: flex; flex-direction: column; gap: 6px; padding: 22px 30px; border-radius: 20px; background: rgba(5,7,13,.8); box-shadow: 0 0 70px 40px rgba(5,7,13,.65); }
+  html[dir=rtl] #mtext { align-items: flex-end; }   /* the map is geographic (New Zealand bottom-right), so the block stays left */
+  body.r9x16 #mtext { left: 40px; right: 40px; top: 310px; bottom: auto; padding: 18px 20px; text-align: center; align-items: center; }
+  #mtext .h { font-size: calc(62px * var(--k)); }
+  #mtext .big { order: -1; }
+  #mtext .big { font-size: calc(120px * var(--k)); color: var(--signal); }
+  body.r9x16 #mtext .h { font-size: 66px; } body.r9x16 #mtext .big { font-size: 128px; }
+  #reach { position: absolute; right: 96px; bottom: 70px; }
+  body.r9x16 #reach { left: 65px; right: auto; bottom: auto; top: 1205px; }
+  html[dir=rtl] body.r9x16 #reach { left: 65px; right: auto; }
+  body.r9x16 #maplayer .land { -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 78%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 78%, transparent 100%); }
+
+  /* route diagram */
+  .route { width: var(--pw); display: flex; flex-direction: column; align-items: stretch; gap: calc(26px * var(--k)); }
+  .rl { position: relative; display: flex; align-items: center; justify-content: space-between; height: calc(120px * var(--k)); }
+  .rl .bar { position: absolute; left: 40px; right: 40px; top: 50%; height: 3px; margin-top: -1.5px; background: linear-gradient(to right, var(--signal), var(--orbit)); transform-origin: left center; }
+  html[dir=rtl] .rl .bar { background: linear-gradient(to left, var(--signal), var(--orbit)); transform-origin: right center; }
+  .end { position: relative; display: flex; flex-direction: column; align-items: center; gap: 12px; width: calc(170px * var(--k)); }
+  .end i { width: calc(30px * var(--k)); height: calc(30px * var(--k)); border-radius: 50%; background: var(--signal); box-shadow: 0 0 0 10px rgba(79,184,255,.18); }
+  .end.dst i { background: var(--orbit); box-shadow: 0 0 0 10px rgba(169,139,255,.18); }
+  .end b { font: 600 calc(28px * var(--k))/1 var(--display); }
+  body.r9x16 .end b { font-size: 32px; }
+  .end b { position: absolute; top: calc(100% + 6px); white-space: nowrap; }
+  .bqbox { position: relative; display: flex; align-items: center; gap: 14px; padding: calc(18px * var(--k)) calc(26px * var(--k)); border-radius: 16px; background: var(--space-3); border: 1px solid var(--hair-2); }
+  .bqbox img { height: calc(44px * var(--k)); }
+  .bqbox span { font: 600 calc(40px * var(--k))/1 var(--display); }
+  body.r9x16 .bqbox img { height: 52px; } body.r9x16 .bqbox span { font-size: 46px; }
+  .row { display: flex; justify-content: center; gap: calc(16px * var(--k)); flex-wrap: wrap; }
+  .chip { display: inline-flex; align-items: center; gap: 10px; padding: calc(10px * var(--k)) calc(20px * var(--k)); border-radius: 12px; border: 1px solid var(--hair-2); background: var(--glass); font: 500 calc(28px * var(--k))/1.15 var(--display); color: var(--text-2); }
+  body.r9x16 .chip { font-size: 34px; padding: 12px 22px; }
+  .chip.sigc { border-color: rgba(79,184,255,.45); background: rgba(79,184,255,.08); color: var(--signal); }
+  .chip.on { border-color: var(--signal); background: rgba(79,184,255,.16); color: var(--bright); }
+  .chip.orbc { border-color: rgba(169,139,255,.5); background: rgba(169,139,255,.08); color: var(--bright); }
+  .net { display: flex; justify-content: center; gap: calc(18px * var(--k)); flex-wrap: wrap; }
+  .net .chip { position: relative; }
+
+  /* progress rail */
+  #rail { position: absolute; left: 96px; right: 96px; top: 64px; display: flex; justify-content: center; gap: 14px; }
+  body.r9x16 #rail { left: 65px; right: 65px; top: 306px; gap: 10px; }
+  #rail .chip { font-size: calc(22px * var(--k)); padding: 8px 18px; }
+  body.r9x16 #rail .chip { font-size: 27px; padding: 9px 16px; }
+  #rail .chip.done { color: var(--bright); border-color: var(--hair-2); }
+  #rail .n { font: 500 .8em/1 var(--mono); color: var(--muted); }
+
+  /* find */
+  .tiles { display: flex; gap: calc(22px * var(--k)); justify-content: center; }
+  .tile { width: calc(230px * var(--k)); height: calc(190px * var(--k)); display: grid; place-items: center; position: relative; }
+  body.r9x16 .tile { width: 280px; height: 230px; }
+  .tile svg { width: 58%; height: auto; }
+  .tile .tk { position: absolute; top: 12px; right: 12px; width: 40px; height: 40px; border-radius: 50%; background: var(--signal); color: var(--signal-ink); display: grid; place-items: center; font: 700 26px/1 var(--display); }
+  html[dir=rtl] .tile .tk { right: auto; left: 12px; }
+  .tile.out { opacity: .35; }
+
+  /* qualify */
+  .panel { width: var(--pw); padding: calc(28px * var(--k)) calc(34px * var(--k)); text-align: start; display: flex; flex-direction: column; gap: calc(16px * var(--k)); position: relative; }
+  .ptitle { display: flex; align-items: center; gap: 14px; font: 600 calc(36px * var(--k))/1.1 var(--display); }
+  body.r9x16 .ptitle { font-size: 40px; }
+  .qrow { display: flex; align-items: center; gap: 18px; padding: calc(14px * var(--k)) 0; border-top: 1px solid var(--hair); font: 500 calc(34px * var(--k))/1.2 var(--display); color: var(--text-2); }
+  body.r9x16 .qrow { font-size: 40px; }
+  .qrow .bx { flex: none; width: calc(38px * var(--k)); height: calc(38px * var(--k)); border-radius: 50%; border: 2px solid var(--hair-2); display: grid; place-items: center; font: 700 calc(20px * var(--k))/1 var(--mono); color: var(--muted); }
+  .qrow.on { color: var(--bright); }
+  .qrow.on .bx { background: var(--signal); border-color: var(--signal); color: var(--signal-ink); }
+  #stamp { align-self: center; margin-top: 8px; padding: 12px 24px; border: 3px solid var(--signal); border-radius: 12px; color: var(--signal); font: 700 calc(32px * var(--k))/1.15 var(--display); transform: rotate(-2deg); text-align: center; }
+  body.r9x16 #stamp { font-size: 36px; }
+
+  /* feasibility */
+  .feas { width: var(--pw); display: flex; flex-direction: column; gap: calc(30px * var(--k)); position: relative; padding-top: calc(80px * var(--k)); }
+  body.r9x16 .feas { padding-top: 100px; }
+  .frow { display: grid; grid-template-columns: calc(150px * var(--k)) 1fr; align-items: center; gap: 20px; font: 600 calc(32px * var(--k))/1 var(--display); text-align: start; }
+  body.r9x16 .frow { grid-template-columns: 150px 1fr; font-size: 36px; }
+  .track { position: relative; height: calc(70px * var(--k)); }
+  .seg { position: absolute; top: 0; bottom: 0; border-radius: 10px; display: flex; align-items: center; padding: 0 16px; font: 500 calc(22px * var(--k))/1 var(--mono); color: var(--signal-ink); overflow: hidden; white-space: nowrap; transform-origin: left center; }
+  html[dir=rtl] .seg { transform-origin: right center; }
+  body.r9x16 .seg { font-size: 25px; }
+  .seg.a { background: var(--signal); }
+  .seg.b { background: #2a6fa8; color: var(--bright); }
+  #worth { position: absolute; top: calc(66px * var(--k)); bottom: -10px; border-left: 3px dashed var(--bright); }
+  body.r9x16 #worth { top: 84px; }
+  #worth b { position: absolute; top: -10px; right: 8px; transform: translate(0, -100%); white-space: nowrap; font: 500 calc(22px * var(--k))/1 var(--mono); color: var(--bright); }
+  body.r9x16 #worth b { font-size: 26px; }
+  .brk { position: absolute; top: -8px; bottom: -8px; border: 3px solid var(--signal); border-radius: 10px; }
+  .brk b { position: absolute; top: calc(100% + 10px); left: 50%; transform: translateX(-50%); white-space: nowrap; font: 600 calc(24px * var(--k))/1 var(--display); color: var(--signal); }
+  body.r9x16 .brk b { font-size: 28px; }
+
+  /* build: schedule of quantities → straight to whoever did the work */
+  .soq { width: var(--pw); text-align: start; padding: calc(24px * var(--k)) calc(30px * var(--k)); display: flex; flex-direction: column; gap: 6px; }
+  .soq .ptitle { margin-bottom: 8px; }
+  .brow { display: grid; grid-template-columns: 1fr calc(200px * var(--k)) 1fr; align-items: center; gap: 16px; padding: calc(12px * var(--k)) 0; border-top: 1px solid var(--hair); }
+  body.r9x16 .brow { grid-template-columns: 1fr 150px 1fr; }
+  .brow .ln { font: 500 calc(30px * var(--k))/1.15 var(--display); color: var(--bright); }
+  .brow .to { justify-self: end; }
+  body.r9x16 .brow .ln { font-size: 32px; }
+  .flow { position: relative; height: 3px; background: repeating-linear-gradient(to right, rgba(255,255,255,.25) 0 10px, transparent 10px 18px); }
+  .flow .pk { position: absolute; top: 50%; left: 0; width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%; background: var(--signal); box-shadow: 0 0 18px var(--signal); }
+  html[dir=rtl] .flow .pk { left: auto; right: 0; margin: -9px -9px 0 0; }
+  .brow .chip { font-size: calc(26px * var(--k)); }
+  body.r9x16 .brow .chip { font-size: 28px; padding: 10px 14px; }
+  #rec { font: 500 calc(20px * var(--k))/1.2 var(--mono); color: var(--muted); margin-top: 6px; }
+  body.r9x16 #rec { font-size: 24px; }
+
+  /* buy: escrow, released together */
+  #xbox { height: calc(400px * var(--ds)); }
+  #xbox .in { height: 400px; }
+  .party { display: flex; flex-direction: column; align-items: center; gap: 10px; font: 600 34px/1 var(--display); }
+  .party i { width: 92px; height: 92px; border-radius: 50%; border: 2px solid var(--hair-2); background: var(--space-3); display: grid; place-items: center; }
+  .party svg { width: 46px; }
+  #ring { width: 230px; height: 230px; border-radius: 50%; border: 3px solid var(--signal); box-shadow: 0 0 60px rgba(79,184,255,.25), inset 0 0 40px rgba(79,184,255,.12); }
+  #ringl { font: 600 30px/1.2 var(--display); color: var(--signal); white-space: nowrap; }
+  .tok { padding: 12px 20px; border-radius: 12px; font: 700 32px/1 var(--display); white-space: nowrap; }
+  .tok.f { background: var(--signal); color: var(--signal-ink); }
+  .tok.t { background: var(--orbit); color: #160b33; }
+  #xcap { min-height: calc(70px * var(--k)); display: flex; align-items: center; }
+  .steps { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; width: calc(1400px * var(--k) * .8); }
+  body.r9x16 .steps { grid-template-columns: repeat(3, 1fr); width: 950px; }
+  .st { display: flex; flex-direction: column; align-items: center; gap: 8px; font: 500 calc(20px * var(--k))/1.15 var(--display); color: var(--muted); text-align: center; }
+  body.r9x16 .st { font-size: 25px; }
+  .st i { width: calc(30px * var(--k)); height: calc(30px * var(--k)); border-radius: 50%; border: 2px solid var(--hair-2); font: 600 calc(16px * var(--k))/1 var(--mono); display: grid; place-items: center; font-style: normal; }
+  .st.on { color: var(--bright); }
+  .st.on i { background: var(--signal); border-color: var(--signal); color: var(--signal-ink); }
+  .st.rel.on i { background: var(--orbit); border-color: var(--orbit); }
+
+  /* the money: held in escrow */
+  #brname { font-size: calc(110px * var(--k)); }
+  .chip.bigc { font-size: calc(40px * var(--k)); padding: calc(14px * var(--k)) calc(28px * var(--k)); }
+  body.r9x16 .chip.bigc { font-size: 44px; }
+  body.r9x16 #statrow { flex-direction: column; align-items: center; }
+  body.r9x16 #brname { font-size: 120px; }
+  #hbox { height: calc(330px * var(--ds)); }
+  #hbox .in { height: 330px; }
+  .hn { padding: 16px 22px; border-radius: 14px; border: 2px solid var(--hair-2); background: var(--space-3); font: 600 30px/1.2 var(--display); text-align: center; width: 270px; color: var(--text-2); text-wrap: balance; }
+  .hn.mid { border-color: var(--signal); color: var(--bright); width: 250px; }
+  .hn.lit { color: var(--bright); border-color: var(--orbit); background: rgba(169,139,255,.12); }
+  .hn.lit.bk { border-color: var(--signal); background: rgba(79,184,255,.12); }
+  #nope { font: 700 44px/1 var(--display); color: var(--danger); }
+  .statusbox { padding: calc(20px * var(--k)) calc(30px * var(--k)); border-radius: 14px; border: 1px solid rgba(79,184,255,.4); background: rgba(79,184,255,.06); font: 500 calc(30px * var(--k))/1.4 var(--mono); color: var(--bright); max-width: calc(1300px * var(--k)); text-wrap: balance; text-align: center; }
+  body.r9x16 .statusbox { font-size: 34px; max-width: 950px; }
+  .doc { display: flex; align-items: center; gap: 22px; padding: 18px 26px; }
+  .doc svg { width: calc(54px * var(--k)); flex: none; }
+  .doc b { font: 600 calc(34px * var(--k))/1.2 var(--display); text-align: start; }
+  body.r9x16 .doc b { font-size: 38px; }
+  #statusbar { position: absolute; left: 96px; right: 96px; bottom: 58px; text-align: center; font: 400 calc(17px * var(--k))/1.3 var(--mono); color: var(--text-2); }
+  body.r9x16 #statusbar { left: 65px; right: 65px; bottom: auto; top: 1180px; font-size: 22px; }
+
+  /* payoff + CTA */
+  #r11 .end b { font-size: calc(30px * var(--k)); }
+  .field { display: flex; flex-direction: column; gap: 10px; padding: calc(18px * var(--k)) calc(24px * var(--k)); width: calc(500px * var(--k)); text-align: start; }
+  body.r9x16 .field { width: 950px; }
+  .field .label { font-size: calc(20px * var(--k)); }
+  body.r9x16 .field .label { font-size: 24px; }
+  .field .v { font: 500 calc(32px * var(--k))/1.2 var(--display); color: var(--text-2); }
+  body.r9x16 .field .v { font-size: 40px; }
+  .fields { display: flex; align-items: stretch; gap: calc(24px * var(--k)); }
+  .fields .arrow { align-self: center; }
+  body.r9x16 .fields { flex-direction: column; gap: 18px; }
+  .arrow { font: 600 calc(48px * var(--k))/1 var(--display); color: var(--signal); }
+  html[dir=rtl] .arrow { transform: scaleX(-1); }
+  body.r9x16 .arrow { transform: rotate(90deg); }
+  #endcard { gap: calc(30px * var(--k)); }
+  /* vertical cut: the design boxes scale to .95, so their type is set larger to read on a phone */
+  body.r9x16 .tn .l { font-size: 40px; }
+  body.r9x16 .party { font-size: 38px; } body.r9x16 .tok { font-size: 42px; } body.r9x16 #ringl { font-size: 38px; }
+  body.r9x16 .hn { font-size: 34px; width: 300px; } body.r9x16 .hn.mid { width: 260px; } body.r9x16 #nope { font-size: 56px; }
+  body.r9x16 .st { font-size: 30px; } body.r9x16 .steps { row-gap: 28px; } body.r9x16 .st i { width: 42px; height: 42px; font-size: 24px; } body.r9x16 .note { font-size: 26px; } body.r9x16 #statusbar { font-size: 26px; }
+  /* right-to-left: the 'worth there' label reads inward from the line */
+  html[dir=rtl] #worth b { left: 8px; right: auto; transform: translate(0, -100%); }
+  body.r9x16 #reply { font-size: 26px; }
+  body.r9x16 #cap2 { white-space: pre-line; }
+  /* Arabic glyphs sit smaller than Latin at the same size: lift the small text */
+  html[lang=ar] .note { font-size: calc(21px * var(--k)); } html[lang=ar] body.r9x16 .note { font-size: 31px; }
+  html[lang=ar] .st { font-size: calc(25px * var(--k)); } html[lang=ar] body.r9x16 .st { font-size: 35px; }
+  html[lang=ar] #statusbar { font-size: calc(21px * var(--k)); } html[lang=ar] body.r9x16 #statusbar { font-size: 28px; top: auto; bottom: 680px; }
+  html[lang=ar] .tag { font-size: calc(21px * var(--k)); } html[lang=ar] body.r9x16 .tag { font-size: 30px; }
+  html[lang=ar] .cap { line-height: 1.45; } html[lang=ar] .statusbox { line-height: 1.7; } html[lang=ar] #statusbar { line-height: 1.6; }
+  html[lang=ar] .pl { font-size: calc(21px * var(--k)); } html[lang=ar] body.r9x16 .pl { font-size: 27px; }
+  html[lang=ar] #rec { font-size: calc(24px * var(--k)); } html[lang=ar] body.r9x16 #rec { font-size: 29px; }
+  html[lang=ar] .seg { font-size: calc(26px * var(--k)); } html[lang=ar] body.r9x16 .seg { font-size: 30px; }
+  html[lang=ar] #worth b { font-size: calc(26px * var(--k)); } html[lang=ar] body.r9x16 #worth b { font-size: 30px; }
+  html[lang=ar] .label { font-size: calc(23px * var(--k)); } html[lang=ar] body.r9x16 .label { font-size: 28px; }
+  html[lang=ar] #rail .chip { font-size: calc(25px * var(--k)); } html[lang=ar] body.r9x16 #rail .chip { font-size: 30px; }
+  html[lang=ar] .statusbox { font-size: calc(32px * var(--k)); } html[lang=ar] body.r9x16 .statusbox { font-size: 38px; }
+  html[lang=ar] .brow .chip { font-size: calc(28px * var(--k)); } html[lang=ar] body.r9x16 .brow .chip { font-size: 31px; }
+</style>
+</head>
+<body class="bq {{CUT}}">
+<div id="root">
+  <div id="maplayer" class="map"></div>
+  <div id="mtext">
+    <div id="m1" class="h" data-s="consult"></div>
+    <div id="m2" class="h t2" data-s="base"></div>
+    <div id="m3" class="h big" data-s="n90"></div>
+  </div>
+  <div id="reach" class="tag" data-s="reach"></div>
+
+  <!-- tangle: five strangers, two countries, one property (S1, S2, S11) -->
+  <div id="tangle">
+    <div id="tbox" class="sbox"><div class="in">
+      <svg class="ov" width="1000" height="600" viewBox="0 0 1000 600">
+        <path id="border" d="M500 0 V600" stroke="rgba(255,255,255,.22)" stroke-width="3" stroke-dasharray="10 10" fill="none"/>
+        <g id="tl" fill="none" stroke="rgba(170,179,201,.55)" stroke-width="2.5" stroke-dasharray="8 9">
+          <path id="t1" d="M170 120 C 420 40, 600 60, 820 110"/>
+          <path id="t2" d="M170 120 C 330 300, 640 520, 860 430"/>
+          <path id="t3" d="M210 460 C 420 260, 560 180, 820 110"/>
+          <path id="t4" d="M210 460 C 380 560, 560 420, 690 300"/>
+          <path id="t5" d="M820 110 C 700 220, 580 220, 500 290"/>
+          <path id="t6" d="M860 430 C 720 330, 600 380, 500 290"/>
+          <path id="t7" d="M170 120 C 330 180, 520 330, 690 300"/>
+          <path id="t8" d="M500 290 C 420 380, 300 380, 210 460"/>
+        </g>
+        <g id="prop"><circle cx="690" cy="300" r="40" fill="none" stroke="#eef2ff" stroke-width="10"/><path d="M719 329 L746 356" stroke="#4fb8ff" stroke-width="10" stroke-linecap="round"/></g>
+      </svg>
+      <div class="ab" data-x="170" data-y="120"><div id="tn1" class="tn"><div class="d"></div><div class="l" data-s="agent"></div></div></div>
+      <div class="ab" data-x="820" data-y="110"><div id="tn2" class="tn"><div class="d"></div><div class="l" data-s="lawyer"></div></div></div>
+      <div class="ab" data-x="860" data-y="430"><div id="tn3" class="tn"><div class="d"></div><div class="l" data-s="dev"></div></div></div>
+      <div class="ab" data-x="210" data-y="460"><div id="tn4" class="tn"><div class="d"></div><div class="l" data-s="builder"></div></div></div>
+      <div class="ab" data-x="500" data-y="290"><div id="tn5" class="tn money"><div class="d"></div><div class="l" data-s="money"></div></div></div>
+    </div></div>
+  </div>
+
+  <!-- S1 hook -->
+  <div id="s1" class="stage"><div id="hook" class="stage" style="position:relative; left:0; top:0; width:auto; height:auto">
+    <div id="h1" class="h" data-s="h1"></div><div id="h2" class="h" data-s="h2"></div><div id="h3" class="h sig" data-s="h3"></div>
+  </div></div>
+
+  <!-- S2 problem: caption over the tangle -->
+  <div id="s2" class="stage" style="justify-content:flex-start"><div id="cap2" class="cap t2" style="top: calc(16px * var(--k))"></div></div>
+
+  <!-- S3 who -->
+  <div id="s3" class="stage">
+    <div id="lock" class="lockup"><img id="mark" src="assets/baqshi-mark.svg" alt=""><span id="word">Baqshi</span></div>
+    <div id="whocap" class="h s" data-s="who"></div>
+  </div>
+
+  <!-- S4 network: the route -->
+  <div id="s4" class="stage">
+    <div id="cap4" class="cap" data-s="route_cap"></div>
+    <div class="route">
+      <div id="pil" class="row">
+        <span class="chip sigc" data-s="p_find"></span><span class="chip sigc" data-s="p_qualify"></span><span class="chip sigc" data-s="p_transfer"></span><span class="chip sigc" data-s="p_build"></span>
+      </div>
+      <div class="rl"><div id="bar4" class="bar"></div>
+        <div class="end" id="you4"><i></i><b data-s="you"></b></div>
+        <div class="bqbox" id="bq4"><img src="assets/baqshi-mark.svg" alt=""><span data-s="baqshi"></span></div>
+        <div class="end dst" id="prop4"><i></i><b data-s="property"></b></div>
+      </div>
+      <div style="height: calc(30px * var(--k))"></div>
+      <div class="net"><span id="n1" class="chip orbc" data-s="law"></span><span id="n2" class="chip orbc" data-s="red"></span><span id="n3" class="chip orbc" data-s="gov"></span></div>
+    </div>
+  </div>
+
+  <!-- progress rail for S5–S9 -->
+  <div id="rail">
+    <span class="chip" id="rp1"><span data-s="p_find"></span></span>
+    <span class="chip" id="rp2"><span data-s="p_qualify"></span></span>
+    <span class="chip" id="rp3"><span data-s="p_transfer"></span></span>
+    <span class="chip" id="rp4"><span data-s="p_build"></span></span>
+  </div>
+
+  <!-- S5 find -->
+  <div id="s5" class="stage rail-pad">
+    <div class="tiles">
+      <div id="ti1" class="tile glass"><svg viewBox="0 0 64 56" fill="none" stroke="#aab3c9" stroke-width="3" stroke-linejoin="round"><path d="M6 26 L32 6 L58 26"/><path d="M12 22 V52 H52 V22"/><path d="M27 52 V37 H37 V52"/></svg></div>
+      <div id="ti2" class="tile glass"><svg viewBox="0 0 64 56" fill="none" stroke="#aab3c9" stroke-width="3" stroke-linejoin="round"><rect x="14" y="6" width="36" height="46"/><path d="M22 14h6M36 14h6M22 24h6M36 24h6M22 34h6M36 34h6M28 52v-8h8v8"/></svg><div id="tk2" class="tk">✓</div></div>
+      <div id="ti3" class="tile glass"><svg viewBox="0 0 64 56" fill="none" stroke="#aab3c9" stroke-width="3" stroke-linejoin="round"><path d="M4 44 L22 30 L34 38 L60 20"/><path d="M4 52 H60"/><path d="M46 8 v14 M46 8 h10 l-3 4 3 4 h-10"/></svg></div>
+    </div>
+    <div class="row"><span id="fb1" class="chip on"><span class="ok">✓</span> <span data-s="fit_brief"></span></span><span id="fb2" class="chip on"><span class="ok">✓</span> <span data-s="fit_budget"></span></span></div>
+  </div>
+
+  <!-- S6 qualify -->
+  <div id="s6" class="stage rail-pad">
+    <div id="qpanel" class="panel glass">
+      <div class="ptitle"><img src="assets/baqshi-mark.svg" alt="" style="height:1em"><span data-s="plan"></span></div>
+      <div id="q1" class="qrow"><span class="bx">1</span><span data-s="q1"></span></div>
+      <div id="q2" class="qrow"><span class="bx">2</span><span data-s="q2"></span></div>
+      <div id="q3" class="qrow"><span class="bx">3</span><span data-s="q3"></span></div>
+      <div id="q4" class="qrow"><span class="bx">4</span><span data-s="q4"></span></div>
+      <div id="stamp" data-s="writ"></div>
+    </div>
+  </div>
+
+  <!-- S7 buy or build (illustrative, no numbers) -->
+  <div id="s7" class="stage rail-pad">
+    <div id="bob" class="h s" data-s="bob"></div>
+    <div class="feas">
+      <div class="frow"><span data-s="f_buy"></span><div class="track" id="trk1"><div id="sg1" class="seg a" style="inset-inline-start:0; width:72%"></div></div></div>
+      <div class="frow"><span data-s="f_build"></span><div class="track" id="trk2">
+        <div id="sg2" class="seg a" style="inset-inline-start:0; width:34%" data-s="f_land"></div>
+        <div id="sg3" class="seg b" style="inset-inline-start:34%; width:36%" data-s="f_constr"></div>
+        <div id="brk" class="brk" style="inset-inline-start:70%; width:16%"><b data-s="f_margin"></b></div>
+      </div></div>
+      <div id="worth" style="inset-inline-start: calc(150px * var(--k) + 20px + (100% - 150px * var(--k) - 20px) * .86)"><b data-s="f_worth"></b></div>
+    </div>
+    <div style="height: calc(20px * var(--k))"></div>
+    <div class="tag" data-s="f_tag"></div>
+  </div>
+
+  <!-- S8 build -->
+  <div id="s8" class="stage rail-pad">
+    <div id="cap8" class="cap"></div>
+    <div class="soq glass">
+      <div class="ptitle" data-s="soq"></div>
+      <div class="brow" id="b1"><span class="ln" data-s="line1"></span><div class="flow"><i class="pk"></i></div><span class="chip to" data-s="to1"></span></div>
+      <div class="brow" id="b2"><span class="ln" data-s="line2"></span><div class="flow"><i class="pk"></i></div><span class="chip to" data-s="to2"></span></div>
+      <div class="brow" id="b3"><span class="ln" data-s="line3"></span><div class="flow"><i class="pk"></i></div><span class="chip to" data-s="to3"></span></div>
+      <div class="brow" id="b4"><span class="ln" data-s="line4"></span><div class="flow"><i class="pk"></i></div><span class="chip to" data-s="to4"></span></div>
+      <div id="rec" data-s="record"></div>
+    </div>
+    <div class="tag" data-s="example"></div>
+  </div>
+
+  <!-- S9 buy: one escrow, released together -->
+  <div id="s9" class="stage rail-pad">
+    <div id="xcap"><div id="xc" class="cap"></div></div>
+    <div id="xbox" class="sbox"><div class="in">
+      <svg class="ov" width="1000" height="400" viewBox="0 0 1000 400"><path id="xl" d="M110 190 H890" stroke="rgba(255,255,255,.18)" stroke-width="3" stroke-dasharray="8 10"/></svg>
+      <div class="ab party" data-x="120" data-y="175"><i><svg viewBox="0 0 24 24" fill="none" stroke="#4fb8ff" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></i><span data-s="buyer"></span></div>
+      <div class="ab party" data-x="880" data-y="175"><i><svg viewBox="0 0 24 24" fill="none" stroke="#a98bff" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></i><span data-s="seller"></span></div>
+      <div class="ab" data-x="500" data-y="190"><div id="ring"></div></div>
+      <div class="ab" data-x="500" data-y="345"><div id="ringl" data-s="escrow"></div></div>
+      <div class="ab" data-x="275" data-y="190"><div id="tf" class="tok f" data-s="funds"></div></div>
+      <div class="ab" data-x="725" data-y="190"><div id="tt" class="tok t" data-s="title"></div></div>
+    </div></div>
+    <div class="steps">
+      <div class="st" id="st1"><i>1</i><span data-s="s1"></span></div><div class="st" id="st2"><i>2</i><span data-s="s2"></span></div><div class="st" id="st3"><i>3</i><span data-s="s3"></span></div>
+      <div class="st" id="st4"><i>4</i><span data-s="s4"></span></div><div class="st rel" id="st5"><i>5</i><span data-s="s5"></span></div><div class="st" id="st6"><i>6</i><span data-s="s6"></span></div>
+    </div>
+    <div class="note" data-s="model_note"></div>
+  </div>
+
+  <!-- S10 the money: held in escrow, two exits only (owner 2026-10-20: generic escrow, no protocol named) -->
+  <div id="s10" class="stage">
+    <div id="brhead" class="stage" style="position:relative; left:0; top:0; width:auto; height:auto; gap: calc(14px * var(--k))">
+      <div id="devc" class="h s" data-s="dev_cap"></div>
+      <div id="brname" class="h sig" data-s="brname"></div>
+      <div id="brdesc" class="h xs t2" data-s="br_desc"></div>
+    </div>
+    <div id="hbox" class="sbox"><div class="in">
+      <svg class="ov" width="1000" height="330" viewBox="0 0 1000 330">
+        <path id="pf" d="M640 200 H720" stroke="#a98bff" stroke-width="4" fill="none"/>
+        <path id="pb" d="M360 200 H280" stroke="#4fb8ff" stroke-width="4" fill="none"/>
+        <path id="px" d="M560 140 C 620 60, 700 40, 780 40" stroke="#ff6b7a" stroke-width="3" stroke-dasharray="8 8" fill="none"/>
+      </svg>
+      <div class="ab" data-x="500" data-y="200"><div id="hmid" class="hn mid" data-s="held"></div></div>
+      <div class="ab" data-x="860" data-y="200"><div id="hf" class="hn" data-s="fwd"></div></div>
+      <div class="ab" data-x="140" data-y="200"><div id="hb" class="hn bk" data-s="back"></div></div>
+      <div class="ab" data-x="800" data-y="40"><div id="nope">✕</div></div>
+    </div></div>
+    <div id="statrow" class="row"><span id="sb1" class="chip on bigc" data-s="stat_build"></span><span id="sb2" class="chip orbc bigc" data-s="stat_buy"></span></div>
+    <div id="agrrow" class="glass doc"><svg viewBox="0 0 40 48" fill="none" stroke="#eef2ff" stroke-width="2.5"><path d="M6 3h20l9 9v33H6z"/><path d="M26 3v9h9M12 22h17M12 29h17M12 36h11"/></svg><b data-s="agreement"></b></div>
+    <div id="agrcap" class="cap t2" data-s="agr_cap"></div>
+  </div>
+
+  <!-- S11 payoff -->
+  <div id="s11" class="stage">
+    <div id="cap11" class="h s" data-s="one"></div>
+    <div class="route" id="r11">
+      <div class="rl"><div id="bar11" class="bar"></div>
+        <div class="end"><i></i><b data-s="you"></b></div>
+        <div class="bqbox"><img src="assets/baqshi-mark.svg" alt=""><span data-s="baqshi"></span></div>
+        <div class="end dst"><i></i><b data-s="property"></b></div>
+      </div>
+      <div style="height: calc(40px * var(--k))"></div>
+      <div id="pil11" class="row"><span class="chip on" data-s="p_find"></span><span class="chip on" data-s="p_qualify"></span><span class="chip on" data-s="p_transfer"></span><span class="chip on" data-s="p_build"></span></div>
+    </div>
+  </div>
+
+  <!-- S12 CTA -->
+  <div id="s12" class="stage">
+    <div id="plan12" class="fields">
+      <div id="fd1" class="field glass"><span class="label" data-s="from"></span><span class="v" data-s="from_ph"></span></div>
+      <div id="ar12" class="arrow">→</div>
+      <div id="fd2" class="field glass" style="border-color: rgba(169,139,255,.45)"><span class="label" data-s="ownin"></span><span class="v" data-s="ownin_ph"></span></div>
+    </div>
+  </div>
+  <div id="s13" class="stage">
+    <div id="endcard" class="stage" style="position:relative; left:0; top:0; width:auto; height:auto">
+      <div id="lock2" class="lockup"><img src="assets/baqshi-mark.svg" alt=""><span>Baqshi</span></div>
+      <div id="tagl" class="h s" data-s="tagline"></div>
+      <div id="btn" class="btn" data-s="cta"></div>
+      <div id="reply" class="label" data-s="reply"></div>
+    </div>
+  </div>
+
+</div>
+<script src="../../../tools/motion/kit.js"></script>
+<script src="parts.js"></script>
+<script src="data-{{LANG}}.js"></script>
+<script>
+  var C = CUES, RTL = document.documentElement.dir === 'rtl', SG = RTL ? -1 : 1, V = document.body.classList.contains('r9x16');
+  function c(n) { if (!(n in C)) throw new Error('missing cue ' + n); return C[n]; }
+  var D = Math.round((END + 3.4) * 10) / 10;
+  document.querySelectorAll('[data-s]').forEach(function (el) {
+    var k = el.getAttribute('data-s'); if (!(k in STR)) throw new Error('missing string ' + k); el.textContent = STR[k];
+  });
+  // design-box placement that mirrors for right-to-left
+  document.querySelectorAll('.in [data-x]').forEach(function (el) {
+    var x = +el.getAttribute('data-x'); el.style.left = (RTL ? 1000 - x : x) + 'px'; el.style.top = el.getAttribute('data-y') + 'px';
+  });
+  if (RTL) ['#xl', '#pf', '#pb', '#px', '#tl', '#prop', '#border'].forEach(function (s) { var g = document.querySelector(s); g.setAttribute('transform', 'translate(1000 0) scale(-1 1)'); });
+  var show = function (s, on) { var e = typeof s === 'string' ? document.querySelector(s) : s; e.style.display = on ? '' : 'none'; };
+
+  // scenes
+  var T = { s1: 0, s2: c('p0') - 0.05, s3: c('who') - 0.1, map: c('map') - 0.1, s4: c('route') - 0.1, s5: c('find') - 0.1, s6: c('qual') - 0.1, s7: c('bob') - 0.1,
+            s8: c('bld') - 0.1, s9: c('buy') - 0.1, s10: c('br') - 0.1, s11: c('pay') - 0.1, s12: c('cta') - 0.1, s13: c('url') - 0.15 };
+  Kit.scene('#s1', 0, T.s2).scene('#s2', T.s2, T.s3).scene('#s3', T.s3, T.map).scene('#s4', T.s4, T.s5).scene('#s5', T.s5, T.s6).scene('#s6', T.s6, T.s7)
+     .scene('#s7', T.s7, T.s8).scene('#s8', T.s8, T.s9).scene('#s9', T.s9, T.s10).scene('#s10', T.s10, T.s11).scene('#s11', T.s11, T.s12)
+     .scene('#s12', T.s12, T.s13).scene('#s13', T.s13, D);
+  Kit.scene('#tangle', 0, c('one') + 0.9).scene('#maplayer', T.map, T.s4).scene('#mtext', T.map, T.s4).scene('#reach', T.map, T.s4).scene('#rail', T.s5, T.s10);
+  Kit.add('#tangle', 'opacity', [[0, 0.28], [T.s2, 0.28], [T.s2 + 0.4, 1, 'out'], [T.s3 - 0.2, 1], [T.s3, 0, 'in']]);
+
+  // S1 hook: motion from frame 1
+  Kit.slam('#h1', 0.0, { from: 1.15 }).slam('#h2', c('h2'), { from: 1.15 }).slam('#h3', c('h3'), { from: 1.15 });
+  Kit.add('#prop', 'opacity', [[0, 0], [T.s2, 0, 'hold'], [T.s2 + 0.3, 1, 'out']]);
+  // S2: the five strangers name themselves, the lines tangle across the border
+  Kit.each(function (t) { var el = document.getElementById('cap2'); var s = [STR.h1, STR.h2, STR.h3].join(V ? '\n' : ' '); if (el.textContent !== s) el.textContent = s; });
+  Kit.pop('#cap2', T.s2, { dy: 10 });
+  ['agent', 'lawyer', 'dev', 'builder', 'money'].forEach(function (k, i) {
+    Kit.add('#tn' + (i + 1) + ' .l', 'opacity', [[0, 0], [c(k), 0, 'hold'], [c(k) + 0.15, 1, 'out']]);
+    Kit.add('#tn' + (i + 1) + ' .l', 'scale', [[c(k), 0.8], [c(k) + 0.25, 1, 'outBack']]);
+  });
+  for (var i = 1; i <= 8; i++) Kit.add('#t' + i, 'trim', [[c('p0') + 0.3 + i * 0.6, 0], [c('p0') + 1.2 + i * 0.6, 1, 'out']]);
+  Kit.each(function (t) { var m = document.getElementById('tn5'); m.style.opacity = (t > c('money') && t < T.s3) ? (0.65 + 0.35 * Math.abs(Math.sin(t * 9))) : ''; });
+
+  // S3 who: the mark, then the world from New Zealand
+  Kit.add('#mark', 'scale', [[T.s3, 0.6], [T.s3 + 0.45, 1, 'outBack']]).fade('#mark', T.s3, T.s3 + 0.2);
+  Kit.add('#word', 'clipX', [[T.s3 + 0.25, 0], [T.s3 + 0.8, 1, 'out']]);
+  Kit.pop('#whocap', c('who') + 0.6, { dy: 18 });
+  var MW = V ? { w: 1600, lon: 95, lat: 4 } : { w: 2300, lon: 70, lat: 12 };
+  var M = BQ.map(document.getElementById('maplayer'), MW);
+  var DEST = ['es', 'it', 'ch', 'lb', 'ae', 'us', 'jp', 'sg', 'za', 'br'];
+  var BELOW = { it: 1, ae: 1, sg: 1 };
+  var nz = M.pin('nz', 'pin-nz', true, true); nz.querySelector('.pl').textContent = STR.c_nz;
+  Kit.add(nz, 'scale', [[c('nz'), 0], [c('nz') + 0.35, 1, 'outBack']]);
+  DEST.forEach(function (k, i) {
+    var t0 = c('n90') - 0.4 + i * 0.09;   // all routes land well before the route scene
+    var a = M.arc('nz', k, 'arc-' + k, 0.3);
+    Kit.add(a, 'trim', [[t0, 0], [t0 + 0.75, 1, 'out']]);
+    var p = M.pin(k, 'pin-' + k, false, BELOW[k]);
+    p.querySelector('.pl').textContent = STR['c_' + k];
+    var xy = M.xy(BQ.PLACES[k][0], BQ.PLACES[k][1]);
+    var safe = V ? (xy[0] > 150 && xy[0] < 930) : (xy[0] > 180 && xy[0] < 1740 && xy[1] > 80);
+    if (!safe || (V && (k === 'uk' || k === 'ch'))) p.querySelector('.pl').style.display = 'none';
+    if (!V && (k === 'uk' || k === 'za' || k === 'br')) p.querySelector('.pl').style.display = 'none';
+    Kit.add(p, 'scale', [[t0 + 0.65, 0], [t0 + 0.95, 1, 'outBack']]);
+  });
+  // hide any country label that would sit under the headline panel or on another label (works for every language)
+  (function () {
+    var grow = function (r, m) { return { l: r.left - m, r: r.right + m, t: r.top - m, b: r.bottom + m }; };
+    var hit = function (a, b) { return a.l < b.r && b.l < a.r && a.t < b.b && b.t < a.b; };
+    var kept = [grow(document.getElementById('mtext').getBoundingClientRect(), 14), grow(document.querySelector('#pin-nz .pl').getBoundingClientRect(), 8)];
+    DEST.forEach(function (k) {
+      var pl = document.querySelector('#pin-' + k + ' .pl');
+      if (!pl || pl.style.display === 'none') return;
+      var r = grow(pl.getBoundingClientRect(), 8);
+      if (kept.some(function (q) { return hit(r, q); })) pl.style.display = 'none'; else kept.push(r);
+    });
+  })();
+  Kit.fade('#maplayer', T.map, T.map + 0.6);
+  Kit.pop('#m1', c('map'), { dy: 14 }).pop('#m2', c('nz'), { dy: 14 }).slam('#m3', c('n90'), { from: 1.12 });
+  Kit.fade('#reach', T.map + 0.3, T.map + 0.8);
+
+  // S4 the route, and who Baqshi brings in
+  Kit.pop('#cap4', T.s4 + 0.05, { dy: 12 });
+  Kit.pop('#you4', T.s4 + 0.1, { dy: 0 }).add('#bar4', 'scaleX', [[T.s4 + 0.2, 0], [T.s4 + 1.1, 1, 'out']]).pop('#bq4', T.s4 + 0.6, { dy: 12 }).pop('#prop4', T.s4 + 1.0, { dy: 0 });
+  document.querySelectorAll('#pil .chip').forEach(function (e, i) { Kit.pop(e, c('route') + 0.9 + i * 0.18, { dy: 10 }); });
+  Kit.pop('#n1', c('law'), { dy: -14 }).pop('#n2', c('red'), { dy: -14 }).pop('#n3', c('gov'), { dy: -14 });
+
+  // rail: where we are on the route
+  Kit.pop('#rail', T.s5, { dy: -8 });
+  Kit.each(function (t) {
+    var cur = t < T.s6 ? 1 : t < T.s7 ? 2 : t < T.s8 ? 0 : t < T.s9 ? 4 : 3;
+    for (var i = 1; i <= 4; i++) { var e = document.getElementById('rp' + i); e.classList.toggle('on', i === cur || (cur === 0 && (i === 3 || i === 4))); }
+  });
+
+  // S5 find
+  Kit.pop('#ti1', T.s5 + 0.1, { dy: 20 }).pop('#ti2', T.s5 + 0.25, { dy: 20 }).pop('#ti3', T.s5 + 0.4, { dy: 20 });
+  Kit.pop('#fb1', c('brief'), { dy: 12 }).pop('#fb2', c('budget'), { dy: 12 });
+  Kit.add('#tk2', 'scale', [[c('budget') + 0.2, 0], [c('budget') + 0.5, 1, 'outBack']]);
+  Kit.add('#ti1', 'opacity', [[c('budget') + 0.2, 1], [c('budget') + 0.5, 0.35]]).add('#ti3', 'opacity', [[c('budget') + 0.2, 1], [c('budget') + 0.5, 0.35]]);
+  Kit.add('#ti2', 'scale', [[c('budget') + 0.2, 1], [c('budget') + 0.5, 1.08, 'outBack']]);
+
+  // S6 qualify: the route plan, in writing
+  Kit.pop('#qpanel', T.s6 + 0.05, { dy: 20 });
+  ['q1', 'q2', 'q3', 'q4'].forEach(function (k) {
+    Kit.each(function (t) { document.getElementById(k).classList.toggle('on', t >= c(k) + 0.5); });
+  });
+  Kit.slam('#stamp', c('writ') + 0.1, { from: 1.4, dur: 0.16 });
+
+  // S7 buy or build: illustrative bars, no figures
+  Kit.slam('#bob', c('bob'), { from: 1.12 });
+  Kit.add('#sg1', 'scaleX', [[c('weigh'), 0], [c('weigh') + 0.8, 1, 'out']]);
+  Kit.add('#sg2', 'scaleX', [[c('weigh') + 0.4, 0], [c('weigh') + 1.0, 1, 'out']]).add('#sg3', 'scaleX', [[c('weigh') + 0.9, 0], [c('weigh') + 1.5, 1, 'out']]);
+  Kit.fade('#worth', c('weigh') + 1.4, c('weigh') + 1.8);
+  Kit.pop('#brk', c('margin') + 0.3, { dy: 0 }).add('#brk', 'scale', [[c('margin') + 0.3, 1.15], [c('margin') + 0.6, 1, 'out']]);
+
+  // S8 build: priced line by line, released straight to whoever did the work
+  var CAP8 = [[T.s8, ''], [c('lines'), STR.lines_cap], [c('rel'), STR.rel_cap]];
+  Kit.each(function (t) { var s = ''; CAP8.forEach(function (q) { if (t >= q[0]) s = q[1]; }); var el = document.getElementById('cap8'); if (el.textContent !== s) el.textContent = s; });
+  Kit.add('#cap8', 'opacity', [[c('lines') - 0.001, 1], [c('lines'), 0.2, 'hold'], [c('lines') + 0.2, 1, 'out'], [c('rel') - 0.001, 1], [c('rel'), 0.2, 'hold'], [c('rel') + 0.2, 1, 'out']]);
+  Kit.pop('#s8 .soq', T.s8 + 0.05, { dy: 20 });
+  [1, 2, 3, 4].forEach(function (i) {
+    Kit.pop('#b' + i + ' .ln', c('lines') + (i - 1) * 0.3, { dy: 8 });
+    var t0 = c('rel') + 0.15 + (i - 1) * 0.5;
+    var pk = document.querySelector('#b' + i + ' .pk'), fl = document.querySelector('#b' + i + ' .flow');
+    Kit.add(pk, 'opacity', [[0, 0], [t0, 0, 'hold'], [t0 + 0.05, 1], [t0 + 0.55, 1], [t0 + 0.7, 0]]);
+    Kit.each(function (t) { var w = fl.clientWidth; var p = Math.max(0, Math.min(1, (t - t0) / 0.6)); p = 1 - Math.pow(1 - p, 2); pk.style.transform = 'translateX(' + (SG * p * w) + 'px)'; });
+    var to = document.querySelector('#b' + i + ' .to');
+    Kit.each(function (t) { to.classList.toggle('on', t >= t0 + 0.6); });
+  });
+  Kit.fade('#rec', c('qsme') + 0.4, c('qsme') + 0.8);
+
+  // S9 buy: funds and title in, out together
+  var XS = [[T.s9, ''], [c('both'), STR.both], [c('np'), STR.np], [c('ns'), STR.ns]];
+  Kit.each(function (t) { var s = ''; XS.forEach(function (q) { if (t >= q[0]) s = q[1]; }); var el = document.getElementById('xc'); if (el.textContent !== s) el.textContent = s; });
+  [c('both'), c('np'), c('ns')].forEach(function (t0) { Kit.add('#xc', 'scale', [[t0, 0.9], [t0 + 0.2, 1, 'outBack']]); });
+  Kit.pop('#xbox', T.s9 + 0.05, { dy: 16 });
+  Kit.add('#ring', 'scale', [[c('esc'), 1], [c('esc') + 0.2, 1.08, 'out'], [c('esc') + 0.5, 1, 'out']]);
+  Kit.pop('#ringl', c('esc') + 0.1, { dy: 8 });
+  Kit.add('#tf', 'x', [[c('funds'), 0], [c('funds') + 0.7, SG * 190, 'inOut'], [c('out'), SG * 190], [c('out') + 0.9, SG * 420, 'inOut']]);
+  Kit.add('#tt', 'x', [[c('title'), 0], [c('title') + 0.7, -SG * 190, 'inOut'], [c('out'), -SG * 190], [c('out') + 0.9, -SG * 420, 'inOut']]);
+  Kit.add('#tf', 'y', [[c('funds') + 0.7, 0], [c('funds') + 0.9, -26, 'out'], [c('out'), -26], [c('out') + 0.9, 0, 'inOut']]);
+  Kit.add('#tt', 'y', [[c('title') + 0.7, 0], [c('title') + 0.9, 26, 'out'], [c('out'), 26], [c('out') + 0.9, 0, 'inOut']]);
+  Kit.add('#ring', 'borderColor', [[c('out'), '#4fb8ff'], [c('out') + 0.3, '#a98bff', 'out'], [c('out') + 1.2, '#4fb8ff', 'inOut']]);
+  var STEPS = [c('buy') + 0.3, c('funds') + 0.4, c('title') + 0.6, c('esc') + 0.9, c('out') + 0.6, c('both') + 0.8];
+  STEPS.forEach(function (t0, i) { Kit.each(function (t) { document.getElementById('st' + (i + 1)).classList.toggle('on', t >= t0); }); });
+
+  // S10 the money: held in escrow, two exits only
+  Kit.slam('#devc', c('br') + 0.1, { from: 1.1 }).slam('#brname', c('brn'), { from: 1.12 }).pop('#brdesc', c('brn') + 0.6, { dy: 10 });
+  Kit.scene('#hbox', c('hp') - 0.1, c('agr') - 0.1);   // the diagram stays while build / purchase land under it
+  Kit.each(function (t) { show('#brhead', t < c('hp') - 0.1); });
+  Kit.pop('#hmid', c('hp'), { dy: 12 });
+  Kit.add('#px', 'trim', [[c('hp') + 0.6, 0], [c('hp') + 1.3, 1, 'out']]).add('#px', 'opacity', [[c('fwd') - 0.2, 1], [c('fwd'), 0.25]]);
+  Kit.slam('#nope', c('hp') + 1.3, { from: 1.5 });
+  Kit.add('#pf', 'trim', [[c('fwd'), 0], [c('fwd') + 0.4, 1, 'out']]);
+  Kit.add('#pb', 'trim', [[c('back'), 0], [c('back') + 0.4, 1, 'out']]);
+  Kit.pop('#hf', c('fwd'), { dy: 0 }).pop('#hb', c('back'), { dy: 0 });
+  Kit.each(function (t) { document.getElementById('hf').classList.toggle('lit', t >= c('fwd') + 0.3); document.getElementById('hb').classList.toggle('lit', t >= c('back') + 0.3); });
+  Kit.scene('#statrow', c('stat') - 0.1, T.s11).scene('#agrrow', c('agr') - 0.1, T.s11).scene('#agrcap', c('agr') - 0.1, T.s11);
+  Kit.pop('#sb1', c('stat'), { dy: 14 }).pop('#sb2', c('stat2'), { dy: 14 }).pop('#agrrow', c('agr'), { dy: 14 }).pop('#agrcap', c('agr') + 0.3, { dy: 8 });
+
+  // S11 payoff: the five strangers collapse into one route
+  Kit.add('#tangle', 'opacity', [[T.s11, 0], [T.s11 + 0.3, 1, 'out'], [c('one') + 0.3, 1], [c('one') + 0.9, 0, 'in']]);
+  [[170, 120], [820, 110], [860, 430], [210, 460], [500, 290]].forEach(function (p, i) {
+    var dx = (RTL ? (1000 - p[0]) : p[0]); dx = 500 - dx;
+    Kit.add('#tn' + (i + 1), 'x', [[c('one'), 0], [c('one') + 0.7, dx, 'in']]).add('#tn' + (i + 1), 'y', [[c('one'), 0], [c('one') + 0.7, 300 - p[1], 'in']]);
+  });
+  Kit.add('#tl', 'opacity', [[c('one'), 1], [c('one') + 0.4, 0]]);
+  Kit.scene('#cap11', c('one') - 0.05, T.s12).scene('#r11', c('one') + 0.5, T.s12);
+  Kit.slam('#cap11', c('one'), { from: 1.1 });
+  Kit.add('#bar11', 'scaleX', [[c('one') + 0.5, 0], [c('one') + 1.3, 1, 'out']]);
+  document.querySelectorAll('#pil11 .chip').forEach(function (e, i) { Kit.pop(e, c('one') + 1.2 + i * 0.15, { dy: 10 }); });
+
+  // S12 tell us your route, S13 end card
+  Kit.pop('#fd1', c('cta'), { dy: 14 }).pop('#ar12', c('own') - 0.2, { dy: 0 }).pop('#fd2', c('own'), { dy: 14 });
+  Kit.add('#lock2', 'scale', [[T.s13, 0.9], [T.s13 + 0.5, 1, 'outBack']]).fade('#lock2', T.s13, T.s13 + 0.25);
+  Kit.pop('#tagl', T.s13 + 0.35, { dy: 12 }).pop('#btn', c('url') + 0.3, { dy: 12 }).pop('#reply', c('url') + 0.9, { dy: 8 });
+
+  Kit.ready({ duration: D });
+</script>
+</body>
+</html>

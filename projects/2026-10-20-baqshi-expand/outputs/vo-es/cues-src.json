@@ -1,0 +1,500 @@
+{
+ "words": 270,
+ "cues": [
+  {
+   "name": "h1",
+   "at": 0,
+   "next": [
+    "cinco",
+    "extraños",
+    "dos"
+   ]
+  },
+  {
+   "name": "h2",
+   "at": 2,
+   "next": [
+    "dos",
+    "países",
+    "una"
+   ]
+  },
+  {
+   "name": "h3",
+   "at": 4,
+   "next": [
+    "una",
+    "propiedad",
+    "así"
+   ]
+  },
+  {
+   "name": "p0",
+   "at": 6,
+   "next": [
+    "así",
+    "suele",
+    "ser"
+   ]
+  },
+  {
+   "name": "agent",
+   "at": 12,
+   "next": [
+    "un",
+    "agente",
+    "un"
+   ]
+  },
+  {
+   "name": "lawyer",
+   "at": 14,
+   "next": [
+    "un",
+    "abogado",
+    "un"
+   ]
+  },
+  {
+   "name": "dev",
+   "at": 16,
+   "next": [
+    "un",
+    "promotor",
+    "un"
+   ]
+  },
+  {
+   "name": "builder",
+   "at": 18,
+   "next": [
+    "un",
+    "constructor",
+    "y"
+   ]
+  },
+  {
+   "name": "money",
+   "at": 20,
+   "next": [
+    "y",
+    "quien",
+    "tenga"
+   ]
+  },
+  {
+   "name": "who",
+   "at": 25,
+   "next": [
+    "bakshi",
+    "acompaña",
+    "a"
+   ]
+  },
+  {
+   "name": "map",
+   "at": 31,
+   "next": [
+    "somos",
+    "consultores",
+    "inmobiliarios"
+   ]
+  },
+  {
+   "name": "nz",
+   "at": 35,
+   "next": [
+    "con",
+    "sede",
+    "en"
+   ]
+  },
+  {
+   "name": "n90",
+   "at": 40,
+   "next": [
+    "trabajamos",
+    "en",
+    "más"
+   ]
+  },
+  {
+   "name": "route",
+   "at": 46,
+   "next": [
+    "conocemos",
+    "toda",
+    "la"
+   ]
+  },
+  {
+   "name": "rest",
+   "at": 50,
+   "next": [
+    "y",
+    "traemos",
+    "al"
+   ]
+  },
+  {
+   "name": "law",
+   "at": 54,
+   "next": [
+    "abogados",
+    "locales",
+    "promotores"
+   ]
+  },
+  {
+   "name": "red",
+   "at": 56,
+   "next": [
+    "promotores",
+    "inmobiliarios",
+    "y"
+   ]
+  },
+  {
+   "name": "gov",
+   "at": 58,
+   "next": [
+    "y",
+    "los",
+    "canales"
+   ]
+  },
+  {
+   "name": "find",
+   "at": 67,
+   "next": [
+    "primero",
+    "encontramos",
+    "una"
+   ]
+  },
+  {
+   "name": "brief",
+   "at": 74,
+   "next": [
+    "lo",
+    "que",
+    "buscas"
+   ]
+  },
+  {
+   "name": "budget",
+   "at": 77,
+   "next": [
+    "y",
+    "tu",
+    "presupuesto"
+   ]
+  },
+  {
+   "name": "qual",
+   "at": 80,
+   "next": [
+    "luego",
+    "la",
+    "evaluamos"
+   ]
+  },
+  {
+   "name": "q1",
+   "at": 83,
+   "next": [
+    "alguien",
+    "de",
+    "tu"
+   ]
+  },
+  {
+   "name": "q2",
+   "at": 91,
+   "next": [
+    "a",
+    "tu",
+    "nombre"
+   ]
+  },
+  {
+   "name": "q3",
+   "at": 101,
+   "next": [
+    "cuánto",
+    "costará",
+    "y"
+   ]
+  },
+  {
+   "name": "q4",
+   "at": 103,
+   "next": [
+    "y",
+    "cuánto",
+    "tardará"
+   ]
+  },
+  {
+   "name": "writ",
+   "at": 106,
+   "next": [
+    "todo",
+    "por",
+    "escrito"
+   ]
+  },
+  {
+   "name": "bob",
+   "at": 113,
+   "next": [
+    "comprar",
+    "o",
+    "construir"
+   ]
+  },
+  {
+   "name": "weigh",
+   "at": 116,
+   "next": [
+    "comparamos",
+    "el",
+    "costo"
+   ]
+  },
+  {
+   "name": "margin",
+   "at": 124,
+   "next": [
+    "y",
+    "así",
+    "el"
+   ]
+  },
+  {
+   "name": "bld",
+   "at": 137,
+   "next": [
+    "si",
+    "construyes",
+    "tu"
+   ]
+  },
+  {
+   "name": "lines",
+   "at": 141,
+   "next": [
+    "se",
+    "cotiza",
+    "línea"
+   ]
+  },
+  {
+   "name": "qsme",
+   "at": 147,
+   "next": [
+    "kiuesmi",
+    "nuestra",
+    "plataforma"
+   ]
+  },
+  {
+   "name": "rel",
+   "at": 153,
+   "next": [
+    "y",
+    "se",
+    "paga"
+   ]
+  },
+  {
+   "name": "buy",
+   "at": 162,
+   "next": [
+    "si",
+    "compras",
+    "tus"
+   ]
+  },
+  {
+   "name": "funds",
+   "at": 164,
+   "next": [
+    "tus",
+    "fondos",
+    "y"
+   ]
+  },
+  {
+   "name": "title",
+   "at": 166,
+   "next": [
+    "y",
+    "el",
+    "título"
+   ]
+  },
+  {
+   "name": "esc",
+   "at": 173,
+   "next": [
+    "un",
+    "solo",
+    "escrou"
+   ]
+  },
+  {
+   "name": "out",
+   "at": 180,
+   "next": [
+    "y",
+    "salen",
+    "juntos"
+   ]
+  },
+  {
+   "name": "both",
+   "at": 183,
+   "next": [
+    "los",
+    "dos",
+    "a"
+   ]
+  },
+  {
+   "name": "np",
+   "at": 190,
+   "next": [
+    "nadie",
+    "paga",
+    "primero"
+   ]
+  },
+  {
+   "name": "ns",
+   "at": 193,
+   "next": [
+    "nadie",
+    "firma",
+    "primero"
+   ]
+  },
+  {
+   "name": "br",
+   "at": 196,
+   "next": [
+    "y",
+    "quien",
+    "tenga"
+   ]
+  },
+  {
+   "name": "brn",
+   "at": 201,
+   "next": [
+    "queda",
+    "en",
+    "escrou"
+   ]
+  },
+  {
+   "name": "hp",
+   "at": 204,
+   "next": [
+    "cada",
+    "pago",
+    "retenido"
+   ]
+  },
+  {
+   "name": "fwd",
+   "at": 210,
+   "next": [
+    "a",
+    "su",
+    "destinatario"
+   ]
+  },
+  {
+   "name": "back",
+   "at": 213,
+   "next": [
+    "o",
+    "volver",
+    "a"
+   ]
+  },
+  {
+   "name": "stat",
+   "at": 218,
+   "next": [
+    "en",
+    "una",
+    "obra"
+   ]
+  },
+  {
+   "name": "stat2",
+   "at": 225,
+   "next": [
+    "en",
+    "una",
+    "compra"
+   ]
+  },
+  {
+   "name": "agr",
+   "at": 230,
+   "next": [
+    "y",
+    "el",
+    "contrato"
+   ]
+  },
+  {
+   "name": "pay",
+   "at": 241,
+   "next": [
+    "en",
+    "vez",
+    "de"
+   ]
+  },
+  {
+   "name": "one",
+   "at": 246,
+   "next": [
+    "un",
+    "solo",
+    "consultor"
+   ]
+  },
+  {
+   "name": "cta",
+   "at": 255,
+   "next": [
+    "cuéntanos",
+    "de",
+    "dónde"
+   ]
+  },
+  {
+   "name": "own",
+   "at": 259,
+   "next": [
+    "y",
+    "dónde",
+    "quieres"
+   ]
+  },
+  {
+   "name": "url",
+   "at": 265,
+   "next": [
+    "contáctanos",
+    "en",
+    "bakshi"
+   ]
+  }
+ ]
+}

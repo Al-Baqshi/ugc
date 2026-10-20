@@ -7,3 +7,5 @@
 - [Voice: energy, one take, plain](feedback-voice-energy-plain.md) — no deadpan AI reads, no per-line cuts, no alphabet gimmicks
 - [Founder-led GTM](project-founder-led-gtm.md) — owner is the founder, inbound only, no cold outreach; studio should also edit the owner's own recordings
 - [Review designs before finishing](feedback-review-design-before-finishing.md) — show previews, name the editable master (HTML/Figma), PNG is preview only
+- [Baqshi films](project-baqshi-films.md) — EN/AR/ES versions, voice Chris, spy-mission bed G, reuse the BQ01 template
+- [Baqshi: escrow, not BitRegalo](feedback-baqshi-escrow-generic.md) — never name BitRegalo or test networks in Baqshi content; say "held in escrow"

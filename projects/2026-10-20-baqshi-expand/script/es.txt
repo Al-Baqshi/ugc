@@ -1,0 +1,21 @@
+{h1}Cinco extraños. {h2}Dos países. {h3}Una propiedad.
+
+{p0}Así suele ser expandirse al extranjero. {agent}Un agente. {lawyer}Un abogado. {dev}Un promotor. {builder}Un constructor. {money}Y quien tenga tu dinero.
+
+{who}Baqshi acompaña a quienes quieren expandirse. {map}Somos consultores inmobiliarios globales, {nz}con sede en Nueva Zelanda. {n90}Trabajamos en más de noventa países. {route}Conocemos toda la ruta {rest}y traemos al resto: {law}abogados locales, {red}promotores inmobiliarios {gov}y los canales de gobierno que pide cada país.
+
+{find}Primero, encontramos una propiedad que encaje con {brief}lo que buscas {budget}y tu presupuesto.
+
+{qual}Luego la evaluamos. {q1}¿Alguien de tu país puede ser dueño allí? {q2}¿A tu nombre, con una empresa o con un fideicomiso? {q3}¿Cuánto costará {q4}y cuánto tardará? {writ}Todo por escrito, antes de mover dinero.
+
+{bob}¿Comprar o construir? {weigh}Comparamos el costo con lo que vale allí, {margin}y así el margen es una cifra que ya viste, no una esperanza.
+
+{bld}Si construyes, tu presupuesto {lines}se cotiza línea por línea en {qsme}QSME, nuestra plataforma aliada de construcción, {rel}y se paga directo a quien hizo el trabajo.
+
+{buy}Si compras, {funds}tus fondos {title}y el título del vendedor entran en {esc}un solo escrow, radicado en Nueva Zelanda, {out}y salen juntos. {both}Los dos a la vez, o ninguno. {np}Nadie paga primero. {ns}Nadie firma primero.
+
+{br}¿Y quien tenga tu dinero? {brn}Queda en escrow. {hp}Cada pago retenido solo puede ir {fwd}a su destinatario, {back}o volver a quien pagó. {stat}En una obra, cada línea de costo. {stat2}En una compra, el precio. {agr}Y el contrato de escrow de cada trato establece exactamente cómo.
+
+{pay}En vez de cinco extraños: {one}un solo consultor, en cada paso de la ruta.
+
+{cta}Cuéntanos de dónde eres {own}y dónde quieres tener tu propiedad. {url}Contáctanos en baqshi.com.

@@ -99,7 +99,8 @@ for p in projects:
     vers = []
     for f in ([main] if main else []) + [x for x in p["voiced"] + p["vids"] if x != main]:
         mb = os.path.getsize(os.path.join(p["out"], f)) / 1e6
-        label = (vid + "·" if vid else "") + aspect_of(f).replace("x", ":") + ("·vo" + (" " + f.split("-with-vo-")[1].replace(".mp4", "") if "-with-vo-" in f else "") if "-vo" in f else "") + (" · master" if f == p["master"] else "")
+        lang = re.search(r"-(en|es|ar|fr|de|pt|zh)-", f)  # language cuts (e.g. BQ01·ar·9:16)
+        label = (vid + "·" if vid else "") + (lang.group(1) + "·" if lang else "") + aspect_of(f).replace("x", ":") + ("·vo" + (" " + f.split("-with-vo-")[1].replace(".mp4", "") if "-with-vo-" in f else "") if "-vo" in f else "") + (" · master" if f == p["master"] else "")
         vers.append(f'<li><button class="play" data-src="{e(rel(f))}" data-v="{e(vid_id)}" title="Play this version">▶</button>'
                     f'<span class="vname" title="{e(f)}">{e(label)}<small>{e(f)}</small></span>'
                     f'<a class="dl" href="{e(rel(f))}" download>⬇ {mb:.0f} MB</a></li>')

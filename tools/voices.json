@@ -15,5 +15,23 @@
   "voice_name": "John - New Zealand, Cheerful, and Bright",
   "model": "eleven_v3",
   "note": "Owner picked 2026-10-19 for N14 (LBP invite) when asking for a clearly NZ voice. Cam S stays the default elsewhere."
+ },
+ "baqshi": {
+  "voice_id": "iP95p4xoKVk53GoZ742B",
+  "voice_name": "Chris - Charming, Down-to-Earth (American)",
+  "model": "eleven_v3",
+  "note": "Owner picked 2026-10-20 for the Baqshi film (American, 'more like you than the Kiwi voice'). Samples: projects/2026-10-20-baqshi-expand/outputs/voice-samples."
+ },
+ "baqshi-es": {
+  "voice_id": "YExhVa4bZONzeingloMX",
+  "voice_name": "Juan Carlos - Warm and Conversational (Latin American, library)",
+  "model": "eleven_v3",
+  "note": "Chosen 2026-10-20 for BQ01 Spanish (neutral Latin American, tú). STT-clean on 'Bakshi'; Mauricio misread the name, Antonio was slow."
+ },
+ "baqshi-ar": {
+  "voice_id": "xvhpbk8otnNHtT3fjCpr",
+  "voice_name": "Omar - Premium Arabic Voice (MSA, library)",
+  "model": "eleven_v3",
+  "note": "Chosen 2026-10-20 for BQ01 Arabic. Reads ~1.65 words/s, so BQ01 used tools/tempo ×1.10. Alternative Abdullah pCKbQ4EPGE06zpEPGNvS is faster but said استثماري for استئماني (trust) in full takes; spell it إستئماني if retried."
  }
 }

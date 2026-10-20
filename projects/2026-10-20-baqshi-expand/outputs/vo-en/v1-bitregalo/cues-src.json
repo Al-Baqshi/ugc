@@ -1,0 +1,491 @@
+{
+ "words": 274,
+ "cues": [
+  {
+   "name": "h1",
+   "at": 0,
+   "next": [
+    "five",
+    "strangers",
+    "two"
+   ]
+  },
+  {
+   "name": "h2",
+   "at": 2,
+   "next": [
+    "two",
+    "countries",
+    "one"
+   ]
+  },
+  {
+   "name": "h3",
+   "at": 4,
+   "next": [
+    "one",
+    "property",
+    "thats"
+   ]
+  },
+  {
+   "name": "p0",
+   "at": 6,
+   "next": [
+    "thats",
+    "how",
+    "expanding"
+   ]
+  },
+  {
+   "name": "agent",
+   "at": 12,
+   "next": [
+    "an",
+    "agent",
+    "a"
+   ]
+  },
+  {
+   "name": "lawyer",
+   "at": 14,
+   "next": [
+    "a",
+    "lawyer",
+    "a"
+   ]
+  },
+  {
+   "name": "dev",
+   "at": 16,
+   "next": [
+    "a",
+    "developer",
+    "a"
+   ]
+  },
+  {
+   "name": "builder",
+   "at": 18,
+   "next": [
+    "a",
+    "builder",
+    "and"
+   ]
+  },
+  {
+   "name": "money",
+   "at": 20,
+   "next": [
+    "and",
+    "whoevers",
+    "holding"
+   ]
+  },
+  {
+   "name": "who",
+   "at": 25,
+   "next": [
+    "bakshi",
+    "looks",
+    "after"
+   ]
+  },
+  {
+   "name": "map",
+   "at": 33,
+   "next": [
+    "were",
+    "global",
+    "property"
+   ]
+  },
+  {
+   "name": "nz",
+   "at": 37,
+   "next": [
+    "based",
+    "in",
+    "new"
+   ]
+  },
+  {
+   "name": "n90",
+   "at": 41,
+   "next": [
+    "working",
+    "in",
+    "more"
+   ]
+  },
+  {
+   "name": "route",
+   "at": 47,
+   "next": [
+    "we",
+    "know",
+    "the"
+   ]
+  },
+  {
+   "name": "rest",
+   "at": 52,
+   "next": [
+    "and",
+    "we",
+    "bring"
+   ]
+  },
+  {
+   "name": "law",
+   "at": 58,
+   "next": [
+    "local",
+    "lawyers",
+    "real"
+   ]
+  },
+  {
+   "name": "red",
+   "at": 60,
+   "next": [
+    "real",
+    "estate",
+    "developers"
+   ]
+  },
+  {
+   "name": "gov",
+   "at": 63,
+   "next": [
+    "and",
+    "the",
+    "government"
+   ]
+  },
+  {
+   "name": "find",
+   "at": 70,
+   "next": [
+    "first",
+    "we",
+    "find"
+   ]
+  },
+  {
+   "name": "brief",
+   "at": 76,
+   "next": [
+    "your",
+    "brief",
+    "and"
+   ]
+  },
+  {
+   "name": "budget",
+   "at": 78,
+   "next": [
+    "and",
+    "budget",
+    "then"
+   ]
+  },
+  {
+   "name": "qual",
+   "at": 80,
+   "next": [
+    "then",
+    "we",
+    "qualify"
+   ]
+  },
+  {
+   "name": "q1",
+   "at": 84,
+   "next": [
+    "can",
+    "someone",
+    "from"
+   ]
+  },
+  {
+   "name": "q2",
+   "at": 91,
+   "next": [
+    "in",
+    "your",
+    "name"
+   ]
+  },
+  {
+   "name": "q3",
+   "at": 99,
+   "next": [
+    "what",
+    "will",
+    "it"
+   ]
+  },
+  {
+   "name": "q4",
+   "at": 103,
+   "next": [
+    "and",
+    "how",
+    "long"
+   ]
+  },
+  {
+   "name": "writ",
+   "at": 106,
+   "next": [
+    "all",
+    "in",
+    "writing"
+   ]
+  },
+  {
+   "name": "bob",
+   "at": 113,
+   "next": [
+    "buy",
+    "or",
+    "build"
+   ]
+  },
+  {
+   "name": "weigh",
+   "at": 116,
+   "next": [
+    "we",
+    "weigh",
+    "the"
+   ]
+  },
+  {
+   "name": "margin",
+   "at": 125,
+   "next": [
+    "so",
+    "the",
+    "margin"
+   ]
+  },
+  {
+   "name": "bld",
+   "at": 136,
+   "next": [
+    "building",
+    "your",
+    "budget"
+   ]
+  },
+  {
+   "name": "lines",
+   "at": 140,
+   "next": [
+    "priced",
+    "line",
+    "by"
+   ]
+  },
+  {
+   "name": "qsme",
+   "at": 145,
+   "next": [
+    "queue",
+    "ess",
+    "mee"
+   ]
+  },
+  {
+   "name": "rel",
+   "at": 152,
+   "next": [
+    "and",
+    "released",
+    "straight"
+   ]
+  },
+  {
+   "name": "buy",
+   "at": 160,
+   "next": [
+    "buying",
+    "your",
+    "funds"
+   ]
+  },
+  {
+   "name": "funds",
+   "at": 161,
+   "next": [
+    "your",
+    "funds",
+    "and"
+   ]
+  },
+  {
+   "name": "title",
+   "at": 163,
+   "next": [
+    "and",
+    "the",
+    "sellers"
+   ]
+  },
+  {
+   "name": "esc",
+   "at": 169,
+   "next": [
+    "one",
+    "escrow",
+    "held"
+   ]
+  },
+  {
+   "name": "out",
+   "at": 175,
+   "next": [
+    "and",
+    "come",
+    "out"
+   ]
+  },
+  {
+   "name": "both",
+   "at": 179,
+   "next": [
+    "both",
+    "at",
+    "once"
+   ]
+  },
+  {
+   "name": "np",
+   "at": 184,
+   "next": [
+    "nobody",
+    "pays",
+    "first"
+   ]
+  },
+  {
+   "name": "ns",
+   "at": 187,
+   "next": [
+    "nobody",
+    "signs",
+    "first"
+   ]
+  },
+  {
+   "name": "br",
+   "at": 190,
+   "next": [
+    "were",
+    "developing",
+    "the"
+   ]
+  },
+  {
+   "name": "brn",
+   "at": 200,
+   "next": [
+    "bit",
+    "regalo",
+    "a"
+   ]
+  },
+  {
+   "name": "hp",
+   "at": 209,
+   "next": [
+    "each",
+    "held",
+    "payment"
+   ]
+  },
+  {
+   "name": "fwd",
+   "at": 215,
+   "next": [
+    "to",
+    "the",
+    "person"
+   ]
+  },
+  {
+   "name": "back",
+   "at": 220,
+   "next": [
+    "or",
+    "back",
+    "to"
+   ]
+  },
+  {
+   "name": "stat",
+   "at": 225,
+   "next": [
+    "its",
+    "on",
+    "test"
+   ]
+  },
+  {
+   "name": "agr",
+   "at": 233,
+   "next": [
+    "and",
+    "no",
+    "deal"
+   ]
+  },
+  {
+   "name": "pay",
+   "at": 245,
+   "next": [
+    "so",
+    "instead",
+    "of"
+   ]
+  },
+  {
+   "name": "one",
+   "at": 250,
+   "next": [
+    "one",
+    "consultant",
+    "every"
+   ]
+  },
+  {
+   "name": "cta",
+   "at": 257,
+   "next": [
+    "tell",
+    "us",
+    "where"
+   ]
+  },
+  {
+   "name": "own",
+   "at": 262,
+   "next": [
+    "and",
+    "where",
+    "you"
+   ]
+  },
+  {
+   "name": "url",
+   "at": 268,
+   "next": [
+    "contact",
+    "us",
+    "at"
+   ]
+  }
+ ]
+}

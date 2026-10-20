@@ -1,0 +1,327 @@
+{
+ "venture": "baqshi",
+ "video": "outputs/baqshi-en-16x9.mp4",
+ "character": "Baqshi brand narrator: warm, clear, confident, plain; mechanism first, never salesy",
+ "settings": {
+  "model": "eleven_v3",
+  "stability": 0.5
+ },
+ "lines": [
+  {
+   "id": "vo01-h1",
+   "start_s": 0.0,
+   "max_s": 3.36,
+   "on_screen": "captions lifted from this paragraph",
+   "text_v2": "Five strangers. Two countries. One property.",
+   "text_v3": "Five strangers. Two countries. One property.",
+   "delivery": "warm, clear, down-to-earth American; one take (one paragraph swapped)"
+  },
+  {
+   "id": "vo02-p0",
+   "start_s": 3.36,
+   "max_s": 7.83,
+   "on_screen": "captions lifted from this paragraph",
+   "text_v2": "That's how expanding abroad usually goes. An agent. A lawyer. A developer. A builder. And whoever's holding your money.",
+   "text_v3": "That's how expanding abroad usually goes. An agent. A lawyer. A developer. A builder. And whoever's holding your money.",
+   "delivery": "warm, clear, down-to-earth American; one take (one paragraph swapped)"
+  },
+  {
+   "id": "vo03-who",
+   "start_s": 11.19,
+   "max_s": 15.32,
+   "on_screen": "captions lifted from this paragraph",
+   "text_v2": "Baqshi looks after people who want to expand. We're global property consultants, based in New Zealand, working in more than ninety countries. We know the whole route, and we bring in the rest: local lawyers, real estate developers, and the government channels each country needs.",
+   "text_v3": "Baqshi looks after people who want to expand. We're global property consultants, based in New Zealand, working in more than ninety countries. We know the whole route, and we bring in the rest: local lawyers, real estate developers, and the government channels each country needs.",
+   "delivery": "warm, clear, down-to-earth American; one take (one paragraph swapped)"
+  },
+  {
+   "id": "vo04-find",
+   "start_s": 26.507,
+   "max_s": 3.8,
+   "on_screen": "captions lifted from this paragraph",
+   "text_v2": "First, we find property that fits your brief and budget.",
+   "text_v3": "First, we find property that fits your brief and budget.",
+   "delivery": "warm, clear, down-to-earth American; one take (one paragraph swapped)"
+  },
+  {
+   "id": "vo05-qual",
+   "start_s": 30.304,
+   "max_s": 12.0,
+   "on_screen": "captions lifted from this paragraph",
+   "text_v2": "Then we qualify it. Can someone from your country own there? In your name, a company, or a trust? What will it cost, and how long? All in writing, before any money moves.",
+   "text_v3": "Then we qualify it. Can someone from your country own there? In your name, a company, or a trust? What will it cost, and how long? All in writing, before any money moves.",
+   "delivery": "warm, clear, down-to-earth American; one take (one paragraph swapped)"
+  },
+  {
+   "id": "vo06-bob",
+   "start_s": 42.3,
+   "max_s": 6.92,
+   "on_screen": "captions lifted from this paragraph",
+   "text_v2": "Buy or build? We weigh the cost against what it's worth there, so the margin is a number you've seen, not a hope.",
+   "text_v3": "Buy or build? We weigh the cost against what it's worth there, so the margin is a number you've seen, not a hope.",
+   "delivery": "warm, clear, down-to-earth American; one take (one paragraph swapped)"
+  },
+  {
+   "id": "vo07-bld",
+   "start_s": 49.218,
+   "max_s": 9.11,
+   "on_screen": "captions lifted from this paragraph",
+   "text_v2": "Building? Your budget is priced line by line on Q-S-me, our construction platform partner, and released straight to whoever did the work.",
+   "text_v3": "Building? Your budget is priced line by line on Q-S-me, our construction platform partner, and released straight to whoever did the work.",
+   "delivery": "warm, clear, down-to-earth American; one take (one paragraph swapped)"
+  },
+  {
+   "id": "vo08-buy",
+   "start_s": 58.331,
+   "max_s": 12.52,
+   "on_screen": "captions lifted from this paragraph",
+   "text_v2": "Buying? Your funds and the seller's title go into one escrow, held in New Zealand, and come out together. Both at once, or neither. Nobody pays first. Nobody signs first.",
+   "text_v3": "Buying? Your funds and the seller's title go into one escrow, held in New Zealand, and come out together. Both at once, or neither. Nobody pays first. Nobody signs first.",
+   "delivery": "warm, clear, down-to-earth American; one take (one paragraph swapped)"
+  },
+  {
+   "id": "vo09-br",
+   "start_s": 70.85,
+   "max_s": 16.78,
+   "on_screen": "captions lifted from this paragraph",
+   "text_v2": "And whoever's holding your money? It's held in escrow. Every held payment can only go to the person it's for, or back to whoever paid. On a build, that's every cost line. On a purchase, the price. And each deal's escrow agreement sets out exactly how.",
+   "text_v3": "And whoever's holding your money? It's held in escrow. Every held payment can only go to the person it's for, or back to whoever paid. On a build, that's every cost line. On a purchase, the price. And each deal's escrow agreement sets out exactly how.",
+   "delivery": "warm, clear, down-to-earth American; one take (one paragraph swapped)"
+  },
+  {
+   "id": "vo10-pay",
+   "start_s": 87.629,
+   "max_s": 4.83,
+   "on_screen": "captions lifted from this paragraph",
+   "text_v2": "So instead of five strangers: one consultant, every step of the route.",
+   "text_v3": "So instead of five strangers: one consultant, every step of the route.",
+   "delivery": "warm, clear, down-to-earth American; one take (one paragraph swapped)"
+  },
+  {
+   "id": "vo11-cta",
+   "start_s": 92.461,
+   "max_s": 4.85,
+   "on_screen": "captions lifted from this paragraph",
+   "text_v2": "Tell us where you're from, and where you want to own. Contact us at baqshi.com.",
+   "text_v3": "Tell us where you're from, and where you want to own. Contact us at baqshi.com.",
+   "delivery": "warm, clear, down-to-earth American; one take (one paragraph swapped)"
+  }
+ ],
+ "languages": {
+  "en": {
+   "voice": "Chris (premade, American)",
+   "voice_id": "iP95p4xoKVk53GoZ742B",
+   "take": "take 1 of 3; v2 escrow paragraph re-voiced (take 3 of 3) and spliced in with tools/splice_para.py",
+   "script": "script/en.txt",
+   "take_text": "outputs/vo-en/take-text.txt",
+   "audio": "outputs/vo-en/take-v2.m4a",
+   "levelled": "outputs/vo-en/voice.m4a",
+   "speech_ends_s": 97.309,
+   "videos": [
+    "outputs/baqshi-en-16x9-with-vo.mp4",
+    "outputs/baqshi-en-9x16-with-vo.mp4"
+   ],
+   "paragraphs": [
+    {
+     "id": "vo01-h1",
+     "start_s": 0.0,
+     "text": "Five strangers. Two countries. One property."
+    },
+    {
+     "id": "vo02-p0",
+     "start_s": 3.36,
+     "text": "That's how expanding abroad usually goes. An agent. A lawyer. A developer. A builder. And whoever's holding your money."
+    },
+    {
+     "id": "vo03-who",
+     "start_s": 11.19,
+     "text": "Baqshi looks after people who want to expand. We're global property consultants, based in New Zealand, working in more than ninety countries. We know the whole route, and we bring in the rest: local lawyers, real estate developers, and the government channels each country needs."
+    },
+    {
+     "id": "vo04-find",
+     "start_s": 26.507,
+     "text": "First, we find property that fits your brief and budget."
+    },
+    {
+     "id": "vo05-qual",
+     "start_s": 30.304,
+     "text": "Then we qualify it. Can someone from your country own there? In your name, a company, or a trust? What will it cost, and how long? All in writing, before any money moves."
+    },
+    {
+     "id": "vo06-bob",
+     "start_s": 42.3,
+     "text": "Buy or build? We weigh the cost against what it's worth there, so the margin is a number you've seen, not a hope."
+    },
+    {
+     "id": "vo07-bld",
+     "start_s": 49.218,
+     "text": "Building? Your budget is priced line by line on QSME, our construction platform partner, and released straight to whoever did the work."
+    },
+    {
+     "id": "vo08-buy",
+     "start_s": 58.331,
+     "text": "Buying? Your funds and the seller's title go into one escrow, held in New Zealand, and come out together. Both at once, or neither. Nobody pays first. Nobody signs first."
+    },
+    {
+     "id": "vo09-br",
+     "start_s": 70.85,
+     "text": "And whoever's holding your money? It's held in escrow. Every held payment can only go to the person it's for, or back to whoever paid. On a build, that's every cost line. On a purchase, the price. And each deal's escrow agreement sets out exactly how."
+    },
+    {
+     "id": "vo10-pay",
+     "start_s": 87.629,
+     "text": "So instead of five strangers: one consultant, every step of the route."
+    },
+    {
+     "id": "vo11-cta",
+     "start_s": 92.461,
+     "text": "Tell us where you're from, and where you want to own. Contact us at baqshi.com."
+    }
+   ]
+  },
+  "es": {
+   "voice": "Juan Carlos (library, Latin American, warm and conversational)",
+   "voice_id": "YExhVa4bZONzeingloMX",
+   "take": "take 1 of 3; v2 escrow paragraph re-voiced (take 2 of 3) and spliced in",
+   "script": "script/es.txt",
+   "take_text": "outputs/vo-es/take-text.txt",
+   "audio": "outputs/vo-es/take-v2.m4a",
+   "levelled": "outputs/vo-es/voice.m4a",
+   "speech_ends_s": 109.851,
+   "videos": [
+    "outputs/baqshi-es-16x9-with-vo.mp4",
+    "outputs/baqshi-es-9x16-with-vo.mp4"
+   ],
+   "paragraphs": [
+    {
+     "id": "vo01-h1",
+     "start_s": 0.0,
+     "text": "Cinco extraños. Dos países. Una propiedad."
+    },
+    {
+     "id": "vo02-p0",
+     "start_s": 4.213,
+     "text": "Así suele ser expandirse al extranjero. Un agente. Un abogado. Un promotor. Un constructor. Y quien tenga tu dinero."
+    },
+    {
+     "id": "vo03-who",
+     "start_s": 14.12,
+     "text": "Baqshi acompaña a quienes quieren expandirse. Somos consultores inmobiliarios globales, con sede en Nueva Zelanda. Trabajamos en más de noventa países. Conocemos toda la ruta y traemos al resto: abogados locales, promotores inmobiliarios y los canales de gobierno que pide cada país."
+    },
+    {
+     "id": "vo04-find",
+     "start_s": 31.664,
+     "text": "Primero, encontramos una propiedad que encaje con lo que buscas y tu presupuesto."
+    },
+    {
+     "id": "vo05-qual",
+     "start_s": 36.72,
+     "text": "Luego la evaluamos. ¿Alguien de tu país puede ser dueño allí? ¿A tu nombre, con una empresa o con un fideicomiso? ¿Cuánto costará y cuánto tardará? Todo por escrito, antes de mover dinero."
+    },
+    {
+     "id": "vo06-bob",
+     "start_s": 50.46,
+     "text": "¿Comprar o construir? Comparamos el costo con lo que vale allí, y así el margen es una cifra que ya viste, no una esperanza."
+    },
+    {
+     "id": "vo07-bld",
+     "start_s": 58.773,
+     "text": "Si construyes, tu presupuesto se cotiza línea por línea en QSME, nuestra plataforma aliada de construcción, y se paga directo a quien hizo el trabajo."
+    },
+    {
+     "id": "vo08-buy",
+     "start_s": 68.027,
+     "text": "Si compras, tus fondos y el título del vendedor entran en un solo escrow, radicado en Nueva Zelanda, y salen juntos. Los dos a la vez, o ninguno. Nadie paga primero. Nadie firma primero."
+    },
+    {
+     "id": "vo09-br",
+     "start_s": 80.95,
+     "text": "¿Y quien tenga tu dinero? Queda en escrow. Cada pago retenido solo puede ir a su destinatario, o volver a quien pagó. En una obra, cada línea de costo. En una compra, el precio. Y el contrato de escrow de cada trato establece exactamente cómo."
+    },
+    {
+     "id": "vo10-pay",
+     "start_s": 99.051,
+     "text": "En vez de cinco extraños: un solo consultor, en cada paso de la ruta."
+    },
+    {
+     "id": "vo11-cta",
+     "start_s": 104.038,
+     "text": "Cuéntanos de dónde eres y dónde quieres tener tu propiedad. Contáctanos en baqshi.com."
+    }
+   ]
+  },
+  "ar": {
+   "voice": "Omar (library, Modern Standard Arabic)",
+   "voice_id": "xvhpbk8otnNHtT3fjCpr",
+   "take": "take 1 of 3 ×1.10 tempo; v2 escrow paragraph re-voiced (take 2 of 3, same tempo) and spliced in",
+   "script": "script/ar.txt",
+   "take_text": "outputs/vo-ar/take-text.txt",
+   "audio": "outputs/vo-ar/take-v2.m4a",
+   "levelled": "outputs/vo-ar/voice.m4a",
+   "speech_ends_s": 130.263,
+   "videos": [
+    "outputs/baqshi-ar-16x9-with-vo.mp4",
+    "outputs/baqshi-ar-9x16-with-vo.mp4"
+   ],
+   "paragraphs": [
+    {
+     "id": "vo01-h1",
+     "start_s": 0.0,
+     "text": "خمسة غرباء. دولتان. عقار واحد."
+    },
+    {
+     "id": "vo02-p0",
+     "start_s": 4.473,
+     "text": "هكذا يجري التوسّع خارج الحدود عادةً. وسيط عقاري. محامٍ. مطوّر عقاري. مقاول. ومَن يحتفظ بأموالكم."
+    },
+    {
+     "id": "vo03-who",
+     "start_s": 14.594,
+     "text": "في بقشي، نرافق مَن يريدون التوسّع. نحن مستشارون عقاريون عالميون، مقرّنا في نيوزيلندا، ونعمل في أكثر من تسعين دولة. نعرف المسار كاملًا، ونستعين ببقية الأطراف: محامين محليين، ومطوّرين عقاريين، والجهات الحكومية التي تتطلّبها كل دولة."
+    },
+    {
+     "id": "vo04-find",
+     "start_s": 35.209,
+     "text": "أولًا، نجد لكم عقارًا يناسب متطلباتكم وميزانيتكم."
+    },
+    {
+     "id": "vo05-qual",
+     "start_s": 40.509,
+     "text": "ثم نتحقّق منه. هل يمكن لشخص من بلدكم أن يتملّك هناك؟ باسمكم، أم باسم شركة، أم صندوق استئماني؟ كم سيكلّف، وكم من الوقت سيستغرق؟ ونوثّق كل ذلك كتابيًا، قبل تحويل أيّ مبلغ."
+    },
+    {
+     "id": "vo06-bob",
+     "start_s": 56.8,
+     "text": "شراء أم بناء؟ نقارن التكلفة بقيمة العقار هناك، ليكون هامش الربح رقمًا رأيتموه، لا مجرّد أمل."
+    },
+    {
+     "id": "vo07-bld",
+     "start_s": 65.891,
+     "text": "إن اخترتم البناء، فميزانيتكم تُسعَّر بندًا بندًا عبر QSME، منصّة البناء الشريكة لنا، وتُصرَف مباشرةً لمَن أنجز العمل."
+    },
+    {
+     "id": "vo08-buy",
+     "start_s": 76.145,
+     "text": "وإن اخترتم الشراء، فأموالكم وسند ملكية البائع يُودَعان في حساب ضمان واحد، يُحتفَظ به في نيوزيلندا، ويُفرَج عنهما معًا. كلاهما في آنٍ واحد، أو لا شيء. لا أحد يدفع أولًا. ولا أحد يوقّع أولًا."
+    },
+    {
+     "id": "vo09-br",
+     "start_s": 93.691,
+     "text": "ومَن يحتفظ بأموالكم؟ يُحتفَظ بها في حساب ضمان. لا يمكن لأيّ دفعة محتجزة إلا أن تذهب إلى المستفيد منها، أو أن تعود إلى مَن دفعها. في البناء، ينطبق ذلك على كل بند من بنود التكلفة. وفي الشراء، على ثَمَن العقار. وتحدّد اتفاقية حساب الضمان الخاصة بكل صفقة كيف يتمّ ذلك بالضبط."
+    },
+    {
+     "id": "vo10-pay",
+     "start_s": 117.463,
+     "text": "فبدلًا من خمسة غرباء، مستشار واحد يرافقكم في كل خطوة من المسار."
+    },
+    {
+     "id": "vo11-cta",
+     "start_s": 123.911,
+     "text": "أخبرونا مِن أين أنتم، وأين تريدون التملّك. تواصلوا معنا عبر baqshi.com."
+    }
+   ]
+  }
+ },
+ "mix": "voice.m4a (tools/voicenorm.py: speech −16.5 dBFS, ceiling −3 dBFS) at 1.0; music/bed-G-<lang>.m4a (tools/bedfit.py, video length + 1.55 s) 0.32 ducked to 0.12",
+ "v2": "2026-10-20 owner: no BitRegalo, no test-network line; the money paragraph says it generally (held in escrow)."
+}

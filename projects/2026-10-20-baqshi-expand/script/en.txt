@@ -1,0 +1,21 @@
+{h1}Five strangers. {h2}Two countries. {h3}One property.
+
+{p0}That's how expanding abroad usually goes. {agent}An agent. {lawyer}A lawyer. {dev}A developer. {builder}A builder. {money}And whoever's holding your money.
+
+{who}Baqshi looks after people who want to expand. {map}We're global property consultants, {nz}based in New Zealand, {n90}working in more than ninety countries. {route}We know the whole route, {rest}and we bring in the rest: {law}local lawyers, {red}real estate developers, {gov}and the government channels each country needs.
+
+{find}First, we find property that fits {brief}your brief {budget}and budget.
+
+{qual}Then we qualify it. {q1}Can someone from your country own there? {q2}In your name, a company, or a trust? {q3}What will it cost, {q4}and how long? {writ}All in writing, before any money moves.
+
+{bob}Buy or build? {weigh}We weigh the cost against what it's worth there, {margin}so the margin is a number you've seen, not a hope.
+
+{bld}Building? Your budget is {lines}priced line by line on {qsme}QSME, our construction platform partner, {rel}and released straight to whoever did the work.
+
+{buy}Buying? {funds}Your funds {title}and the seller's title go into {esc}one escrow, held in New Zealand, {out}and come out together. {both}Both at once, or neither. {np}Nobody pays first. {ns}Nobody signs first.
+
+{br}And whoever's holding your money? {brn}It's held in escrow. {hp}Every held payment can only go {fwd}to the person it's for, {back}or back to whoever paid. {stat}On a build, that's every cost line. {stat2}On a purchase, the price. {agr}And each deal's escrow agreement sets out exactly how.
+
+{pay}So instead of five strangers: {one}one consultant, every step of the route.
+
+{cta}Tell us where you're from, {own}and where you want to own. {url}Contact us at baqshi.com.
