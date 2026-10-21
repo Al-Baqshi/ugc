@@ -45,6 +45,15 @@
         "cd /Users/brave/Dev/qsmenz-pro/wt-print-materials && node_modules/.bin/vite preview --port 4174 --strictPort"
       ],
       "port": 4174
+    },
+    {
+      "name": "baqshi-i18n",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": [
+        "-c",
+        "cd /Users/brave/baqshi.com2027-i18n && npx next start -p 3210"
+      ],
+      "port": 3210
     }
   ]
 }
