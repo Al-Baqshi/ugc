@@ -1,0 +1,1 @@
+take 1: 57.36s, 154 words, 2.68 w/s, max gap 0.43s before 'When'

@@ -1,0 +1,1 @@
+take 2: 56.48s, 154 words, 2.73 w/s, max gap 0.63s before 'Usually,'

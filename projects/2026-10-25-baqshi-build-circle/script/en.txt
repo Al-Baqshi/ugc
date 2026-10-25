@@ -1,0 +1,19 @@
+{h1}This is property development... {h2}backwards.
+
+{usual}Usually, a developer picks {u1}the site, {u2}the design, {u3}and the price, {u4}then goes looking for {buyers}buyers.
+
+{flip}Build Circle starts {ppl}with the people.
+
+{reg}Tell us {w1}where you want to live, {w2}what kind of home, {w3}and when.
+
+{match}When enough people want the same place, {tog}we bring you together: {circ}a circle of {ftd}first-time developers.
+
+{brief}Then, {b1}one brief, {site}and one site.
+
+{team}And before anything starts, we match your circle with the right team: {r1}the contractor, {r2}the architect, {r3}the engineer, {r4}the project manager, {r5}and the estimator.
+
+{rules}On QSME, we line up the rules your build has to meet: {cons}consents, {insp}inspections, {ccc}code compliance. {book}And every cost line is priced on {ob}one open book.
+
+{alone}So your first home isn't something you work out alone. {org}We organise it, {bring}and we bring in the right people.
+
+{bc}Build Circle, {bybq}by Baqshi. {nz}Starting in New Zealand. {cta}Wherever you want to build, {url}register your interest at baqshi.com.

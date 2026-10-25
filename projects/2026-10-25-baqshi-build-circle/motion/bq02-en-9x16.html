@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<title>BQ02 · Build Circle: property development, backwards (en)</title>
+<!-- GENERATED from bq02.tpl.html by build.py; do not edit. Template notes: Edit this file, then run: python3 motion/build.py  (writes bq02-<lang>[-9x16].html + data-<lang>.js).
+     Every beat is keyed to a cue in script/<lang>.txt; cue times come from outputs/vo-<lang>/cues.json (the chosen take's
+     word timings). Look: BQ01's Orbital style (motion/parts.css). Claims from research/2026-10-25-build-circle.md; owner
+     2026-10-25: keep the circle general (no decision or cost promises), no money lines, sample map data never shown as
+     real, Chris voice, bed G. -->
+<link rel="stylesheet" href="../../../tools/motion/kit.css">
+<link rel="stylesheet" href="parts.css">
+<style>
+  body.bq { --ds: 1.25; }
+  body.bq.r9x16 { --ds: .95; }
+  .cap { font-weight: 600; letter-spacing: -0.02em; line-height: 1.12; font-size: calc(46px * var(--k)); max-width: calc(1400px * var(--k)); text-wrap: balance; }
+  body.r9x16 .cap { font-size: 54px; max-width: 950px; }
+  .note { font: 400 calc(23px * var(--k))/1.4 var(--mono); color: var(--text-2); max-width: calc(1400px * var(--k)); text-wrap: balance; }
+  body.r9x16 .note { font-size: 30px; max-width: 950px; }
+  .sbox { position: relative; width: calc(1000px * var(--ds)); }
+  .sbox > .in { position: absolute; left: 0; top: 0; width: 1000px; transform: scale(var(--ds)); transform-origin: 0 0; }
+  .sbox svg.ov { position: absolute; left: 0; top: 0; overflow: visible; }
+  .ab { position: absolute; transform: translate(-50%, -50%); }
+  .glyph { display: block; overflow: visible; }
+
+  /* hook */
+  #hook { gap: calc(4px * var(--k)); }
+  #hook .h { font-size: calc(112px * var(--k)); }
+  body.r9x16 #hook .h { font-size: 112px; }
+  #h2 { color: var(--signal); }
+
+  /* the chain: site → design → price → buyers, then reversed */
+  #cbox { height: calc(230px * var(--ds)); }
+  #cbox .in { height: 230px; }
+  .node { width: 200px; height: 170px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; background: var(--space-3); border: 2px solid var(--hair-2); border-radius: 18px; }
+  .node svg { width: 56px; height: 56px; }
+  .node b { font: 600 34px/1 var(--display); color: var(--bright); white-space: nowrap; }
+  .node.orbn { border-color: rgba(169,139,255,.6); background: rgba(169,139,255,.10); }
+  .node.lit { border-color: var(--signal); background: rgba(79,184,255,.14); box-shadow: 0 0 60px rgba(79,184,255,.35); }
+  .arw { font: 600 44px/1 var(--display); color: var(--muted); }
+  #bcl { opacity: 0; }
+  .bcl { display: inline-flex; align-items: center; gap: calc(16px * var(--k)); }
+  .bcl .glyph { width: calc(56px * var(--k)); height: calc(56px * var(--k)); }
+  .bcl span { font: 600 calc(44px * var(--k))/1 var(--display); letter-spacing: -0.02em; }
+  body.r9x16 .bcl .glyph { width: 62px; height: 62px; } body.r9x16 .bcl span { font-size: 50px; }
+
+  /* register */
+  .field { display: flex; flex-direction: column; gap: 10px; padding: calc(18px * var(--k)) calc(24px * var(--k)); width: calc(400px * var(--k)); text-align: start; }
+  body.r9x16 .field { width: 950px; }
+  .field .label { font-size: calc(20px * var(--k)); }
+  body.r9x16 .field .label { font-size: 26px; }
+  .field .v { font: 500 calc(36px * var(--k))/1.2 var(--display); color: var(--bright); min-height: 1.2em; }
+  body.r9x16 .field .v { font-size: 46px; }
+  .field.on { border-color: rgba(79,184,255,.55); }
+  .fields { display: flex; align-items: stretch; gap: calc(24px * var(--k)); }
+  body.r9x16 .fields { flex-direction: column; gap: 20px; }
+
+  /* New Zealand: interest gathering in one place, then the circle */
+  #mbox { position: relative; width: calc(1100px * var(--k)); height: calc(640px * var(--k)); }
+  body.r9x16 #mbox { width: 950px; height: 720px; }
+  #nzmap { position: absolute; top: 0; height: 100%; width: calc(561px * var(--k) / 1.25); left: calc(50% - 280.5px * var(--k) / 1.25); }
+  body.r9x16 #nzmap { width: 505px; left: 222.5px; }
+  #nzmap svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .hh { position: absolute; width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%; background: var(--signal); box-shadow: 0 0 14px rgba(79,184,255,.8); }
+  body.r9x16 .hh { width: 20px; height: 20px; margin: -10px 0 0 -10px; }
+  #ping { position: absolute; width: 30px; height: 30px; margin: -15px 0 0 -15px; border-radius: 50%; border: 3px solid var(--orbit); box-shadow: 0 0 30px rgba(169,139,255,.7); }
+  #circ { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: calc(26px * var(--k)); }
+  #circ .glyph { width: calc(300px * var(--k)); height: calc(300px * var(--k)); }
+  body.r9x16 #circ .glyph { width: 380px; height: 380px; }
+  #circl { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  #circl .h { font-size: calc(62px * var(--k)); }
+  body.r9x16 #circl .h { font-size: 68px; }
+  #s5 .tag { right: 0; bottom: 0; }
+
+  /* one brief, one site */
+  #s6 .glyph { width: calc(150px * var(--k)); height: calc(150px * var(--k)); }
+  body.r9x16 #s6 .glyph { width: 190px; height: 190px; }
+  #fbox { height: calc(230px * var(--ds)); }
+  #fbox .in { height: 230px; }
+
+  /* the team */
+  #tbox { height: calc(640px * var(--ds)); }
+  #tbox .in { height: 640px; }
+  .role { display: flex; align-items: center; gap: 12px; padding: 14px 22px; border-radius: 14px; border: 2px dashed var(--hair-2); background: rgba(9,13,24,.9); font: 600 32px/1 var(--display); color: var(--muted); white-space: nowrap; }
+  .role i { font: 500 22px/1 var(--mono); font-style: normal; color: var(--muted); }
+  .role.on { border-style: solid; border-color: rgba(169,139,255,.65); background: linear-gradient(rgba(169,139,255,.12), rgba(169,139,255,.12)), #090d18; color: var(--bright); }
+  .role.on i { color: var(--orbit); }
+  body.r9x16 .role { font-size: 34px; padding: 14px 20px; }
+  #tring .glyph { width: 220px; height: 220px; }
+
+  /* QSME: the rules, and one open book */
+  #qrow { display: flex; gap: calc(28px * var(--k)); align-items: stretch; }
+  body.r9x16 #qrow { flex-direction: column; gap: 18px; }
+  .panel { width: calc(640px * var(--k)); padding: calc(24px * var(--k)) calc(30px * var(--k)); text-align: start; display: flex; flex-direction: column; gap: calc(6px * var(--k)); }
+  body.r9x16 .panel { width: 950px; padding: 20px 28px; gap: 2px; }
+  .ptitle { display: flex; align-items: center; gap: 14px; font: 600 calc(34px * var(--k))/1.15 var(--display); margin-bottom: calc(8px * var(--k)); }
+  body.r16x9 .ptitle { font-size: calc(29px * var(--k)); white-space: nowrap; }
+  #cap5 { min-height: 1.12em; }
+  body.r9x16 .ptitle { font-size: 38px; margin-bottom: 6px; }
+  .qb { flex: none; padding: 6px 12px; border-radius: 8px; border: 1px solid rgba(79,184,255,.5); color: var(--signal); font: 600 calc(22px * var(--k))/1 var(--mono); letter-spacing: .06em; }
+  body.r9x16 .qb { font-size: 26px; }
+  .qrow { display: flex; align-items: center; gap: 18px; padding: calc(13px * var(--k)) 0; border-top: 1px solid var(--hair); font: 500 calc(32px * var(--k))/1.2 var(--display); color: var(--text-2); }
+  body.r9x16 .qrow { font-size: 38px; padding: 12px 0; }
+  .qrow .bx { flex: none; width: calc(38px * var(--k)); height: calc(38px * var(--k)); border-radius: 50%; border: 2px solid var(--hair-2); display: grid; place-items: center; font: 700 calc(19px * var(--k))/1 var(--mono); color: var(--muted); }
+  body.r9x16 .qrow .bx { width: 44px; height: 44px; font-size: 22px; }
+  .qrow.on { color: var(--bright); }
+  .qrow.on .bx { background: var(--signal); border-color: var(--signal); color: var(--signal-ink); }
+  .brow { display: flex; align-items: center; gap: 16px; padding: calc(12px * var(--k)) 0; border-top: 1px solid var(--hair); font: 500 calc(30px * var(--k))/1.2 var(--display); color: var(--bright); }
+  body.r9x16 .brow { font-size: 36px; padding: 11px 0; }
+  .brow .lead { flex: 1; height: 0; border-top: 2px dotted rgba(255,255,255,.18); }
+  .brow .pr { padding: 6px 14px; border-radius: 8px; border: 1px solid var(--hair-2); font: 500 calc(20px * var(--k))/1 var(--mono); color: var(--muted); letter-spacing: .05em; }
+  body.r9x16 .brow .pr { font-size: 25px; }
+  .brow.on .pr { border-color: var(--signal); color: var(--signal); background: rgba(79,184,255,.1); }
+  #pB { opacity: .25; }
+
+  /* not alone */
+  #abox { height: calc(440px * var(--ds)); }
+  #abox .in { height: 440px; }
+  .row { display: flex; justify-content: center; gap: calc(16px * var(--k)); flex-wrap: wrap; }
+  .chip { display: inline-flex; align-items: center; gap: 10px; padding: calc(12px * var(--k)) calc(22px * var(--k)); border-radius: 12px; border: 1px solid var(--hair-2); background: var(--glass); font: 500 calc(32px * var(--k))/1.15 var(--display); color: var(--text-2); }
+  body.r9x16 .chip { font-size: 38px; padding: 14px 24px; }
+  .chip.on { border-color: var(--signal); background: rgba(79,184,255,.14); color: var(--bright); }
+  body.r9x16 #achips { flex-direction: column; align-items: center; gap: 14px; }
+
+  /* end card */
+  #endc { gap: calc(26px * var(--k)); }
+  .bigl { display: inline-flex; align-items: center; gap: calc(24px * var(--k)); }
+  .bigl .glyph { width: calc(92px * var(--k)); height: calc(92px * var(--k)); }
+  .bigl span { font: 600 calc(92px * var(--k))/1 var(--display); letter-spacing: -0.035em; }
+  body.r9x16 .bigl .glyph { width: 100px; height: 100px; } body.r9x16 .bigl span { font-size: 100px; }
+  .byb { display: inline-flex; align-items: center; gap: 14px; font: 500 calc(36px * var(--k))/1 var(--display); color: var(--text-2); }
+  .byb img { height: 1.15em; }
+  body.r9x16 .byb { font-size: 42px; }
+  #nzc svg { height: 1.3em; width: auto; }
+  #wh { color: var(--text-2); }
+  #disc { margin-top: calc(10px * var(--k)); }
+</style>
+</head>
+<body class="bq r9x16">
+<div id="root">
+
+  <!-- S1 hook -->
+  <div id="s1" class="stage"><div id="hook" class="stage" style="position:relative; left:0; top:0; width:auto; height:auto">
+    <div id="h1" class="h" data-s="h1"></div><div id="h2" class="h" data-s="h2"></div>
+  </div></div>
+
+  <!-- S2/S3 the usual chain, then reversed: people first -->
+  <div id="s2" class="stage">
+    <div id="bcl" class="bcl"><svg class="glyph" viewBox="0 0 20 20"><use href="#g-ring"/></svg><span data-s="bc_name"></span></div>
+    <div id="cap2" class="cap"></div>
+    <div id="cbox" class="sbox"><div class="in">
+      <div class="ab arw" data-x="250" data-y="95">→</div><div class="ab arw" data-x="500" data-y="95">→</div><div class="ab arw" data-x="750" data-y="95">→</div>
+      <div class="ab" data-x="125" data-y="95"><div id="c1" class="node"><svg viewBox="0 0 56 56" fill="none" stroke="#aab3c9" stroke-width="3" stroke-linejoin="round"><path d="M6 44 L20 14 L50 14 L36 44 Z"/><path d="M28 22 a6 6 0 1 1 0.01 0"/></svg><b data-s="n_site"></b></div></div>
+      <div class="ab" data-x="375" data-y="95"><div id="c2" class="node"><svg viewBox="0 0 56 56" fill="none" stroke="#aab3c9" stroke-width="3" stroke-linejoin="round"><path d="M8 48 V26 L28 10 L48 26 V48 Z"/><path d="M8 34 H30 V48 M30 34 V26 H48"/></svg><b data-s="n_design"></b></div></div>
+      <div class="ab" data-x="625" data-y="95"><div id="c3" class="node"><svg viewBox="0 0 56 56" fill="none" stroke="#aab3c9" stroke-width="3" stroke-linejoin="round"><path d="M6 30 L28 8 H48 V28 L26 50 Z"/><circle cx="39" cy="17" r="3.5"/></svg><b data-s="n_price"></b></div></div>
+      <div class="ab" data-x="875" data-y="95"><div id="c4" class="node orbn"><svg viewBox="0 0 56 56" fill="none" stroke="#a98bff" stroke-width="3" stroke-linejoin="round"><circle cx="20" cy="18" r="7"/><path d="M6 46 c2-10 8-15 14-15 s12 5 14 15"/><circle cx="38" cy="20" r="6"/><path d="M34 31 c6 0 13 4 16 14"/></svg><b id="c4l" data-s="n_buyers"></b></div></div>
+    </div></div>
+  </div>
+
+  <!-- S4 register: where, what home, when -->
+  <div id="s4" class="stage">
+    <div id="cap4" class="cap" data-s="cap_reg"></div>
+    <div class="fields">
+      <div id="fd1" class="field glass"><span class="label" data-s="f_where"></span><span id="fv1" class="v" data-s="f_where_v"></span></div>
+      <div id="fd2" class="field glass"><span class="label" data-s="f_home"></span><span id="fv2" class="v" data-s="f_home_v"></span></div>
+      <div id="fd3" class="field glass"><span class="label" data-s="f_when"></span><span id="fv3" class="v" data-s="f_when_v"></span></div>
+    </div>
+    <div class="tag" data-s="tag_form"></div>
+  </div>
+
+  <!-- S5 the same place: interest gathers (illustrative), then the circle -->
+  <div id="s5" class="stage">
+    <div id="cap5" class="cap"></div>
+    <div id="mbox">
+      <div id="nzmap"><svg viewBox="0 0 800 1141"><path id="nzland" fill="rgba(170,179,201,.13)" stroke="rgba(170,179,201,.35)" stroke-width="1.5"/></svg><div id="ping"></div></div>
+      <div id="circ">
+        <svg class="glyph" viewBox="0 0 20 20"><circle id="cr" cx="10" cy="10" r="7" fill="none" stroke="#eef2ff" stroke-opacity=".55" stroke-width=".6" stroke-dasharray="1.1 1.4"/><circle id="cd1" cx="10" cy="3" r="1.6" fill="#4fb8ff"/><circle id="cd2" cx="16.06" cy="13.5" r="1.6" fill="#4fb8ff"/><circle id="cd3" cx="3.94" cy="13.5" r="1.6" fill="#4fb8ff"/></svg>
+        <div id="circl"><div id="ca" class="h s t2" data-s="circ_a"></div><div id="cb" class="h s sig" data-s="circ_b"></div></div>
+      </div>
+    </div>
+    <div id="tagm" class="tag" data-s="tag_map"></div>
+  </div>
+
+  <!-- S6 then one brief and one site -->
+  <div id="s6" class="stage">
+    <svg id="g6" class="glyph" viewBox="0 0 20 20"><use href="#g-ring"/></svg>
+    <div id="fbox" class="sbox"><div class="in">
+      <div class="ab arw" data-x="335" data-y="95">→</div><div class="ab arw" data-x="665" data-y="95">→</div>
+      <div class="ab" data-x="170" data-y="95"><div id="f1" class="node lit"><svg viewBox="0 0 56 56" fill="none" stroke="#4fb8ff" stroke-width="3" stroke-linejoin="round"><circle cx="20" cy="18" r="7"/><path d="M6 46 c2-10 8-15 14-15 s12 5 14 15"/><circle cx="38" cy="20" r="6"/><path d="M34 31 c6 0 13 4 16 14"/></svg><b data-s="n_people"></b></div></div>
+      <div class="ab" data-x="500" data-y="95"><div id="f2" class="node"><svg viewBox="0 0 56 56" fill="none" stroke="#aab3c9" stroke-width="3" stroke-linejoin="round"><path d="M12 6 H36 L46 16 V50 H12 Z"/><path d="M36 6 V16 H46 M19 26 H39 M19 34 H39 M19 42 H31"/></svg><b data-s="n_brief"></b></div></div>
+      <div class="ab" data-x="830" data-y="95"><div id="f3" class="node"><svg viewBox="0 0 56 56" fill="none" stroke="#aab3c9" stroke-width="3" stroke-linejoin="round"><path d="M6 44 L20 14 L50 14 L36 44 Z"/><path d="M28 22 a6 6 0 1 1 0.01 0"/></svg><b data-s="n_site1"></b></div></div>
+    </div></div>
+  </div>
+
+  <!-- S7 the right team, before anything starts -->
+  <div id="s7" class="stage">
+    <div id="cap7" class="cap" data-s="cap_team"></div>
+    <div id="tbox" class="sbox"><div class="in">
+      <svg class="ov" width="1000" height="640" viewBox="0 0 1000 640"><defs id="tdefs"></defs><g id="tlines"></g></svg>
+      <div class="ab" data-x="500" data-y="330"><div id="tring"><svg class="glyph" viewBox="0 0 20 20"><use href="#g-ring"/></svg></div></div>
+      <div class="ab" data-x="500" data-y="62"><div id="ro1" class="role"><i>01</i><span data-s="r1"></span></div></div>
+      <div class="ab" data-x="772" data-y="238"><div id="ro2" class="role"><i>02</i><span data-s="r2"></span></div></div>
+      <div class="ab" data-x="688" data-y="560"><div id="ro3" class="role"><i>03</i><span data-s="r3"></span></div></div>
+      <div class="ab" data-x="312" data-y="560"><div id="ro4" class="role"><i>04</i><span data-s="r4"></span></div></div>
+      <div class="ab" data-x="228" data-y="238"><div id="ro5" class="role"><i>05</i><span data-s="r5"></span></div></div>
+    </div></div>
+  </div>
+
+  <!-- S8 on QSME: the rules, and every cost line on one open book -->
+  <div id="s8" class="stage">
+    <div id="cap8" class="cap"></div>
+    <div id="qrow">
+      <div id="pA" class="panel glass">
+        <div class="ptitle"><span class="qb" data-s="qsme"></span><span data-s="rules_title"></span></div>
+        <div id="ru1" class="qrow"><span class="bx">1</span><span data-s="ru1"></span></div>
+        <div id="ru2" class="qrow"><span class="bx">2</span><span data-s="ru2"></span></div>
+        <div id="ru3" class="qrow"><span class="bx">3</span><span data-s="ru3"></span></div>
+      </div>
+      <div id="pB" class="panel glass">
+        <div class="ptitle"><span class="qb" data-s="qsme"></span><span data-s="book_title"></span></div>
+        <div id="bl1" class="brow"><span data-s="bl1"></span><span class="lead"></span><span class="pr" data-s="priced"></span></div>
+        <div id="bl2" class="brow"><span data-s="bl2"></span><span class="lead"></span><span class="pr" data-s="priced"></span></div>
+        <div id="bl3" class="brow"><span data-s="bl3"></span><span class="lead"></span><span class="pr" data-s="priced"></span></div>
+        <div id="bl4" class="brow"><span data-s="bl4"></span><span class="lead"></span><span class="pr" data-s="priced"></span></div>
+      </div>
+    </div>
+    <div class="tag" data-s="tag_ex"></div>
+  </div>
+
+  <!-- S9 not worked out alone -->
+  <div id="s9" class="stage">
+    <div id="cap9" class="h s" data-s="cap_alone"></div>
+    <div id="abox" class="sbox"><div class="in">
+      <svg class="ov" width="1000" height="440" viewBox="0 0 1000 440"><circle cx="500" cy="220" r="190" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="2" stroke-dasharray="6 10"/><g id="alines"></g></svg>
+      <div class="ab" data-x="500" data-y="220"><svg class="glyph" viewBox="0 0 20 20" style="width:200px;height:200px"><use href="#g-ring"/></svg></div>
+      <div id="orbit"></div>
+    </div></div>
+    <div id="achips" class="row"><span id="ac1" class="chip on" data-s="org"></span><span id="ac2" class="chip on" data-s="bring"></span></div>
+  </div>
+
+  <!-- S10 end card -->
+  <div id="s10" class="stage">
+    <div id="endc" class="stage" style="position:relative; left:0; top:0; width:auto; height:auto">
+      <div id="lk" class="bigl"><svg class="glyph" viewBox="0 0 20 20"><use href="#g-ring"/></svg><span data-s="bc_name"></span></div>
+      <div id="byb" class="byb"><img src="assets/baqshi-mark.svg" alt=""><span data-s="byb"></span></div>
+      <div id="nzc" class="chip"><svg viewBox="0 0 800 1141"><path class="nzl" fill="#4fb8ff"/></svg><span data-s="nz"></span></div>
+      <div id="wh" class="h xs" data-s="where"></div>
+      <div id="btn" class="btn"><span data-s="cta"></span><span style="opacity:.55">·</span><span data-s="url"></span></div>
+      <div id="disc" class="note" data-s="disc"></div>
+    </div>
+  </div>
+
+  <!-- the Build Circle glyph (from baqshi.com BuildCircle.tsx): three households on one ring -->
+  <svg width="0" height="0" style="position:absolute"><defs><g id="g-ring">
+    <circle cx="10" cy="10" r="7" fill="none" stroke="#eef2ff" stroke-opacity=".55" stroke-width=".6" stroke-dasharray="1.1 1.4"/>
+    <circle cx="10" cy="3" r="1.6" fill="#4fb8ff"/><circle cx="16.06" cy="13.5" r="1.6" fill="#4fb8ff"/><circle cx="3.94" cy="13.5" r="1.6" fill="#4fb8ff"/>
+  </g></defs></svg>
+</div>
+<script src="../../../tools/motion/kit.js"></script>
+<script src="data-en.js"></script>
+<script src="nz-land.js"></script>
+<script>
+  var C = CUES, V = document.body.classList.contains('r9x16'), NS = 'http://www.w3.org/2000/svg';
+  function c(n) { if (!(n in C)) throw new Error('missing cue ' + n); return C[n]; }
+  var D = Math.round((END + 3.4) * 10) / 10;
+  document.querySelectorAll('[data-s]').forEach(function (el) {
+    var k = el.getAttribute('data-s'); if (!(k in STR)) throw new Error('missing string ' + k); el.textContent = STR[k];
+  });
+  document.querySelectorAll('.in [data-x]').forEach(function (el) { el.style.left = el.getAttribute('data-x') + 'px'; el.style.top = el.getAttribute('data-y') + 'px'; });
+  document.getElementById('nzland').setAttribute('d', NZ_LAND);
+  document.querySelector('#nzc .nzl').setAttribute('d', NZ_LAND);
+  function caption(id, steps) {   // [[t, text], ...]: the caption shows the last step whose time has passed
+    Kit.each(function (t) { var s = ''; steps.forEach(function (q) { if (t >= q[0]) s = q[1]; }); var el = document.getElementById(id); if (el.textContent !== s) el.textContent = s; });
+    steps.forEach(function (q, i) { if (q[1]) Kit.add('#' + id, 'opacity', [[q[0] - 0.001, i ? 1 : 0], [q[0], 0.15, 'hold'], [q[0] + 0.22, 1, 'out']]); });
+  }
+
+  // scenes
+  var T = { s2: c('usual') - 0.1, s4: c('reg') - 0.1, s5: c('match') - 0.1, s6: c('brief') - 0.1, s7: c('team') - 0.1, s8: c('rules') - 0.1, s9: c('alone') - 0.1, s10: c('bc') - 0.1 };
+  Kit.scene('#s1', 0, T.s2).scene('#s2', T.s2, T.s4).scene('#s4', T.s4, T.s5).scene('#s5', T.s5, T.s6).scene('#s6', T.s6, T.s7)
+     .scene('#s7', T.s7, T.s8).scene('#s8', T.s8, T.s9).scene('#s9', T.s9, T.s10).scene('#s10', T.s10, D);
+
+  // S1 hook: "Property development," then "backwards." arrives mirrored and flips round
+  Kit.slam('#h1', 0.0, { from: 1.15 });
+  Kit.add('#h2', 'opacity', [[0, 0], [c('h2'), 0, 'hold'], [c('h2') + 0.12, 1, 'out']]);
+  Kit.add('#h2', 'scaleX', [[c('h2'), -1], [c('h2') + 0.15, -1], [c('h2') + 0.45, 1, 'outBack']]);
+
+  // S2 the usual order, one step at a time; S3 it runs backwards and the buyers become the people
+  caption('cap2', [[T.s2, ''], [c('usual') + 0.1, STR.cap_usual], [c('u4'), STR.cap_buyers], [c('flip'), STR.cap_flip]]);
+  [['c1', 'u1'], ['c2', 'u2'], ['c3', 'u3'], ['c4', 'buyers']].forEach(function (p) { Kit.pop('#' + p[0], c(p[1]), { dy: 18 }); });
+  // the old order fades right back once "the people" lands, so it never reads as People → Price
+  document.querySelectorAll('#cbox .arw').forEach(function (e, i) { Kit.add(e, 'opacity', [[0, 0], [c(['u2', 'u3', 'buyers'][i]) - 0.15, 0, 'hold'], [c(['u2', 'u3', 'buyers'][i]), 1, 'out'], [c('ppl'), 1], [c('ppl') + 0.3, 0.12]]); });
+  // the reversal runs in the pause after "buyers", so "Build Circle starts…" lands on a chain that already reads backwards
+  var F0 = c('buyers') + 0.85, F1 = F0 + 1.1, SLOT = [125, 375, 625, 875];
+  [1, 2, 3, 4].forEach(function (i) {
+    // the cards pass below the line (never up through the caption), each at its own depth so they don't pile up
+    var dx = SLOT[4 - i] - SLOT[i - 1], lift = [-30, 0, 100, 200][i - 1], f0 = F0 + (i === 2 || i === 3 ? 0.15 : 0), f1 = f0 + 1.1;
+    Kit.add('#c' + i, 'x', [[f0, 0], [f1, dx, 'inOut']]);
+    Kit.add('#c' + i, 'y', [[f0, 0], [(f0 + f1) / 2, lift, 'out'], [f1, 0, 'in']]);
+    if (i < 4) Kit.add('#c' + i, 'opacity', [[c('ppl'), 1], [c('ppl') + 0.3, 0.12]]);
+  });
+  Kit.add('#bcl', 'opacity', [[c('flip'), 0], [c('flip') + 0.3, 1, 'out']]).add('#bcl', 'y', [[c('flip'), -16], [c('flip') + 0.3, 0, 'out']]);
+  Kit.each(function (t) {
+    var on = t >= c('ppl'), n = document.getElementById('c4'), l = document.getElementById('c4l'), s = on ? STR.n_people : STR.n_buyers;
+    if (l.textContent !== s) l.textContent = s;
+    n.classList.toggle('lit', on); n.classList.toggle('orbn', !on);
+    n.querySelector('svg').setAttribute('stroke', on ? '#4fb8ff' : '#a98bff');
+  });
+  Kit.add('#c4', 'scale', [[c('ppl'), 1], [c('ppl') + 0.2, 1.08, 'out'], [c('ppl') + 0.55, 1.04, 'out']]);
+
+  // S4 register: where, what home, when
+  Kit.pop('#cap4', T.s4 + 0.05, { dy: 12 });
+  [['fd1', 'fv1', 'w1'], ['fd2', 'fv2', 'w2'], ['fd3', 'fv3', 'w3']].forEach(function (p, i) {
+    Kit.pop('#' + p[0], T.s4 + 0.15 + i * 0.12, { dy: 16 });
+    Kit.type('#' + p[1], c(p[2]) + 0.05, c(p[2]) + 0.4);
+    Kit.each(function (t) { document.getElementById(p[0]).classList.toggle('on', t >= c(p[2]) + 0.1); });
+  });
+
+  // S5 interest gathers in one place (illustrative dots, no counts, no names), then the circle
+  caption('cap5', [[T.s5, ''], [c('match') + 0.05, STR.cap_match], [c('tog'), STR.cap_tog], [c('circ') - 0.05, '']]);
+  var map = document.getElementById('nzmap'), PING = [585, 318];
+  var ping = document.getElementById('ping'); ping.style.left = (PING[0] / 8) + '%'; ping.style.top = (PING[1] / 11.41) + '%';
+  var HOMES = [[496, 136, 1], [524, 231, 1], [557, 310, 1], [616, 304, 1], [621, 342, 1], [607, 387, 1], [476, 416, 0], [660, 457, 1], [573, 526, 0], [518, 604, 1], [424, 601, 0], [384, 791, 0], [260, 990, 0], [149, 924, 0], [735, 391, 0], [301, 865, 0]];
+  HOMES.forEach(function (h, i) {
+    var d = document.createElement('div'); d.className = 'hh'; d.id = 'hh' + i;
+    var jx = ((i * 37) % 21) - 10, jy = ((i * 53) % 25) - 12;
+    d.style.left = ((h[0] + jx) / 8) + '%'; d.style.top = ((h[1] + jy) / 11.41) + '%';
+    map.appendChild(d);
+    Kit.pop(d, c('match') + 0.2 + i * 0.07, { dy: 0 });
+    if (h[2]) {   // these households want the same place: they travel to it (in map percentages, so layout never matters)
+      var t0 = c('tog') + 0.05 + (i % 5) * 0.08, sx = h[0] + jx, sy = h[1] + jy;
+      Kit.each(function (t) {
+        var p = Math.max(0, Math.min(1, (t - t0) / 0.9)); p = p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+        d.style.left = ((sx + (PING[0] - sx) * p) / 8) + '%'; d.style.top = ((sy + (PING[1] - sy) * p) / 11.41) + '%';
+      });
+    } else Kit.add(d, 'opacity', [[c('tog'), 1], [c('tog') + 0.5, 0.25]]);
+  });
+  Kit.add('#ping', 'scale', [[0, 0], [c('tog') - 0.2, 0, 'hold'], [c('tog') + 0.1, 1, 'outBack'], [c('tog') + 1.0, 1], [c('tog') + 1.25, 1.5, 'out'], [c('tog') + 1.5, 1, 'out']]);
+  Kit.add('#nzmap', 'opacity', [[T.s5, 0], [T.s5 + 0.4, 1, 'out'], [c('circ') - 0.25, 1], [c('circ') + 0.15, 0, 'in']]);
+  Kit.add('#nzmap', 'scale', [[c('circ') - 0.25, 1], [c('circ') + 0.15, 0.8, 'in']]);
+  Kit.scene('#tagm', T.s5, c('circ') + 0.2);
+  Kit.add('#circ', 'opacity', [[0, 0], [c('circ') - 0.05, 0, 'hold'], [c('circ') + 0.25, 1, 'out']]);
+  Kit.add('#circ .glyph', 'scale', [[c('circ') - 0.05, 0.6], [c('circ') + 0.45, 1, 'outBack']]);
+  ['#cd1', '#cd2', '#cd3'].forEach(function (s, i) { Kit.add(s, 'opacity', [[0, 0], [c('circ') + 0.2 + i * 0.18, 0, 'hold'], [c('circ') + 0.32 + i * 0.18, 1, 'out']]); });
+  Kit.each(function (t) { document.getElementById('cr').setAttribute('transform', 'rotate(' + (t * 14) + ' 10 10)'); });
+  Kit.pop('#ca', c('circ') + 0.2, { dy: 10 }).slam('#cb', c('ftd'), { from: 1.12 });
+
+  // S6 then one brief, and one site
+  Kit.pop('#g6', T.s6 + 0.05, { dy: 0 }).pop('#f1', T.s6 + 0.1, { dy: 12 });
+  Kit.pop('#f2', c('b1'), { dy: 16 }).pop('#f3', c('site'), { dy: 16 });
+  document.querySelectorAll('#fbox .arw').forEach(function (e, i) { Kit.add(e, 'opacity', [[0, 0], [[c('b1') - 0.15, c('site') - 0.15][i], 0, 'hold'], [[c('b1'), c('site')][i], 1, 'out']]); });
+  Kit.each(function (t) { document.getElementById('f2').classList.toggle('lit', t >= c('b1') + 0.35); document.getElementById('f3').classList.toggle('lit', t >= c('site') + 0.35); });
+
+  // S7 the right team: five empty places around the circle, filled one by one as they're named
+  Kit.pop('#cap7', T.s7 + 0.05, { dy: 12 });
+  Kit.add('#tring', 'scale', [[T.s7, 0.7], [T.s7 + 0.45, 1, 'outBack']]);
+  var RO = [[500, 62], [772, 238], [688, 560], [312, 560], [228, 238]];
+  RO.forEach(function (p, i) {
+    // lines stop at each chip's edge: the side chips sit close to the ring's height, so their lines stop further out
+    var k = 'r' + (i + 1), dx = p[0] - 500, dy = p[1] - 330, L = Math.sqrt(dx * dx + dy * dy), r0 = 120, r1 = L - (Math.abs(dy) < 150 ? 112 : 50);
+    var x0 = 500 + dx / L * r0, y0 = 330 + dy / L * r0, x1 = 500 + dx / L * r1, y1 = 330 + dy / L * r1;
+    var g = document.createElementNS(NS, 'linearGradient'); g.id = 'tg' + i; g.setAttribute('gradientUnits', 'userSpaceOnUse');
+    g.setAttribute('x1', x0); g.setAttribute('y1', y0); g.setAttribute('x2', x1); g.setAttribute('y2', y1);
+    g.innerHTML = '<stop offset="0" stop-color="#4fb8ff"/><stop offset="1" stop-color="#a98bff"/>';
+    document.getElementById('tdefs').appendChild(g);
+    var ln = document.createElementNS(NS, 'path'); ln.setAttribute('d', 'M' + x0 + ' ' + y0 + ' L' + x1 + ' ' + y1);
+    ln.setAttribute('stroke', 'url(#tg' + i + ')'); ln.setAttribute('stroke-width', '3.5'); ln.setAttribute('stroke-linecap', 'round'); ln.setAttribute('fill', 'none');
+    document.getElementById('tlines').appendChild(ln);
+    Kit.add(ln, 'trim', [[c(k) - 0.1, 0], [c(k) + 0.35, 1, 'out']]);
+    Kit.pop('#ro' + (i + 1), c('team') + 0.6 + i * 0.12, { dy: 0 });
+    Kit.add('#ro' + (i + 1), 'opacity', [[c('team') + 0.6 + i * 0.12, 0], [c('team') + 0.9 + i * 0.12, 0.55, 'out'], [c(k), 0.55], [c(k) + 0.15, 1, 'out']]);
+    Kit.add('#ro' + (i + 1), 'scale', [[c(k), 1], [c(k) + 0.15, 1.12, 'out'], [c(k) + 0.45, 1, 'out']]);
+    Kit.each(function (t) { document.getElementById('ro' + (i + 1)).classList.toggle('on', t >= c(k)); });
+  });
+
+  // S8 on QSME: the rules light up as they're named, then every cost line on one open book
+  caption('cap8', [[T.s8, ''], [c('rules') + 0.05, STR.cap_rules], [c('book') + 0.05, STR.cap_book]]);
+  Kit.pop('#pA', T.s8 + 0.15, { dy: 18 });
+  [['ru1', 'cons'], ['ru2', 'insp'], ['ru3', 'ccc']].forEach(function (p) { Kit.each(function (t) { document.getElementById(p[0]).classList.toggle('on', t >= c(p[1]) + 0.1); }); });
+  Kit.add('#pB', 'opacity', [[T.s8 + 0.3, 0], [T.s8 + 0.6, 0.25, 'out'], [c('book') - 0.1, 0.25], [c('book') + 0.25, 1, 'out']]);
+  [1, 2, 3, 4].forEach(function (i) { Kit.each(function (t) { document.getElementById('bl' + i).classList.toggle('on', t >= c('book') + 0.5 + (i - 1) * 0.35); }); });
+
+  // S9 not worked out alone: the circle with its team around it
+  Kit.pop('#cap9', T.s9 + 0.05, { dy: 14 });
+  (function () {
+    var orbit = document.getElementById('orbit'), al = document.getElementById('alines');
+    for (var i = 0; i < 5; i++) {
+      var d = document.createElement('div'); d.className = 'ab'; d.id = 'od' + i;
+      d.innerHTML = '<div id="odi' + i + '" style="width:30px;height:30px;border-radius:50%;background:#a98bff;box-shadow:0 0 0 8px rgba(169,139,255,.18),0 0 22px rgba(169,139,255,.6)"></div>';
+      orbit.appendChild(d);
+      var ln = document.createElementNS(NS, 'line'); ln.id = 'ol' + i; ln.setAttribute('stroke', 'rgba(169,139,255,.45)'); ln.setAttribute('stroke-width', '2.5');
+      al.appendChild(ln);
+      Kit.add(ln, 'opacity', [[0, 0], [T.s9 + 0.3 + i * 0.12, 0, 'hold'], [T.s9 + 0.45 + i * 0.12, 1, 'out']]);
+      Kit.pop('#odi' + i, T.s9 + 0.3 + i * 0.12, { dy: 0 });
+    }
+    Kit.each(function (t) {
+      for (var i = 0; i < 5; i++) {
+        var a = (-90 + i * 72 + (t - T.s9) * 9) * Math.PI / 180, x = 500 + 190 * Math.cos(a), y = 220 + 190 * Math.sin(a);
+        var d = document.getElementById('od' + i); d.style.left = x + 'px'; d.style.top = y + 'px';
+        var ln = document.getElementById('ol' + i), k = 105 / 190;
+        ln.setAttribute('x1', 500 + (x - 500) * k); ln.setAttribute('y1', 220 + (y - 220) * k); ln.setAttribute('x2', x); ln.setAttribute('y2', y);
+      }
+    });
+  })();
+  Kit.pop('#ac1', c('org'), { dy: 14 }).pop('#ac2', c('bring'), { dy: 14 });
+
+  // S10 end card
+  Kit.add('#lk', 'scale', [[T.s10, 0.88], [T.s10 + 0.5, 1, 'outBack']]).fade('#lk', T.s10, T.s10 + 0.25);
+  Kit.pop('#byb', c('bybq'), { dy: 12 }).pop('#nzc', c('nz'), { dy: 12 }).pop('#wh', c('cta'), { dy: 12 });
+  Kit.pop('#btn', c('url'), { dy: 14 }).add('#btn', 'scale', [[c('url'), 0.92], [c('url') + 0.3, 1, 'outBack']]);
+  Kit.fade('#disc', c('cta') + 0.3, c('cta') + 0.7);
+
+  Kit.ready({ duration: D });
+</script>
+</body>
+</html>

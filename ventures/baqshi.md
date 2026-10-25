@@ -61,6 +61,12 @@ One consultant, every step of the route. The plan is in writing before any money
 ## Owner rule: escrow, said generally (2026-10-20)
 Baqshi content does **not** name BitRegalo and never mentions test networks, audits or any protocol status. Describe the payment side generally: money is held in escrow; a held payment can only go to the person it's for, or back to whoever paid; each deal's escrow agreement sets out exactly how. (Owner: "Don't mention BitRegalo… just mention it generally. We could use BitRegalo or escrow… I don't accept [the test-network line].") Still never claim the escrow is decentralised, on-chain, audited, guaranteed or risk-free, and keep the buy scene's "How the model works… Not legal, tax or financial advice" footnote.
 
+## Build Circle (owner 2026-10-25; live on baqshi.com/#build-circle since 2026-10-24)
+- First-time developers, starting in New Zealand: people register where, what home and when; when enough want the same place, Baqshi brings them together as a circle, around one brief and one site, and matches them with the right contractor, architect, engineer, project manager and estimator before anything starts. QSME is the build tool (the rules a build has to meet, every cost line priced). Owner calls it "a new thing to QSME"; the product and form live on baqshi.com, so videos are Baqshi-led ("Build Circle by Baqshi · built on QSME").
+- Owner rule for videos (2026-10-25): keep the circle general. Baqshi organises and matches. No promises about who decides or signs, or when costs are seen; no money lines ("at cost", margin, equity, savings, fees, returns). The site's map and worldwide figures are sample data: never shown as real. On screen: "Not an investment offer. No returns promised. Get independent legal and financial advice."
+- CTA: "Wherever you want to build, register your interest at baqshi.com." Voice: Chris (owner, 2026-10-25, over a Kiwi voice). Music: bed G. NZ English only for Build Circle videos until the owner asks for AR/ES.
+- ❓ circle size (owner said 3–4; the site shows 24) · ❓ registered architect in every circle (else say "designer") · ❓ the landing page's "Own the margin" / "Your equity ~18%" lines (legal research flags them) · ❓ is the form delivering.
+
 ## Do not claim
 - That the escrow or BitRegalo is live, launched, on a main network, audited, secure, guaranteed or risk-free. Always say: in development, test networks only, not independently audited.
 - Any chain name, token, coin, crypto payment or stablecoin. Funds arrive by ordinary bank transfer, and BitRegalo has no token.
@@ -83,3 +89,4 @@ Baqshi content does **not** name BitRegalo and never mentions test networks, aud
 
 ## Past videos
 - BQ01 (2026-10-20) "Five strangers / one consultant": a ~1:43 brand explainer in EN/AR/ES, 16:9 + 9:16 (projects/2026-10-20-baqshi-expand/).
+- BQ02 (2026-10-25) "Build Circle: property development, backwards": 1:01, EN, 16:9 + 9:16 (projects/2026-10-25-baqshi-build-circle/).

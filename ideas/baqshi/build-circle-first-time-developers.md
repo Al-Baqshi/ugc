@@ -1,14 +1,18 @@
 ---
 id: build-circle-first-time-developers
-venture: baqshi (product lives on baqshi.com; owner calls it "a new thing to QSME") ❓ venture/branding to confirm
-vid: ❓ (BQ02 if Baqshi, N15 if QSME NZ)
-status: pitched (awaiting owner)
+venture: baqshi (Build Circle by Baqshi · built on QSME)
+vid: BQ02
+status: delivered
 score: 17
 created: 2026-10-25
-format: short ("not very long"), ~40-60 s; cuts and languages ❓
+format: 1:01, 16:9 + 9:16, NZ English, Chris voice, bed G
 ---
 
-# Build Circle: first-time developers · pick: "Who do we even call?"
+# Build Circle: property development, backwards (BQ02)
+
+**Made (owner pick 2026-10-25):** "This is property development… backwards. Usually, a developer picks the site, the design, and the price, then goes looking for buyers. Build Circle starts with the people." → where / what home / when → when enough people want the same place, we bring you together: a circle of first-time developers → one brief, one site → the right team before anything starts (contractor, architect, engineer, project manager, estimator) → on QSME: the rules your build has to meet (consents, inspections, code compliance) and every cost line on one open book → not worked out alone: we organise it, we bring in the right people → "Build Circle, by Baqshi. Starting in New Zealand. Wherever you want to build, register your interest at baqshi.com." Look and music as BQ01 (Orbital space, bed G). Project: projects/2026-10-25-baqshi-build-circle/.
+
+## Earlier pitch (not made): "Who do we even call?"
 
 **Truth (working):** first-timers in New Zealand either can't buy their first home or hesitate to develop, because alone they don't have the capital, the know-how or the right people.
 **Twist (working):** you don't have to do it alone. Three or four people who want a home in the same town become the developer together; Baqshi organises and matches them, QSME is the tool, and the right professionals come in before anything starts.
@@ -57,3 +61,5 @@ format: short ("not very long"), ~40-60 s; cuts and languages ❓
 - 2026-10-25 Owner brief: a short video about first-time developers / first-time builders: QSME's new thing, starting in NZ; organise and match people with the same interest to build in a region or town instead of buying a first home or hesitating; QSME tool for the rules; the right contractor, architect, engineer, project manager, estimator; Baqshi as consultant, worldwide but active in NZ; 3–4 people can build together when we manage everything. Pointed to baqshi.com/#build-circle.
 - 2026-10-25 Research + 3-angle ideation + judge workflow launched (site, QSME truth, NZ legal guardrails, audience, internal learnings).
 - 2026-10-25 Workflow done: 6 concepts from 3 angles; judge picked "Who do we even call?" (17/20), co-branded Baqshi-led BQ02. Cut: at-cost/margin/equity/fee lines, ownership-structure lines, payment-flow lines, any sample counts. Pitched to the owner with questions on venture/voice, languages, how a circle runs, money wording.
+- 2026-10-25 Owner: "is it finished?" → answers: a different new idea (not the group chat), same mission music and look as the first Baqshi film, Chris voice, NZ English only, keep the circle general (no "your circle decides/signs", no "nothing bought until full costs"). Made the runner-up angle "Property development, backwards" as BQ02.
+- 2026-10-25 QA fixes applied (sync via tools/onsets.py, layout, disclaimer). Owner: "add it to the Build Circle as watch video about what is Build Circle" → live on baqshi.com/#build-circle (pill + dialog, EN film on all three languages).

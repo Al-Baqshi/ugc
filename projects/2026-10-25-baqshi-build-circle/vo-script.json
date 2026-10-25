@@ -1,0 +1,111 @@
+{
+ "venture": "baqshi",
+ "video": "outputs/bq02-en-16x9.mp4",
+ "character": "Baqshi brand narrator (Chris, iP95p4xoKVk53GoZ742B): warm, clear, confident, plain; never salesy",
+ "settings": {
+  "model": "eleven_v3",
+  "note": "one unbroken take: outputs/vo-en/take-1.mp3 (chosen), levelled to outputs/vo-en/voice.m4a"
+ },
+ "lines": [
+  {
+   "id": "vo01-h1",
+   "start_s": 0.0,
+   "max_s": 2.54,
+   "on_screen": "captions lifted from this paragraph",
+   "text_v2": "This is property development... backwards.",
+   "text_v3": "This is property development... backwards.",
+   "delivery": "warm, clear, down-to-earth American; one unbroken take",
+   "text_tts": "This is property development... backwards."
+  },
+  {
+   "id": "vo02-usual",
+   "start_s": 2.54,
+   "max_s": 6.05,
+   "on_screen": "captions lifted from this paragraph",
+   "text_v2": "Usually, a developer picks the site, the design, and the price, then goes looking for buyers.",
+   "text_v3": "Usually, a developer picks the site, the design, and the price, then goes looking for buyers.",
+   "delivery": "warm, clear, down-to-earth American; one unbroken take",
+   "text_tts": "Usually, a developer picks the site, the design, and the price, then goes looking for buyers."
+  },
+  {
+   "id": "vo03-flip",
+   "start_s": 8.59,
+   "max_s": 3.04,
+   "on_screen": "captions lifted from this paragraph",
+   "text_v2": "Build Circle starts with the people.",
+   "text_v3": "Build Circle starts with the people.",
+   "delivery": "warm, clear, down-to-earth American; one unbroken take",
+   "text_tts": "Build Circle starts with the people."
+  },
+  {
+   "id": "vo04-reg",
+   "start_s": 11.63,
+   "max_s": 3.36,
+   "on_screen": "captions lifted from this paragraph",
+   "text_v2": "Tell us where you want to live, what kind of home, and when.",
+   "text_v3": "Tell us where you want to live, what kind of home, and when.",
+   "delivery": "warm, clear, down-to-earth American; one unbroken take",
+   "text_tts": "Tell us where you want to live, what kind of home, and when."
+  },
+  {
+   "id": "vo05-match",
+   "start_s": 14.99,
+   "max_s": 5.2,
+   "on_screen": "captions lifted from this paragraph",
+   "text_v2": "When enough people want the same place, we bring you together: a circle of first-time developers.",
+   "text_v3": "When enough people want the same place, we bring you together: a circle of first-time developers.",
+   "delivery": "warm, clear, down-to-earth American; one unbroken take",
+   "text_tts": "When enough people want the same place, we bring you together: a circle of first-time developers."
+  },
+  {
+   "id": "vo06-brief",
+   "start_s": 20.19,
+   "max_s": 3.01,
+   "on_screen": "captions lifted from this paragraph",
+   "text_v2": "Then, one brief, and one site.",
+   "text_v3": "Then, one brief, and one site.",
+   "delivery": "warm, clear, down-to-earth American; one unbroken take",
+   "text_tts": "Then, one brief, and one site."
+  },
+  {
+   "id": "vo07-team",
+   "start_s": 23.2,
+   "max_s": 9.95,
+   "on_screen": "captions lifted from this paragraph",
+   "text_v2": "And before anything starts, we match your circle with the right team: the contractor, the architect, the engineer, the project manager, and the estimator.",
+   "text_v3": "And before anything starts, we match your circle with the right team: the contractor, the architect, the engineer, the project manager, and the estimator.",
+   "delivery": "warm, clear, down-to-earth American; one unbroken take",
+   "text_tts": "And before anything starts, we match your circle with the right team: the contractor, the architect, the engineer, the project manager, and the estimator."
+  },
+  {
+   "id": "vo08-rules",
+   "start_s": 33.15,
+   "max_s": 11.09,
+   "on_screen": "captions lifted from this paragraph",
+   "text_v2": "On Q-S-me, we line up the rules your build has to meet: consents, inspections, code compliance. And every cost line is priced on one open book.",
+   "text_v3": "On Q-S-me, we line up the rules your build has to meet: consents, inspections, code compliance. And every cost line is priced on one open book.",
+   "delivery": "warm, clear, down-to-earth American; one unbroken take",
+   "text_tts": "On Queue Ess Mee, we line up the rules your build has to meet: consents, inspections, code compliance. And every cost line is priced on one open book."
+  },
+  {
+   "id": "vo09-alone",
+   "start_s": 44.24,
+   "max_s": 5.71,
+   "on_screen": "captions lifted from this paragraph",
+   "text_v2": "So your first home isn't something you work out alone. We organise it, and we bring in the right people.",
+   "text_v3": "So your first home isn't something you work out alone. We organise it, and we bring in the right people.",
+   "delivery": "warm, clear, down-to-earth American; one unbroken take",
+   "text_tts": "So your first home isn't something you work out alone. We organise it, and we bring in the right people."
+  },
+  {
+   "id": "vo10-bc",
+   "start_s": 49.95,
+   "max_s": 7.41,
+   "on_screen": "captions lifted from this paragraph",
+   "text_v2": "Build Circle, by Baqshi. Starting in New Zealand. Wherever you want to build, register your interest at baqshi.com.",
+   "text_v3": "Build Circle, by Baqshi. Starting in New Zealand. Wherever you want to build, register your interest at baqshi.com.",
+   "delivery": "warm, clear, down-to-earth American; one unbroken take",
+   "text_tts": "Build Circle, by Bakshi. Starting in New Zealand. Wherever you want to build, register your interest at Bakshi dot com."
+  }
+ ]
+}

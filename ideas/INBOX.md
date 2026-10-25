@@ -68,7 +68,7 @@ Score = idea test (Recognizable / Specific / Ownable / Shareable, 1–5 each, /2
 | 2026-10-13 | bitregalo | [The edit button that isn't there](bitregalo/edit-button-that-isnt-there.md) | 17 | in production (B01) |
 | 2026-10-13 | bitregalo | [The main contractor went bust](bitregalo/subbie-paid-when-main-goes-bust.md) | 18 | in production (B02) |
 | 2026-10-20 | baqshi | [Five strangers. One consultant.](baqshi/five-strangers-one-consultant.md) | 17 | in production (BQ01 · EN/AR/ES) |
-| 2026-10-25 | baqshi | [Build Circle: "Who do we even call?"](baqshi/build-circle-first-time-developers.md) | 17 | pitched (awaiting owner) |
+| 2026-10-25 | baqshi | [Build Circle: property development, backwards](baqshi/build-circle-first-time-developers.md) | 15 | delivered (BQ02 · EN · 16:9 + 9:16 · on baqshi.com) |
 
 Status: `raw` → `scored` → `agreed` → `in production` → `posted` → `killed`
 | 2026-10-14 | qsme-nz | [Print: brochures & flyers (granny flats managed build, developers, providers)](qsme-nz/print-brochures-2026-10.md) | n/a | drafted (print, awaiting review) |

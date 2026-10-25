@@ -1,0 +1,21 @@
+page bq02-en.html: 1920x1080, 60.8s, 119 tracks, 10 scenes
+QA ok: all visible text inside the safe box
+contact sheet: projects/2026-10-25-baqshi-build-circle/outputs/bq02-en-16x9-frames.png
+still: projects/2026-10-25-baqshi-build-circle/outputs/bq02-en-16x9-still-3.png
+still: projects/2026-10-25-baqshi-build-circle/outputs/bq02-en-16x9-still-58.5.png
+frame 0/1824 (0s)
+frame 150/1824 (15s)
+frame 300/1824 (30s)
+frame 450/1824 (45s)
+frame 600/1824 (60s)
+frame 750/1824 (75s)
+frame 900/1824 (90s)
+frame 1050/1824 (106s)
+frame 1200/1824 (121s)
+frame 1350/1824 (136s)
+frame 1500/1824 (151s)
+frame 1650/1824 (166s)
+frame 1800/1824 (181s)
+status 2 nil frames 1824 size 1920 x 1080
+wrote projects/2026-10-25-baqshi-build-circle/outputs/bq02-en-16x9.mp4 (19.3 MB, 1824 frames)
+exit 0
