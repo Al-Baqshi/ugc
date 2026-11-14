@@ -49,12 +49,12 @@ One place for Lebanon to trade and get things done, sorted by your own area, in 
 - Sounds like: a Lebanese friend telling you what happened to them today. Fast, warm, a bit exasperated, laughing at it.
 - Never sounds like: formal Arabic (MSA) news-reader, Gulf or Egyptian accent, a deadpan AI read, ad-speak.
 - Language / dialect: **spoken Lebanese Arabic**, written in Arabic script, with the natural French/English words people really use. A native check on every script before voicing.
-- VO: ❓ owner or a Lebanese friend recording one phone take (preferred), or an AI voice only if it really sounds Lebanese.
+- VO: owner asked for an AI voice note to judge Arabic quality (2026-11-14). Lebanese library candidates: Fadi oJQlz7pz2yWd7MRmDUXm (m), Mimi NQyF5U0t336unYhQXcuv (f, Beirut), Nizar e03v4EOdiJx2f7DwQZhQ (m); also Yasmine 0Pvzd85R50ZkRIxrIU5U, Jasmine 2zZ1oe9n1ydzKsKbR0A5. ❓ pick after hearing takes.
 - Captions: Arabic script, right-to-left, lifted from the narration. ❓ Arabizi (kifak, bkam) captions for some videos?
 
 ## Storytelling rule (owner, 2026-11-14)
 - **Story first, product between the lines.** No "we're here, we're the solution" scripts: the owner called that naive. Write a story people enjoy watching for itself; the viewer works out that Lebalist is the answer. Lebalist is not explained in the voice-over (no "open Lebalist, pick your area…"); at most a visual clue and the end card.
-- No spoken CTA by default; the end card carries the logo and lebalist.com.
+- Ending (owner 2026-11-14 on LB01): one short spoken line «نزّل ليبالِست (من هون)» (Download Lebalist here) over the logo + store badges. Only publish "download" videos once the app is in the stores.
 
 ## Humor
 - Style that fits: painful recognition and escalation from everyday Lebanese life (Facebook-group selling, "I know a guy", landmark addresses), punching at the situation, never at the viewer.
@@ -64,6 +64,9 @@ One place for Lebanon to trade and get things done, sorted by your own area, in 
 
 ## Pricing and claims ❓
 The product docs suggest "free to list", "no email", "no card". QSME's rule (no "free", no "no sign-up") is QSME-only. Until the owner decides for Lebalist, content avoids pricing lines and says what the app does, not what it doesn't charge.
+
+## Escrow / BitRegalo (owner 2026-11-14)
+- Owner wants the car video to bring in escrow: "list your car, we collect payments for you; our escrow, BitRegalo, for the marketplace". Not live: Lebalist payments are off at launch, and BitRegalo is test-network only and not audited. Escrow videos are produced but published only when it works; the voice-over says it generally. ❓ naming BitRegalo on screen.
 
 ## Do not claim
 - That the app is in the App Store or Google Play until it is.

@@ -1,8 +1,8 @@
 ---
 id: i-know-a-guy
 venture: lebalist
-vid: ❓
-status: script draft v2
+vid: LB01 (proposed)
+status: agreed (v2 + download line); voice blocked on ElevenLabs invoice
 score: 19
 created: 2026-11-14
 format: ~30 s, 9:16, spoken Lebanese Arabic, Arabic captions (RTL)
@@ -43,7 +43,7 @@ One narrator, one unbroken take, spoken Lebanese Arabic, about 30 s (~80 words).
 | 10.0–17.0 | امبارح نشّت المي عنّا. بعتنا بالجروب. إمي: «دقّوا لأبو سمير». عمّي: «أبو سمير بطّل». خالتي: «عندي رقم ابنو». ابنو: «أنا بكندا». | 💧 · group «العيلة» | A generic family group chat (not WhatsApp's look); messages pop in on each line |
 | 17.0–23.0 | وبلّشت الاجتماعات: مين بيعرف مين، مين صهر مين… تلاتين voice note. | ٣٠ × 🎤 | Voice-note bubbles stack up until they fill the screen |
 | 23.0–30.0 | وأختي الزغيرة؟ ولا كلمة. بعد ساعة بعتت صورة: السنكري تحت المجلى. إمي: «مين جابو؟ مين بيعرفو؟» أختي: «ولا حدا.» | «ولا حدا.» | The photo lands: a plumber's legs under the sink. Under it, a small link preview (lebalist.com · سنكري · قريب منك) |
-| 30.0–32.0 | (no voice; the music bed carries on) | ولا حدا بيعرفو. · Lebalist · lebalist.com | End card: logo and site only |
+| 30.0–33.0 | نزّل ليبالِست من هون. | Lebalist · نزّل التطبيق | End card: logo + store badges (owner 2026-11-14: "Download Lebalist here") |
 
 **English gloss:** In Lebanon you don't find a plumber… you inherit him. Abu Samir. His number's been in the family since my grandmother's day. He fixed my uncle's bathroom, my aunt's kitchen, my grandfather's house… twice. Yesterday our pipes leaked. We posted in the group. Mum: "Call Abu Samir." Uncle: "Abu Samir retired." Aunt: "I have his son's number." The son: "I'm in Canada." Then the meetings began: who knows who, whose son-in-law is whose… thirty voice notes. And my little sister? Not a word. An hour later she sent a photo: the plumber under the sink. Mum: "Who brought him? Who knows him?" My sister: "Nobody."
 
@@ -80,3 +80,4 @@ One narrator, one unbroken take, spoken Lebanese Arabic, about 30 s (~75 words).
 - 2026-11-14 Owner asked for the script in Arabic before making it → draft script v1 above, awaiting review.
 - 2026-11-14 Owner on draft v1: "i dont like it". Owner: "too straightforward… I don't want 'we are here, we are the solution'. Too naive. Be creative; people should understand between the lines that we are the solution. A script they enjoy watching, the message hidden."
 - 2026-11-14 Wrote draft v2 «بتورثه» (You inherit him): family group chat story, Lebalist never said aloud, the punchline «ولا حدا», the clue in a link preview, end card only.
+- 2026-11-14 Owner: "Yes, I like this one." Added at the end «نزّل ليبالِست من هون» (Download Lebalist here) with the logo. Project projects/2026-11-14-lebalist-you-inherit-him/ (LB01, proposed). Owner asked for a voice note: 3 Lebanese library voices queued (Fadi, Mimi, Nizar; one eleven_v3 take each), but ElevenLabs refused: "Your subscription has a failed or incomplete payment". Re-run outputs/vo/record-takes.sh once paid.
