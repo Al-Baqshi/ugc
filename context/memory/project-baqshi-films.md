@@ -4,7 +4,7 @@ description: Baqshi (baqshi.com) films are made in English, Arabic and Spanish; 
 metadata:
   type: project
 ---
-Baqshi (global property consultancy, NZ base, 90+ countries; site repo /Users/brave/baqshi.com2027) became a CreativeUGC venture on 2026-10-20 (ventures/baqshi.md, IDs BQ01…).
+Baqshi (global property consultancy, NZ base, 90+ countries; site repo /Users/brave/Dev/Baqshi/baqshi.com, moved there on 2026-11-10) became a CreativeUGC venture on 2026-10-20 (ventures/baqshi.md, IDs BQ01…).
 
 - Owner wants each Baqshi film in **English, Arabic and Spanish**, with the same picture and the voice in each language (2026-10-20).
 - English voice: **Chris** (premade American), picked over Eric and Sarah because he sounds "more like you" than the Kiwi voice.
