@@ -50,6 +50,7 @@ One place for Lebanon to trade and get things done, sorted by your own area, in 
 - Never sounds like: formal Arabic (MSA) news-reader, Gulf or Egyptian accent, a deadpan AI read, ad-speak.
 - Language / dialect: **spoken Lebanese Arabic**, written in Arabic script, with the natural French/English words people really use. A native check on every script before voicing.
 - VO: owner asked for an AI voice note to judge Arabic quality (2026-11-14). Lebanese library candidates: Fadi oJQlz7pz2yWd7MRmDUXm (m), Mimi NQyF5U0t336unYhQXcuv (f, Beirut), Nizar e03v4EOdiJx2f7DwQZhQ (m); also Yasmine 0Pvzd85R50ZkRIxrIU5U, Jasmine 2zZ1oe9n1ydzKsKbR0A5. ❓ pick after hearing takes.
+- **Rejected by the owner 2026-11-15: Fadi, Mimi, Nizar. "This is not a Lebanese accent. This is Syrian."** Library labels like "Lebanese" or "levantine" are not proof; the owner judges the accent by ear. Never present a voice as Lebanese until the owner has heard it.
 - Captions: Arabic script, right-to-left, lifted from the narration. ❓ Arabizi (kifak, bkam) captions for some videos?
 
 ## Storytelling rule (owner, 2026-11-14)

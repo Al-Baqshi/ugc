@@ -13,6 +13,7 @@ usage:
   python3 tools/el.py music <out.mp3> <prompt|@file> [length_s=30] [--instrumental]   # Eleven Music
   python3 tools/el.py design <outDir> <description|@file> <sample text|@file>   # Voice Design: 3 previews (free plan OK)
   python3 tools/el.py create <generated_voice_id> <name> <description|@file>    # save a designed preview as a voice
+  python3 tools/el.py clone <name> <description|@file> <audio> [audio…]         # Instant Voice Clone (owner's own voice, with consent)
 """
 import json, os, re, sys, urllib.request, urllib.error, uuid
 
@@ -135,6 +136,21 @@ def main(a):
                  open(path, "rb").read(), f"\r\n--{b}--\r\n".encode()]
         d = call("POST", "/v1/speech-to-text", data=b"".join(parts), headers={"Content-Type": f"multipart/form-data; boundary={b}"})
         print(d.get("text"))
+    elif cmd == "clone":  # clone <name> <description|@file> <audio> [audio…]: Instant Voice Clone, prints the new voice_id
+        name, desc, files = a[1], a[2], a[3:]
+        if desc.startswith("@"): desc = open(desc[1:]).read().strip()
+        if not files: sys.exit("clone needs at least one audio file")
+        b = "----el" + uuid.uuid4().hex
+        field = lambda k, v: f'--{b}\r\nContent-Disposition: form-data; name="{k}"\r\n\r\n{v}\r\n'.encode()
+        parts = [field("name", name), field("description", desc), field("remove_background_noise", "true")]
+        mime = {".mp3": "audio/mpeg", ".m4a": "audio/mp4", ".wav": "audio/wav", ".aac": "audio/aac", ".ogg": "audio/ogg", ".flac": "audio/flac"}
+        for f in files:
+            ct = mime.get(os.path.splitext(f)[1].lower(), "application/octet-stream")
+            parts += [f'--{b}\r\nContent-Disposition: form-data; name="files"; filename="{os.path.basename(f)}"\r\nContent-Type: {ct}\r\n\r\n'.encode(),
+                      open(f, "rb").read(), b"\r\n"]
+        parts.append(f"--{b}--\r\n".encode())
+        d = call("POST", "/v1/voices/add", data=b"".join(parts), headers={"Content-Type": f"multipart/form-data; boundary={b}"})
+        print(d.get("voice_id"))
     elif cmd == "music":
         out, prompt = a[1], a[2]
         if prompt.startswith("@"): prompt = open(prompt[1:]).read().strip()
