@@ -31,5 +31,26 @@ format: ~30 s, 9:16, spoken Lebanese Arabic, Arabic captions (RTL)
 **Tools:** real app screens from the simulator in Arabic; the motion kit for the chat and the forwarded contact cards; a real Lebanese voice (owner/friend) or a tested AI voice; one unbroken take.
 **Notes:** names stay sect-neutral («أبو سمير»). The person abroad is just "abroad", no joke about emigration pain. Check that construction listings exist in the live data, and don't show the 7 demo seed listings as real. If calls aren't fixed, say «بحكيهن» (I talk to them) over chat, not a call.
 
+## Draft script v1 (2026-11-14, for owner review; nothing recorded or rendered)
+One narrator, one unbroken take, spoken Lebanese Arabic, about 30 s (~75 words). No silence longer than 1 s. Captions are lifted from the narration.
+
+| Time | Role | Spoken (Lebanese Arabic) | On screen (Arabic captions / text) | Visual |
+|---|---|---|---|---|
+| 0.0–3.0 | hook | بلبنان ما في سنكري… في «بعرفلك واحد». | بلبنان ما في سنكري… في «بعرفلك واحد» | A generic chat (not WhatsApp's look): a forwarded contact card «أبو سمير سنكري ٢٠١٩» with a 👍 |
+| 3.0–6.0 | problem | المي عم تنشّ من تحت المجلى. | المي عم تنشّ 💧 | Phone-style shot: a drip under the kitchen sink |
+| 6.0–13.0 | escalation | سألت إمي. إمي سألت جارتنا. جارتنا سألت صهرها… وصهرها بعتلي رقم: «أبو سمير، سنكري، ألفين وتسعتعش». | إمي ← جارتنا ← صهرها ← 📇 | The contact card is forwarded from chat to chat; the "Forwarded" label stacks up: «مُعاد توجيهه ×٤» |
+| 13.0–18.0 | the laugh | دقّيت… ردّ عليّ بالألماني. أبو سمير صار بألمانيا من خمس سنين. | «Hallo? Wer ist da?» 🇩🇪 | Call screen; the answer comes up as a German caption |
+| 18.0–25.0 | solution | فتحت ليبالِست، نقّيت منطقتي… سنكري، كهربجي، معلّم بلاط، كلّن قريبين منّي، وبحكيهن مباشرة. | نقّيت منطقتي 📍 · سنكري · كهربجي · معلّم بلاط | Real app screens in Arabic (RTL): construction category → area filter → a plumber listing → contact |
+| 25.0–30.0 | callback + CTA | وإمي بعتتلي: «لقيت؟ بعرفلك واحد تاني»… لا ماما، خلص. فوت على ليبالِست دوت كوم. | لقيت؟ بعرفلك واحد تاني 😅 · lebalist.com | Mum's message pops up; end card: Lebalist logo + lebalist.com |
+
+**English gloss:** In Lebanon there's no plumber, there's "I know a guy." Water's leaking under the sink. I asked Mum, Mum asked the neighbour, the neighbour asked her son-in-law, and he sent me a number: "Abu Samir, plumber, 2019." I called… he answered in German. Abu Samir moved to Germany five years ago. I opened Lebalist and picked my area: plumber, electrician, tiler, all near me, and I talk to them directly. Then Mum texts: "Found one? I know another guy"… No, Mum, enough. Go to lebalist.com.
+
+**Notes on the script:**
+- "Lebalist" is written ليبالِست for the voice; the screen shows the logo.
+- «بحكيهن مباشرة» (I talk to them directly): chat is mobile-only and the iPhone app isn't out, while the CTA points to the website. Before recording, check what contacting a provider looks like on lebalist.com, and change this line to match (for example «وبتواصل معهن» or «رقمن قدّامي»).
+- «كلّن قريبين منّي» needs real plumber, electrician and tiler listings in one area for the screen recording, or the screens marked "Illustrative". Don't show the demo seed listings as real.
+- The names are sect-neutral; Germany is just "abroad", with no joke about emigration.
+
 ## Discussion history
 - 2026-11-14 Pitched as the lead idea for Lebalist's first Arabic video.
+- 2026-11-14 Owner asked for the script in Arabic before making it → draft script v1 above, awaiting review.
