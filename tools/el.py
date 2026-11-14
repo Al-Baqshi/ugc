@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-"""Small ElevenLabs helper for CreativeUGC. Reads ELEVENLABS_API_KEY from ../.env; never prints it.
+"""Small ElevenLabs helper for CreativeUGC. Reads ELEVENLABS_API_KEY (+ optional ELEVENLABS_API_KEY_2, _3…)
+from ../.env; never prints them. Keys are tried in order: a key refused for an account reason (unpaid,
+out of credits, invalid, paid plan needed) falls through to the next one. `usage` reports every key.
 
 usage:
   python3 tools/el.py usage
@@ -12,44 +14,91 @@ usage:
   python3 tools/el.py design <outDir> <description|@file> <sample text|@file>   # Voice Design: 3 previews (free plan OK)
   python3 tools/el.py create <generated_voice_id> <name> <description|@file>    # save a designed preview as a voice
 """
-import json, os, sys, urllib.request, urllib.error, uuid
+import json, os, re, sys, urllib.request, urllib.error, uuid
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 API = "https://api.elevenlabs.io"
 
 
-def key():
-    k = os.environ.get("ELEVENLABS_API_KEY")
-    if not k:
+KEY_NAME = re.compile(r"^ELEVENLABS_API_KEY(?:_(\d+))?$")
+# Account-level refusals: the key is dead/unpaid/empty, so the next key may work.
+FAILOVER_CODES = {401, 402}
+FAILOVER_WORDS = ("payment", "quota", "invalid_api_key", "unauthorized", "paid_plan", "subscription", "credits")
+
+
+def keys():
+    """Every ElevenLabs key, in order: ELEVENLABS_API_KEY, then ELEVENLABS_API_KEY_2, _3, …
+    Environment variables win over .env. Empty values are skipped. Values are never printed."""
+    found = {}
+    try:
         for line in open(os.path.join(ROOT, ".env")):
-            if line.startswith("ELEVENLABS_API_KEY="):
-                k = line.split("=", 1)[1].strip().strip('"').strip("'")
-    if not k:
-        sys.exit("ELEVENLABS_API_KEY missing in .env")
-    return k
+            name, _, val = line.strip().partition("=")
+            m = KEY_NAME.match(name.strip())
+            if m and val.strip().strip('"').strip("'"):
+                found[int(m.group(1) or 1)] = val.strip().strip('"').strip("'")
+    except FileNotFoundError:
+        pass
+    for name, val in os.environ.items():
+        m = KEY_NAME.match(name)
+        if m and val.strip():
+            found[int(m.group(1) or 1)] = val.strip()
+    if not found:
+        sys.exit("No ElevenLabs key: set ELEVENLABS_API_KEY (and optionally ELEVENLABS_API_KEY_2, _3…) in .env")
+    return [(n, found[n]) for n in sorted(found)]
+
+
+def key():
+    return keys()[0][1]
+
+
+_live = None  # (slot number, key) that last worked in this run; tried first
 
 
 def call(method, path, body=None, raw=False, headers=None, data=None):
-    h = {"xi-api-key": key()}
+    global _live
     if body is not None:
         data = json.dumps(body).encode()
-        h["Content-Type"] = "application/json"
-    h.update(headers or {})
-    req = urllib.request.Request(API + path, data=data, method=method, headers=h)
-    try:
-        with urllib.request.urlopen(req, timeout=180) as r:
-            out = r.read()
+    order = keys()
+    if _live in order:
+        order.remove(_live)
+        order.insert(0, _live)
+    refusals = []
+    for slot, k in order:
+        h = {"xi-api-key": k}
+        if body is not None:
+            h["Content-Type"] = "application/json"
+        h.update(headers or {})
+        req = urllib.request.Request(API + path, data=data, method=method, headers=h)
+        try:
+            with urllib.request.urlopen(req, timeout=180) as r:
+                out = r.read()
+            if _live != (slot, k) and (refusals or len(order) > 1):
+                print(f"[el] using ElevenLabs key #{slot}", file=sys.stderr)
+            _live = (slot, k)
             return out if raw else json.loads(out or b"{}")
-    except urllib.error.HTTPError as e:
-        msg = e.read().decode(errors="replace")[:600]
-        sys.exit(f"HTTP {e.code} on {method} {path}: {msg}")
+        except urllib.error.HTTPError as e:
+            msg = e.read().decode(errors="replace")[:600]
+            account_problem = e.code in FAILOVER_CODES or (
+                e.code in (403, 429) and any(w in msg.lower() for w in FAILOVER_WORDS))
+            if account_problem:
+                refusals.append(f"key #{slot}: HTTP {e.code} {msg[:200]}")
+                print(f"[el] key #{slot} refused (HTTP {e.code}), trying the next key", file=sys.stderr)
+                continue
+            sys.exit(f"HTTP {e.code} on {method} {path} (key #{slot}): {msg}")
+    sys.exit(f"All {len(order)} ElevenLabs key(s) refused {method} {path}:\n  " + "\n  ".join(refusals))
 
 
 def main(a):
     cmd = a[0] if a else "usage"
     if cmd == "usage":
-        d = call("GET", "/v1/user/subscription")
-        print(json.dumps({k: d.get(k) for k in ["tier", "character_count", "character_limit", "voice_slots_used", "voice_limit", "voice_add_edit_counter", "max_voice_add_edits"]}))
+        for slot, k in keys():
+            req = urllib.request.Request(API + "/v1/user/subscription", headers={"xi-api-key": k})
+            try:
+                with urllib.request.urlopen(req, timeout=60) as r:
+                    d = json.loads(r.read() or b"{}")
+                print(f"key #{slot}:", json.dumps({f: d.get(f) for f in ["tier", "status", "character_count", "character_limit", "voice_slots_used", "voice_limit"]}))
+            except urllib.error.HTTPError as e:
+                print(f"key #{slot}: HTTP {e.code} {e.read().decode(errors='replace')[:200]}")
     elif cmd == "voices":
         d = call("GET", "/v1/voices")
         for v in d.get("voices", []):
