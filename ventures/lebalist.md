@@ -52,10 +52,15 @@ One place for Lebanon to trade and get things done, sorted by your own area, in 
 - VO: ❓ owner or a Lebanese friend recording one phone take (preferred), or an AI voice only if it really sounds Lebanese.
 - Captions: Arabic script, right-to-left, lifted from the narration. ❓ Arabizi (kifak, bkam) captions for some videos?
 
+## Storytelling rule (owner, 2026-11-14)
+- **Story first, product between the lines.** No "we're here, we're the solution" scripts: the owner called that naive. Write a story people enjoy watching for itself; the viewer works out that Lebalist is the answer. Lebalist is not explained in the voice-over (no "open Lebalist, pick your area…"); at most a visual clue and the end card.
+- No spoken CTA by default; the end card carries the logo and lebalist.com.
+
 ## Humor
 - Style that fits: painful recognition and escalation from everyday Lebanese life (Facebook-group selling, "I know a guy", landmark addresses), punching at the situation, never at the viewer.
 - Off-limits (proposed until the owner confirms ❓): politics, sects and religion (including sect-coded names and landmarks), the war, the banking collapse and the lira/dollar mess, any region or group as a punchline.
 - Humor that works: ❓ (record what the owner laughs at).
+- Rejected: «بعرفلك واحد» script v1 (2026-11-14), too direct.
 
 ## Pricing and claims ❓
 The product docs suggest "free to list", "no email", "no card". QSME's rule (no "free", no "no sign-up") is QSME-only. Until the owner decides for Lebalist, content avoids pricing lines and says what the app does, not what it doesn't charge.

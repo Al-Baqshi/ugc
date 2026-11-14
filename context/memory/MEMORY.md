@@ -9,3 +9,4 @@
 - [Review designs before finishing](feedback-review-design-before-finishing.md) — show previews, name the editable master (HTML/Figma), PNG is preview only
 - [Baqshi films](project-baqshi-films.md) — EN/AR/ES versions, voice Chris, spy-mission bed G, reuse the BQ01 template
 - [Baqshi: escrow, not BitRegalo](feedback-baqshi-escrow-generic.md) — never name BitRegalo or test networks in Baqshi content; say "held in escrow"
+- [Story first, soft sell](feedback-story-first-soft-sell.md) — no "we are the solution" scripts; enjoyable story, product between the lines (Lebalist)
