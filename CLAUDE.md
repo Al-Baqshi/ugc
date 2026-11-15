@@ -29,7 +29,9 @@ Save as you go, not at the end. Tell the user in one line what was saved where.
 Idea cards are plain Markdown with YAML frontmatter, so other tools and video makers can read them directly.
 
 ## Voice-ready (standing rule, user 2026-10-02)
-Every video ships with `vo-script.json` + `vo-script.md` (contract: `tools/VO_SCRIPT.md`): natural Kiwi lines timed to the video, QSME written "Q-S-me". Check with `python3 tools/vo_status.py`. ElevenLabs is on the FREE plan (API refuses library voices and Voice Design), so until the user upgrades, videos are silent with burned-in captions. After the upgrade: `python3 tools/make_vo.py --all` (voices in `tools/voices.json`). Meanwhile the user can drop their own audio in `outputs/vo/incoming/` → `python3 tools/make_vo.py <project> --files <dir>`.
+Every video ships with `vo-script.json` + `vo-script.md` (contract: `tools/VO_SCRIPT.md`): natural Kiwi lines timed to the video, QSME written "Q-S-me". Check with `python3 tools/vo_status.py`. Voices per venture live in `tools/voices.json`; `python3 tools/make_vo.py --all` voices every project. The user can also drop their own audio in `outputs/vo/incoming/` → `python3 tools/make_vo.py <project> --files <dir>`.
+
+**Two voice providers (owner 2026-11-15):** ElevenLabs (paid key in `.env`, library voices, tags, timestamps built in) or **VoiceStudio** (the local open-source app on the Mac: no character budget, the owner's own cloned voice). Each entry in `tools/voices.json` says which (`provider`, default `elevenlabs`). `python3 tools/voice.py doctor` shows what can run right now; `python3 tools/voice.py take <text> <out> --voice <name>` makes one take + `words.json` from either. VoiceStudio helper: `tools/vs.py`; its MCP server is in `.mcp.json`. VoiceStudio's default engine is NON-COMMERCIAL: rehearsal only; ads need a permissive engine (`research/2026-10-20-voicestudio-integration.md`). The whole UGC method is also a built-in skill of Consistent CEO (`consistent.ceo/crates/gateway/skills/ugc-video`, plan: `consistent.ceo/docs/plans/ugc-video.md`); this folder is the engine it calls.
 
 ## Layout
 
@@ -47,6 +49,8 @@ tools/motion/             motion kit: HTML page → MP4 (make.mjs), live public-
 assets/qsme/              reusable QSME footage, screenshots, icons (local only, see its README)
 videos.html               every video + download + its voice script (rebuild: python3 tools/videos_page.py)
 tools/el.py               ElevenLabs helper (usage, voices, tts, stt) — key read from .env, never printed
+tools/vs.py               VoiceStudio helper (health, voices, tts, stt, clone) — local backend, URL/key from .env
+tools/voice.py            one take + words.json from either provider (take / stt / doctor); provider per voice in voices.json
 tools/make_vo.py          vo-script.json → takes + STT check + VO laid onto the project video
 tools/mux(.swift)         lay audio clips onto a silent MP4 at given times (AVFoundation)
 .claude/skills/ugc/       the UGC skill (workflow + references)

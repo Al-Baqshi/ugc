@@ -18,7 +18,7 @@ usage:
 import json, os, re, sys, urllib.request, urllib.error, uuid
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-API = "https://api.elevenlabs.io"
+API = os.environ.get("ELEVENLABS_API", "https://api.elevenlabs.io")  # override only for local tests
 
 
 KEY_NAME = re.compile(r"^ELEVENLABS_API_KEY(?:_(\d+))?$")

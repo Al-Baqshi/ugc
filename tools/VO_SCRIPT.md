@@ -21,3 +21,5 @@ Every project that has a video keeps `vo-script.json` (machine) + `vo-script.md`
 Rules: natural Kiwi speech (contractions, dry understatement, no announcer lift, no exclamation marks); ~2.5 words/s, so a line must fit `max_s`; start when its caption appears; silence is a choice (leave beats empty on purpose). QSME = "Q-S-me" in scripts; the tool speaks it as "Queue Ess Mee" (tested: that is what ElevenLabs renders as "QSME"); qsme.co.nz = "Queue Ess Mee dot Co dot N Z" (owner: "co" is said like KO, never spelled C-O); qsme.build = "Q-S-me dot build".
 
 Check every project: `python3 tools/vo_status.py` · Voice everything after the ElevenLabs upgrade: `python3 tools/make_vo.py --all`
+
+Providers: a voice in `tools/voices.json` is ElevenLabs unless it says `"provider": "voicestudio"`. `python3 tools/voice.py take <take-text.txt> <out_dir> --voice <name>` gives `take.mp3` + `words.json` ([{w,s,e}]) from either; `cue_take.py times` reads that file unchanged. VoiceStudio reads only `[pause …]`, `[laughter]`, `[sigh]`; other v3 tags are dropped before sending.

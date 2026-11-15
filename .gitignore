@@ -32,3 +32,4 @@ studio/synced.txt
 
 # Scratch caches
 .cache/
+__pycache__/

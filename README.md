@@ -17,7 +17,7 @@ The working folder for QSME's UGC video programme (QSME NZ · qsme.co.nz and QSM
 | `projects/<date>-<venture>-<slug>/` | One video each: `post.md` (script, captions, status), `vo-script.json/.md` (timed Kiwi voice lines), `motion/` (the HTML pages the video is rendered from), `outputs/` (stills, contact sheets; videos are in the Release) |
 | `videos.html` | Every video with its own script beside it and download buttons (`python3 tools/videos_page.py`) |
 | `tools/motion/` | Motion kit: HTML page → MP4 (`make.mjs`), live public-page capture, frame tools, previews |
-| `tools/el.py`, `tools/make_vo.py` | ElevenLabs helper and "voice every video" (`--all`) once the plan is paid |
+| `tools/el.py`, `tools/vs.py`, `tools/voice.py`, `tools/make_vo.py` | ElevenLabs helper, VoiceStudio helper (local open-source voice), the provider-neutral take tool (`voice.py doctor` first), and "voice every video" (`--all`) |
 | `studio/` | The private Studio web app (Railway project `ugc-studio`) |
 | `assets/qsme/` | Reusable QSME stills/icons (b-roll and walkthrough videos are copied from the product repo, see its README) |
 | `.claude/skills/ugc/` | The UGC skill: workflow, humour, formats, direct-response, tools |

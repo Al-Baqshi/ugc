@@ -1,5 +1,10 @@
 {
  "_note": "Approved by the owner 2026-10-06 on the N01 pilot: ONE voice for everything, model eleven_v3, one unbroken take, clean background (no bed). Swap only if the owner says so.",
+ "_providers": {
+  "elevenlabs": "default when an entry has no 'provider'. Needs voice_id (+ optional model, default eleven_v3). Keys: ELEVENLABS_API_KEY… in .env.",
+  "voicestudio": "local open-source backend (tools/vs.py). Needs profile_id (from `python3 tools/vs.py voices` or `clone`), optional engine (default omnivoice: NON-COMMERCIAL weights; use cosyvoice / voxcpm2 / moss-tts-v15 for ads) and language. Needs the VoiceStudio app running (VOICESTUDIO_URL, default http://127.0.0.1:3900).",
+  "check": "python3 tools/voice.py doctor"
+ },
  "qsme-nz": {
   "voice_id": "53CG2aO2HU48thT3QnMl",
   "voice_name": "Cam S (Kiwi)",
@@ -33,5 +38,14 @@
   "voice_name": "Omar - Premium Arabic Voice (MSA, library)",
   "model": "eleven_v3",
   "note": "Chosen 2026-10-20 for BQ01 Arabic. Reads ~1.65 words/s, so BQ01 used tools/tempo ×1.10. Alternative Abdullah pCKbQ4EPGE06zpEPGNvS is faster but said استثماري for استئماني (trust) in full takes; spell it إستئماني if retried."
+ },
+ "founder": {
+  "provider": "voicestudio",
+  "profile_id": "",
+  "engine": "cosyvoice",
+  "language": "en",
+  "voice_name": "Owner's own voice (local clone)",
+  "consent": "owner, self-recorded — fill in the date and where the recording lives when the clone is made",
+  "note": "Not set up yet. Record 30–60 s of plain talk on the phone in a quiet room → outputs/vo/incoming/founder-ref.m4a → `python3 tools/vs.py clone founder outputs/vo/incoming/founder-ref.m4a --text \"<what it says>\"` → paste the printed id into profile_id. Pilot on one NZ video before making it a default."
  }
 }

@@ -63,3 +63,9 @@ Effort: provider layer + `vs.py` + `.mcp.json` ≈ one session; founder clone pi
 Do it, in this order: (1) provider layer + `vs.py` (ElevenLabs unchanged), (2) owner's own voice pilot on one NZ video with a permissive engine, (3) MCP entry, (4) Studio Voice page if still wanted. Keep ElevenLabs for library Kiwi voices until a cloned voice wins by ear. Nothing from VoiceStudio's default model goes in a paid ad.
 
 Open for the owner: Is the Mac Apple Silicon (M1 or later)? Which do you want first: the founder clone, or unlimited rehearsal takes? Is the local clone of VoiceStudio the upstream project or a fork with your own changes?
+
+## Update 2026-11-15
+
+- Owner decision: the UGC engine becomes a feature of **Consistent CEO** (built-in skill `ugc-video`, plan in `consistent.ceo/docs/plans/ugc-video.md`). This folder stays the engine.
+- Step 1 of the plug-in above is built: `tools/voice.py` (take + words.json from either provider, `doctor`), `tools/vs.py`, `provider` in `tools/voices.json`, `.mcp.json`. Tested against a fake server only; first real run is on the Mac.
+- ElevenLabs status changed: the owner opened a new Starter account (40k characters) after the old key went past due, so both providers are live options now.
